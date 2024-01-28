@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--© Copyright IBM Corporation 2015-->
+<?eclipse version="3.0"?><plugin id="com.ibm.spss.statistics.extras" name="Add-ons" provider-name="IBM"
+        version="23">
+   <extension point="org.eclipse.help.toc">
+      <toc file="statistics_extras_project.xml" primary="true"/>
+   </extension>
+</plugin>

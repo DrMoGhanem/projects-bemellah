@@ -1,0 +1,145 @@
+
+'After entering high- and low-margin, the cells of the pivot table will be colored. 
+'All cells With values greater than high-margin will be colored In green. 
+'The values lower than low-margin will be red. 
+'And the values between the margins will be colored yellow. 
+'Requirements: The pivot table on which the script will be run should be selected.
+
+
+'**********************************************************
+'Select a Pivot Table and run this script. After entering
+'high- and low-margin, the cells of the pivot table will
+'be colored. All cells With values greater than high-margin
+'will be colored In green. The values lower than low-margin
+'will be red. And the values between the margins will be
+'colored yellow.
+'designed 1997 by Bernhard Witt - SPSS Germany
+'**********************************************************
+
+Option Explicit
+
+'#Uses "Global.wwd"
+
+Const TextDialogBoxTitle = "Highlight"
+Const TextDialogBoxHelp = "Help"
+Const TextDialogBoxOben ="High margin:"
+Const TextDialogBoxUnten ="Low margin:"
+Const TextHelpText = "Select a Pivot Table and run this script. After entering high- and low-margin, the cells of the pivot table will be colored. All cells with values greater than high-margin will be colored in green. The values lower than low-margin will be red."+" And the values between the margins will be colored yellow." +Chr$(13)+Chr$(13)+"designed 1997 by Bernhard Witt - SPSS Germany"
+'Const TextDialogBoxTitle = "Hai-Leiter"
+'Const TextDialogBoxHelp = "Help"
+'Const TextDialogBoxOben ="Obere Grenze:"
+'Const TextDialogBoxUnten ="Untere Grenze:"
+'Const TextHelpText = "Wählen Sie mit der Maus eine Pivot Tabelle aus und starten dieses Script. Nach Eingabe der oberen und unteren Grenze werden die Zellen der Pivot Tabelle farbig markiert. Alle Zellen, deren Wert größer als die obere Grenze ist, werden grün gefärbt."+" Die Zellen, deren Wert kleiner als die untere Grenze ist, werden rot gekennzeichnet. Die Werte zwischen den Grenzen bekommen eine gelbe Frabe." +Chr$(13)+Chr$(13)+"designed 1997 by Bernhard Witt - SPSS Germany"
+Const TextTotalStr ="Total"
+Const TextTotalStr2 ="Gesamt"
+Const red = RGB(178,34,34)
+Const green = RGB(60, 179, 113)
+Const white = RGB(255,255,255)
+Const yellow = RGB(255,255,128)
+
+
+Public s_bolCellsSelected As Boolean
+
+Sub Main
+
+	Begin Dialog UserDialog 30,30,450,77,TextDialogBoxTitle,.Maskenfunktion
+		Text 10,18,100,21,TextDialogBoxOben
+		Text 10,48,100,21,TextDialogBoxUnten
+		TextBox 120,15,110,21,.oben
+		TextBox 120,45,110,21,.unten
+		OKButton 260,15,70,21,.ok
+		PushButton 360,15,70,21,TextDialogBoxHelp,.Hilfe
+		CancelButton 260,45,70,21,.Abbrechen
+	End Dialog
+
+	Dim dlg As UserDialog
+	Dim erg As Boolean
+	erg=Dialog (dlg)
+	If erg = -1 Then
+		'Mach was
+		Dim objItem As ISpssItem          		' A viewer item.
+		Dim objPivotTable As PivotTable         ' Pivot table. 
+		Dim bolFoundOutputDoc As Boolean
+		Dim bolPivotSelected As Boolean
+
+
+		'Call GetFirstSelectedPivot to get the selected pivot table 
+		Call GetFirstSelectedPivot(objPivotTable, objItem, bolFoundOutputDoc, bolPivotSelected)
+
+		If (bolFoundOutputDoc = False) Or (bolPivotSelected = False) Then
+			'either there wasn't an output doc or a pivot table wasn't selected
+			Exit Sub
+		End If
+	
+		'global variable that keeps track of whether any cells are selected from searching
+		s_bolCellsSelected = False	
+
+		Dim objDataCells As ISpssDataCells
+		Dim lngNumRows As Long
+		Dim lngNumColumns As Long
+		Set objDataCells = objPivotTable.DataCellArray
+		' Loop through the cells and shades those cells with values less than 0.01:
+
+		Dim objRowLabels As ISpssLabels         ' Row Label array.
+		Set objRowLabels = objPivotTable.RowLabelArray
+		Dim objColLabels As ISpssLabels         ' Col Label array.
+		Set objColLabels = objPivotTable.ColumnLabelArray
+		lngNumRows = objDataCells.NumRows
+		lngNumColumns = objDataCells.NumColumns
+		Dim I As Integer, J As Integer
+		For I = 0 To lngNumRows -1
+			Dim dummy As Integer
+			If InStr (objRowLabels.ValueAt(I,objRowLabels.NumColumns-1), TextTotalStr)= 0 And InStr (objRowLabels.ValueAt(I,objRowLabels.NumColumns-1), TextTotalStr2)= 0 Then
+				For J = 0 To lngNumColumns -1
+					If InStr (objColLabels.ValueAt(objColLabels.NumRows-1,J), TextTotalStr)= 0 And InStr (objColLabels.ValueAt(objColLabels.NumRows-1,J), TextTotalStr2)= 0 Then
+						If Len(objDataCells.ValueAt  (I,J)) > 0 Then
+							If objDataCells.ValueAt (I,J) <= Val( dlg.unten) Then
+								objDataCells.BackgroundColorAt  (I,J) = red
+							Else
+								If objDataCells.ValueAt  (I,J) >= Val( dlg.oben)  Then
+								objDataCells.BackgroundColorAt  (I,J) = green
+								Else
+									objDataCells.BackgroundColorAt  (I,J) = yellow
+								End If
+							End If
+						Else
+							objDataCells.BackgroundColorAt  (I,J) = white
+						End If							
+					End If
+				Next
+			Else
+'				objDataCells.BackgroundColorAt  (I,J) = white
+			End If
+		Next
+		' Deactivate the pivot table and exit
+		objItem.Activate  
+		objItem.Deactivate  
+
+	End If
+End Sub
+ 
+'#########################################################################
+Function Maskenfunktion(SteuerelementBez As String, Aktion As Integer , ZusatzWert As Integer )  As Boolean
+'#########################################################################
+Select Case Aktion
+Case 1	' Init
+Case 2	' A Dialogfield was selected
+	Select Case SteuerelementBez
+	Case "OK"
+	Case "Hilfe"
+		Maskenfunktion=True
+		MsgBox TextHelpText
+	Case Else
+		Maskenfunktion=False
+	End Select
+Case 3	' Textfield was changed
+
+Case 4	' focus has changed
+
+Case 5	' nothing else to do
+
+Case Else
+
+End Select
+
+End Function

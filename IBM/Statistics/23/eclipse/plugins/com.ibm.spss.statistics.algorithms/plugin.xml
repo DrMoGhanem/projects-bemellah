@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<plugin provider-name="IBM" version="22" id="com.ibm.spss.statistics.algorithms" name="Algorithms">
+<extension point="org.eclipse.help.toc">
+<toc primary="true" file="com.ibm.spss.statistics.algorithms_toc.xml"/>
+</extension>
+<extension point="org.eclipse.help.index">
+<index primary="true" file="com.ibm.spss.statistics.algorithms_index.xml"/>
+</extension>
+</plugin>

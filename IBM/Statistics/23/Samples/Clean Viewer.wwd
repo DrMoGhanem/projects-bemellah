@@ -1,0 +1,108 @@
+'PURPOSE
+	'This script "cleans up" the designated output document by finding 
+	'and deleting Notes tables. You can easily modify the script to 
+	'delete output items of a different type and label by changing the 
+	'parameters set in the main procedure.
+	
+'ASSUMPTIONS
+	'The document you want to clean is displayed in the Output Viewer
+	'and is the currently designated output document.
+	
+'EFFECTS
+	'Deletes all Notes tables.
+
+
+
+Option Explicit		'All variables must be declarated before being used
+
+Sub Main
+ 'The main procedure sets parameters to determine what 
+ 'output items get deleted, and then calls the 
+ 'SelectAndRemoveOutputItem procedure to do the real work.
+			
+	'Declare variables for parameters
+
+	Dim intType As Integer	'Type of output item to delete, expressed as an integer
+	Dim strLabel As String	'Item label displayed in left pane of Output Viewer
+	
+	intType = SPSSNote		'Type to delete. See help on "SpssType property" for valid types
+	'strLabel = "Notes"		'Label to delete
+		
+	'********************************************************************
+	'You can edit the above lines to delete items of a different type.
+	'See help on the SpssType property for the complete list of types.
+	'Labels are case-sensitive (meaning that "Case Processing Summary" 
+	'is not the same as "case processing summary")
+	
+	'For example, to delete all Case Processing Summaries, specify:
+			'intType = SpssPivot
+			'strLabel = "Case Processing Summary"
+	'*********************************************************************
+			
+	Call SelectAndRemoveOutputItem(intType, strLabel) 'Call procedure below with specified parameters
+	
+End Sub
+
+
+Sub SelectAndRemoveOutputItem(intType As Integer, Optional strLabel As Variant)
+ 'This procedure iterates through output items and deletes all output 
+ 'items that match the specified search type and label.
+    
+    'Variable declarations
+        
+	Dim objOutputDoc As ISpssOutputDoc
+	Dim objItems As ISpssItems
+	Dim objItem As ISpssItem
+	 'By convention, object variable names begin With "obj".
+	 'OutputDoc, ISpssItems, And ISpssItem are the names of SPSS object classes. 
+	 'For example, the first declaration above declares an object variable named 
+	 '"objOutputDoc" and assigns it to the OutputDoc Object 
+	 'class. Below, that variable is set to the designated output document 
+	 'in order to access the items in that output document.
+
+	Dim intCount As Integer				'total number of output items    
+    Dim intIndex As Integer				'loop counter, corresponds index (position) of each item
+    Dim intCurrentType As Integer		'type for current item
+    Dim strCurrentLabel As String		'label for current item
+
+    Set objOutputDoc = objSpssApp.GetDesignatedOutputDoc   
+	Set objItems = objOutputDoc.Items			
+	 'GetDesignatedOutputDoc is a method that returns the designated output 
+	 'document. After objOutputDoc is set to the designated output document, 
+	 'the Items method is used to access the items in that document.
+
+	intCount = objItems.Count 	'Count method returns the number 
+						 		'of output items in the designated document
+
+    objOutputDoc.ClearSelection			'Clear any existing selections to avoid deleting 
+    									'output items that happen to be selected before 
+	    								'the script is run.
+
+	For intIndex = 0 To intCount - 1
+	 'The loop repeats as many times as there are output items.
+	 'The intIndex variable is used as a counter. intCount is the total 
+	 'number of items. Output items are numbered sequentially starting 
+	 'at 0. Thus if there are 9 output items they have index values from 0 to 8.
+
+		Set objItem = objItems.GetItem(intIndex)
+        'Get the item whose position corresponds the current index value
+        
+        intCurrentType = objItem.SPSSType		'Returns type of current item
+        objItem.Current = True
+
+		 'The first line below checks whether the current item matches 
+		 'the type to be deleted. If yes, then get the label of the current 
+		 'item and check that also. If the label matches (or is empty)
+		 'then select the item.
+
+        If intCurrentType = intType Then
+            strCurrentLabel = objItem.Label
+            If strCurrentLabel = strLabel Or strLabel = "" Then
+                objItem.Selected = True
+             End If
+        End If
+    Next
+	
+	objOutputDoc.Remove		'Delete all items selected by the FOR... NEXT loop above.
+    
+End Sub

@@ -1,0 +1,189 @@
+
+'PURPOSE
+	'Extracts information from Means Pivot Table, and writes results
+	'to several output ascii files.	
+'ASSUMPTIONS
+	'A Means Pivot Table is selected in the Output Doc.
+	'Also, the Viewer (Output Document) that contains the Pivot Table is the Designated Output Window
+	
+'EFFECTS
+	'Produces a description file (means0.out)
+	'Produces multiple output files (meansN.out) N=1, 2, 3 ...
+
+
+'#Uses "Global.wwd"
+
+Option Explicit		'All variables must be declarated before being used
+
+'script level constants
+Const cOUTFILE As String = "c:\means0.out"
+Const cFILEPRODUCED As String = " Means files have been produced."
+Const cMEANS As String = "c:\means"
+Const cOUT As String = ".out"
+Const cCONTAINS As String = ".out contains "
+Const cOUTINFO1 As String = "There are"
+Const cOUTINFO2 As String = " rows in each file."
+Const cOUTINFO3 As String = "These rows represent:"
+Const cOUTINFO4 As String = " statistics in each row."
+Const cOUTINFO5 As String = "The columns are:"
+Const cOUTINFO6 As String = "  The index"
+
+
+'***********************************************************************
+Sub Main
+'Declare variables here
+	Dim objPivotTable As PivotTable
+	Dim objItem As ISpssItem
+	Dim bolFoundOutputDoc As Boolean
+	Dim bolPivotSelected As Boolean
+	
+	'The following procedure is a global procedure that is located in global.wwd
+    Call GetFirstSelectedPivot(objPivotTable, objItem, bolFoundOutputDoc, bolPivotSelected)
+
+	If (bolFoundOutputDoc = False) Or (bolPivotSelected = False) Then
+		'either there wasn't an output doc or a pivot table wasn't selected
+		Exit Sub
+	End If
+
+'This is the REAL call to extract the Means Information
+    Call MeansOutput(objPivotTable)
+	objItem.Deactivate
+	
+End Sub
+'**********************************************************************
+Sub MeansOutput(objPivotTable As PivotTable)
+'Purpose: Extracts Means-related statistics from Means Pivot Table. 
+'         Writes results to multiple outptu ascii files
+'Assumptions: The Means Pivot Table is already activated 
+'Effects: Produces means0.out to hold descriptions
+'Effects: Produces meansN.out (N=1,2,3 ...) for information
+'Inputs: None
+'Return Values: None
+
+ 'Declare SPSS-specific objects
+    Dim objDataCells As ISpssDataCells
+    Dim objColLabels As ISpssLabels
+    Dim objRowLabels As ISpssLabels
+
+'Declare various integer indices
+    Dim lngRowNum As Long
+    Dim lngColNum As Long
+    Dim lngNumCols As Long
+    Dim lngNumRows As Long
+    Dim lngScratchInteger As Long
+    Dim lngNumOfVariables As Long
+    Dim lngNumOfStatistics As Long
+    Dim lngNumOfLevels As Long
+
+'Declare strings
+    Dim strHoldCells(255,255) As String
+    Dim strHoldColLabels(255,255) As String
+    Dim strHoldRowLabels(255,255) As String
+    Dim strOutFileName As String
+    
+              
+'Instantiate SPSS objects
+    Set objDataCells = objPivotTable.DataCellArray()
+    Set objColLabels = objPivotTable.ColumnLabelArray()
+    Set objRowLabels = objPivotTable.RowLabelArray()
+    
+    
+    lngNumCols = objColLabels.NumColumns
+    lngNumRows = objColLabels.NumRows
+    
+    lngNumOfVariables = lngNumCols
+ 
+ 'Extracting column labels       
+    For lngRowNum = 0 To lngNumRows - 1
+        For lngColNum = 0 To lngNumCols - 1   
+        strHoldColLabels(lngRowNum+1,lngColNum+1) = objColLabels.ValueAt(lngRowNum,lngColNum)     
+        Next lngColNum
+    Next lngRowNum
+
+    lngNumCols = objRowLabels.NumColumns
+    lngNumRows = objRowLabels.NumRows
+ 
+ 'Extracting row labels       
+    For lngRowNum = 0 To lngNumRows - 1
+        For lngColNum = 0 To lngNumCols - 1   
+        strHoldRowLabels(lngRowNum+1,lngColNum+1) = objRowLabels.ValueAt(lngRowNum,lngColNum)     
+        Next lngColNum
+    Next lngRowNum
+        
+    lngNumCols = objDataCells.NumColumns
+    lngNumRows = objDataCells.NumRows
+ 
+ 
+ 'Extracting cell values       
+    For lngRowNum = 0 To lngNumRows - 1
+        For lngColNum = 0 To lngNumCols - 1
+            If objDataCells.ValueAt(lngRowNum,lngColNum)<>"" Then   
+                strHoldCells(lngRowNum+1,lngColNum+1) = objDataCells.ValueAt(lngRowNum,lngColNum)
+            Else
+                strHoldCells(lngRowNum+1,lngColNum+1) = "."
+            End If     
+        Next lngColNum
+    Next lngRowNum
+ 
+ 
+ 'Print file descriptions to means0.out
+    
+    Open cOUTFILE For Output As #1
+    
+    Print #1, lngNumOfVariables; cFILEPRODUCED
+    For lngColNum = 0 To lngNumOfVariables-1
+        Print #1, cMEANS;LTrim$(Str$(lngColNum+1)); cCONTAINS; strHoldColLabels(2,lngColNum+1)
+    Next lngColNum
+    
+    lngNumOfStatistics = 0
+    lngScratchInteger = 0 
+    
+    For lngRowNum = 1 To lngNumRows - 1
+        If lngScratchInteger = 0 Then
+            If strHoldRowLabels(lngRowNum+1,2) <> strHoldRowLabels(lngRowNum,2) Then
+                lngNumOfStatistics = lngRowNum 
+                lngScratchInteger = 1 
+            End If
+        End If
+    Next lngRowNum
+    
+    lngNumOfLevels = lngNumRows / lngNumOfStatistics
+        
+    Print #1, cOUTINFO1;lngNumOfLevels; cOUTINFO2
+    Print #1, cOUTINFO3
+    
+    For lngRowNum = 0 To lngNumRows - 1 Step lngNumOfStatistics
+        Print #1, "  ";strHoldRowLabels(lngRowNum+1,2)
+    Next lngRowNum
+     
+        
+    Print #1, cOUTINFO1;lngNumOfStatistics; cOUTINFO4
+    Print #1, cOUTINFO5
+    Print #1, cOUTINFO6
+    
+    For lngRowNum = 0 To lngNumOfStatistics - 1
+        Print #1, "  ";strHoldRowLabels(lngRowNum+1,4)
+    Next lngRowNum
+    
+    Close #1 
+ 
+ 
+ 'Create the multiple meansN.out files
+    
+    For lngScratchInteger= 1 To lngNumOfVariables
+        strOutFileName = cMEANS + LTrim$(Str$(lngScratchInteger)) + cOUT
+        Open strOutFileName For Output As #1
+        For lngRowNum = 0 To lngNumOfLevels-1
+            Print #1, lngRowNum+1;" ";
+            For lngColNum = 0 To lngNumOfStatistics-1
+                Print #1, strHoldCells((lngRowNum*lngNumOfStatistics)+lngColNum+1,lngScratchInteger);" ";
+            Next lngColNum
+            Print #1, " "
+        Next lngRowNum
+        Close #1
+    Next lngScratchInteger
+    
+    
+End Sub
+'*******************************************************************
+

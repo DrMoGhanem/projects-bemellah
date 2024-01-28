@@ -1,0 +1,200 @@
+
+'PURPOSE
+	'A Notes table is produced whenever you run a procedure in SPSS.
+	'This table records the state of the system when the command was run
+	'as well as the the actual command (the syntax) itself.  This script
+	'resubmits a FACTOR or DISCRIMINANT command after negation  of a
+	'/SELECT subcommand.  This essentially reruns the command using previously
+	'unselected cases in the analysis.  It assumes that the data file which
+	'generated the analysis Is the current working data file
+	
+'ASSUMPTIONS
+	'The script operates on the first selected Notes table in the currently
+	'designated output document.  It ignores all other selection.  This notes
+	'table must contain a FACtor or DIScriminant command with a /SELect 
+	'subcommand for any action to occur
+	 	
+'EFFECTS
+	'Reruns a FACTOR or DISCRIMINANT commands and produces new output in the 
+	'currently designated Viewer document.
+
+'GLOBAL VARIABLES USED
+	'SPSS, the main SPSS application Object.
+
+	
+'The real code starts below this line
+'---------------------------------
+
+'#Uses "Global.wwd"
+
+'CONSTANT DECLARATIONS
+'We could just use the values of the constants, but they
+'have more meaning if given symbolic names
+Const SYNTAX_COLUMN As Integer = 2	  				'The "Syntax" heading is always in column two
+Const SYNTAX_CONTENT_COLUMN As Integer = 0			'The Syntax itself is always in column zero
+Const SPSSApplyCommandList As String = "FAC DIS "	'SPSS commands to trigger script
+Const cSYNTAX As String = "Syntax"
+
+Option Explicit
+Sub Main
+	'Declarations
+	Dim lngRow As Long
+	Dim intSelItemType As Integer
+	Dim intItem As Integer
+	Dim strLabel As String
+	Dim strSyntax As String
+	Dim objItem As ISpssItem
+	Dim objRowLabels As ISpssLabels
+	Dim objPivot As PivotTable
+	Dim objDataCells As ISpssDataCells
+	Dim bolFoundOutputDoc As Boolean
+	Dim bolItemSelected As Boolean
+	
+	'These defaults indicate we haven't found the syntax
+	strSyntax=""
+	intItem=0
+
+	'The following procedure is a global procedure that is located in global.wwd
+	Call GetFirstSelectedItem(objItem, intSelItemType, bolFoundOutputDoc, bolItemSelected)
+
+	If (bolFoundOutputDoc = False) Or (bolItemSelected = False) Then
+		'either there wasn't an output doc or an item wasn't selected
+		Exit Sub
+	End If
+	
+	' Check if item is a Notes table
+	If intSelItemType = SPSSNote Then
+		'Activate the Notes table
+		Set objPivot = objItem.Activate()
+		lngRow=0
+		' Loop over the row labels from top to bottom
+		Set objRowLabels = objPivot.RowLabelArray
+		While lngRow < objRowLabels.NumRows And strLabel <> cSYNTAX 
+		
+			' See if it is the syntax label
+			strLabel=objRowLabels.ValueAt(lngRow, SYNTAX_COLUMN)
+			If strLabel = cSYNTAX Then
+				Set objDataCells = objPivot.DataCellArray
+				
+				' Capture the syntax string
+				strSyntax = objDataCells.ValueAt(lngRow, SYNTAX_CONTENT_COLUMN)
+				
+				' Search for presence of FAC or DIS in first three characters
+				If InStr(SPSSApplyCommandList,UCase(Left(strSyntax,3))) Then
+					Call ParseSyntax (strSyntax)
+				End If 
+			End If
+			lngRow=lngRow + 1				 	
+		Wend
+
+		'Deactivate the Notes table
+		objItem.Deactivate
+	End If
+
+End Sub
+
+Sub ParseSyntax (strParse As String)
+'Purpose: Parses an SPSS Factor or Discriminant command in search of SEL subcommand 
+'Assumptions: The command string 'strParse' contains the FACTOR or DISCRIMINANT command
+'Effects: None
+'Inputs: strParse a string containing a FACTOR or DISCRIMINANT command
+'Return Values: None
+'Subroutines Called: ParseSelect, BuildCommands
+	
+	Dim intSlashFound As Integer
+	Dim strSyntaxLeft As String
+	Dim strSyntaxRight As String
+	Dim StrSPSSSubCommand As String
+	Dim VarName As String
+	Dim VarValue As String
+
+	intSlashfound = 99
+	strSyntaxLeft = ""
+	strSyntaxRight = ""
+		
+ 	' Parse subcommands by searching for a slash							
+	While intSlashFound > 0 And strSyntaxRight=""
+		intSlashFound=InStr(strParse,"/")
+		If intSlashFound > 0 Then 
+		
+			' Break into current subcommand and remainder
+			strSPSSSubcommand = Trim(Left(strParse,intSlashFound))
+			strParse=Right(strParse,Len(strParse)-intSlashFound)
+			
+			' Search for SELect subcommand 
+			If Left(UCase(strSPSSSubCommand),3) = "SEL" Then
+				strSyntaxRight=strParse
+				Call ParseSelect(strSPSSSubCommand,Varname,VarValue )
+				Call BuildCommands(strSyntaxLeft,strSyntaxRight,Varname,VarValue)
+			Else
+				strSyntaxLeft=strSyntaxLeft & strSPSSSubcommand
+			End If	
+		End If						
+	Wend
+End Sub
+
+Sub ParseSelect (strSelect As String ,strSelVar As String, StrSelValue As String)	
+'Purpose: Parse the SELECT subcommand and return the variable and value in SELect subcommand 
+'Effects: None
+'Inputs: strSelect a string consisting of SELECT subcommand'Return Values: None
+'Subroutines Called: ParseSelect, BuildCommands
+'Return Values: strSelVar the variable which is being selected on, 
+				'strSelValue the value which Is being selected On
+	
+	strSelVar   = ""
+	strSelValue = ""
+	
+	' Find first occurance of a space or = sign SEL var(value) or SEL=var(value)	
+	If InStr(strSelect,"=") > 0 Then
+		strSelect = Trim(Right(strSelect,Len(StrSelect)-InStr(strSelect,"=")))
+	Else 
+		strSelect = Trim(Right(strSelect,Len(StrSelect)-InStr(strSelect," ")))
+	End If
+	' Extract the selection variable name
+	StrSelVar =Left(strSelect,InStr(StrSelect,"(")-1)
+	StrSelect = Right(StrSelect,Len(StrSelect)-InStr(StrSelect,"("))
+	' Extract the selection variable value
+	StrSelValue = Left(strSelect,InStr(StrSelect,")")-1)
+	
+End Sub
+		
+	
+Sub BuildCommands ( StrSyntaxLeft As String, StrSyntaxRight As String, StrSelVar As String , StrSelVal As String)		
+'Purpose: Builds SPSS command strings as an array and submits them to the system 
+'Effects: Executes the Syntax for running the analysis on the held out cases after building the Syntax commands
+'Inputs: strSyntaxLeft  a string consisting of all subcommands to the  left of SELECT subcommand
+		'strSyntaxRight a string consisting of all subcommands to the right of SELECT subcommand
+		'strSelVar the variable which is being selected on
+		'strSelVal the value which is being selected on
+'Return Values: None
+	
+	Dim strCOMMANDS(4) As String
+	Dim strSngQuote As String
+	Dim strDblQuote As String
+	Dim IntCommandNum As Integer
+	Dim bolCommandMode As Boolean
+	strDblQuote="""
+	strSngQuote="'"
+	bolCommandMode=True
+	' Create syntax strings for submission later 
+	strCOMMANDS(0)="TEMPORARY."
+	strCOMMANDS(1)="Variable Labels " & StrSelVar & " 'Selection variable'."
+	If InStr(StrSelVal,strDblQuote) > 0 Or InStr(StrSelVal,strSngQuote) > 0 Then
+		strCOMMANDS(2)="RECODE " & StrSelVar & "(" & StrSelVal & "=" & strDblQuote 
+		strCOMMANDS(2)=strCOMMANDS(2) & 0 & strDblQuote & ") (Else=" & strDblQuote & 1 & strDblQuote & " )."
+		strCOMMANDS(3)="Value Labels " & StrSelVar & " " & strDblQuote & 0 & strDblQuote & " 'Estimation ' " 
+		strCOMMANDS(3)=strCOMMANDS(3) & strDblQuote & 1 & strDblQuote & " 'Calibration'."
+    	strCOMMANDS(4)=StrSyntaxLeft & " SELECT=" & StrSelVar 
+    	strCOMMANDS(4)=strCOMMANDS(4) & "(" & strDblQuote & 1 & strDblQuote & ")/" & StrSyntaxRight
+    Else
+    	strCOMMANDS(2)="RECODE " & StrSelVar & "(" & StrSelVal & "=0) (ELSE=1)."
+		strCOMMANDS(3)="Value Labels " & StrSelVar & " 0 'Estimation' 1 'Calibration'."
+    	strCOMMANDS(4)=StrSyntaxLeft & " SELECT=" & StrSelVar & "(1)/" & StrSyntaxRight
+ 	End If
+  
+	' Re-Run the commands synchronously
+	For IntCommandNum=0 To 4
+		objSpssApp.ExecuteCommands(strCOMMANDS(IntCommandNum), bolCommandMode)
+	Next IntCommandNum
+
+End Sub

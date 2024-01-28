@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<PMML 
+	 version="4.0"
+	 xmlns="http://www.dmg.org/PMML-4_0"
+	 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	 xsi:schemaLocation="http://www.dmg.org/PMML-4_0 pmml-4-0.xsd">
+	<Header 
+		 copyright="Copyright (c) 1989, 2010 SPSS Inc., an IBM Company.">
+		<Application  name="IBM SPSS Statistics 19.0"  version="19.0" />
+	</Header>
+	<DataDictionary 
+		 numberOfFields="8">
+		<DataField 
+			 name="Response_recoded1"
+			 displayName="Response recoded (1=Yes, 0=No)"
+			 optype="categorical"
+			 dataType="double">
+			<Extension  extender="spss.com"  name="format"  value="5" />
+			<Extension  extender="spss.com"  name="width"  value="8" />
+			<Extension  extender="spss.com"  name="decimals"  value="2" />
+			<Value  value="0"  displayValue="No"  property="valid" />
+			<Value  value="1"  displayValue="Yes"  property="valid" />
+		</DataField>
+		<DataField 
+			 name="Income"
+			 displayName="Income category (thousands) "
+			 optype="categorical"
+			 dataType="double">
+			<Extension  extender="spss.com"  name="format"  value="5" />
+			<Extension  extender="spss.com"  name="width"  value="8" />
+			<Extension  extender="spss.com"  name="decimals"  value="0" />
+			<Value  value="1"  displayValue="&lt;25"  property="valid" />
+			<Value  value="2"  displayValue="25-49"  property="valid" />
+			<Value  value="3"  displayValue="50-74"  property="valid" />
+			<Value  value="4"  displayValue="75+"  property="valid" />
+		</DataField>
+		<DataField 
+			 name="Education"
+			 optype="categorical"
+			 dataType="double">
+			<Extension  extender="spss.com"  name="format"  value="5" />
+			<Extension  extender="spss.com"  name="width"  value="8" />
+			<Extension  extender="spss.com"  name="decimals"  value="0" />
+			<Value  value="1"  displayValue="Some high school or less"  property="valid" />
+			<Value  value="2"  displayValue="High school"  property="valid" />
+			<Value  value="3"  displayValue="Some college"  property="valid" />
+			<Value  value="4"  displayValue="College"  property="valid" />
+			<Value  value="5"  displayValue="Post-graduate"  property="valid" />
+		</DataField>
+		<DataField 
+			 name="Gender"
+			 optype="categorical"
+			 dataType="double">
+			<Extension  extender="spss.com"  name="format"  value="5" />
+			<Extension  extender="spss.com"  name="width"  value="8" />
+			<Extension  extender="spss.com"  name="decimals"  value="0" />
+			<Value  value="0"  displayValue="Male"  property="valid" />
+			<Value  value="1"  displayValue="Female"  property="valid" />
+		</DataField>
+		<DataField 
+			 name="Married"
+			 optype="categorical"
+			 dataType="double">
+			<Extension  extender="spss.com"  name="format"  value="5" />
+			<Extension  extender="spss.com"  name="width"  value="8" />
+			<Extension  extender="spss.com"  name="decimals"  value="0" />
+			<Value  value="0"  displayValue="No"  property="valid" />
+			<Value  value="1"  displayValue="Yes"  property="valid" />
+		</DataField>
+		<DataField 
+			 name="Region"
+			 optype="categorical"
+			 dataType="double">
+			<Extension  extender="spss.com"  name="format"  value="5" />
+			<Extension  extender="spss.com"  name="width"  value="8" />
+			<Extension  extender="spss.com"  name="decimals"  value="0" />
+			<Value  value="1"  displayValue="North"  property="valid" />
+			<Value  value="2"  displayValue="South"  property="valid" />
+			<Value  value="3"  displayValue="East"  property="valid" />
+			<Value  value="4"  displayValue="West"  property="valid" />
+		</DataField>
+		<DataField 
+			 name="Age"
+			 optype="continuous"
+			 dataType="double">
+			<Extension  extender="spss.com"  name="format"  value="5" />
+			<Extension  extender="spss.com"  name="width"  value="8" />
+			<Extension  extender="spss.com"  name="decimals"  value="0" />
+		</DataField>
+		<DataField 
+			 name="Reside"
+			 displayName="Years at current residence"
+			 optype="continuous"
+			 dataType="double">
+			<Extension  extender="spss.com"  name="format"  value="5" />
+			<Extension  extender="spss.com"  name="width"  value="8" />
+			<Extension  extender="spss.com"  name="decimals"  value="0" />
+		</DataField>
+	</DataDictionary>
+	<GeneralRegressionModel 
+		 targetVariableName="Response_recoded1"
+		 modelType="multinomialLogistic"
+		 modelName="x-contrastLogistic"
+		 functionName="classification">
+		<Extension  extender="spss.com"  name="numberParameters"  value="15" />
+		<MiningSchema >
+			<MiningField  name="Response_recoded1"  usageType="predicted"  missingValueTreatment="asIs" />
+			<MiningField  name="Age"  usageType="active"  missingValueTreatment="asIs" />
+			<MiningField  name="Income"  usageType="active"  missingValueTreatment="asIs" />
+			<MiningField  name="Education"  usageType="active"  missingValueTreatment="asIs" />
+			<MiningField  name="Reside"  usageType="active"  missingValueTreatment="asIs" />
+			<MiningField  name="Gender"  usageType="active"  missingValueTreatment="asIs" />
+			<MiningField  name="Married"  usageType="active"  missingValueTreatment="asIs" />
+			<MiningField  name="Region"  usageType="active"  missingValueTreatment="asIs" />
+		</MiningSchema>
+		<ParameterList >
+			<Parameter  name="P0000001"  label="Constant" />
+			<Parameter  name="P0000002"  label="Age" />
+			<Parameter  name="P0000003"  label="Income(1)" />
+			<Parameter  name="P0000004"  label="Income(2)" />
+			<Parameter  name="P0000005"  label="Income(3)" />
+			<Parameter  name="P0000006"  label="Education(1)" />
+			<Parameter  name="P0000007"  label="Education(2)" />
+			<Parameter  name="P0000008"  label="Education(3)" />
+			<Parameter  name="P0000009"  label="Education(4)" />
+			<Parameter  name="P0000010"  label="Reside" />
+			<Parameter  name="P0000011"  label="Gender(1)" />
+			<Parameter  name="P0000012"  label="Married(1)" />
+			<Parameter  name="P0000013"  label="Region(1)" />
+			<Parameter  name="P0000014"  label="Region(2)" />
+			<Parameter  name="P0000015"  label="Region(3)" />
+		</ParameterList>
+		<FactorList >
+			<Predictor 
+				 name="Income">
+				<Extension 
+					 extender="spss.com"
+					 name="contrastMatrix"
+					 value="Indicator">
+					<X-Basis 
+						 nRow="4"
+						 nCol="3">
+						<X-BasisRow 
+							 value="1"> 1 0 0</X-BasisRow>
+						<X-BasisRow 
+							 value="2"> 0 1 0</X-BasisRow>
+						<X-BasisRow 
+							 value="3"> 0 0 1</X-BasisRow>
+						<X-BasisRow 
+							 value="4"> 0 0 0</X-BasisRow>
+					</X-Basis>
+				</Extension>
+			</Predictor>
+			<Predictor 
+				 name="Education">
+				<Extension 
+					 extender="spss.com"
+					 name="contrastMatrix"
+					 value="Indicator">
+					<X-Basis 
+						 nRow="5"
+						 nCol="4">
+						<X-BasisRow 
+							 value="1"> 1 0 0 0</X-BasisRow>
+						<X-BasisRow 
+							 value="2"> 0 1 0 0</X-BasisRow>
+						<X-BasisRow 
+							 value="3"> 0 0 1 0</X-BasisRow>
+						<X-BasisRow 
+							 value="4"> 0 0 0 1</X-BasisRow>
+						<X-BasisRow 
+							 value="5"> 0 0 0 0</X-BasisRow>
+					</X-Basis>
+				</Extension>
+			</Predictor>
+			<Predictor 
+				 name="Gender">
+				<Extension 
+					 extender="spss.com"
+					 name="contrastMatrix"
+					 value="Indicator">
+					<X-Basis 
+						 nRow="2"
+						 nCol="1">
+						<X-BasisRow 
+							 value="0"> 1</X-BasisRow>
+						<X-BasisRow 
+							 value="1"> 0</X-BasisRow>
+					</X-Basis>
+				</Extension>
+			</Predictor>
+			<Predictor 
+				 name="Married">
+				<Extension 
+					 extender="spss.com"
+					 name="contrastMatrix"
+					 value="Indicator">
+					<X-Basis 
+						 nRow="2"
+						 nCol="1">
+						<X-BasisRow 
+							 value="0"> 1</X-BasisRow>
+						<X-BasisRow 
+							 value="1"> 0</X-BasisRow>
+					</X-Basis>
+				</Extension>
+			</Predictor>
+			<Predictor 
+				 name="Region">
+				<Extension 
+					 extender="spss.com"
+					 name="contrastMatrix"
+					 value="Indicator">
+					<X-Basis 
+						 nRow="4"
+						 nCol="3">
+						<X-BasisRow 
+							 value="1"> 1 0 0</X-BasisRow>
+						<X-BasisRow 
+							 value="2"> 0 1 0</X-BasisRow>
+						<X-BasisRow 
+							 value="3"> 0 0 1</X-BasisRow>
+						<X-BasisRow 
+							 value="4"> 0 0 0</X-BasisRow>
+					</X-Basis>
+				</Extension>
+			</Predictor>
+		</FactorList>
+		<CovariateList >
+			<Predictor  name="Age" />
+			<Predictor  name="Reside" />
+		</CovariateList>
+		<PPMatrix >
+			<PPCell  value="1"  predictorName="Age"  parameterName="P0000002" />
+			<PPCell  value="1"  predictorName="Income"  parameterName="P0000003" />
+			<PPCell  value="2"  predictorName="Income"  parameterName="P0000004" />
+			<PPCell  value="3"  predictorName="Income"  parameterName="P0000005" />
+			<PPCell  value="1"  predictorName="Education"  parameterName="P0000006" />
+			<PPCell  value="2"  predictorName="Education"  parameterName="P0000007" />
+			<PPCell  value="3"  predictorName="Education"  parameterName="P0000008" />
+			<PPCell  value="4"  predictorName="Education"  parameterName="P0000009" />
+			<PPCell  value="1"  predictorName="Reside"  parameterName="P0000010" />
+			<PPCell  value="0"  predictorName="Gender"  parameterName="P0000011" />
+			<PPCell  value="0"  predictorName="Married"  parameterName="P0000012" />
+			<PPCell  value="1"  predictorName="Region"  parameterName="P0000013" />
+			<PPCell  value="2"  predictorName="Region"  parameterName="P0000014" />
+			<PPCell  value="3"  predictorName="Region"  parameterName="P0000015" />
+		</PPMatrix>
+		<ParamMatrix >
+			<PCell  targetCategory="1"  parameterName="P0000001"  beta="-3.90740158909955"  df="1" />
+			<PCell  targetCategory="1"  parameterName="P0000002"  beta="0.0225568414189427"  df="1" />
+			<PCell  targetCategory="1"  parameterName="P0000003"  beta="0.117449624688082"  df="1" />
+			<PCell  targetCategory="1"  parameterName="P0000004"  beta="0.593812564699117"  df="1" />
+			<PCell  targetCategory="1"  parameterName="P0000005"  beta="1.01196934593496"  df="1" />
+			<PCell  targetCategory="1"  parameterName="P0000006"  beta="-0.630198909459629"  df="1" />
+			<PCell  targetCategory="1"  parameterName="P0000007"  beta="-0.447277436631556"  df="1" />
+			<PCell  targetCategory="1"  parameterName="P0000008"  beta="-0.288616610713189"  df="1" />
+			<PCell  targetCategory="1"  parameterName="P0000009"  beta="-0.13979755417527"  df="1" />
+			<PCell  targetCategory="1"  parameterName="P0000010"  beta="-0.0267820159322582"  df="1" />
+			<PCell  targetCategory="1"  parameterName="P0000011"  beta="-0.239081373678594"  df="1" />
+			<PCell  targetCategory="1"  parameterName="P0000012"  beta="-0.0600432275830574"  df="1" />
+			<PCell  targetCategory="1"  parameterName="P0000013"  beta="-0.869033711404877"  df="1" />
+			<PCell  targetCategory="1"  parameterName="P0000014"  beta="-0.179178108841993"  df="1" />
+			<PCell  targetCategory="1"  parameterName="P0000015"  beta="-0.107656220527921"  df="1" />
+		</ParamMatrix>
+	</GeneralRegressionModel>
+</PMML>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE SPSSComplexSamples SYSTEM "http://xml.spss.com/spss/complex-samples/spss-complex-samples-1.0.dtd">
+<SPSSComplexSamples version="1.0">
+	<Header copyright="Copyright (c) SPSS Inc., 2003. All Rights Reserved."/>
+	<AnalysisDesign numberOfStages="2">
+		<AnalysisStage estimationMethod="equal_wor" stageNumber="1">
+			<ClusterVarList numberOfVariables="1">
+				<Variable name="branch"/>
+			</ClusterVarList>
+			<IncProb>
+				<Variable name="inclprob_s1"/>
+			</IncProb>
+		</AnalysisStage>
+		<AnalysisStage estimationMethod="equal_wor" stageNumber="2">
+			<IncProb>
+				<Variable name="inclprob_s2"/>
+			</IncProb>
+		</AnalysisStage>
+		<Weight>
+			<Variable name="finalweight"/>
+		</Weight>
+	</AnalysisDesign>
+</SPSSComplexSamples>

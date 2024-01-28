@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- IBM Confidential                                                  -->
+<!--                                                                   -->
+<!-- OCO Source Materials                                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Analytic Components                            -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 2007, 2012                                -->
+<!--                                                                   -->
+<!-- The source code for this program is not published or otherwise    -->
+<!-- divested of its trade secrets, irrespective of what has been      -->
+<!-- deposited with the U.S. Copyright Office.                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<template SPSS-Version="2.4" date="2007-09-10" description="" selectPath="12 " xmlns="http://www.ibm.com/software/analytics/spss/xml/visualization" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.ibm.com/software/analytics/spss/xml/visualization http://www.ibm.com/software/analytics/spss/xml/visualization/vizml-template-3.5.xsd">
+	<addFrame count="1" styleOnly="true" type="visualization">
+		<style color="#ffffff" color2="transparent" number="0"/>
+	</addFrame>
+	<addFrame count="1" styleOnly="true" type="graph">
+		<style color="transparent" color2="transparent"/>
+		<style number="1" gradient-color="#32cbfe" color="#3265cb" color2="black" gradient-angle="90" gradient-focus="0.1" gradient-method="linear"/>
+	</addFrame>
+	<addFrame count="1" styleOnly="true" type="legend">
+		<style color="#ffffff" color2="00007f" number="0"/>
+		<style color="#00007f" color2="transparent" number="1"/>
+		<label><style color="#00007f" color2="transparent" number="0"/></label>
+	</addFrame>
+	<addFrame count="2" styleOnly="true" type="legend">
+		<style color="#ffffff" color2="transparent" number="0"/>
+		<style color="#00007f" color2="transparent" number="1"/>
+		<label><style color="#00007f" color2="transparent" number="0"/></label>
+	</addFrame>
+	<addFrame count="3" styleOnly="true" type="legend">
+		<style color="#ffffff" color2="transparent" number="0"/>
+		<style color="#00007f" color2="transparent" number="1"/>
+		<label><style color="#00007f" color2="transparent" number="0"/></label>
+	</addFrame>
+	<addFrame count="1" styleOnly="true" type="title">
+		<label><style color="#00007f" color2="transparent" number="0"/></label>
+	</addFrame>
+	<addFrame count="2" styleOnly="true" type="title">
+		<label><style color="#00007f" color2="transparent" number="0"/></label>
+	</addFrame>
+	<addFrame count="1" styleOnly="true" type="footnote">
+		<label><style color="#00007f" color2="transparent" number="0"/></label>
+	</addFrame>
+	<addFrame count="2" styleOnly="true" type="footnote">
+		<label><style color="#00007f" color2="transparent" number="0"/></label>
+	</addFrame>
+	<addFrame count="0" styleOnly="true" type="labelFrame">
+		<label><style color="#00007f" color2="transparent" number="0"/></label>
+	</addFrame>
+	<addFrame count="1" styleOnly="true" type="labelFrame">
+		<label><style color="#00007f" color2="transparent" number="0"/></label>
+	</addFrame>
+	<addFrame count="2" styleOnly="true" type="labelFrame">
+		<label><style color="#00007f" color2="transparent" number="0"/></label>
+	</addFrame>
+	<setAxisStyle role="x">
+		<axisLabelStyle>
+			<style color="#00007f" color2="transparent"/>
+		</axisLabelStyle>
+	</setAxisStyle>
+	<setAxisStyle role="y">
+		<axisLabelStyle>
+			<style color="#00007f" color2="transparent"/>
+		</axisLabelStyle>
+	</setAxisStyle>
+	<setAxisStyle role="z">
+		<axisLabelStyle>
+			<style color="#00007f" color2="transparent"/>
+		</axisLabelStyle>
+	</setAxisStyle>
+	<setAxisMajorTicks>
+		<majorTicks categorical="true" role="x">
+			<tickLabelStyle>
+				<style color="#00007f"/>
+			</tickLabelStyle>
+		</majorTicks>
+	</setAxisMajorTicks>
+	<setAxisMajorTicks>
+		<majorTicks categorical="false" role="y">
+			<tickLabelStyle>
+				<style color="#00007f"/>
+			</tickLabelStyle>
+		</majorTicks>
+	</setAxisMajorTicks>
+	<setAxisMajorTicks>
+		<majorTicks categorical="false" role="z">
+			<tickLabelStyle>
+				<style color="#00007f"/>
+			</tickLabelStyle>
+		</majorTicks>
+	</setAxisMajorTicks>
+	<addDataLabels styleOnly="true">
+		<style color="#000000" color2="#000000" number="0"/>
+		<style color="transparent" color2="transparent" number="1"/>
+	</addDataLabels>
+	<setStyle subtype="simple" type="bar">
+		<style color="#65cb65" color2="#000000" gradient-color=""/>
+	</setStyle>
+	<setStyle subtype="simple" type="area">
+		<style color="#65cb65" color2="#000000" gradient-color=""/>
+	</setStyle>
+	<setStyle subtype="simple" type="errorbar">
+		<style color="#65cb65" color2="#000000" gradient-color=""/>
+	</setStyle>
+	<setStyle subtype="simple" type="histogram">
+		<style color="#65cb65" color2="#000000" gradient-color=""/>
+	</setStyle>
+	<setStyle subtype="simple" type="line">
+		<style color="#65cb65" color2="#000000" gradient-color=""/>
+	</setStyle>
+	<setStyle subtype="simple" type="dropline">
+		<style color="#65cb65" color2="#000000" gradient-color=""/>
+	</setStyle>
+	<setStyle subtype="simple" type="scatter">
+		<style color2="transparent" color="#65cb65" gradient-color="" symbol="circle"/>
+	</setStyle>
+	<setStyle subtype="simple" type="range">
+		<style color="#65cb65" color2="#000000" gradient-color=""/>
+	</setStyle>
+	<setStyle subtype="simple" type="schema">
+		<style color="#65cb65" color2="#000000" gradient-color=""/>
+	</setStyle>
+	<setStyle type="line" subtype="3D">
+		<style color="#65cb65" color2="black" opacity="1" gradient-color=""/>
+	</setStyle>
+	<setColor affect="both">
+		<cycle>
+			<style color="#65cb65" gradient-color=""/>
+			<style color="#980098" gradient-color=""/>
+			<style color="#6532fe" gradient-color=""/>
+			<style color="#98cbcb" gradient-color=""/>
+			<style color="#650098" gradient-color=""/>
+			<style color="#00cb98" gradient-color=""/>
+			<style color="#cb65fe" gradient-color=""/>
+			<style color="#0098cb" gradient-color=""/>
+			<style color="#007f00" gradient-color=""/>
+			<style color="#6500cb" gradient-color=""/>
+			<style color="#0000fe" gradient-color=""/>
+			<style color="#003200" gradient-color=""/>
+			<style color="#650065" gradient-color=""/>
+			<style color="#007f7f" gradient-color=""/>
+			<style color="#986598" gradient-color=""/>
+			<style color="#986565" gradient-color=""/>
+		</cycle>
+	</setColor>
+</template>

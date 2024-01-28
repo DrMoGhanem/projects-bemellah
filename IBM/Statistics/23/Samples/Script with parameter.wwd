@@ -1,0 +1,24 @@
+'PURPOSE
+	'Provides an example of a script that uses a parameter passed from command syntax.
+    'This script must be run by calling it from the SCRIPT command within command syntax. For instance:
+    '   SCRIPT "C:\Program Files\SPSSInc\SPSS16\Samples\Script with parameter.wwd" ("myfile.spv").
+
+'ASSUMPTIONS
+    'The parameter passed to the script must be the path to a Viewer (.spv) file.
+
+Option Explicit		'All variables must be declarated before being used
+Sub Main
+
+	'Declare variables.
+	Dim objOutputDoc As ISpssOutputDoc
+	Dim strScriptParam As String
+
+	'Create the parameter that is passed from the SCRIPT syntax.
+	strScriptParam = objSpssApp.ScriptParameter(0)
+
+	'Tell SPSS to do something with the parameter. In this example, we open the
+    'output document whose path was passed in the parameter.
+	Set objOutputDoc = objSpssApp.OpenOutputDoc (strScriptParam)
+	objOutputDoc.Visible = True
+
+End Sub

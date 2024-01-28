@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE SPSSComplexSamples SYSTEM "http://xml.spss.com/spss/complex-samples/spss-complex-samples-1.0.dtd">
+<SPSSComplexSamples version="1.0">
+	<Header copyright="Copyright (c) SPSS Inc., 2003. All Rights Reserved."/>
+	<SampleDesign numberOfStages="2" wrEstimation="no">
+		<SampleStage selectionMethod="pps_wor" stageNumber="1">
+			<StrataVarList numberOfVariables="1">
+				<Variable name="hlthfood"/>
+			</StrataVarList>
+			<ClusterVarList numberOfVariables="1">
+				<Variable name="storeid"/>
+			</ClusterVarList>
+			<InputSampleRate>
+				<Matrix numberOfValues="2">
+					<MatrixVarList numberOfVariables="1">
+						<Variable name="hlthfood"/>
+					</MatrixVarList>
+					<MatrixValue sizeValue="0.050000000000000003">
+						<Category value="0"/>
+					</MatrixValue>
+					<MatrixValue sizeValue="0.20000000000000001">
+						<Category value="1"/>
+					</MatrixValue>
+				</Matrix>
+			</InputSampleRate>
+			<MOS fromData="no">
+				<Variable name="ncust"/>
+			</MOS>
+			<IncProb>
+				<Variable name="InclusionProbability_1_"/>
+			</IncProb>
+			<CumulativeWeight>
+				<Variable name="SampleWeightCumulative_1_"/>
+			</CumulativeWeight>
+		</SampleStage>
+		<SampleStage selectionMethod="simple_wor" stageNumber="2">
+			<InputSampleSize>
+				<SingleValue value="100"/>
+			</InputSampleSize>
+			<IncProb>
+				<Variable name="InclusionProbability_2_"/>
+			</IncProb>
+			<CumulativeWeight>
+				<Variable name="SampleWeightCumulative_2_"/>
+			</CumulativeWeight>
+		</SampleStage>
+		<Weight>
+			<Variable name="SampleWeight_Final_"/>
+		</Weight>
+	</SampleDesign>
+	<AnalysisDesign numberOfStages="2">
+		<AnalysisStage estimationMethod="unequal_wor" stageNumber="1">
+			<StrataVarList numberOfVariables="1">
+				<Variable name="hlthfood"/>
+			</StrataVarList>
+			<ClusterVarList numberOfVariables="1">
+				<Variable name="storeid"/>
+			</ClusterVarList>
+		</AnalysisStage>
+		<AnalysisStage estimationMethod="equal_wor" stageNumber="2">
+			<IncProb>
+				<Variable name="InclusionProbability_2_"/>
+			</IncProb>
+		</AnalysisStage>
+		<Weight>
+			<Variable name="SampleWeight_Final_"/>
+		</Weight>
+	</AnalysisDesign>
+</SPSSComplexSamples>

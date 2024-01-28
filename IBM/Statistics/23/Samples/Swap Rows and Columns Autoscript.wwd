@@ -1,0 +1,62 @@
+
+'Purpose: Swaps the rows and columns of a pivot table.
+'This script runs as an autoscript or a regular script.
+
+'To run as an autoscript, select a pivot table in the Output Viewer
+'and use Associate Autoscript.
+
+'To run as a regular script, select a pivot table in the Output Viewer and
+'run the script.
+
+'#Language "WWB-COM"
+'#Uses "Global.wwd"
+
+Option Explicit
+
+
+Sub Main
+
+
+	Dim objItem As ISpssItem
+	Dim objPivotTable As PivotTable
+
+	Dim bolFoundOutputDoc As Boolean
+	Dim bolPivotSelected As Boolean
+
+
+'If not run as autoscript
+
+	If scriptContext Is Nothing Then
+
+       'Get the selected pivot table
+    	Call GetFirstSelectedPivot(objPivotTable, objItem, bolFoundOutputDoc, bolPivotSelected)
+
+        If (bolFoundOutputDoc = False) Or (bolPivotSelected = False) Then
+ 		'either there wasn't an output doc or a pivot table wasn't selected
+    		Exit Sub
+   	    End If
+
+    Else
+
+'if run as autoscript
+
+    	Set objItem = scriptContext.GetOutputItem()
+	Set objPivotTable = objItem.ActivateTable
+
+    End If
+
+
+   Call PivotIt (objPivotTable)
+   objItem.Deactivate
+
+
+End Sub
+
+
+Sub PivotIt (objPivotTable As PivotTable)
+
+   Dim objPivotManager As ISpssPivotMgr
+   Set objPivotManager=objPivotTable.PivotManager
+   objPivotManager.TransposeRowsWithColumns
+
+End Sub

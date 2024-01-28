@@ -1,0 +1,672 @@
+
+'This script allows a user to open sets of related files at once.
+'For example, if you are working on a special project in which you were using a specific data file, a 
+'couple of output documents, and a syntax file, you could associate these file names with a workbook 
+'called 'Special Project'.  From then on, you can ask SPSS to open your 'Special Project' workbook and all
+' associated files will be opened.
+
+
+'*************************************************************
+'                 SPSS WORKBOOK MANAGER
+'*************************************************************
+'PURPOSE:
+'		This script allows a user to open sets of related
+'		files at once.
+'		For example, if you are working on a special project
+'		in which you were using a specific data file, a 
+'		couple of output documents, and a syntax file, you 
+'		could associate these file names with a workbook
+'		called 'Special Project'.  From then on, you can ask
+'		SPSS to open your 'Special Project' workbook and all
+'		associated files will be opened.
+'INPUTS
+'		This script does not require any initial inputs, nor
+'		does it require a data file to be currently open. 
+'		Once you define one or more workbooks, they will be
+'		available to you from one SPSS session to the next.
+'		Because the workbooks are stored in the Windows
+'		Registry, they will only be available on the machine
+'		from which they were produced.
+'NOTE
+'		If you open a workbook that contains an SPSS data file,
+'		SPSS will open that file without asking you to save
+'		any changes made to the currently open SPSS data file.
+'**************************************************************
+
+Option Explicit 
+
+'Script level constant declarations
+Const cDATA As String = "SAV"
+Const cOUTPUT As String = "SPV"
+Const cSYNTAX As String = "SPS"
+Const cSCRIPT As String = "SBS"
+Const cNOTFOUNDMSG1 As String = "Unable to find '"
+Const cNOTFOUNDMSG2 As String = "'."
+Const cNOTFOUNDTITLE As String = "File Not Found"
+Const cERREXCEPTION As String = "Exception 80004005"
+Const cAPPKEY As String = "SPSS_WKBK"
+Const cGENERALKEY As String = "GENERAL"
+Const cFILEKEY As String = "FILES\FILE_"
+Const cFILES As String = "FILES"
+Const cFILEVAL As String = "FILE"
+Const cBOOKVAL As String = "BOOK"
+
+'The following variables are created during application run
+Public intNumBooks As Integer 		'The number of Workbooks defined
+Public strBookList() As String 		'Array to hold Workbook names: One dimension
+Public strCurrentBook(2) As String 	'The currently selected book: Two dimensions 1 = Book Name;2 = Index
+Public strCurrentFiles() As String 	'Array to hold current file list
+'The following variable are read from the Registry
+Public intNumFiles As Integer 		'The number of files defined
+Public strWkBkList() As String 		'Array to hold file and book names: Two dimensions
+                            		'strWkBkList(n,m) where n=Filename and m=Workbook name
+                            		
+Public objDataDoc As ISpssDataDoc
+Public objSyntaxDoc As ISpssSyntaxDoc
+Public objOutputDoc As ISpssOutputDoc
+
+
+'Main subroutine
+Sub Main
+
+  	ReadReg
+  	BuildDialogs  
+  	
+End Sub
+	
+Sub OpenBook (strBookName As String)
+'Purpose: Opens a selected book
+'Assumptions: None
+'Effects: Takes selected Workbook in dialog and opens all files associated with that workbook
+'Inputs: Name of workbook(strBookName)
+'Return Values: None
+
+	Dim intFileNum As Integer
+	
+    For intFileNum = 0 To intNumFiles - 1
+	    If strWkBkList(intFileNum,2) = strBookName Then Call OpenFile(strWkBkList(intFileNum,1))
+  	Next intFileNum
+  	
+End Sub
+
+Sub OpenFile (strFilename As String)
+'Purpose: Opens individual file from a workbook
+'Assumptions: OpenBook passes the name of the file to open
+'Effects: Opens the SPSS file from a workbook
+'Inputs: Path and name of file to open(strFileName)
+'Return Values: None
+	Err.Clear
+  	On Error GoTo ErrHandler
+
+  	If FileExist(strFileName) = True Then	'Check to make sure that file exists
+  	
+    	'If file does exist, check to see what type of file it is and then
+    	'assign to appropriate document.
+    	If UCase(Right(strFileName,3)) = cDATA Then
+      		Set objDataDoc = objSpssApp.OpenDataDoc(strFileName)
+      		objDataDoc.Visible = True
+      		objDataDoc.WindowState = SpssNormal
+    	ElseIf UCase(Right(strFileName,3)) = cOUTPUT Then
+    		Set objOutputDoc = objSpssApp.OpenOutputDoc(strFileName)
+    		objOutputDoc.Designated = True
+	  		objOutputDoc.Visible = True
+      		objOutputDoc.WindowState = SpssNormal
+    	ElseIf UCase(Right(strFileName,3)) = cSYNTAX Then
+      		Set objSyntaxDoc = objSpssApp.OpenSyntaxDoc(strFileName)
+      		objSyntaxDoc.Designated = True
+      		objSyntaxDoc.Visible = True
+      		objSyntaxDoc.WindowState = SpssNormal
+    	ElseIf UCase(Right(strFileName,3)) = cSCRIPT Then
+      		objSpssApp.OpenDocument(strFileName, True)
+    	End If
+  	Else
+    	MsgBox cNOTFOUNDMSG1 &  strFileName & cNOTFOUNDMSG2, cNOTFOUNDTITLE
+  	End If
+	Exit Sub
+	
+ErrHandler:		'Error Handler
+	If Err.Description = cERREXCEPTION Then Resume Next
+ 	Exit Sub
+ 	
+End Sub
+
+'This function insures that the specified file actually exists
+Function FileExist(strFileName As String) As Boolean
+'Purpose: Checks to see if a file exists
+'Assumptions: Path and name of file is passed to function
+'Effects: None
+'Inputs: Path and name of file to open(strFileName)
+'Return Values: TRUE if file exists, FALSE if file doesn't exist at this path
+
+	Dim intRet As Integer
+	
+	On Error GoTo ErrHandler
+	
+	intRet = GetAttr(strFileName)
+	'If get to this line then file exists, 
+	'If don't get to this line then an error occurred so go to ErrHandler
+	FileExist = True
+	Exit Function
+
+ErrHandler:		'Error Handler -- go here if can't find file
+ 	FileExist = False
+ 	Exit Function
+ 	
+End Function
+
+
+Sub ReadReg
+'Purpose: This routine reads information about the different projects saved in the Windows registry
+'Assumptions: None
+'Effects: Reads in any stored workbooks from the registry
+'Inputs: None
+'Return Values: None
+
+	Dim intFileIndex As Integer
+	Dim intCounter As Integer
+	
+	'Gets the total number files defined.
+	intNumFiles = Val(GetSetting(cAPPKEY,cGENERALKEY,"intNumFiles","0"))
+ 	
+ 	'Fills the strWkBkList() array with the file specifications
+ 	If intNumFiles > 0 Then
+   		ReDim strWkBkList(intNumFiles,2)
+   		For intFileIndex = 0 To intNumFiles - 1
+    		strWkBkList(intFileIndex, 1) = GetSetting(cAPPKEY,cFILEKEY & intFileIndex,cFILEVAL,"")
+    	    strWkBkList(intFileIndex, 2) = GetSetting(cAPPKEY,cFILEKEY & intFileIndex,cBOOKVAL,"")
+	   	Next
+	End If
+	
+	'Counts the number of unique books and fills the strBookList() array
+	If intNumFiles > 0 Then
+		intCounter = 0
+		ReDim strBookList(intCounter)
+   		strBookList(0) = strWkBkList(0,2)
+   		If intNumFiles > 1 Then
+   			For intFileIndex = 1 To intNumFiles - 1
+     			If strWkBkList(intFileIndex,2) <> strWkBkList(intFileIndex-1,2) Then
+     				intCounter = intCounter + 1
+     				ReDim Preserve strBookList(intCounter)
+				    strBookList(intCounter) = strWkBkList(intFileIndex,2)
+			    End If
+		   	Next intFileIndex
+		End If
+		intNumBooks = intCounter + 1
+	End If
+	
+	'Gets the first Workbook name
+	If intNumFiles > 0 Then 
+		strCurrentBook(1) = strBookList(0)
+		strCurrentBook(2) = "0"
+	Else
+		ReDim strWkBkList(0,2)
+		ReDim strBookList(0)
+		strCurrentBook(1) = " "
+		strCurrentBook(2) = "0"
+	End If
+	Call FILLFILELIST
+	
+End Sub
+
+
+'This routine writes workbook setting into the Windows registration file
+Sub WriteReg
+'Purpose: This routine writes workbook information into the Windows registry
+'Assumptions: None
+'Effects: Writes workbook information to the registry
+'Inputs: None
+'Return Values: None
+'NOTE: Workbook registry information stored in HKEY_CURRENT_USER\Software\VB and VBA Program Settings\SPSS_WKBK
+
+	Dim N, M As Integer
+	Dim intCounter As Integer
+  	Dim strTempList() As String
+  	Dim intFilesInReg As Integer
+	
+	'Delete current workbook information from the registry , if it exists
+	intFilesInReg = Val(GetSetting(cAPPKEY,cGENERALKEY,"intNumFiles","0"))
+	If intFilesInReg > 0 Then
+		DeleteSetting cAPPKEY,cGENERALKEY
+		For N = 0 To intFilesInReg - 1
+			DeleteSetting cAPPKEY, cFILEKEY & CStr(N), cFILEVAL
+			DeleteSetting cAPPKEY, cFILEKEY & CStr(N), cBOOKVAL
+			DeleteSetting cAPPKEY, cFILEKEY & CStr(N)
+		Next N
+		DeleteSetting cAPPKEY, cFILES
+	End If
+	
+	'Save the new settings into the registry
+	SaveSetting cAPPKEY,cGENERALKEY,"intNumFiles",intNumFiles
+  	ReDim strTempList(intNumFiles,2)
+  	strTempList() = strWkBkList()
+  	ReDim strWkBkList(intNumFiles,2)
+  	intCounter = 0
+ 
+  	For N = 0 To intNumBooks - 1
+  		For M =0 To intNumFiles - 1
+  			If strTempList(M,2) = strBookList(N) Then
+				SaveSetting cAPPKEY,cFILEKEY & intCounter ,cFILEVAL, strTempList(M,1)
+    			SaveSetting cAPPKEY,cFILEKEY & intCounter ,cBOOKVAL, strTempList(M,2)
+    			intCounter = intCounter + 1
+    		End If
+    	Next M
+    Next N
+    
+End Sub
+
+'This routine builds the strCurrentFiles() array from the strWkBkList() array
+Sub FillFileList 
+'Purpose: Gets the files for the currently selected workbook. 
+		  'Builds the strCurrentFiles() array from the strWkBkList() array
+'Assumptions: None
+'Effects: None
+'Inputs: None
+'Return Values: None
+
+	Dim intFileIndex As Integer
+	Dim intCounter As Integer
+	
+	'Count the number of files in the currently selected workbook
+	intCounter = 0
+	For intFileIndex = 0 To intNumFiles - 1
+	    If strWkBkList(intFileIndex,2) = strCurrentBook(1) Then intCounter = intCounter + 1
+	Next
+ 	
+ 	ReDim strCurrentFiles(intCounter)
+ 	
+ 	'Fill the strCurrentFiles() array (These appear in Files in Workbook list box)
+	intCounter = 0
+	For intFileIndex = 0 To intNumFiles - 1
+   		If strWkBkList(intFileIndex,2) = strCurrentBook(1) Then 
+    		strCurrentFiles(intCounter) = strWkBkList(intFileIndex,1)
+    		intCounter = intCounter + 1
+   		End If
+ 	Next intFileIndex
+ 	
+ 	'Set the index to the current workbook into the strCurrentBook variable
+ 	For intFileIndex = 0 To intNumBooks - 1
+		If strCurrentBook(1) = strBookList(intFileIndex) Then
+  			strCurrentBook(2) = Str(intFileIndex)
+   			Exit For
+   		End If
+   	Next intFileIndex
+
+End Sub
+
+Sub BuildDialogs
+'Purpose: This Sub used to create and display dialog.
+'Assumptions: None
+'Effects: None
+'Inputs: None
+'Return Values: None
+
+	Begin Dialog UserDialog 740,308,"SPSS Workbook Manager",.DialMonitor
+		GroupBox 20,0,560,294,"",.Field1
+		Text 50,14,290,14,"Available Workbooks:",.label1
+		Text 50,140,400,14,"Files in Workbook:",.label2
+		PushButton 470,28,90,21,"Add",.cmdAddBook
+		PushButton 470,84,90,21,"Remove",.cmdRemoveBook
+		PushButton 470,56,90,21,"Change",.cmdChange
+		PushButton 470,154,90,21,"Add...",.cmdAddFile
+		PushButton 470,182,90,21,"Remove",.cmdRemoveFile
+		PushButton 600,14,130,21,"Open Workbook",.cmdOpen
+		PushButton 600,42,130,21,"Close",.cmdClose
+		PushButton 600,70,130,21,"Cancel",.cmdCancel
+		ListBox 50,154,400,133,strCurrentFiles(),.lstFiles
+		ListBox 50,49,400,84,strBookList(),.lstBooks
+		TextBox 50,28,400,21,.txtBook
+	End Dialog
+	Dim dlg As UserDialog
+    Dialog dlg
+End Sub
+
+
+Function DialMonitor(strDialogItem As String, intAction As Integer, intSuppValue As Integer) As Boolean
+'Purpose: This function monitors the activity in the dialog.
+'Assumptions: None
+'Effects: None
+'Inputs: The name of the control that was received the event(strDialogItem), the action that took place(intAction),
+'		 and a supplemental value(intSuppValue) used for certain events
+'Return Values: TRUE if dialog should be dialog should remain open, FALSE if dialog should be closed.
+
+	Dim intFileIndex As Integer
+	Select Case intAction
+	    Case 1 ' Dialog box initialization
+	        DlgEnable "cmdAddBook", True
+	        If intNumFiles > 0 Then 
+	        	DlgEnable "cmdRemoveBook", True
+	           	DlgEnable "cmdChange",True
+	           	DlgEnable "cmdAddFile", True
+	           	DlgEnable "cmdOpen", True
+			Else
+	           	DlgEnable "cmdRemoveBook", False
+	           	DlgEnable "cmdChange",False
+	           	DlgEnable "cmdAddFile", False
+	           	DlgEnable "cmdOpen", False
+			End If					
+	        DlgEnable "cmdRemoveFile", False
+            DlgEnable "cmdClose", True	        
+	        DlgText "txtBook" , strCurrentBook(1)
+	        DlgValue "lstFiles",-1
+	     Case 2 ' Value changing or button pressed
+	        Select Case strDialogItem	'strDialogItem is the name of the item that received an action
+	        	Case "cmdAddBook"	'AddBook command button clicked
+	        		If chkBookName(DlgText("txtBook")) = 0 And DlgText("txtBook") <> "" Then
+	        	    	AddBook(DlgText("txtBook"))
+	        	    	DlgListBoxArray "lstBooks", strBookList()
+	        	    	DlgListBoxArray "lstFiles", strCurrentFiles()
+	        	    	DlgValue "lstBooks" , intNumBooks - 1
+	        	    	DlgEnable "cmdAddFile",True
+	        	    	DlgEnable "cmdRemoveBook", True
+	        	    	DlgEnable "cmdChange",True
+	        			DlgEnable "cmdOpen", False
+	        	    ElseIf chkBookName(DlgText("txtBook")) = 0 And DlgText("txtBook") <> "" Then
+	        	    	MsgBox "This workbook name already exists.  Please provide a unique workbook name.","Duplicate Name"
+	        	    End If
+	        	    DialMonitor = True
+	        	Case "cmdChange"	'Change command button clicked
+	        		If DlgText("txtBook") <> "" Then
+	        			Call ChangeBook(DlgText("txtBook"))
+	        			DlgValue "lstBooks", strCurrentBook(2)
+	        		Else
+	        			DlgText "txtBook", strCurrentBook(1)
+	        		End If
+	        		DialMonitor = True
+	        	Case "cmdRemoveBook"	'RemoveBook command button clicked
+	        		Dim tempFiles() As String
+	        		tempFiles() = strCurrentFiles()
+	        		If UBound(tempFiles) > 0 Then
+	        			For intFileIndex = 0 To UBound(tempFiles)-1
+	        				Call RemoveFile(TempFiles(intFileIndex))
+	        			Next intFileIndex
+	        		ElseIf UBound(tempFiles) = 0 Then
+						Call RemoveBook(strCurrentBook(1))
+					End If
+	        		DlgValue "lstBooks" , 0
+	        		If intNumBooks = 0 Then 
+	        			DlgEnable "cmdRemoveBook", False
+	        			DlgEnable "cmdAddFile" , False
+	        			DlgEnable "cmdChange" ,False
+	        			DlgEnable "cmdOpen", False
+	        		End If
+					DialMonitor = True
+	        	Case "cmdAddFile"
+	        	    AddFile(GetFilePath( "*.sav;*.spv;*.sps", "sav","","Add File to Workbook"))
+					DlgListBoxArray "lstFiles", strCurrentFiles()
+					DlgEnable "cmdRemoveFile", False
+					DlgEnable "cmdOpen", True
+					DialMonitor = True
+	        	Case "cmdRemoveFile"
+	        	    Call RemoveFile (DlgText("lstfiles"))
+					DlgEnable "cmdRemoveFile", False
+					DlgValue "lstBooks" , strCurrentBook(2)
+					If intNumBooks = 0 Then 
+	        			DlgEnable "cmdRemoveBook", False
+	        			DlgEnable "cmdAddFile" , False
+	        			DlgEnable "cmdChange" ,False
+	        			DlgEnable "cmdOpen", False
+					End If
+					DialMonitor = True
+			    Case "lstBooks"
+			        strCurrentBook(1) = DlgText("lstBooks")
+   	        	    DlgText "txtBook" , strCurrentBook(1)
+					Call FillFileList
+	        	    DlgListBoxArray "lstFiles", strCurrentFiles()
+	        	    If UBound(strCurrentFiles) = 0 Then
+   	        			DlgEnable "cmdOpen", False
+					Else
+	        			DlgEnable "cmdOpen", True
+					End If
+					DialMonitor = True
+				Case "lstFiles"
+				    If UBound(strCurrentFiles) > 0  Then 
+				      DlgEnable "cmdRemoveFile", True
+                    Else
+                      DlgEnable "cmdRemoveFile", False
+ 					End If
+				    DialMonitor = True
+	        	Case "cmdOpen"
+	        		Call OpenBook(strCurrentBook(1))
+	        		Call WriteReg
+	        	    DialMonitor = False
+	        	Case "cmdClose"
+	        		Call WriteReg
+	 				DialMonitor = False
+				Case "cmdCancel"
+ 					DialMonitor = False
+	 		   End Select
+     	End Select
+     	
+End Function
+
+
+Sub RemoveFile (strSelectedFile As String)
+'Purpose: This routine removes the selected file from the strWkBkList() array
+'Assumptions: None
+'Effects: None
+'Inputs: The name of the file to remove from the workbook(strSelectedFile)
+'Return Values: None
+
+	Dim N As Integer
+	Dim intCounter As Integer
+	Dim i As Integer
+	
+	For N = 0 To intNumFiles - 1
+		If (strWkBkList(N,1) = strSelectedFile And strWkBkList(N,2) = strCurrentBook(1) ) Or strWkBkList(N,1) = ""  Then
+			For i = N To intNumFiles - 1
+				strWkBkList(i,1) = strWkBkList(i+1,1)
+				strWkBkList(i,2) = strWkBkList(i+1,2)
+			Next i
+			strWkBkList(UBound(strWkBkList,1),1) = ""
+			strWkBkList(UBound(strWkBkList,1),2) = ""
+		End If	
+	Next N
+	
+	intNumFiles = intNumFiles - 1
+	'If we removed last file from a workbook we must now delete the workbook.
+	If UBound(strCurrentFiles) <= 1 Then
+  	   	intNumBooks = intNumBooks - 1
+    	If intNumBooks > 0 Then
+      		ReDim strBookList(intNumBooks - 1)
+      		strBookList(0) = strWkBkList(0,2)
+      		intCounter = 0
+      		For N = 1 To intNumFiles - 1
+        		If strWkBkList(N,2) <> strWkBkList(N-1,2) Then
+          			intCounter = intCounter + 1
+          			strBookList(intCounter) = strWkBkList(N,2)
+        		End If
+      		Next     
+      		strCurrentBook(1) = strBookList(0)
+    	ElseIf intNumBooks = 0 Then
+    		strBookList(0) = " "
+    		strCurrentBook(1) = " "
+    	End If
+   	End If
+
+	Call FillFileList
+
+	DlgListBoxArray "lstFiles", strCurrentFiles()
+    DlgListBoxArray "lstBooks", strBookList()
+	DlgText "txtBook" , strCurrentBook(1)
+
+End Sub
+
+
+Sub AddFile (strNewFileName As String)
+'Purpose: This routine adds a new file the the current workbook
+'Assumptions: None
+'Effects: None
+'Inputs: The name of the file to add to the workbook(strNewFileName)
+'Return Values: None
+
+	Dim N As Integer
+	Dim strTempList() As String
+	ReDim strTempList(intNumFiles,2) 
+	
+	strTempList() = strWkBkList()
+	intNumFiles = intNumFiles + 1
+	ReDim strWkBkList(intNumFiles,2) 
+		For N = 0 To intNumFiles-1
+			If n < intNumFiles - 1 Then
+				strWkBkList(N,1) = strTempList(N,1)
+				strWkBkList(N,2) = strTempList(N,2)
+			Else
+				strWkBkList(N,1) = strNewFileName
+				strWkBkList(N,2) = strCurrentBook(1)
+			End If
+		Next
+	Call FillFileList
+
+End Sub
+
+
+Sub AddBook(strNewBookName As String)
+'Purpose: This routine add a new workbook to the workbook list
+'Assumptions: None
+'Effects: None
+'Inputs: The name of the workbook to add to the workbook list(strNewBookName)
+'Return Values: None
+
+	intNumBooks = intNumBooks + 1
+
+	If intNumBooks > 0 Then
+		ReDim Preserve strBookList(intNumBooks-1)
+	Else
+		ReDim strBookList(0)
+	End If
+
+	strBookList(intNumBooks - 1) = strNewBookName
+	strCurrentBook(1) = strNewBookName
+	strCurrentBook(2) = Str(intNumBooks - 1)
+
+	Call FillFileList
+
+End Sub
+
+
+Sub RemoveBook(strBookName As String)
+'Purpose: This routine removes a selected workbook and all associated files
+'Assumptions: None
+'Effects: None
+'Inputs: The name of the workbook to remove from the workbook list(strBookName)
+'Return Values: None
+
+	Dim N As Integer
+
+	For N = 0 To intNumBooks -1
+		If (strBookList(N) = strCurrentBook(1) Or strBookList(N) = "") And N < intNumBooks -1 Then
+			strBookList(N) = strBookList(N+1)
+			strBookList(N+1) = ""
+		ElseIf strBookList(N) = strCurrentBook(1) And N = intNumBooks -1 Then
+			strBookList(N) = " "
+		End If
+	Next N
+
+	intNumBooks = intNumBooks - 1
+
+	ReDim Preserve strBookList(intNumBooks)
+
+	If intNumBooks > 0 Then
+		strCurrentBook(1) = strBookList(0)
+    ElseIf intNumBooks = 0 Then
+    	strBookList(0) = " "
+    	strCurrentBook(1) = " "
+    End If
+
+   	Call FillFileList
+
+	DlgListBoxArray "lstFiles", strCurrentFiles()
+    DlgListBoxArray "lstBooks", strBookList()
+	DlgText "txtBook" , strCurrentBook(1)
+
+End Sub
+
+
+Sub ChangeBook (strNewBookName As String)
+'Purpose: This routine will allow the user to change the name of the current workbook
+'Assumptions: None
+'Effects: None
+'Inputs: The new name of the workbook (strNewBookName)
+'Return Values: None
+
+	Dim N As Integer
+
+	For N = 0 To intNumFiles - 1
+		If strWkBkList(N,2) = strCurrentBook(1) Then
+			strWkBkList(N,2) = strNewBookName
+		End If
+	Next N
+	
+	For N = 0 To intNumBooks - 1
+		If strBookList(N) = strCurrentBook(1) Then
+			strBookList(N) = strNewBookName
+		End If
+	Next N
+	
+	strCurrentBook(1) = strNewBookName
+
+	Call FillFileList
+
+	DlgListBoxArray "lstFiles", strCurrentFiles()
+	DlgListBoxArray "lstBooks", strBookList()
+	DlgText "txtBook" , strCurrentBook(1)
+
+End Sub
+
+
+Function chkBookName(strNewName As String) As Integer
+'Purpose: This function checks to insure that a new workbook name is unique
+'Assumptions: None
+'Effects: None
+'Inputs: The name of the new workbook (strNewName)
+'Return Values: None
+
+	Dim N As Integer
+	
+	For N = 0 To intNumBooks - 1
+		If strNewName = strBookList(N) Then chkBookName = 1
+	Next N
+	
+End Function
+
+
+Function TruncFileName(strFileName As String, intLength As Integer) As String
+'Purpose: This function will truncate a file path.
+'Assumptions: None
+'Effects: None
+'Inputs: File path (strFileName) and Length (intLength)
+'Return Values: TruncFileName will return the truncated filename
+
+	Dim intLastFound
+	Dim intFoundAt
+
+	If strFileName <> "" Then
+		intLastFound = 1
+		intFoundAt = 1
+		Do While intFoundAt <> 0
+			intFoundAt = InStr(intLastFound, strFileName, "\")
+			If intFoundAt <> 0 Then
+				intLastFound = intFoundAt + 1 
+			End If
+		Loop
+		If Len(strFileName) > intLength Then
+			intLastFound = 1
+			intFoundAt = 1
+			Do While intFoundAt <> 0
+				intFoundAt = InStr(intLastFound, strFileName, "\")
+				If (Len(strFileName) - intFoundAt + 6) <= intLength Then
+					intLastFound = intFoundAt + 1
+					Exit Do
+				End If
+				If intFoundAt <> 0 Then
+					intLastFound = intFoundAt + 1 
+				End If
+			Loop
+			TruncFileName = Left$(strFileName, 3) & "..\" & Right$(strFileName, Len(strFileName) - intLastFound + 1)
+		Else	
+			TruncFileName = strFileName
+		End If
+	End If
+
+End Function
+	

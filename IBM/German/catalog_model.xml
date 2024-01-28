@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<TSCXML
+	xmlns="http://xml.spss.com/components/time-series"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://xml.spss.com/components/time-series http://xml.spss.com/components/time-series.xsd">
+	<Header>
+		<Application
+			name="SPSS 14.0 for Windows"
+			version="14.0.0"/>
+	</Header>
+	<DataDictionary>
+		<DateSpecification
+			dateSpecID="1"
+			dateSpecDescriptor="Date specification derived from SPSS time-series date variables">
+			<Periods>
+				<Year
+					firstCaseIndex="1988"/>
+				<Month
+					cycleLength="12"
+					firstCaseIndex="0"/>
+			</Periods>
+		</DateSpecification>
+	</DataDictionary>
+	<ARIMAModel
+		modelName="Model_1"
+		modelDescriptor="men_ARIMA"
+		variableID="men"
+		dateSpecID="1"
+		seasonLength="12">
+		<Transformation
+			seasonalDiff="1"/>
+		<PredictorEffect
+			variableID="mail">
+			<Transformation
+				seasonalDiff="1"/>
+			<Numerator>
+				<NonSeasonalFactor>
+					<ZeroLagTerm>
+						<EstimatedParameter>1.54948672225265 0.0706142236639578</EstimatedParameter>
+					</ZeroLagTerm>
+				</NonSeasonalFactor>
+			</Numerator>
+		</PredictorEffect>
+		<PredictorEffect
+			variableID="phone">
+			<Transformation
+				seasonalDiff="1"/>
+			<Numerator>
+				<NonSeasonalFactor>
+					<ZeroLagTerm>
+						<EstimatedParameter>315.261654581812 15.2984820933097</EstimatedParameter>
+					</ZeroLagTerm>
+				</NonSeasonalFactor>
+			</Numerator>
+		</PredictorEffect>
+		<OutlierEffect
+			type="additive"
+			startIndex="14">
+			<EstimatedParameter>-3885.05852277313 823.768979275968</EstimatedParameter>
+		</OutlierEffect>
+		<OutlierEffect
+			type="additive"
+			startIndex="29">
+			<EstimatedParameter>8469.74066536775 825.525239674847</EstimatedParameter>
+		</OutlierEffect>
+		<OutlierEffect
+			type="additive"
+			startIndex="37">
+			<EstimatedParameter>6859.65317677264 823.613504513122</EstimatedParameter>
+		</OutlierEffect>
+		<OutlierEffect
+			type="additive"
+			startIndex="52">
+			<EstimatedParameter>7128.55545397552 825.766341831504</EstimatedParameter>
+		</OutlierEffect>
+		<OutlierEffect
+			type="additive"
+			startIndex="68">
+			<EstimatedParameter>7928.82310593353 834.976824635003</EstimatedParameter>
+		</OutlierEffect>
+		<OutlierEffect
+			type="additive"
+			startIndex="72">
+			<EstimatedParameter>6839.01994422911 825.914692798284</EstimatedParameter>
+		</OutlierEffect>
+		<OutlierEffect
+			type="additive"
+			startIndex="77">
+			<EstimatedParameter>-6477.26660433678 834.982644895496</EstimatedParameter>
+		</OutlierEffect>
+		<OutlierEffect
+			type="additive"
+			startIndex="87">
+			<EstimatedParameter>9150.43086857464 825.800415620716</EstimatedParameter>
+		</OutlierEffect>
+		<OutlierEffect
+			type="additive"
+			startIndex="115">
+			<EstimatedParameter>8770.68303080725 1167.90490105755</EstimatedParameter>
+		</OutlierEffect>
+		<ARIMACLSState
+			periodDeficit="0">
+			<PredictorState>
+				<FinalPredictor>11890 11722 11589 11633 11951 11706 11460 11808 12781 11690 11393 15263</FinalPredictor>
+			</PredictorState>
+			<PredictorState>
+				<FinalPredictor>50 42 50 32 47 49 46 44 49 43 48 53</FinalPredictor>
+			</PredictorState>
+			<ZState>
+				<FinalZ>22028.8 17719.9 19408.95 14169.61 19916.02 19001.89 18631.15 30208.17 24467.94 23602 24289.32 38609.66</FinalZ>
+				<FinalPredictedZ>21502.8333413266 18789.2687741831 20169.4570129616 15238.6361694497 20260.1567745686 20847.3487757168 19742.2588935732 30208.1699999957 23478.74010876 23934.140841225 25638.3194037432 37728.7117154807</FinalPredictedZ>
+			</ZState>
+			<NoiseState/>
+		</ARIMACLSState>
+		<EstimationInfo
+			periodStartIndex="0"
+			periodLength="120"
+			degreesOfFreedom="97">
+			<Statistic
+				type="errVariance">1356640.09226289</Statistic>
+			<Statistic
+				type="meanSqrErr">1356640.09226289</Statistic>
+			<Statistic
+				type="rootMeanSqrErr">1164.74893958436</Statistic>
+			<Statistic
+				type="meanAbsPctErr">5.71728637748179</Statistic>
+			<Statistic
+				type="meanAbsErr">815.011112432786</Statistic>
+			<Statistic
+				type="maxAbsPctErr">42.0491734685798</Statistic>
+			<Statistic
+				type="maxAbsErr">4230.64723610341</Statistic>
+			<Statistic
+				type="rSqr">0.969306976605636</Statistic>
+			<Statistic
+				type="normBayesIC">14.5974054166422</Statistic>
+			<Statistic
+				type="logLikelihood">-909.952838910075</Statistic>
+			<Statistic
+				type="akaikeIC">1841.90567782015</Statistic>
+			<Statistic
+				type="bayesIC">1871.40912131852</Statistic>
+			<Statistic
+				type="stationaryRSqr">0.948306824629539</Statistic>
+			<LjungBoxStatistic
+				k="18"
+				degreesOfFreedom="18"
+				pValue="0.984146966768102">7.58906773352625</LjungBoxStatistic>
+		</EstimationInfo>
+	</ARIMAModel>
+</TSCXML>

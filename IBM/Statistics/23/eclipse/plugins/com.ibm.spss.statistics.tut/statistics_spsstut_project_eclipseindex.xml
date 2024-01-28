@@ -1,0 +1,421 @@
+<?xml version="1.0" encoding="utf-8"?>
+<index>
+  <entry keyword="Excel files">
+    <entry keyword="reading">
+      <topic href="spss/tutorials/datatut_excel.htm#datatut_excel" title="Reading Data from Spreadsheets"/>
+    </entry>
+  </entry>
+  <entry keyword="spreadsheet files">
+    <entry keyword="reading">
+      <topic href="spss/tutorials/datatut_excel.htm#datatut_excel" title="Reading Data from Spreadsheets"/>
+    </entry>
+    <entry keyword="reading variable names">
+      <topic href="spss/tutorials/datatut_excel.htm#datatut_excel" title="Reading Data from Spreadsheets"/>
+    </entry>
+  </entry>
+  <entry keyword="Database Wizard">
+    <topic href="spss/tutorials/datatut_database.htm#datatut_database" title="Reading Data from a Database"/>
+  </entry>
+  <entry keyword="database files">
+    <entry keyword="reading">
+      <topic href="spss/tutorials/datatut_database.htm#datatut_database" title="Reading Data from a Database"/>
+    </entry>
+  </entry>
+  <entry keyword="Access (Microsoft)">
+    <topic href="spss/tutorials/datatut_database.htm#datatut_database" title="Reading Data from a Database"/>
+  </entry>
+  <entry keyword="text data files">
+    <entry keyword="reading">
+      <topic href="spss/tutorials/datatut_textfile.htm#datatut_textfile" title="Reading Data from a Text File"/>
+    </entry>
+  </entry>
+  <entry keyword="Text Import Wizard">
+    <topic href="spss/tutorials/datatut_textfile.htm#datatut_textfile" title="Reading Data from a Text File"/>
+  </entry>
+  <entry keyword="variables">
+    <topic href="spss/tutorials/dataeditortut_intro.htm#dataeditortut_intro" title="Using the Data Editor"/>
+    <entry keyword="labels">
+      <topic href="spss/tutorials/dataeditortut_labels.htm#dataeditortut_labels" title="Adding Variable Labels"/>
+    </entry>
+    <entry keyword="data types">
+      <topic href="spss/tutorials/dataeditortut_type.htm#dataeditortut_type" title="Changing Variable Type and Format"/>
+    </entry>
+  </entry>
+  <entry keyword="Data Editor">
+    <entry keyword="entering numeric data">
+      <topic href="spss/tutorials/dataeditortut_numeric.htm#dataeditortut_numeric" title="Entering Numeric Data"/>
+    </entry>
+    <entry keyword="entering non-numeric data">
+      <topic href="spss/tutorials/dataeditortut_string.htm#dataeditortut_string" title="Entering String Data"/>
+    </entry>
+  </entry>
+  <entry keyword="data entry">
+    <topic href="spss/tutorials/dataeditortut_numeric.htm#dataeditortut_numeric" title="Entering Numeric Data"/>
+    <topic href="spss/tutorials/dataeditortut_string.htm#dataeditortut_string" title="Entering String Data"/>
+  </entry>
+  <entry keyword="numeric data">
+    <topic href="spss/tutorials/dataeditortut_numeric.htm#dataeditortut_numeric" title="Entering Numeric Data"/>
+  </entry>
+  <entry keyword="entering data">
+    <entry keyword="numeric">
+      <topic href="spss/tutorials/dataeditortut_numeric.htm#dataeditortut_numeric" title="Entering Numeric Data"/>
+    </entry>
+    <entry keyword="non-numeric">
+      <topic href="spss/tutorials/dataeditortut_string.htm#dataeditortut_string" title="Entering String Data"/>
+    </entry>
+  </entry>
+  <entry keyword="string data">
+    <entry keyword="entering data">
+      <topic href="spss/tutorials/dataeditortut_string.htm#dataeditortut_string" title="Entering String Data"/>
+    </entry>
+  </entry>
+  <entry keyword="variable labels">
+    <entry keyword="creating">
+      <topic href="spss/tutorials/dataeditortut_labels.htm#dataeditortut_labels" title="Adding Variable Labels"/>
+    </entry>
+  </entry>
+  <entry keyword="create variable labels">
+    <topic href="spss/tutorials/dataeditortut_labels.htm#dataeditortut_labels" title="Adding Variable Labels"/>
+  </entry>
+  <entry keyword="data types">
+    <entry keyword="for variables">
+      <topic href="spss/tutorials/dataeditortut_type.htm#dataeditortut_type" title="Changing Variable Type and Format"/>
+    </entry>
+  </entry>
+  <entry keyword="value labels">
+    <entry keyword="controlling display in Viewer">
+      <topic href="spss/tutorials/dataeditortut_addnumlabel.htm#dataeditortut_addnumlabel" title="Adding Value Labels"/>
+    </entry>
+    <entry keyword="assigning">
+      <topic href="spss/tutorials/dataeditortut_addnumlabel.htm#dataeditortut_addnumlabel" title="Adding Value Labels"/>
+    </entry>
+    <entry keyword="numeric variables">
+      <topic href="spss/tutorials/dataeditortut_addnumlabel.htm#dataeditortut_addnumlabel" title="Adding Value Labels"/>
+    </entry>
+  </entry>
+  <entry keyword="missing values">
+    <entry keyword="system-missing">
+      <topic href="spss/tutorials/dataeditortut_missing.htm#dataeditortut_missing" title="Handling Missing Data"/>
+    </entry>
+    <entry keyword="for numeric variables">
+      <topic href="spss/tutorials/dataeditortut_missingnumber.htm#dataeditortut_missingnumber" title="Missing Values for a Numeric Variable"/>
+    </entry>
+    <entry keyword="for non-numeric variables">
+      <topic href="spss/tutorials/dataeditortut_missingstring.htm#dataeditortut_missingstring" title="Missing Values for a String Variable"/>
+    </entry>
+  </entry>
+  <entry keyword="system-missing values">
+    <topic href="spss/tutorials/dataeditortut_missing.htm#dataeditortut_missing" title="Handling Missing Data"/>
+  </entry>
+  <entry keyword="level of measurement">
+    <topic href="spss/tutorials/sumstats_measlev.htm#sumstats_measlev" title="Level of Measurement"/>
+  </entry>
+  <entry keyword="measurement level">
+    <topic href="spss/tutorials/sumstats_measlev.htm#sumstats_measlev" title="Level of Measurement"/>
+  </entry>
+  <entry keyword="categorical data">
+    <topic href="spss/tutorials/sumstats_measlev.htm#sumstats_measlev" title="Level of Measurement"/>
+    <entry keyword="summary measures">
+      <topic href="spss/tutorials/sumstats_catvars.htm#sumstats_catvars" title="Summary Measures for Categorical Data"/>
+    </entry>
+  </entry>
+  <entry keyword="scale data">
+    <topic href="spss/tutorials/sumstats_measlev.htm#sumstats_measlev" title="Level of Measurement"/>
+  </entry>
+  <entry keyword="nominal data">
+    <topic href="spss/tutorials/sumstats_measlev.htm#sumstats_measlev" title="Level of Measurement"/>
+  </entry>
+  <entry keyword="ordinal data">
+    <topic href="spss/tutorials/sumstats_measlev.htm#sumstats_measlev" title="Level of Measurement"/>
+  </entry>
+  <entry keyword="quantitative data">
+    <topic href="spss/tutorials/sumstats_measlev.htm#sumstats_measlev" title="Level of Measurement"/>
+  </entry>
+  <entry keyword="qualitative data">
+    <topic href="spss/tutorials/sumstats_measlev.htm#sumstats_measlev" title="Level of Measurement"/>
+  </entry>
+  <entry keyword="continuous data">
+    <topic href="spss/tutorials/sumstats_measlev.htm#sumstats_measlev" title="Level of Measurement"/>
+  </entry>
+  <entry keyword="interval data">
+    <topic href="spss/tutorials/sumstats_measlev.htm#sumstats_measlev" title="Level of Measurement"/>
+  </entry>
+  <entry keyword="ratio data">
+    <topic href="spss/tutorials/sumstats_measlev.htm#sumstats_measlev" title="Level of Measurement"/>
+  </entry>
+  <entry keyword="frequency tables">
+    <topic href="spss/tutorials/sumstats_catvars.htm#sumstats_catvars" title="Summary Measures for Categorical Data"/>
+  </entry>
+  <entry keyword="counts">
+    <entry keyword="tables of counts">
+      <topic href="spss/tutorials/sumstats_catvars.htm#sumstats_catvars" title="Summary Measures for Categorical Data"/>
+    </entry>
+  </entry>
+  <entry keyword="summary measures">
+    <entry keyword="categorical data">
+      <topic href="spss/tutorials/sumstats_catvars.htm#sumstats_catvars" title="Summary Measures for Categorical Data"/>
+    </entry>
+    <entry keyword="scale variables">
+      <topic href="spss/tutorials/sumstats_scalevars.htm#sumstats_scalevars" title="Summary Measures for Scale Variables"/>
+    </entry>
+  </entry>
+  <entry keyword="charts">
+    <entry keyword="bar">
+      <topic href="spss/tutorials/sumstats_catvars_bar.htm#sumstats_catvars_bar" title="Charts for Categorical Data"/>
+      <topic href="spss/tutorials/bcharttut_standard_create.htm#bcharttut_standard_create" title="Chart creation basics"/>
+    </entry>
+    <entry keyword="histograms">
+      <topic href="spss/tutorials/sumstats_scalevars_hist.htm#sumstats_scalevars_hist" title="Histograms for Scale Variables"/>
+    </entry>
+    <entry keyword="creating charts">
+      <topic href="spss/tutorials/bcharttut_standard_create.htm#bcharttut_standard_create" title="Chart creation basics"/>
+    </entry>
+  </entry>
+  <entry keyword="bar charts">
+    <topic href="spss/tutorials/sumstats_catvars_bar.htm#sumstats_catvars_bar" title="Charts for Categorical Data"/>
+  </entry>
+  <entry keyword="scale variables">
+    <entry keyword="summary measures">
+      <topic href="spss/tutorials/sumstats_scalevars.htm#sumstats_scalevars" title="Summary Measures for Scale Variables"/>
+    </entry>
+  </entry>
+  <entry keyword="histograms">
+    <topic href="spss/tutorials/sumstats_scalevars_hist.htm#sumstats_scalevars_hist" title="Histograms for Scale Variables"/>
+  </entry>
+  <entry keyword="crosstabulation">
+    <topic href="spss/tutorials/bcrosstabstut_intro.htm#bcrosstabstut_intro" title="Crosstabulation Tables"/>
+  </entry>
+  <entry keyword="contingency tables">
+    <topic href="spss/tutorials/bcrosstabstut_intro.htm#bcrosstabstut_intro" title="Crosstabulation Tables"/>
+  </entry>
+  <entry keyword="percentages">
+    <entry keyword="in Crosstabs">
+      <topic href="spss/tutorials/bcrosstabstut_percent.htm#bcrosstabstut_percent" title="Counts vs. Percentages"/>
+    </entry>
+  </entry>
+  <entry keyword="chi-square tests">
+    <entry keyword="in Crosstabs">
+      <topic href="spss/tutorials/bcrosstabstut_sigtest.htm#bcrosstabstut_sigtest" title="Significance Testing for Crosstabulations"/>
+    </entry>
+  </entry>
+  <entry keyword="layers">
+    <entry keyword="in Crosstabs">
+      <topic href="spss/tutorials/bcrosstabstut_layer.htm#bcrosstabstut_layer" title="Adding a Layer Variable"/>
+    </entry>
+    <entry keyword="creating in pivot tables">
+      <topic href="spss/tutorials/outputtut_displaylayer.htm#outputtut_displaylayer" title="Creating and Displaying Layers"/>
+    </entry>
+  </entry>
+  <entry keyword="control variables">
+    <entry keyword="in Crosstabs">
+      <topic href="spss/tutorials/bcrosstabstut_layer.htm#bcrosstabstut_layer" title="Adding a Layer Variable"/>
+    </entry>
+  </entry>
+  <entry keyword="graphs">
+    <entry keyword="creating graphs">
+      <topic href="spss/tutorials/bcharttut_standard_create.htm#bcharttut_standard_create" title="Chart creation basics"/>
+    </entry>
+    <entry keyword="bar">
+      <topic href="spss/tutorials/bcharttut_standard_create.htm#bcharttut_standard_create" title="Chart creation basics"/>
+    </entry>
+  </entry>
+  <entry keyword="Viewer">
+    <entry keyword="hiding and showing output">
+      <topic href="spss/tutorials/outputtut_useviewer.htm#outputtut_useviewer" title="Using the Viewer"/>
+    </entry>
+    <entry keyword="moving output">
+      <topic href="spss/tutorials/outputtut_useviewer.htm#outputtut_useviewer" title="Using the Viewer"/>
+    </entry>
+  </entry>
+  <entry keyword="moving">
+    <entry keyword="items in the Viewer">
+      <topic href="spss/tutorials/outputtut_useviewer.htm#outputtut_useviewer" title="Using the Viewer"/>
+    </entry>
+    <entry keyword="elements in pivot tables">
+      <topic href="spss/tutorials/outputtut_pivotatable.htm#outputtut_pivotatable" title="Pivoting Tables"/>
+    </entry>
+  </entry>
+  <entry keyword="pivot tables">
+    <entry keyword="accessing definitions">
+      <topic href="spss/tutorials/outputtut_defineoutput.htm#outputtut_defineoutput" title="Accessing Output Definitions"/>
+    </entry>
+    <entry keyword="pivoting trays">
+      <topic href="spss/tutorials/outputtut_pivotatable.htm#outputtut_pivotatable" title="Pivoting Tables"/>
+    </entry>
+    <entry keyword="transposing rows and columns">
+      <topic href="spss/tutorials/outputtut_pivotatable.htm#outputtut_pivotatable" title="Pivoting Tables"/>
+    </entry>
+    <entry keyword="layers">
+      <topic href="spss/tutorials/outputtut_displaylayer.htm#outputtut_displaylayer" title="Creating and Displaying Layers"/>
+    </entry>
+    <entry keyword="editing">
+      <topic href="spss/tutorials/outputtut_edittable.htm#outputtut_edittable" title="Editing Tables"/>
+    </entry>
+    <entry keyword="formatting">
+      <topic href="spss/tutorials/outputtut_edittable.htm#outputtut_edittable" title="Editing Tables"/>
+    </entry>
+    <entry keyword="hiding rows and columns">
+      <topic href="spss/tutorials/outputtut_hiderows.htm#outputtut_hiderows" title="Hiding Rows and Columns"/>
+    </entry>
+    <entry keyword="cell formats">
+      <topic href="spss/tutorials/outputtut_changeformat.htm#outputtut_changeformat" title="Changing Data Display Formats"/>
+    </entry>
+    <entry keyword="cell data types">
+      <topic href="spss/tutorials/outputtut_changeformat.htm#outputtut_changeformat" title="Changing Data Display Formats"/>
+    </entry>
+    <entry keyword="hiding decimal points">
+      <topic href="spss/tutorials/outputtut_changeformat.htm#outputtut_changeformat" title="Changing Data Display Formats"/>
+    </entry>
+  </entry>
+  <entry keyword="transposing (flipping) rows and columns in pivot tables">
+    <topic href="spss/tutorials/outputtut_pivotatable.htm#outputtut_pivotatable" title="Pivoting Tables"/>
+  </entry>
+  <entry keyword="editing pivot tables">
+    <topic href="spss/tutorials/outputtut_edittable.htm#outputtut_edittable" title="Editing Tables"/>
+  </entry>
+  <entry keyword="hiding rows and columns in pivot tables">
+    <topic href="spss/tutorials/outputtut_hiderows.htm#outputtut_hiderows" title="Hiding Rows and Columns"/>
+  </entry>
+  <entry keyword="exporting results">
+    <entry keyword="to Word">
+      <topic href="spss/tutorials/outputtut_msapps.htm#outputtut_msapps" title="Exporting Results to Microsoft Word, PowerPoint, and Excel Files"/>
+    </entry>
+    <entry keyword="to Excel">
+      <topic href="spss/tutorials/outputtut_msapps.htm#outputtut_msapps" title="Exporting Results to Microsoft Word, PowerPoint, and Excel Files"/>
+    </entry>
+    <entry keyword="to PowerPoint">
+      <topic href="spss/tutorials/outputtut_msapps.htm#outputtut_msapps" title="Exporting Results to Microsoft Word, PowerPoint, and Excel Files"/>
+    </entry>
+    <entry keyword="HTML">
+      <topic href="spss/tutorials/features_exportoutput_01.htm#features_exportoutput_01" title="Exporting Results to HTML"/>
+    </entry>
+  </entry>
+  <entry keyword="Excel (Microsoft)">
+    <entry keyword="exporting results to">
+      <topic href="spss/tutorials/outputtut_msapps.htm#outputtut_msapps" title="Exporting Results to Microsoft Word, PowerPoint, and Excel Files"/>
+    </entry>
+  </entry>
+  <entry keyword="Word (Microsoft)">
+    <entry keyword="exporting results to">
+      <topic href="spss/tutorials/outputtut_msapps.htm#outputtut_msapps" title="Exporting Results to Microsoft Word, PowerPoint, and Excel Files"/>
+    </entry>
+  </entry>
+  <entry keyword="PowerPoint (Microsoft)">
+    <entry keyword="exporting results to">
+      <topic href="spss/tutorials/outputtut_msapps.htm#outputtut_msapps" title="Exporting Results to Microsoft Word, PowerPoint, and Excel Files"/>
+    </entry>
+  </entry>
+  <entry keyword="HTML">
+    <entry keyword="exporting results">
+      <topic href="spss/tutorials/features_exportoutput_01.htm#features_exportoutput_01" title="Exporting Results to HTML"/>
+    </entry>
+  </entry>
+  <entry keyword="syntax">
+    <topic href="spss/tutorials/syntax_intro.htm#syntax_intro" title="Working with Syntax"/>
+  </entry>
+  <entry keyword="syntax windows">
+    <entry keyword="pasting commands">
+      <topic href="spss/tutorials/syntax_paste.htm#syntax_paste" title="Pasting Syntax"/>
+    </entry>
+    <entry keyword="running commands">
+      <topic href="spss/tutorials/syntax_paste.htm#syntax_paste" title="Pasting Syntax"/>
+      <topic href="spss/tutorials/syntax_openrun.htm#syntax_openrun" title="Opening and Running a Syntax File"/>
+    </entry>
+    <entry keyword="editing commands">
+      <topic href="spss/tutorials/syntax_edit.htm#syntax_edit" title="Editing Syntax"/>
+    </entry>
+    <entry keyword="auto-completion">
+      <topic href="spss/tutorials/syntax_edit.htm#syntax_edit" title="Editing Syntax"/>
+    </entry>
+    <entry keyword="color coding">
+      <topic href="spss/tutorials/syntax_edit.htm#syntax_edit" title="Editing Syntax"/>
+    </entry>
+    <entry keyword="breakpoints">
+      <topic href="spss/tutorials/syntax_breakpoints.htm#syntax_breakpoints" title="Using Breakpoints"/>
+    </entry>
+  </entry>
+  <entry keyword="pasting syntax">
+    <entry keyword="from a dialog box">
+      <topic href="spss/tutorials/syntax_paste.htm#syntax_paste" title="Pasting Syntax"/>
+    </entry>
+  </entry>
+  <entry keyword="Syntax Help tool">
+    <topic href="spss/tutorials/syntax_edit.htm#syntax_edit" title="Editing Syntax"/>
+  </entry>
+  <entry keyword="syntax files">
+    <entry keyword="opening">
+      <topic href="spss/tutorials/syntax_openrun.htm#syntax_openrun" title="Opening and Running a Syntax File"/>
+    </entry>
+  </entry>
+  <entry keyword="recoding values">
+    <topic href="spss/tutorials/bmodvalstut_recode.htm#bmodvalstut_recode" title="Creating a Categorical Variable from a Scale Variable"/>
+  </entry>
+  <entry keyword="computing new variables">
+    <topic href="spss/tutorials/bmodvalstut_compute.htm#bmodvalstut_compute" title="Computing New Variables"/>
+  </entry>
+  <entry keyword="functions in expressions">
+    <topic href="spss/tutorials/bmodvalstut_functions.htm#bmodvalstut_functions" title="Using Functions in Expressions"/>
+  </entry>
+  <entry keyword="conditional expressions">
+    <topic href="spss/tutorials/bmodvalstut_condexps.htm#bmodvalstut_condexps" title="Using Conditional Expressions"/>
+  </entry>
+  <entry keyword="Date and Time Wizard">
+    <topic href="spss/tutorials/bmodvalstut_datetime.htm#bmodvalstut_datetime" title="Working with Dates and Times"/>
+  </entry>
+  <entry keyword="date and time variables">
+    <topic href="spss/tutorials/bmodvalstut_datetime.htm#bmodvalstut_datetime" title="Working with Dates and Times"/>
+  </entry>
+  <entry keyword="data dictionary">
+    <topic href="spss/tutorials/timesave_dictionary.htm#timesave_dictionary" title="Copying Data Properties"/>
+  </entry>
+  <entry keyword="customizing">
+    <entry keyword="menus">
+      <topic href="spss/tutorials/customizetut_menu.htm#customizetut_menu" title="Creating Custom Menu Items"/>
+    </entry>
+    <entry keyword="toolbars">
+      <topic href="spss/tutorials/customizetut_toolbar.htm#customizetut_toolbar" title="Creating Custom Toolbars"/>
+    </entry>
+  </entry>
+  <entry keyword="menus">
+    <entry keyword="customize">
+      <topic href="spss/tutorials/customizetut_menu.htm#customizetut_menu" title="Creating Custom Menu Items"/>
+    </entry>
+  </entry>
+  <entry keyword="toolbars">
+    <entry keyword="customize">
+      <topic href="spss/tutorials/customizetut_toolbar.htm#customizetut_toolbar" title="Creating Custom Toolbars"/>
+    </entry>
+  </entry>
+  <entry keyword="Custom Dialog Builder">
+    <topic href="spss/tutorials/dialogbuilder_intro.htm#dialogbuilder_intro" title="Creating Custom Dialogs"/>
+    <entry keyword="syntax template">
+      <topic href="spss/tutorials/dialogbuilder_syntax_template.htm#dialogbuilder_syntax_template" title="Building the Syntax Template"/>
+    </entry>
+    <entry keyword="preview dialog">
+      <topic href="spss/tutorials/dialogbuilder_preview.htm#dialogbuilder_preview" title="Previewing Your Dialog"/>
+    </entry>
+    <entry keyword="installing custom dialogs">
+      <topic href="spss/tutorials/dialogbuilder_install.htm#dialogbuilder_install" title="Installing Your Dialog"/>
+    </entry>
+    <entry keyword="distributing custom dialogs">
+      <topic href="spss/tutorials/dialogbuilder_share.htm#dialogbuilder_share" title="Sharing Your Dialog with Other Users"/>
+    </entry>
+    <entry keyword="saving">
+      <topic href="spss/tutorials/dialogbuilder_save.htm#dialogbuilder_save" title="Saving Your Work"/>
+    </entry>
+  </entry>
+  <entry keyword="Automated Production">
+    <topic href="spss/tutorials/autotut_intro.htm#autotut_intro" title="Automated production"/>
+  </entry>
+  <entry keyword="automation">
+    <topic href="spss/tutorials/autotut_intro.htm#autotut_intro" title="Automated production"/>
+  </entry>
+  <entry keyword="scoring">
+    <topic href="spss/tutorials/scoring_intro.htm#scoring_intro" title="Introduction"/>
+  </entry>
+  <entry keyword="sample files">
+    <entry keyword="location">
+      <topic href="spss/tutorials/data_files.htm#data_files" title="Sample Files"/>
+    </entry>
+  </entry>
+</index>

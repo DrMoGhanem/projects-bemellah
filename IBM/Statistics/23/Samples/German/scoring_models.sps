@@ -1,0 +1,51 @@
+***scoring_models.sps***.
+
+/**** Multinomial logistic regression model ****.
+
+NOMREG
+  Response  (BASE=LAST ORDER=ASCENDING) BY Has_Child Has_Broadband Gender Income_Group Age_Group  WITH Recency Frequency
+  Log_Amount
+  /CRITERIA CIN(95) DELTA(0) MXITER(100) MXSTEP(5) CHKSEP(20) LCONVERGE(0) PCONVERGE(0.000001) SINGULAR(0.00000001)
+  /MODEL
+  /STEPWISE = PIN(.05) POUT(0.1) MINEFFECT(0) RULE(SINGLE)
+  /INTERCEPT =INCLUDE
+  /PRINT = PARAMETER SUMMARY LRT CPS STEP MFI
+  /OUTFILE MODEL('file specification') .
+
+/**** Classification tree model ****.
+
+TREE Response [n] BY Recency [s] Frequency [s] Has_Child [s] Has_Broadband [s] Gender [n] Income_Group [s] Age_Group [s]
+  Log_Amount [s]
+ /TREE
+   DISPLAY=TOPDOWN
+   NODES=STATISTICS
+   BRANCHSTATISTICS=YES
+   NODEDEFS=YES
+   SCALE=AUTO
+ /DEPCATEGORIES
+   USEVALUES=[0 1]
+ /PRINT
+   MODELSUMMARY
+   CLASSIFICATION
+   RISK
+ /METHOD
+   TYPE=CHAID
+ /GROWTHLIMIT
+   MAXDEPTH=AUTO
+   MINPARENTSIZE=100
+   MINCHILDSIZE=50
+ /VALIDATION
+   TYPE=NONE
+   OUTPUT=BOTHSAMPLES
+ /CHAID
+   ALPHASPLIT=0.05
+   ALPHAMERGE=0.05
+   SPLITMERGED=NO
+   CHISQUARE=PEARSON
+   ADJUST=BONFERRONI
+   INTERVALS=10
+ /COSTS EQUAL
+ /OUTFILE
+   TRAININGMODEL="file specification"
+ /MISSING
+   NOMINALMISSING=MISSING.

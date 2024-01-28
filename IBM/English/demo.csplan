@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<SPSSComplexSamples version="1.0">
+	<Header copyright="Copyright (c) SPSS Inc., 2006. All Rights Reserved."/>
+	<SampleDesign numberOfStages="3" wrEstimation="no">
+		<SampleStage selectionMethod="simple_wor" stageNumber="1">
+			<StrataVarList numberOfVariables="1">
+				<Variable name="region"/>
+			</StrataVarList>
+			<ClusterVarList numberOfVariables="1">
+				<Variable name="province"/>
+			</ClusterVarList>
+			<InputSampleSize>
+				<SingleValue value="3"/>
+			</InputSampleSize>
+			<IncProb>
+				<Variable name="InclusionProbability_1_"/>
+			</IncProb>
+			<CumulativeWeight>
+				<Variable name="SampleWeightCumulative_1_"/>
+			</CumulativeWeight>
+		</SampleStage>
+		<SampleStage selectionMethod="simple_wor" stageNumber="2">
+			<StrataVarList numberOfVariables="1">
+				<Variable name="district"/>
+			</StrataVarList>
+			<ClusterVarList numberOfVariables="1">
+				<Variable name="city"/>
+			</ClusterVarList>
+			<InputSampleRate>
+				<SingleValue value="0.10000000000000001"/>
+			</InputSampleRate>
+			<IncProb>
+				<Variable name="InclusionProbability_2_"/>
+			</IncProb>
+			<CumulativeWeight>
+				<Variable name="SampleWeightCumulative_2_"/>
+			</CumulativeWeight>
+		</SampleStage>
+		<SampleStage selectionMethod="simple_wor" stageNumber="3">
+			<StrataVarList numberOfVariables="1">
+				<Variable name="subdivision"/>
+			</StrataVarList>
+			<InputSampleRate>
+				<SingleValue value="0.20000000000000001"/>
+			</InputSampleRate>
+			<IncProb>
+				<Variable name="InclusionProbability_3_"/>
+			</IncProb>
+			<CumulativeWeight>
+				<Variable name="SampleWeightCumulative_3_"/>
+			</CumulativeWeight>
+		</SampleStage>
+		<Weight>
+			<Variable name="SampleWeight_Final_"/>
+		</Weight>
+	</SampleDesign>
+	<AnalysisDesign SRSestimator="wor" numberOfStages="3">
+		<AnalysisStage estimationMethod="equal_wor" stageNumber="1">
+			<StrataVarList numberOfVariables="1">
+				<Variable name="region"/>
+			</StrataVarList>
+			<ClusterVarList numberOfVariables="1">
+				<Variable name="province"/>
+			</ClusterVarList>
+			<IncProb>
+				<Variable name="InclusionProbability_1_"/>
+			</IncProb>
+		</AnalysisStage>
+		<AnalysisStage estimationMethod="equal_wor" stageNumber="2">
+			<StrataVarList numberOfVariables="1">
+				<Variable name="district"/>
+			</StrataVarList>
+			<ClusterVarList numberOfVariables="1">
+				<Variable name="city"/>
+			</ClusterVarList>
+			<IncProb>
+				<Variable name="InclusionProbability_2_"/>
+			</IncProb>
+		</AnalysisStage>
+		<AnalysisStage estimationMethod="equal_wor" stageNumber="3">
+			<StrataVarList numberOfVariables="1">
+				<Variable name="subdivision"/>
+			</StrataVarList>
+			<IncProb>
+				<Variable name="InclusionProbability_3_"/>
+			</IncProb>
+		</AnalysisStage>
+		<Weight>
+			<Variable name="SampleWeight_Final_"/>
+		</Weight>
+	</AnalysisDesign>
+</SPSSComplexSamples>
