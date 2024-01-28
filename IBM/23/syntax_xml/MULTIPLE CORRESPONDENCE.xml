@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/14/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="MULTIPLE CORRESPONDENCE" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="VARIABLES" EqualsSign="Optional"/>
+    <Subcommand Name="ANALYSIS" EqualsSign="Optional">
+        <Parameter Name="WEIGHT" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DISCRETIZATION" EqualsSign="Optional">
+        <Parameter Name="GROUPING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NCAT" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="EQINTV" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="DISTR" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NORMAL"/>
+            <EnumValue Name="UNIFORM"/>
+        </Parameter>
+        <Parameter Name="RANKING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MULTIPLYING" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PASSIVE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ACTIVE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODEIMPU" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXTRACAT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODEIMPU" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXTRACAT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LISTWISE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SUPPLEMENTARY" EqualsSign="Optional">
+        <Parameter Name="OBJECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CONFIGURATION" EqualsSign="Optional">
+        <Parameter Name="INITIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FIXED" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DIMENSION" EqualsSign="Optional"/>
+    <Subcommand Name="NORMALIZATION" EqualsSign="Optional">
+        <Parameter Name="VPRINCIPAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OPRINCIPAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SYMMETRICAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INDEPENDENT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MAXITER" EqualsSign="Optional"/>
+    <Subcommand Name="CRITITER" EqualsSign="Optional"/>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="CORR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DESCRIP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HISTORY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DISCRIM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OBJECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OCORR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="QUANT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="BIPLOT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CATEGORY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="JOINTCAT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DISCRIM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OBJECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TRANS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NDIM" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="TRDATA" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="TRA"/>
+        </Parameter>
+        <Parameter Name="OBJECT" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="OBSCO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional">
+        <Parameter Name="DISCRDATA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OBJECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TRDATA" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

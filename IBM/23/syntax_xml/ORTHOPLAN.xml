@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="ORTHOPLAN" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="FACTORS" EqualsSign="Optional" Occurrence="Optional"></Subcommand>
+    <Subcommand Name="REPLACE" EqualsSign="None" Occurrence="Optional"/>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional" Occurrence="Optional"/>
+    <Subcommand Name="MINIMUM" EqualsSign="Optional" Occurrence="Optional"/>
+    <Subcommand Name="HOLDOUT" EqualsSign="Optional" Occurrence="Optional"/>
+    <Subcommand Name="MIXHOLD" EqualsSign="Optional" Occurrence="Optional">
+        <Parameter Name="YES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

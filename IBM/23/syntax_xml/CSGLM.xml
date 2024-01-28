@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 4/29/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="CSGLM" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLAN" EqualsSign="None">
+        <Parameter Name="FILE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="JOINTPROB" EqualsSign="None">
+        <Parameter Name="FILE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MODEL" EqualsSign="None"/>
+    <Subcommand Name="INTERCEPT" EqualsSign="None">
+        <Parameter Name="INCLUDE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+            <EnumValue Name="ONLY"/>
+        </Parameter>
+        <Parameter Name="SHOW" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CUSTOM" EqualsSign="None">
+        <Parameter Name="LABEL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LMATRIX" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="KMATRIX" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EMMEANS" EqualsSign="None">
+        <Parameter Name="TABLES" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="OTHER" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="COMPARE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="CONTRAST" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SIMPLE"/>
+            <EnumValue Name="DEVIATION"/>
+            <EnumValue Name="DIFFERENCE"/>
+            <EnumValue Name="HELMERT"/>
+            <EnumValue Name="REPEATED"/>
+            <EnumValue Name="POLYNOMIAL"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="None">
+        <Parameter Name="CILEVEL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="DF" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SINGULAR" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STATISTICS" EqualsSign="None">
+        <Parameter Name="PARAMETER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TTEST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CINTERVAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFFSQRT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TEST" EqualsSign="None">
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="F"/>
+            <EnumValue Name="ADJF"/>
+            <EnumValue Name="CHISQUARE"/>
+            <EnumValue Name="ADJCHISQUARE"/>
+        </Parameter>
+        <Parameter Name="PADJUST" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="LSD"/>
+            <EnumValue Name="BONFERRONI"/>
+            <EnumValue Name="SEQBONFERRONI"/>
+            <EnumValue Name="SIDAK"/>
+            <EnumValue Name="SEQSIDAK"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="DOMAIN" EqualsSign="None">
+        <Parameter Name="VARIABLE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="None">
+        <Parameter Name="CLASSMISSING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="None">
+        <Parameter Name="SAMPLEINFO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLEINFO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMMARY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GEF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LMATRIX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COVB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="None">
+        <Parameter Name="PRED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="None">
+        <Parameter Name="COVB" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="CORB" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MODEL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PARAMETER" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/12/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:/C:/temp/schema/SyntaxSchema.xsd"
+    Name="MANOVA" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="WSFACTORS" EqualsSign="Optional"/>
+    <Subcommand Name="WSDESIGN" EqualsSign="None"/>
+    <Subcommand Name="TRANSFORM" EqualsSign="None">
+        <Parameter Name="ORTHONORM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CONTRAST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BASIS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEVIATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DIFFERENCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HELMERT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIMPLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REPEATED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POLYNOMIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SPECIAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MEASURE" EqualsSign="Optional"/>
+    <Subcommand Name="RENAME" EqualsSign="Optional"/>
+    <Subcommand Name="ERROR" EqualsSign="Optional">
+        <Parameter Name="WITHIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESIDUAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITHIN + RESIDUAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CONTRAST" EqualsSign="None">
+        <Parameter Name="DEVIATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POLYNOMIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIMPLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DIFFERENCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HELMERT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REPEATED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SPECIAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PARTITION" EqualsSign="None"/>
+    <Subcommand Name="METHOD" EqualsSign="Optional">
+        <Parameter Name="UNIQUE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CONSTANT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="QR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEQUENTIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOCONSTANT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CHOLESKY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="CELLINFO" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="MEANS"/>
+            <EnumValue Name="SSCP"/>
+            <EnumValue Name="COV"/>
+            <EnumValue Name="COR"/>
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="HOMOGENEITY" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+            <EnumValue Name="BARTLETT"/>
+            <EnumValue Name="COCHRAN"/>
+            <EnumValue Name="BOXM"/>
+        </Parameter>
+        <Parameter Name="DESIGN" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="OVERALL"/>
+            <EnumValue Name="ONEWAY"/>
+            <EnumValue Name="DECOMP"/>
+            <EnumValue Name="BIAS"/>
+            <EnumValue Name="SOLUTION"/>
+            <EnumValue Name="REDUNDANCY"/>
+            <EnumValue Name="COLLINEARITY"/>
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="PARAMETERS" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ESTIM"/>
+            <EnumValue Name="ORTHO"/>
+            <EnumValue Name="COR"/>
+            <EnumValue Name="NEGSUM"/>
+            <EnumValue Name="EFSIZE"/>
+            <EnumValue Name="OPTIMAL"/>
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="SIGNIF" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="SINGLEDF"/>
+            <EnumValue Name="MULTIV"/>
+            <EnumValue Name="EIGEN"/>
+            <EnumValue Name="DIMENR"/>
+            <EnumValue Name="UNIV"/>
+            <EnumValue Name="HYPOTH"/>
+            <EnumValue Name="STEPDOWN"/>
+            <EnumValue Name="BRIEF"/>
+            <EnumValue Name="AVERF"/>
+            <EnumValue Name="HF"/>
+            <EnumValue Name="GG"/>
+            <EnumValue Name="EFSIZE"/>
+            <EnumValue Name="AVONLY"/>
+        </Parameter>
+        <Parameter Name="ERROR" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="COR"/>
+            <EnumValue Name="COV"/>
+            <EnumValue Name="SSCP"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="NOPRINT" EqualsSign="Optional">
+        <Parameter Name="CELLINFO" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="MEANS"/>
+            <EnumValue Name="SSCP"/>
+            <EnumValue Name="COV"/>
+            <EnumValue Name="COR"/>
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="HOMOGENEITY" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+            <EnumValue Name="BARTLETT"/>
+            <EnumValue Name="COCHRAN"/>
+            <EnumValue Name="BOXM"/>
+        </Parameter>
+        <Parameter Name="DESIGN" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="OVERALL"/>
+            <EnumValue Name="ONEWAY"/>
+            <EnumValue Name="DECOMP"/>
+            <EnumValue Name="BIAS"/>
+            <EnumValue Name="SOLUTION"/>
+            <EnumValue Name="REDUNDANCY"/>
+            <EnumValue Name="COLLINEARITY"/>
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="PARAMETERS" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ESTIM"/>
+            <EnumValue Name="ORTHO"/>
+            <EnumValue Name="COR"/>
+            <EnumValue Name="NEGSUM"/>
+            <EnumValue Name="EFSIZE"/>
+            <EnumValue Name="OPTIMAL"/>
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="SIGNIF" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="SINGLEDF"/>
+            <EnumValue Name="MULTIV"/>
+            <EnumValue Name="EIGEN"/>
+            <EnumValue Name="DIMENR"/>
+            <EnumValue Name="UNIV"/>
+            <EnumValue Name="HYPOTH"/>
+            <EnumValue Name="STEPDOWN"/>
+            <EnumValue Name="BRIEF"/>
+            <EnumValue Name="AVERF"/>
+            <EnumValue Name="HF"/>
+            <EnumValue Name="GG"/>
+            <EnumValue Name="EFSIZE"/>
+            <EnumValue Name="AVONLY"/>
+        </Parameter>
+        <Parameter Name="ERROR" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="COR"/>
+            <EnumValue Name="COV"/>
+            <EnumValue Name="SSCP"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="OMEANS" EqualsSign="Optional">
+        <Parameter Name="VARIABLES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLES" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="CONSTANT"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PMEANS" EqualsSign="Optional">
+        <Parameter Name="VARIABLES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLES" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="PLOT"/>
+            <EnumValue Name="BY"/>
+            <EnumValue Name="CONSTANT"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="RESIDUALS" EqualsSign="Optional">
+        <Parameter Name="CASEWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PLOT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="POWER" EqualsSign="Optional">
+        <Parameter Name="T" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="F" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="APPROXIMATE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXACT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CINTERVAL" EqualsSign="Optional">
+        <Parameter Name="INDIVIDUAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="JOINT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UNIVARIATE" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="SCHEFFE"/>
+            <EnumValue Name="BONFER"/>
+        </Parameter>
+        <Parameter Name="MULTIVARIATE" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ROY"/>
+            <EnumValue Name="PILLAI"/>
+            <EnumValue Name="BONFER"/>
+            <EnumValue Name="HOTELLING"/>
+            <EnumValue Name="WILKS"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PCOMPS" EqualsSign="None">
+        <Parameter Name="COR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROTATE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NCOMP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MINEIGEN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="BOXPLOTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CELLPLOTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NORMAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DISCRIM" EqualsSign="None">
+        <Parameter Name="RAW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ESTIM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROTATE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALPHA" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="LISTWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MATRIX" EqualsSign="Optional">
+        <Parameter Name="IN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OUT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ANALYSIS" EqualsSign="None">
+        <Parameter Name="UNCONDITIONAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CONDITIONAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DESIGN" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITHIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POOL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AGAINST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITHIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESIDUAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MWITHIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MUPLUS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CONSTANT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

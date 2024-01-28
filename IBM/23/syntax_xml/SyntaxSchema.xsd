@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema targetNamespace="http://xml.spss.com/spss/extension" 
+		xmlns="http://xml.spss.com/spss/extension" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+   <xs:element name="Command" type="command-content">
+  </xs:element>
+  <xs:complexType name="command-content">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="Subcommand"/>
+    </xs:sequence>
+    <xs:attribute name="Name" use="required">
+    </xs:attribute>
+    <xs:attribute name="Language" default="Syntax">
+       <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="Python"/>
+          <xs:enumeration value="R"/>
+          <xs:enumeration value="Syntax"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="IsArbitrary" default="No">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="True"/>
+          <xs:enumeration value="False"/>
+          <xs:enumeration value="Yes"/>
+          <xs:enumeration value="No"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="EndRequired" default="None">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="None"/>
+          <xs:enumeration value="Command"/>
+          <xs:enumeration value="Block"/>
+         </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="EndStatement"/>
+  </xs:complexType>
+  <xs:element name="Subcommand" type="subcommand-content">
+  </xs:element>
+  <xs:complexType name="subcommand-content">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="Parameter"/>
+    </xs:sequence>
+    <xs:attribute name="Name" use="required"/>
+    <xs:attribute name="Occurrence" default="Optional">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="Required"/>
+          <xs:enumeration value="Optional"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="IsArbitrary" default="No">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="True"/>
+          <xs:enumeration value="False"/>
+          <xs:enumeration value="Yes"/>
+          <xs:enumeration value="No"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="EqualsSign" default="None">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="Required"/>
+          <xs:enumeration value="Optional"/>
+          <xs:enumeration value="None">
+          </xs:enumeration>
+       </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:element name="Parameter" type="parameter-content">
+  </xs:element>
+  <xs:complexType name="parameter-content">
+    <xs:sequence maxOccurs="unbounded" minOccurs="0">
+      <xs:element  name="EnumValue">
+        <xs:complexType>
+          <xs:attributeGroup ref="enumValue-content"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Name" use="required">
+    </xs:attribute>
+    <xs:attribute name="ParameterType" default="Keyword">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="DatasetName"/>
+          <xs:enumeration value="Integer"/>
+          <xs:enumeration value="IntegerList"/>
+          <xs:enumeration value="Keyword"/>
+          <xs:enumeration value="KeywordList"/>
+          <xs:enumeration value="LeadingToken"/>
+          <xs:enumeration value="Number"/>
+          <xs:enumeration value="NumberList"/>
+          <xs:enumeration value="QuotedString"/>
+          <xs:enumeration value="TokenList"/>
+          <xs:enumeration value="VariableName"/>
+          <xs:enumeration value="VariableNameList"/>
+          <xs:enumeration value="InputFile"/>
+          <xs:enumeration value="OutputFile"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="EqualsSign" default="None">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="Required"/>
+          <xs:enumeration value="Optional"/>
+          <xs:enumeration value="None">
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:attributeGroup name="enumValue-content">
+    <xs:attribute name="Name" use="required">
+    </xs:attribute>
+  </xs:attributeGroup>
+</xs:schema>

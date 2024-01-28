@@ -1,0 +1,62 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2014                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+  
+<Command xmlns="www.ibm.com/software/analytics/spss/xml/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="www.ibm.com/software/analytics/spss/xml/extension
+    www.ibm.com/software/analytics/spss/xml/extension/SyntaxSchema.xsd"
+    Name="GETCOGNOS" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="MODE" Occurrence="Optional">
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="DATA"/>
+            <EnumValue Name="REPORT"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CONNECTION" Occurrence="Required">
+        <Parameter Name="SERVERURL" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="MODE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="CREDENTIALS"/>
+            <EnumValue Name="ANONYMOUS"/>
+            <EnumValue Name="STOREDCREDENTIAL"/>
+        </Parameter>
+        <Parameter Name="NAMESPACE" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="USERNAME" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="PASSWORD" EqualsSign="Required" ParameterType="Keyword">
+        </Parameter>
+        <Parameter Name="ENCRYPTED" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="CREDENTIAL" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+    </Subcommand>
+    <Subcommand Name="Location" Occurrence="Required">
+        <Parameter Name="PACKAGE" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+    </Subcommand>
+    <Subcommand Name="IMPORT" Occurrence="Required">
+        <Parameter Name="FIELDS" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="REPORT" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="AGGREGATE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="FILTER" Occurrence="Optional">
+        <Parameter Name="VALUE" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+    </Subcommand>
+    <Subcommand Name="PARAMETERS" Occurrence="Optional"></Subcommand>
+ 
+  
+</Command>

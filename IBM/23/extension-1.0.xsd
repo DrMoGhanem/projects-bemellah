@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- IBM Confidential                                                  -->
+<!--                                                                   -->
+<!-- OCO Source Materials                                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2012                                -->
+<!--                                                                   -->
+<!-- The source code for this program is not published or otherwise    -->
+<!-- divested of its trade secrets, irrespective of what has been      -->
+<!-- deposited with the U.S. Copyright Office.                         -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema targetNamespace="http://xml.spss.com/spss/extension" 
+		xmlns="http://xml.spss.com/spss/extension" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+		elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+  <xs:annotation>
+    <xs:documentation xml:lang="en">Copyright 2007 SPSS Inc. - All Rights Reserved. SPSS Inc. specifically disclaims all
+      warranties with respect to your use of this specification, expressed, implied, or otherwise, including
+      without limitation, all warranties of merchantability and fitness for a particular purpose. SPSS Inc. shall not
+      be liable for any special, incidental, or consequential damages, including without limitation lost revenues
+      or lost profits resulting from the use of the information herein.
+    </xs:documentation>
+  </xs:annotation>
+  <xs:element name="Command" type="command-content">
+    <xs:annotation>
+      <xs:documentation>
+      The top-level element, also known as the document or root element. This element contains a complete command syntax specification of an extension command.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="command-content">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="Subcommand"/>
+    </xs:sequence>
+    <xs:attribute name="Name" use="required">
+      <xs:annotation>
+        <xs:documentation>
+          The name of the command. For release 16.0.1, the name must be a single word in upper case with a maximum of 8 bytes. For release 17.0 and higher, the name can consist of up to three words (case insensitive) separated by spaces. Command names are restricted to 7-bit ascii characters. 
+          For multi-word command names, ensure that the first word as well as the first two words do not match the name of another command. For example, do not use the name CMD NEW if there is a command named CMD. 
+          Likewise, do not use the name MY CMD NEW if there is a command named MY CMD.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Language" >
+      <xs:annotation>
+        <xs:documentation>
+        The programming language in which the command is implemented.  Defaults to Python.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="Python"/>
+          <xs:enumeration value="R"/>
+          <xs:enumeration value="Java"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="Mode" >
+      <xs:annotation>
+        <xs:documentation>
+        Specifies whether the implementation code is contained in an R source file or an R package. Only applies for Language="R". Defaults to Source. 
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="Source"/>
+          <xs:enumeration value="Package"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:element name="Subcommand" type="subcommand-content">
+    <xs:annotation>
+      <xs:documentation>
+      Subcommands divide a command's functionality into distinct groups.  Typical subcommands include SAVE for specifying variables to be saved to the active dataset, PRINT for specifying tabular output, and PLOT for specifying chart output.  A subcommand can only be specified once per command. 
+      The name of a subcommand must be preceded by a forward slash when specified in command syntax.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="subcommand-content">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" ref="Parameter"/>
+    </xs:sequence>
+    <xs:attribute name="Name" use="required">
+      <xs:annotation>
+        <xs:documentation>
+        The name of the subcommand. Subcommand names are restricted to 7-bit ascii characters and start with a letter or one of the characters @, #, or $. Subsequent characters can be any combination of letters, numbers, nonpunctuation characters, and a period (.). 
+        To specify the anonymous subcommand, use Name="".
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="Occurrence">
+      <xs:annotation>
+        <xs:documentation>
+        Specifies whether the subcommand must be included in a syntax job for the command to run.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="Required"/>
+          <xs:enumeration value="Optional"/>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+    <xs:attribute name="IsArbitrary">
+      <xs:annotation>
+        <xs:documentation>
+        Allows arbitrary tokens on the subcommand.  This is useful, for example, for specifying variable lists and model effect lists.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="True"/>
+          <xs:enumeration value="False"/>
+          <xs:enumeration value="Yes">
+            <xs:annotation>
+              <xs:documentation>
+              Equivalent to True.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="No">
+            <xs:annotation>
+              <xs:documentation>
+              Equivalent to False.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:element name="Parameter" type="parameter-content">
+    <xs:annotation>
+      <xs:documentation>
+      A parameter controls a specific piece of a command's functionality.  There are many types of parameters so that the Parameter element is flexible enough to cover the different types of functionality provided by parameters.  Subcommands contain zero or more parameters.
+      </xs:documentation>
+    </xs:annotation>
+  </xs:element>
+  <xs:complexType name="parameter-content">
+    <xs:sequence maxOccurs="unbounded" minOccurs="0">
+      <xs:element  name="EnumValue">
+        <xs:annotation>
+          <xs:documentation>
+          EnumValue is used to enumerate a set of allowed values. EnumValue elements are ignored except for Keyword, KeywordList, Number, Integer, and QuotedString parameters. When used with Keyword or KeywordList parameters, the 
+          specified EnumValue elements represent the complete set of allowed values. When used with Number, Integer, or QuotedString parameters, the specified EnumValue elements represent a set of valid keywords in addition to 
+          the specified type. For example, the value AUTO might be specified as an allowed keyword value for an Integer parameter. The parameter can then be specified as an integer or the unquoted string AUTO. 
+          </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+          <xs:attributeGroup ref="enumValue-content"/>
+        </xs:complexType>
+      </xs:element>
+    </xs:sequence>
+    <xs:attribute name="Name" use="required">
+      <xs:annotation>
+        <xs:documentation>
+        The name of the parameter. Parameter names are restricted to 7-bit ascii characters and must start with a letter or one of the characters @, #, or $. Subsequent characters can be any combination of letters, numbers, nonpunctuation characters, and a period (.).
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+    <xs:attribute name="ParameterType" use="required">
+      <xs:simpleType>
+        <xs:restriction base="xs:token">
+          <xs:enumeration value="DatasetName">
+            <xs:annotation>
+              <xs:documentation>
+              Specifies a dataset name. The value will be checked for syntax correctness (same rules as for variable names) but not existence.  The case is preserved when passed to the Run function.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Integer">
+            <xs:annotation>
+              <xs:documentation>
+              A number with no fractional part after conversion. Optionally, you can specify a set of allowed keyword values for an Integer parameter, using EnumValue elements.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="IntegerList">
+            <xs:annotation>
+              <xs:documentation>
+              A blank or comma separated list of Integer types.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Keyword">
+            <xs:annotation>
+              <xs:documentation>
+              Specifies a value that adheres to the same rules as the Name attribute of a Parameter element. The value is passed in upper case to the Run function. 
+              You can specify the set of allowed values using EnumValue elements. Keyword type parameters must be assigned values. To specify a keyword without an associated value, use the LeadingToken type. 
+              If allowed values of the Keyword parameter include any of the reserved keywords, such as ALL or BY, then all allowed values must be specified as EnumValue elements.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="KeywordList">
+            <xs:annotation>
+              <xs:documentation>
+              Specifies a comma or blank separated list of values that adhere to the same rules as the Name attribute of a Parameter element. To specify a list of values not bound by these rules, use the TokenList type. 
+              You can specify the set of allowed values using EnumValue elements.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="LeadingToken">
+            <xs:annotation>
+              <xs:documentation>
+              Specifies a parameter that has a name (given by the Name attribute of the Parameter element) but no associated value. The name is passed in upper case to the Run function. 
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="Number">
+            <xs:annotation>
+              <xs:documentation>
+              A number, possibly in scientific notation using e or E. Optionally, you can specify a set of allowed keyword values for a Number parameter, using EnumValue elements. 
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="NumberList">
+            <xs:annotation>
+              <xs:documentation>
+              A blank or comma separated list of Number types.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="QuotedString">
+            <xs:annotation>
+              <xs:documentation>
+              A string enclosed in single or double quotes. The case is preserved when passed to the Run function. Optionally, you can specify a set of allowed keyword values (unquoted) for a QuotedString parameter, using EnumValue elements.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="TokenList">
+            <xs:annotation>
+              <xs:documentation>
+              Specifies a comma or blank separated list of values. Case is preserved when values are passed to the Run function. The TokenList type is similar to the KeywordList type but TokenList values are not bound by the rules required of KeywordList values.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="VariableName">
+            <xs:annotation>
+              <xs:documentation>
+              Specifies a variable name. The value will be checked for syntax correctness (see the rules for variable names in the Command Syntax Reference) but not existence. The case is preserved when passed to the Run function. 
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="VariableNameList">
+            <xs:annotation>
+              <xs:documentation>
+              Specifies a list of variable names. Each name in the list will be checked for syntax correctness but not existence. Case is preserved when values are passed to the Run function. The TO and ALL keywords are  supported.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="InputFile">
+            <xs:annotation>
+              <xs:documentation>
+              A file specification for an input file. The specified file must exist. The case is preserved when passed to the Run function.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+          <xs:enumeration value="OutputFile">
+            <xs:annotation>
+              <xs:documentation>
+              A file specification for an output file. The specified directory path must exist and either the specified file does not exist or, if it exists, it must be writable.  The case is preserved when passed to the Run function.
+              </xs:documentation>
+            </xs:annotation>
+          </xs:enumeration>
+        </xs:restriction>
+      </xs:simpleType>
+    </xs:attribute>
+  </xs:complexType>
+  <xs:attributeGroup name="enumValue-content">
+    <xs:attribute name="Name" use="required">
+      <xs:annotation>
+        <xs:documentation>
+        The enumerated value. Case is ignored.
+        </xs:documentation>
+      </xs:annotation>
+    </xs:attribute>
+  </xs:attributeGroup>
+</xs:schema>

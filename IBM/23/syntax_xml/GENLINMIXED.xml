@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2013                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command Name="GENLINMIXED" IsArbitrary="No" Language="Syntax" EndRequired="None"     xmlns="http://xml.spss.com/spss/extension" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+  xmlns:p1="http://xml.spss.com/spss/extension">
+  <Subcommand Name="DATA_STRUCTURE" Occurrence="Optional">
+    <Parameter Name="SUBJECTS" EqualsSign="Required" ParameterType="TokenList"/>
+    <Parameter Name="REPEATED_MEASURES" EqualsSign="Required" ParameterType="TokenList"/>
+    <Parameter Name="GROUPING" EqualsSign="Required" ParameterType="TokenList"/>
+    <Parameter Name="COVARIANCE_TYPE" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="DIAGONAL"/>
+      <EnumValue Name="AR1"/>
+      <EnumValue Name="ARMA11"/>
+      <EnumValue Name="COMPOUND_SYMMETRY"/>
+      <EnumValue Name="IDENTITY"/>
+      <EnumValue Name="TOEPLITZ"/>
+      <EnumValue Name="UNSTRUCTURED"/>
+      <EnumValue Name="VARIANCE_COMPONENTS"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="FIELDS" Occurrence="Optional">
+    <Parameter Name="TARGET" EqualsSign="Required" ParameterType="VariableName"/>
+    <Parameter Name="TRIALS" EqualsSign="Required" ParameterType="TokenList"/>
+    <Parameter Name="ANALYSIS_WEIGHT" EqualsSign="Required" ParameterType="VariableName"/>
+    <Parameter Name="OFFSET" EqualsSign="Required" ParameterType="TokenList"/>
+  </Subcommand>
+  <Subcommand Name="TARGET_OPTIONS" Occurrence="Optional">
+    <Parameter Name="REFERENCE" EqualsSign="Required" ParameterType="Number"/>
+    <Parameter Name="DISTRIBUTION" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="NORMAL"/>
+      <EnumValue Name="BINOMIAL"/>
+      <EnumValue Name="MULTINOMIAL"/>
+      <EnumValue Name="GAMMA"/>
+      <EnumValue Name="INVERSE_GAUSSIAN"/>
+      <EnumValue Name="NEGATIVE_BINOMIAL"/>
+      <EnumValue Name="POISSON"/>
+    </Parameter>
+    <Parameter Name="LINK" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="IDENTITY"/>
+      <EnumValue Name="CLOGLOG"/>
+      <EnumValue Name="CAUCHIT"/>
+      <EnumValue Name="LOG"/>
+      <EnumValue Name="LOGC"/>
+      <EnumValue Name="LOGIT"/>
+      <EnumValue Name="NLOGLOG"/>
+      <EnumValue Name="PROBIT"/>
+      <EnumValue Name="POWER"/>
+    </Parameter>
+    <Parameter Name="LINK_PARAMETER" EqualsSign="Required" ParameterType="Number"/>
+  </Subcommand>
+  <Subcommand Name="FIXED" Occurrence="Optional">
+    <Parameter Name="USE_PREDEFINED_INPUTS" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="TRUE"/>
+      <EnumValue Name="FALSE"/>
+    </Parameter>
+    <Parameter Name="EFFECTS" EqualsSign="Required" ParameterType="TokenList"/>
+    <Parameter Name="USE_INTERCEPT" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="TRUE"/>
+      <EnumValue Name="FALSE"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="RANDOM" Occurrence="Optional">
+    <Parameter Name="EFFECTS" EqualsSign="Required" ParameterType="TokenList"/>
+    <Parameter Name="USE_INTERCEPT" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="TRUE"/>
+      <EnumValue Name="FALSE"/>
+    </Parameter>
+    <Parameter Name="SUBJECTS" EqualsSign="Required" ParameterType="TokenList"/>
+    <Parameter Name="GROUPING" EqualsSign="Required" ParameterType="TokenList"/>
+    <Parameter Name="COVARIANCE_TYPE" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="DIAGONAL"/>
+      <EnumValue Name="AR1"/>
+      <EnumValue Name="ARMA11"/>
+      <EnumValue Name="COMPOUND_SYMMETRY"/>
+      <EnumValue Name="IDENTITY"/>
+      <EnumValue Name="TOEPLITZ"/>
+      <EnumValue Name="UNSTRUCTURED"/>
+      <EnumValue Name="VARIANCE_COMPONENTS"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="BUILD_OPTIONS" Occurrence="Optional">
+    <Parameter Name="TARGET_CATEGORY_ORDER" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="ASCENDING"/>
+      <EnumValue Name="DESCENDING"/>
+      <EnumValue Name="DATA"/>
+    </Parameter>
+    <Parameter Name="INPUTS_CATEGORY_ORDER" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="ASCENDING"/>
+      <EnumValue Name="DESCENDING"/>
+      <EnumValue Name="DATA"/>
+    </Parameter>
+    <Parameter Name="MAX_ITERATIONS" EqualsSign="Required" ParameterType="Integer"/>
+    <Parameter Name="CONFIDENCE_LEVEL" EqualsSign="Required" ParameterType="Number"/>
+    <Parameter Name="DF_METHOD" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="RESIDUAL"/>
+      <EnumValue Name="SATTERTHWAITE"/>
+    </Parameter>
+    <Parameter Name="COVB" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="MODEL"/>
+      <EnumValue Name="ROBUST"/>
+    </Parameter>
+    <Parameter Name="PCONVERGE" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="ABSOLUTE"/>
+      <EnumValue Name="RELATIVE"/>
+    </Parameter>
+    <Parameter Name="LCONVERGE" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="ABSOLUTE"/>
+      <EnumValue Name="RELATIVE"/>
+    </Parameter>
+    <Parameter Name="HCONVERGE" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="ABSOLUTE"/>
+      <EnumValue Name="RELATIVE"/>
+    </Parameter>
+    <Parameter Name="SCORING" EqualsSign="Required" ParameterType="Keyword"/>
+    <Parameter Name="SINGULAR" EqualsSign="Required" ParameterType="Keyword"/>
+  </Subcommand>
+  <Subcommand Name="EMMEANS" Occurrence="Optional">
+    <Parameter Name="TABLES" EqualsSign="Required" ParameterType="TokenList"/>
+    <Parameter Name="COMPARE" EqualsSign="Required" ParameterType="VariableName"/>
+    <Parameter Name="CONTRAST" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="PAIRWISE"/>
+      <EnumValue Name="DEVIATION"/>
+      <EnumValue Name="SIMPLE"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="EMMEANS_OPTIONS" Occurrence="Optional">
+    <Parameter Name="CONTROL" EqualsSign="Required" ParameterType="TokenList"/>
+    <Parameter Name="SCALE" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="ORIGINAL"/>
+      <EnumValue Name="TRANSFORMED"/>
+    </Parameter>
+    <Parameter Name="PADJUST" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="LSD"/>
+      <EnumValue Name="SEQBONFERRONI"/>
+      <EnumValue Name="SEQSIDAK"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="OUTFILE" Occurrence="Optional">
+    <Parameter Name="MODEL" EqualsSign="Required" ParameterType="OutputFile"/>
+  </Subcommand>
+  <Subcommand Name="SAVE" Occurrence="Optional">
+    <Parameter Name="PREDICTED_VALUES" EqualsSign="None" ParameterType="TokenList"/>
+    <Parameter Name="PREDICTED_PROBABILITY" EqualsSign="None" ParameterType="TokenList"/>
+    <Parameter Name="MAX_CATEGORIES" EqualsSign="None" ParameterType="Integer"/>
+    <Parameter Name="CONFIDENCE" EqualsSign="None" ParameterType="TokenList"/>
+    <Parameter Name="CONFIDENCE_METHOD" EqualsSign="None" ParameterType="Keyword">
+      <EnumValue Name="PREDICTEDPROBABILITY"/>
+      <EnumValue Name="PROBABILITYIMPROVEMENT"/>
+    </Parameter>
+    <Parameter Name="CONFIDENCE_INTERVALS" EqualsSign="None" ParameterType="TokenList"/>
+    <Parameter Name="PEARSON_RESIDUALS" EqualsSign="None" ParameterType="TokenList"/>
+  </Subcommand>
+</Command>

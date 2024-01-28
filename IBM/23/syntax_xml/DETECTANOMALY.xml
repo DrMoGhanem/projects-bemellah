@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Create 4/30/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="DETECTANOMALY" EndRequired="None" IsArbitrary="No" Language="Syntax"> 
+    <Subcommand Name="VARIABLES" EqualsSign="None">
+        <Parameter Name="CATEGORICAL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SCALE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="ID" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="EXCEPT" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="HANDLEMISSING" EqualsSign="None">
+        <Parameter Name="APPLY" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+        <Parameter Name="CREATEMISPROPVAR" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="None">
+        <Parameter Name="MINNUMPEERS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MAXNUMPEERS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MLWEIGHT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="NUMREASONS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PCTANOMALOUSCASES" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="NUMANOMALOUSCASES" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="ANOMALYCUTPOINT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="None">
+        <Parameter Name="ANOMALY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PEERID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PEERSIZE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PEERPCTSIZE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REASONVAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REASONMEASURE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REASONVALUE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REASONNORM" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="None">
+        <Parameter Name="MODEL" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="None">
+        <Parameter Name="CPS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ANOMALYLIST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NORMS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ANOMALYSUMMARY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REASONSUMMARY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

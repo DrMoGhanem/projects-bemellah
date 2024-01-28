@@ -1,0 +1,78 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 4/28/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    xmlns:p1="http://xml.spss.com/spss/extension" Name="AGGREGATE" EndRequired="None"
+    IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="OUTFILE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MODE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="REPLACE"/>
+            <EnumValue Name="ADDVARIABLES"/>
+        </Parameter>
+        <Parameter Name="OVERWRITE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SPEC_PARAMS">
+        <Parameter Name="SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PLT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FLT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FOUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NU" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NUMISS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PGT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FGT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="N" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NMISS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FIRST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CLT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CGT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COUT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional">
+        <Parameter Name="MODE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="REPLACE"/>
+            <EnumValue Name="ADDVARIABLES"/>
+        </Parameter>
+        <Parameter Name="OVERWRITE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="COLUMNWISE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DOCUMENT" EqualsSign="None"/>
+    <Subcommand Name="PRESORTED" EqualsSign="None"/>
+    <Subcommand Name="BREAK" EqualsSign="Optional">
+        <Parameter Name="A" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="D" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

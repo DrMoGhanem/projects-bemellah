@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: <Analytic Components>                          -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 2009, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<!-- Sample Module XML for Descriptives -->
+<Module xmlns="http://www.ibm.com/software/analytics/spss/xml/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" debug="false" version="8.0"
+    xsi:schemaLocation="http://www.ibm.com/software/analytics/spss/xml/extension http://www.ibm.com/software/analytics/spss/xml/extension/ModuleSpecification.xsd">
+    <ModuleDetails copyright="(c) 2009 SPSS, Inc." description="DecisionTrees Modules" id="tree"
+        label="DecisionTrees" provider="SPSS, Inc." providerTag="pasw" version="8.0"/>
+
+    <!--  On Windows, the shared library would called treemodule.dll, on Unix/Linux treemodule.so/.lib/whatever -->
+    <SharedLibrary basename="treecfmodule"/>
+
+    <!-- Resources used by the module. -->
+    <Resources>
+        <Bundle id="tree_module_res" path="messages" type="properties"/>
+        <HelpInfo id="help" type="native"/>
+    </Resources>
+    <CommonObjects>
+        <!--  Property type definitions. -->
+        <PropertyTypes>
+            <!--  -->
+            <Enumeration id="AlgorithmType">
+                <Enum value="Cart"/>
+                <Enum value="Chaid"/>
+                <Enum value="ExhaustiveChaid"/>
+                <Enum value="Quest"/>
+            </Enumeration>
+            <Enumeration id="StopRuleType">
+                <Enum value="percentage" resourceKey="StopRuleType.percentage"/>
+                <Enum value="absolute" resourceKey="StopRuleType.absolute"/>
+            </Enumeration>
+            
+            <Enumeration id="ChiSquareMethodType">
+                <Enum value="pearson" resourceKey="ChiSquareMethodType.pearson"/>
+                <Enum value="LR" resourceKey="ChiSquareMethodType.LR"/>
+            </Enumeration>
+
+            <Enumeration id="ValidationType">
+                <Enum value="none"/>
+                <Enum value="test"/>
+                <Enum value="validation"/>
+            </Enumeration>
+            
+            <Enumeration id="MissingValueHandelType">
+                <Enum value="Listwisedeletion"/>
+                <Enum value="Pairwisedeletion"/>
+            </Enumeration>
+            
+            <Enumeration id="PriorType">
+                <Enum value="Data"/>
+                <Enum value="Equal"/>                
+                <Enum value="Custom"/>
+            </Enumeration>
+
+            <Enumeration id="CartSplitCriteriaType">
+                <Enum value="Gini" resourceKey="CartSplitCriteriaType.Gini"/>
+                <Enum value="Twoing" resourceKey="CartSplitCriteriaType.Twoing"/>
+                <Enum value="Ordered" resourceKey="CartSplitCriteriaType.Ordered"/>
+            </Enumeration>
+            
+            <Enumeration id="ValidMetaData_Enum">
+                <Enum value="Default"/>
+                <Enum value="PSM"/>
+            </Enumeration>
+            
+            <!-- a[X.0][Y]=1.3 -->
+            <Structure id="costList">
+                <!--Cost True Value [X.0]-->            
+                <Attribute name="trueValue" resourceKey ="" valueType="string" isList = "false"/>
+                <!--Cost Predicted Value [Y]--> 
+                <Attribute name="predictedValue" resourceKey ="" valueType="string" isList = "false"/>
+                <!--Cost cost Value [1.3]--> 
+                <Attribute name="cost" resourceKey ="" valueType="double" isList = "false" min="0" />
+            </Structure>
+            <!--customPriors setting -->
+            <Structure id="customPriorType">        
+                <Attribute name="value" resourceKey ="" valueType="string" isList = "false"/>
+                <Attribute name="probability" resourceKey ="" valueType="double" isList = "false"/>
+            </Structure>
+            
+            <Structure id="ScoreList">        
+                <Attribute name="CatValue" resourceKey ="" valueType="string" isList = "false"/>
+                <Attribute name="ScoreValue" resourceKey ="" valueType="double" isList = "false"/>
+            </Structure>
+        </PropertyTypes>
+    </CommonObjects>
+
+    <!-- Status Codes -->
+    <StatusCodes>
+
+        <!-- shared peer error code may be returned in the CF integration -->
+        <StatusCode code="240000" status="error" messageKey="unknownErrorMsg.LABEL"/>
+        <StatusCode code="240001" status="error" messageKey="initErrMsg.LABEL"/>
+        <StatusCode code="240002" status="error" messageKey="inputErrMsg.LABEL"/>
+        <StatusCode code="240003" status="error" messageKey="internalErrMsg.LABEL"/>
+        <StatusCode code="240004" status="error" messageKey="invalidMetadataErrMsg.LABEL"/>
+        <StatusCode code="240005" status="error" messageKey="fileNotExistErrorMsg.LABEL"/>
+        <StatusCode code="240006" status="error" messageKey="storageNotSupportErrorMsg.LABEL"/>
+        <StatusCode code="240007" status="error" messageKey="invalidTargetErrorMsg.LABEL"/>
+        <StatusCode code="240008" status="error"
+            messageKey="invalidTarResponseErrorMsg.LABEL"/>
+        <StatusCode code="240009" status="error" messageKey="predictorsEmptyErrMsg.LABEL"/>
+        <StatusCode code="240010" status="error" messageKey="targetAsInputErrorMsg.LABEL"/>
+        <StatusCode code="240011" status="error" messageKey="invalidFrequencyErrorMsg.LABEL"/>
+        <StatusCode code="240012" status="error"
+            messageKey="invalidTargetResponseErrorMsg.LABEL"/>
+        <StatusCode code="240013" status="error"
+            messageKey="invlidResponseCatErrorMsg.LABEL"/>
+        <StatusCode code="240014" status="error" messageKey="noFrequencyErrorMsg.LABEL"/>
+        <StatusCode code="240015" status="error" messageKey="noTargetErrorMsg.LABEL"/>
+        <StatusCode code="240016" status="error" messageKey="invalidtarValueMsg.LABEL"/>
+        <StatusCode code="240017" status="error" messageKey="getfilePathMsg.LABEL"/>
+        <StatusCode code="240018" status="error" messageKey="creationAlgorithmMsg.LABEL"/>
+        <StatusCode code="240019" status="error" messageKey="buildModelErrorMsg.LABEL"/>
+        <StatusCode code="240020" status="error" messageKey="assessModelErrorMsg.LABEL"/>
+        <StatusCode code="240021" status="error" messageKey="exportPMLLErrorMsg.LABEL"/>
+        <StatusCode code="240022" status="error" messageKey="getDataFieldErrorMsg.LABEL"/>
+        <StatusCode code="240023" status="error" messageKey="tarResIsSameErrorMsg.LABEL"/>
+        <StatusCode code="240024" status="error" messageKey="NoTargetFieldErrorMsg.LABEL"/>
+        <StatusCode code="240025" status="error" messageKey="NoTargetResFieldErrorMsg.LABEL"/>
+        <StatusCode code="240026" status="error" messageKey="targetResTrueErrorMsg.LABEL"/>
+        <StatusCode code="240027" status="error" messageKey="PMMLNotExistErrorMsg.LABEL"/>
+        <StatusCode code="240028" status="error" messageKey="PMMLIsInvalidErrorMsg.LABEL"/>
+        <StatusCode code="240029" status="error" messageKey="NoPredVarInPMMLErrorMsg.LABEL"/>
+        <StatusCode code="240030" status="error" messageKey="PMMLNotMatchDataErrorMsg.LABEL"/>
+        <StatusCode code="240031" status="error" messageKey="getDataSourceErrorMsg.LABEL"/>
+        <StatusCode code="240032" status="error" messageKey="dataFileISValidErrorMsg.LABEL"/>
+        <StatusCode code="240033" status="error" messageKey="TarFieldNOTMatchErrMsg.LABEL"/>
+        <StatusCode code="240034" status="error" messageKey="TRFieldNOTMatchErrMsg.LABEL"/>
+        <StatusCode code="240035" status="error" messageKey="FreFieldNOTMatchErrMsg.LABEL"/>
+        <StatusCode code="240036" status="error" messageKey="InputFieldNOTMatchMsg.LABEL"/>
+        <StatusCode code="240037" status="error" messageKey="NoValidRecordsMsg.LABEL"/>
+        <StatusCode code="240038" status="error" messageKey="NoRecordsScoringMsg.LABEL"/>
+        <StatusCode code="240039" status="error" messageKey="PartionInValidMsg.LABEL"/>
+        <StatusCode code="240040" status="error" messageKey="InputFieldConstantMsg.LABEL"/>
+        <StatusCode code="240041" status="error" messageKey="InvalidSettingsErrorMsg.LABEL"/>
+        <StatusCode code="240042" status="error" messageKey="NoValidFieldValuesErrorMsg.LABEL"/>
+        <!-- common error code -->
+        <StatusCode code="1" status="error" messageKey="kMCCANCEL.LABEL"/>
+        <StatusCode code="2" status="error" messageKey="kMC_IO_ERROR.LABEL"/>
+        <StatusCode code="3" status="error" messageKey="kMC_MEMORY_LIMIT_EXCEEDED.LABEL"/>
+        <StatusCode code="4" status="error" messageKey="kMC_INVALID_SAVE_STATE.LABEL"/>
+        <StatusCode code="5" status="error" messageKey="kMC_FAILED_RESTART.LABEL"/>
+        <StatusCode code="6" status="error" messageKey="kMC_WRONG_STATE.LABEL"/>
+        <!-- Tree error codes-->
+        <StatusCode code="10101" status="error" messageKey="kTree_UnknownParameterSettings.LABEL"/>
+        <StatusCode code="10102" status="error" messageKey="kTree_NoAlgorithmCreated.LABEL"/>
+        <StatusCode code="10103" status="error" messageKey="kTree_InvalidMetadata.LABEL"/>
+        <StatusCode code="10104" status="error" messageKey="kTree_NoTargetField.LABEL"/>
+        <StatusCode code="10105" status="error" messageKey="kTree_NoInputFields.LABEL"/>
+        <StatusCode code="10106" status="error" messageKey="kTree_ConstructVariablesErr.LABEL"/>
+        <StatusCode code="10107" status="error" messageKey="kTree_FrequencyWeightVariableRepeat.LABEL"/>
+        <StatusCode code="10108" status="error" messageKey="kTree_VariableNoExistInMetadata.LABEL"/>
+        <StatusCode code="10109" status="error" messageKey="kTree_ExportPMMLErr.LABEL"/>
+        <StatusCode code="10110" status="error" messageKey="kTree_DynamicCastErr.LABEL"/>
+        <StatusCode code="10111" status="error" messageKey="kTree_CreateTreeMetadataErr.LABEL"/>
+        <StatusCode code="10112" status="error" messageKey="kTree_CreateAlgorithmErr.LABEL"/>
+        <StatusCode code="10113" status="error" messageKey="kTree_ScoreValuesNotCompleteErr.LABEL"/>
+        <StatusCode code="10114" status="error" messageKey="kTree_PartitionNoTranningErr.LABEL"/>
+        <StatusCode code="10115" status="error" messageKey="kTree_ExecuteAlgorithmErr.LABEL"/>
+        <StatusCode code="10116" status="error" messageKey="kTree_QuestNotSupportContinuousTarget.LABEL"/>
+        <StatusCode code="10117" status="error" messageKey="kTree_NoAvailableInputData.LABEL"/>
+        <StatusCode code="10118" status="error" messageKey="kTree_ValidationTypeError.LABEL"/>
+        <StatusCode code="10119" status="error" messageKey="kTree_QuestNotSupportRegressionWeightError.LABEL"/>
+        <StatusCode code="10120" status="error" messageKey="kTree_StringVariableCannotUseAsOrdinalErr.LABEL"/>
+    </StatusCodes>
+
+    <!-- ContainerType declarations -->
+    <ContainerTypes>
+        <!--  
+        Container types:
+        -   XML documents
+        -    PMML / Model
+        -    Pivot Tables / Multi-Dimensional Variables
+        -    Chart Visualizations
+        -    Table Visualizations
+        -    Text output
+        -    Static Image
+        -    Case data – a subset
+        __
+        The "fileSuffix" attribute is used when generating the temporary files used to store or retrieve the various components.
+        They don't provide explicit meaning to the application or component but potentially would be useful when debugging.
+        -->
+        <!-- TBD -->
+        <ContainerType id="pmml_container" mimeType="pmml" resourceKey="" fileSuffix="" /> 
+        <ContainerType id="statxml_container" mimeType="xml" resourceKey="" fileSuffix="" /> 
+    </ContainerTypes>
+
+    <!-- Component definition. Component names are used as name-spaces and should be unique across component instances. -->
+    <Component id="tree">
+
+        <!-- 
+        Component capabilities [TBD]:
+        -  Data Provider
+        -  Data Transformer
+        -  Data Consumer
+        -  Container Operator (operates upon Containers)
+        -->
+        <Capabilities>
+        <Consumer/>
+        </Capabilities>
+
+        <!-- Property declarations -->
+        <Properties>
+
+            <!-- Components Common Settings -->
+            <Property name="UseRandomSeed" valueType="boolean" defaultValue="true" resourceKey="UseRandomSeed"/>
+            <Property name="RandomSeed" valueType="integer" min="1" defaultValue="54752075" resourceKey="RandomSeed"/>
+            <Property name="UseMetaDataRole" valueType="boolean" defaultValue="false"/>
+            <Property name="MetaDataSource" type="ValidMetaData_Enum" defaultValue="Default"/>
+            <Property name="TargetField" valueType="fieldName" isList="false"/>
+            <Property name="InputFieldList" valueType="fieldName" isList="true"/>
+            <Property name="FrequencyWeightField" valueType="fieldName" isList="false"/>
+            <Property name="RegressionWeightField" valueType="fieldName" isList="false"/>
+            <!-- global settings -->
+            <Property name="TreeGrowingMethod" type="AlgorithmType" defaultValue="Chaid"/>
+            
+            <!--All Tree settings -->
+            <Property name="UseCosts" valueType="boolean" defaultValue="false"/>
+            <Property name="Costs" type="costList" isList="true"/> 
+            <!--StopRule Percentage or number-->
+            <!--if stopRule is percentage, minNodePercentSize and minChildPercentSize enable. 
+            else minNodeSize and minChildSize enable-->
+            <Property name="MaxTreeDepth" valueType="integer" min="0" defaultValue="5" max="1000" resourceKey="basics_panel_title"/>
+            <Property name="UsePercentageForNodeSizeRequirement" type="StopRuleType" defaultValue="percentage" resourceKey="StopRule"/>
+            <!--Property name="UsePercentageForNodeSizeRequirement" valueType="boolean" defaultValue="false"/-->
+            <Property name="MinParentRecordsPct" valueType="double" min="0" max="100" defaultValue="2" resourceKey="MinParentRecordsPct"/>
+            <Property name="MinChildRecordsPct" valueType="double" min="0" max="100" defaultValue="1" resourceKey="MinChildRecordsPct"/>
+            <Property name="MinParentRecordsABS" valueType="integer" min="2" defaultValue="100" resourceKey="MinParentRecordsABS"/>
+            <Property name="MinChildRecordsABS" valueType="integer" min="1" defaultValue="50" resourceKey="MinChildRecordsABS"/>
+            <Property name="SplitAlpha" valueType="double" defaultValue="0.05" resourceKey="SplitAlpha" min="0.0" max="1.0" />
+            
+            <!--Inner partition settings-->
+            <Property name="UseOverFitPreventionSet" valueType="boolean" defaultValue="true"/>
+            <Property name="OverFitPreventionSetPct" valueType="double" defaultValue="30" min="0.0" max="99.0"  resourceKey="OverFitPreventionSetPct"/>
+            
+            <!--Chaid Only-->
+            <Property name="MergeAlpha" valueType="double" defaultValue="0.05" resourceKey="MergeAlpha"  min="0.0" max="1.0"/>
+            <Property name="ChiSquareType" type="ChiSquareMethodType" defaultValue="pearson" resourceKey="ChiSquareMethodType"/>
+            <Property name="Epsilon" valueType="double" defaultValue="0.001" min="0" max="1.0" resourceKey="Epsilon"/>
+            <Property name="MaxIterations" valueType="integer" defaultValue="100" min="0" max="100" resourceKey="MaxIterations"/>
+            <Property name="SplitMergedCategories" valueType="boolean" defaultValue="false" resourceKey="SplitMergedCategories"/>
+            <Property name="BonferroniAdjustment" valueType="boolean" defaultValue="true" resourceKey="BonferroniAdjustment"/>
+            
+            <!--Cart and quest tree only-->
+            <Property name="MaxSurrogates" valueType="integer" min="0" max="18" defaultValue="5" resourceKey="MaxSurrogates"/>
+            <Property name="PruneTree" valueType="boolean" defaultValue="true" resourceKey="PruneTree"/>
+            <Property name="AdjustedPropensityPartition" type="ValidationType" defaultValue="none"/>
+            <Property name="Priors" type="PriorType" defaultValue="Data"/>
+            <Property name="CustomPriors" type="customPriorType" isList="true"/>
+            <Property name="AdjustPriors" valueType="boolean" defaultValue="false"/>
+            <Property name="UseStdErrRule" valueType="boolean" defaultValue="false"/>
+            <Property name="StdErrMultiplier" valueType="double" defaultValue="1.0" min="0.0" max="1000" resourceKey="StdErrMultiplier"/>
+            <Property name="MinImpurity" valueType="double" defaultValue="0.0001" min="0" max="1.0"  resourceKey="MinImpurity"/>
+            <Property name="ImpurityMeasure" type="CartSplitCriteriaType" defaultValue="Gini" resourceKey="CartSplitCriteriaType"/>
+            <!-- Just some settings that will not be used by Modeler UI.-->
+            <Property name="CrossSampleFolds" valueType="integer" defaultValue="10" min="2"/>
+            <Property name="MaxNumberOfCompetitors" valueType="integer" defaultValue="0" min="0" />
+            <Property name="MaxNominalPredictorCategories" valueType="integer" defaultValue="0" min="0" />
+            <Property name="AlphaOfMergeSplit" valueType="double" defaultValue="0.025" min="0"  max="1.0"/>
+            <Property name="AlphaForVariableSelection" valueType="double" defaultValue="0" min="0" max="1.0" />        
+            <!-- Alters the maximum number of categories in a nominal predictor to be considered 
+             for being a surrogate by the algorithm. Computation time is exponential (2^N) for 
+             the number of categories, so this limit should not be set too high. -->
+            <Property name="MaxNumberOfNominalCatsSurr" valueType="integer" defaultValue="0" min="0" />
+            <Property name="Scores" type="ScoreList" isList="true"/>
+
+        </Properties>
+
+        <!-- Containers -->
+        <Containers>
+            <!-- TBD -->
+                <Container name="PMML" type="pmml_container" usage="output" runtimeProperty="tmpReportFile" /> 
+                <Container name="StatXML" type="statxml_container" usage="output" runtimeProperty="tmpReportFile" /> 
+        </Containers>
+
+        <!-- Property constraints (component state preconditions). -->
+        <Constraints>
+            <!--    <Constraint>
+            </Constraint>-->
+        </Constraints>
+
+    </Component>
+</Module>

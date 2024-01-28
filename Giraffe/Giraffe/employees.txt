@@ -1,0 +1,3 @@
+Dodo, director isA
+Mama, second in command after Dodo
+Papa general manager

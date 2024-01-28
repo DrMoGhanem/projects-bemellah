@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="OPTIMAL BINNING" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="VARIABLES" EqualsSign="None">
+        <Parameter Name="GUIDE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="BIN" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SAVE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+            <EnumValue Name="INTO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="None">
+        <Parameter Name="PREPROCESS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EQUALFREQ"/>
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="BINS"/>
+        </Parameter>
+        <Parameter Name="METHOD" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="MDLP"/>
+            <EnumValue Name="EQUALFREQ"/>
+            <EnumValue Name="BINS"/>
+        </Parameter>
+        <Parameter Name="LOWEREND" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="UNBOUNDED"/>
+            <EnumValue Name="OBSERVED"/>
+        </Parameter>
+        <Parameter Name="UPPEREND" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="UNBOUNDED"/>
+            <EnumValue Name="OBSERVED"/>
+        </Parameter>
+        <Parameter Name="LOWERLIMIT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INCLUSIVE"/>
+            <EnumValue Name="EXCLUSIVE"/>
+        </Parameter>
+        <Parameter Name="FORCEMERGE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="None">
+        <Parameter Name="SCOPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="PAIRWISE"/>
+            <EnumValue Name="LISTWISE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="None">
+        <Parameter Name="RULES" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="None">
+        <Parameter Name="ENDPOINTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DESCRIPTIVES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ENTROPY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

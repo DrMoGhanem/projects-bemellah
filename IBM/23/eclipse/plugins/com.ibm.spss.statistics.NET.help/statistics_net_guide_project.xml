@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<!--© Copyright IBM Corporation 1989, 2014-->
+<toc label="Integration Plug-in for Microsoft .NET User Guide"
+     topic="spss/programmability_option/howto_get_net_plugin.htm">
+   <topic label="How to get the IBM SPSS Statistics - Integration Plug-in for Microsoft .NET"
+          href="spss/programmability_option/howto_get_net_plugin.htm"/>
+   <topic label="Getting Started (.NET)"
+          href="spss/programmability_option/programmability_sdk_vbapps_start.htm"/>
+   <topic label="Running IBM SPSS Statistics Commands (.NET)"
+          href="spss/programmability_option/programmability_sdk_vbapps_submit.htm"/>
+   <topic label="Retrieving Dictionary Information (.NET)"
+          href="spss/programmability_option/programmability_sdk_vbapps_vardict.htm"/>
+   <topic label="Working With Case Data in the Active Dataset (.NET)"
+          href="spss/programmability_option/programmability_sdk_vbapps_cursors.htm">
+      <topic label="Reading Case Data (.NET)"
+             href="spss/programmability_option/programmability_sdk_vbapps_cursors_read.htm"/>
+      <topic label="Creating New Variables in the Active Dataset (.NET)"
+             href="spss/programmability_option/programmability_sdk_vbapps_cursors_write.htm"/>
+      <topic label="Appending New Cases (.NET)"
+             href="spss/programmability_option/programmability_sdk_vbapps_cursors_append.htm"/>
+   </topic>
+   <topic label="Creating and Managing Multiple Datasets (.NET)"
+          href="spss/programmability_option/programmability_sdk_vbapps_datastep.htm"/>
+   <topic label="Retrieving Output from Syntax Commands (.NET)"
+          href="spss/programmability_option/programmability_sdk_vbapps_getoutput.htm"/>
+   <topic label="Running Python and R Programs from .NET"
+          href="spss/programmability_option/programmability_sdk_vbapps_python_r.htm"/>
+   <topic label="Creating Custom Output (.NET)"
+          href="spss/programmability_option/programmability_sdk_vbapps_makeoutput.htm">
+      <topic label="Creating Pivot Tables (.NET)"
+             href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables.htm">
+         <topic label="The SimplePivotTable Method (.NET)"
+                href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_simple.htm"/>
+         <topic label="General Approach to Creating Pivot Tables (.NET)"
+                href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general.htm">
+            <topic label="Step 1: Adding Dimensions (.NET)"
+                   href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_dimensions.htm"/>
+            <topic label="Step 2: Defining Categories (.NET)"
+                   href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_categories.htm"/>
+            <topic label="Step 3: Setting Cell Values (.NET)"
+                   href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_cells.htm"/>
+            <topic label="Generating the Pivot Table Output (.NET)"
+                   href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_close.htm"/>
+            <topic label="Using Cell Values in Expressions (.NET)"
+                   href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_getitem.htm"/>
+         </topic>
+         <topic label="Creating Pivot Tables from Data with Splits (.NET)"
+                href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_splitchange.htm"/>
+      </topic>
+      <topic label="Creating Text Blocks (.NET)"
+             href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_text.htm"/>
+   </topic>
+   <topic label="Deploying Your Application (.NET)"
+          href="spss/programmability_option/programmability_sdk_vbapps_deploy.htm"/>
+</toc>

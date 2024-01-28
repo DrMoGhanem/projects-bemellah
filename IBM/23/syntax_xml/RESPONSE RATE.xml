@@ -1,0 +1,37 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ 
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    xmlns:p1="http://xml.spss.com/spss/extension" Name="RESPONSE RATE" EndRequired="None"
+    IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="VARIABLES">
+        <Parameter Name="NUMERATOR" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="DENOMINATOR" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="GROUP" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MINRATE">
+        <Parameter Name="RATE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="FORMULA" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MAXCOUNT">
+        <Parameter Name="COUNT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="PERCENT" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+ </Command>

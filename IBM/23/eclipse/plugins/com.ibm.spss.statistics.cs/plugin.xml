@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--© Copyright IBM Corporation 2015-->
+<?eclipse version="3.0"?><plugin id="com.ibm.spss.statistics.cs" name="Case Studies" provider-name="IBM"
+        version="23">
+   <extension point="org.eclipse.help.toc">
+      <toc file="statistics_casestudies_project.xml" primary="true"/>
+   </extension>
+   <extension point="org.eclipse.help.index">
+      <index file="statistics_casestudies_project_eclipseindex.xml"/>
+   </extension>
+</plugin>

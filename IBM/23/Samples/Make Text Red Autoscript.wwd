@@ -1,0 +1,58 @@
+'Makes text of table body red.
+'Suggested use: Associate with Warnings table to make it stand out in Viewer.
+
+'This script runs as an autoscript or a regular script.
+'To use as an autoscript, select a pivot table in the Output Viewer and
+'choose Associate Autoscript.
+
+'To use as a regular script, first select a pivot table in the Output Viewer
+'then run the script.
+
+'#Language "WWB-COM"
+'#Uses "global.wwd"
+
+Option Explicit
+
+Sub Main
+
+	Dim objItem As ISpssItem
+	Dim objPivotTable As PivotTable
+
+	Dim bolFoundOutputDoc As Boolean
+	Dim bolPivotSelected As Boolean
+
+
+'If not run as autoscript
+
+	If scriptContext Is Nothing Then
+
+       'Get the selected pivot table
+    	Call GetFirstSelectedPivot(objPivotTable, objItem, bolFoundOutputDoc, bolPivotSelected)
+
+        If (bolFoundOutputDoc = False) Or (bolPivotSelected = False) Then
+ 		'either there wasn't an output doc or a pivot table wasn't selected
+    		Exit Sub
+   	    End If
+
+    Else
+
+'if run as autoscript
+
+    	Set objItem = scriptContext.GetOutputItem()
+	    Set objPivotTable = objItem.ActivateTable
+
+    End If
+
+'Modify the table
+    Call ModifyTable(objPivotTable)
+
+    objItem.Deactivate
+
+End Sub
+
+
+
+Sub ModifyTable (objPivotTable As PivotTable)
+    objPivotTable.SelectTableBody
+    objPivotTable.TextColor = RGB(255,0,0)
+End Sub

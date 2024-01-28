@@ -1,0 +1,166 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<!--© Copyright IBM Corporation 1989, 2014-->
+<toc label="Tutorial" topic="spss/tutorials/introtut2.htm">
+   <topic label="Introduction" href="spss/tutorials/introtut2.htm">
+      <topic label="Sample Files" href="spss/tutorials/introtut_sample_files.htm"/>
+      <topic label="Opening a Data File" href="spss/tutorials/introtut5.htm"/>
+      <topic label="Running an Analysis" href="spss/tutorials/introtut6.htm"/>
+      <topic label="Creating Charts" href="spss/tutorials/introtut8.htm"/>
+   </topic>
+   <topic label="Reading Data" href="spss/tutorials/datatut_intro.htm">
+      <topic label="Basic Structure of IBM SPSS Statistics Data Files"
+             href="spss/tutorials/datatut_datastructure.htm"/>
+      <topic label="Reading IBM SPSS Statistics Data Files"
+             href="spss/tutorials/datatut_spssfile.htm"/>
+      <topic label="Reading Data from Spreadsheets" href="spss/tutorials/datatut_excel.htm"/>
+      <topic label="Reading Data from a Database" href="spss/tutorials/datatut_database.htm"/>
+      <topic label="Reading Data from a Text File"
+             href="spss/tutorials/datatut_textfile.htm"/>
+   </topic>
+   <topic label="Using the Data Editor" href="spss/tutorials/dataeditortut_intro.htm">
+      <topic label="Entering Numeric Data" href="spss/tutorials/dataeditortut_numeric.htm"/>
+      <topic label="Entering String Data" href="spss/tutorials/dataeditortut_string.htm"/>
+      <topic label="Defining Data" href="spss/tutorials/dataeditortut_definedata.htm">
+         <topic label="Adding Variable Labels" href="spss/tutorials/dataeditortut_labels.htm"/>
+         <topic label="Changing Variable Type and Format"
+                href="spss/tutorials/dataeditortut_type.htm"/>
+         <topic label="Adding Value Labels" href="spss/tutorials/dataeditortut_addnumlabel.htm"/>
+         <topic label="Handling Missing Data" href="spss/tutorials/dataeditortut_missing.htm"/>
+         <topic label="Missing Values for a Numeric Variable"
+                href="spss/tutorials/dataeditortut_missingnumber.htm"/>
+         <topic label="Missing Values for a String Variable"
+                href="spss/tutorials/dataeditortut_missingstring.htm"/>
+      </topic>
+   </topic>
+   <topic label="Examining Summary Statistics for Individual Variables"
+          href="spss/tutorials/sumstats_intro.htm">
+      <topic label="Level of Measurement" href="spss/tutorials/sumstats_measlev.htm"/>
+      <topic label="Summary Measures for Categorical Data"
+             href="spss/tutorials/sumstats_catvars.htm">
+         <topic label="Charts for Categorical Data"
+                href="spss/tutorials/sumstats_catvars_bar.htm"/>
+      </topic>
+      <topic label="Summary Measures for Scale Variables"
+             href="spss/tutorials/sumstats_scalevars.htm">
+         <topic label="Histograms for Scale Variables"
+                href="spss/tutorials/sumstats_scalevars_hist.htm"/>
+      </topic>
+   </topic>
+   <topic label="Crosstabulation Tables" href="spss/tutorials/bcrosstabstut_intro.htm">
+      <topic label="A Simple Crosstabulation" href="spss/tutorials/bcrosstabstut_simple.htm"/>
+      <topic label="Counts vs. Percentages" href="spss/tutorials/bcrosstabstut_percent.htm"/>
+      <topic label="Significance Testing for Crosstabulations"
+             href="spss/tutorials/bcrosstabstut_sigtest.htm"/>
+      <topic label="Adding a Layer Variable" href="spss/tutorials/bcrosstabstut_layer.htm"/>
+   </topic>
+   <topic label="Creating and editing charts" href="spss/tutorials/bcharttut_intro.htm">
+      <topic label="Chart creation basics"
+             href="spss/tutorials/bcharttut_standard_create.htm">
+         <topic label="Using the Chart Builder gallery"
+                href="spss/tutorials/bcharttut_gallery.htm"/>
+         <topic label="Defining variables and statistics"
+                href="spss/tutorials/bcharttut_variables.htm"/>
+         <topic label="Adding text" href="spss/tutorials/bcharttut_optionalelements.htm"/>
+         <topic label="Creating the chart" href="spss/tutorials/bcharttut_createfinal.htm"/>
+      </topic>
+   </topic>
+   <topic label="Working with Output" href="spss/tutorials/outputtut_intro.htm">
+      <topic label="Using the Viewer" href="spss/tutorials/outputtut_useviewer.htm"/>
+      <topic label="Using the Pivot Table Editor"
+             href="spss/tutorials/outputtut_pivottable.htm">
+         <topic label="Accessing Output Definitions"
+                href="spss/tutorials/outputtut_defineoutput.htm"/>
+         <topic label="Pivoting Tables" href="spss/tutorials/outputtut_pivotatable.htm"/>
+         <topic label="Creating and Displaying Layers"
+                href="spss/tutorials/outputtut_displaylayer.htm"/>
+         <topic label="Editing Tables" href="spss/tutorials/outputtut_edittable.htm"/>
+         <topic label="Hiding Rows and Columns" href="spss/tutorials/outputtut_hiderows.htm"/>
+         <topic label="Changing Data Display Formats"
+                href="spss/tutorials/outputtut_changeformat.htm"/>
+      </topic>
+      <topic label="TableLooks" href="spss/tutorials/outputtut_looksintro.htm">
+         <topic label="Using Predefined Formats"
+                href="spss/tutorials/outputtut_looksselect.htm"/>
+         <topic label="Customizing TableLook Styles"
+                href="spss/tutorials/outputtut_lookscustom.htm"/>
+         <topic label="Changing the Default Table Formats"
+                href="spss/tutorials/outputtut_lookschangedef.htm"/>
+         <topic label="Customizing the Initial Display Settings"
+                href="spss/tutorials/outputtut_lookssettings.htm"/>
+         <topic label="Displaying Variable and Value Labels"
+                href="spss/tutorials/outputut_labels.htm"/>
+      </topic>
+      <topic label="Using Results in Other Applications"
+             href="spss/tutorials/outputtut_export.htm">
+         <topic label="Pasting Results as Word Tables" href="spss/tutorials/outputtut_rtf.htm"/>
+         <topic label="Pasting Results as Text" href="spss/tutorials/outputtut_text.htm"/>
+         <topic label="Exporting Results to Microsoft Word, PowerPoint, and Excel Files"
+                href="spss/tutorials/outputtut_msapps.htm"/>
+         <topic label="Exporting Results to PDF" href="spss/tutorials/export_output_pdf.htm"/>
+         <topic label="Exporting Results to HTML"
+                href="spss/tutorials/features_exportoutput_01.htm"/>
+      </topic>
+   </topic>
+   <topic label="Working with Syntax" href="spss/tutorials/syntax_intro.htm">
+      <topic label="Pasting Syntax" href="spss/tutorials/syntax_paste.htm"/>
+      <topic label="Editing Syntax" href="spss/tutorials/syntax_edit.htm"/>
+      <topic label="Opening and Running a Syntax File"
+             href="spss/tutorials/syntax_openrun.htm"/>
+      <topic label="Using Breakpoints" href="spss/tutorials/syntax_breakpoints.htm"/>
+   </topic>
+   <topic label="Modifying Data Values" href="spss/tutorials/bmodvals_tut_intro.htm">
+      <topic label="Creating a Categorical Variable from a Scale Variable"
+             href="spss/tutorials/bmodvalstut_recode.htm"/>
+      <topic label="Computing New Variables" href="spss/tutorials/bmodvalstut_compute.htm">
+         <topic label="Using Functions in Expressions"
+                href="spss/tutorials/bmodvalstut_functions.htm"/>
+         <topic label="Using Conditional Expressions"
+                href="spss/tutorials/bmodvalstut_condexps.htm"/>
+      </topic>
+      <topic label="Working with Dates and Times"
+             href="spss/tutorials/bmodvalstut_datetime.htm">
+         <topic label="Calculating the Length of Time between Two Dates"
+                href="spss/tutorials/bmodvalstut_datetime_subdates.htm"/>
+         <topic label="Adding a Duration to a Date"
+                href="spss/tutorials/bmodvalstut_datetime_adddur.htm"/>
+      </topic>
+   </topic>
+   <topic label="Time Saving Features" href="spss/tutorials/timesave_intro.htm">
+      <topic label="Copying Data Properties" href="spss/tutorials/timesave_dictionary.htm"/>
+      <topic label="Displaying Data Dictionary Information"
+             href="spss/tutorials/displaydictionary.htm"/>
+      <topic label="Dialog Recall" href="spss/tutorials/features_dlgrecall_01.htm"/>
+   </topic>
+   <topic label="Customizing IBM SPSS Statistics"
+          href="spss/tutorials/customizetut_intro.htm">
+      <topic label="Creating Custom Menu Items" href="spss/tutorials/customizetut_menu.htm"/>
+      <topic label="Creating Custom Toolbars" href="spss/tutorials/customizetut_toolbar.htm"/>
+      <topic label="Creating Custom Dialogs" href="spss/tutorials/dialogbuilder_intro.htm">
+         <topic label="Creating a New Dialog and Specifying the Dialog Properties"
+                href="spss/tutorials/dialogbuilder_dialog_properties.htm"/>
+         <topic label="Adding Controls to Your Dialog"
+                href="spss/tutorials/dialogbuilder_controls.htm"/>
+         <topic label="Building the Syntax Template"
+                href="spss/tutorials/dialogbuilder_syntax_template.htm"/>
+         <topic label="Previewing Your Dialog" href="spss/tutorials/dialogbuilder_preview.htm"/>
+         <topic label="Installing Your Dialog" href="spss/tutorials/dialogbuilder_install.htm"/>
+         <topic label="Sharing Your Dialog with Other Users"
+                href="spss/tutorials/dialogbuilder_share.htm"/>
+         <topic label="Saving Your Work" href="spss/tutorials/dialogbuilder_save.htm"/>
+      </topic>
+   </topic>
+   <topic label="Automated production" href="spss/tutorials/autotut_intro.htm">
+      <topic label="Creating a production job" href="spss/tutorials/autotut_use.htm"/>
+   </topic>
+   <topic label="Scoring data with predictive models"
+          href="spss/tutorials/scoring_container.htm">
+      <topic label="Introduction" href="spss/tutorials/scoring_intro.htm"/>
+      <topic label="Building a predictive model"
+             href="spss/tutorials/scoring_building_model.htm">
+         <topic label="Evaluating the model" href="spss/tutorials/scoring_evaluate_model.htm"/>
+      </topic>
+      <topic label="Applying the model" href="spss/tutorials/scoring_applying_model.htm"/>
+   </topic>
+   <topic label="Sample Files" href="spss/tutorials/data_files.htm"/>
+</toc>

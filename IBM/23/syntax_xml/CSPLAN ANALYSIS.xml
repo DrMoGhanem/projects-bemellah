@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 4/30/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd" Name="CSPLAN ANALYSIS" EndRequired="None" IsArbitrary="No" Language="Syntax">
+  <Subcommand Name="PLAN" EqualsSign="None">
+        <Parameter Name="FILE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLANVARS" EqualsSign="None">
+        <Parameter Name="ANALYSISWEIGHT" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SRSESTIMATOR" EqualsSign="None">
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="WOR"/>
+            <EnumValue Name="WR"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="None">
+        <Parameter Name="PLAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MATRIX" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DESIGN" EqualsSign="None">
+        <Parameter Name="STAGELABEL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="STRATA" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="CLUSTER" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ESTIMATOR" EqualsSign="None">
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EQUAL_WOR"/>
+            <EnumValue Name="UNEQUAL_WOR"/>
+            <EnumValue Name="WR"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="POPSIZE" EqualsSign="None">
+        <Parameter Name="VALUE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MATRIX" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="INCLPROB" EqualsSign="None">
+         <Parameter Name="VALUE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MATRIX" EqualsSign="Required" ParameterType="Keyword"/>       
+    </Subcommand>
+</Command>

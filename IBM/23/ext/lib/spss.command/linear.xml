@@ -1,0 +1,218 @@
+
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<Command Name="LINEAR" ProcedureTitle="Automatic Linear Modeling"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="file:../schema/commanddescription.xsd">
+  <Integration>
+    <Architecture>CF</Architecture>
+    <CommandType>Procedure</CommandType>
+    <TmsMode>NotPermitted</TmsMode>
+    <ClemMode>NotPermitted</ClemMode>
+    <LicenseOption>13</LicenseOption>
+    <CommandState>
+      <State1>105</State1>
+      <State2>105</State2>
+      <State3>4</State3>
+      <State4>0</State4>
+    </CommandState>
+    <ExtensionDetails providerTag="spss" id="alm-extension" label="ALM" version="1.0"/>
+    <CPS Display="true"/>
+    <Splits AppSupport="true" Viewer="true"/>
+    <CaseIdVariabale Need="true"/>
+    <MeasurementLevel AppSupport="true"/>
+    <Feature Id="LinearRegression"/>
+  </Integration>
+  <Subcommand Name="FIELDS" Occurrence="Optional" Delimiter="EqualDelimited">
+    <Parameter Name="TARGET" ParameterType="VariableName" MeasurementLevel="MeasLevelSubset"
+      Occurrence="Required"/>
+    <Parameter Name="INPUTS" ParameterType="TokenList" MeasurementLevel="MeasLevelSubset"
+      Occurrence="Required"/>
+    <Parameter Name="ANALYSIS_WEIGHT" ParameterType="VariableName"
+      MeasurementLevel="MeasLevelSubset"/>
+  </Subcommand>
+  <Subcommand Name="BUILD_OPTIONS" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="OBJECTIVE" ParameterType="Keyword">
+      <EnumValue Name="STANDARD"/>
+      <EnumValue Name="BOOSTING"/>
+      <EnumValue Name="BAGGING"/>
+      <EnumValue Name="LARGE"/>
+    </Parameter>
+    <Parameter Name="USE_AUTO_DATA_PREPARATION" ParameterType="Keyword">
+      <EnumValue Name="TRUE"/>
+      <EnumValue Name="FALSE"/>
+    </Parameter>
+    <Parameter Name="CONFIDENCE_LEVEL" ParameterType="Number" LowerBdryOption="ExclLowerBdry"
+      LowerBdryValue="0" UpperBdryOption="ExclUpperBdry" UpperBdryValue="100"/>
+    <Parameter Name="MODEL_SELECTION" ParameterType="Keyword">
+      <EnumValue Name="FORWARDSTEPWISE"/>
+      <EnumValue Name="BESTSUBSETS"/>
+      <EnumValue Name="NONE"/>
+    </Parameter>
+    <Parameter Name="CRITERIA_FORWARD_STEPWISE" ParameterType="Keyword">
+      <EnumValue Name="AICC"/>
+      <EnumValue Name="F"/>
+      <EnumValue Name="ADJUSTEDRSQUARED"/>
+      <EnumValue Name="ASE"/>
+    </Parameter>
+    <Parameter Name="PROBABILITY_ENTRY" ParameterType="Number" LowerBdryOption="ExclLowerBdry"
+      LowerBdryValue="0" UpperBdryOption="ExclUpperBdry" UpperBdryValue="1"/>
+    <Parameter Name="PROBABILITY_REMOVAL" ParameterType="Number" LowerBdryOption="ExclLowerBdry"
+      LowerBdryValue="0" UpperBdryOption="ExclUpperBdry" UpperBdryValue="1"/>
+    <Parameter Name="MAX_EFFECTS" ParameterType="Integer" LowerBdryOption="InclLowerBdry"
+      LowerBdryValue="0"/>
+    <Parameter Name="MAX_STEPS" ParameterType="Integer" LowerBdryOption="InclLowerBdry"
+      LowerBdryValue="1"/>
+    <Parameter Name="CRITERIA_BEST_SUBSETS" ParameterType="Keyword">
+      <EnumValue Name="AICC"/>
+      <EnumValue Name="ADJUSTEDRSQUARED"/>
+      <EnumValue Name="ASE"/>
+    </Parameter>
+    <Parameter Name="REPLICATE_RESULTS" ParameterType="Keyword">
+      <EnumValue Name="TRUE"/>
+      <EnumValue Name="FALSE"/>
+    </Parameter>
+    <Parameter Name="SEED" ParameterType="Integer" LowerBdryOption="InclLowerBdry"
+      LowerBdryValue="0"/>
+  </Subcommand>
+
+  <Subcommand Name="ENSEMBLES" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="COMBINING_RULE_CONTINUOUS" ParameterType="Keyword">
+      <EnumValue Name="MEAN"/>
+      <EnumValue Name="MEDIAN"/>
+    </Parameter>
+    <Parameter Name="COMPONENT_MODELS_N" ParameterType="Integer" LowerBdryOption="ExclLowerBdry"
+      LowerBdryValue="0"/>
+  </Subcommand>
+
+  <Subcommand Name="OUTFILE" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="MODEL" ParameterType="OutputFile"/>
+    <Parameter Name="STATXML" ParameterType="OutputFile"/>
+  </Subcommand>
+
+  <Subcommand Name="SAVE" Delimiter="ParenDelimited" Occurrence="Optional">
+    <Parameter Name="PREDICTED_VALUES" ParameterType="VariableName" MeasurementLevel="MeasLevelDict"
+      Occurrence="Optional"/>
+  </Subcommand>
+  <ExecutionGeneration>
+    <CFContainer id="PMMLContainer" name="PMML" type="Output" containerType="PMML" boundary="Global"
+      mvRequired="false" path="[OUTFILE]"/>
+    <CFContainer id="StatXMLContainer" name="StatXML" type="Output" containerType="StatXML"
+      boundary="Global" mvRequired="true" path="[OUTSTAT]"/>
+    <ParameterGeneration>
+      <ComponentSetting id="[ALL]">
+        <SyntaxProperties Name="">
+          <CFProperty Name="[MaxNumTargetCats]" ValueFrom="Fixed" Value="25"/>
+          <CFProperty Name="adp.adjustThreshold" ValueFrom="Fixed" Value="-1"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="FIELDS.TARGET">
+          <CFProperty Name="linreg.TargetField" ValueFrom="Input"/>
+          <CFProperty Name="[TargetField]" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="FIELDS.INPUTS">
+          <CFProperty Name="linreg.InputFieldList" ValueFrom="Input" MaxValueCount="unbounded"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="FIELDS.ANALYSIS_WEIGHT">
+          <CFProperty Name="linreg.RegressionWeightField" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.OBJECTIVE">
+          <CFProperty Name="objective_goal" ValueFrom="Input">
+            <CFValueMap SyntaxValue="STANDARD" PropertyValue="standard"/>
+            <CFValueMap SyntaxValue="BOOSTING" PropertyValue="boosting"/>
+            <CFValueMap SyntaxValue="BAGGING" PropertyValue="bagging"/>
+            <CFValueMap SyntaxValue="LARGE" PropertyValue="psm"/>
+          </CFProperty>
+          <CFProperty Name="[EnsembleMode]" ValueFrom="Evaluate" Value="(##=='BOOSTING') || (##=='BAGGING') || (##=='LARGE')"/>          
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.USE_AUTO_DATA_PREPARATION">
+          <CFProperty Name="linreg.AutoDataPreparation" ValueFrom="Input">
+            <CFValueMap SyntaxValue="TRUE" PropertyValue="true"/>
+            <CFValueMap SyntaxValue="FALSE" PropertyValue="false"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.CONFIDENCE_LEVEL">
+          <CFProperty Name="linreg.CIn" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.MODEL_SELECTION">
+          <CFProperty Name="linreg.VarSelectionMethod" ValueFrom="Input">
+            <CFValueMap SyntaxValue="FORWARDSTEPWISE" PropertyValue="forwardStepwise"/>
+            <CFValueMap SyntaxValue="BESTSUBSETS" PropertyValue="bestSubsets"/>
+            <CFValueMap SyntaxValue="NONE" PropertyValue="none"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.CRITERIA_FORWARD_STEPWISE">
+          <CFProperty Name="linreg.CriteriaForForwardStepwise" ValueFrom="Input">
+            <CFValueMap SyntaxValue="AICC" PropertyValue="AICC"/>
+            <CFValueMap SyntaxValue="F" PropertyValue="FStatistics"/>
+            <CFValueMap SyntaxValue="ADJUSTEDRSQUARED" PropertyValue="adjustedRSquare"/>
+            <CFValueMap SyntaxValue="ASE" PropertyValue="ASE"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.PROBABILITY_ENTRY">
+          <CFProperty Name="linreg.PIn" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.PROBABILITY_REMOVAL">
+          <CFProperty Name="linreg.POut" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.MAX_EFFECTS">
+          <CFProperty Name="linreg.UseCustomMaxEffects" ValueFrom="Fixed" Value="true"/>
+          <CFProperty Name="linreg.MaxEffects" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.MAX_STEPS">
+          <CFProperty Name="linreg.UseCustomMaxSteps" ValueFrom="Fixed" Value="true"/>
+          <CFProperty Name="linreg.MaxSteps" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.CRITERIA_BEST_SUBSETS">
+          <CFProperty Name="linreg.CriteriaForBestSubsets" ValueFrom="Input">
+            <CFValueMap SyntaxValue="AICC" PropertyValue="AICC"/>
+            <CFValueMap SyntaxValue="ADJUSTEDRSQUARED" PropertyValue="adjustedRSquare"/>
+            <CFValueMap SyntaxValue="ASE" PropertyValue="ASE"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.REPLICATE_RESULTS">
+          <CFProperty Name="UseRandomSeed" ValueFrom="Input">
+            <CFValueMap SyntaxValue="TRUE" PropertyValue="true"/>
+            <CFValueMap SyntaxValue="FALSE" PropertyValue="false"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.SEED">
+          <CFProperty Name="linreg.RandomSeed" ValueFrom="Input"/>
+        </SyntaxProperties>
+
+        <SyntaxProperties Name="ENSEMBLES.COMBINING_RULE_CONTINUOUS">
+          <CFProperty Name="ensemble_con_method" ValueFrom="Input">
+            <CFValueMap SyntaxValue="MEAN" PropertyValue="Mean"/>
+            <CFValueMap SyntaxValue="MEDIAN" PropertyValue="Median"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="ENSEMBLES.COMPONENT_MODELS_N">
+          <CFProperty Name="thread_num" ValueFrom="Input"/>
+        </SyntaxProperties>
+
+        <SyntaxProperties Name="OUTFILE.MODEL">
+          <CFProperty Name="[OUTFILE]" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="OUTFILE.STATXML">
+          <CFProperty Name="[OUTSTAT]" ValueFrom="Input"/>
+        </SyntaxProperties>
+
+        <SyntaxProperties Name="SAVE.PREDICTED_VALUES" Validation="SavePredValue">
+          <CFProperty Name="save_predicted_value" ValueFrom="Fixed" Value="true"/>
+          <CFProperty Name="new_predicted_name" ValueFrom="Validation" Value="PredictedValue"/>
+        </SyntaxProperties>
+      </ComponentSetting>
+    </ParameterGeneration>
+  </ExecutionGeneration>
+</Command>

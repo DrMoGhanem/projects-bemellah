@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: <Analytic Components>                          -->
+<!--                                                                   -->
+<!-- (c)Copyright IBM Corp. 2010, 2011                                 -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<!-- Sample Module XML for Descriptives -->
+<Module xmlns="http://www.ibm.com/software/analytics/spss/xml/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" debug="false" version="8.0"
+    xsi:schemaLocation="http://www.ibm.com/software/analytics/spss/xml/extension http://www.ibm.com/software/analytics/spss/xml/extension/ModuleSpecification.xsd">
+    <ModuleDetails copyright="(c) 2010 SPSS, Inc." description="PSM Node" id="psm" label="PSM"
+        provider="SPSS, Inc." providerTag="pasw" version="8.0"/>
+
+    <!--  On Windows, the shared library would called *.dll, on Unix/Linux *.so/.lib/whatever -->
+    <SharedLibrary basename="psm"/>
+
+    <!-- Resources used by the module. -->
+    <Resources>
+        <!-- SharedLibrary id="psmnode" path="spss.psm/psm"/ -->
+        <Bundle id="psm_res" type="properties" path="messages"/>
+        <HelpInfo id="help" type="native"/>
+    </Resources>
+
+    <CommonObjects>
+        <!--  Property type definitions. -->
+        <PropertyTypes>
+            <!-- Possible feature selection types  -->
+            <Enumeration id="SelectionType_Enum">
+                <Enum value="PreviousModelBased"/>
+                <Enum value="TrainingDataBased"/>
+                <Enum value="PreviousModelBasedWithHistory"/>
+                <Enum value="TrainingDataBasedWithHistory"/>
+            </Enumeration>
+            <Enumeration id="EnsembleCatMethod_Enum">
+                <Enum value="Voting"/>
+                <Enum value="HighestProbability"/>
+                <Enum value="HighestMeanProbability"/>
+            </Enumeration>
+            <Enumeration id="EnsembleConMethod_Enum">
+                <Enum value="Mean"/>
+                <Enum value="Median"/>
+            </Enumeration>
+            <Enumeration id="TaskType_Type">
+                <Enum value="buildNewModel"/>
+                <Enum value="updateExistingModel"/>
+            </Enumeration>
+        </PropertyTypes>
+    </CommonObjects>
+
+    <!-- Status Codes -->
+    <StatusCodes>
+        <!-- shared peer error code may be returned in the CF integration -->
+        <StatusCode code="240000" status="error" messageKey="unknownErrorMsg.LABEL"/>
+        <StatusCode code="240001" status="error" messageKey="initErrMsg.LABEL"/>
+        <StatusCode code="240002" status="error" messageKey="inputErrMsg.LABEL"/>
+        <StatusCode code="240003" status="error" messageKey="internalErrMsg.LABEL"/>
+        <StatusCode code="240004" status="error" messageKey="invalidMetadataErrMsg.LABEL"/>
+        <StatusCode code="240005" status="error" messageKey="fileNotExistErrorMsg.LABEL"/>
+        <StatusCode code="240006" status="error" messageKey="storageNotSupportErrorMsg.LABEL"/>
+        <StatusCode code="240007" status="error" messageKey="invalidTargetErrorMsg.LABEL"/>
+        <StatusCode code="240008" status="error" messageKey="invalidTarResponseErrorMsg.LABEL"/>
+        <StatusCode code="240009" status="error" messageKey="predictorsEmptyErrMsg.LABEL"/>
+        <StatusCode code="240010" status="error" messageKey="targetAsInputErrorMsg.LABEL"/>
+        <StatusCode code="240011" status="error" messageKey="invalidFrequencyErrorMsg.LABEL"/>
+        <StatusCode code="240012" status="error" messageKey="invalidTargetResponseErrorMsg.LABEL"/>
+        <StatusCode code="240013" status="error" messageKey="invlidResponseCatErrorMsg.LABEL"/>
+        <StatusCode code="240014" status="error" messageKey="noFrequencyErrorMsg.LABEL"/>
+        <StatusCode code="240015" status="error" messageKey="noTargetErrorMsg.LABEL"/>
+        <StatusCode code="240016" status="error" messageKey="invalidtarValueMsg.LABEL"/>
+        <StatusCode code="240017" status="error" messageKey="getfilePathMsg.LABEL"/>
+        <StatusCode code="240018" status="error" messageKey="creationAlgorithmMsg.LABEL"/>
+        <StatusCode code="240019" status="error" messageKey="buildModelErrorMsg.LABEL"/>
+        <StatusCode code="240020" status="error" messageKey="assessModelErrorMsg.LABEL"/>
+        <StatusCode code="240021" status="error" messageKey="exportPMLLErrorMsg.LABEL"/>
+        <StatusCode code="240022" status="error" messageKey="getDataFieldErrorMsg.LABEL"/>
+        <StatusCode code="240023" status="error" messageKey="tarResIsSameErrorMsg.LABEL"/>
+        <StatusCode code="240024" status="error" messageKey="NoTargetFieldErrorMsg.LABEL"/>
+        <StatusCode code="240025" status="error" messageKey="NoTargetResFieldErrorMsg.LABEL"/>
+        <StatusCode code="240026" status="error" messageKey="targetResTrueErrorMsg.LABEL"/>
+        <StatusCode code="240027" status="error" messageKey="PMMLNotExistErrorMsg.LABEL"/>
+        <StatusCode code="240028" status="error" messageKey="PMMLIsInvalidErrorMsg.LABEL"/>
+        <StatusCode code="240029" status="error" messageKey="NoPredVarInPMMLErrorMsg.LABEL"/>
+        <StatusCode code="240030" status="error" messageKey="PMMLNotMatchDataErrorMsg.LABEL"/>
+        <StatusCode code="240031" status="error" messageKey="getDataSourceErrorMsg.LABEL"/>
+        <StatusCode code="240032" status="error" messageKey="dataFileISValidErrorMsg.LABEL"/>
+        <StatusCode code="240033" status="error" messageKey="TarFieldNOTMatchErrMsg.LABEL"/>
+        <StatusCode code="240034" status="error" messageKey="TRFieldNOTMatchErrMsg.LABEL"/>
+        <StatusCode code="240035" status="error" messageKey="FreFieldNOTMatchErrMsg.LABEL"/>
+        <StatusCode code="240036" status="error" messageKey="InputFieldNOTMatchMsg.LABEL"/>
+        <StatusCode code="240037" status="error" messageKey="NoValidRecordsMsg.LABEL"/>
+        <StatusCode code="240038" status="error" messageKey="NoRecordsScoringMsg.LABEL"/>
+        <StatusCode code="240039" status="error" messageKey="PartionInValidMsg.LABEL"/>
+        <StatusCode code="240040" status="error" messageKey="InputFieldConstantMsg.LABEL"/>
+        <StatusCode code="240041" status="error" messageKey="InvalidSettingsErrorMsg.LABEL"/>
+        <StatusCode code="240042" status="error" messageKey="NoValidFieldValuesErrorMsg.LABEL"/>
+		<StatusCode code="240052" status="error" messageKey="InvalidXmlCharError.LABEL"/>
+        <!-- common error code -->
+        <StatusCode code="1" status="error" messageKey="kMCCANCEL.LABEL"/>
+        <StatusCode code="2" status="error" messageKey="kMC_IO_ERROR.LABEL"/>
+        <StatusCode code="3" status="error" messageKey="kMC_MEMORY_LIMIT_EXCEEDED.LABEL"/>
+        <StatusCode code="4" status="error" messageKey="kMC_INVALID_SAVE_STATE.LABEL"/>
+        <StatusCode code="5" status="error" messageKey="kMC_FAILED_RESTART.LABEL"/>
+        <StatusCode code="6" status="error" messageKey="kMC_WRONG_STATE.LABEL"/>
+        
+        <!-- psm error code -->
+        <StatusCode code="330001" status="error" messageKey="kPSM_AllModelFailed.LABEL"/>
+		
+		<StatusCode code="330004" status="error" messageKey="kPSM_HoldoutDataIsEmpty.LABEL"/>
+
+        <!-- Warning for the psm component -->
+        <StatusCode code="330002" status="warning" messageKey="kPSM_PartOfBaseModelFailed.LABEL"/>
+		    <StatusCode code="330003" status="warning" messageKey="kPSM_RefModelFailed.LABEL"/>
+    </StatusCodes>
+
+    <!-- ContainerType declarations -->
+    <ContainerTypes>
+        <ContainerType id="pmml_container" mimeType="pmml" resourceKey="" fileSuffix=""/>
+        <ContainerType id="xml_container" mimeType="xml" resourceKey="" fileSuffix=""/>
+        <DocumentType id="data_container"/>
+    </ContainerTypes>
+
+    <!-- Component definition. Component names are used as name-spaces and should be unique across component instances. -->
+    <!-- Attribute "pattern" here just helps developers to organize the modules if we can distinguish between the different kinds.-->
+    <Component id="psm_distribute" pattern="distribute">
+        <Capabilities>
+            <Consumer/>
+        </Capabilities>
+
+        <!-- Property declarations -->
+        <!-- There is no any parameters for PSM manager -->
+        <Properties>
+            <Property name="TargetField" valueType="fieldName" />                        
+            <Property name="FrequencyWeightField" valueType="fieldName" isList="false"/>
+            <Property name="RegressionWeightField" valueType="fieldName" isList="false"/>
+            <Property name="UseRandomSeed" valueType="boolean" defaultValue="false"/>
+            <Property name="RandomSeed" valueType="integer" min="1" defaultValue="12345"/>
+            <Property name="UseMetaDataRole" valueType="boolean" defaultValue="false"/>            
+
+            <!-- TraceFlag is used to trace PSM. -->
+            <Property name="TraceFlag" valueType="boolean" defaultValue="false"/>
+            <Property name="ModelRequired" valueType="boolean" defaultValue="false"/>
+            <!-- Calculate PSM parameters automatically -->
+            <Property name="AutoSetting" valueType="boolean" defaultValue="true"/>
+            <Property name="DataBlockSize" valueType="integer" defaultValue="30000"/>
+            <Property name="TestingDataSize" valueType="integer" defaultValue="3000"/>
+            <Property name="HoldOutDataSize" valueType="integer" defaultValue="3000"/>
+            <Property name="MaxBaseModelNum" valueType="integer" min="1" defaultValue="10"/>
+            <Property name="ContinueTraining" type="TaskType_Type" defaultValue="buildNewModel"/>
+            <Property name="DoFeatureSelection" valueType="boolean" defaultValue="true"/>
+            <Property name="RandomSelectionRatio" valueType="double" min="0" max="1"
+                defaultValue="0.3"/>
+            <Property name="DoBlockBalance" valueType="boolean" defaultValue="true"/>
+            <Property name="ImbalanceThreshold" valueType="double" min="0" max="1"
+                defaultValue="0.3"/>
+            <Property name="MaxAdjustDegree" valueType="integer" min="1" defaultValue="10"/>
+            <Property name="FeatureSelectionType" type="SelectionType_Enum"
+                defaultValue="PreviousModelBasedWithHistory"/>
+            <Property name="EnsembleCatMethod" type="EnsembleCatMethod_Enum" defaultValue="Voting"/>
+            <Property name="EnsembleConMethod" type="EnsembleConMethod_Enum" defaultValue="Mean"/>
+            
+        </Properties>
+
+        <!-- Containers -->
+        <Containers>
+            <Container name="InputPMML" type="pmml_container" usage="input"
+                runtimeProperty="tmpReportFile"/>
+            <Container name="InputStatXML" type="xml_container" usage="input"
+                runtimeProperty="tmpReportFile"/>
+            <Container name="InputData" type="data_container" usage="input"
+                runtimeProperty="tmpReportFile"/>
+            <Container name="Data" type="data_container" usage="output"
+                runtimeProperty="tmpReportFile"/>
+        </Containers>
+
+        <!-- Property constraints (component state preconditions). -->
+        <Constraints> </Constraints>
+
+    </Component>
+
+    <!-- Attribute "pattern" here just helps developers to organize the modules if we can distinguish between the different kinds.-->
+    <Component id="psm_worker" pattern="manager">
+        <Capabilities>
+            <Consumer/>
+        </Capabilities>
+
+        <!-- Property declarations -->
+        <Properties> </Properties>
+
+        <!-- Containers -->
+        <Containers>
+            <Container name="InputPMML" type="pmml_container" usage="input"
+                runtimeProperty="tmpReportFile"/>
+            <Container name="InputStatXML" type="xml_container" usage="input"
+                runtimeProperty="tmpReportFile"/>
+            <Container name="PMML" type="pmml_container" usage="output"
+                runtimeProperty="tmpReportFile"/>
+            <Container name="StatXML" type="xml_container" usage="output"
+                runtimeProperty="tmpReportFile"/>
+        </Containers>
+
+        <!-- Property constraints (component state preconditions). -->
+        <Constraints> </Constraints>
+
+    </Component>
+    <Component id="psm_collect" pattern="distribute">
+        <Capabilities>
+            <Consumer/>
+        </Capabilities>
+
+        <!-- Property declarations -->
+        <!-- There is no any parameters for PSM collect component -->
+        <Properties> </Properties>
+
+        <!-- Containers -->
+        <Containers>
+            <Container name="PMML" type="pmml_container" usage="output"
+                runtimeProperty="tmpReportFile"/>
+            <Container name="StatXML" type="xml_container" usage="output"
+                runtimeProperty="tmpReportFile"/>
+        </Containers>
+
+        <!-- Property constraints (component state preconditions). -->
+        <Constraints> </Constraints>
+
+    </Component>
+
+    <Component id="psm_container_reader">
+        <Capabilities>
+            <Consumer/>
+        </Capabilities>
+        <Properties>
+            <Property name="DataModelKey" valueType="string" defaultValue="__PSM_HoldOut_MetaData__"/> 
+            <Property name="DataKey" valueType="string" defaultValue="__PSM_HoldOut__"/>             
+        </Properties>
+        <Containers>
+            <Container name="InputData" type="data_container" usage="input"
+                runtimeProperty="tmpReportFile"/>
+        </Containers>
+        <Constraints/>
+    </Component>
+</Module>

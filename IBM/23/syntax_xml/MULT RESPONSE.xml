@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/13/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:/C:/temp/schema/SyntaxSchema.xsd"
+    Name="MULT RESPONSE" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GROUPS" EqualsSign="Optional"/>
+    <Subcommand Name="VARIABLES" EqualsSign="Optional"/>
+    <Subcommand Name="FREQUENCIES" EqualsSign="Optional"/>
+    <Subcommand Name="TABLES" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PAIRED" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="TABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MDGROUP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MRGROUP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FORMAT" EqualsSign="Optional">
+        <Parameter Name="LABELS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="NOLABELS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="TABLE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CONDENSE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="ONEPAGE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="DOUBLE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="BASE" EqualsSign="Optional">
+        <Parameter Name="CASES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CELLS" EqualsSign="Optional">
+        <Parameter Name="COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLUMN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TOTAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

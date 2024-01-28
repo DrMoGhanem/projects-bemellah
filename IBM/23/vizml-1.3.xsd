@@ -1,0 +1,2288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Visualization Platform                         -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 2003, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema targetNamespace="http://xml.spss.com/visualization" xmlns:vis="http://xml.spss.com/visualization" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.3">
+    <xs:annotation>
+        <xs:documentation xml:lang="en">Copyright 2003 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties with respect to your use of this specification, expressed, implied, or otherwise, including without limitation, all warranties of merchantability and fitness for a particular purpose.  SPSS shall not be liable for any special, incidental, or consequential damages, including without limitation lost revenues or lost profits resulting from the use of the information herein.</xs:documentation>
+    </xs:annotation>
+    <xs:element name="axis">
+        <xs:annotation>
+            <xs:documentation>Defines a visual representation of a dimension</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="vis:label" minOccurs="0"/>
+                <xs:sequence minOccurs="0">
+                    <xs:element ref="vis:majorTicks"/>
+                    <xs:element ref="vis:minorTicks" minOccurs="0"/>
+                </xs:sequence>
+                <xs:element name="transform" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="vis:parameter" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                        <xs:attribute name="method" default="linear">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:NMTOKEN">
+                                    <xs:enumeration value="percent"/>
+                                    <xs:enumeration value="linear"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:attribute name="style" type="xs:IDREF">
+                <xs:annotation>
+                    <xs:documentation>The default style for an axis. Other styles if undefined default to this style</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="baselineStyle" type="xs:IDREF">
+                <xs:annotation>
+                    <xs:documentation>The style for drawing the base line of the axis</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="opposite" type="xs:boolean" default="false">
+                <xs:annotation>
+                    <xs:documentation>Axes are drawn in the most suitable position, for example, to the left of or below a simple rectangular plot. If this is set to true, they will be drawn opposite their preferred position</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="maxSize" type="vis:length">
+                <xs:annotation>
+                    <xs:documentation>An axis takes up part of the frame. It is sized dynamically to balance display requirements. By default it can take up no more than a given fraction of a display (this fraction may vary by situation). Setting this value allows an axis to use up to a given fraction of screen space</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="brightness">
+        <xs:annotation>
+            <xs:documentation>Maps a variable to the brightness of a graphic item</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="vis:aesthetic">
+                    <xs:attributeGroup ref="vis:aestheticRangeZeroOne"/>
+                    <xs:attribute name="affects" default="fill">
+                        <xs:annotation>
+                            <xs:documentation>Defines whether the aesthetic affects line stroke, shape fill, or both</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:NMTOKEN">
+                                <xs:enumeration value="fill"/>
+                                <xs:enumeration value="stroke"/>
+                                <xs:enumeration value="both"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="color">
+        <xs:annotation>
+            <xs:documentation>Maps a variable to the color of a graphic item. The color includes all components of the color (hue, saturation, brightness,transparency), so if used with those aesthetics, this one should come first in the list</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="vis:aesthetic">
+                    <xs:attribute name="low" type="vis:color">
+                        <xs:annotation>
+                            <xs:documentation>The lowest value in the domain will map to this color</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="high" type="vis:color">
+                        <xs:annotation>
+                            <xs:documentation>The highest value in the aesthetic domain will map to this color</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                    <xs:attribute name="affects" default="fill">
+                        <xs:annotation>
+                            <xs:documentation>Defines whether the aesthetic affects line stroke, shape fill, or both</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:NMTOKEN">
+                                <xs:pattern value="fill"/>
+                                <xs:pattern value="stroke"/>
+                                <xs:pattern value="both"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="dateTimeFormat">
+        <xs:annotation>
+            <xs:documentation>Defines the format of a date/time value</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:all>
+                <xs:annotation>
+                    <xs:documentation>It is an error for the dateTimeFormat to be empty</xs:documentation>
+                </xs:annotation>
+                <xs:element ref="vis:dateFormat" minOccurs="0"/>
+                <xs:element ref="vis:timeFormat" minOccurs="0"/>
+            </xs:all>
+            <xs:attributeGroup ref="vis:formatWrappers"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="element">
+        <xs:annotation>
+            <xs:documentation>A graphic element such as a bar, point or line</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="vis:facetStyle" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element ref="vis:x" minOccurs="0"/>
+                        <xs:element ref="vis:y" minOccurs="0"/>
+                        <xs:element ref="vis:z" minOccurs="0"/>
+                    </xs:sequence>
+                    <xs:sequence>
+                        <xs:element ref="vis:theta"/>
+                        <xs:element ref="vis:r" minOccurs="0"/>
+                        <xs:choice minOccurs="0">
+                            <xs:element ref="vis:z"/>
+                            <xs:element ref="vis:phi"/>
+                        </xs:choice>
+                    </xs:sequence>
+                    <xs:sequence>
+                        <xs:element ref="vis:r"/>
+                        <xs:element ref="vis:theta" minOccurs="0"/>
+                        <xs:choice minOccurs="0">
+                            <xs:element ref="vis:z"/>
+                            <xs:element ref="vis:phi"/>
+                        </xs:choice>
+                    </xs:sequence>
+                    <xs:element name="position">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element ref="vis:statistic"/>
+                                <xs:choice>
+                                    <xs:sequence>
+                                        <xs:element ref="vis:x" minOccurs="0"/>
+                                        <xs:element ref="vis:y" minOccurs="0"/>
+                                        <xs:element ref="vis:z" minOccurs="0"/>
+                                    </xs:sequence>
+                                    <xs:sequence>
+                                        <xs:element ref="vis:theta"/>
+                                        <xs:element ref="vis:r" minOccurs="0"/>
+                                        <xs:choice minOccurs="0">
+                                            <xs:element ref="vis:z"/>
+                                            <xs:element ref="vis:phi"/>
+                                        </xs:choice>
+                                    </xs:sequence>
+                                    <xs:sequence>
+                                        <xs:element ref="vis:r"/>
+                                        <xs:element ref="vis:theta" minOccurs="0"/>
+                                        <xs:choice minOccurs="0">
+                                            <xs:element ref="vis:z"/>
+                                            <xs:element ref="vis:phi"/>
+                                        </xs:choice>
+                                    </xs:sequence>
+                                </xs:choice>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:choice>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="vis:styleBy"/>
+                    <xs:element ref="vis:size"/>
+                    <xs:element ref="vis:width"/>
+                    <xs:element ref="vis:height"/>
+                    <xs:element ref="vis:color"/>
+                    <xs:element ref="vis:hue"/>
+                    <xs:element ref="vis:saturation"/>
+                    <xs:element ref="vis:brightness"/>
+                    <xs:element name="offset">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element ref="vis:scale" minOccurs="0"/>
+                                <xs:element ref="vis:statistic" minOccurs="0"/>
+                            </xs:sequence>
+                            <xs:attribute name="id" type="xs:ID"/>
+                            <xs:attribute name="variable" type="xs:IDREF" use="required"/>
+                            <xs:attribute name="low" type="xs:string"/>
+                            <xs:attribute name="high" type="xs:string"/>
+                            <xs:attribute name="domain" type="xs:IDREF"/>
+                            <xs:attribute name="dimension" type="xs:string"/>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="pattern">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element ref="vis:scale" minOccurs="0"/>
+                                <xs:element ref="vis:statistic" minOccurs="0"/>
+                            </xs:sequence>
+                            <xs:attribute name="id" type="xs:ID"/>
+                            <xs:attribute name="variable" type="xs:IDREF" use="required"/>
+                            <xs:attribute name="domain" type="xs:IDREF"/>
+                            <xs:attribute name="dimension" type="xs:string"/>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="vis:transparency"/>
+                    <xs:element ref="vis:rotation"/>
+                    <xs:element name="labeling">
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element ref="vis:statistic" minOccurs="0"/>
+                                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                                    <xs:element ref="vis:styleBy"/>
+                                    <xs:element ref="vis:size"/>
+                                    <xs:element ref="vis:color"/>
+                                    <xs:element ref="vis:hue"/>
+                                    <xs:element ref="vis:saturation"/>
+                                    <xs:element ref="vis:brightness"/>
+                                    <xs:element ref="vis:transparency"/>
+                                    <xs:element ref="vis:rotation"/>
+                                </xs:choice>
+                                <xs:choice minOccurs="0">
+                                    <xs:element ref="vis:numberFormat"/>
+                                    <xs:element ref="vis:stringFormat"/>
+                                    <xs:element ref="vis:dateTimeFormat"/>
+                                </xs:choice>
+                            </xs:sequence>
+                            <xs:attribute name="id" type="xs:ID"/>
+                            <xs:attribute name="variable" type="xs:IDREF" use="required"/>
+                            <xs:attribute name="domain" type="xs:IDREF"/>
+                            <xs:attribute name="style" type="xs:IDREF"/>
+                            <xs:attribute name="dimension" type="xs:string"/>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="vis:metaInfo"/>
+                    <xs:element ref="vis:split"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="type" use="required">
+                <xs:annotation>
+                    <xs:documentation>The basic type of element. Note that the visual appearance may look somewhat different; an interval might appear as a line parallel to an axis, as a bar or as a wedge of a pie.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="point"/>
+                        <xs:enumeration value="line"/>
+                        <xs:enumeration value="area"/>
+                        <xs:enumeration value="interval"/>
+                        <xs:enumeration value="areabar"/>
+                        <xs:enumeration value="schema"/>
+                        <xs:enumeration value="tile"/>
+                        <xs:enumeration value="contour"/>
+                        <xs:enumeration value="path"/>
+                        <xs:enumeration value="link"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:attribute name="style" type="xs:IDREF">
+                <xs:annotation>
+                    <xs:documentation>The basic style of this element.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>A human-readable string that may be used to name the element in a legend or to be read by a screen reader. If not defined, the ID will be used instead.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="dot" default="none">
+                <xs:annotation>
+                    <xs:documentation>An element may have multiple dimensions. If these dimensions contain blends of variables, then this attribute should be specified to indicate whether the dimensions are dotted or not. For example, if an element has x dimension expression "a+b" and y dimension expression "c+d", dot="all" will cause the element to form an inner join, giving "a*c + b*d". dot="none" will create an outer join, defining the element as "a*c + a*d + b*c + b*d". </xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="none"/>
+                        <xs:enumeration value="all"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="labelCollisionHandling">
+                <xs:annotation>
+                    <xs:documentation>Allows the use of one or more algorithms to avoid labels colliding, by moving them slightly around their original positions</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="none"/>
+                        <xs:enumeration value="basic"/>
+                        <xs:enumeration value="normal"/>
+                        <xs:enumeration value="fast"/>
+                        <xs:enumeration value="quality"/>
+                        <xs:enumeration value="extreme"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="showCollidingLabels" type="xs:boolean" default="false">
+                <xs:annotation>
+                    <xs:documentation>If no label collsion handling is attempted, or if afterwards labels still collide, this parameter is consulted to see whether a label will be drawn even if it collides with a previously drawn label</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="positionModifier" default="none">
+                <xs:annotation>
+                    <xs:documentation>For elements that would be mapped to the same position, this attribute allows them to be stacked on top of each other, dodged to either side of each other or have the intersection of their ranges removed form each of them (a difference effect)</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="none"/>
+                        <xs:enumeration value="stack"/>
+                        <xs:enumeration value="dodge"/>
+                        <xs:enumeration value="minusIntersection"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="facetStyle">
+        <xs:annotation>
+            <xs:documentation>Applies a style to an element for certain facets only</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="when" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>A boolean expression using facets that determines when the style is applied. Examples are "facet1 != facet2" or "facet1 == 2"</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="style" type="xs:IDREF" use="required">
+                <xs:annotation>
+                    <xs:documentation>Style to apply when the expression evaluates to true</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="frame">
+        <xs:annotation>
+            <xs:documentation>A rectangular area of the total display space</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="location" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>The bounds of the frame, specified relative to the parent frame</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:attribute name="left" type="vis:length" use="required"/>
+                        <xs:attribute name="top" type="vis:length" use="required"/>
+                        <xs:attribute name="right" type="vis:length" use="required"/>
+                        <xs:attribute name="bottom" type="vis:length" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:choice minOccurs="0">
+                    <xs:element ref="vis:label"/>
+                    <xs:element ref="vis:legend"/>
+                    <xs:element ref="vis:frame" maxOccurs="unbounded"/>
+                    <xs:sequence>
+                        <xs:element name="tableFacet" type="vis:expression" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>The faceting described by this element's children will be applied outside the coordinate system, creating cells in a table of charts.</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element name="facetLabeling" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>A description of how to label levels of a tableFacet</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence maxOccurs="unbounded">
+                                    <xs:annotation>
+                                        <xs:documentation>The facetLabel's axes are added in the order specified, working from outside the chart to inside.</xs:documentation>
+                                    </xs:annotation>
+                                    <xs:element name="facetLabel">
+                                        <xs:annotation>
+                                            <xs:documentation>A facetLabel controls the layout and style of the facets and provides a place for axes on facet dimensions to be placed.</xs:documentation>
+                                        </xs:annotation>
+                                        <xs:complexType>
+                                            <xs:sequence>
+                                                <xs:element ref="vis:axis" minOccurs="0"/>
+                                            </xs:sequence>
+                                            <xs:attribute name="id" type="xs:ID" use="required"/>
+                                            <xs:attribute name="level" type="xs:nonNegativeInteger" use="required">
+                                                <xs:annotation>
+                                                    <xs:documentation>The level of the facting that this applies to. It is legal to define facetLabelings for levels that are not present in the chart, they will simply be ignored. Level 0 is the individual cell level (which is the data area for a unfaceted chart), level 1 is the first dimension (the level in a simple paneled chart or a clustered bar chart), level 2 is the next dimension in a 2-way table, etc.
+                                                    </xs:documentation>
+                                                </xs:annotation>
+                                            </xs:attribute>
+                                            <xs:attribute name="gap" type="vis:length" default="0">
+                                                <xs:annotation>
+                                                    <xs:documentation>The gap to leave between cells at this level. If expressed in absolute coordinates care must be taken to ensure the size is not larger than the size of the cell</xs:documentation>
+                                                </xs:annotation>
+                                            </xs:attribute>
+                                            <xs:attribute name="cellStyle" type="xs:IDREF">
+                                                <xs:annotation>
+                                                    <xs:documentation>Style for the cells at this level of faceting</xs:documentation>
+                                                </xs:annotation>
+                                            </xs:attribute>
+                                        </xs:complexType>
+                                    </xs:element>
+                                </xs:sequence>
+                                <xs:attribute name="cellAspect" type="xs:string"/>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:element name="coordinateFacet" type="vis:expression" minOccurs="0">
+                            <xs:annotation>
+                                <xs:documentation>The faceting described by this element's children will be applied within the coordinate system</xs:documentation>
+                            </xs:annotation>
+                        </xs:element>
+                        <xs:element ref="vis:coordinateTransform" minOccurs="0" maxOccurs="unbounded"/>
+                        <xs:element name="dimension" minOccurs="0" maxOccurs="unbounded">
+                            <xs:annotation>
+                                <xs:documentation>Defines a dimension of the coordinate system for locating items</xs:documentation>
+                            </xs:annotation>
+                            <xs:complexType>
+                                <xs:sequence>
+                                    <xs:element ref="vis:scale" minOccurs="0"/>
+                                    <xs:element ref="vis:axis" minOccurs="0" maxOccurs="unbounded"/>
+                                </xs:sequence>
+                                <xs:attribute name="domain" type="xs:IDREF">
+                                    <xs:annotation>
+                                        <xs:documentation>The domain defines how data is mapped into this dimension. Data at the top of the domain are mapped to the maximum value on this dimension. Data at the lower end of the domain are mapped to the minimum value of the dimension</xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="role" use="required">
+                                    <xs:annotation>
+                                        <xs:documentation>Which coordinate this dimension defines</xs:documentation>
+                                    </xs:annotation>
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:NMTOKEN">
+                                            <xs:enumeration value="x"/>
+                                            <xs:enumeration value="y"/>
+                                            <xs:enumeration value="z"/>
+                                            <xs:enumeration value="r"/>
+                                            <xs:enumeration value="theta"/>
+                                            <xs:enumeration value="phi"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:attribute>
+                                <xs:attribute name="upperMapping" default="nice">
+                                    <xs:annotation>
+                                        <xs:documentation>whether to modify the upper bound to  a nice round number or leave it exactly as defined by the domain</xs:documentation>
+                                    </xs:annotation>
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:NMTOKEN">
+                                            <xs:enumeration value="exact"/>
+                                            <xs:enumeration value="nice"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:attribute>
+                                <xs:attribute name="lowerMapping" default="nice">
+                                    <xs:annotation>
+                                        <xs:documentation>whether to modify the lower bound to  a nice round number or leave it exactly as defined by the domain</xs:documentation>
+                                    </xs:annotation>
+                                    <xs:simpleType>
+                                        <xs:restriction base="xs:NMTOKEN">
+                                            <xs:enumeration value="exact"/>
+                                            <xs:enumeration value="nice"/>
+                                        </xs:restriction>
+                                    </xs:simpleType>
+                                </xs:attribute>
+                                <xs:attribute name="upperMargin" type="vis:lengthPercentage" default="0%">
+                                    <xs:annotation>
+                                        <xs:documentation>Amount to extend past the domain to provide a margin at the top where data are not expected to map into</xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="lowerMargin" type="vis:lengthPercentage" default="0%">
+                                    <xs:annotation>
+                                        <xs:documentation>Amount to extend past the domain to provide a margin at the bottom where data are not expected to map into</xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="sameRatio" type="xs:boolean" default="false">
+                                    <xs:annotation>
+                                        <xs:documentation>All dimensions with sameRatio=true will have the same ratio of data units to screen units,</xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                                <xs:attribute name="facetsShareScale" type="xs:boolean" default="false">
+                                    <xs:annotation>
+                                        <xs:documentation>If true, all facets will share the same scale for this dimension, rather than having them each deifne their own scale</xs:documentation>
+                                    </xs:annotation>
+                                </xs:attribute>
+                            </xs:complexType>
+                        </xs:element>
+                        <xs:choice maxOccurs="unbounded">
+                            <xs:element name="guide">
+                                <xs:annotation>
+                                    <xs:documentation>A graphic element to provide location information within a chart</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element ref="vis:facetStyle" minOccurs="0" maxOccurs="unbounded"/>
+                                        <xs:element ref="vis:label" minOccurs="0"/>
+                                        <xs:element ref="vis:parameter" minOccurs="0" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:ID" use="required"/>
+                                    <xs:attribute name="name" type="xs:string">
+                                        <xs:annotation>
+                                            <xs:documentation>A human-readable string that may be used to name the guide in a legend or to be read by a screen reader. If not defined, the ID will be used instead.</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="type" use="required">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:NMTOKEN">
+                                                <xs:enumeration value="frame">
+                                                    <xs:annotation>
+                                                        <xs:documentation>A wireframe in 3D. A boolean parameter "complete" determines whether or not to draw the part of the frame that is in front</xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:enumeration>
+                                                <xs:enumeration value="plane">
+                                                    <xs:annotation>
+                                                        <xs:documentation>A plane in 3D. The plane is drawn normal to an axis (the parameter "normal" may take the values "x", "y" or "z") at the back of the coordinate system</xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:enumeration>
+                                                <xs:enumeration value="line">
+                                                    <xs:annotation>
+                                                        <xs:documentation>A line is drawn. Paramters for the line giving coordinates to draw it at must be given. Possible coordinates are x,y,z,x1,x2,y1,y2 or facetN, where N corresponds to a faceting dimension (1-based). By using combinations it is possible to create lines to be drawn in any 2D orientation, and lying at a z depth, for a particular facet.. This guide can be used in 2D and 3D systems.</xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:enumeration>
+                                                <xs:enumeration value="point">
+                                                    <xs:annotation>
+                                                        <xs:documentation>A point is drawn using the glyph specifed in the style. Parameters for the point giving coordinates to draw it at must be given. Possible coordinates are x,y,z or facetN, where N corresponds to a faceting dimension (1-based). This guide can be used in 2D and 3D systems.</xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:enumeration>
+                                                <xs:enumeration value="function">
+                                                    <xs:annotation>
+                                                        <xs:documentation>A function guide plots a line or surface in terms of an equation.  The parameters are dimension names (x,y,z, r, theta, phi), and the equation can be any mathematical expression in terms of the dimensions.  The function guide uses the numPoints parameter to figure out how many points to place along the line.</xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:enumeration>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                    <xs:attribute name="style" type="xs:IDREF" use="optional">
+                                        <xs:annotation>
+                                            <xs:documentation>Style for drawing the guide</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="elementGroup">
+                                <xs:annotation>
+                                    <xs:documentation>A group of elements that can share a common style</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element ref="vis:element" maxOccurs="unbounded"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="id" type="xs:ID" use="required"/>
+                                    <xs:attribute name="style" type="xs:IDREF">
+                                        <xs:annotation>
+                                            <xs:documentation>A style for the entire group. May be modified by individual elements within the group</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element ref="vis:element"/>
+                        </xs:choice>
+                    </xs:sequence>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:attribute name="style" type="xs:IDREF">
+                <xs:annotation>
+                    <xs:documentation>The frame is drawn with this style before any of its contents are drawn</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="clip" type="xs:boolean">
+                <xs:annotation>
+                    <xs:documentation>If true, the frame will clip contents so they do not overflow its bounds. The default behavior may vary based on the contents of the frame</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="graph">
+        <xs:annotation>
+            <xs:documentation>Top level element</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="vis:source"/>
+                    <xs:element ref="vis:variable"/>
+                    <xs:element ref="vis:domain"/>
+                </xs:choice>
+                <xs:element ref="vis:frame"/>
+                <xs:choice minOccurs="0" maxOccurs="unbounded">
+                    <xs:element ref="vis:style"/>
+                    <xs:element ref="vis:styleCycle"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>For documentation; not used directly by ChartXML processors</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="author" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>For documentation; not used directly by ChartXML processors</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="description" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>For documentation; not used directly by ChartXML processors</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="creator" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>For documentation; not used directly by ChartXML processors</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="date" type="xs:date">
+                <xs:annotation>
+                    <xs:documentation>For documentation; not used directly by ChartXML processors</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="type" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>For documentation; not used directly by ChartXML processors</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="gridLines">
+        <xs:annotation>
+            <xs:documentation>Grid lines will be displayed from tick mark locations for this set of ticks</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="vis:facetStyle" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute name="style" type="xs:IDREF"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="hue">
+        <xs:annotation>
+            <xs:documentation>Maps a variable to the hue of the graphic item</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="vis:aesthetic">
+                    <xs:attributeGroup ref="vis:aestheticRangeZeroOne"/>
+                    <xs:attribute name="affects" default="fill">
+                        <xs:annotation>
+                            <xs:documentation>Defines whether the aesthetic affects line stroke, shape fill, or both</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:NMTOKEN">
+                                <xs:enumeration value="fill"/>
+                                <xs:enumeration value="stroke"/>
+                                <xs:enumeration value="both"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="label">
+        <xs:annotation>
+            <xs:documentation>Text to be displayed</xs:documentation>
+        </xs:annotation>
+        <xs:complexType mixed="true">
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element name="descriptionGroup">
+                    <xs:annotation>
+                        <xs:documentation>A target XML element is used to generate text to be inserted in the label. A mix of text and description elements is allowed and typically used</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType mixed="true">
+                        <xs:choice minOccurs="0" maxOccurs="unbounded">
+                            <xs:element name="description">
+                                <xs:annotation>
+                                    <xs:documentation>A short piece of text acquired from an item that describes one feature of that item</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element ref="vis:parameter" minOccurs="0" maxOccurs="unbounded"/>
+                                        <xs:element ref="vis:numberFormat" minOccurs="0"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="name" type="xs:string" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>The name of the description requested from the target XML element. This might be as simple as "name" or more complex such as "r-squared". Different XML elements provide different possible descriptions</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                        <xs:attribute name="target" type="xs:IDREF" use="required">
+                            <xs:annotation>
+                                <xs:documentation>The ID of the item for which a description is required</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="separator" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>If the targeted item has multiple groups, their descriptions are separated by this string.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:attribute name="style" type="xs:IDREF">
+                <xs:annotation>
+                    <xs:documentation>The stroke color and opacity are used for the text, but not the dasharray, stroke width or other stroke characteristics.
+
+                        If the fill color is not transparent, a box will be drawn around the text, filled with the fill color. The box will have a border defined by the stroke of the style.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="link" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>If supplied, this indicates that clicking on this label should follow the indicated link</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="list" type="xs:string">
+        <xs:annotation>
+            <xs:documentation>Semi-colon separated list of values</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="majorTicks">
+        <xs:annotation>
+            <xs:documentation>Tick marks for an axis</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="vis:gridLines" minOccurs="0"/>
+                <xs:choice minOccurs="0">
+                    <xs:element ref="vis:numberFormat"/>
+                    <xs:element ref="vis:stringFormat"/>
+                    <xs:element ref="vis:dateTimeFormat"/>
+                </xs:choice>
+            </xs:sequence>
+            <xs:attribute name="position" default="outside">
+                <xs:annotation>
+                    <xs:documentation>position of tickmarks relative to the axis baseline</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="inside"/>
+                        <xs:enumeration value="outside"/>
+                        <xs:enumeration value="cross"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="markStyle" type="xs:IDREF">
+                <xs:annotation>
+                    <xs:documentation>style for the actual tick marks -- the small line not including the label</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="tickLabelStyle" type="xs:IDREF">
+                <xs:annotation>
+                    <xs:documentation>The style for each of the tick labels</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="length" type="vis:lengthAbsolute">
+                <xs:annotation>
+                    <xs:documentation>The tickmark length. If undefined a value is chosen proportional to the font size used for the tick labels</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="labelAngle">
+                <xs:annotation>
+                    <xs:documentation>An angle in degrees between 0 and 360 specifying at what angle the labels for the ticks should be drawn. Zero is horizontal. If left undefined a suitable angle is chosen so as to make the axis as legible as possible in as compact a space as possible.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:double">
+                        <xs:minInclusive value="-360"/>
+                        <xs:maxInclusive value="360"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="stagger" type="xs:boolean">
+                <xs:annotation>
+                    <xs:documentation>If true, a staggered pattern will be applied, with every second label placed a line lower than usual, so that longer labels can be drawn without occlusion. Tick marks are extended so they connect to the staggered labels. If undefined stagger may be chosen if it is the best way to make the axis legible and compact.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="labelFrequency" type="xs:positiveInteger">
+                <xs:annotation>
+                    <xs:documentation>If set greater than 1, labels will be skipped so as to show every n'th label, where n is the value of this parameter.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="delta" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>The increment between two tickmarks, expresed in the units of the data itself. For date data, the units are either days (for data without a time componentTrinity) or seconds (for data with a time componentTrinity). For the date case, the delta is used as a hint to determine the best calendrical increment to use. For example, an increment of 30 days will actual result in ticks draw at month intervals, not at exact 30 day intervals</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="base" type="vis:dateOrNumber" default="0">
+                <xs:annotation>
+                    <xs:documentation>A value at which a tick mark is desired. Ticks will start at this value and then be placed above and below this value at integral increments of the delta value (which will be chosen automatically if not specified). Only ticks lying within the axes bounds will be displayed. It is legal for this value to be outside the axis range. For example, if the axis range is [7,23] and delta is 4, a base of 1 will place ticks at 9, 13, 17, 21</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="numberFormat">
+        <xs:annotation>
+            <xs:documentation>Specification of how a number is to be formatted</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="scientific" default="auto">
+                <xs:annotation>
+                    <xs:documentation>Whether to use scientific notation</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="auto">
+                            <xs:annotation>
+                                <xs:documentation>Choose based on the data</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="never">
+                            <xs:annotation>
+                                <xs:documentation>Never use scientific notation
+                                </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="always">
+                            <xs:annotation>
+                                <xs:documentation>Always use scientific notation</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="minimumFractionDigits" type="xs:nonNegativeInteger" default="0">
+                <xs:annotation>
+                    <xs:documentation>minimum number of digits to display in the fractional part of a decimal or scientific representation</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="maximumFractionDigits" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation>maximum number of digits to display in the fractional part of a decimal or scientific representation</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="minimumIntegerDigits" type="xs:nonNegativeInteger" default="1">
+                <xs:annotation>
+                    <xs:documentation>minimum number of digits to display in the integer part of a decimal  representation. </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="maximumIntegerDigits" type="xs:nonNegativeInteger">
+                <xs:annotation>
+                    <xs:documentation>maximum number of digits to display in the integer part of a decimal  representation. </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="useGrouping" type="xs:boolean" default="true">
+                <xs:annotation>
+                    <xs:documentation>If true, grouping characters will be inserted for large integer values, so that 1000000 would be shown as 1,000,000</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="negativesOutside" type="xs:boolean" default="false">
+                <xs:annotation>
+                    <xs:documentation>If true, negative sign or parentheses will be shown outside the prefix / suffix</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="scalingFactor" type="xs:double" default="1">
+                <xs:annotation>
+                    <xs:documentation>A number which will be divided into the data before formatting. A typical use would be to specify scalingFactor="1000000" and suffix="millions" or scalingFactor="0.001" and suffix="millis"</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="negativesInParentheses" type="xs:boolean" default="false">
+                <xs:annotation>
+                    <xs:documentation>If true, negative values will be indicated by parentheses rather than the negative sign</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attributeGroup ref="vis:formatWrappers"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="parameter">
+        <xs:annotation>
+            <xs:documentation>A name value pair used to provide additional details</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="name" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>The parameter name</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="value" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>The parameter value</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="phi" type="vis:coordinate">
+        <xs:annotation>
+            <xs:documentation>Defines location using the angle around the Y (vertical) axis</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="r" type="vis:coordinate">
+        <xs:annotation>
+            <xs:documentation>Defines location by determining distance from origin (center of frame)</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="relabel">
+        <xs:annotation>
+            <xs:documentation>For display purposes only, maps a value of the variable into a new display value</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="from" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>Real data value. </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="to" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>Label to be used for display instead of the real value</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="rotation">
+        <xs:annotation>
+            <xs:documentation>Maps a variable to an angle at which to rotate a symbol</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="vis:aesthetic">
+                    <xs:attribute name="low" default="0">
+                        <xs:annotation>
+                            <xs:documentation>The lowest value in the domain of the variable will be mapped to this angle</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:double">
+                                <xs:minInclusive value="0"/>
+                                <xs:maxInclusive value="360"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                    <xs:attribute name="high" default="360">
+                        <xs:annotation>
+                            <xs:documentation>The maximum value in the domain of the variable will be mapped to this angle</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:double">
+                                <xs:minInclusive value="0"/>
+                                <xs:maxInclusive value="360"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="saturation">
+        <xs:annotation>
+            <xs:documentation>Maps a variable to the color saturation of a graphic item</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="vis:aesthetic">
+                    <xs:attributeGroup ref="vis:aestheticRangeZeroOne"/>
+                    <xs:attribute name="affects" default="fill">
+                        <xs:annotation>
+                            <xs:documentation>Defines whether the aesthetic affects line stroke, shape fill, or both</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:NMTOKEN">
+                                <xs:enumeration value="fill"/>
+                                <xs:enumeration value="stroke"/>
+                                <xs:enumeration value="both"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="scale">
+        <xs:annotation>
+            <xs:documentation>A transform of the data to re-scale it by a given method</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="vis:parameter" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="method" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:enumeration value="linear">
+                            <xs:annotation>
+                                <xs:documentation>Simple linear scale</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="log">
+                            <xs:annotation>
+                                <xs:documentation>Log scale, ticks look like: 1, 10, 100, 1000, .... A numeric parameter "base" may be used to change the base from the default "10"</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="power">
+                            <xs:annotation>
+                                <xs:documentation>A power scale. The exponent should be set in a paramter to a positive value. </xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="log.safe">
+                            <xs:annotation>
+                                <xs:documentation>A transformation  y = SIGN(x) LOG( 1 + ABS(x)) which is defined for all values of x, maps 0 to 0 and preserves the sign of the original data</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="power.safe">
+                            <xs:annotation>
+                                <xs:documentation>A transformation  y = SIGN(x) POWER(ABS(x), EXPONENT) which is defined for all values of x, maps 0 to 0 and preserves the sign of the original data</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="invert" type="xs:boolean" default="false">
+                <xs:annotation>
+                    <xs:documentation>Whether to invert the scale so it runs, for example, right to left instead of left to right.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="origin" type="vis:dateOrNumber">
+                <xs:annotation>
+                    <xs:documentation>The origin of a scale. This is particularly important to define for dates which do not have good default date origins</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="size">
+        <xs:annotation>
+            <xs:documentation>Maps a variable to the size of the graphic item</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="vis:aesthetic">
+                    <xs:attributeGroup ref="vis:aestheticRangeLengths"/>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="statistic">
+        <xs:annotation>
+            <xs:documentation>A statistic that is calculated on data to effect a transformation. It typically summarizes quantities of data into fewer (often a single) items.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:choice minOccurs="0" maxOccurs="unbounded">
+                <xs:element ref="vis:parameter"/>
+            </xs:choice>
+            <xs:attribute name="method" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation>The statistic method. Statistics may be simple summary statistics such as mean, median, range, stddev (sd), stderr (se), min, max, sum, count, or may be more complex entities with several parameters, such as the histogram and bin statistics.</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="rangeOption" use="optional" default="spread">
+                <xs:annotation>
+                    <xs:documentation>The rangeOption gives the usage of a statistic that yields a range.  Ignored for point statistics.</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="min">
+                            <xs:annotation>
+                                <xs:documentation>The minimum of the range is used.</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="max">
+                            <xs:annotation>
+                                <xs:documentation>The maximum of the range is used.</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="range">
+                            <xs:annotation>
+                                <xs:documentation>The range (max - min) of the range is used.</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="midpoint">
+                            <xs:annotation>
+                                <xs:documentation>The midpoint of the range ((min + max) / 2) is used.</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="spread">
+                            <xs:annotation>
+                                <xs:documentation>The range is left treated as a range.</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="stringFormat">
+        <xs:annotation>
+            <xs:documentation>A format for a string value</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attributeGroup ref="vis:formatWrappers"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="style">
+        <xs:annotation>
+            <xs:documentation>A Cascading style sheet - like definition of a style to be used to control drawing details such as colors, line widths, fonts, pattern and transparency</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="glyph" minOccurs="0">
+                    <xs:complexType>
+                        <xs:attribute name="sides" type="xs:string" default="5"/>
+                        <xs:attribute name="size" type="xs:string"/>
+                        <xs:attribute name="type" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:NMTOKEN">
+                                    <xs:enumeration value="square"/>
+                                    <xs:enumeration value="circle"/>
+                                    <xs:enumeration value="cross"/>
+                                    <xs:enumeration value="plus"/>
+                                    <xs:enumeration value="polygon"/>
+                                    <xs:enumeration value="star"/>
+                                    <xs:enumeration value="arrow"/>
+                                    <xs:enumeration value="line"/>
+                                    <xs:enumeration value="flower"/>
+                                    <xs:enumeration value="male"/>
+                                    <xs:enumeration value="female"/>
+                                    <xs:enumeration value="bowtie"/>
+                                    <xs:enumeration value="ibeam"/>
+                                    <xs:enumeration value="none">
+                                        <xs:annotation>
+                                            <xs:documentation>No glyph will be drawn at all.  This is useful for using the label or labeling instead of the point.</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:enumeration>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="angle" type="xs:string" default="0"/>
+                        <xs:attribute name="aspect" type="xs:string" default="1.0"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="intervalGlyph" minOccurs="0">
+                    <xs:complexType>
+                        <xs:attribute name="type" use="required">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:NMTOKEN">
+                                    <xs:enumeration value="square"/>
+                                    <xs:enumeration value="ibeam"/>
+                                    <xs:enumeration value="line"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="interpolation" minOccurs="0">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element ref="vis:parameter" minOccurs="0" maxOccurs="unbounded"/>
+                        </xs:sequence>
+                        <xs:attribute name="type" default="linear">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:NMTOKEN">
+                                    <xs:enumeration value="linear"/>
+                                    <xs:enumeration value="step"/>
+                                    <xs:enumeration value="jump"/>
+                                    <xs:enumeration value="spline"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="missingRepresentation" default="gap">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:NMTOKEN">
+                                    <xs:enumeration value="gap"/>
+                                    <xs:enumeration value="wings"/>
+                                    <xs:enumeration value="interpolated"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="shadow" minOccurs="0">
+                    <xs:complexType>
+                        <xs:attribute name="dx" type="xs:string" default="5px"/>
+                        <xs:attribute name="dy" type="xs:string" default="5px"/>
+                        <xs:attribute name="color" type="xs:string" default="gray"/>
+                        <xs:attribute name="opacity" type="xs:string" default="0.5"/>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element ref="vis:style" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:attribute name="value" type="xs:string"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="styleBy">
+        <xs:annotation>
+            <xs:documentation>A mapping from a categorical variable to a set of discrete styles for graphic items</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="vis:aesthetic">
+                    <xs:attribute name="styleCycle" type="xs:IDREF">
+                        <xs:annotation>
+                            <xs:documentation>A cycle of styles to be used for categories of data. If undefined a default cycle will be used which is chosen based on the type of element being displayed.</xs:documentation>
+                        </xs:annotation>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="theta" type="vis:coordinate">
+        <xs:annotation>
+            <xs:documentation>Determines location using the angle around the X (horizontal) axis.</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="transparency">
+        <xs:annotation>
+            <xs:documentation>Maps a variable to the transparency (1-opacity) of the graphic item</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="vis:aesthetic">
+                    <xs:attributeGroup ref="vis:aestheticRangeZeroOne"/>
+                    <xs:attribute name="affects" default="fill">
+                        <xs:annotation>
+                            <xs:documentation>Defines whether the aesthetic affects line stroke, shape fill, or both</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:NMTOKEN">
+                                <xs:enumeration value="fill"/>
+                                <xs:enumeration value="stroke"/>
+                                <xs:enumeration value="both"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="x" type="vis:coordinate">
+        <xs:annotation>
+            <xs:documentation>Determines location along the X (horizontal) axis</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="y" type="vis:coordinate">
+        <xs:annotation>
+            <xs:documentation>Determines location along the Y (vertical) axis</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:element name="z" type="vis:coordinate">
+        <xs:annotation>
+            <xs:documentation>Determines location along the Z (front-back) axis. High Z is towards the front, low Z to the back</xs:documentation>
+        </xs:annotation>
+    </xs:element>
+    <xs:complexType name="aesthetic">
+        <xs:annotation>
+            <xs:documentation>An aesthetic maps data to a graphic attribute</xs:documentation>
+        </xs:annotation>
+        <xs:all>
+            <xs:element ref="vis:scale" minOccurs="0"/>
+            <xs:element ref="vis:statistic" minOccurs="0"/>
+        </xs:all>
+        <xs:attribute name="id" type="xs:ID"/>
+        <xs:attributeGroup ref="vis:aestheticDataAttributes"/>
+    </xs:complexType>
+    <xs:attributeGroup name="aestheticDataAttributes">
+        <xs:annotation>
+            <xs:documentation>Data is taken from the variable</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="variable" type="xs:IDREF" use="required">
+            <xs:annotation>
+                <xs:documentation>The aesthetic will use data from this variable to map to the graphical characteristic</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="dimension" type="xs:nonNegativeInteger" default="0">
+            <xs:annotation>
+                <xs:documentation>If the variable is an expression that contains more than one dimension of data (for example the expression contained a cross of other variables), then this attribute specifies which of the variable's dimensions to use. The first in numbered 0, then 1, 2, etc.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="domain" type="xs:IDREF">
+            <xs:annotation>
+                <xs:documentation>If specified, this domain will be used to define the domain of the variable rather than the variable's default domain. For example, a user might choose to map 0 to black and 1 to white even if the data only run from 0.3 to 0.7. In this case a domain of [0,1] would be specified for the aesthetic.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="aestheticRangeLengths">
+        <xs:annotation>
+            <xs:documentation>Defines the output range of an aesthetic in terms of lengths</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="low" type="vis:length">
+            <xs:annotation>
+                <xs:documentation>The lowest value in the domain fo the aesthetic variable wil be mapped to this length</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="high" type="vis:length">
+            <xs:annotation>
+                <xs:documentation>The maximum value in an aesthetic variable's data will be mapped to this length</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="aestheticRangeZeroOne">
+        <xs:annotation>
+            <xs:documentation>Defines the output range of the aesthetic between 0 and 1</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="low" default="0">
+            <xs:annotation>
+                <xs:documentation>The lowest value in the domain of the aesthetic will be mapped to this number. Zero represents the lowest number the aesthetic could support and one represents the highest. For example, for brightness, 0 represents completely dark and 1 represents completely white.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:double">
+                    <xs:minInclusive value="0"/>
+                    <xs:maxInclusive value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="high" default="1">
+            <xs:annotation>
+                <xs:documentation>The highest value in the domain of the aesthetic will be mapped to this number. Zero represents the lowest number the aesthetic could support and one represents the highest. For example, for brightness, 0 represents completely dark and 1 represents completely white.</xs:documentation>
+            </xs:annotation>
+            <xs:simpleType>
+                <xs:restriction base="xs:double">
+                    <xs:minInclusive value="0"/>
+                    <xs:maxInclusive value="1"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:element name="minorTicks">
+        <xs:annotation>
+            <xs:documentation>Minor tick marks for an axis</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="vis:gridLines" minOccurs="0"/>
+            </xs:sequence>
+            <xs:attribute name="position" default="outside">
+                <xs:annotation>
+                    <xs:documentation>The allowed positions for tick marks relative to the axis baseline</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="inside"/>
+                        <xs:enumeration value="outside"/>
+                        <xs:enumeration value="cross"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="markStyle" type="xs:IDREF">
+                <xs:annotation>
+                    <xs:documentation>The style for the ticks. Note that minor ticks do not have labels, so this is the only visual item displayed for minor ticks</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="length" type="vis:lengthAbsolute">
+                <xs:annotation>
+                    <xs:documentation>Length of tick marks. If undefined defaults to a proportion of the length of the major ticks</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="number" type="xs:positiveInteger">
+                <xs:annotation>
+                    <xs:documentation>The number of minor ticks per major tick division</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="color">
+        <xs:annotation>
+            <xs:documentation>A concrete color definition, of the form #RRGGBB or one of the standard web color names</xs:documentation>
+        </xs:annotation>
+        <xs:union memberTypes="vis:colorName vis:colorRGBformat"/>
+    </xs:simpleType>
+    <xs:attributeGroup name="formatWrappers">
+        <xs:annotation>
+            <xs:documentation>Prefix and Suffix for a format</xs:documentation>
+        </xs:annotation>
+        <xs:attribute name="prefix" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>This string will be added in front of the formatted text</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="suffix" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>This string will be appended to the formatted text</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:element name="width">
+        <xs:annotation>
+            <xs:documentation>Maps a variable to the width of a graphic item</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="vis:aesthetic">
+                    <xs:attributeGroup ref="vis:aestheticRangeLengths"/>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="height">
+        <xs:annotation>
+            <xs:documentation>Maps a variable to the height of a graphic item</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="vis:aesthetic">
+                    <xs:attributeGroup ref="vis:aestheticRangeLengths"/>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="split">
+        <xs:annotation>
+            <xs:documentation>A pseudo-aesthetic that does not actually change graphic appearance, but simply splits the element into subgroups based on a categorical variable</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="variable" type="xs:IDREF" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="metaInfo">
+        <xs:annotation>
+            <xs:documentation>An aesthetic that annotaes graphic items with information used in interactiosn with it (links and pop-ups)</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:complexContent>
+                <xs:extension base="vis:aesthetic">
+                    <xs:attribute name="method">
+                        <xs:annotation>
+                            <xs:documentation>What to do with the meta information</xs:documentation>
+                        </xs:annotation>
+                        <xs:simpleType>
+                            <xs:restriction base="xs:NMTOKEN">
+                                <xs:enumeration value="link">
+                                    <xs:annotation>
+                                        <xs:documentation>Displays the meta-information as a popup when the mouse hovers over it</xs:documentation>
+                                    </xs:annotation>
+                                </xs:enumeration>
+                                <xs:enumeration value="popup">
+                                    <xs:annotation>
+                                        <xs:documentation>Follows the URI in the meta-information when the user clicks on it</xs:documentation>
+                                    </xs:annotation>
+                                </xs:enumeration>
+                                <xs:enumeration value="onMouseOver">
+                                    <xs:annotation>
+                                        <xs:documentation>Calls javascript method on mouse over event</xs:documentation>
+                                    </xs:annotation>
+                                </xs:enumeration>
+                                <xs:enumeration value="onMouseDown">
+                                    <xs:annotation>
+                                        <xs:documentation>Calls javascript method on mouse down event</xs:documentation>
+                                    </xs:annotation>
+                                </xs:enumeration>
+                                <xs:enumeration value="onMouseOut">
+                                    <xs:annotation>
+                                        <xs:documentation>Calls javascript method on mouse out event</xs:documentation>
+                                    </xs:annotation>
+                                </xs:enumeration>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:attribute>
+                </xs:extension>
+            </xs:complexContent>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="dimensionName">
+        <xs:annotation>
+            <xs:documentation>The name of a part of a coordinate system</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="x"/>
+            <xs:enumeration value="y"/>
+            <xs:enumeration value="z"/>
+            <xs:enumeration value="theta"/>
+            <xs:enumeration value="r"/>
+            <xs:enumeration value="phi"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="dateFormat">
+        <xs:annotation>
+            <xs:documentation>Defines a format to represent the date portion of a date/time value</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence minOccurs="0">
+                <xs:element name="dayOfWeek" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Monday, Tuesday, etc.</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:attribute name="long" type="xs:boolean" default="false">
+                            <xs:annotation>
+                                <xs:documentation>If true, a longer format will be used. If false a shortened form of the name will be used</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:choice minOccurs="0">
+                    <xs:element name="dayOfMonth">
+                        <xs:annotation>
+                            <xs:documentation>The numeric day of the month</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:attribute name="fill" type="xs:boolean" default="false">
+                                <xs:annotation>
+                                    <xs:documentation>If true, leading zeros will be added to pad the number</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="dayOfYear">
+                        <xs:annotation>
+                            <xs:documentation>The numeric day of the year </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:attribute name="fill" type="xs:boolean" default="false">
+                                <xs:annotation>
+                                    <xs:documentation>If true, leading zeros will be added to pad the number</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:choice>
+                <xs:choice minOccurs="0">
+                    <xs:element name="week">
+                        <xs:annotation>
+                            <xs:documentation>The week number within the year</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:attribute name="fill" type="xs:boolean" default="false">
+                                <xs:annotation>
+                                    <xs:documentation>If true, leading zeros will be added to pad the number</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="month">
+                        <xs:annotation>
+                            <xs:documentation>The numeric month of the year</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:attribute name="fill" type="xs:boolean" default="false">
+                                <xs:annotation>
+                                    <xs:documentation>If true, leading zeros will be added to pad the number</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="monthName">
+                        <xs:annotation>
+                            <xs:documentation>January, February, etc.</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:attribute name="long" type="xs:boolean" default="false">
+                                <xs:annotation>
+                                    <xs:documentation>If true, a longer format will be used. If false a shortened form of the name will be used</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:complexType>
+                    </xs:element>
+                    <xs:element name="quarter">
+                        <xs:annotation>
+                            <xs:documentation>The quarter, represented as a number 1 through 4 and a suffix tag</xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:attribute name="prefix" type="xs:string" use="optional"/>
+                            <xs:attribute name="suffix" type="xs:string" use="optional">
+                                <xs:annotation>
+                                    <xs:documentation>A string to be appended after the quarter designation to indicate that it is a quarter</xs:documentation>
+                                </xs:annotation>
+                            </xs:attribute>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:choice>
+                <xs:element name="year" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>The year as a number</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:attribute name="showCentury" type="xs:boolean" default="false">
+                            <xs:annotation>
+                                <xs:documentation>If true, the century will be shown</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="era" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Show the era (BC / AD)</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType/>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="timeFormat">
+        <xs:annotation>
+            <xs:documentation>Defines a format to represent the time portion of a date/time value</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="hour" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>The hour of the day</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:attribute name="fill" type="xs:boolean" default="false">
+                            <xs:annotation>
+                                <xs:documentation>If true, leading zeros will be added to pad the number</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="twentyFour" type="xs:boolean" default="false">
+                            <xs:annotation>
+                                <xs:documentation>show in twnety-four hour format</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="showAMPM" type="xs:boolean" default="false">
+                            <xs:annotation>
+                                <xs:documentation>show the AM / PM marker</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="minute" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>The minute of the hour</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:attribute name="fill" type="xs:boolean" default="false">
+                            <xs:annotation>
+                                <xs:documentation>If true, leading zeros will be added to pad the number</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="second" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>The seonds of the minute, with optional milliseconds</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:attribute name="fill" type="xs:boolean" default="false">
+                            <xs:annotation>
+                                <xs:documentation>If true, leading zeros will be added to pad the number</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="milliseconds" type="xs:boolean" default="false">
+                            <xs:annotation>
+                                <xs:documentation>If true, millisecond information will be displayed</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="length">
+        <xs:annotation>
+            <xs:documentation>An extent to be used to size or locate graphic entities</xs:documentation>
+        </xs:annotation>
+        <xs:union memberTypes="vis:lengthAbsolute vis:lengthPercentage"/>
+    </xs:simpleType>
+    <xs:simpleType name="lengthPercentage">
+        <xs:annotation>
+            <xs:documentation>A length expressed as a percentage. The 100% size is determined by the context and typically is related to the size of the enclosing object</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="-?[0-9]+[.]?[0-9]*%">
+                <xs:annotation>
+                    <xs:documentation>Any number followed by the percentage sign</xs:documentation>
+                </xs:annotation>
+            </xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="lengthAbsolute">
+        <xs:annotation>
+            <xs:documentation>A length expressed as an absolute value.</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="-?[0-9]+[.]?[0-9]*">
+                <xs:annotation>
+                    <xs:documentation>without any units defaults to pixels</xs:documentation>
+                </xs:annotation>
+            </xs:pattern>
+            <xs:pattern value="-?[0-9]+[.]?[0-9]*mm">
+                <xs:annotation>
+                    <xs:documentation>length in millimeters</xs:documentation>
+                </xs:annotation>
+            </xs:pattern>
+            <xs:pattern value="-?[0-9]+[.]?[0-9]*cm">
+                <xs:annotation>
+                    <xs:documentation>length in centimeters</xs:documentation>
+                </xs:annotation>
+            </xs:pattern>
+            <xs:pattern value="-?[0-9]+[.]?[0-9]*in">
+                <xs:annotation>
+                    <xs:documentation>length in inches</xs:documentation>
+                    <xs:documentation/>
+                </xs:annotation>
+            </xs:pattern>
+            <xs:pattern value="-?[0-9]+[.]?[0-9]*px">
+                <xs:annotation>
+                    <xs:documentation>length in pixels</xs:documentation>
+                </xs:annotation>
+            </xs:pattern>
+            <xs:pattern value="-?[0-9]+[.]?[0-9]*pt">
+                <xs:annotation>
+                    <xs:documentation>length in points</xs:documentation>
+                </xs:annotation>
+            </xs:pattern>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="colorRGBformat">
+        <xs:annotation>
+            <xs:documentation>A color expressed as #RRGGBB</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="#[A-F,a-f,0-9]{6}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="colorName">
+        <xs:annotation>
+            <xs:documentation>A named Color such as "red" or "lightGray"</xs:documentation>
+        </xs:annotation>
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Za-z]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:element name="legend">
+        <xs:annotation>
+            <xs:documentation>A Legend for one or aesthetics of a variable</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="vis:label" minOccurs="0"/>
+                <xs:element name="legendTarget" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>A componentTrinity of the legend</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:attribute name="id" type="xs:ID" use="required"/>
+                        <xs:attribute name="element" type="xs:IDREF" use="required">
+                            <xs:annotation>
+                                <xs:documentation>The ID of an XML element we want to legend</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="domain" type="xs:IDREF">
+                            <xs:annotation>
+                                <xs:documentation>A domain specifying which entries may be shown in the legend.  Normally this is inferred from the aesthetic involved.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="aesthetic" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>The aesthetic we want to legend. This is the ID of the aesthetic which defaults to the tagname of the aesthetic ("color", "size", etc.).
+
+                                    If the aesthetic is undefined, a legend entry is created using a single swatch for the element naemd by the name of the element (or its ID if no name was defined)</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="link" type="xs:anyURI">
+                            <xs:annotation>
+                                <xs:documentation>A URI that will be followed when this legend target is clicked on</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:attribute name="style" type="xs:IDREF"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="coordinateTransform">
+        <xs:annotation>
+            <xs:documentation>A method of transforming the base coordinates for an element into a new coordinate system</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element ref="vis:parameter" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="method" use="required">
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="transpose"/>
+                        <xs:enumeration value="polar">
+                            <xs:annotation>
+                                <xs:documentation>This either converts to polar coordinates, or modifies existing polar coordinates. Allowed parameters are "startAngle", which is a number in the range [0,360] and "cycles" which is an integer stating how many times to wind around the circle</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="rectangular">
+                            <xs:annotation>
+                                <xs:documentation>A matrix transformation in 3D space. 3D data are transformed so that the user views them form a camera position determined by the following parameters:
+
+                                    phi: viewing angle in degrees around the vertical axis
+                                    theta: viewing angle in degrees around the horizontal axis
+                                    zeta: viewing angle in degrees arounf the in-out (z, depth) axis
+                                    distance: a positive double where '1' represents the default distance to view from
+                                    perspective: the vanishing point of parallel lines. Defaults to infinity</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="fisheye">
+                            <xs:annotation>
+                                <xs:documentation>A radial fisheye determined by the following parameters:
+
+                                    x: center of focus x coordinate in the [0,1] coordinate system
+                                    y: center of focus y coordinate in the [0,1] coordinate system
+                                    r: radius of area to be magnified in the [0,1] coordinate system
+                                    magnification: How much to magnify by. Must be unity or greater</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="oblique">
+                            <xs:annotation>
+                                <xs:documentation>A transform which keeps front-facing items front-facing. The parameters are:
+
+                                    theta: the angle the back face is offset from the front
+                                    foreshortening: a positive number indicating how far the offset is. 1 corresponds to a cubic shape
+                                    distance: a poisitive number giving the viewing distance.  1 is the default distance</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="triangular">
+                            <xs:annotation>
+                                <xs:documentation>Maps 3D data into 2D using the percentage of data in each dimension to rpovide coordinates.</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="inset">
+                            <xs:annotation>
+                                <xs:documentation>Provides an inset to shrink the view. Parameters are of the form x-maximum, theta-minimum, etc.  and the values range from 0 (no inset) to 1 (inset it all the way so it does not exist). The sum of any dimensions max and min insets should not exceed 1</xs:documentation>
+                            </xs:annotation>
+                        </xs:enumeration>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="source">
+        <xs:annotation>
+            <xs:documentation>A table of data, consisting of rows and columns, with misisng values possible </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:choice>
+                <xs:element name="otherAccess">
+                    <xs:annotation>
+                        <xs:documentation>Data will be passed in using another mechanism</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:attribute name="type" use="required" fixed="object">
+                            <xs:annotation>
+                                <xs:documentation>A source uses some external mechanism for getting data. Currently only passing in by object is supported</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:NMTOKEN">
+                                    <xs:enumeration value="object"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="fileAccess">
+                    <xs:annotation>
+                        <xs:documentation>Data will be read from a file</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:attribute name="fileName" type="xs:string" use="required">
+                            <xs:annotation>
+                                <xs:documentation>File to retrieve data from</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="header" type="xs:boolean" default="false">
+                            <xs:annotation>
+                                <xs:documentation>If true, the first line contains the names of the variables, which are otherwise named 1,2,3 ...</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="separator" type="xs:string" use="required">
+                            <xs:annotation>
+                                <xs:documentation>string used to separate fields. A new line character spearates rows</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="row" maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>Data is embedded in the xml. One row in the XML corresponds to one data row</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="dataValue" minOccurs="0" maxOccurs="unbounded">
+                                <xs:annotation>
+                                    <xs:documentation>A value expressed as a string</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:simpleContent>
+                                        <xs:extension base="xs:string">
+                                            <xs:attribute name="name" type="xs:string" use="required">
+                                                <xs:annotation>
+                                                    <xs:documentation>name of the variable. The order of variables between rows need not be the same and missing variables in each row is the preferred way to give missing values</xs:documentation>
+                                                </xs:annotation>
+                                            </xs:attribute>
+                                        </xs:extension>
+                                    </xs:simpleContent>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:sequence>
+                    </xs:complexType>
+                </xs:element>
+            </xs:choice>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="variable">
+        <xs:annotation>
+            <xs:documentation>Variables are used to construct visualizations and are defined in terms of source data. They are the link that defines how a column of data is to be used in the chart</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="meta" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Information about this variable that can be used both by the rendering engine and by other applications</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:choice minOccurs="0">
+                            <xs:element ref="vis:numberFormat"/>
+                            <xs:element ref="vis:stringFormat"/>
+                            <xs:element ref="vis:dateTimeFormat"/>
+                        </xs:choice>
+                        <xs:attribute name="weight" type="xs:boolean" default="false">
+                            <xs:annotation>
+                                <xs:documentation>If true, this variable will be used as a sample weight for all data in the same source. At most one weight may be defined for a source.</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="key" type="xs:boolean" default="false">
+                            <xs:annotation>
+                                <xs:documentation>Indicates the variable can be used as a database key; all entries in it should be unique</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="unit" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>The units this variable is in</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="creator" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>The creator of this variable</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="description" type="xs:string">
+                            <xs:annotation>
+                                <xs:documentation>A descritption of the variable for human or machine use</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element name="aggregateSmall" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>Aggregates categories of a categorical variable based on the sum of values of a different variable</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:attribute name="category" type="xs:string" use="required">
+                            <xs:annotation>
+                                <xs:documentation>The name of the category which will be created if any aggregation occurs</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="sumVariable" type="xs:IDREF" use="required">
+                            <xs:annotation>
+                                <xs:documentation>The variable to add up for each category to determine the category's size</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                        <xs:attribute name="minFraction" use="required">
+                            <xs:annotation>
+                                <xs:documentation>The fraction (between 0 and 1) that will be used to determine if a category is to be aggregated. If a category has a summed value less than the given fraction of the overall sum, it will be aggregated unless it is the only such category (in which case there is nothing to aggregate it with!)</xs:documentation>
+                            </xs:annotation>
+                            <xs:simpleType>
+                                <xs:restriction base="xs:double">
+                                    <xs:minInclusive value="0"/>
+                                    <xs:maxInclusive value="1"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:element ref="vis:relabel" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+            <xs:attribute name="source" type="xs:IDREF">
+                <xs:annotation>
+                    <xs:documentation>The source from which to get data for this variable</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="sourceName" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>The name of this variable as it is know in the source</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="categorical" type="xs:boolean" use="required">
+                <xs:annotation>
+                    <xs:documentation>Whether this data is categorical or not. If not, and it is not a date, the data values will be converted to doubles. Thhe difference between a categorical and non-categorical variable is profound and determines whether it can be used for faceting, which aesthetics it can be used for, and other purposes. It is legal and often useful to have two variables use the same base data with different values for categorical and/or other attributes</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="label" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>A human-readable name for the variable (defaults to the ID)</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="shortLabel" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>A short human-readable label for the variable (defaults to the label)</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="domain" type="xs:IDREF">
+                <xs:annotation>
+                    <xs:documentation>All data exist in some domain, and that domain is used to control what the "minimum" and "maximum" values are. By default, the domain of a variable is defined to be the data range (for continuous variables) or the set of unique values of a variable (for categorical variables). If this parameter is specified, the default domain is replaced with this one</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="value" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>The variable is determined by a mathematical expression, such as "log(age) + 3 * exp(salary)" where the variable can refer to other variables. The source parameter is required in this case. </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="expression" type="xs:string">
+                <xs:annotation>
+                    <xs:documentation>The sourceName and source are ignored for a variable with a defined expression. The expression in this attribute should be a legal Grammar of Graphics expression (with the additional dot operator) based on existing variables. </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="domain">
+        <xs:annotation>
+            <xs:documentation>A domain defines the range of values we expect data to lie in. This can be used to exclude values we do not want and to define standard ranges so data with different empirical rnges can be compared</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:choice maxOccurs="unbounded">
+                    <xs:annotation>
+                        <xs:documentation>These contents should consist of zero or more lists OR intervals followed by zero or more domainReferences. These will be unioned together. Following intervals will override the existing domain and following lists will be subtracted from the existing domain</xs:documentation>
+                    </xs:annotation>
+                    <xs:element ref="vis:list"/>
+                    <xs:element ref="vis:interval"/>
+                    <xs:element ref="vis:domainReference"/>
+                </xs:choice>
+                <xs:element name="sort" minOccurs="0">
+                    <xs:annotation>
+                        <xs:documentation>For a categorical variable, define an order on the categories in the domain</xs:documentation>
+                    </xs:annotation>
+                    <xs:complexType>
+                        <xs:choice>
+                            <xs:element name="statisticSort">
+                                <xs:annotation>
+                                    <xs:documentation>Sorts categories according to a statistic calculated on a continuous variable for rows with each category</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element ref="vis:statistic"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="sourceVariable" type="xs:IDREF" use="required">
+                                        <xs:annotation>
+                                            <xs:documentation>This source variable contains categories that will be sorted. Typically this is a variable referenced in that section of this element. Categories not present will be sorted to one end of the list</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                    <xs:attribute name="statVariable" type="xs:IDREF">
+                                        <xs:annotation>
+                                            <xs:documentation>The continuous variable that the statistic will use to determine a ranking of the categorical variable</xs:documentation>
+                                        </xs:annotation>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="simpleSort">
+                                <xs:annotation>
+                                    <xs:documentation>Sorts data either by occurance or alphanumerically</xs:documentation>
+                                </xs:annotation>
+                                <xs:complexType>
+                                    <xs:attribute name="method" default="natural">
+                                        <xs:simpleType>
+                                            <xs:restriction base="xs:NMTOKEN">
+                                                <xs:enumeration value="data">
+                                                    <xs:annotation>
+                                                        <xs:documentation>The data are sorted based on their appearance in the source. First appearances are sorted first</xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:enumeration>
+                                                <xs:enumeration value="natural">
+                                                    <xs:annotation>
+                                                        <xs:documentation>The natural sort order is a modified alphanumeric sort. All numbers are sorted as numbers and all non-numbers aer sorted as alphabetic and then the two lists are combined. Thus "a,11,2,c,1" gets sorted as "1,2,11,a,c"</xs:documentation>
+                                                    </xs:annotation>
+                                                </xs:enumeration>
+                                            </xs:restriction>
+                                        </xs:simpleType>
+                                    </xs:attribute>
+                                </xs:complexType>
+                            </xs:element>
+                        </xs:choice>
+                        <xs:attribute name="descending" type="xs:boolean" default="false">
+                            <xs:annotation>
+                                <xs:documentation>Whethewr to reverse the usual sorting order</xs:documentation>
+                            </xs:annotation>
+                        </xs:attribute>
+                    </xs:complexType>
+                </xs:element>
+                <xs:choice minOccurs="0">
+                    <xs:element ref="vis:numberFormat"/>
+                    <xs:element ref="vis:stringFormat"/>
+                    <xs:element ref="vis:dateTimeFormat"/>
+                </xs:choice>
+                <xs:element ref="vis:relabel" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="categorical" type="xs:boolean" use="required">
+                <xs:annotation>
+                    <xs:documentation>Is the domain categorical or continuous. It is an error to mix categorical and non-categorical domains in any way</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="styleCycle">
+        <xs:annotation>
+            <xs:documentation>A way of generating styles to be used for a styleBy aesthetic</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence>
+                <xs:sequence>
+                    <xs:element name="cycle" maxOccurs="unbounded">
+                        <xs:annotation>
+                            <xs:documentation>When getting the first style from a styleCycle, the first styles from each cycle are combined. The second style consists of the second style from the first cycle combined with the others and so on until that cycle is exhausted. Then the frist cycle resets to the first style and the second style from the second cycle is used. This means that, for example, a styleCycle with four cycles each containing three styles can generate 81 styles before wrapping </xs:documentation>
+                        </xs:annotation>
+                        <xs:complexType>
+                            <xs:sequence>
+                                <xs:element ref="vis:style" maxOccurs="unbounded"/>
+                            </xs:sequence>
+                        </xs:complexType>
+                    </xs:element>
+                </xs:sequence>
+                <xs:element ref="vis:extension" minOccurs="0" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:ID" use="required"/>
+        </xs:complexType>
+    </xs:element>
+    <xs:simpleType name="dateOrNumber">
+        <xs:annotation>
+            <xs:documentation>A date or a number</xs:documentation>
+        </xs:annotation>
+        <xs:union memberTypes="vis:date xs:double"/>
+    </xs:simpleType>
+    <xs:simpleType name="date">
+        <xs:annotation>
+            <xs:documentation>One of the three legal ways to represent a date</xs:documentation>
+        </xs:annotation>
+        <xs:union memberTypes="xs:date xs:time xs:dateTime"/>
+    </xs:simpleType>
+    <xs:complexType name="coordinate">
+        <xs:annotation>
+            <xs:documentation>A coordinate used to locate a graphic representation of data within a coordinate system</xs:documentation>
+        </xs:annotation>
+        <xs:sequence>
+            <xs:element ref="vis:statistic" minOccurs="0"/>
+        </xs:sequence>
+        <xs:attribute name="variable" type="xs:IDREF">
+            <xs:annotation>
+                <xs:documentation>This variable's data will be used to locate graphi items created by the element within the coordinate system</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+        <xs:attribute name="location" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>If no variable is specified, this value (expressed in data units) will be used to locate all items created by this element. If there is no data on this dimension at all, the default range of [0,1] will be used and location values should be chosen to fit in that range</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+    </xs:complexType>
+    <xs:element name="interval">
+        <xs:annotation>
+            <xs:documentation>A range for a continuous variable</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="min" type="vis:dateOrNumber">
+                <xs:annotation>
+                    <xs:documentation>A minimum value for a range</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="max" type="vis:dateOrNumber">
+                <xs:annotation>
+                    <xs:documentation>An upper value for a range</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="domainReference">
+        <xs:annotation>
+            <xs:documentation>A reference to a domain or a variable's default domain.</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="variable" type="xs:IDREF">
+                <xs:annotation>
+                    <xs:documentation>A reference to a variable. Exactly one of the two attributes "variable" and "domain" must be defined, and the type of variable/domain referred to must match the type of this domain</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="domain" type="xs:IDREF">
+                <xs:annotation>
+                    <xs:documentation>A reference to another domain. Exactly one of the two attributes "variable" and "domain" must be defined, and the type of variable/domain referred to must match the type of this domain</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="facetVariable">
+        <xs:annotation>
+            <xs:documentation>A variable used within the faceting expression</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:attribute name="role" use="required">
+                <xs:annotation>
+                    <xs:documentation>Which visual dimension this variable will be mapped to. It is an error for a blend to contain facetVariables with two different roles</xs:documentation>
+                </xs:annotation>
+                <xs:simpleType>
+                    <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="x"/>
+                        <xs:enumeration value="y"/>
+                    </xs:restriction>
+                </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="variable" type="xs:IDREF" use="required">
+                <xs:annotation>
+                    <xs:documentation>The variable to facet by</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="domain" type="xs:IDREF">
+                <xs:annotation>
+                    <xs:documentation>If present, overrides the default domain for the variable</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="cross">
+        <xs:annotation>
+            <xs:documentation>The Grammar of Graphics cross operator takes multiple variables to make a facet with all combinations of each of the variables</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:choice minOccurs="2" maxOccurs="unbounded">
+                <xs:element ref="vis:facetVariable"/>
+                <xs:element ref="vis:blend"/>
+                <xs:element ref="vis:cross"/>
+                <xs:element ref="vis:nest"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="blend">
+        <xs:annotation>
+            <xs:documentation>The Grammar of Graphics blend operator takes variables and merges them on the same dimension.  </xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:choice minOccurs="2" maxOccurs="unbounded">
+                <xs:element ref="vis:facetVariable"/>
+                <xs:element ref="vis:blend"/>
+                <xs:element ref="vis:cross"/>
+                <xs:element ref="vis:nest"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:element name="nest">
+        <xs:annotation>
+            <xs:documentation>The Grammar of Graphics nest operator takes two vraibles. The first is nested with in the second on the same dimension</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:choice minOccurs="2" maxOccurs="2">
+                <xs:element ref="vis:facetVariable"/>
+                <xs:element ref="vis:blend"/>
+                <xs:element ref="vis:cross"/>
+                <xs:element ref="vis:nest"/>
+            </xs:choice>
+        </xs:complexType>
+    </xs:element>
+    <xs:complexType name="expression">
+        <xs:annotation>
+            <xs:documentation>A modification to the coordinate system to allow panelling. This affects all elements within the encosing frame</xs:documentation>
+        </xs:annotation>
+        <xs:choice>
+            <xs:element ref="vis:facetVariable"/>
+            <xs:element ref="vis:blend"/>
+            <xs:element ref="vis:cross"/>
+            <xs:element ref="vis:nest"/>
+        </xs:choice>
+    </xs:complexType>
+    <xs:element name="extension">
+        <xs:annotation>
+            <xs:documentation>This element can be used as a simple way to store additional information in the ChartXML without requiring an additional schema</xs:documentation>
+        </xs:annotation>
+        <xs:complexType>
+            <xs:sequence minOccurs="0" maxOccurs="unbounded">
+                <xs:any processContents="skip"/>
+            </xs:sequence>
+            <xs:anyAttribute processContents="skip"/>
+        </xs:complexType>
+    </xs:element>
+</xs:schema>

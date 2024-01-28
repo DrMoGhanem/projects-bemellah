@@ -1,0 +1,100 @@
+'This script creates a new Viewer document with a pivot table inserted
+'in it.  The cells of the table are populated by the script. 
+'To run this script, open SPSS And run.
+
+
+'Script level constants
+Const cCOLUMN As String = "Column"
+Const cCOLUMNS As String = "Columns"
+Const cROW As String = "Row"
+Const cROWS As String = "Rows"
+Const cLAYER As String = "Layer"
+Const cLAYERS As String = "Layers"
+Const cNEWTABLE As String = "New table"
+
+Sub Main
+    Dim objOutputDoc As ISpssOutputDoc
+    Dim objLabels As ISpssLabels      ' Column label arrays
+    Dim objLayerLabels As ISpssLayerLabels      ' Column label arrays
+    Dim objItems As ISpssItems
+    Dim objItem As ISpssItem
+    Dim objPivotTable As PivotTable
+    Dim objDataCells As ISpssDataCells
+    Dim objPivMgr As ISpssPivotMgr
+    Dim objLayerDim As ISpssDimension
+    Dim index As Long
+    Dim nRows As Integer
+    Dim nCols As Integer
+    Dim nLayers As Integer
+    Dim intCol As Integer                   ' Number of columns in label array.
+    Dim intRow As Integer                   ' Number of rows in label array
+    Dim intLay As Integer                   ' Number of layers in table
+    Dim intR As Integer                     ' Loop Counter
+    Dim intC As Integer                     ' Loop Counter
+    Dim intL As Integer                     ' Loop Counter
+    Dim nItems As Integer
+    
+    'Dimensions of new table
+    nRows = 5
+    nCols = 4
+    nLayers = 3
+
+    ' Create a new Viewer window and make it visible
+    Set objOutputDoc = objSpssApp.NewOutputDoc
+    objOutputDoc.Visible = True
+
+    ' Insert a blank table
+    index = objOutputDoc.InsertTable( cNEWTABLE, nRows,nCols,nLayers)
+    Set objItems = objOutputDoc.Items
+    Set objItem = objItems.GetItem(objItems.Count-1)
+    Set objPivotTable = objItem.ActivateTable
+    objPivotTable.UpdateScreen=False
+        
+    ' Set column labels
+    Set objLabels = objPivotTable.ColumnLabelArray
+    objLabels.ValueAt(0,0) = cCOLUMNS
+    intCol = objLabels.NumColumns
+    For intC = 0 To intCol - 1
+        objLabels.ValueAt(1,intC) = cCOLUMN & " " & CStr(intC)
+    Next intC
+        
+    ' Set row labels
+    Set objLabels = objPivotTable.RowLabelArray
+    objLabels.ValueAt(0,0) = cROWS
+    intCol = objLabels.NumColumns
+    intRow = objLabels.NumRows
+    For intR = 0 To intRow - 1
+        objLabels.ValueAt(intR,1) = cROW & " " & CStr(intR)
+    Next intR
+        
+    ' Get table layer information
+    Set objLayerLabels = objPivotTable.LayerLabelArray
+    Set objPivMgr = objPivotTable.PivotManager
+    Set objLayerDim = objPivMgr.LayerDimension(0)
+    intLay = objLayerDim.NumCategories
+      
+    ' Set layer dimension name
+    objLayerDim.DimensionName = cLAYERS
+
+    ' Walk the layers
+    For intL = intLay - 1 To 0 Step -1
+      objLayerDim.CurrentCategory = intL
+      
+      ' Set layer labels
+      objLayerLabels.ValueAt(0, 2) = cLAYER & " " & CStr(intL)
+    
+      ' Set data
+      Set objDataCells = objPivotTable.DataCellArray
+      intCol = objDataCells.NumColumns
+      intRow = objDataCells.NumRows
+      For intC = 0 To intCol - 1
+        For intR = 0 To intRow - 1
+          objDataCells.ValueAt(intR,intC) = Str(intL*100 + intC*10 + intR)
+        Next intR
+      Next intC
+    Next intL
+    
+    objPivotTable.UpdateScreen=True
+    objItem.Deactivate
+ 
+End Sub

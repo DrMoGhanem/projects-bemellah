@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 4/30/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="CSTABULATE" EndRequired="None" IsArbitrary="No" Language="Syntax"> 
+<Subcommand Name="PLAN" EqualsSign="None">
+       <Parameter Name="FILE" EqualsSign="Required" ParameterType="Keyword"/>
+</Subcommand>
+    <Subcommand Name="JOINTPROB" EqualsSign="None">
+        <Parameter Name="FILE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TABLES" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CELLS" EqualsSign="None">
+        <Parameter Name="POPSIZE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROWPCT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLPCT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLEPCT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STATISTICS" EqualsSign="None">
+        <Parameter Name="SE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFFSQRT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CUMULATIVE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXPECTED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ASRESID" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+     <Subcommand Name="TEST" EqualsSign="None">
+         <Parameter Name="HOMOGENEITY" EqualsSign="None" ParameterType="Keyword"/>
+         <Parameter Name="INDEPENDENCE" EqualsSign="None" ParameterType="Keyword"/>
+         <Parameter Name="ODDSRATIO" EqualsSign="None" ParameterType="Keyword"/>
+         <Parameter Name="RELRISK" EqualsSign="None" ParameterType="Keyword"/>
+         <Parameter Name="RISKDIFF" EqualsSign="None" ParameterType="Keyword"/>
+     </Subcommand>
+    <Subcommand Name="SUBPOP" EqualsSign="None">
+        <Parameter Name="TABLE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="BY" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="DISPLAY" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="LAYERED"/>
+            <EnumValue Name="SEPARATE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="None">
+        <Parameter Name="SCOPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="TABLE"/>
+            <EnumValue Name="LISTWISE"/>
+        </Parameter>
+        <Parameter Name="CLASSMISSING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+    </Subcommand>
+</Command>

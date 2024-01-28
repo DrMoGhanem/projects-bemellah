@@ -1,0 +1,147 @@
+
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<Command Name="KNN" ProcedureTitle="Nearest Neighbor Analysis" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="file:../schema/commanddescription.xsd">
+  <Integration>
+    <CommandType>Procedure</CommandType>
+    <TmsMode>NotPermitted</TmsMode>
+    <ClemMode>NotPermitted</ClemMode>
+    <LicenseOption>21</LicenseOption>
+    <CommandState>
+      <State1>105</State1>
+      <State2>105</State2>
+      <State3>4</State3>
+      <State4>0</State4>
+    </CommandState>
+    <LibraryName>knn</LibraryName>
+    <LibraryPath>ext/bin/spss.knn</LibraryPath>
+    <ProcedureLibraryName>spsswknn</ProcedureLibraryName>
+  </Integration>
+  <Subcommand Name="" Occurrence="Required" IsArbitrary="True">
+    <Parameter Name="" ParameterType="TokenList" MeasurementLevel="MeasLevelQual"/>
+  </Subcommand>
+  <Subcommand Name="EXCEPT" Delimiter="EqualDelimited">
+    <Parameter Name="VARIABLES" ParameterType="VariableNameList" MeasurementLevel="NoMeasLevel"/>
+  </Subcommand>
+  <Subcommand Name="CASELABELS" Delimiter="EqualDelimited">
+    <Parameter Name="VARIABLE" ParameterType="VariableName" MeasurementLevel="MeasLevelCateg"/>
+  </Subcommand>
+  <Subcommand Name="FOCALCASES" Delimiter="EqualDelimited">
+    <Parameter Name="VARIABLE" ParameterType="VariableName" MeasurementLevel="MeasLevelCont"/>
+  </Subcommand>
+  <Subcommand Name="RESCALE" Delimiter="EqualDelimited">
+    <Parameter Name="COVARIATE" ParameterType="Keyword">
+      <EnumValue Name="ADJNORMALIZED"/>
+      <EnumValue Name="NONE"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="PARTITION" Delimiter="EqualDelimited">
+    <Parameter Name="TRAINING" ParameterType="Integer" LowerBdryOption="ExclLowerBdry" LowerBdryValue="0"/>
+    <Parameter Name="HOLDOUT" ParameterType="Integer" LowerBdryOption="InclLowerBdry" LowerBdryValue="0"/>
+    <Parameter Name="VARIABLE" ParameterType="VariableName" MeasurementLevel="NoMeasLevel"/>
+  </Subcommand>
+  <Subcommand Name="MODEL" Delimiter="EqualDelimited">
+    <Parameter Name="METRIC" ParameterType="Keyword">
+      <EnumValue Name="EUCLID"/>
+      <EnumValue Name="CITYBLOCK"/>
+    </Parameter>
+    <Parameter Name="NEIGHBORS" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="FIXED" ParameterType="StringQualif" Occurrence="Optional">
+          <Qualification style="Parenthesis">
+            <Parameter Name="K" ParameterType="Integer"  LowerBdryOption="ExclLowerBdry" LowerBdryValue="0"/>
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification style="Equal">
+        <Parameter Name="AUTO" ParameterType="StringQualifList" Occurrence="Optional">
+          <Qualification style="Parenthesis">
+            <Parameter Name="KMIN" ParameterType="Integer"  LowerBdryOption="ExclLowerBdry" LowerBdryValue="0"/>
+            <Parameter Name="KMAX" ParameterType="Integer"  LowerBdryOption="ExclLowerBdry" LowerBdryValue="0"/>
+          </Qualification>
+        </Parameter>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="FEATURES" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="ALL" ParameterType="LeadingToken"/>
+      </Qualification>
+      <Qualification style="Equal">
+        <Parameter Name="AUTO" ParameterType="StringQualif" Occurrence="Optional">
+          <Qualification style="Parenthesis">
+            <Parameter Name="FORCE" ParameterType="VariableNameList" MeasurementLevel="MeasLevelSubset"/>
+          </Qualification>
+        </Parameter>
+      </Qualification>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="CRITERIA" Delimiter="EqualDelimited">
+    <Parameter Name="NUMFEATURES" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="AUTO" ParameterType="LeadingToken"/>
+      </Qualification>
+      <Qualification style="Equal">
+        <Parameter Name="FIXED" ParameterType="Integer"  LowerBdryOption="ExclLowerBdry" LowerBdryValue="0"/>
+      </Qualification>
+      <Qualification style="Equal">
+        <Parameter Name="ERRORRATIO" ParameterType="StringQualif">
+          <Qualification style="Parenthesis">
+            <Parameter Name="MINCHANGE" ParameterType="Number"  LowerBdryOption="ExclLowerBdry" LowerBdryValue="0"/>
+          </Qualification>
+        </Parameter>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="PREDICTED" ParameterType="Keyword">
+      <EnumValue Name="MEAN"/>
+      <EnumValue Name="MEDIAN"/>
+    </Parameter>
+    <Parameter Name="WEIGHTFEATURES" ParameterType="Keyword">
+      <EnumValue Name="NO"/>
+      <EnumValue Name="YES"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="CROSSVALIDATION" Delimiter="EqualDelimited">
+    <Parameter Name="FOLDS" ParameterType="Integer"  LowerBdryOption="ExclLowerBdry" LowerBdryValue="1"/>
+    <Parameter Name="VARIABLE" ParameterType="VariableName" MeasurementLevel="MeasLevelCateg"/>
+  </Subcommand>
+  <Subcommand Name="MISSING" Delimiter="EqualDelimited">
+    <Parameter Name="USERMISSING" ParameterType="Keyword">
+      <EnumValue Name="EXCLUDE"/>
+      <EnumValue Name="INCLUDE"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="VIEWMODEL" Delimiter="EqualDelimited">
+    <Parameter Name="DISPLAY" ParameterType="Keyword">
+      <EnumValue Name="YES"/>
+      <EnumValue Name="NO"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="PRINT" Delimiter="EqualDelimited">
+    <Parameter Name="CPS" ParameterType="LeadingToken"/>
+    <Parameter Name="NONE" ParameterType="LeadingToken"/>
+  </Subcommand>
+  <Subcommand Name="SAVE" Delimiter="ParenDelimited">
+    <Parameter Name="PREDVAL" ParameterType="VariableName" MeasurementLevel="MeasLevelDict" Occurrence="Optional"/>
+    <Parameter Name="PREDPROB" ParameterType="VariableName" MeasurementLevel="MeasLevelQual" Occurrence="Optional"/>
+    <Parameter Name="PARTITION" ParameterType="VariableName" MeasurementLevel="MeasLevelCont" Occurrence="Optional"/>
+    <Parameter Name="FOLD" ParameterType="VariableName" MeasurementLevel="MeasLevelCont" Occurrence="Optional"/>
+    <Parameter Name="MAXCAT" ParameterType="Integer"  LowerBdryOption="ExclLowerBdry" LowerBdryValue="0"/>
+  </Subcommand>
+  <Subcommand Name="OUTFILE" Delimiter="EqualDelimited">
+    <Parameter Name="MODEL" ParameterType="OutputFile"/>
+    <Parameter Name="FOCALCASES" ParameterType="SysOutputFile"/>
+  </Subcommand>
+</Command>

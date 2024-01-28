@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 5/12/08 -->
+<Command xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    xmlns="http://xml.spss.com/spss/extension" Name="CASESTOVARS" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="ID" EqualsSign="Optional"/>
+    <Subcommand Name="FIXED" EqualsSign="Optional"/>
+    <Subcommand Name="AUTOFIX" EqualsSign="Optional">
+        <Parameter Name="YES" ParameterType="Keyword" EqualsSign="None"/>
+        <Parameter Name="NO" ParameterType="Keyword" EqualsSign="None"/>
+    </Subcommand>
+    <Subcommand Name="VIND" EqualsSign="None">
+        <Parameter Name="ROOT" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="COUNT" EqualsSign="Optional"/>
+    <Subcommand Name="RENAME" EqualsSign="None"/>
+    <Subcommand Name="SEPARATOR" EqualsSign="Optional"/>
+    <Subcommand Name="INDEX" EqualsSign="Optional"/>
+    <Subcommand Name="GROUPBY" EqualsSign="Optional">
+        <Parameter Name="VARIABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INDEX" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DROP" EqualsSign="Optional"/>
+</Command>

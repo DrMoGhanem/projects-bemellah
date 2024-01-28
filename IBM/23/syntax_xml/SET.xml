@@ -1,0 +1,377 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2013                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated  1/18/12 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:SyntaxSchema.xsd"
+    Name="SET" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="WORKSPACE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MXCELLS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="AUTOMATIC"/>
+        </Parameter>
+        <Parameter Name="FORMAT" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CTEMPLATE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="TLOOK" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="ONUMBERS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="LABELS"/>
+            <EnumValue Name="VALUES"/>
+            <EnumValue Name="BOTH"/>
+        </Parameter>
+        <Parameter Name="OVARS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="LABELS"/>
+            <EnumValue Name="NAMES"/>
+            <EnumValue Name="BOTH"/>
+        </Parameter>
+        <Parameter Name="TFIT" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BOTHLARGE"/>
+            <EnumValue Name="BOTH"/>
+            <EnumValue Name="LABELS"/>
+        </Parameter>
+        <Parameter Name="TNUMBERS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="LABELS"/>
+            <EnumValue Name="VALUES"/>
+            <EnumValue Name="BOTH"/>
+        </Parameter>
+        <Parameter Name="TVARS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="LABELS"/>
+            <EnumValue Name="NAMES"/>
+            <EnumValue Name="BOTH"/>
+        </Parameter>
+        <Parameter Name="RNG" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="MC"/>
+            <EnumValue Name="MT"/>
+        </Parameter>
+        <Parameter Name="SEED" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="RANDOM"/>
+        </Parameter>
+        <Parameter Name="MTINDEX" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="RANDOM"/>
+        </Parameter>
+        <Parameter Name="EPOCH" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="AUTOMATICS"/>
+        </Parameter>
+        <Parameter Name="ERRORS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="LISTING"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="RESULTS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="LISTING"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="PRINTBACK" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="LISTING"/>
+        </Parameter>
+        <Parameter Name="MESSAGES" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="LISTING"/>
+        </Parameter>
+        <Parameter Name="MEXPAND" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="MPRINT" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="MNEST" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MITERATE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="BLANKS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="SYSMIS"/>
+        </Parameter>
+        <Parameter Name="UNDEFINED" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="WARN"/>
+            <EnumValue Name="NOWARN"/>
+        </Parameter>
+        <Parameter Name="MXWARNS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MXLOOPS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MXERRS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="BLOCK" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="BOX" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CCA" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CCB" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CCC" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CCD" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CCE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="DECIMAL" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="COMMA"/>
+            <EnumValue Name="DOT"/>
+        </Parameter>
+        <Parameter Name="CACHE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HEADER" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+            <EnumValue Name="BLANK"/>
+        </Parameter>
+        <Parameter Name="LENGTH" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="WIDTH" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="SMALL" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="OLANG" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="DEFOLANG" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="SCALEMIN" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="SORT" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="EXTERNAL"/>
+            <EnumValue Name="INTERNAL"/>
+            <EnumValue Name="SS"/>
+        </Parameter>
+        <Parameter Name="LOCALE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="OSLOCALE"/>
+        </Parameter>
+        <Parameter Name="THREADS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MCACHE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="UNICODE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="OFF"/>
+            <EnumValue Name="ON"/>
+        </Parameter>
+        <Parameter Name="FUZZBITS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MIOUTPUT" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="OBSERVED"/>
+            <EnumValue Name="IMPUTED"/>
+            <EnumValue Name="POOLED"/>
+            <EnumValue Name="DIAGNOSTICS"/>
+        </Parameter>
+        <Parameter Name="ROWSBREAK" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="CELLSBREAK" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="ROWSBREAK" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="TOLERANCE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="ZCOMPRESSION" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="TABLERENDER" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="FULL"/>
+            <EnumValue Name="FAST"/>
+        </Parameter>
+        <Parameter Name="OATTRS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="OLANG"/>
+            <EnumValue Name="ENG"/>
+            <EnumValue Name="BOTH"/>
+        </Parameter>
+        <Parameter Name="XVERSION" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NATIVE"/>
+        </Parameter>
+        <Parameter Name="DIGITGROUPING" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+        <Parameter Name="REPDEFER" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+        <Parameter Name="CMPTRANS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+        <Parameter Name="ODISPLAY" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="MODELVIEWER"/>
+            <EnumValue Name="TABLES"/>
+        </Parameter>
+        <Parameter Name="BASETEXTDIRECTION" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="AUTOMATIC"/>
+            <EnumValue Name="LEFTTORIGHT"/>
+            <EnumValue Name="RIGHTTOLEFT"/>
+        </Parameter>
+        <Parameter Name="SUMMARY" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="WORKSPACE" EqualsSign="Optional"/>
+    <Subcommand Name="MXCELLS" EqualsSign="Optional">
+        <Parameter Name="AUTOMATIC" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FORMAT" EqualsSign="Optional"/>
+    <Subcommand Name="CTEMPLATE" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TLOOK" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ONUMBERS" EqualsSign="Optional">
+        <Parameter Name="LABELS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VALUES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BOTH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OVARS" EqualsSign="Optional">
+        <Parameter Name="LABELS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NAMES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BOTH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TFIT" EqualsSign="Optional">
+        <Parameter Name="BOTH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LABELS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TNUMBERS" EqualsSign="Optional">
+        <Parameter Name="LABELS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VALUES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BOTH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TVARS" EqualsSign="Optional">
+        <Parameter Name="LABELS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NAMES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BOTH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="RNG" EqualsSign="Optional">
+        <Parameter Name="MC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SEED" EqualsSign="Optional">
+        <Parameter Name="RANDOM" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MTINDEX" EqualsSign="Optional">
+        <Parameter Name="RANDOM" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EPOCH" EqualsSign="Optional">
+        <Parameter Name="AUTOMATICS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ERRORS" EqualsSign="Optional">
+        <Parameter Name="LISTING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="RESULTS" EqualsSign="Optional">
+        <Parameter Name="LISTING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINTBACK" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LISTING" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MESSAGES" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LISTING" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MEXPAND" EqualsSign="Optional">
+        <Parameter Name="ON" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OFF" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MPRINT" EqualsSign="Optional">
+        <Parameter Name="ON" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OFF" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MNEST" EqualsSign="Optional"/>
+    <Subcommand Name="MITERATE" EqualsSign="Optional"/>
+    <Subcommand Name="BLANKS" EqualsSign="Optional">
+        <Parameter Name="SYSMIS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="UNDEFINED" EqualsSign="Optional">
+        <Parameter Name="WARN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOWARN" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MXWARNS" EqualsSign="Optional"/>
+    <Subcommand Name="MXLOOPS" EqualsSign="Optional"/>
+    <Subcommand Name="MXERRS" EqualsSign="Optional"/>
+    <Subcommand Name="BLOCK" EqualsSign="Optional"/>
+    <Subcommand Name="BOX" EqualsSign="Optional"/>
+    <Subcommand Name="CCA" EqualsSign="Optional"/>
+    <Subcommand Name="CCB" EqualsSign="Optional"/>
+    <Subcommand Name="CCC" EqualsSign="Optional"/>
+    <Subcommand Name="CCD" EqualsSign="Optional"/>
+    <Subcommand Name="CCE" EqualsSign="Optional"/>
+    <Subcommand Name="DECIMAL" EqualsSign="Optional">
+        <Parameter Name="COMMA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DOT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CACHE" EqualsSign="None"/>
+    <Subcommand Name="HEADER" EqualsSign="Optional">
+        <Parameter Name="NO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="YES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BLANK" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="LENGTH" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="WIDTH" EqualsSign="Optional"/>
+    <Subcommand Name="SMALL" EqualsSign="Optional"/>
+    <Subcommand Name="OLANG" EqualsSign="Optional"/>
+    <Subcommand Name="DEFOLANG" EqualsSign="None"/>
+    <Subcommand Name="SCALEMIN" EqualsSign="Optional"/>
+    <Subcommand Name="SORT" EqualsSign="Optional">
+        <Parameter Name="EXTERNAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INTERNAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="LOCALE" EqualsSign="Optional">
+        <Parameter Name="OSLOCALE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="THREADS" EqualsSign="Optional"/>
+    <Subcommand Name="MCACHE" EqualsSign="Optional"/>
+    <Subcommand Name="UNICODE" EqualsSign="Optional">
+        <Parameter Name="OFF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ON" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FUZZBITS" EqualsSign="Optional"/>
+    <Subcommand Name="MIOUTPUT" EqualsSign="Optional">
+        <Parameter Name="OBSERVED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="IMPUTED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POOLED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DIAGNOSTICS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CELLSBREAK" EqualsSign="Optional"/>
+    <Subcommand Name="ROWSBREAK" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TOLERANCE" EqualsSign="Optional"/>
+    <Subcommand Name="ZCOMPRESSION" EqualsSign="Optional">
+        <Parameter Name="YES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="XVERSION" EqualsSign="Optional">
+        <Parameter Name="NATIVE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OATTRS" EqualsSign="Optional">
+        <Parameter Name="OLANG" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ENG" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BOTH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TABLERENDER" EqualsSign="Optional">
+        <Parameter Name="FULL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FAST" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DIGITGROUPING" EqualsSign="Optional">
+        <Parameter Name="NO" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="YES" EqualsSign="None" ParameterType="Keyword"></Parameter>
+    </Subcommand>
+    <Subcommand Name="REPDEFER" EqualsSign="Optional">
+        <Parameter Name="NO" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="YES" EqualsSign="None" ParameterType="Keyword"></Parameter>
+    </Subcommand>
+    <Subcommand Name="CMPTRANS" EqualsSign="Optional">
+        <Parameter Name="YES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ODISPLAY" EqualsSign="Optional">
+        <Parameter Name="MODELVIEWER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLES" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="BASETEXTDIRECTION" EqualsSign="Optional">
+        <Parameter Name="AUTOMATIC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LEFTTORIGHT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RIGHTTOLEFT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SUMMARY" EqualsSign="Optional" Occurrence="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"></Parameter>
+    </Subcommand>
+</Command>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Create 5/14/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="NAIVEBAYES" EndRequired="None" IsArbitrary="No" Language="Syntax"> 
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EXCEPT" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FORCE" EqualsSign="None">
+        <Parameter Name="FACTORS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="COVARIATES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TRAININGSAMPLE" EqualsSign="None">
+        <Parameter Name="PERCENT" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SUBSET" EqualsSign="None">
+        <Parameter Name="MAXSIZE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="AUTO"/>
+        </Parameter>
+        <Parameter Name="BESTSUBSET" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="PSEUDOBIC"/>
+            <EnumValue Name="TESTDATA"/>
+        </Parameter>
+        <Parameter Name="EXACTSIZE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="NOSELECTION" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="None">
+        <Parameter Name="BINS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MEMALLOCATE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="TIMER" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="None">
+        <Parameter Name="USERMISSING" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="None">
+        <Parameter Name="CPS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXCLUDED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMMARY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SELECTED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CLASSIFICATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="None">
+        <Parameter Name="PREDVAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PREDPROB" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="None">
+        <Parameter Name="MODEL" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

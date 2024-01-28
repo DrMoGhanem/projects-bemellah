@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/19/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="RANK" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="A"/>
+            <EnumValue Name="D"/>
+            <EnumValue Name="BY"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="TIES" EqualsSign="Optional">
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HIGH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CONSENSE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FRACTION" EqualsSign="Optional">
+        <Parameter Name="BLOM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TUKEY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RANKIT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="YES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="RANK" EqualsSign="None">
+        <Parameter Name="INTO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="NTILES" EqualsSign="None">
+        <Parameter Name="INTO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="NORMAL" EqualsSign="None">
+        <Parameter Name="INTO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PERCENT" EqualsSign="None">
+        <Parameter Name="INTO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="RFRACTION" EqualsSign="None">
+        <Parameter Name="INTO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PROPORTION" EqualsSign="None">
+        <Parameter Name="INTO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="N" EqualsSign="None">
+        <Parameter Name="INTO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVAGE" EqualsSign="None">
+        <Parameter Name="INTO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

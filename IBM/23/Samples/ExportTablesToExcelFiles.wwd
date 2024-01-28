@@ -1,0 +1,331 @@
+'Begin Description
+'Export pivot tables to Excel file(s) from the Designated Viewer window.
+'You can choose all, all visible, or selected tables, and you can make separate files
+'or have each table be a tab in a single Workbook.
+'End Description
+
+' JKP - 03-Jul-2007
+' JKP - 27-Aug-2007  Version for SPSS 16
+' JKP - 03-Mar-2009  Screen CR/LF characters from file names
+
+Dim exportname As Variant
+Dim exportwhat As Integer	'0 = all tables, 1 = all visible tables, 2 = selected tables
+Dim continue As Boolean
+Dim outputstruct As Integer  ' 0 = merge, 1 = separate, 2 = no files
+
+Sub Main
+	' Declare object variables
+Dim objOutputDoc As ISpssOutputDoc
+Dim objOutputItems As ISpssItems
+Dim objOutputItem As ISpssItem
+Dim objPivotTable As PivotTable
+Dim ItemCount As Integer             'number of output items
+
+Set objOutputDoc = objSpssApp.GetDesignatedOutputDoc
+Set objOutputItems = objOutputDoc.Items()
+ItemCount = objOutputItems.Count()
+
+If ItemCount <= 1 Then
+	MsgBox("There are no items in the Designated Viewer window, or there is no Viewer window.", vbOkOnly+vbExclamation)
+	Exit Sub
+End If
+
+
+Dim outfiles() As String, selectedtable() As Boolean
+
+' Iterate through output items
+' If pivot table, then regularize grouping levels in column headers
+' Finally, export
+
+If Not setAgenda() Then
+	Exit Sub
+End If
+
+
+
+If exportwhat = 2 Then		' prepare to export selected tables only
+	selectedCount = 0
+	ReDim selectedtable(ItemCount)		' record selection status of each pivot table
+	For Index = 1 To ItemCount - 1
+		Set objOutputItem = objOutputItems.GetItem(Index)
+		If objOutputItem.Selected And objOutputItem.SPSSType = SPSSPivot Then
+			selectedcount = selectedcount+1
+			selectedtable(Index) = True
+		Else
+			selectedtable(Index) = False
+		End If
+	Next Index
+
+	If selectedcount = 0 Then
+		MsgBox("No tables are selected.", vbOkOnly+vbExclamation)
+		Exit Sub
+	End If
+End If
+
+objOutputDoc.ClearSelection  'Get ready For selection-based export
+
+counter = 0
+	For Index = 1 To ItemCount - 1
+		Set objOutputItem = objOutputItems.GetItem(Index)
+		If objOutputItem.SPSSType = SPSSPivot Then
+			ok = False
+			If exportwhat = 0 Then   'all tables
+				ok = True
+			ElseIf exportwhat = 1 And objOutputItem.Visible Then
+				ok = True
+			ElseIf exportwhat = 2 Then
+				If selectedtable(Index) Then
+					ok = True
+				End If
+			End If
+			If ok Then
+				Set objPivotTable = objOutputItem.GetTableOleObject
+				objOutputItem.Selected = True
+				itemlabel = cleanlabel(objOutputItem.Label)
+				counter = counter + 1
+				If Not outputstruct = 2 Then  'no files test
+					thisexport = exportname & "_" & Mid(Str(counter),2) & "_" & itemlabel & ".xls"
+					objOutputDoc.ExportDocument(SpssSelected, thisexport, SpssFormatXls, False)
+					ReDim Preserve outfiles(counter)
+					outfiles(counter) = thisexport
+				End If
+                objOutputItem.Selected = False
+
+			End If
+		End If
+	Next Index
+	If counter = 0 Then
+		MsgBox("No tables were found to export.", vbOkOnly+vbExclamation)
+	End If
+	' Merge the saved files
+	If counter > 0 And outputstruct = 0 Then
+		Call mergeXlsFiles(exportname & ".xls", outfiles)
+	End If
+End Sub
+Function setAgenda As Boolean
+Rem Determine what to export
+
+	Begin Dialog UserDialog 470,231,"Export Tables from Designated Viewer To Excel Files",.dlgControls ' %GRID:10,7,1,1
+		GroupBox 10,14,200,77,"Export What?"
+		OptionGroup .exportwhat
+			OptionButton 30,28,140,14,"&All tables"
+			OptionButton 30,49,160,14,"All &visible tables"
+			OptionButton 30,70,160,14,"&Selected tables",.selectedtable
+
+		GroupBox 20,98,440,49,"Export File Name or Root Name",.exportfile
+		PushButton 350,119,90,21,"&Browse...",.savefile
+		TextBox 20,119,310,21,.path
+
+		OKButton 140,154,80,21
+		CancelButton 230,154,80,21
+		GroupBox 220,14,240,77,"Output File Structure"
+		OptionGroup .outputstruct
+			OptionButton 230,28,200,14,"All &tables in one file",.merge
+			OptionButton 230,56,200,14,"&Each table in separate file",.separate
+			OptionButton 230,70,180,14,"&No files",.nofiles
+		Text 250,42,140,14,"(requires Excel)",.Text2
+		Text 20,189,440,28,"Tip: If you have more than one Viewer window, the export is from the Designated one, which has a disabled cross on the toolbar.",.Text1
+
+	End Dialog
+
+	On Error Resume Next
+	Err.Clear
+
+	Dim Dlg As UserDialog
+	Dlg.exportwhat = 0
+	Dlg.outputstruct = 0
+	Dialog Dlg, -1	'OK is default button
+	setAgenda = continue
+	exportwhat = Dlg.exportwhat
+	outputstruct = Dlg.outputstruct
+
+End Function
+Private Function dlgControls(DlgItem$, Action%, SuppValue&) As Boolean
+	On Error GoTo 0
+	Select Case Action%
+	Case 1 ' Dialog box initialization
+		DlgEnable "ok", True
+		dlgControls = False
+		exportwhat = 0
+		outputstruct = 0
+
+	Case 2 ' Value changing or button pressed
+		Select Case DlgItem
+			Case "OK"
+				exportname = Trim(DlgText("path"))
+				If outputstruct <> 2 Then
+					If Not validatename(exportname) Then
+						dlgControls = True
+						Exit Function
+					End If
+				Else
+					If exportname <> "" Then
+							If MsgBox("No files will be created.  OK to proceed?", vbYesNo+vbQuestion) = vbNo Then
+								dlgControls = True
+								Exit Function
+							End If
+					End If
+				End If
+				exportname = absolutePath(exportname)
+				continue = True
+				'exportwhat = DlgValue("exportwhat")
+				dlgControls = False
+			Case "Cancel"
+				continue = False
+				dlgControls=False
+			Case "savefile"
+				DlgText "path", SaveFilePath(Trim(DlgText("path")))
+				' Prevent button press from closing the dialog box
+				dlgControls = True
+			Case "outputstruct"
+				outputstruct = DlgValue(DlgItem)
+				dlgControls = True
+			Case Else
+				dlgControls = True
+		End Select
+	End Select
+End Function
+Private Function validatename(filespec) As Boolean
+	If StrComp(Right(filespec, 4), ".xls") = 0 Then
+		filespec = Left(filespec, Len(filespec) - 4)
+	End If
+	If filespec = "" Then
+		MsgBox("Please enter a filename for the export.", vbQuestion)
+		validatename = False
+		Exit Function
+	End If
+	If InStr(filespec, "..") Then
+		MsgBox(".. in file names is not supported", vbOkOnly+vbExclamation)
+		Exit Function
+	End If
+	On Error Resume Next
+	Err.Clear
+	attr = GetAttr(filespec)
+	If attr = 16 Then
+		MsgBox("Specified rootname file is a directory.  Please enter a file specification.", vbExclamation)
+		validatename = False
+	ElseIf Dir(filespec & "*.xls", vbNormal) <> "" Then
+		ok = MsgBox("Excel File(s) with the same rootname prefix exist.  Please choose another name.", vbOkOnly + vbExclamation)
+		validatename = False
+	Else
+		fs = Split(filespec, "\")
+		If UBound(fs) > 1 Then
+			fs(UBound(fs)) = ""
+			fs = Join(fs, "\")
+			If Dir(fs, vbDirectory) = "" Then
+				MsgBox("Please specify an existing directory.", vbOkOnly+vbExclamation)
+				validatename = False
+				Exit Function
+			End If
+		End If
+		validatename = True
+	End If
+End Function
+Function absolutePath(filespec)
+	'attach current directory if relative path
+	ch = Left(filespec,1)
+	If ch = "\" Or Mid(filespec,2,2) = ":\" Then
+		absolutePath = filespec
+	ElseIf  Mid(filespec,2,1) = ":" Then
+		absolutePath = Left(filespec,2) & Mid(CurDir(),3) & "\" & Mid(filespec,3)
+	ElseIf ch = "." Then
+		absolutePath = CurDir() & "\" & Mid(filespec,2)
+	Else
+		absolutePath = CurDir() & "\" & filespec
+	End If
+End Function
+
+Function SaveFilePath(path) As String
+' path, if nonblank, is used as starting point for browsing
+
+	On Error Resume Next
+	Dim strFile2 As String
+
+	If path <> "" Then
+		attr = GetAttr(path)
+		If attr = 16 Then
+			thedir = path
+			strfile = "output"
+		Else
+			thedir = ""
+			strfile = path
+		End If
+	Else
+		strFile = "output"
+	End If
+
+		strFile2 = GetFilePath$(strFile, "", , thedir, 2)
+
+
+	If strFile2 = "" Then
+		'user canceled
+		'Err.Raise 1002, "User Cancelled"
+	End If
+	SaveFilePath = strFile2
+
+End Function
+Function cleanlabel(label)
+	'return a label suitable as part of a filename
+	'square brackets are actually legal in filenames but not in Excel sheetnames
+	'limit the length of the returned string to 100 characters
+	Const limit = 100
+
+	badchars = Array("\","/",":",",",".","*","?","|","<",">","""","[","]",Chr(10), Chr(13))
+	For i = 1 To UBound(badchars)
+		label = Replace(label, badchars(i), "_")
+	Next i
+
+	uloc = 1
+	' reduce multiple underscores for readability
+	Do
+		uloc = InStr(uloc, label, "__")
+		If uloc > 0 Then		'ignore first character
+			label = Left(label, uloc-1) & "_" & Mid(label, uloc+2)
+		End If
+	Loop Until uloc = 0
+	cleanlabel = Left(label,100)
+End Function
+
+Sub mergeXlsFiles(result, filelist)
+	Dim xls As Object
+	Dim fsa() As String
+	On Error GoTo zError
+	excel = False
+	prefix = Split(result, "\")
+	basename = prefix(UBound(prefix))
+	basename = Left(basename, Len(basename)-4)
+	lenprefix = Len(basename)+2
+	Set xls = CreateObject("Excel.Application")
+	excel = True
+	xls.DefaultFilePath=CurDir()
+	xls.Workbooks.Add()
+	For f = UBound(filelist) To 1 Step -1
+		fn = filelist(f)
+		xls.Workbooks.Open(fn)
+		xls.Cells(1,1).Select
+		fsa = Split(Left(fn, Len(fn) - 4), "\")
+		fs = Mid(fsa(UBound(fsa)), lenprefix, 31)
+		xls.Sheets(1).Name = fs
+		xls.Sheets(fs).Move(xls.Workbooks(1).Sheets(1))
+	Next f
+
+	' Make sure no extension is specified, so that if Excel 2007 has been used, it will
+	' put its proper extension on the file.
+	If StrComp(Right(result, 4), ".xls") = 0 Then
+		result = Left(result, Len(result) - 4)
+	End If
+	xls.Workbooks(1).SaveAs(result)
+	xls.Quit
+
+	For f = 1 To UBound(filelist)
+		Kill filelist(f)
+	Next f
+
+	Exit Sub
+	zError:	MsgBox(Err.Description)
+		If excel Then
+			xls.Quit
+		End If
+		Exit Sub
+
+End Sub

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema targetNamespace="http://xml.spss.com/spss/viewer/viewer-tree" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:vtr="http://xml.spss.com/spss/viewer/viewer-tree" 
+    xmlns:vst="http://xml.spss.com/spss/viewer/viewer-style" 
+    xmlns:vtx="http://xml.spss.com/spss/viewer/viewer-text" 
+    xmlns:vtb="http://xml.spss.com/spss/viewer/viewer-table" 
+    xmlns:vgr="http://xml.spss.com/spss/viewer/viewer-graph" 
+    xmlns:vtt="http://xml.spss.com/spss/viewer/viewer-treemodel"
+    xmlns:vps="http://xml.spss.com/spss/viewer/viewer-pagesetup"
+    xmlns:vmd="http://xml.spss.com/spss/viewer/viewer-model"
+    elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1">
+  <xs:annotation>
+    <xs:documentation xml:lang="en">
+        Copyright 2006 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties with
+        respect to your use of this specification, expressed, implied, or otherwise, including without
+        limitation, all warranties of merchantability and fitness for a particular purpose.  SPSS shall
+        not be liable for any special, incidental, or consequential damages, including without limitation
+        lost revenues or lost profits resulting from the use of the information herein.
+    </xs:documentation>
+  </xs:annotation>
+
+  <!-- imports -->
+  <xs:import namespace="http://xml.spss.com/spss/viewer/viewer-graph" schemaLocation="viewer-graph-1.1.xsd"/>
+  <xs:import namespace="http://xml.spss.com/spss/viewer/viewer-pagesetup" schemaLocation="viewer-pagesetup-1.0.xsd"/>
+  <xs:import namespace="http://xml.spss.com/spss/viewer/viewer-style" schemaLocation="viewer-style-1.0.xsd"/>
+  <xs:import namespace="http://xml.spss.com/spss/viewer/viewer-table" schemaLocation="viewer-table-1.0.xsd"/>
+  <xs:import namespace="http://xml.spss.com/spss/viewer/viewer-text" schemaLocation="viewer-text-1.0.xsd"/>
+  <xs:import namespace="http://xml.spss.com/spss/viewer/viewer-treemodel" schemaLocation="viewer-treemodel-1.0.xsd"/>
+  <xs:import namespace="http://xml.spss.com/spss/viewer/viewer-model" schemaLocation="viewer-model-1.0.xsd"/>
+  
+<!-- heading -->
+  <xs:element name="heading">
+    <xs:complexType>
+      <xs:annotation>
+        <xs:documentation xml:lang="en">
+          The heading is the top-level element, also known as the document or root element.  This element
+          contains a complete description of the output document.  Other heading elements can be nested
+          under this top-level heading element.
+        </xs:documentation>
+      </xs:annotation>
+      <xs:sequence>
+			  <!-- The page-setup should only occur on the root heading. Others will be ignored. -->
+        <xs:element ref="vps:pageSetup" minOccurs="0" maxOccurs="1"/>
+        <xs:element ref="vtr:label"/>
+        <xs:choice minOccurs="0" maxOccurs="unbounded">
+          <xs:element ref="vtr:heading"/>
+          <xs:element ref="vtr:container"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="commandName" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+             The language invarient command name. This corresponds to the Command Identifier as seen 
+             in the OMS Control Panel UI.  Not all text blocks are associated with a procedure,
+             so this attribute is optional.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="creator" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+             Path to the SPSS executable that created this output.  For documentation; not used directly to generate the output.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="creator-version" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+             The SPSS version that created this output.  For documentation; not used directly to generate the output.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="creation-date-time" type="xs:dateTime" use="optional">
+        <xs:annotation>
+           <xs:documentation xml:lang="en">
+              The date and time that this output was created.  For documentation; not used directly to generate the output.
+           </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="backendElapsedTime" type="xs:float" use="optional">
+        <xs:annotation>
+           <xs:documentation xml:lang="en">
+              The elapsed backend time needed to create the output for this procedure.
+              For documentation; not used directly to generate the output.
+           </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="majorRelease" type="xs:float" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+             The SPSS Major Release number that created this output (e.g. 17).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="minorRelease" type="xs:float" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+             The SPSS Minor Release number that created this output (e.g. 01).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="respinRelease" type="xs:float" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+             The SPSS Re-spin of the release number that created this output.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="patch" type="xs:float" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+             The SPSS patch version that created this output.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="hotfixPatch" type="xs:float" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+             The SPSS hotfix patch version that created this output.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attributeGroup ref="vst:block-properties"/>
+    </xs:complexType>
+  </xs:element>
+
+<!-- container: nested containers are allowed -->
+  <xs:element name="container">
+    <xs:complexType>
+            <xs:annotation>
+                <xs:documentation xml:lang="en">
+                   The container element is used to group related output together.  For example each pivot table
+                   is contained in a unique container, as is each graph and text node.
+                </xs:documentation>
+            </xs:annotation>
+      <xs:sequence>
+        <xs:element ref="vtr:label"/>
+        <xs:choice minOccurs="0">
+          <xs:element ref="vtb:table" maxOccurs="1"/>
+          <xs:element ref="vtx:text" maxOccurs="1"/>
+          <xs:element ref="vtt:tree" maxOccurs="1"/>
+          <xs:element ref="vtr:object" maxOccurs="1"/>
+          <xs:element ref="vtr:image" maxOccurs="1"/>
+          <xs:element ref="vgr:graph" maxOccurs="1"/>
+          <xs:element ref="vmd:model" maxOccurs="1"/>
+          <xs:element ref="vtr:container" maxOccurs="unbounded"/>
+        </xs:choice>
+      </xs:sequence>
+      <xs:attributeGroup ref="vst:block-properties"/>
+    </xs:complexType>
+  </xs:element>
+
+<!-- label -->
+  <xs:element name="label">
+    <xs:complexType>
+      <xs:simpleContent>
+        <xs:extension base="xs:string">
+          <xs:attributeGroup ref="vst:inline-properties"/>
+        </xs:extension>
+      </xs:simpleContent>
+    </xs:complexType>
+  </xs:element>
+
+<!-- object -->
+  <xs:element name="object">
+    <xs:complexType>
+      <xs:attribute name="uri" type="xs:anyURI" use="required"/>
+      <xs:attribute name="type" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="chart"/>
+            <xs:enumeration value="emf"/>
+            <xs:enumeration value="graph"/>
+            <xs:enumeration value="jpg"/>
+            <xs:enumeration value="map"/>
+            <xs:enumeration value="png"/>
+            <xs:enumeration value="rtf"/>
+            <xs:enumeration value="svg"/>
+            <xs:enumeration value="tree-model"/>
+            <xs:enumeration value="unknown"/>
+            <xs:enumeration value="wmf"/>
+            <xs:enumeration value="bmp"/>
+          </xs:restriction>
+        </xs:simpleType>        
+      </xs:attribute>
+      <xs:attribute name="commandName" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+             The language invarient command name. This corresponds to the Command Identifier as seen 
+             in the OMS Control Panel UI.  Not all objects are associated with a procedure,
+             so this attribute is optional.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+<!-- image -->
+  <xs:element name="image">
+    <xs:complexType>
+       <xs:annotation>
+          <xs:documentation xml:lang="en">
+              The image element is used to store static images created by procedures.
+         </xs:documentation>
+      </xs:annotation>
+      <xs:attribute name="type" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="jpg"/>
+            <xs:enumeration value="png"/>
+            <xs:enumeration value="bmp"/>
+          </xs:restriction>
+        </xs:simpleType>        
+      </xs:attribute>
+      <xs:attribute name="commandName" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+             The language invarient command name. This corresponds to the Command Identifier as seen 
+             in the OMS Control Panel UI.  Not all objects are associated with a procedure,
+             so this attribute is optional.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="VDPId" type="xs:positiveInteger" use="required">
+        <xs:annotation>
+	      <xs:documentation xml:lang="en">
+             This id is used to identify the data associated with this image.  The id should be a
+             globally unique id that refers to a separate datasource source with the same id.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

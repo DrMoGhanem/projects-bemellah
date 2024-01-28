@@ -1,0 +1,220 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2013                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 3/29/12 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd" Name="SIMPLAN CREATE" EndRequired="None" IsArbitrary="No" Language="Syntax">
+   <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="SOURCE" EqualsSign="Required" ParameterType="Keyword">
+	<EnumValue Name="AUTOFIT"/>
+        </Parameter>
+   </Subcommand>
+   <Subcommand Name="MODEL" EqualsSign="None">
+      <Parameter Name="FILE" EqualsSign="Required" ParameterType="InputFile"/>
+      <Parameter Name="CUSTOM" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+   </Subcommand>  
+   <Subcommand Name="TARGETOPTS" EqualsSign="None">
+      <Parameter Name="TARGET" EqualsSign="Required" ParameterType="VariableNameList">
+	<EnumValue Name="FORMAT"/>
+      </Parameter>
+      <Parameter Name="COMMENT" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="OUTPUT" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+      <Parameter Name="TARGETFILTER" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="NO"/>
+         <EnumValue Name="YES"/>
+      </Parameter>
+      <Parameter Name="MIN" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="LO"/>
+         <EnumValue Name="INCLUSIVE"/>
+         <EnumValue Name="EXCLUSIVE"/>
+      </Parameter>
+      <Parameter Name="MAX" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="HI"/>
+         <EnumValue Name="INCLUSIVE"/>
+         <EnumValue Name="EXCLUSIVE"/>
+      </Parameter>
+   </Subcommand> 
+   <Subcommand Name="SIMINPUT" EqualsSign="None">
+      <Parameter Name="INPUT" EqualsSign="Required" ParameterType="VariableNameList">
+      	<EnumValue Name="FORMAT"/>
+	    <EnumValue Name="MAPTO"/>
+      </Parameter>
+      <Parameter Name="OUTPUT" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+      <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="MANUAL"/>
+         <EnumValue Name="AUTOFIT"/>
+         <EnumValue Name="DEFAULT"/>
+         <EnumValue Name="CATEGORICAL"/>
+         <EnumValue Name="BINOM"/>
+         <EnumValue Name="NEGBIN"/>
+         <EnumValue Name="POISSON"/>
+         <EnumValue Name="BETA"/>
+         <EnumValue Name="EXP"/>
+         <EnumValue Name="GAMMA"/>
+         <EnumValue Name="LNORMAL"/>
+         <EnumValue Name="NORMAL"/>
+         <EnumValue Name="TRIANGULAR"/>
+         <EnumValue Name="UNIFORM"/>
+         <EnumValue Name="WEIBULL"/>	 	 
+      </Parameter>
+      <Parameter Name="LOCK" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+      <Parameter Name="SAVEASFITTED" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+      <Parameter Name="DISTRIBUTION" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="BERNOULLI"/>
+         <EnumValue Name="EMPIRICAL"/>
+         <EnumValue Name="CATEGORICAL"/>
+         <EnumValue Name="BINOM"/>
+         <EnumValue Name="NEGBIN"/>
+         <EnumValue Name="POISSON"/>
+         <EnumValue Name="BETA"/>
+         <EnumValue Name="EXP"/>
+         <EnumValue Name="GAMMA"/>
+         <EnumValue Name="LNORMAL"/>
+         <EnumValue Name="NORMAL"/>
+         <EnumValue Name="TRIANGULAR"/>
+         <EnumValue Name="UNIFORM"/>
+         <EnumValue Name="USER_RANGES"/>
+         <EnumValue Name="WEIBULL"/>
+      </Parameter>
+      <Parameter Name="PROB" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="SHAPE1" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="SHAPE2" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="N" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="CATS" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="PROBS" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="SCALE" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="SHAPE" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="A" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="B" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="C" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="THRESHOLD" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="MEAN" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="STDDEV" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="MIN" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="MAX" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="MODE" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="CONTINGENCY" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+      <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="FAILURES"/>
+         <EnumValue Name="TRIALS"/>
+      </Parameter>
+      <Parameter Name="SOURCE" EqualsSign="Required" ParameterType="Keyword">
+	<EnumValue Name="AUTOFIT"/>
+      </Parameter>
+      <Parameter Name="MINVAL" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="MAXVAL" EqualsSign="Required" ParameterType="Keyword"/>
+   </Subcommand>
+   <Subcommand Name="FIXEDINPUT" EqualsSign="None">
+      <Parameter Name="INPUT" EqualsSign="Required" ParameterType="VariableNameList">
+	<EnumValue Name="FORMAT"/>
+      </Parameter>
+      <Parameter Name="VALUE" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="ITERATIONS" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="VALUES"/>
+         <EnumValue Name="RANGE"/>
+      </Parameter>
+      <Parameter Name="MIN" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="MAX" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="N" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="LOCK" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+   </Subcommand>
+   <Subcommand Name="CORRELATIONS" EqualsSign="None">
+      <Parameter Name="VARORDER" EqualsSign="Required" ParameterType="VariableNameList"/>
+      <Parameter Name="CORRMATRIX" EqualsSign="Required" ParameterType="TokenList"/>
+      <Parameter Name="LOCK" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+   </Subcommand>
+   <Subcommand Name="CONTINGENCY" EqualsSign="None">
+      <Parameter Name="MULTIWAY" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+   </Subcommand>
+   <Subcommand Name="AUTOFIT" EqualsSign="None">
+      <Parameter Name="NCASES" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="ALL"/>
+      </Parameter>
+      <Parameter Name="FIT" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="AD"/>
+         <EnumValue Name="KS"/>
+      </Parameter>
+      <Parameter Name="MAXITERATIONS" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="BINS" EqualsSign="Required" ParameterType="Keyword"/>
+   </Subcommand>
+   <Subcommand Name="STOPCRITERIA" EqualsSign="None">
+      <Parameter Name="MAXCASES" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="TARGET" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="MEAN"/>
+         <EnumValue Name="TAIL"/>
+      </Parameter>
+      <Parameter Name="THRESH" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="UNIT" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="PERCENT"/>
+         <EnumValue Name="VALUE"/>
+      </Parameter>
+      <Parameter Name="UNIT" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="PERCENTILE"/>
+         <EnumValue Name="VALUE"/>
+      </Parameter>
+      <Parameter Name="CILEVEL" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="SIDE" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="RIGHT"/>
+         <EnumValue Name="LEFT"/>
+      </Parameter>
+      <Parameter Name="FREQUENCY" EqualsSign="Required" ParameterType="Keyword"/>
+   </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="None">
+        <Parameter Name="CLASSMISSING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="VALUELABELS" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Required" ParameterType="VariableNameList"/>
+        <Parameter Name="VALUES" EqualsSign="Required" ParameterType="TokenList"/>
+    </Subcommand>  	
+   <Subcommand Name="PLAN" EqualsSign="None">
+      <Parameter Name="FILE" EqualsSign="Required" ParameterType="OutputFile"/>
+      <Parameter Name="DISPLAY" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+   </Subcommand>    
+</Command>

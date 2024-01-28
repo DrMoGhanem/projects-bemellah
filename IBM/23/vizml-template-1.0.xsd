@@ -1,0 +1,1745 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://xml.spss.com/spss/visualization" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:tp="http://xml.spss.com/spss/visualization" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Copyright 2003 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties with respect to your use of this specification, expressed, implied, or otherwise, including without limitation, all warranties of merchantability and fitness for a particular purpose.  SPSS shall not be liable for any special, incidental, or consequential damages, including without limitation lost revenues or lost profits resulting from the use of the information herein.</xs:documentation>
+	</xs:annotation>
+<!--
+The template element is the top level element. It contains add and set elements.
+-->
+	<xs:element name="template">
+		<xs:annotation>
+			<xs:documentation>The top level element contains commands. They are applied in order.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="tp:addFrame" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:addReferenceLine" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:addAnchoredAnnotation" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:addFitLine" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:addHistogramNormalLine" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tp:addInterpolationLine" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:addDerivedAxis" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:addOriginLine" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tp:addBarEffects" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tp:addPieEffects" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tp:addShadow" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tp:addDataLabels" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setAxisScale" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setAxisInterval" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setAxisMargin" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setAxisOpposite" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setAxisStyle" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setAxisMajorTicks" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setAxisMinorTicks" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setScaleByFraction" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tp:setTranspose" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tp:setPieTranspose" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tp:setRotation" minOccurs="0" maxOccurs="2"/>
+					<xs:element ref="tp:setCollapse" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setCategorySorting" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setExclude" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setOrder" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setExplodeSlice" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tp:setProjectionLine" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setTickLabelFormat" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setTickLabelAngle" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setTickLabelFrequency" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setHistogramBinning" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tp:hideFrame" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setWireFrame" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setBackPlane" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setShowLineMarkers" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setWrapPanels" minOccurs="0" maxOccurs="1"/>
+					<xs:element ref="tp:setPanelOptions" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setClusterWidth" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setErrorBarOptions" minOccurs="0" maxOccurs="1"/>
+				</xs:choice>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="tp:setStyle" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setStyleCycle" minOccurs="0" maxOccurs="unbounded"/>
+					<xs:element ref="tp:setScatterplotBinning" minOccurs="0" maxOccurs="1"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="description" type="xs:string"/>
+			<xs:attribute name="selectPath" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+<!--
+The add elements begin here.
+-->
+	<xs:element name="addReferenceLine">
+		<xs:annotation>
+			<xs:documentation>Adds a reference line to the chart.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:parameter"/>
+				<xs:element ref="tp:style" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="addAnchoredAnnotation">
+		<xs:annotation>
+			<xs:documentation>Adds the specified annotation to the chart.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:label"/>
+				<xs:element ref="tp:parameter" minOccurs="2" maxOccurs="2"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="addFitLine">
+		<xs:annotation>
+			<xs:documentation>Adds a fit line to the chart.  Note that the proportion
+							  and kernal attributes apply only if type is loess
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:confidenceInterval" minOccurs="0"/>
+				<xs:element ref="tp:style" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The style applied to the fitline.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="target">
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>
+						    When subgroup is specified, a separate fit line will be
+							created for each subgroup in the target chart.  If pair is
+							specified, or this attribute is omitted, then a total fit
+							line will be added.
+						</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="subgroup"/>
+						<xs:enumeration value="pair"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="linear"/>
+						<xs:enumeration value="loess"/>
+						<xs:enumeration value="quadratic"/>
+						<xs:enumeration value="mean"/>
+						<xs:enumeration value="cubic"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="proportion">
+				<xs:simpleType>
+					<xs:restriction base="xs:double">
+						<xs:minExclusive value="0"/>
+						<xs:maxExclusive value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="kernel">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="Epanechnikov"/>
+						<xs:enumeration value="Uniform"/>
+						<xs:enumeration value="Gaussian"/>
+						<xs:enumeration value="Biweight"/>
+						<xs:enumeration value="Triweight"/>
+						<xs:enumeration value="Tricubic"/>
+						<xs:enumeration value="Cauchy"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="addHistogramNormalLine">
+		<xs:annotation>
+			<xs:documentation>Adds a histogram normal line to the histogram.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="addInterpolationLine">
+		<xs:annotation>
+			<xs:documentation>Adds an interpolation line to the chart.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:interpolation"/>
+				<xs:element ref="tp:style" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="addFrame">
+		<xs:annotation>
+			<xs:documentation>Add the frame if it does not exist.  Set the frame's
+			                  location and style.  If label is specified, the label
+							  will be added to the frame also.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:location"/>
+				<xs:element ref="tp:style" minOccurs="0"/>
+				<xs:element ref="tp:label" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="frameId" type="tp:TARGETID" use="required"/>
+			<xs:attribute name="parentFrameId" type="tp:TARGETID">
+				<xs:annotation>
+					<xs:documentation>The id of the parent of the frame to be added.
+									  If the frame doesn't exist, it will only be added
+									  if the parent frame id is found in the XML.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="addDerivedAxis">
+		<xs:annotation>
+			<xs:documentation>Adds a derived axis to the graph.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:label" minOccurs="0"/>
+				<xs:element ref="tp:majorTicks" minOccurs="0"/>
+				<xs:element ref="tp:minorTicks" minOccurs="0"/>
+				<xs:element ref="tp:transform" minOccurs="0"/>
+				<xs:element ref="tp:style" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="role" type="tp:role" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="addOriginLine">
+		<xs:annotation>
+			<xs:documentation>Adds an origin line (reference line) to the graph.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:parameter"/>
+				<xs:element ref="tp:style" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="addBarEffects">
+		<xs:annotation>
+			<xs:documentation>Adds/changes 3-D effects to a 2-D bar chart.  Parameters
+							  are 'foreshortening', 'xscale', 'theta', and 'distance'.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:parameter" maxOccurs="unbounded"/>
+				<xs:element ref="tp:z"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="addPieEffects">
+		<xs:annotation>
+			<xs:documentation>Adds/changes 3-D effects to a pie chart.  Parameters are
+							  'phi', 'theta', and 'distance'.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:parameter" maxOccurs="unbounded"/>
+				<xs:element ref="tp:z"/>
+			</xs:sequence>
+			<xs:attribute name="depth" type="xs:string" default="5%"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="addShadow">
+		<xs:annotation>
+			<xs:documentation>Adds a shadow to all elements</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="shadow-dx" type="tp:lengthAbsolute"/>
+			<xs:attribute name="shadow-dy" type="tp:lengthAbsolute"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="addDataLabels">
+		<xs:annotation>
+			<xs:documentation>Adds data value labels.  Note that the 'hidden'
+							  attribute is ignored if ''colorByMarker' is false.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style" minOccurs="0"/>
+				<xs:element ref="tp:labeling" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="position" type="xs:string"/>
+			<xs:attribute name="colorByMarker" type="xs:boolean"/>
+			<xs:attribute name="hidden" type="xs:boolean"/>
+			<xs:attribute name="showCollidingLabels" type="xs:boolean"/>
+		</xs:complexType>
+	</xs:element>
+<!--
+The set elements begin here.
+-->
+	<xs:element name="setStyle">
+		<xs:annotation>
+			<xs:documentation>Causes the specified style to be added/modified.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="tp:TARGETID" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setStyleCycle">
+		<xs:annotation>
+			<xs:documentation>Adds a style cycle to the chart.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:cycle" minOccurs="1" maxOccurs="unbounded"/>
+				<xs:element ref="tp:extension" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="tp:TARGETID" use="required"/>
+			<xs:attribute name="createType">
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation>If set in the repository, default styles will be ignored and appropriate cycles will be copied from repository.</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="ColorsOnly"/>
+						<xs:enumeration value="PatternsOnly"/>
+						<xs:enumeration value="ColorsThenPatterns"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setAxisStyle">
+		<xs:annotation>
+			<xs:documentation>Set the style for an axis, including the axis' label style</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style" minOccurs="0"/>
+				<xs:element ref="tp:axisLabelStyle" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="role" type="tp:role" use="required"/>
+			<xs:attribute name="categorical" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>If this command should apply to categorical axes (true) or scalar axes (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="derived" type="xs:boolean" default="false">
+				<xs:annotation>
+					<xs:documentation>If this command should apply to the derived axes (true) or not (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setAxisMajorTicks">
+		<xs:annotation>
+			<xs:documentation>Sets the major ticks attributes for an axis</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:majorTicks" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setAxisMinorTicks">
+		<xs:annotation>
+			<xs:documentation>Sets the minor ticks attributes for an axis</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:minorTicks" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setScaleByFraction">
+		<xs:annotation>
+			<xs:documentation>Causes the stacked bar chart to be scaled to 100%.</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:element name="setTranspose">
+		<xs:annotation>
+			<xs:documentation>Either transposes a chart, or untransposes the chart (if
+							  it is already transposed).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="transpose" type="xs:boolean" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setPieTranspose">
+		<xs:annotation>
+			<xs:documentation>Sets the pie startAngle and rotation direction.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:parameter" minOccurs="2" maxOccurs="2"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setRotation">
+		<xs:annotation>
+			<xs:documentation>Set the rotation and distance parameters for a 3d chart.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:parameter" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="method" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="rectangular">
+							<xs:annotation>
+								<xs:documentation>A matrix transformation in 3D space. 3D data are transformed so that the user views them form a camera position determined by the following parameters:
+                                    phi: viewing angle in degrees around the vertical axis
+                                    theta: viewing angle in degrees around the horizontal axis
+                                    zeta: viewing angle in degrees arounf the in-out (z, depth) axis
+                                    distance: a positive double where '1' represents the default distance to view from
+                                    perspective: the vanishing point of parallel lines. Defaults to infinity</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="oblique">
+							<xs:annotation>
+								<xs:documentation>A transform which keeps front-facing items front-facing. The parameters are:
+                                    theta: the angle the back face is offset from the front
+                                    foreshortening: a positive number indicating how far the offset is. 1 corresponds to a cubic shape
+                                    distance: a poisitive number giving the viewing distance.  1 is the default distance</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setTickLabelFormat">
+		<xs:annotation>
+			<xs:documentation>Sets the formats of the tick labels</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0">
+					<xs:element ref="tp:numberFormat"/>
+					<xs:element ref="tp:stringFormat"/>
+					<xs:element ref="tp:dateTimeFormat"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="role" type="tp:role" use="required"/>
+			<xs:attribute name="categorical" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>If this command should apply to categorical axes (true) or scalar axes (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="derived" type="xs:boolean" default="false">
+				<xs:annotation>
+					<xs:documentation>If this command should apply to the derived axes (true) or not (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setTickLabelAngle">
+		<xs:annotation>
+			<xs:documentation>Sets the angle of the tick labels.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="role" type="tp:role" use="required"/>
+			<xs:attribute name="labelAngle">
+				<xs:simpleType>
+					<xs:restriction base="xs:double">
+						<xs:minInclusive value="-360"/>
+						<xs:maxInclusive value="360"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="categorical" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>If this command should apply to categorical axes (true) or scalar axes (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="derived" type="xs:boolean" default="false">
+				<xs:annotation>
+					<xs:documentation>If this command should apply to the derived axes (true) or not (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="panelPosition" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation>If this is for a paneled axis, this is the zero-based index count of the
+									  facetVariables that have this role (e.g. the first y panel would have a position of 0).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setTickLabelFrequency">
+		<xs:annotation>
+			<xs:documentation>Sets the frequency for which tick labels will appear.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="role" type="tp:role" use="required"/>
+			<xs:attribute name="labelFrequency" type="xs:positiveInteger"/>
+			<xs:attribute name="categorical" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>If this command should apply to categorical axes (true) or scalar axes (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="derived" type="xs:boolean" default="false">
+				<xs:annotation>
+					<xs:documentation>If this command should apply to the derived axes (true) or not (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="panelPosition" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation>If this is for a paneled axis, this is the zero-based index count of the
+									  facetVariables that have this role (e.g. the first y panel would have a position of 0).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setAxisOpposite">
+		<xs:annotation>
+			<xs:documentation>Causes the axis's opposite attribute to be set to true.
+							  This causes the axis to appear on the opposite side than
+							  it normally would (e.g. top side for x-axis, right side
+							  for y-axis).
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="role" type="tp:role" use="required"/>
+			<xs:attribute name="categorical" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>If this command should apply to categorical axes (true) or scalar axes (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="opposite" type="xs:boolean" default="true"/>
+			<xs:attribute name="panelPosition" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation>If this is for a paneled axis, this is the zero-based index count of the
+									  facetVariables that have this role (e.g. the first y panel would have a position of 0).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setAxisMargin">
+		<xs:annotation>
+			<xs:documentation>Sets the axis upper and lower margins and mappings</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="role" type="tp:role" use="required"/>
+			<xs:attribute name="categorical" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>If this command should apply to categorical axes (true) or scalar axes (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="upperMargin" type="tp:lengthPercentage"/>
+			<xs:attribute name="lowerMargin" type="tp:lengthPercentage"/>
+			<xs:attribute name="upperMapping" type="tp:mapping">
+				<xs:annotation><xs:documentation>Depricated.</xs:documentation></xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="lowerMapping" type="tp:mapping">
+				<xs:annotation><xs:documentation>Depricated.</xs:documentation></xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setCategorySorting">
+		<xs:annotation>
+			<xs:documentation>Sorts categories</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:sort" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="role" type="tp:role" use="required"/>
+			<xs:attribute name="useGroupVar" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Set to true if sorting should be done on the grouping variable (e.g. the stacking variable or the clustering variable).</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="panelPosition" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation>If this is for a paneled axis, this is the zero-based index count of the
+									  facetVariables that have this role (e.g. the first y panel would have a position of 0).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setCollapse">
+		<xs:annotation>
+			<xs:documentation>Collapses categories</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="categoryName" type="xs:string" default="Other"/>
+			<xs:attribute name="role" type="tp:role" default="x"/>
+			<xs:attribute name="minFraction" use="required">
+				<xs:annotation>
+					<xs:documentation>The fraction (between 0 and 1) that will be used to determine if a category is to be aggregated. If a category has a summed value less than the given fraction of the overall sum, it will be aggregated unless it is the only such category (in which case there is nothing to aggregate it with!)</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:double">
+						<xs:minInclusive value="0"/>
+						<xs:maxInclusive value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="panelPosition" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation>If this is for a paneled axis, this is the zero-based index count of the
+									  facetVariables that have this role (e.g. the first y panel would have a position of 0).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setExclude">
+		<xs:annotation>
+			<xs:documentation>Excludes the specified categories</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+  				<xs:element ref="tp:categoryValue"/>
+			</xs:sequence>
+			<xs:attribute name="role" type="tp:role" use="required"/>
+			<xs:attribute name="panelPosition" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation>If this is for a paneled axis, this is the zero-based index count of the
+									  facetVariables that have this role (e.g. the first y panel would have a position of 0).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setOrder">
+		<xs:annotation>
+			<xs:documentation>Sets the order that the categories appear.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+  				<xs:element ref="tp:categoryValue" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="role" type="tp:role" use="required"/>
+			<xs:attribute name="panelPosition" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation>If this is for a paneled axis, this is the zero-based index count of the
+									  facetVariables that have this role (e.g. the first y panel would have a position of 0).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setExplodeSlice">
+		<xs:annotation>
+			<xs:documentation>Explodes the specified pie slices.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+  				<xs:element ref="tp:categoryValue"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setProjectionLine">
+		<xs:annotation>
+			<xs:documentation>Adds a projection line to the graph.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+	  			<xs:element ref="tp:categoryValue"/>
+			</xs:sequence>
+			<xs:attribute name="high" type="tp:length" use="required"/>
+			<xs:attribute name="low" type="tp:length" use="required"/>
+			<xs:attribute name="before" type="xs:boolean" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setHistogramBinning">
+		<xs:annotation>
+			<xs:documentation>Bins the histogram.  Histogram binning parameters are
+							  'start', 'bin-width', and 'bin-count'. Width and count
+							  are mutually exclusive.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence minOccurs="1" maxOccurs="unbounded">
+  				<xs:element ref="tp:parameter"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setScatterplotBinning">
+		<xs:annotation>
+			<xs:documentation>Bins the scatterplot.  Binning parameters are 'location',
+			                  'grid', 'bins-x' and 'bins-y'.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence minOccurs="2" maxOccurs="unbounded">
+	  			<xs:element ref="tp:parameter"/>
+  				<xs:element ref="tp:legendStyle" minOccurs="0"/>
+  				<xs:element ref="tp:legendFrameStyle" minOccurs="0"/>
+  				<xs:element ref="tp:legendLabelStyle" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="size" type="xs:boolean" default="true">
+				<xs:annotation>
+					<xs:documentation>Bin by size (true) or color (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setWireFrame">
+		<xs:annotation>
+			<xs:documentation>Sets the style of the wire frame</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setBackPlane">
+		<xs:annotation>
+			<xs:documentation>Sets the style of the back planes</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:plane" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setShowLineMarkers">
+		<xs:annotation>
+			<xs:documentation>Causes line markers to be shown on line elements</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setWrapPanels">
+		<xs:annotation>
+			<xs:documentation>Causes panelled charts to wrap</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="wrap" type="xs:boolean" default="true">
+				<xs:annotation>
+					<xs:documentation>If true, panels will wrap.  If false, panels will not wrap.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setPanelOptions">
+		<xs:annotation>
+			<xs:documentation>Sets the gaps between panels and allows mirroring
+							  of panels.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="gap" type="tp:length">
+				<xs:annotation>
+					<xs:documentation>Specifies the gap between panels on this level.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="level" type="xs:positiveInteger">
+				<xs:annotation>
+					<xs:documentation>Indicates which level this gap attribute applies.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="mirror" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Indicates that the inner-most panel of the specified
+									  role should be mirrored.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="role" type="tp:role">
+				<xs:annotation>
+					<xs:documentation>The role for which the mirroring applies.  Can only
+									  have values of "x" or "y".
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setClusterWidth">
+		<xs:annotation>
+			<xs:documentation>Sets cluster width on a clustered chart</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="gap" type="tp:length" default="0%">
+				<xs:annotation>
+					<xs:documentation>Specifies the gap between facet categories on this dimension</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setErrorBarOptions">
+		<xs:annotation>
+			<xs:documentation>Turns Error Bars on or off, and sets their style</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+	  			<xs:element ref="tp:style" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="visible" type="xs:boolean" default="true">
+				<xs:annotation>
+					<xs:documentation>If true, error bars will be visible.  If false, they will be hidden.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+<!--
+The hide elements begin here.
+-->
+	<xs:element name="hideFrame">
+		<xs:annotation>
+			<xs:documentation>hide the frame</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="frameId" type="tp:TARGETID" use="required"/>
+		</xs:complexType>
+	</xs:element>
+<!--
+For readability, we make all other elements top-level elements. They begin here.
+-->
+	<xs:element name="label">
+		<xs:annotation>
+			<xs:documentation>abbreviated from vizml schema</xs:documentation>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:sequence>
+	  			<xs:element ref="tp:style" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="parameter">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml parameter</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>The parameter name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="value" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>The parameter value</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="categorical" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Whether the value is from a categorical variable</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="style">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml style element</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:glyph" minOccurs="0"/>
+				<xs:element ref="tp:intervalGlyph" minOccurs="0"/>
+				<xs:element ref="tp:interpolation" minOccurs="0"/>
+				<xs:element ref="tp:shadow" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="value" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="glyph">
+		<xs:complexType>
+			<xs:attribute name="sides" type="xs:string"/>
+			<xs:attribute name="size" type="xs:string"/>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="square"/>
+						<xs:enumeration value="circle"/>
+						<xs:enumeration value="cross"/>
+						<xs:enumeration value="plus"/>
+						<xs:enumeration value="polygon"/>
+						<xs:enumeration value="star"/>
+						<xs:enumeration value="arrow"/>
+						<xs:enumeration value="line"/>
+						<xs:enumeration value="flower"/>
+						<xs:enumeration value="male"/>
+						<xs:enumeration value="female"/>
+						<xs:enumeration value="bowtie"/>
+						<xs:enumeration value="ibeam"/>
+						<xs:enumeration value="none">
+							<xs:annotation>
+								<xs:documentation>No glyph will be drawn at all.  This is useful for using the label or labeling instead of the point.</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="angle" type="xs:string"/>
+			<xs:attribute name="aspect" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="plane">
+		<xs:annotation>
+			<xs:documentation>For 3d effects, similar to vizml guide.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="role" type="tp:role" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="intervalGlyph">
+		<xs:complexType>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="square"/>
+						<xs:enumeration value="ibeam"/>
+						<xs:enumeration value="line"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="shadow">
+		<xs:complexType>
+			<xs:attribute name="dx" type="xs:string"/>
+			<xs:attribute name="dy" type="xs:string"/>
+			<xs:attribute name="color" type="xs:string"/>
+			<xs:attribute name="opacity" type="xs:string"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="cycle">
+		<xs:annotation>
+			<xs:documentation>When getting the first style from a styleCycle,
+				the first styles from each cycle are combined. The second style
+				consists of the second style from the first cycle combined with
+				the others and so on until that cycle is exhausted. Then the
+				frist cycle resets to the first style and the second style from
+				the second cycle is used. This means that, for example, a
+				styleCycle with four cycles each containing three styles can
+				generate 81 styles before wrapping
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="extension">
+		<xs:annotation>
+			<xs:documentation>This element can be used as a simple way to store additional information in the ChartXML without requiring an additional schema</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:any processContents="skip"/>
+			</xs:sequence>
+			<xs:anyAttribute processContents="skip"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="confidenceInterval">
+		<xs:annotation>
+			<xs:documentation>controls display of confidence intervals</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="predictIndividuals" type="xs:boolean"/>
+			<xs:attribute name="alpha">
+				<xs:simpleType>
+					<xs:restriction base="xs:double">
+						<xs:minExclusive value="0"/>
+						<xs:maxExclusive value="1"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="location">
+		<xs:annotation>
+			<xs:documentation>Similar to a vizml location</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="left" type="tp:length"/>
+			<xs:attribute name="top" type="tp:length"/>
+			<xs:attribute name="right" type="tp:length"/>
+			<xs:attribute name="bottom" type="tp:length"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="interpolation">
+		<xs:annotation>
+			<xs:documentation>Similar to a vizml interpolation</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="type">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="linear"/>
+						<xs:enumeration value="step"/>
+						<xs:enumeration value="jump"/>
+						<xs:enumeration value="spline"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="missingRepresentation">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="gap"/>
+						<xs:enumeration value="wings"/>
+						<xs:enumeration value="interpolated"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="pointPosition">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="left"/>
+						<xs:enumeration value="center"/>
+						<xs:enumeration value="right"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="setAxisScale">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml scale</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:parameter" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="method">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="linear">
+							<xs:annotation>
+								<xs:documentation>Simple linear scale</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="log">
+							<xs:annotation>
+								<xs:documentation>Log scale, ticks look like: 1, 10, 100, 1000, .... A numeric parameter "base" may be used to change the base from the default "10"</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="power">
+							<xs:annotation>
+								<xs:documentation>A power scale. The exponent should be set in a parameter to a positive value. </xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="log.safe">
+							<xs:annotation>
+								<xs:documentation>A transformation  y = SIGN(x) LOG( 1 + ABS(x)) which is defined for all values of x, maps 0 to 0 and preserves the sign of the original data</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="power.safe">
+							<xs:annotation>
+								<xs:documentation>A transformation  y = SIGN(x) POWER(ABS(x), EXPONENT) which is defined for all values of x, maps 0 to 0 and preserves the sign of the original data</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="invert" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>Whether to invert the scale so it runs, for example, right to left instead of left to right.</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="origin" type="tp:dateOrNumber">
+				<xs:annotation>
+					<xs:documentation>The origin of a scale. This is particularly important to define for dates which do not have good default date origins</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="role" type="tp:role" use="required"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="z" type="tp:coordinate">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml 'z'</xs:documentation>
+		</xs:annotation>
+	</xs:element>
+	<xs:complexType name="coordinate">
+		<xs:annotation>
+			<xs:documentation>similar to vizml coordinate</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="location" type="xs:string"/>
+	</xs:complexType>
+	<xs:element name="setAxisInterval">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml interval</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="min" type="tp:dateOrNumber"/>
+			<xs:attribute name="max" type="tp:dateOrNumber"/>
+			<xs:attribute name="role" type="tp:role" use="required"/>
+			<xs:attribute name="upperMapping" type="tp:mapping"/>
+			<xs:attribute name="lowerMapping" type="tp:mapping"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="majorTicks">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml majorTicks</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:gridLines" minOccurs="0"/>
+				<xs:choice minOccurs="0">
+					<xs:element ref="tp:numberFormat"/>
+					<xs:element ref="tp:stringFormat"/>
+					<xs:element ref="tp:dateTimeFormat"/>
+				</xs:choice>
+				<xs:element ref="tp:markStyle" minOccurs="0"/>
+				<xs:element ref="tp:tickLabelStyle" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="position" type="tp:position"/>
+			<xs:attribute name="length" type="tp:lengthAbsolute"/>
+			<xs:attribute name="stagger" type="xs:boolean"/>
+			<xs:attribute name="delta" type="xs:string"/>
+			<xs:attribute name="base" type="tp:dateOrNumber"/>
+			<xs:attribute name="role" type="tp:role" use="required"/>
+			<xs:attribute name="categorical" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>If this command should apply to categorical axes (true) or scalar axes (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="derived" type="xs:boolean" default="false">
+				<xs:annotation>
+					<xs:documentation>If this command should apply to the derived axes (true) or not (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="panelPosition" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation>If this is for a paneled axis, this is the zero-based index count of the
+									  facetVariables that have this role (e.g. the first y panel would have a position of 0).
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="minorTicks">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml minorTicks</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:gridLines" minOccurs="0"/>
+				<xs:element ref="tp:markStyle" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="position" type="tp:position"/>
+			<xs:attribute name="length" type="tp:lengthAbsolute"/>
+			<xs:attribute name="number" type="xs:positiveInteger"/>
+			<xs:attribute name="role" type="tp:role" use="required"/>
+			<xs:attribute name="categorical" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation>If this command should apply to categorical axes (true) or scalar axes (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="derived" type="xs:boolean" default="false">
+				<xs:annotation>
+					<xs:documentation>If this command should apply to the derived axes (true) or not (false)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="gridLines">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml gridLines</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:facetStyle" minOccurs="0"/>
+				<xs:element ref="tp:style" minOccurs="0"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="facetStyle">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml facetStyle</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style">
+					<xs:annotation>
+						<xs:documentation>Style to apply when the expression evaluates to true</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="when" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation>A boolean expression using facets that determines when the style is applied. Examples are "facet1 != facet2" or "facet1 == 2"</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="markStyle">
+		<xs:annotation>
+			<xs:documentation>markers</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style" minOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tickLabelStyle">
+		<xs:annotation>
+			<xs:documentation>tickLabels</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style" minOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="axisLabelStyle">
+		<xs:annotation>
+			<xs:documentation>Label style for the axis label</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style" minOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="numberFormat">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml numberFormat</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="scientific" default="auto">
+				<xs:annotation>
+					<xs:documentation>Whether to use scientific notation</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="auto">
+							<xs:annotation>
+								<xs:documentation>Choose based on the data</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="never">
+							<xs:annotation>
+								<xs:documentation>Never use scientific notation
+                                </xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="always">
+							<xs:annotation>
+								<xs:documentation>Always use scientific notation</xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="minimumFractionDigits" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation>minimum number of digits to display in the fractional part of a decimal or scientific representation</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="maximumFractionDigits" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation>maximum number of digits to display in the fractional part of a decimal or scientific representation</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="minimumIntegerDigits" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation>minimum number of digits to display in the integer part of a decimal  representation. </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="maximumIntegerDigits" type="xs:nonNegativeInteger">
+				<xs:annotation>
+					<xs:documentation>maximum number of digits to display in the integer part of a decimal  representation. </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="useGrouping" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>If true, grouping characters will be inserted for large integer values, so that 1000000 would be shown as 1,000,000</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+            <xs:attribute name="hideNegatives" type="xs:boolean" default="false">
+                <xs:annotation>
+                    <xs:documentation>If true, negative values are shown as their absolute value instead</xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+			<xs:attribute name="negativesOutside" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>If true, negative sign or parentheses will be shown outside the prefix / suffix</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="scalingFactor" type="xs:double">
+				<xs:annotation>
+					<xs:documentation>A number which will be divided into the data before formatting. A typical use would be to specify scalingFactor="1000000" and suffix="millions" or scalingFactor="0.001" and suffix="millis"</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="negativesInParentheses" type="xs:boolean">
+				<xs:annotation>
+					<xs:documentation>If true, negative values will be indicated by parentheses rather than the negative sign</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attributeGroup ref="tp:formatWrappers"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="stringFormat">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml stringFormat</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attributeGroup ref="tp:formatWrappers"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dateTimeFormat">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml dataTimeFormat</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:all>
+				<xs:annotation>
+					<xs:documentation>It is an error for the dateTimeFormat to be empty</xs:documentation>
+				</xs:annotation>
+				<xs:element ref="tp:dateFormat" minOccurs="0"/>
+				<xs:element ref="tp:timeFormat" minOccurs="0"/>
+			</xs:all>
+			<xs:attributeGroup ref="tp:formatWrappers"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dateFormat">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml dateFormat</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence minOccurs="0">
+				<xs:element name="dayOfWeek" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Monday, Tuesday, etc.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="long" type="xs:boolean" default="false">
+							<xs:annotation>
+								<xs:documentation>If true, a longer format will be used. If false a shortened form of the name will be used</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:choice minOccurs="0">
+					<xs:element name="dayOfMonth">
+						<xs:annotation>
+							<xs:documentation>The numeric day of the month</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="fill" type="xs:boolean" default="false">
+								<xs:annotation>
+									<xs:documentation>If true, leading zeros will be added to pad the number</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="dayOfYear">
+						<xs:annotation>
+							<xs:documentation>The numeric day of the year </xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="fill" type="xs:boolean" default="false">
+								<xs:annotation>
+									<xs:documentation>If true, leading zeros will be added to pad the number</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+				<xs:choice minOccurs="0">
+					<xs:element name="week">
+						<xs:annotation>
+							<xs:documentation>The week number within the year</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="fill" type="xs:boolean" default="false">
+								<xs:annotation>
+									<xs:documentation>If true, leading zeros will be added to pad the number</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="month">
+						<xs:annotation>
+							<xs:documentation>The numeric month of the year</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="fill" type="xs:boolean" default="false">
+								<xs:annotation>
+									<xs:documentation>If true, leading zeros will be added to pad the number</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="monthName">
+						<xs:annotation>
+							<xs:documentation>January, February, etc.</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="long" type="xs:boolean" default="false">
+								<xs:annotation>
+									<xs:documentation>If true, a longer format will be used. If false a shortened form of the name will be used</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+					<xs:element name="quarter">
+						<xs:annotation>
+							<xs:documentation>The quarter, represented as a number 1 through 4 and a suffix tag</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:attribute name="prefix" type="xs:string" use="optional"/>
+							<xs:attribute name="suffix" type="xs:string" use="optional">
+								<xs:annotation>
+									<xs:documentation>A string to be appended after the quarter designation to indicate that it is a quarter</xs:documentation>
+								</xs:annotation>
+							</xs:attribute>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+				<xs:element name="year" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The year as a number</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="showCentury" type="xs:boolean" default="false">
+							<xs:annotation>
+								<xs:documentation>If true, the century will be shown</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="era" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>Show the era (BC / AD)</xs:documentation>
+					</xs:annotation>
+					<xs:complexType/>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="timeFormat">
+		<xs:annotation>
+			<xs:documentation>Defines a format to represent the time portion of a date/time value</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="hour" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The hour of the day</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="fill" type="xs:boolean" default="false">
+							<xs:annotation>
+								<xs:documentation>If true, leading zeros will be added to pad the number</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="twentyFour" type="xs:boolean" default="false">
+							<xs:annotation>
+								<xs:documentation>show in twenty-four hour format</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="showAMPM" type="xs:boolean" default="false">
+							<xs:annotation>
+								<xs:documentation>show the AM / PM marker</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="minute" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The minute of the hour</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="fill" type="xs:boolean" default="false">
+							<xs:annotation>
+								<xs:documentation>If true, leading zeros will be added to pad the number</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="second" minOccurs="0">
+					<xs:annotation>
+						<xs:documentation>The seconds of the minute, with optional milliseconds</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="fill" type="xs:boolean" default="false">
+							<xs:annotation>
+								<xs:documentation>If true, leading zeros will be added to pad the number</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+						<xs:attribute name="milliseconds" type="xs:boolean" default="false">
+							<xs:annotation>
+								<xs:documentation>If true, millisecond information will be displayed</xs:documentation>
+							</xs:annotation>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="transform">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml transform</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:parameter" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="method">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="percent"/>
+						<xs:enumeration value="linear"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="categoryValue">
+		<xs:annotation>
+			<xs:documentation>A semi-colon separated list of values, expressed as a string</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:simpleContent>
+				<xs:extension base="xs:string"/>
+			</xs:simpleContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sort">
+		<xs:annotation>
+			<xs:documentation>Derived from the vizml sort.  For a categorical variable, define an order on the categories in the domain</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:element name="statisticSort">
+					<xs:annotation>
+						<xs:documentation>Sorts categories according to a statistic calculated on a continuous variable for rows with each category</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element name="simpleSort">
+					<xs:annotation>
+						<xs:documentation>Sorts data either by occurrence or alphanumerically</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:attribute name="method" default="natural">
+							<xs:simpleType>
+								<xs:restriction base="xs:NMTOKEN">
+									<xs:enumeration value="data">
+										<xs:annotation>
+											<xs:documentation>The data are sorted based on their appearance in the source. First appearances are sorted first</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="natural">
+										<xs:annotation>
+											<xs:documentation>The natural sort order is a modified alphanumeric sort. All numbers are sorted as numbers and all non-numbers are sorted as alphabetic and then the two lists are combined. Thus "a,11,2,c,1" gets sorted as "1,2,11,a,c"</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+									<xs:enumeration value="naturalUsingLabel">
+										<xs:annotation>
+											<xs:documentation>This method is identical to the natural sort order, except it uses the display labels rather than the actual data values. Ties are resolved by comparing the data values</xs:documentation>
+										</xs:annotation>
+									</xs:enumeration>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+			<xs:attribute name="descending" type="xs:boolean" default="false">
+				<xs:annotation>
+					<xs:documentation>Whether to reverse the usual sorting order</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="legendFrameStyle">
+		<xs:annotation>
+			<xs:documentation>Style of the legend frame</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style" minOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="legendLabelStyle">
+		<xs:annotation>
+			<xs:documentation>Style of the legend label</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style" minOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="legendStyle">
+		<xs:annotation>
+			<xs:documentation>Style of the legend</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="tp:style" minOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="labeling">
+		<xs:complexType>
+			<xs:choice minOccurs="0">
+				<xs:element ref="tp:numberFormat"/>
+				<xs:element ref="tp:stringFormat"/>
+				<xs:element ref="tp:dateTimeFormat"/>
+			</xs:choice>
+			<xs:attribute name="variable" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="casenum"/>
+						<xs:enumeration value="count"/>
+						<xs:enumeration value="labeling"/>
+						<xs:enumeration value="percent"/>
+						<xs:enumeration value="xortheta"/>
+						<xs:enumeration value="y"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+<!--
+attribute types begin here
+-->
+	<xs:simpleType name="length">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml length</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="tp:lengthAbsolute tp:lengthPercentage"/>
+	</xs:simpleType>
+	<xs:simpleType name="lengthPercentage">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml lengthPercentage</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="-?[0-9]+[.]?[0-9]*%">
+				<xs:annotation>
+					<xs:documentation>Any number followed by the percentage sign</xs:documentation>
+				</xs:annotation>
+			</xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="lengthAbsolute">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml lengthAbsolute</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:pattern value="-?[0-9]+[.]?[0-9]*">
+				<xs:annotation>
+					<xs:documentation>without any units defaults to pixels</xs:documentation>
+				</xs:annotation>
+			</xs:pattern>
+			<xs:pattern value="-?[0-9]+[.]?[0-9]*mm">
+				<xs:annotation>
+					<xs:documentation>length in millimeters</xs:documentation>
+				</xs:annotation>
+			</xs:pattern>
+			<xs:pattern value="-?[0-9]+[.]?[0-9]*cm">
+				<xs:annotation>
+					<xs:documentation>length in centimeters</xs:documentation>
+				</xs:annotation>
+			</xs:pattern>
+			<xs:pattern value="-?[0-9]+[.]?[0-9]*in">
+				<xs:annotation>
+					<xs:documentation>length in inches</xs:documentation>
+					<xs:documentation/>
+				</xs:annotation>
+			</xs:pattern>
+			<xs:pattern value="-?[0-9]+[.]?[0-9]*px">
+				<xs:annotation>
+					<xs:documentation>length in pixels</xs:documentation>
+				</xs:annotation>
+			</xs:pattern>
+			<xs:pattern value="-?[0-9]+[.]?[0-9]*pt">
+				<xs:annotation>
+					<xs:documentation>length in points</xs:documentation>
+				</xs:annotation>
+			</xs:pattern>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="TARGETID">
+		<xs:annotation>
+			<xs:documentation>id of an element in the target document</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NCName"/>
+	</xs:simpleType>
+	<xs:simpleType name="dateOrNumber">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml dateOrNumber</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="tp:date xs:double"/>
+	</xs:simpleType>
+	<xs:simpleType name="date">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml date</xs:documentation>
+		</xs:annotation>
+		<xs:union memberTypes="xs:date xs:time xs:dateTime"/>
+	</xs:simpleType>
+	<xs:simpleType name="role">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml role type</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="x"/>
+			<xs:enumeration value="y"/>
+			<xs:enumeration value="z"/>
+			<xs:enumeration value="r"/>
+			<xs:enumeration value="theta"/>
+			<xs:enumeration value="phi"/>
+			<xs:enumeration value="legend">
+				<xs:annotation>
+					<xs:documentation>Valid for use in categorical chart commands (e.g. setExclude, setOrder)</xs:documentation>
+				</xs:annotation>
+			</xs:enumeration>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="mapping">
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="exact"/>
+			<xs:enumeration value="nice"/>
+		</xs:restriction>
+	</xs:simpleType>
+	<xs:simpleType name="position">
+		<xs:annotation>
+			<xs:documentation>position of tickmarks relative to the axis baseline</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:NMTOKEN">
+			<xs:enumeration value="inside"/>
+			<xs:enumeration value="outside"/>
+			<xs:enumeration value="cross"/>
+		</xs:restriction>
+	</xs:simpleType>
+<!--
+attribute groups begin here
+-->
+	<xs:attributeGroup name="formatWrappers">
+		<xs:annotation>
+			<xs:documentation>Similar to vizml formatWrappers</xs:documentation>
+		</xs:annotation>
+		<xs:attribute name="prefix" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>This string will be added in front of the formatted text</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+		<xs:attribute name="suffix" type="xs:string">
+			<xs:annotation>
+				<xs:documentation>This string will be appended to the formatted text</xs:documentation>
+			</xs:annotation>
+		</xs:attribute>
+	</xs:attributeGroup>
+</xs:schema>

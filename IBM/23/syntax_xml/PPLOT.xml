@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/19/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="PPLOT" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional"/>
+    </Subcommand>
+    <Subcommand Name="VARIABLES" EqualsSign="Optional"/>
+    <Subcommand Name="DISTRIBUTION" EqualsSign="Optional">
+        <Parameter Name="NORMAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXPONENTIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WEIBUL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PARETO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LNORMAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BETA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GAMMA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOGISTIC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAPLACE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UNIFORM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HNORMAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CHI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STUDENT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FRACTION" EqualsSign="Optional">
+        <Parameter Name="BLOM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RANKIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TUKEY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TIES" EqualsSign="Optional">
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HIGH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BREAK" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="NOSTANDARDIZE" EqualsSign="None"/>
+    <Subcommand Name="STANDARDIZE" EqualsSign="None"/>
+    <Subcommand Name="TYPE" EqualsSign="Optional">
+        <Parameter Name="Q-Q" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="P-P" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="BOTH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NORMAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DETRENDED" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DIFF" EqualsSign="Optional"/>
+    <Subcommand Name="SDIFF" EqualsSign="Optional"/>
+    <Subcommand Name="PERIOD" EqualsSign="Optional"/>
+    <Subcommand Name="NOLOG" EqualsSign="None"/>
+    <Subcommand Name="LN" EqualsSign="None"/>
+    <Subcommand Name="APPLY" EqualsSign="Optional"/>
+    <Subcommand Name="TEMPLATE" EqualsSign="Optional"/>
+
+</Command>

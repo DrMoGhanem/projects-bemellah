@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="REPEATING DATA" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="FILE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ENCODING" EqualsSign="Optional"/>
+    <Subcommand Name="STARTS" EqualsSign="Optional"/>
+    <Subcommand Name="OCCURS" EqualsSign="Optional"/>
+    <Subcommand Name="LENGTH" EqualsSign="Optional"/>
+    <Subcommand Name="CONTINUED" EqualsSign="Optional"/>
+    <Subcommand Name="ID" EqualsSign="Optional"/>
+    <Subcommand Name="TABLE" EqualsSign="None"/>
+    <Subcommand Name="NOTABLE" EqualsSign="None"/>
+    <Subcommand Name="DATA" EqualsSign="Optional"/>
+</Command>

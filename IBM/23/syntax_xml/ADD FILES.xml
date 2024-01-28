@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2013                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 4/28/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+ xmlns:p1="http://xml.spss.com/spss/extension"
+ Name="ADD FILES"
+ EndRequired="None"
+ IsArbitrary="No"
+ Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="FILE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="PASSWORD" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="RENAME" EqualsSign="Optional">
+        <Parameter Name="TO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="IN" EqualsSign="Optional"/>
+    <Subcommand Name="FILE" EqualsSign="Optional">
+        <Parameter Name="PASSWORD" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+     <Subcommand Name="BY" EqualsSign="Optional"/>
+    <Subcommand Name="MAP" EqualsSign="None"/>
+    <Subcommand Name="KEEP" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DROP" EqualsSign="Optional"/>
+    <Subcommand Name="FIRST" EqualsSign="Optional"/>
+    <Subcommand Name="LAST" EqualsSign="Optional"/>
+</Command>

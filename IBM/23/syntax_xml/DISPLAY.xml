@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Create 4/30/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="DISPLAY" EndRequired="None" IsArbitrary="No" Language="Syntax"> 
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="SORTED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NAMES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INDEX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LABELS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DICTIONARY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ATTRIBUTES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="@ATTRIBUTES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SCRATCH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VECTOR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MACROS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DOCUMENTS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="VARIABLES" EqualsSign="Optional"/>
+</Command>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/1/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="FREQUENCIES" EndRequired="None" IsArbitrary="No" Language="Syntax"> 
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FORMAT" EqualsSign="Optional">
+        <Parameter Name="NOTABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LIMIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AVALUE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DVALUE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AFREQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DFREQ" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="BARCHART" EqualsSign="Optional">
+        <Parameter Name="MINIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FREQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PERCENT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PIECHART" EqualsSign="Optional">
+        <Parameter Name="MINIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FREQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PERCENT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MISSING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOMISSING" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="HISTOGRAM" EqualsSign="Optional">
+        <Parameter Name="MINIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FREQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONORMAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NORMAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="GROUPED" EqualsSign="Optional"/>
+    <Subcommand Name="NTILES" EqualsSign="Optional"/>
+    <Subcommand Name="PERCENTILES" EqualsSign="Optional"/>
+    <Subcommand Name="STATISTICS" EqualsSign="Optional">
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MINIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SKEWNESS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SESKEW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RANGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="KURTOSIS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEKURT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ORDER" EqualsSign="Optional">
+        <Parameter Name="ANALYSIS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

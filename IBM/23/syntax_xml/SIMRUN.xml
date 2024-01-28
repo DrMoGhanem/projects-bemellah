@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2013                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 3/29/12 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd" Name="SIMRUN" EndRequired="None" IsArbitrary="No" Language="Syntax">
+   <Subcommand Name="PLAN" EqualsSign="None">
+      <Parameter Name="FILE" EqualsSign="Required" ParameterType="Keyword"/>
+   </Subcommand>       
+   <Subcommand Name="CRITERIA" EqualsSign="None">
+      <Parameter Name="SEED" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="REPRESULTS" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="TRUE"/>
+         <EnumValue Name="FALSE"/>
+      </Parameter>
+   </Subcommand>  
+   <Subcommand Name="DISTRIBUTION" EqualsSign="None">
+      <Parameter Name="DISPLAY" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="CDF"/>
+         <EnumValue Name="PDF"/>
+         <EnumValue Name="NONE"/>
+      </Parameter>
+      <Parameter Name="CDFORDER" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="ASCENDING"/>
+         <EnumValue Name="DESCENDING"/>
+      </Parameter>
+      <Parameter Name="SCALE" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="MEAN"/>
+         <EnumValue Name="MEDIAN"/>
+         <EnumValue Name="PCT"/>
+         <EnumValue Name="SIGMAS"/>
+         <EnumValue Name="CUSTOM"/>
+         <EnumValue Name="PDFVIEW"/>
+         <EnumValue Name="CURVE"/>
+         <EnumValue Name="HISTOGRAM"/>
+         <EnumValue Name="OVERLAYTARGETS"/>
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+         <EnumValue Name="REFLINES"/>
+      </Parameter>
+      <Parameter Name="LOWER" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="DEFAULT"/>
+         <EnumValue Name="LO"/>
+      </Parameter>
+      <Parameter Name="UPPER" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="DEFAULT"/>
+         <EnumValue Name="HI"/>
+      </Parameter>
+      <Parameter Name="CATEGORICAL" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="PREDVAL"/>
+         <EnumValue Name="PREDPROB"/>
+         <EnumValue Name="GROUP"/>
+         <EnumValue Name="CATS"/>
+         <EnumValue Name="ITERS"/>
+      </Parameter>
+   </Subcommand> 
+   <Subcommand Name="SCATTERPLOT" EqualsSign="None">
+      <Parameter Name="DISPLAY" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+      <Parameter Name="ROWSIZE" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="DEFAULT"/>
+      </Parameter>
+   </Subcommand>
+   <Subcommand Name="BOXPLOT" EqualsSign="None">
+      <Parameter Name="DISPLAY" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+      <Parameter Name="OVERLAYTARGETS" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+      <Parameter Name="GROUP" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="TARGETS"/>
+         <EnumValue Name="ITERS"/>
+      </Parameter>
+   </Subcommand>
+   <Subcommand Name="TORNADO" EqualsSign="None">
+      <Parameter Name="DISPLAY" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+      <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="CORR"/>
+         <EnumValue Name="DELTASTDDEV"/>
+         <EnumValue Name="VARIANCE"/>
+      </Parameter>
+   </Subcommand>
+   <Subcommand Name="PRINT" EqualsSign="None">
+      <Parameter Name="DESCRIPTIVES" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+      <Parameter Name="CILEVEL" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="PERCENTILES" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+      <Parameter Name="NTILES" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="PTILES" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="ASSOCIATIONS" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="YES"/>
+         <EnumValue Name="NO"/>
+      </Parameter>
+   </Subcommand>
+   <Subcommand Name="OPTIONS" EqualsSign="None">
+      <Parameter Name="VIZSTYLESHEET" EqualsSign="Required" ParameterType="Keyword"/>
+      <Parameter Name="LOCATION" EqualsSign="Required" ParameterType="Keyword">
+         <EnumValue Name="LOCAL"/>
+      </Parameter>
+   </Subcommand>  
+   <Subcommand Name="OUTFILE" EqualsSign="None">
+      <Parameter Name="FILE" EqualsSign="Required" ParameterType="Keyword"/>
+   </Subcommand>  
+</Command>

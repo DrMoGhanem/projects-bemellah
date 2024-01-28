@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<!--© Copyright IBM Corporation 1989, 2013-->
+<toc label="Integration Plug-in for Java User Guide"
+     topic="spss/programmability_option/programmability_java_guide_start.htm">
+   <topic label="Getting started with the Integration Plug-in for Java"
+          href="spss/programmability_option/programmability_java_guide_start.htm">
+      <topic label="Invoking IBM SPSS Statistics from an external Java application"
+             href="spss/programmability_option/programmability_java_guide_start_external.htm"/>
+      <topic label="Creating IBM SPSS Statistics extension commands in Java"
+             href="spss/programmability_option/programmability_java_guide_start_extcmds.htm"/>
+   </topic>
+   <topic label="Running IBM SPSS Statistics commands"
+          href="spss/programmability_option/java_guide_commands_container.htm">
+      <topic label="Running IBM SPSS Statistics commands (Java)"
+             href="spss/programmability_option/programmability_java_guide_commands.htm"/>
+   </topic>
+   <topic label="Retrieving dictionary information"
+          href="spss/programmability_option/java_guide_dictionary_container.htm">
+      <topic label="Retrieving dictionary information (Java)"
+             href="spss/programmability_option/programmability_java_guide_vardict.htm"/>
+   </topic>
+   <topic label="Working with case data in the active dataset"
+          href="spss/programmability_option/java_guide_data_container.htm">
+      <topic label="Working with case data in the active dataset (Java)"
+             href="spss/programmability_option/programmability_java_guide_cursors.htm">
+         <topic label="Reading case data (Java)"
+                href="spss/programmability_option/programmability_java_guide_cursors_read.htm"/>
+         <topic label="Creating new variables in the active dataset (Java)"
+                href="spss/programmability_option/programmability_java_guide_cursors_write.htm"/>
+         <topic label="Appending new cases (Java)"
+                href="spss/programmability_option/programmability_java_guide_cursors_append.htm"/>
+      </topic>
+   </topic>
+   <topic label="Retrieving output from syntax commands"
+          href="spss/programmability_option/java_guide_getoutput_container.htm">
+      <topic label="Retrieving output from syntax commands (Java)"
+             href="spss/programmability_option/programmability_java_guide_getoutput.htm"/>
+   </topic>
+   <topic label="Creating custom output"
+          href="spss/programmability_option/java_guide_pivottables_container.htm">
+      <topic label="Creating custom output (Java)"
+             href="spss/programmability_option/programmability_java_guide_makeoutput.htm">
+         <topic label="Creating pivot tables (Java)"
+                href="spss/programmability_option/programmability_java_guide_makeoutput_tables.htm"/>
+         <topic label="Creating text blocks (Java)"
+                href="spss/programmability_option/programmability_java_guide_makeoutput_text.htm"/>
+         <topic label="Creating output for extension commands (Java)"
+                href="spss/programmability_option/programmability_java_guide_makeoutput_tablesextcmds.htm"/>
+      </topic>
+   </topic>
+   <topic label="Running Python and R Programs from Java"
+          href="spss/programmability_option/programmability_java_guide_python_r.htm"/>
+   <topic label="Deploying an external Java application"
+          href="spss/programmability_option/programmability_java_guide_deploy.htm"/>
+</toc>

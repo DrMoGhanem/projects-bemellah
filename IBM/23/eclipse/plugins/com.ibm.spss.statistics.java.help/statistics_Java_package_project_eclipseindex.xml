@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<index>
+  <entry keyword="Java">
+    <entry keyword="using Java within IBM SPSS Statistics">
+      <topic href="spss/programmability_option/programmability_java_guide_start.htm#programmability_java_guide_start" title="Getting started with the Integration Plug-in for Java"/>
+    </entry>
+    <entry keyword="Submit method">
+      <topic href="spss/programmability_option/programmability_java_guide_commands.htm#programmability_java_guide_commands" title="Running IBM SPSS Statistics commands  (Java)"/>
+    </entry>
+    <entry keyword="DataUtil class">
+      <topic href="spss/programmability_option/programmability_java_guide_cursors_read.htm#programmability_java_guide_cursors_read" title="Reading case data  (Java)"/>
+    </entry>
+    <entry keyword="evaluateXPath method">
+      <topic href="spss/programmability_option/programmability_java_guide_getoutput.htm#programmability_java_guide_getoutput" title="Retrieving output from syntax commands  (Java)"/>
+    </entry>
+  </entry>
+  <entry keyword="running command syntax from Java">
+    <topic href="spss/programmability_option/programmability_java_guide_commands.htm#programmability_java_guide_commands" title="Running IBM SPSS Statistics commands  (Java)"/>
+  </entry>
+  <entry keyword="dictionary">
+    <entry keyword="reading dictionary information from Java">
+      <topic href="spss/programmability_option/programmability_java_guide_vardict.htm#programmability_java_guide_vardict" title="Retrieving dictionary information  (Java)"/>
+    </entry>
+  </entry>
+  <entry keyword="data">
+    <entry keyword="reading active dataset from Java">
+      <topic href="spss/programmability_option/programmability_java_guide_cursors.htm#programmability_java_guide_cursors" title="Working with case data in the active dataset  (Java) "/>
+      <topic href="spss/programmability_option/programmability_java_guide_cursors_read.htm#programmability_java_guide_cursors_read" title="Reading case data  (Java)"/>
+    </entry>
+    <entry keyword="creating new variables">
+      <topic href="spss/programmability_option/programmability_java_guide_cursors.htm#programmability_java_guide_cursors" title="Working with case data in the active dataset  (Java) "/>
+      <topic href="spss/programmability_option/programmability_java_guide_cursors_write.htm#programmability_java_guide_cursors_write" title="Creating new variables in the active dataset  (Java)"/>
+    </entry>
+    <entry keyword="appending cases">
+      <topic href="spss/programmability_option/programmability_java_guide_cursors.htm#programmability_java_guide_cursors" title="Working with case data in the active dataset  (Java) "/>
+      <topic href="spss/programmability_option/programmability_java_guide_cursors_append.htm#programmability_java_guide_cursors_append" title="Appending new cases  (Java)"/>
+    </entry>
+  </entry>
+  <entry keyword="output">
+    <entry keyword="reading output results from Java">
+      <topic href="spss/programmability_option/programmability_java_guide_getoutput.htm#programmability_java_guide_getoutput" title="Retrieving output from syntax commands  (Java)"/>
+    </entry>
+  </entry>
+  <entry keyword="OXML">
+    <entry keyword="reading output XML from Java">
+      <topic href="spss/programmability_option/programmability_java_guide_getoutput.htm#programmability_java_guide_getoutput" title="Retrieving output from syntax commands  (Java)"/>
+    </entry>
+  </entry>
+  <entry keyword="XML workspace">
+    <topic href="spss/programmability_option/programmability_java_guide_getoutput.htm#programmability_java_guide_getoutput" title="Retrieving output from syntax commands  (Java)"/>
+  </entry>
+  <entry keyword="XPath expressions">
+    <topic href="spss/programmability_option/programmability_java_guide_getoutput.htm#programmability_java_guide_getoutput" title="Retrieving output from syntax commands  (Java)"/>
+  </entry>
+  <entry keyword="pivot tables">
+    <topic href="spss/programmability_option/programmability_java_guide_makeoutput_tables.htm#programmability_java_guide_makeoutput_tables" title="Creating pivot tables  (Java)"/>
+  </entry>
+</index>

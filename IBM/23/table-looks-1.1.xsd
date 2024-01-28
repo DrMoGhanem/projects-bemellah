@@ -1,0 +1,348 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:vtl="http://xml.spss.com/spss/viewer/table-looks"
+           xmlns:vizml="http://xml.spss.com/visualization" 
+           targetNamespace="http://xml.spss.com/spss/viewer/table-looks"
+           elementFormDefault="qualified"
+           attributeFormDefault="unqualified"
+           version="1.1">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Copyright 2007 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties with respect to your use of this specification, expressed, implied, or otherwise, including without limitation, all warranties of merchantability and fitness for a particular purpose.  SPSS shall not be liable for any special, incidental, or consequential damages, including without limitation lost revenues or lost profits resulting from the use of the information herein.</xs:documentation>
+	</xs:annotation>
+
+    <!-- Imports -->
+	<xs:import namespace="http://xml.spss.com/visualization" schemaLocation="http://xml.spss.com/visualization/vizml-2.5.xsd"/>
+
+	<!-- the root element -->
+	<xs:element name="tableProperties">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				Contains information about the table's properties, including printing properties, formatting, footnotes, etc.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="5" maxOccurs="5">
+				    <xs:element ref="vtl:generalProperties" minOccurs="1" maxOccurs="1"/>
+				    <xs:element ref="vtl:footnoteProperties" minOccurs="1" maxOccurs="1"/>
+				    <xs:element ref="vtl:cellFormatProperties" minOccurs="1" maxOccurs="1"/>
+				    <xs:element ref="vtl:borderProperties" minOccurs="1" maxOccurs="1"/>
+				    <xs:element ref="vtl:printingProperties" minOccurs="1" maxOccurs="1"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="tableLookId" type="xs:positiveInteger" use="optional">
+			    <xs:annotation>
+				    <xs:documentation xml:lang="en">
+                        This id is used to uniquely identify this tableLook.  Multiple tables can
+                        refer to this tableLook by associating the table with this id.  This id should
+                        be a globally unique id.
+                    </xs:documentation>
+			    </xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- Information residing on the General Properties tab -->
+	<xs:element name="generalProperties">
+		<xs:annotation>
+			<xs:documentation>
+				Properties that apply to the table as a whole.
+             </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="hideEmptyRows" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						Show or hide empty rows and columns. (An empty row or column has nothing in any of the data cells.)
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="rowDimensionLabels" use="required">
+				<xs:annotation>
+					<xs:documentation>Controls the placement of row labels, which can be in the upper left corner or nested.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="inCorner">
+							<xs:annotation>
+								<xs:documentation>
+                                     Show row dimension labels in the upper-left corner of the table.  If there is no corner cell, the row dimension labels
+                                     will not be shown.
+                                 </xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="nested">
+							<xs:annotation>
+								<xs:documentation>
+                                     Show row dimension labels to the left of the dimension's category labels and group labels.
+                                 </xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="minimumColumnWidth" type="xs:int" use="required">
+				<xs:annotation>
+					<xs:documentation>Integer that represents the minimum width for column labels, in points.
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="maximumColumnWidth" type="xs:int" use="required">
+				<xs:annotation>
+					<xs:documentation>Integer that represents the maximum width for column labels, in points.
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="minimumRowWidth" type="xs:int" use="required">
+				<xs:annotation>
+					<xs:documentation>Integer that represents the minimum width for row labels, in points.
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="maximumRowWidth" type="xs:int" use="required">
+				<xs:annotation>
+					<xs:documentation>Integer that represents the maximum width for row labels, in points.
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- Information residing on the Footnote Properties tab -->
+	<xs:element name="footnoteProperties">
+		<xs:annotation>
+			<xs:documentation>
+				The properties of footnote markers including style and position in relation to text.
+             </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="numberFormat" use="required">
+				<xs:annotation>
+					<xs:documentation>The style of footnote markers is either numbers (1, 2, 3, ...) or letters (a, b, c, ...).</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="alphabetic">
+							<xs:annotation>
+								<xs:documentation>
+                                     Footnote markers are alphabetic (a, b, c, ...)
+                                 </xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="numeric">
+							<xs:annotation>
+								<xs:documentation>
+                                     Footnote markers are numeric (1, 2, 3, ...)
+                                 </xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="markerPosition" use="required">
+				<xs:annotation>
+					<xs:documentation>The footnote markers can be attached to text as superscripts or subscripts.</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="superscript">
+							<xs:annotation>
+								<xs:documentation>
+                                     Footnote markers appear above the text.
+                                 </xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+						<xs:enumeration value="subscript">
+							<xs:annotation>
+								<xs:documentation>
+                                     Footnote markers appear below the text.
+                                 </xs:documentation>
+							</xs:annotation>
+						</xs:enumeration>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+
+    <!-- The base type for the cell formats -->
+	<xs:complexType name="cellStyle">
+	    <xs:sequence>
+	        <xs:element ref="vizml:style" minOccurs="1" maxOccurs="1"/>
+	    </xs:sequence>
+	</xs:complexType>
+	
+	
+	<!-- Information residing on the Cell Format Properties tab -->
+	<xs:element name="cellFormatProperties">
+		<xs:annotation>
+			<xs:documentation>
+				For formatting, a table is divided into areas: title, layers, corner labels, row labels,
+				column labels, data, caption, and footnotes.
+				For each area of a table, you can modify the associated cell formats. Cell formats include
+				text characteristics (such as font,	size, color, and style), horizontal and vertical
+				alignment, cell shading, foreground and background colors, and inner cell margins.
+				Cell formats are applied to areas (categories of information). They are not characteristics
+				of individual cells. This distinction is an	important consideration when pivoting a table.
+				
+				For text-align, values of "inherit" maps to "mixed", and "justify" maps to "decimal".
+             </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="8" maxOccurs="9">
+				    <xs:element name="caption" type="vtl:cellStyle" minOccurs="1" maxOccurs="1"/>
+				    <xs:element name="columnLabels" type="vtl:cellStyle" minOccurs="1" maxOccurs="1"/>
+				    <xs:element name="cornerLabels" type="vtl:cellStyle" minOccurs="1" maxOccurs="1"/>
+				    <xs:element name="data" type="vtl:cellStyle" minOccurs="1" maxOccurs="1"/>
+				    <xs:element name="footnotes" type="vtl:cellStyle" minOccurs="1" maxOccurs="1"/>
+				    <xs:element name="layers" type="vtl:cellStyle" minOccurs="1" maxOccurs="1"/>
+				    <xs:element name="rowLabels" type="vtl:cellStyle" minOccurs="1" maxOccurs="1"/>
+				    <xs:element name="title" type="vtl:cellStyle" minOccurs="1" maxOccurs="1"/>
+				    <xs:element name="overall" type="vtl:cellStyle" minOccurs="0" maxOccurs="1"/>
+				</xs:choice>
+		  </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="borderStyle">
+	    <xs:attribute name="color" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>The border color.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+	    <xs:attribute name="color2" type="xs:string">
+            <xs:annotation>
+                <xs:documentation>The secondary color.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+	    <xs:attribute name="borderStyleType" type="vizml:borderStyleType">
+            <xs:annotation>
+                <xs:documentation>The style type of a border line.</xs:documentation>
+            </xs:annotation>
+        </xs:attribute>
+	</xs:complexType>
+	
+	<!-- Information residing on the Border Properties tab -->
+	<xs:element name="borderProperties">
+		<xs:annotation>
+			<xs:documentation>
+				For each border location in a table, you can select a line style and a color. If you select
+				None as the style, there will be no line at the selected location.
+				Each attribute corresponds to the vizml:borderStyleType attribute.
+             </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+		  <xs:sequence>
+    		<xs:choice minOccurs="19" maxOccurs="19">
+		        <xs:element name="bottomInnerFrame" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="bottomOuterFrame" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="dataAreaLeft" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="dataAreaTop" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="horizontalCategoryBorderColumns" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="horizontalCategoryBorderRows" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="horizontalDimensionBorderColumns" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="horizontalDimensionBorderRows" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="leftInnerFrame" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="leftOuterFrame" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="rightInnerFrame" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="rightOuterFrame" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="titleLayerSeparator" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="topInnerFrame" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="topOuterFrame" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="verticalCategoryBorderColumns" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="verticalCategoryBorderRows" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="verticalDimensionBorderRows" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		        <xs:element name="verticalDimensionBorderColumns" type="vtl:borderStyle" maxOccurs="1" minOccurs="1"/>
+		    </xs:choice>
+      </xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- Information residing on the Printing Properties tab -->
+	<xs:element name="printingProperties">
+		<xs:annotation>
+			<xs:documentation>
+				The properties of footnote markers including style and position in relation to text.
+             </xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="printAllLayers" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						Print all layers or only the top layer of the table.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="printEachLayerOnSeparatePage" type="xs:boolean" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						Print each layer on a separate page. (This setting affects only printing, not the display of layers in the Viewer.)
+						This attribute is only valid if the printAllLayers attribute is TRUE.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="rescaleWideTableToFitPage" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						Shrink a table horizontally to fit the page for printing.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="rescaleLongTableToFitPage" type="xs:boolean" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+						Shrink a table vertically to fit the page for printing.
+					</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="windowOrphanLines" type="xs:int" use="required">
+				<xs:annotation>
+					<xs:documentation>
+                    Control widow/orphan lines by controlling the minimum number of rows and columns that will be contained in any printed
+                     section of a table if the table is too wide and/or too long for the defined page size. (Note: If a table is too long to fit on the
+                     current page because there is other output above it, but it will fit within the defined page length, the table is automatically
+                     printed on a new page, regardless of the widow/orphan setting.)
+                    </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+            <xs:attribute name="continuationText" type="xs:string" use="optional">
+                <xs:annotation>
+                    <xs:documentation>
+						Include continuation text for tables that don't fit on a single page.  The continuationText will only be displayed if
+						the continuationTextAtBottom or continuationTextAtTop attributes are set to TRUE.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+			<xs:attribute name="continuationTextAtBottom" type="xs:boolean" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+						Display continuation text at the bottom of each page.
+				   </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="continuationTextAtTop" type="xs:boolean" use="optional">
+				<xs:annotation>
+					<xs:documentation>
+						Display continuation text at the top of each page.
+				   </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

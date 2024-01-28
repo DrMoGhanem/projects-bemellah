@@ -1,0 +1,268 @@
+﻿<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2014                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+  
+<Command xmlns="www.ibm.com/software/analytics/spss/xml/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="www.ibm.com/software/analytics/spss/xml/extension
+    www.ibm.com/software/analytics/spss/xml/extension/SyntaxSchema.xsd"
+    Name="TCM MODEL" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="DATASETTINGS" Occurrence="Required">
+        <Parameter Name="DIMENSIONS" EqualsSign="Required" ParameterType="VariableNameList"></Parameter>
+        <Parameter Name="MAXDIMVALUES" EqualsSign="Required" ParameterType="Integer"></Parameter>
+        <Parameter Name="TIMETYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="DATETIMEVAR"/>
+            <EnumValue Name="ISO8601"/>
+            <EnumValue Name="CYCLICPERIODS"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="TIMEVAR" EqualsSign="Required" ParameterType="VariableName"></Parameter>
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="PERIOD"/>
+            <EnumValue Name="CYCLE"/>
+        </Parameter>
+        <Parameter Name="INCREMENT" EqualsSign="Required" ParameterType="Integer"></Parameter>
+        <Parameter Name="LEVEL" EqualsSign="Required" ParameterType="Integer"></Parameter>
+        <Parameter Name="LENGTH" EqualsSign="Required" ParameterType="Integer"></Parameter>
+        <Parameter Name="START" EqualsSign="Required" ParameterType="Integer"></Parameter>
+        <Parameter Name="INPUTINTERVAL" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="AUTODETECT"/>
+            <EnumValue Name="IRREGULAR"/>
+            <EnumValue Name="YEAR"/>
+            <EnumValue Name="QUARTER"/>
+            <EnumValue Name="MONTH"/>
+            <EnumValue Name="WEEK"/>
+            <EnumValue Name="DAY"/>
+            <EnumValue Name="HOUR"/>
+            <EnumValue Name="MINUTE"/>
+            <EnumValue Name="SECOND"/>
+            <EnumValue Name="DURATION"/>
+        </Parameter>
+        <Parameter Name="DAYSWK" EqualsSign="Required" ParameterType="Integer"></Parameter>
+        <Parameter Name="WKSTART" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="MON"/>
+            <EnumValue Name="TUE"/>
+            <EnumValue Name="WED"/>
+            <EnumValue Name="THU"/>
+            <EnumValue Name="FRI"/>
+            <EnumValue Name="SAT"/>
+            <EnumValue Name="SUN"/>
+        </Parameter>
+        <Parameter Name="HRSDAY" EqualsSign="Required" ParameterType="Integer"></Parameter>
+        <Parameter Name="DAYSTART" EqualsSign="Required" ParameterType="TokenList"></Parameter>
+        <Parameter Name="INTERVAL" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="HOUR"/>
+            <EnumValue Name="MINUTE"/>
+            <EnumValue Name="SECOND"/>
+        </Parameter>
+        <Parameter Name="ANALYSISINTERVAL" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="USEINPUT"/>
+            <EnumValue Name="YEAR"/>
+            <EnumValue Name="QUARTER"/>
+            <EnumValue Name="MONTH"/>
+            <EnumValue Name="WEEK"/>
+            <EnumValue Name="DAY"/>
+            <EnumValue Name="HOUR"/>
+            <EnumValue Name="MINUTE"/>
+            <EnumValue Name="SECOND"/>
+            <EnumValue Name="CYCLE"/>
+        </Parameter>
+        <Parameter Name="GROUP" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="MIN"/>
+            <EnumValue Name="MAX"/>
+        </Parameter>
+        <Parameter Name="AGGREGATE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="MIN"/>
+            <EnumValue Name="MAX"/>
+        </Parameter>
+        <Parameter Name="DISTRIBUTE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="MEAN"/>
+        </Parameter>
+        <Parameter Name="INTERPOLATE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="LINT"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="KMEAN"/>
+            <EnumValue Name="KMEDIAN"/>
+            <EnumValue Name="LTREND"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="USERMISSING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+        <Parameter Name="MAXMISSING" EqualsSign="Required" ParameterType="Number"></Parameter>
+        <Parameter Name="CROSSDAYHRS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="DATAFILTER" Occurrence="Optional">
+        <Parameter Name="DIMVALUES" EqualsSign="Required" ParameterType="VariableNameList"></Parameter>
+        <Parameter Name="INCLUDE" EqualsSign="Required" ParameterType="TokenList"></Parameter>
+        <Parameter Name="EXCLUDE" EqualsSign="Required" ParameterType="TokenList"></Parameter>
+    </Subcommand>
+    <Subcommand Name="BUILDOPTIONS" Occurrence="Optional">
+        <Parameter Name="ESTIMATIONPERIOD" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+            <EnumValue Name="TIMES"/>
+            <EnumValue Name="OBSERVATIONS"/>
+        </Parameter>
+        <Parameter Name="START" EqualsSign="Required" ParameterType="TokenList"></Parameter>
+        <Parameter Name="END" EqualsSign="Required" ParameterType="TokenList"></Parameter>
+        <Parameter Name="FORMAT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="VARIABLE"/>
+            <EnumValue Name="ISO8601"/>
+        </Parameter>
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NEWEST"/>
+            <EnumValue Name="OLDEST"/>
+        </Parameter>
+        <Parameter Name="OFFSET" EqualsSign="Required" ParameterType="Integer"></Parameter>
+        <Parameter Name="NUMBER" EqualsSign="Required" ParameterType="Integer"></Parameter>
+        <Parameter Name="FORECASTPERIODS" EqualsSign="Required" ParameterType="Integer"></Parameter>
+        <Parameter Name="CILEVEL" EqualsSign="Required" ParameterType="Number"></Parameter>
+        <Parameter Name="MAXINPUTS" EqualsSign="Required" ParameterType="Integer">
+            <EnumValue Name="DEFAULT"/>
+        </Parameter>
+        <Parameter Name="LAGS" EqualsSign="Required" ParameterType="Integer">
+            <EnumValue Name="AUTO"/>
+        </Parameter>
+        <Parameter Name="TOLERANCE" EqualsSign="Required" ParameterType="Number"></Parameter>
+        <Parameter Name="OUTLIERTHRESH" EqualsSign="Required" ParameterType="Number"></Parameter>
+    </Subcommand>
+    <Subcommand Name="TARGETFILTER" Occurrence="Optional">
+        <Parameter Name="DISPLAY" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="BESTFIT"/>
+            <EnumValue Name="ALLTARGETS"/>
+            <EnumValue Name="TARGETSNOINPUTS"/>
+        </Parameter>
+        <Parameter Name="N" EqualsSign="Required" ParameterType="Integer"></Parameter>
+        <Parameter Name="PCT" EqualsSign="Required" ParameterType="Integer"></Parameter>
+        <Parameter Name="FITSTAT" EqualsSign="Required" ParameterType="Keyword">
+		    <EnumValue Name="RSQUARE"/>
+		    <EnumValue Name="RMSPE"/>
+            <EnumValue Name="RMSE"/>
+            <EnumValue Name="BIC"/>
+            <EnumValue Name="AIC"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SERIESFILTER" Occurrence="Optional">
+        <Parameter Name="FIELDS" EqualsSign="Required" ParameterType="VariableNameList"></Parameter>
+        <Parameter Name="DIMVALUES" EqualsSign="Required" ParameterType="VariableNameList"></Parameter>
+        <Parameter Name="INCLUDE" EqualsSign="Required" ParameterType="TokenList"></Parameter>
+        <Parameter Name="EXCLUDE" EqualsSign="Required" ParameterType="TokenList"></Parameter>
+    </Subcommand>
+    <Subcommand Name="FILTEREDOUTPUT" Occurrence="Optional">
+        <Parameter Name="INCLUDE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="TARGETS"/>
+            <EnumValue Name="SERIES"/>
+            <EnumValue Name="BOTH"/>
+        </Parameter>
+        <Parameter Name="NETWORKGRAPH" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="SIGLEVEL" EqualsSign="Required" ParameterType="Number"></Parameter>
+        <Parameter Name="PRINT" EqualsSign="Required" ParameterType="KeywordList">
+            <EnumValue Name="MODELFIT"/>
+            <EnumValue Name="OUTLIERS"/>
+            <EnumValue Name="MODELEFFECTS"/>
+            <EnumValue Name="PARAMETERS"/>
+            <EnumValue Name="FORECASTS"/>
+        </Parameter>
+        <Parameter Name="PLOT" EqualsSign="Required" ParameterType="KeywordList">
+            <EnumValue Name="SERIESPLOT"/>
+            <EnumValue Name="TOPINPUTS"/>
+            <EnumValue Name="NRESIDUAL"/>
+        </Parameter>
+        <Parameter Name="IMPACTDIAGRAMS" EqualsSign="Required" ParameterType="KeywordList">
+            <EnumValue Name="CAUSES"/>
+            <EnumValue Name="EFFECTS"/>
+        </Parameter>
+        <Parameter Name="OUTLIER_ROOTCAUSES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="LEVELS" EqualsSign="Required" ParameterType="Integer"></Parameter>
+        <Parameter Name="DISPLAY" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INTERACTIVE"/>
+            <EnumValue Name="TABLE"/>
+            <EnumValue Name="BOTH"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SYSTEMOUTPUT" Occurrence="Optional">
+        <Parameter Name="MODELFIT" EqualsSign="Required" ParameterType="KeywordList">
+		    <EnumValue Name="RSQUARE"/>
+		    <EnumValue Name="RMSPE"/>
+            <EnumValue Name="RMSE"/>
+            <EnumValue Name="BIC"/>
+            <EnumValue Name="AIC"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="TRANSFORMATIONS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="OUTLIERPLOT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SAVE" Occurrence="Optional">
+        <Parameter Name="TARGETS" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="FILTERED"/>
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="PREDICTED" EqualsSign="None" ParameterType="VariableName"></Parameter>
+        <Parameter Name="CL" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="NRESIDUAL" EqualsSign="None" ParameterType="VariableName"></Parameter>
+        <Parameter Name="LCLROOT" EqualsSign="Required" ParameterType="VariableName"></Parameter>
+        <Parameter Name="UCLROOT" EqualsSign="Required" ParameterType="VariableName"></Parameter>
+        <Parameter Name="FORECASTFLAG" EqualsSign="None" ParameterType="VariableName"></Parameter>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" Occurrence="Optional">
+        <Parameter Name="MODELSYSTEM" EqualsSign="Required" ParameterType="OutputFile"></Parameter>
+        <Parameter Name="DATA" EqualsSign="Required" ParameterType="OutputFile"></Parameter>
+    </Subcommand>
+    <Subcommand Name="PASSPROTECT" Occurrence="Optional">
+        <Parameter Name="PASSWORD" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="ENCRYPTEDPW" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="FIELDSGROUP" Occurrence="Required"></Subcommand>
+    <Subcommand Name="FIELDS" Occurrence="Required">
+        <Parameter Name="TARGETS" EqualsSign="Required" ParameterType="VariableNameList"></Parameter>
+        <Parameter Name="INPUTS" EqualsSign="Required" ParameterType="VariableNameList"></Parameter>
+        <Parameter Name="FORCE" EqualsSign="Required" ParameterType="VariableNameList"></Parameter>
+        <Parameter Name="EXCLUDEDTARGETS" EqualsSign="Required" ParameterType="VariableNameList"></Parameter>
+        <Parameter Name="EXCLUDEDINPUTS" EqualsSign="Required" ParameterType="VariableNameList"></Parameter>
+        <Parameter Name="DIMVALUES" EqualsSign="Required" ParameterType="VariableNameList"></Parameter>
+        <Parameter Name="INCLUDE" EqualsSign="Required" ParameterType="TokenList"></Parameter>
+        <Parameter Name="EXCLUDE" EqualsSign="Required" ParameterType="TokenList"></Parameter>
+        <Parameter Name="ALL" EqualsSign="Optional" ParameterType="Keyword"></Parameter>
+        <Parameter Name="TO" EqualsSign="Optional" ParameterType="Keyword"></Parameter>
+    </Subcommand>
+</Command>

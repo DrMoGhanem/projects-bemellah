@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 4/25/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="CLUSTER" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MEASURE" EqualsSign="Optional">
+        <Parameter Name="SEUCLID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EUCLID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COSINE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORRELATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BLOCK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CHEBYCHEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POWER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MINKOWSKI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CHISQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PH2" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="JACCARD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DICE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SS1" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SS2" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="K1" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SS3" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="K2" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SS4" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HAMANN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OCHIAI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SS5" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PHI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAMBDA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="D" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="Y" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="Q" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BEUCLID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIZE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PATTERN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BSEUCLID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BSHAPE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DISPER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BLWMN" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="METHOD" EqualsSign="Optional">
+        <Parameter Name="BAVERAGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WAVERAGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SINGLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COMPLETE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CENTROID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WARD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="CLUSTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ID" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="CLUSTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DISTANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SCHEDULE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="VICICLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DENDROGRAM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HICICLE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MATRIX" EqualsSign="Optional">
+        <Parameter Name="IN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OUT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ID" EqualsSign="Optional" Occurrence="Optional">
+    </Subcommand>
+</Command>
