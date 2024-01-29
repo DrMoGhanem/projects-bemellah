@@ -1,0 +1,35 @@
+﻿***Modify the following CD command to specify the Samples folder
+   of the application installation directory,
+   using the conventions for your operating system.
+
+CD '/installdir/Samples'.
+
+GET FILE='breakfast_overall.sav'.
+
+* A degenerate solution.  
+*.
+PREFSCAL
+  VARIABLES=TP BT EMM JD CT BMM HRB TMd BTJ TMn CB DP GD CC CMB
+  /INITIAL=CLASSICAL (SPEARMAN)
+  /TRANSFORMATION=NONE
+  /PROXIMITIES=DISSIMILARITIES
+  /CRITERIA=DIMENSIONS(2,2) DIFFSTRESS(.000001) MINSTRESS(.0001)
+  MAXITER(5000)
+  /PENALTY=LAMBDA(1.0) OMEGA(0.0)
+  /PRINT=MEASURES COMMON
+  /PLOT=COMMON .
+
+*
+* A non-degenerate solution
+*.
+PREFSCAL
+  VARIABLES=TP BT EMM JD CT BMM HRB TMd BTJ TMn CB DP GD CC CMB
+  /INITIAL=CLASSICAL (SPEARMAN)
+  /TRANSFORMATION=NONE
+  /PROXIMITIES=DISSIMILARITIES
+  /CRITERIA=DIMENSIONS(2,2) DIFFSTRESS(.000001) MINSTRESS(.0001)
+  MAXITER(5000)
+  /PENALTY=LAMBDA(0.5) OMEGA(1.0)
+  /PRINT=MEASURES COMMON
+  /PLOT=COMMON .
+

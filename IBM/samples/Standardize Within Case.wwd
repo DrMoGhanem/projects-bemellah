@@ -1,0 +1,260 @@
+'This script standardizes variables within cases.
+'A dialog box is presented that allows the user to select (at least three)  
+'variables which are standard within cases. For example, if there are 4 variables 
+'which correspond to responses on a survey, this script will standardize a case's 
+'score for each variable based on the mean and standard deviation for that case across 
+'the four variables (e.g., score1 = (score1 - mean1234)/st.dev1234))
+
+Option Explicit
+
+'Script level constant declarations
+Const cDLGTITLE As String = "Standardize Variables Within Case"
+Const cOK As String = "OK"
+Const cCANCEL As String = "Cancel"
+Const cROOTNAME As String = "Root name for new variables:"
+Const cSELVARS As String = "Selected Variables"
+Const cVARROOT As String = "VAR"
+Const cROOTMSG As String = "Please provide a root name for new variables."
+Const cSCRIPTNAME As String = "Standardize Variables Within Case"
+Const cSELMSG As String = "Please select at least three variables."
+
+
+Public strNotSelVar() As String
+Public strSelVar() As String
+Public strListOfVars() As String
+Public bolSelected() As Boolean
+Public intArrayIndex() As Integer
+Public strFilePath As String
+
+Sub Main
+
+	BuildDialog
+
+End Sub
+
+Sub RunJob
+'Purpose: Runs the Syntax that will standardize scores within cases
+'Assumptions: None
+'Effects: Creates new standardized variables
+'Inputs: None
+'Return Values: None
+
+Dim strCmd1 As String
+Dim strCmd2 As String
+Dim strCmd3 As String
+Dim strCmd4 As String
+Dim intSelVarIndex As Integer
+
+	strCmd1 = "COMPUTE #MEAN_ = MEAN("
+	strCmd2  = "COMPUTE #SD_ = SD("
+	For intSelVarIndex = 0 To UBound(strSelVar) 
+    	If intSelVarIndex < UBound(strSelVar)  Then
+        	strCmd1 = strCmd1 & strSelVar(intSelVarIndex) & ","
+        	strCmd2  = strCmd2  & strSelVar(intSelVarIndex) & ","
+    	ElseIf intSelVarIndex = UBound(strSelVar)  Then
+        	strCmd1 = strCmd1 & strSelVar(intSelVarIndex) & ")."
+        	strCmd2  = strCmd2  & strSelVar(intSelVarIndex) & ")."
+    	End If
+	Next
+	
+	objSpssApp.ExecuteCommands strCmd1, False
+	objSpssApp.ExecuteCommands strCmd2, False
+	For intSelVarIndex = 0 To UBound(strSelVar) 
+ 		strCmd3 = "COMPUTE " & DlgText("txtRootName") & intSelVarIndex+1 & " = (" & strSelVar(intSelVarIndex) & "- #MEAN_) / #SD_."
+ 		objSpssApp.ExecuteCommands strCmd3, False
+	Next
+
+	strCmd4 = "EXECUTE."
+	objSpssApp.ExecuteCommands strCmd4, False
+    
+End Sub
+
+Sub BuildDialog
+'Purpose: Creates and presents the dialog that allows user to select variables to standardize
+'Assumptions: None
+'Effects: None
+'Inputs: None
+'Return Values: None
+
+	ReDim strNotSelVar(0) As String
+	ReDim strSelVar(0) As String
+
+	Begin Dialog UserDialog 540,203,cDLGTITLE,.DialogMonitor
+		ListBox 30,28,140,119,strNotSelVar(),.lstVarInFile
+		ListBox 240,28,150,119,strSelVar(),.lstSelVar
+		PushButton 430,14,90,21, cOK,.cmdRun
+		CancelButton 430,42,90,21
+		PushButton 190,77,30,21,">",.cmdMoveIt
+		TextBox 290,161,100,21,.txtRootName
+		Text 90,165,190,14, cROOTNAME,.Field7
+		Text 240,14,140,14, cSELVARS,.lbl1
+	End Dialog
+
+	Dim dlg As UserDialog
+
+	Dialog dlg
+	
+End Sub
+
+Function DialogMonitor(strDialogItem As String, intAction As Integer, intSuppValue As Integer) As Boolean
+'Purpose: Monitors the dialog for events taking place
+'Assumptions: None
+'Effects: None, monitors dialog events and calls procedures to handle them
+'Inputs: the control that was selected(strDialogItem), the action that took place(intAction),
+'		 and a supplemental value used by some control's events(intSuppValue)
+'Return Values: TRUE if keep dialog visible, FALSE if dialog should be closed
+
+    Select Case intAction
+	    Case 1 ' Dialog box initialization
+	    	DlgEnable "Cancel", True
+	    	DlgEnable "cmdRun", True
+	    	DlgText "txtRootName",  cVARROOT
+	    	GetVarsFromFile		'Sub that gets the variables from file and puts in list box
+	    Case 2 ' Value changing or button pressed
+	        Select Case strDialogItem
+	        	Case "cmdRun"
+	        		If DlgText("txtRootName") = "" Then
+						MsgBox cROOTMSG, 48, cSCRIPTNAME
+						DialogMonitor = True
+					ElseIf UBound(strSelVar) < 2 Then
+						MsgBox cSELMSG, 48, cSCRIPTNAME
+						DialogMonitor = True
+					Else
+	        			Call RunJob
+	        			DialogMonitor = False
+	        		End If
+	        	Case "Cancel"
+	        		DialogMonitor = False
+	        	Case "lstVarInFile"
+	        		DlgText "cmdMoveIt", ">"
+	        		DlgEnable "cmdMoveIt", True
+	        		DialogMonitor = True
+	        	Case "lstSelVar"
+	        		DlgText "cmdMoveIt", "<"
+	        		DialogMonitor = True
+	        	Case "cmdMoveIt"
+	        		If DlgText("cmdMoveIt") = ">" Then 	'add variable to selected variables list
+	        			Call AddToSelList
+	        		Else								'remove variable from selected variables list
+	        			Call RemoveFromSelList
+	        		End If
+	        		DialogMonitor = True
+	        End Select
+	End Select
+End Function
+
+Sub AddToSelList()
+'Purpose: Changes the status of a variable from unselected to selected
+'Assumptions: None
+'Effects: Changes the value of bolSelected from FALSE to TRUE
+'Inputs: None
+'Return Values: None
+
+	Dim intSelIndex As Integer
+	Dim i As Integer
+	
+	intSelIndex = DlgValue("lstVarInFile")
+	'loop through intArrayIndex and if find the variable that was selected
+	'change its value in bolSelected to TRUE
+	For i = 0 To UBound(intArrayIndex)
+		If (intArrayIndex(i) = intSelIndex) And (bolSelected(i) = False) Then
+			bolSelected(i) = True
+			Exit For
+		End If
+	Next i
+	Call PopulateLists	'Populates the list boxes of available and selected variables
+
+End Sub
+
+Sub RemoveFromSelList()
+'Purpose: Changes the status of a variable from selected to unselected
+'Assumptions: None
+'Effects: Changes the value of bolSelected from TRUE to FALSE
+'Inputs: None
+'Return Values: None
+
+	Dim intSelIndex As Integer
+	Dim i As Integer
+	
+	intSelIndex = DlgValue("lstSelVar")
+	'loop through intArrayIndex and if find the variable that was removed from selected list
+	'and change its value in bolSelected to FALSE
+	For i = 0 To UBound(intArrayIndex)
+		If (intArrayIndex(i) = intSelIndex) And (bolSelected(i) = True) Then
+			bolSelected(i) = False
+			Exit For
+		End If
+	Next i
+	Call PopulateLists
+
+End Sub
+
+Sub PopulateLists()
+'Purpose: Goes through all variables and puts selected ones in strSelVar array
+'		  unselected variables go into strNotSelVar array.
+'Assumptions: None
+'Effects: Variables in strSelVar appear in selected variable listbox, those in strNotSelVar appear
+'		  in available variables listbox
+'Inputs: None
+'Return Values: None
+
+	Dim i As Integer
+	Dim intNumNotSel As Integer
+	Dim intNumSel As Integer
+	
+	intNumSel = 0
+	intNumNotSel = 0
+	ReDim strNotSelVar(intNumNotSel) As String
+	ReDim strSelVar(intNumSel) As String
+	
+	'loop through variables and put in appropriate array based on whether
+	'they are selected or not
+	For i = 0 To UBound(bolSelected)
+		If bolSelected(i) = False Then
+			ReDim Preserve strNotSelVar(intNumNotSel) As String
+			strNotSelVar(intNumNotSel) = strListOfVars(i)
+			intArrayIndex(i) = intNumNotSel
+			intNumNotSel = intNumNotSel + 1
+		Else	'Variable is selected for analysis
+			ReDim Preserve strSelVar(intNumSel) As String
+			strSelVar(intNumSel) = strListOfVars(i)
+			intArrayIndex(i) = intNumSel
+			intNumSel = intNumSel + 1
+		End If
+	Next i
+	
+	'assign the arrays to their respective listboxes.
+	DlgListBoxArray "lstVarInFile", strNotSelVar()
+	DlgListBoxArray "lstSelVar", strSelVar()
+
+End Sub
+
+Sub GetVarsFromFile()
+'Purpose: Gets the variables from the currently open SPSS data file
+'Assumptions: There is a data file open
+'Effects: puts the variables into the available variables list box
+'Inputs: None
+'Return Values: None
+
+	Dim objSPSSInfo As ISpssInfo
+	Dim i As Long
+	
+	Set objSPSSInfo = objSpssApp.SpssInfo
+
+	ReDim strListOfVars(objSPSSInfo.NumVariables - 1) As String
+	ReDim bolSelected(objSPSSInfo.NumVariables - 1) As Boolean
+	ReDim intArrayIndex(objSPSSInfo.NumVariables - 1) As Integer
+
+	
+	For i = 0 To UBound(bolSelected)
+		strListOfVars(i) = objSPSSInfo.VariableAt(i)	
+		bolSelected(i) = False		'Value = false, variable is not currently selected
+		intArrayIndex(i) = i		'stores where will go in either list box
+	Next i
+	
+	DlgEnable "lstVarInFile", True
+	DlgEnable "lstSelVar", True
+	Call PopulateLists
+
+End Sub
+

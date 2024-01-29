@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<!DOCTYPE SPSSComplexSamples SYSTEM "C:\Program Files\SPSS\spsscomplexsamples.dtd">
+<SPSSComplexSamples version="12.0">
+	<Header copyright="Copyright &lt;c&gt; SPSS Inc., 2003. All Rights Reserved."/>
+	<SampleDesign numberOfStages="2" wrEstimation="no">
+		<SampleStage selectionMethod="simple_wor" stageNumber="1">
+			<StrataVarList numberOfVariables="1">
+				<Variable name="county"/>
+			</StrataVarList>
+			<ClusterVarList numberOfVariables="1">
+				<Variable name="town"/>
+			</ClusterVarList>
+			<InputSampleSize>
+				<SingleValue value="4"/>
+			</InputSampleSize>
+			<IncProb>
+				<Variable name="InclusionProbability_1_"/>
+			</IncProb>
+			<CumulativeWeight>
+				<Variable name="SampleWeightCumulative_1_"/>
+			</CumulativeWeight>
+		</SampleStage>
+		<SampleStage selectionMethod="simple_wor" stageNumber="2">
+			<StrataVarList numberOfVariables="1">
+				<Variable name="nbrhood"/>
+			</StrataVarList>
+			<InputSampleRate>
+				<SingleValue value="0.2"/>
+			</InputSampleRate>
+			<IncProb>
+				<Variable name="InclusionProbability_2_"/>
+			</IncProb>
+			<CumulativeWeight>
+				<Variable name="SampleWeightCumulative_2_"/>
+			</CumulativeWeight>
+		</SampleStage>
+		<Weight>
+			<Variable name="SampleWeight_Final_"/>
+		</Weight>
+	</SampleDesign>
+	<AnalysisDesign numberOfStages="2">
+		<AnalysisStage estimationMethod="equal_wor" stageNumber="1">
+			<StrataVarList numberOfVariables="1">
+				<Variable name="county"/>
+			</StrataVarList>
+			<ClusterVarList numberOfVariables="1">
+				<Variable name="town"/>
+			</ClusterVarList>
+			<IncProb>
+				<Variable name="InclusionProbability_1_"/>
+			</IncProb>
+		</AnalysisStage>
+		<AnalysisStage estimationMethod="equal_wor" stageNumber="2">
+			<StrataVarList numberOfVariables="1">
+				<Variable name="nbrhood"/>
+			</StrataVarList>
+			<IncProb>
+				<Variable name="InclusionProbability_2_"/>
+			</IncProb>
+		</AnalysisStage>
+		<Weight>
+			<Variable name="SampleWeight_Final_"/>
+		</Weight>
+	</AnalysisDesign>
+</SPSSComplexSamples>

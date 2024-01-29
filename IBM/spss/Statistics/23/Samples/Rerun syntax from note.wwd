@@ -1,0 +1,140 @@
+'SCRIPT TO RERUN THE COMMANDS THAT PRODUCED OUTPUT IN THE VIEWER
+
+
+'This script resubmits the command found in the first selected Notes table.  
+'It will work with whatever data is currently loaded into the system,
+'but if no data is present, it will attempt to read the SPSS data
+'file used originally.
+'Requirement: The Notes Table that you want to rerun must be selected.
+
+
+
+'PURPOSE
+	'A Notes table is produced whenever you run a procedure in SPSS.
+	'This table records the state of the system when the command was run
+	'as well as the the actual command (the syntax) itself.  This script
+	'resubmits the command found in the first selected Notes table.  It
+	'will work with whatever data is currently loaded into the system,
+	'but if no data is present, it will attempt to read the SPSS data
+	'file used originally.
+
+'ASSUMPTIONS
+	'The script operates on the first selected Notes table in the currently
+	'designated output document.  It ignores all other selection.
+	
+'EFFECTS
+	'Runs new commands and produces new output in the currenty designated
+	'Navigator document.  May load a data file.
+
+'VARIABLES USED
+	'objSpssApp, the main SPSS application Object.
+
+'HINT
+
+	'For context-sensitive help on Basic terms as well as SPSS objects,
+	'properties, and methods, press F1. 
+
+'#Uses "Global.wwd"
+
+Option Explicit		'All variables must be declarated before being used
+
+
+'The real code starts below this line
+'---------------------------------
+'CONSTANT DECLARATIONS
+'We could just use the values of the constants, but they
+'have more meaning if given symbollic names
+Const SYNTAX_COLUMN As Integer = 2		'The "Syntax" heading is always in column two
+Const cSYNTAX As String = "Syntax"
+Const cDATA As String = "Data"
+
+Sub Main
+	'Declarations
+	Dim intSelItemType As Integer
+	Dim intVariableCount As Integer
+	Dim intItem As Integer
+	Dim lngRow As Long
+	Dim strLabel As String
+	Dim strSyntax As String
+	Dim strDataFile As String
+	Dim objItem As ISpssItem
+	Dim objPivot As PivotTable
+	Dim objSPSSInfo As ISpssInfo
+	Dim objSPSSDataDoc As ISpssDataDoc
+	Dim objRowLabels As ISpssLabels
+	Dim objDataCells As ISpssDataCells
+	Dim bolFoundOutputDoc As Boolean
+	Dim bolItemSelected As Boolean
+
+
+	'These defaults indicate we haven't found the syntax and data file names
+	strSyntax = ""
+	strDataFile=""
+
+	'The following procedure is a global procedure that is located in global.wwd
+	Call GetFirstSelectedItem(objItem, intSelItemType, bolFoundOutputDoc, bolItemSelected)
+
+	If (bolFoundOutputDoc = False) Or (bolItemSelected = False) Then
+		'either there wasn't an output doc or an item wasn't selected
+		Exit Sub
+	End If
+	
+	' Check if item is a Notes table
+	If intSelItemType = SPSSNote Then
+		'Activate the Notes table
+		Set objPivot = objItem.Activate()
+	
+		' Loop over the row labels from top to bottom
+		Set objRowLabels = objPivot.RowLabelArray
+		For lngRow = 0 To objRowLabels.NumRows - 1
+
+			'Make sure the label is present
+			If Not IsNull(objRowLabels.ValueAt(lngRow, SYNTAX_COLUMN)) Then
+				strLabel = objRowLabels.ValueAt(lngRow, SYNTAX_COLUMN)
+
+				' See if it is the syntax lable
+				If strLabel = cSYNTAX Then
+
+					' Capture the syntax string
+					Set objDataCells = objPivot.DataCellArray
+					If Not IsNull(objDataCells.ValueAt(lngRow, 0)) Then
+						strSyntax = objDataCells.ValueAt(lngRow, 0)
+					End If
+
+				End If 
+				If strLabel = cDATA Then
+
+					' Capture the data file.  We only use this if no data is present.
+					Set objDataCells = objPivot.DataCellArray
+					If Not IsNull(objDataCells.ValueAt(lngRow, 0)) Then
+						strDataFile = objDataCells.ValueAt(lngRow, 0)
+					End If
+
+				End If 
+
+			End If
+
+		Next lngRow
+
+	End If
+
+	'Deactivate the Notes table
+	objItem.Deactivate
+	
+	'Did we find the data file mentioned in the Notes table?
+	If strDataFile <> "" Then
+		'Is there current data?
+		Set objSPSSInfo = objSpssApp.SpssInfo
+		intVariableCount = objSPSSInfo.NumVariables
+		If (intVariableCount=0) Then
+			'Open the "old" data file
+			Set objSPSSDataDoc = objSpssApp.OpenDataDoc(strDataFile)
+		End If
+	End If
+
+	' Re-Run the command synchronously
+	If strSyntax <> "" Then
+	    objSpssApp.ExecuteCommands(strSyntax, True)
+	End If
+	
+End Sub

@@ -1,0 +1,285 @@
+'PURPOSE
+	'Extracts information from Frequencies Statistics Table, and inserts its contents as footnotes, 
+	'into Frequencies Tables
+	
+'ASSUMPTIONS
+	'A Frequencies Statistics Table is selected in the Output Document.
+	'The corresponding Frequencies Tables immediately follow
+	'Also, the Viewer (Output Document) that contains the Pivot Table is the Designated Output Window
+	
+'EFFECTS
+	'Inserts footnotes into Frequencies Tables that contain the statistics corresponding to those variables
+		
+'HINT
+
+	'For context-sensitive help on Basic terms as well as SPSS objects,
+	'properties, and methods, press F1.
+
+'#Uses "Global.wwd"
+
+Public Const TABLENAME As String = "Statistics"
+Public Const VALID_ROW As String = "Valid"
+Public Const MISSING_ROW As String = "Missing"
+Public Const MEAN_ROW As String = "Mean"
+Public Const MEDIAN_ROW As String = "Median"
+Public Const MODE_ROW As String = "Mode"
+Public Const STDEV_ROW As String = "Std. Deviation"
+Public Const VARIANCE_ROW As String = "Variance"
+Public Const SKEWNESS_ROW As String = "Skewness"
+Public Const KURTOSIS_ROW As String = "Kurtosis"
+Public Const RANGE_ROW As String = "Range"
+Public Const MIN_ROW As String = "Minimum"
+Public Const MAX_ROW As String = "Maximum"
+Public Const SUM_ROW As String = "Sum"
+
+Public Const cWRONGSELECT As String = "In order for this script to work you must select a Frequencies Statistics table"
+Public Const cSELECTMSG As String = "In order for this script to work" & vbCrLf & "you must select a Frequencies Statistics table" & vbCrLf & "that contains one of the following statistics: "
+Public Const cSCRIPTNAME As String = "Frequencies Footnote Script"
+
+Option Explicit		'All variables must be declarated before being used
+'***********************************************************************
+Sub Main
+'Variable declarations
+	Dim objItem As ISpssItem
+	Dim objPivotTable As PivotTable
+	Dim bolFoundOutputDoc As Boolean
+	Dim bolPivotSelected As Boolean
+	
+    Call GetFirstSelectedPivot(objPivotTable,objItem, bolFoundOutputDoc, bolPivotSelected)
+    
+	If bolFoundOutputDoc And bolPivotSelected Then
+		'This is the REAL call to extract and then insert Frequencies information
+    	Call ExtractFrequenciesFootnote(objPivotTable, objItem)
+	End If
+	
+End Sub
+'**********************************************************************
+Sub ExtractFrequenciesFootnote(objPivotTable As PivotTable, objItem As ISpssItem)
+'Purpose: Extracts statistics from Frequencies Statistic Tables. 
+'Assumptions: The Frequencies Statistics Table is already activated
+'			  The corresponding Frequencies Tables immediately follow 
+'Effects: Extracts the statistics from the Statistics table (after running Frequencies)
+'Inputs: Statistics Pivot Table
+'Return Values: None
+
+'Declare SPSS-specific objects
+    Dim objDataCells As ISpssDataCells
+    Dim objColLabels As ISpssLabels
+    Dim objRowLabels As ISpssLabels
+    Dim objPivMgr As ISpssPivotMgr
+    Dim objDimension As ISpssDimension
+
+'Declare various integer indices
+    Dim lngRowNum As Long
+    Dim lngColNum As Long
+    Dim lngNumCols As Long
+    Dim lngNumRows As Long
+    Dim lngScratchInteger As Long
+    Dim lngNumberOfStatistics As Long
+    Dim lngStatisticsRow(20) As Long
+    Dim lngNumVars As Long
+    Dim i As Integer
+
+'Declare strings
+    Dim strHoldCells(255,255) As String
+    Dim strHoldColLabels(255,255) As String
+    Dim strHoldRowLabels(255,255) As String
+    Dim strStatisticsLabel(20) As String
+    Dim strFootNoteStrings(255) As String    
+	Dim strStatistics As String
+	
+'Declare boolean variables
+	Dim bolFoundStatistic As Boolean
+	 
+'Instantiate SPSS objects
+    Set objDataCells = objPivotTable.DataCellArray()
+    Set objColLabels = objPivotTable.ColumnLabelArray()
+    Set objRowLabels = objPivotTable.RowLabelArray()
+
+	'Initialize lngStatisticsRow
+	lngNumberOfStatistics = 13
+	For lngScratchInteger = 1 To lngNumberOfStatistics
+	    lngStatisticsRow(lngScratchInteger) = 999
+	Next lngScratchInteger
+	
+	'Initialize strStatisticsLabel
+	'Commenting out & reassigning indices control which statistics
+	'are used, and the order in which they are printed
+	strStatisticsLabel(1) = VALID_ROW
+	strStatisticsLabel(2) = MISSING_ROW
+	strStatisticsLabel(3) = MEAN_ROW
+	strStatisticsLabel(4) = MEDIAN_ROW
+	strStatisticsLabel(5) = MODE_ROW
+	strStatisticsLabel(6) = STDEV_ROW
+	strStatisticsLabel(7) = VARIANCE_ROW
+	strStatisticsLabel(8) = SKEWNESS_ROW
+	strStatisticsLabel(9) = KURTOSIS_ROW
+	strStatisticsLabel(10) = RANGE_ROW
+	strStatisticsLabel(11) = MIN_ROW
+	strStatisticsLabel(12) = MAX_ROW
+	strStatisticsLabel(13) = SUM_ROW
+	
+	'Check to see if the correct table is selected -- must have Statistics as title
+	If objPivotTable.TitleText <> TABLENAME Then
+	    MsgBox cWRONGSELECT ,vbOkOnly, cSCRIPTNAME
+	    objItem.Deactivate
+	    Exit Sub
+	End If
+		
+	lngNumCols = objRowLabels.NumColumns
+	lngNumRows = objRowLabels.NumRows
+	
+	'Extracting row labels       
+	For lngRowNum = 0 To lngNumRows - 1
+	    For lngColNum = 0 To lngNumCols - 1   
+	       If objRowLabels.ValueAt(lngRowNum,lngColNum) <> "" Then   
+	           strHoldRowLabels(lngRowNum+1,lngColNum+1) = objRowLabels.ValueAt(lngRowNum,lngColNum)     
+	       Else
+	           strHoldRowLabels(lngRowNum+1,lngColNum+1) = "."
+	       End If
+	    Next lngColNum
+	Next lngRowNum
+
+	bolFoundStatistic = False
+
+	'Examine all row labels (strHoldRowLabels)
+	'The first occurence of a key word (strStatisticsLabel) indicates the statistic
+	'Set the statistic column variable (lngStatisticsRow)
+	For lngRowNum = 0 To lngNumRows - 1
+	    For lngColNum = 0 To lngNumCols - 1
+	        For lngScratchInteger = 1 To lngNumberOfStatistics
+	            If lngStatisticsRow(lngScratchInteger) = 999 Then
+	                If strHoldRowLabels(lngRowNum+1,lngColNum+1) = strStatisticsLabel(lngScratchInteger) Then
+	                    lngStatisticsRow(lngScratchInteger) = lngRowNum
+	                    bolFoundStatistic = True
+	                End If
+	            End If
+	        Next lngScratchInteger
+	    Next lngColNum
+	Next lngRowNum
+
+	If bolFoundStatistic = False Then	'Didn't find any of Statistics in the column labels, probably selected wrong table
+		For i = 1 To lngNumberOfStatistics
+			strStatistics = strStatistics & "- " & strStatisticsLabel(i) & vbCrLf
+		Next i
+	    MsgBox cSELECTMSG & vbCrLf & vbCrLf & strStatistics,vbOkOnly, cSCRIPTNAME
+	    objItem.Deactivate
+	    Exit Sub
+	End If
+	
+	Set objPivMgr = objPivotTable.PivotManager
+	If objPivMgr.NumLayerDimensions = 0 Then	'variables appear in the columns
+		lngNumCols = objColLabels.NumColumns
+		lngNumRows = objColLabels.NumRows
+		 
+		'Extracting column labels       
+		For lngRowNum = 0 To lngNumRows - 1
+		    For lngColNum = 0 To lngNumCols - 1   
+		       If objColLabels.ValueAt(lngRowNum,lngColNum)<>"" Then   
+		           strHoldColLabels(lngRowNum+1,lngColNum+1) = objColLabels.ValueAt(lngRowNum,lngColNum)     
+		       Else
+		           strHoldColLabels(lngRowNum+1,lngColNum+1) = "."
+		       End If
+		    Next lngColNum
+		Next lngRowNum
+		lngNumVars = lngNumCols
+	Else	'variables appear in the layer
+		Set objDimension = objPivMgr.LayerDimension(0)
+		lngNumCols = objDimension.NumCategories
+		
+		'Extract variable names
+		For lngColNum = 0 To lngNumCols - 1
+			objDimension.CurrentCategory = lngColNum
+			strHoldColLabels(2, lngColNum+1) = objDimension.CategoryValueAt(lngColNum)
+		Next lngColNum
+		lngNumVars = lngNumCols
+	End If
+	        
+	lngNumCols = objDataCells.NumColumns
+	lngNumRows = objDataCells.NumRows
+	  
+	'Extracting cell values (the statistics)
+	'  and creating (concatenating) the footnote strings       
+	For lngColNum = 0 To lngNumCols - 1
+		For lngRowNum = 0 To lngNumRows - 1    
+	        If objDataCells.ValueAt(lngRowNum,lngColNum)<>"" Then   
+	            strHoldCells(lngRowNum+1,lngColNum+1) = objDataCells.ValueAt(lngRowNum,lngColNum)
+	        Else
+	            strHoldCells(lngRowNum+1,lngColNum+1) = "."
+	        End If
+	        If strHoldCells(lngRowNum+1,lngColNum+1) <> "." Then
+	            For lngScratchInteger = 1 To lngNumberOfStatistics
+	                If lngRowNum = lngStatisticsRow(lngScratchInteger) Then
+	                    If InStr(strHoldCells(lngRowNum+1,lngColNum+1), ".") Then
+	                    	strFootNoteStrings(lngColNum) = strFootNoteStrings(lngColNum) + strStatisticsLabel(lngScratchInteger) + " = " + Format(strHoldCells(lngRowNum+1,lngColNum+1),"Standard") + "  "
+	                    Else
+	                    	strFootNoteStrings(lngColNum) = strFootNoteStrings(lngColNum) + strStatisticsLabel(lngScratchInteger) + " = " + strHoldCells(lngRowNum+1,lngColNum+1) + "  "
+	                    End If
+	                End If
+	            Next lngScratchInteger
+	        End If
+	    Next lngRowNum
+	Next lngColNum
+	
+	objItem.Deactivate
+		    
+	'InsertFootnotes inserts the extracted statistics into a footnote for each of the 
+	'variables' corresponding table.
+	Call InsertFootnotes(lngNumVars, strFootNoteStrings(), strHoldColLabels())
+
+End Sub
+
+'*******************************************************************
+
+Sub InsertFootnotes(lngNumVars As Long, strFootNotes() As String, strHoldColLabels() As String)
+'Purpose: Inserts statistics, as footnotes, into Frequencies Tables.
+'Assumptions: The statistics for each of the frequencies table have been extracted by ExtractFrequenciesFootnote
+'Effects: Inserts footnotes into Frequencies Tables
+'Inputs: Number of Variables (lngNumVars), Footnotes to insert(strFootNotes), Variable names(strHoldRowLabels)
+'Return Values: None
+
+	Dim objOutputDoc As ISpssOutputDoc
+	Dim objItems As ISpssItems
+	Dim objItem As ISpssItem
+	Dim objPivotTable As PivotTable
+	
+	Dim lngStartIndex As Long
+	Dim lngIndex As Long
+	Dim lngAddItems As Long
+	Dim i As Long
+	
+	'Instantiate the higher level objects
+	Set objOutputDoc = objSpssApp.GetDesignatedOutputDoc
+	Set objItems = objOutputDoc.Items
+	
+	For i = 0 To objItems.Count()
+		Set objItem = objItems.GetItem(i)
+		If objItem.Selected = True Then
+			lngStartIndex = i
+			Exit For
+		End If
+	Next i	
+	'Search through all Output Document Items
+	'If title matches the variable's name, insert the footnote
+	lngAddItems = 0 
+	If lngNumVars <> 1 Then 
+		lngAddItems = 3
+	Else
+		lngAddItems = 1
+	End If
+	lngStartIndex = lngStartIndex + lngAddItems
+	For i = lngStartIndex To lngStartIndex + lngNumVars - 1
+	    Set objItem = objItems.GetItem(i)
+	    If objItem.SPSSType = SPSSPivot Then
+	        Set objPivotTable = objItem.Activate
+	        objPivotTable.SelectTitle
+	        For lngIndex = 0 To lngNumVars-1
+	            If strHoldColLabels(2, lngIndex+1) = objPivotTable.TitleText Then
+	                objPivotTable.InsertFootnote(strFootNotes(lngIndex))
+	            End If
+	        Next lngIndex
+	        objItem.Deactivate
+	    End If		
+	Next i
+
+End Sub

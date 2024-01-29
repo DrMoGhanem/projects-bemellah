@@ -1,0 +1,111 @@
+<!-- Copyright 2003 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties with respect to your use of this specification, expressed, implied, or otherwise, including without limitation, all warranties of merchantability and fitness for a particular purpose.  SPSS shall not be liable for any special, incidental, or consequential damages, including without limitation lost revenues or lost profits resulting from the use of the information herein. -->
+<!-- ==========  Entity Defintions ===================================== -->
+<!ENTITY % NUMBER "CDATA">
+<!ENTITY % INT-NUMBER "CDATA">
+<!ENTITY % FIELD-NAME "CDATA">
+<!-- ========== SPSSCcomplexSamples element ============================ -->
+<!ELEMENT SPSSComplexSamples (Header, ((SampleDesign, AnalysisDesign?) | AnalysisDesign))>
+<!ATTLIST SPSSComplexSamples
+	version CDATA #REQUIRED
+>
+<!-- ========== Header ================================================= -->
+<!ELEMENT Header (Application?, Annotation*, Timestamp?)>
+<!ATTLIST Header
+	copyright CDATA #REQUIRED
+	description CDATA #IMPLIED
+>
+<!-- describes the software application that generated the XML -->
+<!ELEMENT Application EMPTY>
+<!ATTLIST Application
+	name CDATA #REQUIRED
+	version CDATA #IMPLIED
+>
+<!-- ========== Annotation ============================================= -->
+<!ELEMENT Annotation (#PCDATA)>
+<!-- ========== Timestamp ============================================== -->
+<!ELEMENT Timestamp (#PCDATA)>
+<!-- ========== Selection Design ======================================= -->
+<!ELEMENT SampleDesign (SampleStage+, PreviousWeight?, Weight)>
+<!ATTLIST SampleDesign
+	numberOfStages %INT-NUMBER; #REQUIRED
+	wrEstimation (yes | no) #REQUIRED
+>
+<!-- ========== Sample Stage =========================================== -->
+<!-- Each sample stage will have one block in the XML file -->
+<!ELEMENT SampleStage (StrataVarList?, ClusterVarList?, InputSampleRate?, InputSampleSize?, MOS?, IncProb, Index?, PopulationSize?, OutputSampleSize?, OutputSampleRate?, Weight?, CumulativeWeight)>
+<!ATTLIST SampleStage
+	stageNumber %INT-NUMBER; #REQUIRED
+	label CDATA #IMPLIED
+	selectionMethod (simple_wor | simple_wr | simple_systematic | simple_chromy | pps_wor | pps_wr | pps_systematic | pps_chromy | pps_brewer | pps_murthy | pps_sampford) #REQUIRED
+>
+<!-- ========== Analysis Design ======================================== -->
+<!ELEMENT AnalysisDesign (AnalysisStage+, Weight)>
+<!ATTLIST AnalysisDesign
+	numberOfStages %INT-NUMBER; #REQUIRED
+>
+<!-- ========== Analysis Stage ========================================= -->
+<!-- Each analysis stage will have one block in the XML file -->
+<!ELEMENT AnalysisStage (StrataVarList?, ClusterVarList?, (PopulationSize | IncProb)?)>
+<!ATTLIST AnalysisStage
+	stageNumber %INT-NUMBER; #REQUIRED
+	label CDATA #IMPLIED
+	estimationMethod (equal_wor | unequal_wor | wr) #REQUIRED
+>
+<!-- ========== Strata Variable List =================================== -->
+<!ELEMENT StrataVarList (Variable+)>
+<!ATTLIST StrataVarList
+	numberOfVariables %INT-NUMBER; #REQUIRED
+>
+<!-- ========== Cluster Variable List ================================== -->
+<!ELEMENT ClusterVarList (Variable+)>
+<!ATTLIST ClusterVarList
+	numberOfVariables %INT-NUMBER; #REQUIRED
+>
+<!-- ========== Design Variables ======================================= -->
+<!ELEMENT InputSampleSize (Variable | SingleValue | Matrix)>
+<!ELEMENT OutputSampleSize (Variable)>
+<!ELEMENT InputSampleRate ((Variable | SingleValue | Matrix), MinSize?, MaxSize?)>
+<!ELEMENT OutputSampleRate (Variable)>
+<!ELEMENT PopulationSize (Variable | SingleValue | Matrix)>
+<!-- If fromData is yes, Variable should not be specified -->
+<!-- If fromData is no, Variable must be specified        -->
+<!ELEMENT MOS (Variable?, MinSize?, MaxSize?)>
+<!ATTLIST MOS
+	fromData (yes | no) #REQUIRED
+>
+<!ELEMENT Index (Variable)>
+<!ELEMENT IncProb (Variable | SingleValue | Matrix)>
+<!ELEMENT Weight (Variable)>
+<!ELEMENT PreviousWeight (Variable)>
+<!ELEMENT CumulativeWeight (Variable)>
+<!-- ========== Other Basic Constructs ================================= -->
+<!ELEMENT MaxSize (SingleValue)>
+<!ELEMENT MinSize (SingleValue)>
+<!ELEMENT SingleValue EMPTY>
+<!ATTLIST SingleValue
+	value %NUMBER; #REQUIRED
+>
+<!ELEMENT Variable EMPTY>
+<!ATTLIST Variable
+	name %FIELD-NAME; #REQUIRED
+>
+<!ELEMENT Matrix (MatrixVarList, MatrixValue+)>
+<!-- numberOfValues is the number of category combinations specified -->
+<!ATTLIST Matrix
+	numberOfValues %INT-NUMBER; #REQUIRED
+>
+<!ELEMENT MatrixVarList (Variable+)>
+<!ATTLIST MatrixVarList
+	numberOfVariables %INT-NUMBER; #REQUIRED
+>
+<!-- Each MatrixValue consists of a list of category levels and a sizeValue       -->
+<!-- The order of the category levels should match the variables in MatrixVarList -->
+<!-- sizeValue is the size, rate, etc associated with the given categories        -->
+<!ELEMENT MatrixValue (Category+)>
+<!ATTLIST MatrixValue
+	sizeValue %NUMBER; #REQUIRED
+>
+<!ELEMENT Category EMPTY>
+<!ATTLIST Category
+	value CDATA #REQUIRED
+>

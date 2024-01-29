@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<!--© Copyright IBM Corporation year1-->
+<toc label="Add-ons" topic="spss/base/self_marketing_container.htm">
+   <topic label="Extras" href="spss/base/self_marketing_container.htm">
+      <topic label="IBM SPSS Statistics Base" href="spss/base/sm_statistics_base.htm"/>
+      <topic label="IBM SPSS Advanced Statistics" href="spss/base/advanced_models.htm"/>
+      <topic label="IBM SPSS Bootstrapping" href="spss/base/sm_bootstrapping.htm"/>
+      <topic label="IBM SPSS Custom Tables" href="spss/base/tables.htm"/>
+      <topic label="IBM SPSS Categories" href="spss/base/categories.htm"/>
+      <topic label="IBM SPSS Conjoint" href="spss/base/conjoint.htm"/>
+      <topic label="IBM SPSS Complex Samples" href="spss/base/complex_samples.htm"/>
+      <topic label="IBM SPSS Data Preparation" href="spss/base/data_validation.htm"/>
+      <topic label="IBM SPSS Decision Trees" href="spss/base/classification_trees.htm"/>
+      <topic label="IBM SPSS Direct Marketing" href="spss/base/sm_direct_marketing.htm"/>
+      <topic label="IBM SPSS Exact Tests" href="spss/base/exact_tests.htm"/>
+      <topic label="IBM SPSS Forecasting" href="spss/base/trends.htm"/>
+      <topic label="IBM SPSS Missing Values" href="spss/base/missing_values_analysis.htm"/>
+      <topic label="IBM SPSS Neural Networks" href="spss/base/neural_networks.htm"/>
+      <topic label="IBM SPSS Regression" href="spss/base/regression_models.htm"/>
+      <topic label="IBM SPSS Statistics Programmability Extension"
+             href="spss/base/programmability_extension.htm"/>
+      <topic label="IBM SPSS Statistics Server" href="spss/base/spss_server.htm"/>
+      <topic label="IBM SPSS Amos" href="spss/base/amos.htm"/>
+      <topic label="IBM SPSS Modeler" href="spss/base/clementine.htm"/>
+      <topic label="IBM SPSS SamplePower" href="spss/base/samplepower.htm"/>
+      <topic label="IBM ShowCase Report Writer" href="spss/base/spss_reportwriter.htm"/>
+      <topic label="IBM SPSS Text Analytics for Surveys" href="spss/base/text_analysis.htm"/>
+      <topic label="IBM SPSS Data Collection" href="spss/base/extras_data_collection.htm"/>
+      <topic label="IBM SPSS Collaboration and Deployment Services"
+             href="spss/base/sm_collaboration.htm"/>
+      <topic label="Consulting" href="spss/base/consulting.htm"/>
+      <topic label="Training" href="spss/base/training.htm"/>
+   </topic>
+</toc>

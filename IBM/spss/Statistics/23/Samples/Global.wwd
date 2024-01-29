@@ -1,0 +1,462 @@
+'Global.wwd
+'A number of sample scripts installed with SPSS make use of the procedures in this file.
+
+Option Explicit
+
+'Module (file) level constants
+Const cNONAVMSG As String = "No viewer document found."
+Const cNOPIVSELMSG As String = "Select a pivot table before running this script."
+Const cNOITEMSEL As String = "Select an Item before running this script."
+Const cCOLMINREQ As String = "Columns are only made narrower if there are more than 8 columns."
+
+
+
+Sub GetFirstSelectedPivot(objSelectedPivot As PivotTable, objItem As ISpssItem, bolFoundOutput As Boolean, bolFoundPivot As Boolean)
+'Purpose: Find the first selected Pivot Table 
+'Assumptions: A Pivot Table is selected in the Output Doc (Viewer)
+'Effects: Activates the selected Pivot Table
+'Inputs: PivotTable object, Item object that contains selected PivotTable
+'Return Values: Selected PivotTable, Item in the Viewer
+'				bolFoundOutput(True If an Output Doc exists), bolFoundPivot(True If found a selected PivotTable)
+
+	Dim objDocuments As ISpssDocuments     	' SPSS documents.
+	Dim objOutputDoc As ISpssOutputDoc          	' Output document
+	Dim objItems As ISpssItems       		' Output Viewer items
+	Dim intItemCount As Integer
+	Dim intItemType As Integer
+	Dim bolSelected As Boolean             	' True if an item is selected.
+	Dim i As Integer
+	
+	' We have not found an output viewer yet (Set flag)
+	bolFoundOutput = False
+	
+	'Get list of documents in SPSS.
+	Set objDocuments = objSpssApp.Documents
+	
+	' Get designated document only if there is at least one output document.
+	If objDocuments.OutputDocCount > 0 Then
+	   'Get the currently designated output document.
+	   Set objOutputDoc = objSpssApp.GetDesignatedOutputDoc
+	   bolFoundOutput = True
+	Else
+		'If no viewer window exists.
+		MsgBox(cNONAVMSG)
+		Exit Sub
+	End If
+	
+	' Check if we found the designated document.
+	If bolFoundOutput = True Then
+		' We have not found a pivot table.(Set flag)
+		bolFoundPivot = False
+	
+		' Get the outline tree and the number of items:
+		Set objItems = objOutputDoc.Items
+		intItemCount = objItems.Count
+	
+		' Get the first selected pivot table.
+		For i = 0 To intItemCount - 1
+			Set objItem = objItems.GetItem(i)
+			intItemType = objItem.SPSSType
+			bolSelected = objItem.Selected
+			If intItemType = SPSSPivot And bolSelected = True Then 
+				Set objSelectedPivot = objItem.Activate()  	'Activate the pivot table.
+				bolFoundPivot  = True	                  	' We did find a pivot table.
+				Exit For                                  	' Exit the loop.
+	        End If
+		Next i
+	End If
+	
+	If bolFoundPivot = False Then
+		'If no pivot table has been selected.
+		MsgBox(cNOPIVSELMSG)
+		Exit Sub
+	End If
+End Sub
+
+Sub InsertPageBreak (objItem As ISpssItem)
+'Purpose: Inserts a page break above the first selected Item in the Viewer
+'Assumptions: Something is selected in the Output Doc (Viewer)
+'Effects: Inserts a page break before the selected item.
+'Inputs: Item object in the Viewer
+'Return Values: Selected Item in Viewer will now have page break before it
+
+	Dim bolFoundOutputDoc As Boolean
+	Dim bolItemSelected As Boolean
+	Dim intItemType As Integer
+	Dim i As Integer
+	
+	i = 1
+	If objItem Is Nothing Then	'The item hasn't been set
+		'get the first selected item in the Viewer
+		Call GetFirstSelectedItem(objItem, intItemType, bolFoundOutputDoc, bolItemSelected)
+		
+		If (bolFoundOutputDoc = False) Or (bolItemSelected = False) Then
+		'either there wasn't an output doc or an item wasn't selected
+			Exit Sub
+		End If
+	End If
+	
+	objItem.PageBreak = True
+
+End Sub
+
+Sub GetFirstSelectedItem(objItem As ISpssItem, intSelItemType As Integer, bolFoundOutput As Boolean, bolFoundItem As Boolean)
+'Purpose: Find the first selected Item in the Viewer
+'Assumptions: An Item is selected in the Output Doc (Viewer)
+'Effects: None
+'Input: Item object
+'Return Values: Item in the Viewer, intSelItemType(contains value for what type of item objItem is),
+'				bolFoundOutput(True If an Output Doc exists), bolFoundItem(True If found a selected Item)
+
+	Dim objDocuments As ISpssDocuments     	' SPSS documents.
+	Dim objOutputDoc As ISpssOutputDoc          	' Output document
+	Dim objItems As ISpssItems       		' Output Viewer items
+	Dim intItemCount As Integer
+	Dim intItemType As Integer
+	Dim bolSelected As Boolean             	' True if an item is selected.
+	Dim i As Integer
+	
+	' We have not found an output viewer yet (Set flag)
+	bolFoundOutput = False
+	
+	'Get list of documents in SPSS.
+	Set objDocuments = objSpssApp.Documents
+	
+	' Get designated document only if there is at least one output document.
+	If objDocuments.OutputDocCount > 0 Then
+	   'Get the currently designated output document.
+	   Set objOutputDoc = objSpssApp.GetDesignatedOutputDoc
+	   bolFoundOutput = True
+	Else
+		'If no viewer window exists.
+		MsgBox(cNONAVMSG)
+		Exit Sub
+	End If
+	
+	' Check if we found the designated document.
+	If bolFoundOutput = True Then
+		' We have not found a pivot table.(Set flag)
+		bolFoundItem = False
+	
+		' Get the outline tree and the number of items:
+		Set objItems = objOutputDoc.Items
+		intItemCount = objItems.Count
+	
+		' Get the first selected Item.
+		For i = 0 To intItemCount - 1
+			Set objItem = objItems.GetItem(i)
+			bolSelected = objItem.Selected
+			If bolSelected = True Then 
+				intSelItemType = objItem.SPSSType
+				bolFoundItem = True	                  	' We did find a selected item.
+				Exit Sub                                ' Exit the subroutine.
+	        End If
+		Next i
+	End If
+	
+	If bolFoundItem = False Then
+		'If no Item has been selected.
+		MsgBox(cNOITEMSEL)
+		Exit Sub
+	End If
+
+End Sub
+
+Sub GetLastNavItem(objItem As ISpssItem, lngIndex As Long, bolOutputDocExists As Boolean)
+'Purpose: Get the Index(lngIndex) and Item object(objItem) for the last Item in the Viewer
+'Assumptions: There must be an Output Document window.
+'Effects: None
+'Inputs: None
+'Return Values: Index to the last Item in the Designated OutputDoc, the Item object for the last Viewer Item
+				'bolOutputDocExists(True if there is >=1, False if 0)
+				
+	Dim objOutputDoc As ISpssOutputDoc
+	Dim objItems As ISpssItems
+	Dim objDocuments As ISpssDocuments
+
+	bolOutputDocExists = False
+	
+	Set objDocuments = objSpssApp.Documents
+	If objDocuments.OutputDocCount > 0 Then
+	   'Get the currently designated output document.
+	   Set objOutputDoc = objSpssApp.GetDesignatedOutputDoc
+	   bolOutputDocExists = True
+	Else
+		'If no viewer window exists.
+		MsgBox(cNONAVMSG)
+		Exit Sub
+	End If
+	bolOutputDocExists = True
+
+	Set objItems = objOutputDoc.Items
+	lngIndex = objItems.Count - 1
+	Set objItem = objItems.GetItem(lngIndex)
+		
+End Sub
+
+Sub SetDefColWidth(objPivotTable As PivotTable, intDataCellWidth As Integer)
+'Purpose: Set default width of columns 
+'Assumptions: The selected Pivot Table in the Viewer has been activated (by the script)
+'Effects: Sets the width for all of the columns in the selected Pivot Table
+'Inputs: PivotTable object (that was previously activated in another sub), intDataCellWidth(width to make data cells)
+'Return Values: Modified PivotTable
+
+	objPivotTable.SelectTable
+	objPivotTable.DataCellWidths = intDataCellWidth
+	objPivotTable.ClearSelection
+	
+End Sub
+
+Sub MakeWideTablesNarrow(objPivotTable As PivotTable)
+'Purpose: Make Pivot Tables that don't fit on the screen narrower. 
+'Assumptions: The Pivot Table that is to be modified is activated
+'Effects: Makes the columns in the Pivot Table narrow based on information in labels and data cells
+'Inputs: PivotTable object that is already activated
+'Return Values: Modified Pivot Table
+'Global Variables Used: objPivotTable, objColumnLabels, objRowLabels, objFootnotes, objOptions, objDataCells
+
+    Dim objColumnLabels As ISpssLabels
+    Dim objRowLabels As ISpssLabels
+    Dim objFootnotes As ISpssFootnotes
+    Dim objOptions As ISpssOptions
+    Dim objDataCells As ISpssDataCells
+        
+    Dim lngCols As Long
+    Dim lngRows As Long
+    Dim intSize As Integer
+    Dim intMinSize As Integer
+    Dim lngLastRowIndex As Long
+    Dim i As Long
+    Dim j As Long
+    Dim bolFootnoteFound As Boolean
+    Dim auto
+    Dim intMargin As Integer
+           
+    'Determine if table is wide, if so modify column widths
+    Set objDataCells = objPivotTable.DataCellArray
+    If (objDataCells.NumColumns > 8) Then
+	    objPivotTable.ClearSelection
+        Set objColumnLabels = objPivotTable.ColumnLabelArray
+        lngCols = objColumnLabels.NumColumns
+        lngLastRowIndex = objColumnLabels.NumRows - 1
+        Set objDataCells = objPivotTable.DataCellArray
+        lngRows = objDataCells.NumRows
+    
+        intMinSize = objColumnLabels.TextSizeAt(lngLastRowIndex, 0)
+        For j = 0 To (lngCols - 1)
+            intSize = objColumnLabels.TextSizeAt(lngLastRowIndex, j)
+            If (intSize < intMinSize) Then
+                intMinSize = intSize
+            End If
+            bolFootnoteFound = False
+            For i = 0 To (lngRows - 1)
+                Set objFootnotes = objDataCells.GetReferredFootnotesAt(i, j)
+                If (objFootnotes.Count > 0) Then
+                    bolFootnoteFound = True
+                    Exit For
+                End If
+            Next i
+            
+            'if there are no footnotes then even out margins
+            If (Not bolFootnoteFound) Then
+               	objPivotTable.ClearSelection
+                objColumnLabels.SelectLabelDataAt lngLastRowIndex, j
+                intMargin = objDataCells.LeftMarginAt(0, 0)
+                objPivotTable.RightMargin = intMargin
+                objPivotTable.LeftMargin = intMargin
+            End If
+        Next j
+ 
+        'Lower the font size of all the lowest level columns
+        intMinSize = intMinSize - 1
+        For j = 0 To (lngCols - 1)
+            objColumnLabels.TextSizeAt(lngLastRowIndex, j) = intMinSize
+        Next j
+        
+        Set objOptions = objSpssApp.Options
+        objOptions.Autofit = 1			
+        objPivotTable.Autofit
+        objPivotTable.ClearSelection
+    Else
+    	MsgBox(cCOLMINREQ)
+    End If
+    
+End Sub
+
+
+
+'**********************************************************
+'Purpose: Use this script if you want to put the text in the
+'   COLUMN labels in a pivot table on a
+'   single line (not wrapping to a second line).
+'
+'Inputs: The pivot table is passed as a parameter.
+'
+'Return Values: Modified Pivot Table
+'
+'Author: David S. Angulo
+'
+'Date:   April 14, 1997
+'
+'Copyright @ 1997 by SPSS, Inc.
+'
+'**********************************************************
+
+
+
+Sub SetPivotTableColumnLabelsToNoWrap (objPivotTable As PivotTable)
+	
+	'Declare SPSS object variables
+	Dim objColumnLabels As ISpssLabels      ' Column label arrays
+
+	'Declare other variables used in this procedure
+	Dim intCol As Integer                   ' Number of columns in COLUMN label array.
+	Dim intRow As Integer                   ' Number of rows in COLUMN label array
+	Dim intR As Integer                     ' Loop Counter
+	Dim intC As Integer                     ' Loop Counter
+	Dim intRealWidth As Integer             ' Text Width Variable
+
+			
+	'*************************************************************
+	'This section deals with changing the width of the column labels
+			
+	' Get the column labels object
+	Set objColumnLabels = objPivotTable.ColumnLabelArray
+	
+	' ColumnLabelArray is a 2-dimensional array. Loop through the cells to
+	' find the label text that matches the target text (strText)
+	intCol = objColumnLabels.NumColumns
+	intRow = objColumnLabels.NumRows
+	
+	For intR = 0 To intRow - 1
+		For intC = 0 To intCol - 1
+			If Not IsNull(objColumnLabels.ValueAt(intR,intC)) Then
+                Dim strVal As String           ' the string at intR, intC
+                strVal = objColumnLabels.ValueAt(intR,intC)
+                If Len(strVal) > 0 Then
+					intRealWidth = objColumnLabels.TextWidthAt(intR,intC)
+					objColumnLabels.ColumnLabelWidthAt(intR,intC) = intRealWidth
+					End If
+			End If
+		Next intC
+	Next intR
+
+
+	
+' end of sub SetPivotTableColumnLablesToNoWrap		
+End Sub
+
+
+
+
+
+'**********************************************************
+'Purpose: Use this script if you want to put the text in the
+'   ROW labels in a pivot table on a
+'   single line (not wrapping to a second line).
+'
+'Inputs: The pivot table is passed as a parameter.
+'
+'Return Values: Modified Pivot Table
+'
+'Author: David S. Angulo
+'
+'Date:   April 14, 1997
+'
+'Copyright @ 1997 by SPSS, Inc.
+'
+'**********************************************************
+
+
+
+Sub SetPivotTableRowLabelsToNoWrap (objPivotTable As PivotTable)
+	
+	'Declare SPSS object variables
+	Dim objRowLabels As ISpssLabels         ' Row label array
+
+	'Declare other variables used in this procedure
+	Dim intCol As Integer                   ' Number of columns in ROW label array.
+	Dim intRow As Integer                   ' Number of rows in ROW label array
+	Dim intR As Integer                     ' Loop Counter
+	Dim intC As Integer                     ' Loop Counter
+	Dim intRealWidth As Integer             ' Text Width Variable
+	Dim intMaxWidthInThisColumn As Integer
+
+
+
+	
+	'*************************************************************
+	'This section deals with changing the width of the row labels
+			
+	' Get the row labels object
+	Set objRowLabels = objPivotTable.RowLabelArray
+	
+	' RowLabelArray is a 2-dimensional array. Loop through the cells to
+	' find the label text that matches the target text (strText)
+	intCol = objRowLabels.NumColumns
+	intRow = objRowLabels.NumRows
+	
+	
+	For intC = 0 To intCol - 1
+
+        ' we're starting another column so the max width must be reset
+            intMaxWidthInThisColumn = objRowLabels.RowLabelWidthAt(0, intC)
+		For intR = 0 To intRow - 1
+			If Not IsNull(objRowLabels.ValueAt(intR,intC)) Then
+                Dim strVal As String           ' the string at intR, intC
+                strVal = objRowLabels.ValueAt(intR,intC)
+                If Len(strVal) > 0 Then
+				    intRealWidth = objRowLabels.TextWidthAt(intR,intC)
+				    If (intRealWidth > intMaxWidthInThisColumn) Then
+					    ' only change the label to make it wider (all of the labels will
+                        '   be in the same column
+					    intMaxWidthInThisColumn = intRealWidth
+                    End If
+				End If
+			End If
+		Next intR
+		objRowLabels.RowLabelWidthAt(0,intC) = intMaxWidthInThisColumn
+
+	Next intC
+
+
+' end of sub SetPivotTableRowLablesToNoWrap		
+End Sub
+
+Sub UndoScientificNotation(objPivotTable As PivotTable, strNewFormat As String)
+'Purpose: Removes scientific notation format in data cells. 
+'Assumptions: The Pivot Table that is to be modified is activated, and strNewFormat is a valid format string
+'Effects: Changes the format of the data cells to strNewFormat from scientific notation
+'Inputs: PivotTable object that is already activated, new numeric format (strNewFormat)
+'Return Values: Modified Pivot Table
+
+'See SPSS Objects Help topic "String Description of Numeric Formats"
+'or experiment with GetFormatString.
+		
+	Dim strFormat As String
+	Dim lngRow As Long, lngCol As Long	
+	Dim objDataCells As ISpssDataCells
+	
+	Set objDataCells = objPivotTable.DataCellArray
+
+	'changing to percent format will cause numeric errors!
+	If strNewFormat = "##.#%" Then
+		Exit Sub
+	End If
+	
+	With objDataCells
+		For lngRow = 0 To .NumRows - 1 
+			For lngCol = 0 To .NumColumns - 1
+				If Not IsNull (.ValueAt (lngRow, lngCol)) Then
+					strFormat = .NumericFormatAt (lngRow, lngCol)
+					If strFormat = "#.# ; #.##E-#" Or strFormat = "#.##E+##" Then
+						.NumericFormatAt (lngRow, lngCol) = strNewFormat
+					End If
+				End If
+			Next
+		Next
+	End With
+	
+	objPivotTable.Autofit
+	
+End Sub

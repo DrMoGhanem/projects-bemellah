@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--© Copyright IBM Corporation 2013-->
+<?eclipse version="3.0"?><plugin provider-name="IBM" version="23" id="com.ibm.spss.statistics.help"
+    name="Help">
+    <extension point="org.eclipse.help.toc">
+        <toc primary="true" file="statistics_mainhelp.xml"/>
+        <?Pub Caret?>
+    </extension>
+    <extension point="org.eclipse.help.index">
+        <index primary="true" file="statistics_mainhelp_eclipseindex.xml"/>
+    </extension>
+    <extension id="helpProduct" point="org.eclipse.core.runtime.products">
+        <product name="IBM SPSS Statistics" application=""/>
+    </extension>
+</plugin>

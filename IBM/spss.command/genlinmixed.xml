@@ -1,0 +1,599 @@
+
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2013                               -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<Command Name="GENLINMIXED" ProcedureTitle="Generalized Linear Mixed Models"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="file:../schema/commanddescription.xsd">
+  <Integration>
+    <Architecture>CF</Architecture>
+    <CommandType>Procedure</CommandType>
+    <TmsMode>NotPermitted</TmsMode>
+    <ClemMode>NotPermitted</ClemMode>
+    <LicenseOption>13</LicenseOption>
+    <CommandState>
+      <State1>105</State1>
+      <State2>105</State2>
+      <State3>4</State3>
+      <State4>0</State4>
+    </CommandState>
+    <ProcedureLibraryName>statglmm</ProcedureLibraryName>
+    <ExtensionDetails providerTag="spss" id="glmm-extension" label="GLMM" version="1.0"/>
+    <CPS Display="true"/>
+    <Splits AppSupport="false" Viewer="true"/>
+    <CaseIdVariabale Need="false"/>
+    <MeasurementLevel AppSupport="true"/>
+    <Feature Id="GLMM"/>
+  </Integration>
+  <Subcommand Name="DATA_STRUCTURE" Occurrence="Optional" Delimiter="EqualDelimited">
+    <Parameter Name="SUBJECTS" ParameterType="CrossVariableList" MeasurementLevel="MeasLevelSubset"
+      Occurrence="Required"/>
+    <Parameter Name="REPEATED_MEASURES" ParameterType="CrossVariableList"
+      MeasurementLevel="MeasLevelSubset"/>
+    <Parameter Name="GROUPING" ParameterType="CrossVariableList" MeasurementLevel="MeasLevelSubset"/>
+    <Parameter Name="COVARIANCE_TYPE" ParameterType="Keyword">
+      <EnumValue Name="DIAGONAL"/>
+      <EnumValue Name="AR1"/>
+      <EnumValue Name="ARMA11"/>
+      <EnumValue Name="COMPOUND_SYMMETRY"/>
+      <EnumValue Name="IDENTITY"/>
+      <EnumValue Name="TOEPLITZ"/>
+      <EnumValue Name="UNSTRUCTURED"/>
+      <EnumValue Name="VARIANCE_COMPONENTS"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="FIELDS" Occurrence="Optional" Delimiter="EqualDelimited">
+    <Parameter Name="TARGET" ParameterType="VariableName" MeasurementLevel="MeasLevelSubset"
+      Occurrence="Required"/>
+    <Parameter Name="ANALYSIS_WEIGHT" ParameterType="VariableName"
+      MeasurementLevel="MeasLevelSubset"/>
+    <Qualification style="Parenthesis">
+      <Parameter Name="TRIALS" ParameterType="StringQualif">
+        <Qualification>
+          <Parameter Name="NONE" ParameterType="LeadingToken"/>
+          <Parameter Name="VALUE" ParameterType="Integer" LowerBdryOption="ExclLowerBdry"
+            LowerBdryValue="0"/>
+          <Parameter Name="FIELD" ParameterType="VariableName"/>
+        </Qualification>
+      </Parameter>
+      <Parameter Name="OFFSET" ParameterType="StringQualif">
+        <Qualification>
+          <Parameter Name="NONE" ParameterType="LeadingToken"/>
+          <Parameter Name="VALUE" ParameterType="Number"/>
+          <Parameter Name="FIELD" ParameterType="VariableName"/>
+        </Qualification>
+      </Parameter>
+    </Qualification>
+  </Subcommand>
+  <Subcommand Name="TARGET_OPTIONS" Occurrence="Optional" Delimiter="EqualDelimited">
+    <Parameter Name="REFERENCE" ParameterType="TokenList"/>
+    <Parameter Name="DISTRIBUTION" ParameterType="Keyword">
+      <EnumValue Name="NORMAL"/>
+      <EnumValue Name="BINOMIAL"/>
+      <EnumValue Name="MULTINOMIAL"/>
+      <EnumValue Name="GAMMA"/>
+      <EnumValue Name="INVERSE_GAUSSIAN"/>
+      <EnumValue Name="NEGATIVE_BINOMIAL"/>
+      <EnumValue Name="POISSON"/>
+    </Parameter>
+    <Parameter Name="LINK" ParameterType="Keyword">
+      <EnumValue Name="IDENTITY"/>
+      <EnumValue Name="CLOGLOG"/>
+      <EnumValue Name="LOG"/>
+      <EnumValue Name="LOGC"/>
+      <EnumValue Name="LOGIT"/>
+      <EnumValue Name="NLOGLOG"/>
+      <EnumValue Name="PROBIT"/>
+      <EnumValue Name="POWER"/>
+      <EnumValue Name="CAUCHIT"/>
+    </Parameter>
+    <Parameter Name="LINK_PARAMETER" ParameterType="Number"/>
+  </Subcommand>
+  <Subcommand Name="FIXED" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="EFFECTS" ParameterType="TokenList"/>
+    <Parameter Name="USE_INTERCEPT" ParameterType="Keyword">
+      <EnumValue Name="TRUE"/>
+      <EnumValue Name="FALSE"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="RANDOM" Delimiter="EqualDelimited" Occurrence="Optional" Repeatable="true">
+    <Parameter Name="EFFECTS" ParameterType="TokenList"/>
+    <Parameter Name="USE_INTERCEPT" ParameterType="Keyword">
+      <EnumValue Name="TRUE"/>
+      <EnumValue Name="FALSE"/>
+    </Parameter>
+    <Parameter Name="SUBJECTS" ParameterType="CrossVariableList" MeasurementLevel="MeasLevelSubset"/>
+    <Parameter Name="GROUPING" ParameterType="CrossVariableList" MeasurementLevel="MeasLevelSubset"/>
+    <Parameter Name="COVARIANCE_TYPE" ParameterType="Keyword">
+      <EnumValue Name="DIAGONAL"/>
+      <EnumValue Name="AR1"/>
+      <EnumValue Name="ARMA11"/>
+      <EnumValue Name="COMPOUND_SYMMETRY"/>
+      <EnumValue Name="IDENTITY"/>
+      <EnumValue Name="TOEPLITZ"/>
+      <EnumValue Name="UNSTRUCTURED"/>
+      <EnumValue Name="VARIANCE_COMPONENTS"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="BUILD_OPTIONS" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="TARGET_CATEGORY_ORDER" ParameterType="Keyword">
+      <EnumValue Name="ASCENDING"/>
+      <EnumValue Name="DESCENDING"/>
+      <EnumValue Name="DATA"/>
+    </Parameter>
+    <Parameter Name="INPUTS_CATEGORY_ORDER" ParameterType="Keyword">
+      <EnumValue Name="ASCENDING"/>
+      <EnumValue Name="DESCENDING"/>
+      <EnumValue Name="DATA"/>
+    </Parameter>
+    <Parameter Name="MAX_ITERATIONS" ParameterType="Integer" LowerBdryOption="ExclLowerBdry"
+      LowerBdryValue="0"/>
+    <Parameter Name="CONFIDENCE_LEVEL" ParameterType="Number" LowerBdryOption="ExclLowerBdry"
+      LowerBdryValue="0" UpperBdryOption="ExclUpperBdry" UpperBdryValue="100"/>
+    <Parameter Name="DF_METHOD" ParameterType="Keyword">
+      <EnumValue Name="RESIDUAL"/>
+      <EnumValue Name="SATTERTHWAITE"/>
+    </Parameter>
+    <Parameter Name="COVB" ParameterType="Keyword">
+      <EnumValue Name="MODEL"/>
+      <EnumValue Name="ROBUST"/>
+    </Parameter>
+    <Parameter Name="HCONVERGE" ParameterType="TokenQualif">
+      <Qualification>
+        <Parameter Name="HCONVERGE" ParameterType="Number" LowerBdryOption="InclLowerBdry"
+          LowerBdryValue="0"/>
+        <Parameter Name="" ParameterType="Keyword" Occurrence="Optional">
+          <EnumValue Name="ABSOLUTE"/>
+          <EnumValue Name="RELATIVE"/>
+        </Parameter>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="LCONVERGE" ParameterType="TokenQualif">
+      <Qualification>
+        <Parameter Name="LCONVERGE" ParameterType="Number" LowerBdryOption="InclLowerBdry"
+          LowerBdryValue="0"/>
+        <Parameter Name="" ParameterType="Keyword"  Occurrence="Optional">
+          <EnumValue Name="ABSOLUTE"/>
+          <EnumValue Name="RELATIVE"/>
+        </Parameter>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="PCONVERGE" ParameterType="TokenQualif">
+      <Qualification>
+        <Parameter Name="PCONVERGE" ParameterType="Number" LowerBdryOption="InclLowerBdry"
+          LowerBdryValue="0"/>
+        <Parameter Name="" ParameterType="Keyword"  Occurrence="Optional">
+          <EnumValue Name="ABSOLUTE"/>
+          <EnumValue Name="RELATIVE"/>
+        </Parameter>
+      </Qualification>
+    </Parameter>
+    <!--
+    <Parameter Name="MXSTEP" ParameterType="Integer" LowerBdryOption="ExclLowerBdry"
+      LowerBdryValue="0"/>
+    -->
+   <Parameter Name="SCORING" ParameterType="Integer" LowerBdryOption="InclLowerBdry"
+      LowerBdryValue="0"/>
+    <Parameter Name="SINGULAR" ParameterType="Number" LowerBdryOption="ExclLowerBdry"
+      LowerBdryValue="0"/>
+  </Subcommand>
+  <Subcommand Name="EMMEANS" Delimiter="EqualDelimited" Occurrence="Optional" Repeatable="true">
+    <Parameter Name="TABLES" ParameterType="TokenList"/>
+    <Parameter Name="COMPARE" ParameterType="VariableName" MeasurementLevel="MeasLevelSubset"/>
+    <Parameter Name="CONTRAST" ParameterType="Keyword">
+      <EnumValue Name="NONE"/>
+      <EnumValue Name="PAIRWISE"/>
+      <EnumValue Name="DEVIATION"/>
+      <EnumValue Name="SIMPLE"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="EMMEANS_OPTIONS" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="CONTROL" ParameterType="TokenList"/>
+    <Parameter Name="SCALE" ParameterType="Keyword">
+      <EnumValue Name="ORIGINAL"/>
+      <EnumValue Name="TRANSFORMED"/>
+    </Parameter>
+    <Parameter Name="PADJUST" ParameterType="Keyword">
+      <EnumValue Name="LSD"/>
+      <EnumValue Name="SEQBONFERRONI"/>
+      <EnumValue Name="SEQSIDAK"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="OUTFILE" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="MODEL" ParameterType="OutputFile"/>
+    <Parameter Name="STATXML" ParameterType="OutputFile"/>
+  </Subcommand>
+  <Subcommand Name="SAVE" Delimiter="ParenDelimited" Occurrence="Optional">
+    <Parameter Name="PREDICTED_VALUES" ParameterType="VariableName" MeasurementLevel="MeasLevelDict"
+      Occurrence="Optional"/>
+    <Parameter Name="PREDICTED_PROBABILITY" ParameterType="VariableName"
+      MeasurementLevel="MeasLevelDict" Occurrence="Optional"/>
+    <Parameter Name="MAX_CATEGORIES" ParameterType="Integer" LowerBdryOption="ExclLowerBdry"
+      LowerBdryValue="0"/>
+    <Parameter Name="CONFIDENCE" ParameterType="VariableName" MeasurementLevel="MeasLevelDict"
+      Occurrence="Optional"/>
+    <Parameter Name="CONFIDENCE_METHOD" ParameterType="Keyword">
+      <EnumValue Name="PREDICTEDPROBABILITY"/>
+      <EnumValue Name="PROBABILITYIMPROVEMENT"/>
+    </Parameter>
+    <Parameter Name="CONFIDENCE_INTERVALS" ParameterType="VariableName"
+      MeasurementLevel="MeasLevelDict" Occurrence="Optional">
+      <EnumValue Name="Lower"/>
+      <EnumValue Name="Upper"/>
+    </Parameter>
+    <Parameter Name="PEARSON_RESIDUALS" ParameterType="VariableName"
+      MeasurementLevel="MeasLevelDict" Occurrence="Optional"/>
+  </Subcommand>
+
+  <ExecutionGeneration>
+    <CFContainer id="PMMLContainer" name="PMML" type="Output" containerType="PMML" boundary="Global"
+      mvRequired="false" path="[OUTFILE]"/>
+    <CFContainer id="StatXMLContainer" name="StatXML" type="Output" containerType="StatXML"
+      boundary="Global" mvRequired="true" path="[OUTSTAT]"/>
+    <ParameterGeneration>
+      <ComponentSetting id="[ALL]">
+        <!-- Default -->
+        <SyntaxProperties Name="">
+          <CFProperty Name="glmm.DistLinkCombination" ValueFrom="Fixed" Value="Custom"/>
+          <CFProperty Name="glmm.UseDefaultDistribution" ValueFrom="Fixed" Value="true"/>
+          <CFProperty Name="glmm.UseDefaultLink" ValueFrom="Fixed" Value="true"/>
+          <CFProperty Name="[MaxNumTargetCats]" ValueFrom="Fixed" Value="25"/>
+        </SyntaxProperties>
+        <!-- DATA_STRUCTURE -->
+        <SyntaxProperties Name="DATA_STRUCTURE.SUBJECTS">
+          <CFProperty Name="glmm.ResidualSubjectSpec" ValueFrom="Evaluate" Value="Input2ModelEffect"
+          />
+        </SyntaxProperties>
+        <SyntaxProperties Name="DATA_STRUCTURE.REPEATED_MEASURES">
+          <CFProperty Name="glmm.RepeatedMeasure" ValueFrom="Evaluate" Value="Input2ModelEffect"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="DATA_STRUCTURE.GROUPING">
+          <CFProperty Name="glmm.ResidualGroupSpec" ValueFrom="Input" MaxValueCount="unbounded"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="DATA_STRUCTURE.COVARIANCE_TYPE">
+          <CFProperty Name="glmm.ResidualCovarianceType" ValueFrom="Input">
+            <CFValueMap SyntaxValue="DIAGONAL" PropertyValue="DIAG"/>
+            <CFValueMap SyntaxValue="AR1" PropertyValue="AR1"/>
+            <CFValueMap SyntaxValue="ARMA11" PropertyValue="ARMA11"/>
+            <CFValueMap SyntaxValue="COMPOUND_SYMMETRY" PropertyValue="CS"/>
+            <CFValueMap SyntaxValue="IDENTITY" PropertyValue="ID"/>
+            <CFValueMap SyntaxValue="TOEPLITZ" PropertyValue="TP"/>
+            <CFValueMap SyntaxValue="UNSTRUCTURED" PropertyValue="UN"/>
+            <CFValueMap SyntaxValue="VARIANCE_COMPONENTS" PropertyValue="VC"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- FIELDS -->
+        <SyntaxProperties Name="FIELDS.TARGET">
+          <CFProperty Name="glmm.TargetField" ValueFrom="Input"/>
+          <CFProperty Name="[TargetField]" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="FIELDS.TRIALS.NONE">
+          <CFProperty Name="glmm.UseTrials" ValueFrom="Fixed" Value="false"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="FIELDS.TRIALS.VALUE">
+          <!--<CFProperty Name="use_num_trials" ValueFrom="Fixed" Value="true"/>-->
+          <CFProperty Name="use_field_or_value" ValueFrom="Fixed" Value="value"/>
+          <CFProperty Name="glmm.UseTrials" ValueFrom="Fixed" Value="true"/>
+          <CFProperty Name="glmm.TrialsValue" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="FIELDS.TRIALS.FIELD">
+          <!--<CFProperty Name="use_num_trials" ValueFrom="Fixed" Value="true"/>-->
+          <CFProperty Name="use_field_or_value" ValueFrom="Fixed" Value="field"/>
+          <CFProperty Name="glmm.UseTrials" ValueFrom="Fixed" Value="true"/>
+          <CFProperty Name="glmm.TrialsField" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="FIELDS.ANALYSIS_WEIGHT">
+          <CFProperty Name="glmm.RegressionWeightField" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="FIELDS.OFFSET.NONE">
+          <CFProperty Name="glmm.UseOffset" ValueFrom="Fixed" Value="None"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="FIELDS.OFFSET.VALUE">
+          <CFProperty Name="glmm.UseOffset" ValueFrom="Fixed" Value="Value"/>
+          <CFProperty Name="glmm.OffsetValue" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="FIELDS.OFFSET.FIELD">
+          <CFProperty Name="glmm.UseOffset" ValueFrom="Fixed" Value="Variable"/>
+          <CFProperty Name="glmm.OffsetField" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <!-- TARGET_OPTIONS -->
+        <SyntaxProperties Name="TARGET_OPTIONS.REFERENCE" Validation="ReferenceCategory">
+          <CFProperty Name="glmm.CustomTargetReference" ValueFrom="Fixed" Value="true"/>
+          <CFProperty Name="glmm.TargetReferenceValue" ValueFrom="Validation"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="TARGET_OPTIONS.DISTRIBUTION">
+          <CFProperty Name="glmm.DistributionOfTarget" ValueFrom="Input">
+            <CFValueMap SyntaxValue="NORMAL" PropertyValue="NORMAL"/>
+            <CFValueMap SyntaxValue="BINOMIAL" PropertyValue="BINOMIAL"/>
+            <CFValueMap SyntaxValue="MULTINOMIAL" PropertyValue="MULTINOMIAL"/>
+            <CFValueMap SyntaxValue="GAMMA" PropertyValue="GAMMA"/>
+            <CFValueMap SyntaxValue="INVERSE_GAUSSIAN" PropertyValue="IGAUSS"/>
+            <CFValueMap SyntaxValue="NEGATIVE_BINOMIAL" PropertyValue="NEGBIN"/>
+            <CFValueMap SyntaxValue="POISSON" PropertyValue="POISSON"/>
+          </CFProperty>
+          <CFProperty Name="glmm.UseDefaultDistribution" ValueFrom="Fixed" Value="false"
+            Operation="Replace"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="TARGET_OPTIONS.LINK">
+          <CFProperty Name="normalLinkFunction" ValueFrom="Input"/>
+          <CFProperty Name="multiLinkFunction" ValueFrom="Input"/>
+          <CFProperty Name="glmm.LinkFunctionType" ValueFrom="Input">
+            <CFValueMap SyntaxValue="IDENTITY" PropertyValue="IDENTITY"/>
+            <CFValueMap SyntaxValue="CLOGLOG" PropertyValue="CLOGLOG"/>
+            <CFValueMap SyntaxValue="LOG" PropertyValue="LOG"/>
+            <CFValueMap SyntaxValue="LOGC" PropertyValue="LOGC"/>
+            <CFValueMap SyntaxValue="LOGIT" PropertyValue="LOGIT"/>
+            <CFValueMap SyntaxValue="NLOGLOG" PropertyValue="NLOGLOG"/>
+            <CFValueMap SyntaxValue="PROBIT" PropertyValue="PROBIT"/>
+            <CFValueMap SyntaxValue="POWER" PropertyValue="POWER"/>
+            <CFValueMap SyntaxValue="CAUCHIT" PropertyValue="CAUCHIT"/>
+          </CFProperty>
+          <CFProperty Name="glmm.UseDefaultLink" ValueFrom="Fixed" Value="false" Operation="Replace"
+          />
+        </SyntaxProperties>
+        <SyntaxProperties Name="TARGET_OPTIONS.LINK_PARAMETER">
+          <CFProperty Name="glmm.LinkFunctionParam" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <!-- FIXED -->
+        <SyntaxProperties Name="FIXED.EFFECTS" Validation="ModelEffectList">
+          <CFProperty Name="glmm.FixedEffectList" ValueFrom="Validation" MaxValueCount="unbounded"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="FIXED.USE_INTERCEPT">
+          <CFProperty Name="glmm.Intercept" ValueFrom="Input">
+            <CFValueMap SyntaxValue="TRUE" PropertyValue="true"/>
+            <CFValueMap SyntaxValue="FALSE" PropertyValue="false"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- RANDOM -->
+        <SyntaxProperties Name="RANDOM">
+          <CFProperty Name="glmm.RandomSpecs" ValueFrom="Empty" Operation="AddToList"
+            MaxValueCount="unbounded">
+            <CFPStructure>
+              <SyntaxProperties Name="RANDOM.EFFECTS" Validation="ModelEffectList">
+                <CFProperty Name="EffectList" ValueFrom="Validation" MaxValueCount="unbounded"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="RANDOM.USE_INTERCEPT">
+                <CFProperty Name="Intercept" ValueFrom="Input"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="RANDOM.SUBJECTS">
+                <CFProperty Name="SubjectSpec" ValueFrom="Evaluate" Value="Input2ModelEffect"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="RANDOM.GROUPING">
+                <CFProperty Name="GroupSpec" ValueFrom="Input" MaxValueCount="unbounded"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="RANDOM.COVARIANCE_TYPE">
+                <CFProperty Name="CovarianceType" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="DIAGONAL" PropertyValue="DIAG"/>
+                  <CFValueMap SyntaxValue="AR1" PropertyValue="AR1"/>
+                  <CFValueMap SyntaxValue="ARMA11" PropertyValue="ARMA11"/>
+                  <CFValueMap SyntaxValue="COMPOUND_SYMMETRY" PropertyValue="CS"/>
+                  <CFValueMap SyntaxValue="IDENTITY" PropertyValue="ID"/>
+                  <CFValueMap SyntaxValue="TOEPLITZ" PropertyValue="TP"/>
+                  <CFValueMap SyntaxValue="UNSTRUCTURED" PropertyValue="UN"/>
+                  <CFValueMap SyntaxValue="VARIANCE_COMPONENTS" PropertyValue="VC"/>
+                </CFProperty>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- BUILD_OPTIONS -->
+        <SyntaxProperties Name="BUILD_OPTIONS.TARGET_CATEGORY_ORDER">
+          <CFProperty Name="glmm.SortTarget" ValueFrom="Input">
+            <CFValueMap SyntaxValue="ASCENDING" PropertyValue="Ascending"/>
+            <CFValueMap SyntaxValue="DESCENDING" PropertyValue="Descending"/>
+            <CFValueMap SyntaxValue="DATA" PropertyValue="Data"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.INPUTS_CATEGORY_ORDER">
+          <CFProperty Name="glmm.SortFactors" ValueFrom="Input">
+            <CFValueMap SyntaxValue="ASCENDING" PropertyValue="Ascending"/>
+            <CFValueMap SyntaxValue="DESCENDING" PropertyValue="Descending"/>
+            <CFValueMap SyntaxValue="DATA" PropertyValue="Data"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.MAX_ITERATIONS">
+          <CFProperty Name="glmm.MaxIterations" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.CONFIDENCE_LEVEL">
+          <CFProperty Name="glmm.CIn" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.DF_METHOD">
+          <CFProperty Name="glmm.DegreesFreedom" ValueFrom="Input">
+            <CFValueMap SyntaxValue="RESIDUAL" PropertyValue="Residual"/>
+            <CFValueMap SyntaxValue="SATTERTHWAITE" PropertyValue="Satterthwaite"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.COVB">
+          <CFProperty Name="glmm.AsymEffCov" ValueFrom="Input">
+            <CFValueMap SyntaxValue="MODEL" PropertyValue="Model"/>
+            <CFValueMap SyntaxValue="ROBUST" PropertyValue="Robust"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS.SINGULAR">
+          <CFProperty Name="glmm.SingTolerance" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="BUILD_OPTIONS">
+          <CFProperty Name="glmm.StopCritSingInn" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="loglikelihoodCheck" ValueFrom="Fixed" Value="false"/>
+                <CFProperty Name="LoglikelihoodConvMin" ValueFrom="Fixed" Value=""/>
+                <CFProperty Name="LoglikelihoodConvType" ValueFrom="Fixed" Value="Relative"/>
+                <CFProperty Name="parameterCheck" ValueFrom="Fixed" Value="true"/>
+                <CFProperty Name="ParameterConvInnMin" ValueFrom="Fixed" Value="0.000001"/>
+                <CFProperty Name="ParameterConvInnType" ValueFrom="Fixed" Value="Relative"/>
+                <CFProperty Name="hessianCheck" ValueFrom="Fixed" Value="false"/>
+                <CFProperty Name="HessianConvMin" ValueFrom="Fixed" Value=""/>
+                <CFProperty Name="HessianConvType" ValueFrom="Fixed" Value="Relative"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="BUILD_OPTIONS.HCONVERGE.HCONVERGE">
+                <CFProperty Name="hessianCheck" ValueFrom="Fixed" Value="true" Operation="Replace"/>
+                <CFProperty Name="HessianConvMin" ValueFrom="Input" Operation="Replace"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="BUILD_OPTIONS.HCONVERGE.">
+                <CFProperty Name="HessianConvType" ValueFrom="Input" Operation="Replace">
+                  <CFValueMap SyntaxValue="ABSOLUTE" PropertyValue="Absolute"/>
+                  <CFValueMap SyntaxValue="RELATIVE" PropertyValue="Relative"/>
+                </CFProperty>
+              </SyntaxProperties>
+              <SyntaxProperties Name="BUILD_OPTIONS.LCONVERGE.LCONVERGE">
+                <CFProperty Name="loglikelihoodCheck" ValueFrom="Fixed" Value="true" Operation="Replace"/>
+                <CFProperty Name="LoglikelihoodConvMin" ValueFrom="Input" Operation="Replace"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="BUILD_OPTIONS.LCONVERGE.">
+                <CFProperty Name="LoglikelihoodConvType" ValueFrom="Input" Operation="Replace">
+                  <CFValueMap SyntaxValue="ABSOLUTE" PropertyValue="Absolute"/>
+                  <CFValueMap SyntaxValue="RELATIVE" PropertyValue="Relative"/>
+                </CFProperty>
+              </SyntaxProperties>
+              <SyntaxProperties Name="BUILD_OPTIONS.PCONVERGE.PCONVERGE">
+                <CFProperty Name="parameterCheck" ValueFrom="Fixed" Value="true" Operation="Replace"/>
+                <CFProperty Name="ParameterConvInnMin" ValueFrom="Input" Operation="Replace"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="BUILD_OPTIONS.PCONVERGE.">
+                <CFProperty Name="ParameterConvInnType" ValueFrom="Input" Operation="Replace">
+                  <CFValueMap SyntaxValue="ABSOLUTE" PropertyValue="Absolute"/>
+                  <CFValueMap SyntaxValue="RELATIVE" PropertyValue="Relative"/>
+                </CFProperty>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!--
+        <SyntaxProperties Name="BUILD_OPTIONS.MXSTEP">
+          <CFProperty Name="glmm.LineSearchTech" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="BUILD_OPTIONS.MXSTEP">
+                <CFProperty Name="MaxIterNum" ValueFrom="Input"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+          
+        </SyntaxProperties>
+        -->              
+        <SyntaxProperties Name="BUILD_OPTIONS.SCORING">
+          <CFProperty Name="glmm.UpdateDirectionTech" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="BUILD_OPTIONS.SCORING">
+                <CFProperty Name="MaxFisherIterNum" ValueFrom="Input"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="">
+                <CFProperty Name="Newton" ValueFrom="Fixed" Value="Hybrid"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>          
+        </SyntaxProperties>        
+        <!-- EMMEANS -->
+        <SyntaxProperties Name="EMMEANS">
+          <CFProperty Name="glmm.EMMEANS" ValueFrom="Empty" Operation="AddToList"
+            MaxValueCount="unbounded">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="EstimateMeans" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="EMMEANS.TABLES" Validation="ModelEffect">
+                <CFProperty Name="Factors" ValueFrom="Validation"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="EMMEANS.COMPARE">
+                <CFProperty Name="CompareFactor" ValueFrom="Input"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="EMMEANS.CONTRAST">
+                <CFProperty Name="ContrastType" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="NONE" PropertyValue="None"/>
+                  <CFValueMap SyntaxValue="PAIRWISE" PropertyValue="Pairwise"/>
+                  <CFValueMap SyntaxValue="DEVIATION" PropertyValue="Deviation"/>
+                  <CFValueMap SyntaxValue="SIMPLE" PropertyValue="Simple"/>
+                </CFProperty>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- EMMEANS_OPTIONS -->
+        <SyntaxProperties Name="EMMEANS_OPTIONS.CONTROL">
+          <CFProperty Name="glmm.EMMEANS_COVARIATES" ValueFrom="Empty" MaxValueCount="unbounded"
+            Split="true">
+            <CFPStructure>
+              <SyntaxProperties Name="EMMEANS_OPTIONS.CONTROL" Validation="CovariateControl">
+                <CFProperty Name="Field" ValueFrom="Validation"/>
+                <CFProperty Name="Constant" ValueFrom="Fixed" Value="Value"/>
+                <CFProperty Name="Value" ValueFrom="Validation"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="EMMEANS_OPTIONS.SCALE">
+          <CFProperty Name="glmm.MeanScale" ValueFrom="Input">
+            <CFValueMap SyntaxValue="ORIGINAL" PropertyValue="Original"/>
+            <CFValueMap SyntaxValue="TRANSFORMED" PropertyValue="Transformed"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="EMMEANS_OPTIONS.PADJUST">
+          <CFProperty Name="glmm.pAdjustment" ValueFrom="Input">
+            <CFValueMap SyntaxValue="LSD" PropertyValue="LSD"/>
+            <CFValueMap SyntaxValue="SEQBONFERRONI" PropertyValue="SEQBONFERRONI"/>
+            <CFValueMap SyntaxValue="SEQSIDAK" PropertyValue="SEQSIDAK"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- OUTFILE -->
+        <SyntaxProperties Name="OUTFILE.MODEL">
+          <CFProperty Name="[OUTFILE]" ValueFrom="Input"/>
+          <CFProperty Name="glmm.OutFile" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="OUTFILE.STATXML">
+          <CFProperty Name="[OUTSTAT]" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <!-- SAVE -->
+        <SyntaxProperties Name="SAVE.PREDICTED_VALUES" Validation="SavePredValue">
+          <CFProperty Name="PredValue_check" ValueFrom="Fixed" Value="true"/>
+          <CFProperty Name="predicted_field_name" ValueFrom="Validation" Value="PredictedValue"/>
+          <!--<CFProperty Name="glmm.PredValue" ValueFrom="Validation"/>-->
+        </SyntaxProperties>
+        <SyntaxProperties Name="SAVE.PREDICTED_PROBABILITY" Validation="SaveSimpleVector">
+          <CFProperty Name="PredProbability_check" ValueFrom="Fixed" Value="true"/>
+          <CFProperty Name="prob_root_name" ValueFrom="Input" Value="PredictedProbability"/>
+          <CFProperty Name="glmm.PredProbability" ValueFrom="Validation" MaxValueCount="unbounded"
+            Value="PredictedProbability"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="SAVE.MAX_CATEGORIES">
+          <CFProperty Name="glmm.MaxCategories" ValueFrom="Input"/>
+          <CFProperty Name="[MaxNumTargetCats]" ValueFrom="Input" Operation="Replace"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="SAVE.CONFIDENCE" Validation="SaveSimpleVar">
+          <CFProperty Name="confidence_check" ValueFrom="Fixed" Value="true"/>
+          <CFProperty Name="conf_field_name" ValueFrom="Validation" Value="Confidence"/>
+          <!--<CFProperty Name="glmm.Confidence" ValueFrom="Validation"/>-->
+        </SyntaxProperties>
+        <SyntaxProperties Name="SAVE.CONFIDENCE_METHOD">
+          <CFProperty Name="glmm.ConfidenceBaseOn" ValueFrom="Input">
+            <CFValueMap SyntaxValue="PREDICTEDPROBABILITY" PropertyValue="highest"/>
+            <CFValueMap SyntaxValue="PROBABILITYIMPROVEMENT" PropertyValue="difference"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="SAVE.CONFIDENCE_INTERVALS" Validation="SaveStructVect">
+          <CFProperty Name="CIMeanPred" ValueFrom="Fixed" Value="true"/>
+          <CFProperty Name="conf_interval_name" ValueFrom="Input" Value="CI"/>
+          <CFProperty Name="glmm.LBCIMeanPred" ValueFrom="Validation" Value="CI"
+            MaxValueCount="unbounded"/>
+          <CFProperty Name="glmm.UBCIMeanPred" ValueFrom="Validation" Value="CI"
+            MaxValueCount="unbounded"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="SAVE.PEARSON_RESIDUALS" Validation="SaveSimpleVar">
+          <CFProperty Name="PearsonResid_check" ValueFrom="Fixed" Value="true"/>
+          <CFProperty Name="residul_field_name" ValueFrom="Validation" Value="PearsonResidual"/>
+          <!--<CFProperty Name="glmm.PearsonResid" ValueFrom="Validation"/>-->
+        </SyntaxProperties>
+      </ComponentSetting>
+    </ParameterGeneration>
+  </ExecutionGeneration>
+</Command>

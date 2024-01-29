@@ -1,0 +1,490 @@
+' PptExport.wwd
+'
+' Create PowerPoint slides from Designated Output Window
+' Copyright (c) SPSS Inc., 2004.  All rights reserved.
+'
+
+' Translatable strings
+Const CREATEPP = "Create PowerPoint Presentation"
+Const MSGWKDIR = "Working directory is read only.  Charts will not be exported"
+Const MSGNOPPT = "Cannot start PowerPoint.  No slides will be created."
+Const MSGNOPRS = "Cannot create a Presentation. Make sure Microsoft Office 'Visual Basic for Applications' under 'Office Shared Features' is configured to 'Run from My Computer'."
+
+' Name prefix for temp files
+Const OUTPUTFILE = "\g_name~"
+
+' For temp dir
+Const MAX_PATH = 255
+
+Private Declare Function GetTempPath Lib "kernel32" _
+Alias "GetTempPathA" (ByVal nBufferLength As Long, _
+ByVal lpBuffer As String) As Long
+
+' Variable declarations
+Dim titles As Boolean, graphics As Boolean, layers As Boolean
+Dim filePath As String, tempDir As String, exportOptions As String
+Dim itemTypes As Long
+Dim tempFileNames()
+Dim slide, vertOffset As Long
+Dim toplabel As String
+Dim objPpt As Object
+Dim objPresent As Object
+Dim pptVersion As Long
+Dim heightWidth As Integer
+Dim pageSizeFactor As Double, slideWidth As Double, slideHeight As Double
+Dim modelViewsOption As String
+Dim numberModelViews As Long
+Dim leftMargin, rightMargin, topMargin, bottomMargin As String
+
+
+' ========================================================================
+Sub Main
+	Call Export
+End Sub
+
+
+Sub Export()
+
+    Dim objOutputDoc As ISpssOutputDoc, paramString As String
+    Dim I As Integer, objDocuments As ISpssDocuments
+    Dim exportType As Long
+    Dim showLayers As Boolean
+    Dim fileSep, tempString As String
+    Dim firstQuote, endQuote, lastPosHeight, lastPosWidth As Integer
+    Dim firstNameQuote, length As Integer
+    Dim exportFileName, viewerName As String
+    Dim outputItemType As Long
+    Dim includeGraphics As Boolean
+    Dim useOutline As Boolean
+    Dim allLayers As Boolean
+    Dim namedViewer As Boolean
+    Dim modelOptPos As Integer
+    Dim marginStartPos, marginEndPos As Integer
+    Dim margins As String
+
+    'MsgBox ("Start of PptExport...")
+    Set objDocuments = objSpssApp.Documents
+
+	'Parameters order:
+    ' Quoted File Path,
+    ' Export type [0/1/2 - all/visible/selected],
+    ' Use viewer outline [1/0 - yes/no],
+    ' Page setup Measurement Units [0/1/2 - inches/mm/cm],
+    ' Include footnotes and captions [1/0 - yes/no],
+    ' Pivot Table layers [0/1/2 - print setting/All/Visible],
+    ' Wide Tables [0/1/2 - Wrap/Shrink/Extend],
+    ' Page setup sizes in Measurement Units:
+    '    Height, Width, Left Margin, Right Margin, Top Margin, Bottom Margin.
+    ' Model Viewer options
+    ' Single-quoted Viewer Name [optional, for non-designated viewer]
+	' --
+	'Sample:
+    'paramString = "'c:\xTest2008\DocPpt1.ppt' 0 0 0 1 1 1 11 8.5 1.0 1.0 1.0 1.0 MVExportAll 'Document5'"
+    'paramString = "'c:\xTest2008\DocPpt2.ppt' 0 0 0 1 1 1 11 8.5 1.0 1.0 1.0 1.0 MVExportAll"
+
+    paramString = objSpssApp.ScriptParameter(0)
+
+    fileSep = Left$(paramString, 1)
+    firstQuote = InStr(1, paramString, fileSep)
+    endQuote = InStr(firstQuote + 1,paramString, fileSep)
+    exportFileName = Mid$(paramString, firstQuote + 1, endQuote - firstQuote - 1)
+
+	' Parse Viewer Name
+    fileSep = Right$(paramString, 1)
+    If fileSep = "'" Then
+		namedViewer = True
+		firstNameQuote = InStrRev(paramString, fileSep, Len(paramString) - 1)
+        viewerName = Mid$(paramString, firstNameQuote + 1, Len(paramString) - firstNameQuote - 1)
+    Else
+		namedViewer = False
+	End If
+
+    tempString = Mid$(paramString, endQuote + 2, 1)
+    outputItemType = Val(tempString)
+
+    tempString = Mid$(paramString, endQuote + 4, 1)
+    If tempString = "1" Then
+        useOutline = True
+    Else
+        useOutline = False
+    End If
+
+	' Page setup Measurement Units
+    tempString = Mid$(paramString, endQuote + 6, 1)
+    If tempString = "1" Then
+        pageSizeFactor = 2.8346	  'Points per Millimeter
+    ElseIf tempString = "2" Then
+        pageSizeFactor = 28.346	  'Points per Centimeter
+    Else
+    	pageSizeFactor = 72		  'Points per Inch
+    End If
+
+	' Export options to pass to ExportWordDocument(..)
+    If namedViewer Then
+        exportOptions = Mid$(paramString, endQuote + 8, firstNameQuote - endQuote - 9)
+    Else
+		exportOptions = Mid$(paramString, endQuote + 8, Len(paramString))
+    End If
+
+	' Slide Height and Width in points
+    lastPosHeight = InStr(7, exportOptions, " ")
+    tempString = Mid$(exportOptions, 7, lastPosHeight - 7)
+    slideHeight = Val(tempString) * pageSizeFactor
+
+    lastPosWidth = InStr(lastPosHeight + 1, exportOptions, " ")
+    tempString = Mid$(exportOptions, lastPosHeight + 1, lastPosWidth - lastPosHeight - 1)
+    slideWidth = Val(tempString) * pageSizeFactor
+
+	' These parameters are constant now
+    includeGraphics = True
+    allLayers = True
+
+    modelOptPos = InStrRev(exportOptions, " ")
+    modelViewsOption = Mid$(exportOptions, modelOptPos + 1, Len(paramString) - modelOptPos)
+
+	margins = Mid$(exportOptions, lastPosWidth + 1, modelOptPos - lastPosWidth-1)
+	marginStartPos = 1
+	marginEndPos = InStr(marginStartPos, margins, " ")
+	leftMargin = Mid$(margins, marginStartPos, marginEndPos - marginStartPos)
+	marginStartPos = marginEndPos+1 
+	marginEndPos = InStr(marginStartPos, margins, " ")
+	rightMargin = Mid$(margins, marginStartPos, marginEndPos - marginStartPos)
+	marginStartPos = marginEndPos+1 
+	marginEndPos = InStr(marginStartPos, margins, " ")
+	topMargin = Mid$(margins, marginStartPos, marginEndPos - marginStartPos)
+	marginStartPos = marginEndPos+1 
+	bottomMargin = Mid$(margins, marginStartPos, Len(margins) - marginStartPos)
+	
+	If namedViewer Then
+        Call ExportToPowerPoint(objSpssApp.GetOutputDocFromName(viewerName), exportFileName, outputItemType, includeGraphics, useOutline, allLayers)
+    Else
+        Call ExportToPowerPoint(objSpssApp.GetDesignatedOutputDoc, exportFileName, outputItemType, includeGraphics, useOutline, allLayers)
+    End If
+
+End Sub
+
+
+' ========================================================================
+
+Sub ExportToPowerPoint(objDoc As Object, outFileName As String, outputItemType As Long, incGraphics As Boolean, incTitles As Boolean, allLayers As Boolean)
+
+    ' Assign values
+    graphics = incGraphics
+    titles = incTitles
+    layers = allLayers
+    filePath = outFileName
+    itemTypes = outputItemType
+
+    ' Find a place for temp files
+    If (Not getTempDir) Then
+        Exit Sub
+    End If
+
+    ' Create a PPT presentation
+    Call CreatePptSlides(objDoc)
+
+End Sub
+
+' ========================================================================
+
+Sub CreatePptSlides(objDoc As Object)
+' Make Ppt slides containing all requested objects of the selected types
+
+    Dim objMap As Object
+    Dim objItems As ISpssItems
+    Dim objItem As ISpssItem
+    Dim objSPSSChart As ISpssChart
+    Dim objSPSSJson As ISpssChart
+    Dim objSPSSTree As TreeModelControl
+    Dim objPivotTable As PivotTable
+    Dim objOutputDoc As ISpssOutputDoc
+    Dim Item, tempCount As Long
+    Dim lastShape, chartItem As Integer
+    Dim tempFile As String
+    Dim data As String
+    Dim wasPptVisible As Boolean
+    Dim insertedShape As Object
+    Dim objSPSSModel As ModelViewerControl
+
+    ' ItemType values
+    Const kAllObjects = 0
+    Const kVisibleObjects = 1
+    Const kSelectedObjects = 2
+
+    On Error Resume Next
+
+    Set objOutputDoc = objDoc
+
+    Set objPpt = CreateObject("PowerPoint.Application")
+    If (objPpt Is Nothing) Then
+        MsgBox MSGNOPPT, vbOK, CREATEPP
+        Exit Sub
+    End If
+
+    Set objPresent = objPpt.Presentations.Add(True)
+    If (objPresent Is Nothing) Then
+        MsgBox MSGNOPRS, vbOK, CREATEPP
+        Exit Sub
+    End If
+
+    wasPptVisible = objPpt.Visible
+    objPpt.Visible = False      ' otherwise Paste does not work
+    pptVersion = objPpt.Version
+    If (pptVersion < 12) Then
+        heightWidth = 1
+    Else
+        heightWidth = -1
+    End If
+
+    ' Setup the slide size
+    With objPresent.PageSetup
+		.SlideSize = ppSlideSizeCustom
+		.SlideWidth = slideWidth
+		.SlideHeight = slideHeight
+	End With
+
+    tempCount = 0
+    slide = 0
+    Set objItems = objOutputDoc.Items
+
+    For Item = 0 To objItems.Count - 1
+START:
+        Set objItem = objItems.GetItem(Item)
+        If (objItem.Level = 1) Then
+            toplabel = objItem.Label
+        End If
+
+        ' Skip those types that we don't want to export
+        If ((Not objItem.Visible And itemTypes = kVisibleObjects) _
+         Or (Not objItem.Selected And itemTypes = kSelectedObjects)) Then
+            Item = Item + 1
+            If (Item >= objItems.Count) Then
+                Exit For
+            Else
+                GoTo START
+            End If
+        End If
+
+        If ((objItem.SPSSType = SPSSPivot) _
+		 Or (objItem.SPSSType = SPSSLightPivot) _
+         Or (objItem.SPSSType = SPSSChart And graphics) _
+         Or (objItem.SPSSType = SPSSGraphBoard And graphics) _
+         Or (objItem.SPSSType = SPSSTreeModel And graphics) _
+         Or (objItem.SPSSType = SPSSModelViewer And graphics) _
+         Or (objItem.SPSSType = SPSSJsonChart And graphics) _
+         Or (objItem.SPSSType = SPSSUnknown)) Then
+
+            ' New slide
+            Call AddNewSlide(objItem)
+            'objItem.Deactivate
+
+            ' Need to make an array of unique temp files,
+            ' as PPT will hold on to inserted image files
+            ' until the last reference is freed.
+            tempFile = tempDir & OUTPUTFILE & Str$(Item)
+            tempCount = UBound(tempFileNames)
+            tempCount = tempCount + 1
+            ReDim Preserve tempFileNames(tempCount)
+
+            ' Copy current item to Ppt slide
+            If (objItem.SPSSType = SPSSChart Or objItem.SPSSType = SPSSGraphBoard) Then
+                ' VE Chart
+                Set objSPSSChart = objItem.GetChartOleObject
+                tempFile = tempFile & ".png"
+                objSPSSChart.ExportChart tempFile, "PNG File"
+                Set objSPSSChart = Nothing
+                Set insertedShape = objPresent.slides(slide).shapes.addpicture( _
+                  Filename:=tempFile, LinkToFile:=False, SaveWithDocument:=True, Left:=1, Top:=1, Width:=heightWidth, Height:=heightWidth)
+                Call CenterImage(insertedShape)
+            ElseIf (objItem.SPSSType = SPSSJsonChart) Then
+                ' JSON Objects
+                Set objSPSSJson = objItem.GetChartOleObject
+                tempFile = tempFile & ".png"
+                objSPSSJson.ExportImage tempFile, 4, -1, -1
+                Set objSPSSJson = Nothing
+                Set insertedShape = objPresent.slides(slide).shapes.addpicture( _
+                  Filename:=tempFile, LinkToFile:=False, SaveWithDocument:=True, Left:=1, Top:=1, Width:=heightWidth, Height:=heightWidth)
+                Call CenterImage(insertedShape)
+            ElseIf (objItem.SPSSType = SPSSTreeModel) Then
+                ' Tree
+                Set objSPSSTree = objItem.GetTreeOleObject
+                tempFile = tempFile & ".png"
+                objSPSSTree.ExportImage tempFile, 4, -1, -1
+                Set objSPSSTree = Nothing
+                Set insertedShape = objPresent.slides(slide).shapes.addpicture( _
+                  Filename:=tempFile, LinkToFile:=False, SaveWithDocument:=True, Left:=1, Top:=1, Width:=heightWidth, Height:=heightWidth)
+                Call CenterImage(insertedShape)
+            ElseIf (objItem.SPSSType = SPSSPivot Or objItem.SPSSType = SPSSLightPivot ) Then
+                ' Table
+                tempFile = tempFile & ".xls"
+                data = tempFile & "*" & exportOptions & "*"
+                objItem.ExportExcelDocument data, layers
+                Set insertedShape = objPresent.slides(slide).shapes.AddOLEObject( _
+					1, 1, heightWidth, heightWidth, "", tempFile, False, "", 0, "", False)
+                Call CenterImage(insertedShape)
+            ElseIf (objItem.SPSSType = SPSSModelViewer) Then
+                ' Model
+                Set objSPSSModel = objItem.GetModelOleObject
+                'tempFile = tempFile & ".png"
+                'Sample: data = tempFile & ".png" & "*all*"
+                data = tempFile & "*" & modelViewsOption & "*"
+                objSPSSModel.ExportImage data, 4, -1, -1
+                objSPSSModel.GetNumberOfCharts(numberModelViews)
+                Set objSPSSModel = Nothing
+                For chartItem = 0 To numberModelViews - 1
+                    If chartItem > 0 Then 
+                        Call AddNewSlide(objItem)
+				    End If
+                    Set insertedShape = objPresent.slides(slide).shapes.addpicture( _
+					    Filename:=tempFile & Str$(chartItem) & ".png", LinkToFile:=False, SaveWithDocument:=True, Left:=1, Top:=1, Width:=heightWidth, Height:=heightWidth)                        
+                    Call CenterImage(insertedShape)
+                    Kill tempFile & Str$(chartItem) & ".png"
+                Next chartItem
+            ElseIf (objItem.SPSSType = SPSSUnknown) Then
+                ' Export RTF and insert object method
+                tempFile = tempFile & ".doc"
+                objItem.ExportWordDocument tempFile, False
+                Set insertedShape = objPresent.slides(slide).shapes.AddOLEObject( _
+                    1, 1, heightWidth, heightWidth, "", tempFile, False, "", 0, "", False)
+                Call CenterImage(insertedShape)
+            End If
+
+            ' Save the temp file names for later deletion
+            tempFileNames(tempCount - 1) = tempFile
+        End If
+    Next Item
+
+    ' Save the presentation file
+    objPresent.SaveAs filePath  ', ppSaveAsPresentation
+    objPresent.Close
+    Set objPresent = Nothing
+
+    ' Restore Ppt state
+    If (wasPptVisible) Then
+        objPpt.Visible = True
+    Else
+        objPpt.Quit
+    End If
+
+    ' Cleanup
+    tempCount = UBound(tempFileNames)
+    For Item = 0 To tempCount - 1
+        tempFile = tempFileNames(Item)
+        Kill tempFile
+    Next Item
+
+End Sub
+
+' ========================================================================
+
+Function getTempDir() As Boolean
+' Returns true if successful
+    Dim sRet As String, lngLen As Long
+    'create buffer
+    sRet = String(MAX_PATH, 0)
+
+    getTempDir = True
+
+    lngLen = GetTempPath(MAX_PATH, sRet)
+    If lngLen = 0 Then Err.Raise Err.LastDLLError
+    tempDir = Left$(sRet, lngLen)
+
+    'strip trailing slash from path, if present
+    Dim length As Long
+    length = Len(tempDir)
+    If InStr(length, tempDir, "\") Then
+            tempDir = Left$(tempDir, length - 1)
+    End If
+    If (Dir(tempDir, vbReadOnly) <> "") Then        ' make sure writeable
+        If (MsgBox(MSGWKDIR, vbOkCancel, CREATEPP) + vbCancel) Then
+            getTempDir = False
+        End If
+    End If
+
+End Function
+
+
+
+
+' ========================================================================
+
+Sub AddNewSlide(objItem As ISpssItem)
+
+    On Error Resume Next
+
+    slide = slide + 1
+    objPresent.slides.Add slide, 12
+
+    With objPresent.slides(slide)
+        If titles Then
+            ' ppLayouttitleonly
+            .layout = 11
+        Else
+            ' ppLayoutBlank
+            .layout = 12
+        End If
+        If Not .shapes.HasTitle Then
+            .shapes.AddTitle.TextFrame.TextRange _
+            .shapes.Text = IIf(titles, toplabel & ": " & objItem.Label, "")
+        Else
+            .shapes.Title.TextFrame.TextRange.Text = IIf(titles, toplabel & ": " & objItem.Label, "")
+        End If
+        If titles Then
+            vertOffset = .shapes.Title.Top + .shapes.Title.Height
+        Else
+            vertOffset = 0
+        End If
+    End With
+End Sub
+
+' ========================================================================
+Sub CenterImage(theShape As Object)
+    Dim iWidth As Long
+    Dim iHeight As Long
+    Dim sWidth As Long
+    Dim sHeight As Long
+    Dim scala As Double
+    Dim reScaled As Boolean
+    Dim tmpWidth, tmpHeight As Long
+
+    ' Scale the picture to 100%, with "Relative to original picture size"
+    ' set to true for both height and width.
+    If (pptVersion < 12) Then
+        theShape.ScaleHeight 1, True
+        theShape.ScaleWidth 1, True
+    End If
+
+    ' Scale down if necessary
+    iWidth = theShape.Width
+    iHeight = theShape.Height
+    sWidth = objPresent.PageSetup.SlideWidth
+    sHeight = objPresent.PageSetup.SlideHeight - vertOffset
+    If sHeight / iHeight < sWidth / iWidth Then
+        scala = sHeight / iHeight
+    Else
+        scala = sWidth / iWidth
+    End If
+
+    reScaled = False
+    If (scala < 1) Then
+        reScaled = True
+        theShape.ScaleHeight scala, True
+        theShape.ScaleWidth scala, True
+    End If
+
+    ' Apply page setup margin
+    theShape.Left = Val(leftMargin)*pageSizeFactor
+    theShape.Top = vertOffset + Val(topMargin)*pageSizeFactor
+    
+    tmpWidth = sWidth - theShape.Left - Val(rightMargin)*pageSizeFactor
+    tmpHeight = sHeight - theShape.Top - Val(bottomMargin)*pageSizeFactor
+    If tmpWidth < iWidth Then
+		theShape.Width = tmpWidth
+    End If
+
+    If tmpHeight < iHeight Then
+		theShape.Height = tmpHeight
+    End If
+
+End Sub
+

@@ -1,0 +1,857 @@
+
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2013                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<Command Name="NPTESTS" ProcedureTitle="Nonparametric Tests"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="file:../schema/commanddescription.xsd">
+
+  <!-- Integration in Statistics -->
+  <Integration>
+    <Architecture>CF</Architecture>
+    <CommandType>Procedure</CommandType>
+    <TmsMode>NotPermitted</TmsMode>
+    <ClemMode>NotPermitted</ClemMode>
+    <LicenseOption>21</LicenseOption>
+    <CommandState>
+      <State1>105</State1>
+      <State2>105</State2>
+      <State3>4</State3>
+      <State4>0</State4>
+    </CommandState>
+    <ProcedureLibraryName>statnpar</ProcedureLibraryName>
+    <ExtensionDetails providerTag="spss" id="npar-extension" label="NPAR Tests" version="1.0"/>
+    <CPS Display="false"/>
+    <Splits AppSupport="true" Viewer="false"/>
+    <CaseIdVariabale Need="true"/>
+    <MeasurementLevel AppSupport="true"/>
+    <Feature Id="npar_tests;two_independent_tests;two_related_tests"/>
+  </Integration>
+
+  <!-- command descriptor -->
+  <Subcommand Name="MISSING" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="SCOPE" ParameterType="Keyword">
+      <EnumValue Name="ANALYSIS"/>
+      <EnumValue Name="LISTWISE"/>
+    </Parameter>
+    <Parameter Name="USERMISSING" ParameterType="Keyword">
+      <EnumValue Name="EXCLUDE"/>
+      <EnumValue Name="INCLUDE"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="CRITERIA" Delimiter="EqualDelimited">
+    <Parameter Name="ALPHA" ParameterType="Number" LowerBdryOption="ExclLowerBdry"
+      LowerBdryValue="0" UpperBdryOption="ExclUpperBdry" UpperBdryValue="1"/>
+    <Parameter Name="CILEVEL" ParameterType="Number" LowerBdryOption="ExclLowerBdry"
+      LowerBdryValue="0" UpperBdryOption="ExclUpperBdry" UpperBdryValue="100"/>
+  </Subcommand>
+  <Subcommand Name="ONESAMPLE" Delimiter="ParenDelimited">
+    <Qualification style="Equal">
+      <Parameter Name="TEST" ParameterType="VariableNameList" MeasurementLevel="MeasLevelSubset"
+        Occurrence="Required"/>
+      <Parameter Name="CHISQUARE" ParameterType="StringQualif" Occurrence="Optional">
+        <Qualification style="Parenthesis">
+          <Parameter Name="EXPECTED" ParameterType="StringQualif">
+            <Qualification style="Equal">
+              <Parameter Name="EQUAL" ParameterType="LeadingToken"/>
+              <Parameter Name="CUSTOM" ParameterType="StringQualifList">
+                <Qualification>
+                  <Parameter Name="FREQUENCIES" ParameterType="NumberList"
+                    LowerBdryOption="ExclLowerBdry" LowerBdryValue="0"/>
+                  <Parameter Name="CATEGORIES" ParameterType="TokenList"/>
+                </Qualification>
+              </Parameter>
+            </Qualification>
+          </Parameter>
+        </Qualification>
+      </Parameter>
+      <Parameter Name="BINOMIAL" ParameterType="StringQualifList" Occurrence="Optional">
+        <Qualification style="Parenthesis">
+          <Parameter Name="TESTVALUE" ParameterType="Number" LowerBdryOption="InclLowerBdry"
+            LowerBdryValue="0" UpperBdryOption="InclUpperBdry" UpperBdryValue="1"/>
+          <Parameter Name="SUCCESSCATEGORICAL" ParameterType="StringQualif">
+            <Qualification>
+              <Parameter Name="FIRST" ParameterType="LeadingToken"/>
+              <Parameter Name="LIST" ParameterType="TokenList"/>
+            </Qualification>
+          </Parameter>
+          <Parameter Name="SUCCESSCONTINUOUS" ParameterType="StringQualif">
+            <Qualification>
+              <Parameter Name="CUTPOINT" ParameterType="Number">
+                <EnumValue Name="MIDPOINT"/>
+              </Parameter>
+            </Qualification>
+          </Parameter>
+          <Parameter Name="CLOPPERPEARSON" ParameterType="LeadingToken"/>
+          <Parameter Name="JEFFREYS" ParameterType="LeadingToken"/>
+          <Parameter Name="LIKELIHOOD" ParameterType="LeadingToken"/>
+        </Qualification>
+      </Parameter>
+      <Parameter Name="KOLMOGOROV_SMIRNOV" ParameterType="StringQualifList" Occurrence="Optional">
+        <Qualification style="Parenthesis">
+          <Parameter Name="NORMAL" ParameterType="StringQualif">
+            <Qualification style="Equal">
+              <Parameter Name="SAMPLE" ParameterType="LeadingToken"/>
+              <Parameter Name="CUSTOM" ParameterType="StringQualifList">
+                <Qualification>
+                  <Parameter Name="MEAN" ParameterType="Number"/>
+                  <Parameter Name="SD" ParameterType="Number" LowerBdryOption="InclLowerBdry"
+                    LowerBdryValue="0"/>
+                </Qualification>
+              </Parameter>
+            </Qualification>
+          </Parameter>
+          <Parameter Name="UNIFORM" ParameterType="StringQualif">
+            <Qualification style="Equal">
+              <Parameter Name="SAMPLE" ParameterType="LeadingToken"/>
+              <Parameter Name="CUSTOM" ParameterType="StringQualifList">
+                <Qualification>
+                  <Parameter Name="MIN" ParameterType="Number"/>
+                  <Parameter Name="MAX" ParameterType="Number"/>
+                </Qualification>
+              </Parameter>
+            </Qualification>
+          </Parameter>
+          <Parameter Name="EXPONENTIAL" ParameterType="StringQualif">
+            <Qualification style="Equal">
+              <Parameter Name="SAMPLE" ParameterType="LeadingToken"/>
+              <Parameter Name="CUSTOM" ParameterType="StringQualifList">
+                <Qualification>
+                  <Parameter Name="MEAN" ParameterType="Number"/>
+                </Qualification>
+              </Parameter>
+            </Qualification>
+          </Parameter>
+          <Parameter Name="POISSON" ParameterType="StringQualif">
+            <Qualification style="Equal">
+              <Parameter Name="SAMPLE" ParameterType="LeadingToken"/>
+              <Parameter Name="CUSTOM" ParameterType="StringQualifList">
+                <Qualification>
+                  <Parameter Name="MEAN" ParameterType="Number"/>
+                </Qualification>
+              </Parameter>
+            </Qualification>
+          </Parameter>
+        </Qualification>
+      </Parameter>
+      <Parameter Name="RUNS" ParameterType="StringQualifList" Occurrence="Optional">
+        <Qualification style="Parenthesis">
+          <Parameter Name="GROUPCATEGORICAL" ParameterType="StringQualif">
+            <Qualification>
+              <Parameter Name="SAMPLE" ParameterType="LeadingToken"/>
+              <Parameter Name="LIST" ParameterType="TokenList"/>
+            </Qualification>
+          </Parameter>
+          <Parameter Name="GROUPCONTINUOUS" ParameterType="StringQualif">
+            <Qualification>
+              <Parameter Name="CUTPOINT" ParameterType="Number">
+                <EnumValue Name="SAMPLEMEDIAN"/>
+                <EnumValue Name="SAMPLEMEAN"/>
+              </Parameter>
+            </Qualification>
+          </Parameter>
+        </Qualification>
+      </Parameter>
+      <Parameter Name="WILCOXON" ParameterType="StringQualif">
+        <Qualification>
+          <Parameter Name="TESTVALUE" ParameterType="Number"/>
+        </Qualification>
+      </Parameter>
+    </Qualification>
+  </Subcommand>
+  <Subcommand Name="INDEPENDENT" Delimiter="ParenDelimited">
+    <Parameter Name="TEST" ParameterType="VariableNameList" MeasurementLevel="MeasLevelSubset"
+      Occurrence="Required"/>
+    <Parameter Name="GROUP" ParameterType="VariableName" MeasurementLevel="MeasLevelSubset"
+      Occurrence="Required"/>
+    <Parameter Name="MANN_WHITNEY" ParameterType="LeadingToken"/>
+    <Parameter Name="WALD_WOLFOWITZ" ParameterType="LeadingToken"/>
+    <Parameter Name="KOLMOGOROV_SMIRNOV" ParameterType="LeadingToken"/>
+    <Parameter Name="HODGES_LEHMAN" ParameterType="LeadingToken"/>
+    <Parameter Name="HODGES_LEHMANN" ParameterType="LeadingToken"/>
+    <Qualification style="Equal">
+      <Parameter Name="MOSES" ParameterType="StringQualif" Occurrence="Optional">
+        <Qualification>
+          <Parameter Name="TRIMOUTLIERS" ParameterType="Integer" LowerBdryOption="InclLowerBdry"
+            LowerBdryValue="1">
+            <EnumValue Name="SAMPLE"/>
+          </Parameter>
+        </Qualification>
+      </Parameter>
+      <Parameter Name="KRUSKAL_WALLIS" ParameterType="StringQualif" Occurrence="Optional">
+        <Qualification>
+          <Parameter Name="COMPARE" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="PAIRWISE"/>
+            <EnumValue Name="STEPWISE"/>
+          </Parameter>
+        </Qualification>
+      </Parameter>
+      <Parameter Name="MEDIAN" ParameterType="StringQualifList" Occurrence="Optional">
+        <Qualification>
+          <Parameter Name="TESTVALUE" ParameterType="Number">
+            <EnumValue Name="SAMPLE"/>
+          </Parameter>
+          <Parameter Name="COMPARE" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="PAIRWISE"/>
+            <EnumValue Name="STEPWISE"/>
+          </Parameter>
+        </Qualification>
+      </Parameter>
+      <Parameter Name="JONCKHEERE_TERPSTRA" ParameterType="StringQualifList" Occurrence="Optional">
+        <Qualification style="Parenthesis">
+          <Parameter Name="ORDER" ParameterType="Keyword">
+            <EnumValue Name="ASCENDING"/>
+            <EnumValue Name="DESCENDING"/>
+          </Parameter>
+        </Qualification>
+        <Qualification>
+          <Parameter Name="COMPARE" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="PAIRWISE"/>
+            <EnumValue Name="STEPWISE"/>
+          </Parameter>
+        </Qualification>
+      </Parameter>
+    </Qualification>
+  </Subcommand>
+  <Subcommand Name="RELATED" Delimiter="ParenDelimited">
+    <Parameter Name="TEST" ParameterType="VariableNameList" MeasurementLevel="MeasLevelSubset"
+      Occurrence="Required"/>
+    <Parameter Name="WILCOXON" ParameterType="LeadingToken"/>
+    <Parameter Name="SIGN" ParameterType="LeadingToken"/>
+    <Parameter Name="MARGINAL_HOMOGENEITY" ParameterType="LeadingToken"/>
+    <Parameter Name="HODGES_LEHMAN" ParameterType="LeadingToken"/>
+    <Parameter Name="HODGES_LEHMANN" ParameterType="LeadingToken"/>
+    <Qualification style="Equal">
+      <Parameter Name="MCNEMAR" ParameterType="StringQualifList" Occurrence="Optional">
+        <Qualification style="Parenthesis">
+          <Parameter Name="SUCCESS" ParameterType="StringQualif">
+            <Qualification>
+              <Parameter Name="FIRST" ParameterType="LeadingToken"/>
+              <Parameter Name="LIST" ParameterType="TokenList"/>
+            </Qualification>
+          </Parameter>
+        </Qualification>
+      </Parameter>
+      <Parameter Name="COCHRAN" ParameterType="StringQualifList" Occurrence="Optional">
+        <Qualification style="Parenthesis">
+          <Parameter Name="SUCCESS" ParameterType="StringQualif">
+            <Qualification>
+              <Parameter Name="FIRST" ParameterType="LeadingToken"/>
+              <Parameter Name="LIST" ParameterType="TokenList"/>
+            </Qualification>
+          </Parameter>
+          <Parameter Name="COMPARE" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="PAIRWISE"/>
+            <EnumValue Name="STEPWISE"/>
+          </Parameter>
+        </Qualification>
+      </Parameter>
+      <Parameter Name="FRIEDMAN" ParameterType="StringQualif" Occurrence="Optional">
+        <Qualification>
+          <Parameter Name="COMPARE" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="PAIRWISE"/>
+            <EnumValue Name="STEPWISE"/>
+          </Parameter>
+        </Qualification>
+      </Parameter>
+      <Parameter Name="KENDALL" ParameterType="StringQualif" Occurrence="Optional">
+        <Qualification>
+          <Parameter Name="COMPARE" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="PAIRWISE"/>
+            <EnumValue Name="STEPWISE"/>
+          </Parameter>
+        </Qualification>
+      </Parameter>
+    </Qualification>
+  </Subcommand>
+
+  <!-- Execution XML -->
+  <ExecutionGeneration>
+    <CFContainer id="StatXMLContainer" name="StatXML" type="Output" containerType="StatXML"
+      boundary="Global" mvRequired="true"/>
+    <!-- Component Parameter -->
+    <ParameterGeneration>
+      <!-- npar -->
+      <ComponentSetting id="[ALL]">
+        <SyntaxProperties Name="">
+          <CFProperty Name="npar.caseIDField" ValueFrom="Fixed" Value="$casecount"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="MISSING.SCOPE">
+          <CFProperty Name="npar.missingTreatment" ValueFrom="Input">
+            <CFValueMap SyntaxValue="LISTWISE" PropertyValue="listwise"/>
+            <CFValueMap SyntaxValue="ANALYSIS" PropertyValue="analysis"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="MISSING.USERMISSING">
+          <CFProperty Name="npar.userMissing" ValueFrom="Input">
+            <CFValueMap SyntaxValue="EXCLUDE" PropertyValue="exclude"/>
+            <CFValueMap SyntaxValue="INCLUDE" PropertyValue="include"/>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="CRITERIA.ALPHA">
+          <CFProperty Name="npar.sigLevel" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="CRITERIA.CILEVEL">
+          <CFProperty Name="npar.confidenceLevel" ValueFrom="Input"/>
+        </SyntaxProperties>
+        <!-- ONESAMPLE -->
+        <SyntaxProperties Name="ONESAMPLE">
+          <CFProperty Name="[FeatureMapping]" ValueFrom="Fixed" Value="npar_tests"
+            Operation="AddToList" MaxValueCount="unbounded"/>
+          <CFProperty Name="npar.OKolmogorovSmirnovNormal" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="false"/>
+                <CFProperty Name="isUseSample" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="ONESAMPLE.TEST">
+          <CFProperty Name="npar.oneSampleVariables" ValueFrom="Input" MaxValueCount="unbounded"/>
+        </SyntaxProperties>
+        <!-- ONESAMPLE.CHISQUARE -->
+        <SyntaxProperties Name="ONESAMPLE.CHISQUARE">
+          <CFProperty Name="npar.isAutomaticallyOneSample" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.OChiSquare" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.CHISQUARE.EXPECTED.EQUAL">
+                <CFProperty Name="classFormation" ValueFrom="Fixed" Value="getFromData"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.CHISQUARE.EXPECTED.CUSTOM">
+                <CFProperty Name="classFormation" ValueFrom="Fixed" Value="givenExpectedValue"/>
+                <CFProperty Name="custom" ValueFrom="Empty" Split="true" MaxValueCount="unbounded">
+                  <CFPStructure>
+                    <SyntaxProperties Name="ONESAMPLE.CHISQUARE.EXPECTED.CUSTOM.FREQUENCIES">
+                      <CFProperty Name="expectedValue" ValueFrom="Input"/>
+                    </SyntaxProperties>
+                    <SyntaxProperties Name="ONESAMPLE.CHISQUARE.EXPECTED.CUSTOM.CATEGORIES">
+                      <CFProperty Name="categoryValue" ValueFrom="Input"/>
+                    </SyntaxProperties>
+                  </CFPStructure>
+                </CFProperty>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- ONESAMPLE.BINOMIAL -->
+        <SyntaxProperties Name="ONESAMPLE.BINOMIAL">
+          <CFProperty Name="npar.isAutomaticallyOneSample" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.OBinomial" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.BINOMIAL.TESTVALUE">
+                <CFProperty Name="testProbability" ValueFrom="Input"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.BINOMIAL.SUCCESSCATEGORICAL.FIRST">
+                <CFProperty Name="catVarClassFormation" ValueFrom="Fixed" Value="getFromData"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.BINOMIAL.SUCCESSCATEGORICAL.LIST">
+                <CFProperty Name="catVarClassFormation" ValueFrom="Fixed" Value="givenCategoryList"/>
+                <CFProperty Name="givenCategoryList" ValueFrom="Input" MaxValueCount="unbounded"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.BINOMIAL.SUCCESSCONTINUOUS.CUTPOINT">
+                <CFProperty Name="contVarClassFormation" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="MIDPOINT" PropertyValue="sampleMidPoint"/>
+                  <CFValueMap SyntaxValue="##" PropertyValue="givenCutPoint"/>
+                </CFProperty>
+                <CFProperty Name="givenCutPoint" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="MIDPOINT" PropertyValue="0"/>
+                </CFProperty>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.BINOMIAL.CLOPPERPEARSON">
+                <CFProperty Name="isDoClopperPearson" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.BINOMIAL.JEFFREYS">
+                <CFProperty Name="isDoJeffreys" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.BINOMIAL.LIKELIHOOD">
+                <CFProperty Name="isDoProfileLikelihood" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- KOLMOGOROV_SMIRNOV -->
+        <SyntaxProperties Name="ONESAMPLE.KOLMOGOROV_SMIRNOV">
+          <CFProperty Name="npar.isAutomaticallyOneSample" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="KS_test" ValueFrom="Fixed" Value="true"/>
+          <CFProperty Name="npar.OKolmogorovSmirnovNormal" ValueFrom="Evaluate" Value="##" Operation="Delete"/>          
+        </SyntaxProperties>
+        <!-- KOLMOGOROV_SMIRNOV.NORMAL -->
+        <SyntaxProperties Name="ONESAMPLE.KOLMOGOROV_SMIRNOV.NORMAL">
+          <CFProperty Name="npar.OKolmogorovSmirnovNormal" ValueFrom="Empty" Operation="Delete"/>
+          <CFProperty Name="npar.OKolmogorovSmirnovNormal" ValueFrom="Empty"
+            Operation="CreateReplace">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.KOLMOGOROV_SMIRNOV.NORMAL">
+                <CFProperty Name="isUseSample" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="SAMPLE" PropertyValue="true"/>
+                  <CFValueMap SyntaxValue="CUSTOM" PropertyValue="false"/>
+                </CFProperty>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.KOLMOGOROV_SMIRNOV.NORMAL.CUSTOM.MEAN">
+                <CFProperty Name="mean" ValueFrom="Input"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.KOLMOGOROV_SMIRNOV.NORMAL.CUSTOM.SD">
+                <CFProperty Name="stdDev" ValueFrom="Input"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- KOLMOGOROV_SMIRNOV.UNIFORM -->
+        <SyntaxProperties Name="ONESAMPLE.KOLMOGOROV_SMIRNOV.UNIFORM">
+          <CFProperty Name="npar.OKolmogorovSmirnovUniform" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.KOLMOGOROV_SMIRNOV.UNIFORM">
+                <CFProperty Name="isUseSample" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="SAMPLE" PropertyValue="true"/>
+                  <CFValueMap SyntaxValue="CUSTOM" PropertyValue="false"/>
+                </CFProperty>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.KOLMOGOROV_SMIRNOV.UNIFORM.CUSTOM.MIN">
+                <CFProperty Name="min" ValueFrom="Input"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.KOLMOGOROV_SMIRNOV.UNIFORM.CUSTOM.MAX">
+                <CFProperty Name="max" ValueFrom="Input"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- KOLMOGOROV_SMIRNOV.EXPONENTIAL -->
+        <SyntaxProperties Name="ONESAMPLE.KOLMOGOROV_SMIRNOV.EXPONENTIAL">
+          <CFProperty Name="npar.OKolmogorovSmirnovExponential" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.KOLMOGOROV_SMIRNOV.EXPONENTIAL">
+                <CFProperty Name="isUseSample" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="SAMPLE" PropertyValue="true"/>
+                  <CFValueMap SyntaxValue="CUSTOM" PropertyValue="false"/>
+                </CFProperty>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.KOLMOGOROV_SMIRNOV.EXPONENTIAL.CUSTOM.MEAN">
+                <CFProperty Name="mean" ValueFrom="Input"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- KOLMOGOROV_SMIRNOV.POISSON -->
+        <SyntaxProperties Name="ONESAMPLE.KOLMOGOROV_SMIRNOV.POISSON">
+          <CFProperty Name="npar.OKolmogorovSmirnovPoisson" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.KOLMOGOROV_SMIRNOV.POISSON">
+                <CFProperty Name="isUseSample" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="SAMPLE" PropertyValue="true"/>
+                  <CFValueMap SyntaxValue="CUSTOM" PropertyValue="false"/>
+                </CFProperty>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.KOLMOGOROV_SMIRNOV.POISSON.CUSTOM.MEAN">
+                <CFProperty Name="mean" ValueFrom="Input"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- ONESAMPLE.RUNS -->
+        <SyntaxProperties Name="ONESAMPLE.RUNS">
+          <CFProperty Name="npar.isAutomaticallyOneSample" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.ORuns" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.RUNS.GROUPCATEGORICAL.SAMPLE">
+                <CFProperty Name="catVarClassFormation" ValueFrom="Fixed" Value="getFromData"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.RUNS.GROUPCATEGORICAL.LIST">
+                <CFProperty Name="catVarClassFormation" ValueFrom="Fixed" Value="givenCategoryList"/>
+                <CFProperty Name="givenCategoryList" ValueFrom="Input" MaxValueCount="unbounded"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.RUNS.GROUPCONTINUOUS.CUTPOINT">
+                <CFProperty Name="contVarClassFormation" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="SAMPLEMEDIAN" PropertyValue="cutPointMedian"/>
+                  <CFValueMap SyntaxValue="SAMPLEMEAN" PropertyValue="cutPointMean"/>
+                  <CFValueMap SyntaxValue="##" PropertyValue="cutPointValue"/>
+                </CFProperty>
+                <CFProperty Name="cutPointValue" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="SAMPLEMEDIAN" PropertyValue="0"/>
+                  <CFValueMap SyntaxValue="SAMPLEMEAN" PropertyValue="0"/>
+                </CFProperty>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- ONESAMPLE.WILCOXON -->
+        <SyntaxProperties Name="ONESAMPLE.WILCOXON">
+          <CFProperty Name="npar.isAutomaticallyOneSample" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.OWilcoxonSignedRanks" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="ONESAMPLE.WILCOXON.TESTVALUE">
+                <CFProperty Name="userSpecifyTestValue" ValueFrom="Fixed" Value="true"/>
+                <CFProperty Name="testValue" ValueFrom="Input"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+
+        <!-- INDEPENDENT -->
+        <SyntaxProperties Name="INDEPENDENT">
+          <CFProperty Name="[FeatureMapping]" ValueFrom="Fixed" Value="two_independent_tests"
+            Operation="AddToList" MaxValueCount="unbounded"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="INDEPENDENT.TEST">
+          <CFProperty Name="npar.independentVariables" ValueFrom="Input" MaxValueCount="unbounded"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="INDEPENDENT.GROUP">
+          <CFProperty Name="npar.groupVariable" ValueFrom="Input" MaxValueCount="unbounded"/>
+        </SyntaxProperties>
+        <!-- INDEPENDENT.MANN_WHITNEY -->
+        <SyntaxProperties Name="INDEPENDENT.MANN_WHITNEY">
+          <CFProperty Name="npar.isAutomaticallyIndependent" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.IMannWhitneyU" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="userSpecifyGroupList" ValueFrom="Fixed" Value="false"/>
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- INDEPENDENT.WALD_WOLFOWITZ -->
+        <SyntaxProperties Name="INDEPENDENT.WALD_WOLFOWITZ">
+          <CFProperty Name="npar.isAutomaticallyIndependent" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.IWaldWolfowitzRuns" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- INDEPENDENT.KOLMOGOROV_SMIRNOV -->
+        <SyntaxProperties Name="INDEPENDENT.KOLMOGOROV_SMIRNOV">
+          <CFProperty Name="npar.isAutomaticallyIndependent" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.IKolmogorovSmirnov" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- INDEPENDENT.HODGES_LEHMAN -->
+        <SyntaxProperties Name="INDEPENDENT.HODGES_LEHMAN">
+          <CFProperty Name="npar.isAutomaticallyIndependent" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.IHodgesLehmannEstimateIndependent" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="INDEPENDENT.HODGES_LEHMANN">
+          <CFProperty Name="npar.isAutomaticallyIndependent" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.IHodgesLehmannEstimateIndependent" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- INDEPENDENT.MOSES -->
+        <SyntaxProperties Name="INDEPENDENT.MOSES">
+          <CFProperty Name="npar.isAutomaticallyIndependent" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.IMoses" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+                <CFProperty Name="userSpecifyGroupList" ValueFrom="Fixed" Value="false"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="INDEPENDENT.MOSES.TRIMOUTLIERS">
+                <CFProperty Name="userSpecifyNumberOfOutliers" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="SAMPLE" PropertyValue="false"/>
+                  <CFValueMap SyntaxValue="##" PropertyValue="true"/>
+                </CFProperty>
+                <CFProperty Name="NumberOfOutliers" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="SAMPLE" PropertyValue="0"/>
+                </CFProperty>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- INDEPENDENT.KRUSKAL_WALLIS -->
+        <SyntaxProperties Name="INDEPENDENT.KRUSKAL_WALLIS">
+          <CFProperty Name="npar.isAutomaticallyIndependent" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.IKruskalWallis" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="INDEPENDENT.KRUSKAL_WALLIS.COMPARE">
+                <CFProperty Name="typeOfMultipleComparison" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="NONE" PropertyValue="none"/>
+                  <CFValueMap SyntaxValue="PAIRWISE" PropertyValue="pairWise"/>
+                  <CFValueMap SyntaxValue="STEPWISE" PropertyValue="stepWise"/>
+                </CFProperty>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- INDEPENDENT.MEDIAN -->
+        <SyntaxProperties Name="INDEPENDENT.MEDIAN">
+          <CFProperty Name="npar.isAutomaticallyIndependent" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.IKMedian" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+                <CFProperty Name="userSpecifyGroupRange" ValueFrom="Fixed" Value="false"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="INDEPENDENT.MEDIAN.TESTVALUE">
+                <CFProperty Name="userSpecifyMedian" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="SAMPLE" PropertyValue="false"/>
+                  <CFValueMap SyntaxValue="##" PropertyValue="true"/>
+                </CFProperty>
+                <CFProperty Name="median" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="SAMPLE" PropertyValue="0"/>
+                </CFProperty>
+              </SyntaxProperties>
+              <SyntaxProperties Name="INDEPENDENT.MEDIAN.COMPARE">
+                <CFProperty Name="typeOfMultipleComparison" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="NONE" PropertyValue="none"/>
+                  <CFValueMap SyntaxValue="PAIRWISE" PropertyValue="pairWise"/>
+                  <CFValueMap SyntaxValue="STEPWISE" PropertyValue="stepWise"/>
+                </CFProperty>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- INDEPENDENT.JONCKHEERE_TERPSTRA -->
+        <SyntaxProperties Name="INDEPENDENT.JONCKHEERE_TERPSTRA">
+          <CFProperty Name="npar.isAutomaticallyIndependent" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.IJonckheereTerpstra" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="INDEPENDENT.JONCKHEERE_TERPSTRA.ORDER">
+                <CFProperty Name="orderOfHypotheses" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="ASCENDING" PropertyValue="orderSmallestToLargest"/>
+                  <CFValueMap SyntaxValue="DESCENDING" PropertyValue="orderLargestToSmallest"/>
+                </CFProperty>
+              </SyntaxProperties>
+              <SyntaxProperties Name="INDEPENDENT.JONCKHEERE_TERPSTRA.COMPARE">
+                <CFProperty Name="typeOfMultipleComparison" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="NONE" PropertyValue="none"/>
+                  <CFValueMap SyntaxValue="PAIRWISE" PropertyValue="pairWise"/>
+                  <CFValueMap SyntaxValue="STEPWISE" PropertyValue="stepWise"/>
+                </CFProperty>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+
+        <!-- RELATED -->
+        <SyntaxProperties Name="RELATED">
+          <CFProperty Name="[FeatureMapping]" ValueFrom="Fixed" Value="two_related_tests"
+            Operation="AddToList" MaxValueCount="unbounded"/>
+        </SyntaxProperties>
+        <SyntaxProperties Name="RELATED.TEST">
+          <CFProperty Name="npar.relatedVariables" ValueFrom="Input" MaxValueCount="unbounded"/>
+        </SyntaxProperties>
+        <!-- RELATED.MCNEMAR -->
+        <SyntaxProperties Name="RELATED.MCNEMAR">
+          <CFProperty Name="npar.isAutomaticallyRelated" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.RMcNemar" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="RELATED.MCNEMAR.SUCCESS.FIRST">
+                <CFProperty Name="classFormation" ValueFrom="Fixed" Value="getFromData"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="RELATED.MCNEMAR.SUCCESS.LIST">
+                <CFProperty Name="classFormation" ValueFrom="Fixed" Value="givenCategoryList"/>
+                <CFProperty Name="categoriesList" ValueFrom="Input" MaxValueCount="unbounded"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- RELATED.WILCOXON -->
+        <SyntaxProperties Name="RELATED.WILCOXON">
+          <CFProperty Name="npar.isAutomaticallyRelated" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.RWilcoxonSignedRanks" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- RELATED.SIGN -->
+        <SyntaxProperties Name="RELATED.SIGN">
+          <CFProperty Name="npar.isAutomaticallyRelated" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.RSign" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- RELATED.MARGINAL_HOMOGENEITY -->
+        <SyntaxProperties Name="RELATED.MARGINAL_HOMOGENEITY">
+          <CFProperty Name="npar.isAutomaticallyRelated" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.RMarginalHomogeneity" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- RELATED.HODGES_LEHMAN -->
+        <SyntaxProperties Name="RELATED.HODGES_LEHMAN">
+          <CFProperty Name="npar.isAutomaticallyRelated" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.RHodgesLehmannEstimatePairs" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <SyntaxProperties Name="RELATED.HODGES_LEHMANN">
+          <CFProperty Name="npar.isAutomaticallyRelated" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.RHodgesLehmannEstimatePairs" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- RELATED.COCHRAN -->
+        <SyntaxProperties Name="RELATED.COCHRAN">
+          <CFProperty Name="npar.isAutomaticallyRelated" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.RCochransQ" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="RELATED.COCHRAN.SUCCESS.FIRST">
+                <CFProperty Name="classFormation" ValueFrom="Fixed" Value="getFromData"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="RELATED.COCHRAN.SUCCESS.LIST">
+                <CFProperty Name="classFormation" ValueFrom="Fixed" Value="givenCategoryList"/>
+                <CFProperty Name="successCategoryList" ValueFrom="Input" MaxValueCount="unbounded"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="RELATED.COCHRAN.COMPARE">
+                <CFProperty Name="typeOfMultipleComparison" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="NONE" PropertyValue="none"/>
+                  <CFValueMap SyntaxValue="PAIRWISE" PropertyValue="pairWise"/>
+                  <CFValueMap SyntaxValue="STEPWISE" PropertyValue="stepWise"/>
+                </CFProperty>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- RELATED.FRIEDMAN -->
+        <SyntaxProperties Name="RELATED.FRIEDMAN">
+          <CFProperty Name="npar.isAutomaticallyRelated" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.RFriedmansTwoWayByRanks" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="RELATED.FRIEDMAN.COMPARE">
+                <CFProperty Name="typeOfMultipleComparison" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="NONE" PropertyValue="none"/>
+                  <CFValueMap SyntaxValue="PAIRWISE" PropertyValue="pairWise"/>
+                  <CFValueMap SyntaxValue="STEPWISE" PropertyValue="stepWise"/>
+                </CFProperty>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+        <!-- RELATED.KENDALL -->
+        <SyntaxProperties Name="RELATED.KENDALL">
+          <CFProperty Name="npar.isAutomaticallyRelated" ValueFrom="Fixed" Value="false"
+            Operation="CreateReplace"/>
+          <CFProperty Name="npar.RKendallsCoefficient" ValueFrom="Empty">
+            <CFPStructure>
+              <SyntaxProperties Name="">
+                <CFProperty Name="isSelected" ValueFrom="Fixed" Value="true"/>
+              </SyntaxProperties>
+              <SyntaxProperties Name="RELATED.KENDALL.COMPARE">
+                <CFProperty Name="typeOfMultipleComparison" ValueFrom="Input">
+                  <CFValueMap SyntaxValue="NONE" PropertyValue="none"/>
+                  <CFValueMap SyntaxValue="PAIRWISE" PropertyValue="pairWise"/>
+                  <CFValueMap SyntaxValue="STEPWISE" PropertyValue="stepWise"/>
+                </CFProperty>
+              </SyntaxProperties>
+            </CFPStructure>
+          </CFProperty>
+        </SyntaxProperties>
+
+      </ComponentSetting>
+    </ParameterGeneration>
+  </ExecutionGeneration>
+</Command>

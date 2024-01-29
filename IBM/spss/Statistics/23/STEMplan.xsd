@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: <Analytic Components>                          -->
+<!--                                                                   -->
+<!-- (c)Copyright IBM Corp.  2014                                      -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<xs:schema version="7.0" 
+	xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+	xmlns="http://www.ibm.com/software/analytics/spss/xml/"
+	targetNamespace="http://www.ibm.com/software/analytics/spss/xml/STEM"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	elementFormDefault="qualified">
+	
+	<xs:annotation>
+		<xs:documentation> Schema for STEM plan file. It provides specification for 
+             several geo-spatial input data sources and their associated non-spatial attributes
+             and other relevant information. GSAR needs all this information, STP and PPM
+             need only some of that, so other parts are optional. 
+        </xs:documentation>
+	</xs:annotation>
+	<xs:element name="SPSSGeoSpatialPlan">
+		<xs:complexType>
+			<xs:sequence>
+                <xs:element ref="Header"/> 
+				<xs:element ref="GeoContextSources"/>
+			</xs:sequence>
+			<xs:attribute name="version" type="xs:string" use="required"/>
+			<xs:attribute name="timeStamp" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="Header">
+		<xs:complexType>
+                  <xs:element name="Application">
+                    <xs:complexType>
+                      <xs:attribute name="name" type="xs:string" use="required" />
+                      <xs:attribute name="version" type="xs:string" />
+                    </xs:complexType>
+                  </xs:element>
+			<xs:attribute name="copyright" type="xs:string" use="required" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GeoContextSources">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="GeoContextSource" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="NonSpatialSource" minOccurs="1"  maxOccurs="unbounded"/>     				
+			</xs:sequence>
+			<xs:attribute name="numberOfSources" type="xs:integer" use="required"/>
+		    <xs:attribute name="projection" type="xs:string" /> <!-- csname-->
+			<xs:attribute name="Display" type="xs:string" />
+			<xs:attribute name="WKID" type="xs:string" />
+			<xs:attribute name="coordinate" type="xs:string" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="GeoContextSource">
+		<xs:complexType>			
+			<xs:attribute name="id" type="xs:integer" use="required"/>
+			<xs:attribute name="type" use="required" default="FILE">
+			     <xs:simpleType>
+					    <xs:restriction base="xs:string">
+						    <xs:enumeration value="UNKNOWN"/> <!-- unknown -->
+						    <xs:enumeration value="FILE"/> <!-- file -->
+						    <xs:enumeration value="SERVICE"/> <!-- service-->
+							<xs:enumeration value="PACKAGE"/>  <!-- package -->
+							<xs:enumeration value="GDB"/>  <!-- package -->
+					    </xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>			
+			<xs:attribute name="finalSource" type="xs:string" />
+			<xs:attribute name="layer" type="xs:string" />
+			<xs:attribute name="closeRadius" type="xs:double" />
+			<xs:attribute name="maxRelations" type="RANGE" />
+			<xs:attribute name="distanceMeasure" default="ml" >
+			     <xs:simpleType>
+					    <xs:restriction base="xs:string">
+						    <xs:enumeration value="ml"/> <!-- mile -->
+						    <xs:enumeration value="ft"/> <!-- foot -->
+						    <xs:enumeration value="km"/> <!-- kilometer-->
+							<xs:enumeration value="m"/>  <!-- meter -->
+							<xs:enumeration value="cm"/>  <!-- centimeter -->
+					    </xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>			
+			<xs:attribute name="predicate" default="NONE" >
+			     <xs:simpleType>
+					    <xs:restriction base="xs:string">
+						    <xs:enumeration value="NONE"/> <!-- kNoSpatialPredicate -->
+						    <xs:enumeration value="WITHIN"/> <!-- kWITHIN -->
+						    <xs:enumeration value="CLOSE"/> <!-- kCLOSE-->
+							<xs:enumeration value="CONTAINS"/>  <!-- kCONTAINS -->
+							<xs:enumeration value="INTERSECTS"/> <!-- kINTERSECTS -->
+						    <xs:enumeration value="CROSS"/> <!-- kCROSS -->
+						    <xs:enumeration value="OVERLAP"/> <!-- kOVERLAP-->
+							<xs:enumeration value="TOUCH"/>  <!-- kTOUCH -->
+							<xs:enumeration value="EAST"/> <!-- kEAST -->
+						    <xs:enumeration value="WEST"/> <!-- kWEST-->
+							<xs:enumeration value="SOUTH"/>  <!-- kSOUTH -->
+							<xs:enumeration value="NORTH"/>  <!-- kNORTH -->
+					    </xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+            <xs:attribute name="coordSystem" default="GEOGRAPHIC">
+					    <xs:simpleType>
+					        <xs:restriction base="xs:string">
+						       <xs:enumeration value="GEOGRAPHIC"/> <!-- GEOGRAPHIC -->						 
+						       <xs:enumeration value="WKID"/> <!-- .dbf-->
+							   <xs:enumeration value="PROJECTION"/>  <!-- Dataset -->							
+					        </xs:restriction>
+				        </xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="wkid" type="xs:integer"/>
+					<xs:attribute name="projection" type="xs:string"/>			
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="NonSpatialSource">
+		<xs:complexType>
+			<xs:sequence>				
+                <xs:element ref="MapKeys" minOccurs="0" maxOccurs="unbounded"/>
+                <xs:element ref="DataKeys" minOccurs="0" maxOccurs="unbounded"/>								 
+                <xs:element name="DataToMap" minOccurs="0" maxOccurs="unbounded">
+                    <xs:complexType>					    
+						<xs:sequence>
+				              <xs:element ref="DataValue" minOccurs="0"/><!--  data Field values list  -->
+			            </xs:sequence>
+						<xs:sequence>
+				              <xs:element ref="MapValue" minOccurs="0"/><!--  map Field values list  -->
+			            </xs:sequence>                                 
+                    </xs:complexType>
+              </xs:element>
+      	      <xs:element name="CoordinatesSource" minOccurs="0" maxOccurs="unbounded">
+				    <xs:complexType>					    
+						<xs:sequence>
+				              <xs:element ref="XField"/><!-- X coordinate -->
+			            </xs:sequence>
+						<xs:sequence>
+				              <xs:element ref="YField"/><!-- Y coordinate  -->
+			            </xs:sequence>
+						<xs:sequence>
+				              <xs:element ref="ZField" minOccurs="0"/><!-- Z coordinate  -->
+			            </xs:sequence>						
+                    </xs:complexType>
+					<xs:attribute name="coordSystem" use="required" default="GEOGRAPHIC">
+					    <xs:simpleType>
+					        <xs:restriction base="xs:string">
+						       <xs:enumeration value="GEOGRAPHIC"/> <!-- GEOGRAPHIC -->
+						       <xs:enumeration value="CARTESIAN"/> <!-- file -->
+						       <xs:enumeration value="WKID"/> <!-- .dbf-->
+							   <xs:enumeration value="PROJECTION"/>  <!-- Dataset -->							
+					        </xs:restriction>
+				        </xs:simpleType>
+					</xs:attribute>
+					<xs:attribute name="wkid" type="xs:integer"/>
+					<xs:attribute name="projection" type="xs:string"/>
+				</xs:element>	
+			</xs:sequence>
+			<xs:attribute name="mapId" type="xs:string"/> <!-- related .shp file  id -->
+			<xs:attribute name="id" type="xs:string" use="required"/> <!-- unique id -->
+			<xs:attribute name="source" type="xs:string" use="required"/> <!-- file name -->
+			<xs:attribute name="role" type="xs:string" use="required">
+                <xs:simpleType>
+					    <xs:restriction base="xs:string">
+						    <xs:enumeration value="CONTEXT"/> <!-- CONTEXT -->
+						    <xs:enumeration value="EVENTDENSITY"/> <!-- EVENT/DENSITY -->
+						    <xs:enumeration value="SCORE"/> <!-- score-->											
+					    </xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+				<!-- file name -->
+			<xs:attribute name="type" use="required" default="UNKNOWN">
+			     <xs:simpleType>
+					    <xs:restriction base="xs:string">
+						    <xs:enumeration value="UNKNOWN"/> <!-- unknown -->
+						    <xs:enumeration value="FILE"/> <!-- file -->
+						    <xs:enumeration value="MAP"/> <!-- .dbf-->
+							<xs:enumeration value="DATASET"/>  <!-- Dataset -->							
+					    </xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>			
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="MapKeys">
+		<xs:complexType>
+			<xs:sequence> 
+				<xs:element ref="Field" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="DataKeys" minOccurs="0" maxOccurs="unbounded">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Field" maxOccurs="unbounded" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="Field" maxOccurs="unbounded">
+        <xs:complexType>
+             <xs:attribute name="name" use="required">
+                 <xs:simpleType>
+                      <xs:union memberTypes="xs:string"/> 
+                 </xs:simpleType>
+              </xs:attribute>
+          </xs:complexType>
+    </xs:element>	
+	<xs:element name="XField">
+        <xs:complexType>
+             <xs:attribute name="name" use="required">
+                 <xs:simpleType>
+                      <xs:union memberTypes="xs:string"/> 
+                 </xs:simpleType>
+              </xs:attribute>
+          </xs:complexType>
+    </xs:element>	
+	<xs:element name="YField">
+        <xs:complexType>
+             <xs:attribute name="name" use="required">
+                 <xs:simpleType>
+                      <xs:union memberTypes="xs:string"/> 
+                 </xs:simpleType>
+              </xs:attribute>
+          </xs:complexType>
+    </xs:element>
+    <xs:element name="ZField">
+        <xs:complexType>
+             <xs:attribute name="name" use="required">
+                 <xs:simpleType>
+                      <xs:union memberTypes="xs:string"/> 
+                 </xs:simpleType>
+              </xs:attribute>
+          </xs:complexType>
+    </xs:element>
+   	
+	<xs:element name="DataValue">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Array" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="MapValue">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="Array" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	
+	<!-- Array element like in PMML. -->
+	<!-- <Array n="3" type="int">1 22 3</Array>
+    <Array n="3" type="string">ab  "a b"   "with \"quotes\" "</Array> -->
+	
+	<xs:element name="Array">
+		<xs:annotation>
+			<xs:documentation> A list of integer, real or string values.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType mixed="true">
+			<xs:attribute name="n" type="xs:nonNegativeInteger" use="optional">
+				<xs:annotation>
+					<xs:documentation> Number of elements</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="type" use="required">
+				<xs:annotation>
+					<xs:documentation> Data type</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="int"/>
+						<xs:enumeration value="real"/>
+						<xs:enumeration value="string"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:simpleType name="RANGE">
+      <xs:restriction base="xs:integer">
+        <xs:minExclusive value="1"/>
+        <xs:maxExclusive value="10"/>
+      </xs:restriction>
+    </xs:simpleType>	
+	
+</xs:schema>
+    
+    

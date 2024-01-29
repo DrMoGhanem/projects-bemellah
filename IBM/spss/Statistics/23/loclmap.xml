@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2014                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<!-- @version: -->
+<!-- The client locale is the ISO locale name.
+Executing SHOW LOCALE on the Windows client will display the ISO locale identifier
+if in local mode (otherwise it shows the Server locale).
+The server-locale list is tried in order after first trying the specified locale name.
+If no server locale works, the SPSS Server uses the LC_ALL value of the server process.
+In some cases there is no exact correspondence between Windows and Unix/Linux locales.
+Note that locale identifiers are case sensitive. -->
+
+<locale-map xmlns="http://xml.spss.com/spss/mls"
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+xsi:schemaLocation="http://xml.spss.com/spss/mls http://xml.spss.com/spss/mls/locale-map-1.0.xsd">
+    <client-locale name="English">
+        <server-locale name="en_US.cp1252"></server-locale>
+        <server-locale name="en_US.iso-8859-1"></server-locale>
+        <server-locale name="en_US"></server-locale>
+        <server-locale name="en"></server-locale>
+        <server-locale name="en_US.iso88591"></server-locale>
+        <server-locale name="en_US.ISO8859-1"></server-locale>
+        <server-locale name="en_US.windows-1252"></server-locale>
+        <server-locale name="en_US.utf8"></server-locale>
+        <server-locale name="en_US.UTF-8"></server-locale>
+        <server-locale name="English_United States.1252"></server-locale>
+    </client-locale>
+
+    <client-locale name="English-US">
+        <server-locale name="en_US.cp1252"></server-locale>
+        <server-locale name="en_US.iso-8859-1"></server-locale>
+        <server-locale name="en_US"></server-locale>
+        <server-locale name="en"></server-locale>
+        <server-locale name="en_US.iso88591"></server-locale>
+        <server-locale name="en_US.ISO8859-1"></server-locale>
+        <server-locale name="en_US.windows-1252"></server-locale>
+        <server-locale name="en_US.utf8"></server-locale>
+        <server-locale name="en_US.UTF-8"></server-locale>
+        <server-locale name="English_United States.1252"></server-locale>
+    </client-locale>
+
+    <client-locale name="English-UK">
+        <server-locale name="en_UK.cp1252"></server-locale>
+        <server-locale name="en_UK.iso-8859-1"></server-locale>
+        <server-locale name="en_GB"></server-locale>
+        <server-locale name="en_UK"></server-locale>
+        <server-locale name="en_GB.ISO8859-1"></server-locale>
+        <server-locale name="en_GB.windows-1252"></server-locale>
+        <server-locale name="en_GB.utf8"></server-locale>
+        <server-locale name="en_GB.UTF-8"></server-locale>
+        <server-locale name="English_United Kingdom.1252"></server-locale>
+    </client-locale>
+
+    <client-locale name="English-Canada">
+        <server-locale name="en_CA.cp1252"></server-locale>
+        <server-locale name="en_CA.iso-8859-1"></server-locale>
+        <server-locale name="en_CA"></server-locale>
+        <server-locale name="en_CA.8859-15"></server-locale>
+        <server-locale name="en_CA.windows-1252"></server-locale>
+        <server-locale name="en_CA.utf8"></server-locale>
+        <server-locale name="en_CA.UTF-8"></server-locale>
+        <server-locale name="English_Canada.1252"></server-locale>
+    </client-locale>
+
+    <client-locale name="English-Australia">
+        <server-locale name="en_AU.cp1252"></server-locale>
+        <server-locale name="en_CA.iso-8859-1"></server-locale>
+        <server-locale name="en_AU"></server-locale>
+        <server-locale name="EN_AU"></server-locale>
+        <server-locale name="en"></server-locale>
+        <server-locale name="en_AU.8859-15"></server-locale>
+        <server-locale name="en_AU.windows-1252"></server-locale>
+        <server-locale name="en_AU.utf8"></server-locale>
+        <server-locale name="en_AU.UTF-8"></server-locale>
+        <server-locale name="English_Australia.1252"></server-locale>
+    </client-locale>
+
+    <client-locale name="Japanese">
+        <server-locale name="ja_JP.IBM-eucJP"></server-locale>
+        <server-locale name="ja_JP.cp932"></server-locale>
+        <server-locale name="ja_JP.sjis"></server-locale>
+        <server-locale name="ja_JP.PCK"></server-locale>
+        <server-locale name="ja_JP.SJIS"></server-locale>
+        <server-locale name="Ja_JP.IBM-943"></server-locale>
+        <server-locale name="ja_JP.eucjp"></server-locale>
+        <server-locale name="ja_JP.windows-31j"></server-locale>
+        <server-locale name="ja_JP"></server-locale>
+        <server-locale name="ja_JP.utf8"></server-locale>
+        <server-locale name="ja_JP.UTF-8"></server-locale>
+        <server-locale name="Japanese_Japan.932"></server-locale>
+    </client-locale>
+
+    <client-locale name="Korean">
+        <server-locale name="ko_KR.cp949"></server-locale>
+        <server-locale name="ko_KR.IBM-eucKR"></server-locale>
+        <server-locale name="ko_KR.IBM-euckr"></server-locale>
+        <server-locale name="ko_KR.euckr"></server-locale>
+        <server-locale name="ko_KR"></server-locale>
+        <server-locale name="ko"></server-locale>
+        <server-locale name="ko_KR.EUC-KR"></server-locale>
+        <server-locale name="ko_KR.utf8"></server-locale>
+        <server-locale name="ko_KR.UTF-8"></server-locale>
+        <server-locale name="Korean_Korea.949"></server-locale>
+    </client-locale>
+
+    <client-locale name="Chinese-PRC">
+        <server-locale name="zh_CN.cp936"></server-locale>
+        <server-locale name="Zh_CN.GBK"></server-locale>
+        <server-locale name="zh_CN.GBK"></server-locale>
+        <server-locale name="zh_CN.gbk"></server-locale>
+        <server-locale name="zh_CN.gb18030"></server-locale>
+        <server-locale name="zh_CN.GB18030"></server-locale>
+        <server-locale name="Zh_CN.GB18030"></server-locale>
+        <server-locale name="zh_CN"></server-locale>
+        <server-locale name="zh_CN.utf8"></server-locale>
+        <server-locale name="zh_CN.UTF-8"></server-locale>
+        <server-locale name="Chinese_China.936"></server-locale>
+        <server-locale name="Chinese (Simplified)_China.936"></server-locale>
+        <server-locale name="Chinese (Simplified)_People's Republic of China.936"></server-locale>
+    </client-locale>
+
+    <client-locale name="Chinese-Taiwan">
+        <server-locale name="zh_HK.Big5-HKSCS"></server-locale>
+        <server-locale name="zh_TW.cp950"></server-locale>
+        <server-locale name="Zh_TW.big5"></server-locale>
+        <server-locale name="zh_TW.BIG5"></server-locale>
+        <server-locale name="zh_TW.euctw"></server-locale>
+        <server-locale name="zh_TW.Big5"></server-locale>
+        <server-locale name="zh_TW"></server-locale>
+        <server-locale name="zh_TW.utf8"></server-locale>
+        <server-locale name="zh_TW.UTF-8"></server-locale>
+        <server-locale name="Chinese_Taiwan.950"></server-locale>
+        <server-locale name="Chinese (Traditional)_Taiwan.950"></server-locale>
+    </client-locale>
+
+    <client-locale name="Vietnamese">
+        <server-locale name="vi_VN.cp1258"></server-locale>
+        <server-locale name="Vi_VN.IBM-1129"></server-locale>
+        <server-locale name="Vi_VN"></server-locale>
+        <server-locale name="vi_VN"></server-locale>
+        <server-locale name="vi_VN.windows-1258"></server-locale>
+        <server-locale name="vi_VN.utf8"></server-locale>
+        <server-locale name="vi_VN.UTF-8"></server-locale>
+        <server-locale name="Vietnamese_Viet Nam.1258"></server-locale>
+    </client-locale>
+
+    <client-locale name="Thai">
+        <server-locale name="th_TH.cp874"></server-locale>
+        <server-locale name="th_TH"></server-locale>
+        <server-locale name="Th_TH"></server-locale>
+        <server-locale name="Th_TH.windows-874"></server-locale>
+        <server-locale name="th_TH.utf8"></server-locale>
+        <server-locale name="th_TH.UTF-8"></server-locale>
+        <server-locale name="Thai_Thailand.874"></server-locale>
+    </client-locale>
+
+    <client-locale name="Russian">
+        <server-locale name="ru_RU.cp1251"></server-locale>
+        <server-locale name="ru_RU.ISO8859-5"></server-locale>
+        <server-locale name="ru_RU.8859-5"></server-locale>
+        <server-locale name="ru_RU.iso88595"></server-locale>
+        <server-locale name="ru"></server-locale>
+        <server-locale name="ru_RU"></server-locale>
+        <server-locale name="ru_RU.windows-1251"></server-locale>
+        <server-locale name="ru_RU.utf8"></server-locale>
+        <server-locale name="ru_RU.UTF-8"></server-locale>
+        <server-locale name="Russian_Russia.1251"></server-locale>
+    </client-locale>
+
+    <client-locale name="Polish">
+        <server-locale name="pl_PL.cp1250"></server-locale>
+        <server-locale name="pl_PL.ISO8859-2"></server-locale>
+        <server-locale name="pl_PL.8859-2"></server-locale>
+        <server-locale name="pl_PL"></server-locale>
+        <server-locale name="pl_PL.windows-1250"></server-locale>
+        <server-locale name="pl_PL.utf8"></server-locale>
+        <server-locale name="pl_PL.UTF-8"></server-locale>
+        <server-locale name="Polish_Poland.1250"></server-locale>
+    </client-locale>
+
+    <client-locale name="Greek">
+        <server-locale name="el_GR.cp1253"></server-locale>
+        <server-locale name="el_GR.ISO8859-7"></server-locale>
+        <server-locale name="el_GR.8859-7"></server-locale>
+        <server-locale name="el_GR"></server-locale>
+        <server-locale name="EL_GR"></server-locale>
+        <server-locale name="el"></server-locale>
+        <server-locale name="el_GR.windows-1253"></server-locale>
+        <server-locale name="el_GR.utf8"></server-locale>
+        <server-locale name="el_GR.UTF-8"></server-locale>
+        <server-locale name="Greek_Greece.1253"></server-locale>
+    </client-locale>
+
+    <client-locale name="Hebrew">
+        <server-locale name="iw_IL.cp1255"></server-locale>
+        <server-locale name="iw_IL.ISO8859-8"></server-locale>
+        <server-locale name="iw_IL.8859-8"></server-locale>
+        <server-locale name="iw_IL"></server-locale>
+        <server-locale name="he_IL"></server-locale>
+        <server-locale name="iw"></server-locale>
+        <server-locale name="he_IL.windows-1255"></server-locale>
+        <server-locale name="iw_IL.utf8"></server-locale>
+        <server-locale name="iw_IL.UTF-8"></server-locale>
+        <server-locale name="Hebrew_Israel.1255"></server-locale>
+    </client-locale>
+
+    <client-locale name="Arabic">
+        <server-locale name="ar_SA.cp1256"></server-locale>
+        <server-locale name="ar_SA.ISO8859-6"></server-locale>
+        <server-locale name="ar_SA.8859-6"></server-locale>
+        <server-locale name="ar_SA"></server-locale>
+        <server-locale name="ar"></server-locale>
+        <server-locale name="ar_SA.windows-1256"></server-locale>
+        <server-locale name="ar_SA.utf8"></server-locale>
+        <server-locale name="ar_SA.UTF-8"></server-locale>
+        <server-locale name="Arabic_Saudi Arabia.1256"></server-locale>
+    </client-locale>
+
+    <client-locale name="Spanish">
+        <server-locale name="es_ES.cp1252"></server-locale>
+        <server-locale name="es_ES.IBM-1252@euro"></server-locale>
+        <server-locale name="es_ES.8859-15@euro"></server-locale>
+        <server-locale name="es_ES.8859-15"></server-locale>
+        <server-locale name="es_ES.ISO8859-15@euro"></server-locale>
+        <server-locale name="es_ES.iso885915@euro"></server-locale>
+        <server-locale name="es_ES.ISO8859-15"></server-locale>
+        <server-locale name="es_ES.ISO8859-1"></server-locale>
+        <server-locale name="es_ES"></server-locale>
+        <server-locale name="es"></server-locale>
+        <server-locale name="es_ES.iso88591"></server-locale>
+        <server-locale name="es_ES.windows-1252"></server-locale>
+        <server-locale name="es_ES.utf8"></server-locale>
+        <server-locale name="es_ES.UTF-8"></server-locale>
+        <server-locale name="Spanish_Spain.1252"></server-locale>
+    </client-locale>
+
+    <client-locale name="German">
+        <server-locale name="de_DE.cp1252"></server-locale>
+        <server-locale name="de_DE.IBM-1252@euro"></server-locale>
+        <server-locale name="de_DE.IBM-1252"></server-locale>
+        <server-locale name="de.ISO8859-15@euro"></server-locale>
+        <server-locale name="de_DE.ISO8859-15"></server-locale>
+        <server-locale name="de_DE.ISO8859-1"></server-locale>
+        <server-locale name="de.8859-15"></server-locale>
+        <server-locale name="de.8859-15@euro"></server-locale>
+        <server-locale name="de.ISO8859-15"></server-locale>
+        <server-locale name="de_DE.iso885915@euro"></server-locale>
+        <server-locale name="de_DE@euro"></server-locale>
+        <server-locale name="de_DE"></server-locale>
+        <server-locale name="de"></server-locale>
+        <server-locale name="de_DE.iso88591"></server-locale>
+        <server-locale name="de_DE.windows-1252"></server-locale>
+        <server-locale name="de_DE.utf8"></server-locale>
+        <server-locale name="de_DE.UTF-8"></server-locale>
+        <server-locale name="German_Germany.1252"></server-locale>
+    </client-locale>
+
+    <client-locale name="French">
+        <server-locale name="fr_FR.cp1252"></server-locale>
+        <server-locale name="fr_FR.IBM-1252@euro"></server-locale>
+        <server-locale name="fr_FR.IBM-1252"></server-locale>
+        <server-locale name="fr_FR.8859-15"></server-locale>
+        <server-locale name="fr_FR.ISO8859-15"></server-locale>
+        <server-locale name="fr_FR.iso885915@euro"></server-locale>
+        <server-locale name="fr_FR@euro"></server-locale>
+        <server-locale name="fr_FR"></server-locale>
+        <server-locale name="fr"></server-locale>
+        <server-locale name="fr_FR.iso88591"></server-locale>
+        <server-locale name="fr_FR.ISO8859-1"></server-locale>
+        <server-locale name="fr_FR.windows-1252"></server-locale>
+        <server-locale name="fr_FR.utf8"></server-locale>
+        <server-locale name="fr_FR.UTF-8"></server-locale>
+        <server-locale name="French_France.1252"></server-locale>
+    </client-locale>
+
+    <client-locale name="French-Canada">
+        <server-locale name="fr_CA.cp1252"></server-locale>
+        <server-locale name="fr_CA"></server-locale>
+        <server-locale name="fr_CA.ISO8859-1"></server-locale>
+        <server-locale name="fr_CA.windows-1252"></server-locale>
+        <server-locale name="fr_CA.utf8"></server-locale>
+        <server-locale name="fr_CA.UTF-8"></server-locale>
+        <server-locale name="French_Canada.1252"></server-locale>
+    </client-locale>
+
+    <client-locale name="Italian">
+        <server-locale name="it_IT.cp1252"></server-locale>
+        <server-locale name="it_IT.IBM-1252@euro"></server-locale>
+        <server-locale name="it_IT.IBM-1252"></server-locale>
+        <server-locale name="it_IT.8859-15"></server-locale>
+        <server-locale name="it_IT.ISO8859-15"></server-locale>
+        <server-locale name="it_IT.iso885915@euro"></server-locale>
+        <server-locale name="it_IT@euro"></server-locale>
+        <server-locale name="it_IT"></server-locale>
+        <server-locale name="it"></server-locale>
+        <server-locale name="it_IT.iso88591"></server-locale>
+        <server-locale name="it_IT.windows-1252"></server-locale>
+        <server-locale name="it_IT.utf8"></server-locale>
+        <server-locale name="it_IT.UTF-8"></server-locale>
+        <server-locale name="Italian_Italy.1252"></server-locale>
+    </client-locale>
+
+    <client-locale name="Portuguese-Brazil">
+        <server-locale name="pt_BR"></server-locale>
+        <server-locale name="pt_BR.ISO8859-1"></server-locale>
+        <server-locale name="pt_BR.iso88591"></server-locale>        
+        <server-locale name="pt_BR.8859-15"></server-locale>
+        <server-locale name="pt_BR.iso885915"></server-locale>
+        <server-locale name="pt_BR.windows-1252"></server-locale>
+        <server-locale name="pt_BR.utf8"></server-locale>
+        <server-locale name="pt_BR.UTF-8"></server-locale>
+        <server-locale name="Portuguese_Brazil.1252"></server-locale>
+    </client-locale>
+    
+    <client-locale name="Turkish">
+        <server-locale name="tr_TR"></server-locale>
+        <server-locale name="tr_TR.ISO8859-9"></server-locale>
+        <server-locale name="tr_TR.iso88599"></server-locale>
+        <server-locale name="tr_TR.windows-1254"></server-locale>
+        <server-locale name="tr_TR.utf8"></server-locale>
+        <server-locale name="tr_TR.UTF-8"></server-locale>
+    </client-locale>
+</locale-map>

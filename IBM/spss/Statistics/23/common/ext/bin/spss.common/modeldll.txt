@@ -1,0 +1,16 @@
+TreeModel
+discriminant-model
+GeneralRegressionModel
+ClusteringModel
+NeuralNetwork
+AssociationModelLattice
+SeqAssociationLattice
+NaiveBayesModel
+AssociationModel
+RuleSetModel
+BayesNetModel
+SupportVectorMachineModel
+NearestNeighborModel
+MiningModel
+RegressionModel
+TimeSeriesModel

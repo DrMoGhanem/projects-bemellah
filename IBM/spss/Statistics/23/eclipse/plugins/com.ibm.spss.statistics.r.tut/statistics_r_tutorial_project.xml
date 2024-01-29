@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<!--© Copyright IBM Corporation year1-->
+<toc label="Working with R" topic="spss/tutorials/rtut_intro.htm">
+   <topic label="Introduction" href="spss/tutorials/rtut_intro.htm"/>
+   <topic label="Creating Extension Commands"
+          href="spss/tutorials/rtut_extcmds_intro.htm">
+      <topic label="Syntax Diagrams" href="spss/tutorials/rtut_extcmds_syndiagram.htm"/>
+      <topic label="XML Specification of the Syntax Diagram"
+             href="spss/tutorials/rtut_extcmds_xmlspec.htm"/>
+      <topic label="Implementation Code" href="spss/tutorials/rtut_extcmds_code.htm"/>
+   </topic>
+   <topic label="Creating Custom Dialogs"
+          href="spss/tutorials/rtut_customdialogs_intro.htm">
+      <topic label="Custom Dialogs for Extension Commands"
+             href="spss/tutorials/rtut_customdialogs_extcmd.htm">
+         <topic label="Creating the Dialog"
+                href="spss/tutorials/rtut_customdialogs_extcmd_controls.htm"/>
+         <topic label="Creating the Syntax Template"
+                href="spss/tutorials/rtut_customdialogs_extcmd_syntax.htm"/>
+         <topic label="Saving Your Custom Dialog"
+                href="spss/tutorials/rtut_customdialogs_extcmd_saving.htm"/>
+      </topic>
+      <topic label="Custom Dialogs for Generating Explicit R Code"
+             href="spss/tutorials/rtut_customdialogs_rcode.htm">
+         <topic label="Creating the Dialog"
+                href="spss/tutorials/rtut_customdialogs_rcode_controls.htm"/>
+         <topic label="Creating the Syntax Template"
+                href="spss/tutorials/rtut_customdialogs_rcode_syntax.htm"/>
+         <topic label="Installing Your Dialog"
+                href="spss/tutorials/rtut_customdialogs_rcode_install.htm"/>
+         <topic label="Sharing Your Dialog with Other Users"
+                href="spss/tutorials/rtut_customdialogs_rcode_share.htm"/>
+      </topic>
+   </topic>
+   <topic label="Deploying Custom Components"
+          href="spss/tutorials/rtut_extbundles_intro.htm">
+      <topic label="Creating an Extension Bundle"
+             href="spss/tutorials/rtut_extbundles_create.htm"/>
+      <topic label="Installing an Extension Bundle"
+             href="spss/tutorials/rtut_extbundles_install.htm"/>
+   </topic>
+   <topic label="Additional Resources for Working with R"
+          href="spss/tutorials/rtut_resources.htm"/>
+</toc>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<!-- @version: -->
+<user-settings>
+  <!--   START Comment
+    <user-cluster desc="This user cluster for power users." name="Power Users">
+        <settings desc="These settings are defaults for users in this cluster">
+            <temp-directory desc="E: drive is special ram drive." value="e:\"/>
+            <cpu-priority desc="Process priority: -1 high, 0 normal, 1 low" value="0"/>
+            <max-numthreads desc="Maximum number of threads" value="9"/>
+        </settings>
+        <user name="user1" domain="HQ">
+            <settings desc="These settings are specific to this user">
+                <cpu-priority desc="Process priority: -1 high, 0 normal, 1 low" value="-1"/>
+                <client-data-access desc="Access to data in Data Editor FULL or NONE" value="NONE"/>
+            </settings>
+        </user>
+        <user name="user2" domain="HQ">
+            <settings desc="These settings are specific to this user">
+                <temp-directory desc="200 Gig Drive" value="f:\"/>
+                <max-numthreads desc="Maximum number of threads" value="5"/>
+            </settings>
+        </user>
+    </user-cluster>
+  END Comment -->
+<!-- Comments in here
+ Comments in here
+ Comments in here
+ Comments in here
+ End Comments -->
+</user-settings>

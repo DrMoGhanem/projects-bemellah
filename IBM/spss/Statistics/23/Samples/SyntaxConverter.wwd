@@ -1,0 +1,146 @@
+'Begin Description
+'This script converts a syntax file containing Tables commands to an equivalent
+'file containing Ctables commands.
+'End Description
+
+Sub Main
+Rem This script runs the syntax converter interactively
+
+	Const TITLE = "Tables and Igraph Syntax Converter"
+	Const OLDFILE = "Old Syntax File:"
+	Const NEWFILE = "New Syntax File:"
+	Const BROWSE = "Browse..."
+	Const FILE = "File: "
+	Const NOTFOUND = " not found or not a regular file."
+	Const CANNOTOVERWRITE = "Cannot overwrite "
+	Const UNABLETORUN = "Unable to run the syntax converter."
+	Const OLDSYNTAXISBATCH = "Commands do not end with a period (batch mode)
+
+	Begin Dialog UserDialog 530,168,TITLE,.Convert ' %GRID:10,7,1,1
+
+		Text 20,14,180,14,OLDFILE,.OldFile
+		Text 20,91,180,14,NEWFILE,.NewFile
+		TextBox 20,28,380,21,.Path1
+		PushButton 420,28,90,21,BROWSE,.OpenFile
+		CheckBox 30,56,480,14,OLDSYNTAXISBATCH,.BatchMode
+		TextBox 20,105,380,21,.Path2
+		PushButton 430,105,90,21,BROWSE,.SaveFile
+		OKButton 140,133,90,21,.ok
+		CancelButton 280,133,90,21,.cancel
+	End Dialog
+
+	On Error Resume Next
+	Err.Clear
+
+	Dim dlg As UserDialog
+	Dialog dlg
+
+
+	If Err.Number <> 0 Then
+		Exit Sub
+	End If
+	If (Dir(dlg.path1,vbNormal) = "") Then
+		MsgBox FILE & dlg.path1 & NOTFOUND, vbOkOnly+vbExclamation, TITLE
+		Exit Sub
+	End If
+
+	' Dim attr As Integer
+	'attr = GetAttr(dlg.path2)
+	Err.Clear
+	Open dlg.path2 For Output As #1
+	If (Err.Number <> 0) Then
+		MsgBox CANNOTOVERWRITE & dlg.path2, vbOkOnly+vbExclamation, TITLE
+		Close #1
+		Exit Sub
+	Else
+		Close #1
+	End If
+   	Kill dlg.path2
+
+	Dim cmd As String
+	cmd ="""" & objSpssApp.GetSPSSPath & "\syntaxconverter.exe"" " _
+	& IIf(dlg.batchmode, "/b ", "") _
+	& """" & dlg.path1 & """ """ & dlg.path2 & """"
+	x = Shell(cmd)
+
+   	If (x = 0) Then
+		MsgBox UNABLETORUN, vbOkOnly+vbExclamation, TITLE
+	End If
+End Sub
+
+Private Function Convert(DlgItem$, Action%, SuppValue&) As Boolean
+
+	Dim Path1 As String
+	Dim Path2 As String
+
+	Select Case Action%
+	Case 1 ' Dialog box initialization
+		DlgEnable "ok", False
+		DlgFocus("OldFile")
+	Case 2 ' Value changing or button pressed
+		Select Case DlgItem$
+			Case "OpenFile"
+			 	DlgText "Path1", OpenFilePath
+				' Prevent button press from closing the dialog box
+				DlgFocus("OpenFile")
+				Convert = True
+			Case "SaveFile"
+				DlgText "Path2", SaveFilePath
+				DlgFocus("SaveFile")
+				' Prevent button press from closing the dialog box
+				Convert = True
+		End Select
+
+		If DlgText("Path1") <> "" And DlgText("Path2") <> "" And _
+			DlgText("Path1") <> DlgText("Path2") Then
+			DlgEnable "ok", True
+		End If
+
+	Case 3 ' TextBox or ComboBox text changed
+		If DlgText("Path1") <> "" And DlgText("Path2") <> "" And _
+				DlgText("Path1") <> DlgText("Path2") Then
+				DlgEnable "ok", True
+		End If
+	Case 4 ' Focus changed
+	Case 5 ' Idle
+		Rem Wait .1 : Convert = True ' Continue getting idle actions
+	Case 6 ' Function key
+
+	End Select
+
+End Function
+
+Function OpenFilePath() As String
+
+	Dim strFile1 As String
+
+	If strFile1 = "" Then
+		strFile1 = GetFilePath$("*.sps", "sps", , "Open", 0)
+	End If
+
+	If strFile1 = "" Then
+		'user canceled
+		'Err.Raise 1002, "User Cancelled"
+	End If
+
+	OpenFilePath = strFile1
+
+End Function
+
+Function SaveFilePath() As String
+
+	Dim strFile2 As String
+
+	If strFile2 = "" Then
+		strFile2 = GetFilePath$("Converted.sps", "sps", , "Save", 3)
+	End If
+
+	If strFile2 = "" Then
+		'user canceled
+		'Err.Raise 1002, "User Cancelled"
+	End If
+
+	SaveFilePath = strFile2
+
+End Function
+

@@ -1,0 +1,467 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema targetNamespace="http://xml.spss.com/spss/data" 
+		xmlns:di="http://xml.spss.com/spss/data" 
+		xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+		elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Copyright 2008 SPSS Inc - All Rights Reserved.	SPSS specifically disclaims all warranties with respect to your use of this specification, expressed, implied, or otherwise, including without limitation, all warranties of merchantability and fitness for a particular purpose.	SPSS shall not be liable for any special, incidental, or consequential damages, including without limitation lost revenues or lost profits resulting from the use of the information herein.</xs:documentation>
+	</xs:annotation>
+<!-- -->
+	<xs:element name="dictionary">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Statistics data dictionary</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="di:variable" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="di:weightVariable" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="di:valueLabelSet" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="di:variableSet" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="di:multipleResponseSet" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="di:attributeSet" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="di:extension" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="locale" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+<!--						<xs:pattern value=""/> -->
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="creationDateTime" type="xs:dateTime" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Optional creation date and time</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="rowCount" type="xs:nonNegativeInteger" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The number of rows (cases) in the dataset</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+		<xs:key name="variableKey">
+			<xs:selector xpath="di:variable"/>
+			<xs:field xpath="@name"/>
+		</xs:key>
+		<xs:keyref name="weightVariableName" refer="di:variableKey">
+			<xs:selector xpath="di:weightVariable"/>
+			<xs:field xpath="@name"/>
+		</xs:keyref>
+		<xs:keyref name="valueLabelVariableName" refer="di:variableKey">
+			<xs:selector xpath="di:valueLabelSet/di:valueLabelVariable"/>
+			<xs:field xpath="@name"/>
+		</xs:keyref>
+		<xs:keyref name="variableSetVariableName" refer="di:variableKey">
+			<xs:selector xpath="di:variableSet/di:variableSetVariable"/>
+			<xs:field xpath="@name"/>
+		</xs:keyref>
+		<xs:keyref name="multipleResponseSetVariableName" refer="di:variableKey">
+			<xs:selector xpath="di:multipleResponseSet/di:multipleResponseSetVariable"/>
+			<xs:field xpath="@name"/>
+		</xs:keyref>
+	</xs:element>
+<!-- -->
+	<xs:element name="variable">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A Statistics variable</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="variableFormat" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:attributeGroup ref="di:variableFormatGroup"/>
+					</xs:complexType>					
+				</xs:element>
+				<xs:element name="variableWriteFormat" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:attributeGroup ref="di:variableFormatGroup"/>
+					</xs:complexType>					
+				</xs:element>
+				<xs:element ref="di:missingValue" minOccurs="0" maxOccurs="3"/>
+				<xs:element ref="di:attributeSet" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="di:variableNameType" use="required"/>
+			<xs:attribute name="label" type="xs:string"/>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The maxInclusive value is VARSIZEMAX</xs:documentation>
+					</xs:annotation>
+					<xs:restriction base="xs:nonNegativeInteger">
+						<xs:maxInclusive value="32767"/>
+					</xs:restriction>
+				</xs:simpleType>				
+			</xs:attribute>
+			<xs:attribute name="alignment" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="left"/>
+						<xs:enumeration value="center"/>
+						<xs:enumeration value="right"/>
+					</xs:restriction>
+				</xs:simpleType>				
+			</xs:attribute>
+			<xs:attribute name="measurementLevel" default="unknown">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="unknown"/>
+						<xs:enumeration value="nominal"/>
+						<xs:enumeration value="ordinal"/>
+						<xs:enumeration value="scale"/>
+						<xs:enumeration value="flag"/>
+						<xs:enumeration value="typeless"/>						
+					</xs:restriction>
+				</xs:simpleType>				
+			</xs:attribute>
+			<xs:attribute name="role" default="input">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="input"/>
+						<xs:enumeration value="target"/>
+						<xs:enumeration value="both"/>
+						<xs:enumeration value="none"/>
+						<xs:enumeration value="partition"/>
+						<xs:enumeration value="split"/>
+					</xs:restriction>
+				</xs:simpleType>				
+			</xs:attribute>
+			<xs:attribute name="displayWidth" type="xs:nonNegativeInteger" use="required"/>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="weightVariable">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The name of the case weight variable</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="name" type="di:variableNameType" use="required"/>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="valueLabelSet">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A set of Statistics value labels</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="di:valueLabel" minOccurs="0" maxOccurs="unbounded"/>
+				<xs:element ref="di:valueLabelVariable" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="valueLabel">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Describes a Statistics value label</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="value" type="di:dataType" use="required"/>
+			<xs:attribute name="label" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="valueLabelVariable">
+		<xs:complexType>
+			<xs:attribute name="name" type="di:variableNameType" use="required"/>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="variableSet">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A named subset of Statistics variables</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="di:variableSetVariable" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="di:variableNameType" use="required"/>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="variableSetVariable">
+		<xs:complexType>
+			<xs:attribute name="name" type="di:variableNameType" use="required"/>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="multipleResponseSet">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">A multiple response set of Statistics variables, either dichotomous or categorical</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice>
+				<xs:sequence>
+					<xs:annotation>
+						<xs:documentation xml:lang="en">multiple category set</xs:documentation>
+					</xs:annotation>
+					<xs:element ref="di:multipleResponseSetLabel" minOccurs="0"/>
+					<xs:element ref="di:multipleResponseSetVariable" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+				<xs:sequence>
+					<xs:annotation>
+						<xs:documentation xml:lang="en">multiple dichotomy set</xs:documentation>
+					</xs:annotation>
+					<xs:element ref="di:multipleResponseSetCategoryLabels"/>
+					<xs:element ref="di:multipleResponseSetDichotomy"/>
+					<xs:choice minOccurs="0">
+						<xs:element ref="di:multipleResponseSetLabel"/>
+						<xs:element ref="di:multipleResponseSetLabelSource"/>
+					</xs:choice>
+					<xs:element ref="di:multipleResponseSetVariable" minOccurs="1" maxOccurs="unbounded"/>
+				</xs:sequence>
+			</xs:choice>
+			<xs:attribute name="name" type="di:variableNameType" use="required"/>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="multipleResponseSetLabel">
+		<xs:complexType>
+			<xs:attribute name="value" type="di:variableNameType" use="required"/>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="multipleResponseSetVariable">
+		<xs:complexType>
+			<xs:attribute name="name" type="di:variableNameType" use="required"/>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="multipleResponseSetLabelSource">
+		<xs:complexType>
+			<xs:attribute name="value" default="variableLabel">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="variableLabel"/>
+					</xs:restriction>
+				</xs:simpleType>				
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="multipleResponseSetCategoryLabels">
+		<xs:complexType>
+			<xs:attribute name="value" default="variableLabels">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="variableLabels"/>
+						<xs:enumeration value="countedValues"/>
+					</xs:restriction>
+				</xs:simpleType>				
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="multipleResponseSetDichotomy">
+		<xs:complexType>
+			<xs:attribute name="value" type="di:dataType" use="required"/>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="missingValue">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Describes a Statistics missing value. The lowerBound and upperBound are inclusive.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="type" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="lowerBound"/>
+						<xs:enumeration value="upperBound"/>
+					</xs:restriction>
+				</xs:simpleType>				
+			</xs:attribute>
+			<xs:attribute name="data" type="di:missingDataType" use="required"/>
+		</xs:complexType>				
+	</xs:element>
+<!-- -->
+	<xs:element name="attributeSet">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">a set of dataset or variable attributes</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="di:attribute" minOccurs="0" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="version" type="xs:nonNegativeInteger" use="required"/>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="attribute">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">a dataset or variable attribute</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="di:attributeValue" minOccurs="1" maxOccurs="unbounded"/>
+			</xs:sequence>
+			<xs:attribute name="name" type="di:variableNameType" use="required"/>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="system"/>
+						<xs:enumeration value="user"/>
+					</xs:restriction>
+				</xs:simpleType>				
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="attributeValue">
+		<xs:complexType>
+			<xs:attribute name="value" type="xs:string" use="required"/>
+		</xs:complexType>
+	</xs:element>
+<!-- -->
+	<xs:element name="extension">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">For internal use. A Statistics extension encoded in hexadecimal. The element size is in bytes. The length is the number of elements.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="type" type="xs:positiveInteger" use="required"/>
+			<xs:attribute name="elementSize" type="xs:nonNegativeInteger" use="required"/>
+			<xs:attribute name="length" type="xs:nonNegativeInteger" use="required"/>
+			<xs:attribute name="data" type="xs:hexBinary" use="optional"/>
+		</xs:complexType>				
+	</xs:element>
+<!-- -->
+	<xs:attributeGroup name="variableFormatGroup">
+		<xs:attribute name="type" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="A"/>
+					<xs:enumeration value="AHEX"/>
+					<xs:enumeration value="COMMA"/>
+					<xs:enumeration value="DOLLAR"/>
+					<xs:enumeration value="F"/>
+					<xs:enumeration value="IB"/>
+					<xs:enumeration value="IBHEX"/>
+					<xs:enumeration value="P"/>
+					<xs:enumeration value="PIB"/>
+					<xs:enumeration value="PK"/>
+					<xs:enumeration value="RB"/>
+					<xs:enumeration value="RBHEX"/>
+					<xs:enumeration value="Z"/>
+					<xs:enumeration value="N"/>
+					<xs:enumeration value="E"/>
+					<xs:enumeration value="DATE"/>
+					<xs:enumeration value="TIME"/>
+					<xs:enumeration value="DATETIME"/>
+					<xs:enumeration value="ADATE"/>
+					<xs:enumeration value="JDATE"/>
+					<xs:enumeration value="DTIME"/>
+					<xs:enumeration value="WKDAY"/>
+					<xs:enumeration value="MONTH"/>
+					<xs:enumeration value="MOYR"/>
+					<xs:enumeration value="QYR"/>
+					<xs:enumeration value="WKYR"/>
+					<xs:enumeration value="PERCENT"/>
+					<xs:enumeration value="DOT"/>
+					<xs:enumeration value="CCA"/>
+					<xs:enumeration value="CCB"/>
+					<xs:enumeration value="CCC"/>
+					<xs:enumeration value="CCD"/>
+					<xs:enumeration value="CCE"/>
+					<xs:enumeration value="EDATE"/>
+					<xs:enumeration value="SDATE"/>
+					<xs:enumeration value="G"/>
+					<xs:enumeration value="LNUMBER"/>
+					<xs:enumeration value="LDATE"/>
+					<xs:enumeration value="LTIME"/>
+					<xs:enumeration value="LCA"/>
+					<xs:enumeration value="LCB"/>
+					<xs:enumeration value="LCC"/>
+					<xs:enumeration value="LCD"/>
+					<xs:enumeration value="LCE"/>
+					<xs:enumeration value="LCF"/>
+					<xs:enumeration value="LCG"/>
+					<xs:enumeration value="LCH"/>
+					<xs:enumeration value="LCI"/>
+					<xs:enumeration value="LCJ"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="width" use="required">
+			<xs:simpleType>
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The maxInclusive value is the larger of VARSIZEMAX (string variables) and MAXNUMFMTWID (numeric variables)</xs:documentation>
+				</xs:annotation>
+				<xs:restriction base="xs:nonNegativeInteger">
+					<xs:maxInclusive value="32767"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="decimals" use="required">
+			<xs:simpleType>
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The maxInclusive value is MAXNUMFMTDEC</xs:documentation>
+				</xs:annotation>
+				<xs:restriction base="xs:nonNegativeInteger">
+					<xs:maxInclusive value="16"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+	</xs:attributeGroup>
+<!-- -->
+	<xs:simpleType name="stringDataType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The maxLength value is VARSIZEMAX</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="32767"/>
+		</xs:restriction>
+	</xs:simpleType>
+<!-- -->
+	<xs:simpleType name="dataType">
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="xs:integer"/>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:double"/>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="di:stringDataType"/>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+<!-- -->
+	<xs:simpleType name="missingDataType">
+		<xs:union>
+			<xs:simpleType>
+				<xs:restriction base="di:dataType"/>
+			</xs:simpleType>
+			<xs:simpleType>
+				<xs:restriction base="xs:NMTOKEN">
+					<xs:enumeration value="lowest"/>
+					<xs:enumeration value="highest"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:union>
+	</xs:simpleType>
+<!-- -->
+	<xs:simpleType name="variableNameType">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The maxLength value is SPSSNAME_MAXBYTES</xs:documentation>
+		</xs:annotation>
+		<xs:restriction base="xs:string">
+			<xs:maxLength value="64"/>
+<!--					<xs:pattern value=""/> -->
+		</xs:restriction>
+	</xs:simpleType>
+<!-- -->
+</xs:schema>

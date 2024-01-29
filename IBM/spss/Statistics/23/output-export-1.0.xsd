@@ -1,0 +1,1915 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2013                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:oex="http://www.ibm.com/software/analytics/spss/xml/output-export"
+           targetNamespace="http://www.ibm.com/software/analytics/spss/xml/output-export"
+           elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+  <!-- the root element -->
+  <xs:element name="outputExport">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">
+        Top level element.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:choice>
+          <xs:element ref="oex:outputExportRequest" />
+          <xs:element ref="oex:outputExportResponse" />
+        </xs:choice>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="outputExportRequest">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">
+                Request to output element, describing how Statistics should export the contents of a
+                Statistics output viewer document.
+            </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="oex:contents" />
+        <xs:choice minOccurs="0" maxOccurs="1">
+          <xs:element ref="oex:doc" />
+          <xs:element ref="oex:html" />
+          <xs:element ref="oex:report" />
+          <xs:element ref="oex:pdf" />
+          <xs:element ref="oex:ppt" />
+          <xs:element ref="oex:text" />
+          <xs:element ref="oex:xls" />
+          <xs:element ref="oex:xlsx" />
+          <xs:element ref="oex:xlsm" />
+        </xs:choice>
+        <xs:choice minOccurs="0" maxOccurs="1">
+          <xs:element ref="oex:bmp" />
+          <xs:element ref="oex:emf" />
+          <xs:element ref="oex:eps" />
+          <xs:element ref="oex:jpg" />
+          <xs:element ref="oex:png" />
+          <xs:element ref="oex:tif" />
+        </xs:choice>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+              The NAME keyword specifies the Viewer document whose contents will be exported.
+              This keyword is optional. If NAME is omitted, the contents of the designated Viewer
+              document will be exported.
+
+              The NAME keyword is useful when more than one Viewer document is open and you want to
+              ensure that the OUTPUT EXPORT command operates on the correct document.
+            </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the CONTENTS subcommand -->
+  <xs:element name="contents">
+    <xs:annotation>
+      <xs:documentation>
+          The CONTENTS element is used to specify which Viewer contents to export.
+          This element is optional.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="export" use="required">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The EXPORT keyword specifies whether to export all Viewer items or only those that are visible.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="all">
+              <xs:annotation>
+                <xs:documentation>
+                          Export all Viewer items.  All Viewer items will be exported regardless of
+                          whether they are visible or hidden. This is the default.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="visible">
+              <xs:annotation>
+                <xs:documentation>
+                          Export visible items only.  Only visible Viewer items will be exported;
+                          hidden items will not be exported.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="layers" use="required">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The LAYERS keyword specifies how to export pivot tables that have layers.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="printSetting">
+              <xs:annotation>
+                <xs:documentation>
+                          Export layers as specified for printing in Table Properties.  This is the
+                          default choice. The Printing tab in the Table Properties dialog includes a
+                          check box option to print all layers of a pivot table; by default, only the
+                          visible layer is printed. If you specify LAYERS=PRINTSETTING, this check box
+                          determines how the pivot table is exported. If the box is not checked (default),
+                          only the visible layer of the table will be exported; if the box is checked, all
+                          layers will be exported. Each layer will display as a separate table.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="all">
+              <xs:annotation>
+                <xs:documentation>
+                          Export all layers.  All layers of each pivot table will be exported.
+                          Each layer will display as a separate table.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="visible">
+              <xs:annotation>
+                <xs:documentation>
+                          Export visible layer only.  The visible layer of each pivot table will be
+                          exported.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="modelviews" use="required">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The MODELVIEWS keyword specifies which model views to export. All views – even those that
+            appear as tables in the Model Viewer – are exported as images. Each view is exported as a
+            separate image.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="printSetting">
+              <xs:annotation>
+                <xs:documentation>
+                          Export views as specified for printing in the Model Viewer.  This is the default
+                          choice. The Model Properties dialog in the Model Viewer includes a check box
+                          option to print all views of a model; by default, only the view that is
+                          currently visible is printed. If you specify MODELVIEWS=PRINTSETTING, the
+                          check box determines how the model is exported. If the box is not checked
+                          (default), only the view that is currently visible will be exported; if the
+                          box is checked, all views will be exported.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="all">
+              <xs:annotation>
+                <xs:documentation>
+                          Export all views.  All views of all models will be exported.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="visible">
+              <xs:annotation>
+                <xs:documentation>
+                          Export visible view only.  Only the visible view of each model will be exported.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the DOC subcommand -->
+  <xs:element name="doc">
+    <xs:annotation>
+      <xs:documentation>
+        The DOC subcommand is used to specify options for exporting to Word/RTF documents (*.doc).
+        Pivot tables are exported as Word tables with all formatting attributes intact - for example,
+        cell borders, font styles, and background colors. Text output is exported as formatted RTF.
+        On Windows operating systems, graphics are included in the document in EMF (enhanced metafile)
+        format. On other operating systems, graphics are included in PNG format.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="documentfile" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The documentfile attribute specifies the name of the document file that will receive the
+            exported contents.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="notesCaptions" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The notesCaptions keyword specifies whether to export footnotes and captions for pivot tables.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="pageBreaks" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The pageBreaks keyword specifies whether to preserve page breaks and keep together settings for pivot tables.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="wideTables" default="wrap">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The wideTables attribute specifies how to export tables that are too wide to fit within the
+            margins specified for the Word/RTF document.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="wrap">
+              <xs:annotation>
+                <xs:documentation>
+                                    Wrap wide tables.  Statistics will break the table after the last column that fits
+                                    completely within the margins. The remaining columns will be placed below the
+                                    first part of the table. This is the default choice.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="shrink">
+              <xs:annotation>
+                <xs:documentation>
+                                    Shrink wide tables to fit within the margins.  Statistics will reduce the font size
+                                    and remove white space in order to make a wide table fit within the margins.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="asis">
+              <xs:annotation>
+                <xs:documentation>
+                          Do not shrink or wrap wide tables.  The table may extend outside the margin
+                          and page boundaries when exported.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="pageSizeUnits" type="oex:measurementUnits">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The pageSizeUnits attribute specifies the units used for page dimensions to use for the
+            exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="pageSizeWidth" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The pageSizeWidth attribute specifies the page width dimension to use for the exported
+            document. The orientation of the page is implied by the dimensions. Specifying a width
+            that is less than the height is equivalent to choosing portrait orientation for the page.
+            Specifying a width that is greater than the height is equivalent to choosing landscape
+            orientation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="pageSizeHeight" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The pageSizeHeight attribute specifies the page width dimension to use for the exported
+            document. The orientation of the page is implied by the dimensions. Specifying a width
+            that is less than the height is equivalent to choosing portrait orientation for the page.
+            Specifying a width that is greater than the height is equivalent to choosing landscape
+            orientation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="topMarginUnits" type="oex:measurementUnits">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The topMarginUnits attribute specifies the units used for top margin to use for the
+            exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="topMargin" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Specifies the bottom margin for the exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="bottomMarginUnits" type="oex:measurementUnits">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The bottomMarginUnits attribute specifies the units used for bottom margin to use for the
+            exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="bottomMargin" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Specifies the bottom margin for the exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="leftMarginUnits" type="oex:measurementUnits">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The leftMarginUnits attribute specifies the units used for left margin to use for the
+            exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="leftMargin" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Specifies the left margin for the exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="rightMarginUnits" type="oex:measurementUnits">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The rightMarginUnits attribute specifies the units used for right margin to use for the
+            exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="rightMargin" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Specifies the right margin for the exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the HTML subcommand -->
+  <xs:element name="html">
+    <xs:annotation>
+      <xs:documentation>
+        The HTML element is used to specify options for exporting to HTML documents (*.htm).
+        Pivot tables are exported as HTML tables. Text output is exported as preformatted HTML.
+        Graphics are embedded by reference; you should export them in a suitable format for inclusion
+        in HTML documents (for example, PNG and JPG).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="documentfile" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The documentfile attribute specifies the name of the document file that will receive the
+            exported contents.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="exportImages" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The exportImages keyword specifies whether to export images or drop them from the output.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="exportImageMaps" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The exportImageMaps keyword specifies whether to add image maps to the exported charts or not.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="tableStyle" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The tableStyle keyword is an HTML style attribute that will be set to override the default style for the exported
+            table.  It can look something like "font-size=80%;align:left".
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="javaScriptFileName" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The javaScriptFileName keyword will cause a javascript file name to be inserted in the exported HTML file. If exportImageMaps is true,
+            this keyword can be used to add drilldown functionality to a chart.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="styling" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The styling keyword specifies whether to export pivot tables with styling and column widths or not.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="notesCaptions" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The notesCaptions keyword specifies whether to export footnotes and captions for pivot tables.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="imageFormat" type="oex:imageFormat" default="JPG">
+        <xs:annotation>
+          <xs:documentation>
+            The imageFormat attribute specifies the image file format to use for exported images.
+            A link to each image file will be placed in the HTML document.
+            The filename specified for the documentfile attribute is used as the rootname for the image
+            files. A numeral is appended to the rootname to distinguish multiple image files from one
+            another (e.g., MyOutput0.png, MyOutput1.png, etc).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the REPORT subcommand -->
+  <xs:element name="report">
+    <xs:annotation>
+      <xs:documentation>
+        The REPORT element is used to specify options for exporting to REPORT documents (*.html/*.mht).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="documentfile" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The documentfile attribute specifies the name of the document file that will receive the
+            exported contents.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="title" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The title of the web report. If omitted the title will be the file name.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="mht" type="xs:boolean" default="false">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The mht keyword specifies whether to export as a Cognos Active Report (true) or an IBM SSPS Web Report (false).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="excludeDataset" type="xs:boolean" default="false">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The excludeDataset keyword specifies whether to exclude dataset commands from the report or not.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="excludeLogs" type="xs:boolean" default="false">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The excludeLogs keyword specifies whether to exclude logs from the report or not.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="excludeNotes" type="xs:boolean" default="false">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The excludeNotes keyword specifies whether to exclude notes tables from the report or not.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="excludeWarnings" type="xs:boolean" default="false">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The excludeWarnings keyword specifies whether to exclude warning tables from the report or not.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the PDF subcommand -->
+  <xs:element name="pdf">
+    <xs:annotation>
+      <xs:documentation>
+        The PDF element is used to specify options for exporting to PDF documents (*.pdf). Your current
+        Print settings are honored. That is, output is exported as it appears in Print Preview, with all
+        formatting attributes intact.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="documentfile" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The documentfile attribute specifies the name of the document file that will receive the
+            exported contents.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="embedBookmarks" default="true" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>
+            The embedBookmarks attribute specifies whether to include bookmarks in the PDF document
+            that correspond to the Viewer outline entries. Like the Viewer outline pane, bookmarks
+            can make it much easier to navigate documents with a large number of output objects.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="embedFonts" default="true" type="xs:boolean">
+        <xs:annotation>
+          <xs:documentation>
+            The embedFonts attribute specifies whether to embed fonts in the exported document.
+            Embedding fonts ensures that the PDF document will look the same on all computers.
+            Otherwise, if some fonts used in the document are not available on the computer being
+            used to view (or print) the PDF document, font substitution may yield suboptimal results.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the PPT subcommand -->
+  <xs:element name="ppt">
+    <xs:annotation>
+      <xs:documentation>
+        The PPT element is used to specify options for exporting to PowerPoint documents. Pivot tables
+        are exported as Word tables and are embedded on separate slides in the PowerPoint file, with one
+        slide for each pivot table. All formatting attributes of the pivot table are retained - for
+        example, cell borders, font styles, and background colors. Text output is exported as formatted
+        RTF. Graphics are embedded in the document in TIF format. An error is issued if the PPT
+        subcommand is used on a non-Windows system or on a system that does not have PowerPoint installed.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="documentfile" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The documentfile attribute specifies the name of the document file that will receive the
+            exported contents.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="notesCaptions" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The notesCaptions keyword specifies whether to export footnotes and captions for pivot tables.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="slideTitles" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The slideTitles attribute specifies whether to include a title on each slide that is
+            created by the export. Each slide contains a single item that is exported from the Viewer.
+            The title is formed from the outline entry for the item in the outline pane of the Viewer.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="wideTables" default="wrap">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The wideTables attribute specifies how to export tables that are too wide to fit within the
+            margins specified for the Word/RTF document.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="wrap">
+              <xs:annotation>
+                <xs:documentation>
+                                    Wrap wide tables.  Statistics will break the table after the last column that fits
+                                    completely within the margins. The remaining columns will be placed below the
+                                    first part of the table. This is the default choice.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="shrink">
+              <xs:annotation>
+                <xs:documentation>
+                                    Shrink wide tables to fit within the margins.  Statistics will reduce the font size
+                                    and remove white space in order to make a wide table fit within the margins.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="asis">
+              <xs:annotation>
+                <xs:documentation>
+                          Do not shrink or wrap wide tables.  The table may extend outside the margin
+                          and page boundaries when exported.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="slideSizeUnits" type="oex:measurementUnits">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The slideSizeUnits attribute specifies the units used for slide dimensions to use for the
+            exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="slideSizeWidth" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The slideSizeWidth attribute specifies the slide width dimension to use for the exported
+            document. The orientation of the slide is implied by the dimensions. Specifying a width
+            that is less than the height is equivalent to choosing portrait orientation for the slide.
+            Specifying a width that is greater than the height is equivalent to choosing landscape
+            orientation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="slideSizeHeight" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The slideSizeHeight attribute specifies the slide width dimension to use for the exported
+            document. The orientation of the slide is implied by the dimensions. Specifying a width
+            that is less than the height is equivalent to choosing portrait orientation for the slide.
+            Specifying a width that is greater than the height is equivalent to choosing landscape
+            orientation.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="topMarginUnits" type="oex:measurementUnits">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The topMarginUnits attribute specifies the units used for top margin to use for the
+            exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="topMargin" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Specifies the bottom margin for the exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="bottomMarginUnits" type="oex:measurementUnits">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The bottomMarginUnits attribute specifies the units used for bottom margin to use for the
+            exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="bottomMargin" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Specifies the bottom margin for the exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="leftMarginUnits" type="oex:measurementUnits">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The leftMarginUnits attribute specifies the units used for left margin to use for the
+            exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="leftMargin" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Specifies the left margin for the exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="rightMarginUnits" type="oex:measurementUnits">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The rightMarginUnits attribute specifies the units used for right margin to use for the
+            exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="rightMargin" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Specifies the right margin for the exported document.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the TEXT subcommand -->
+  <xs:element name="text">
+    <xs:annotation>
+      <xs:documentation>
+        The text element is used to specify options for exporting to text documents (*.txt). Text output
+        formats include local encoding, UTF-8, and UTF-16. Pivot tables can be exported in tab-separated
+        or space-separated format. All text output is exported in space-separated format. For graphics,
+        a line is inserted in the text file indicating the filename of the exported image.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="documentfile" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The documentfile attribute specifies the name of the document file that will receive the
+            exported contents.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="encoding" default="localEncoding">
+        <xs:annotation>
+          <xs:documentation>
+            The encoding attribute specifies the type of text file to create.  For users running Statistics in
+            Unicode mode, the localEncoding and utf8 options both result in UTF8 text
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="localEncoding">
+              <xs:annotation>
+                <xs:documentation>
+                                    Export in the character set used for the Statistics locale. This is the default choice.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="utf8">
+              <xs:annotation>
+                <xs:documentation>
+                          Export as 8-bit Unicode text. This is the most widely-used Unicode encoding.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="utf16">
+              <xs:annotation>
+                <xs:documentation>
+                          Export as 16-bit Unicode text.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="notesCaptions" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The notesCaptions keyword specifies whether to export footnotes and captions for pivot tables.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="autoFit" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Make each column as wide as the widest label or value in that column. Column contents will
+            not be wrapped.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="columnWidth" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation>
+            The columnWidth attribute specifies the width of columns in pivot tables exported to text.
+            It is valid only if separator=space is also specified; and autoFit is false.  Otherwise, it
+            is ignored.  Set the maximum column width for all columns to w characters. Provide an integer
+            value for w. If a cell’s contents are wider than w characters, the contents will be wrapped
+            onto the next line in that column.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="separator" default="space">
+        <xs:annotation>
+          <xs:documentation>
+            The separator attribute specifies whether to use spaces or tabs to separate columns.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="space">
+              <xs:annotation>
+                <xs:documentation>
+                          Use spaces to separate columns. This is the default choice.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="tab">
+              <xs:annotation>
+                <xs:documentation>
+                          Use tabs to separate columns.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="rowBorder" type="xs:string" default="-">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The rowBorder attribute specifies the character to use to create row borders in pivot tables.
+            It is valid only if separator=space is also specified; otherwise, it is ignored.
+            The default character is the hyphen. To suppress display of row borders, specify a blank space
+            as the character to use.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="columnBorder" type="xs:string" default="|">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The columnBorder attribute specifies the character to use to create column borders in pivot
+            tables. It is valid only if separator=space is also specified; otherwise, it is ignored.
+            The default character is the pipe symbol.  To suppress display of column borders, specify
+            a blank space as the character to use.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="pageBreak" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The pageBreak attribute specifies whether to insert a page break between pivot tables. If
+            all layers of a multilayer pivot table are exported, a page break will be inserted between
+            the layers.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="imageFormat" type="oex:imageFormat" default="JPG">
+        <xs:annotation>
+          <xs:documentation>
+            The imageFormat attribute specifies the image file format to use for exported graphics.
+            A reference to each image file will be placed in the text document.
+            The filename specified for the documentfile attribute is used as the rootname for the image
+            files. A numeral is appended to the rootname to distinguish multiple image files from one
+            another (e.g., MyOutput0.png, MyOutput1.png, etc).
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the XLS subcommand -->
+  <xs:element name="xls">
+    <xs:annotation>
+      <xs:documentation>
+        The xls element is used to specify options for exporting to Excel 97-2003 documents (*.xls).
+        Pivot table rows, columns, and cells are exported as Excel rows, columns, and cells, with all
+        formatting attributes intact--for example, cell borders, font styles, and background colors.
+        Text output is exported with all font attributes intact. Each line in the text output is a row
+        in the Excel file, with the entire contents of the line contained in a single cell. Graphics are
+        included in PNG format.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="documentfile" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The documentfile attribute specifies the name of the document file that will receive the
+            exported contents.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="operation" default="createFile">
+        <xs:annotation>
+          <xs:documentation>
+            The operation attribute specifies the type of operation to be performed by the export.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="createFile">
+              <xs:annotation>
+                <xs:documentation>
+                                    Create a file. This is the default choice. Statistics will create an Excel file
+                                    using the path and filename specified in the documentfile attribute and will
+                                    export items to a single worksheet. If the specified file already exists,
+                                    it will be overwritten.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="createSheet">
+              <xs:annotation>
+                <xs:documentation>
+                                    Create a worksheet. Statistics will create a worksheet in the file specified in the
+                                    documentfile attribute and will export items to that worksheet. If a worksheet
+                                    having the name specified in the sheet attribute already exists, that
+                                    worksheet will be overwritten.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="modifySheet">
+              <xs:annotation>
+                <xs:documentation>
+                                    Modify a worksheet. Statistics will export items to the worksheet specified in the sheet attribute.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="sheet" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The sheet attribute specifies the name of the worksheet to which items will be exported.
+            If operation=modifysheet is specified, the sheet attribute is required and omitting it
+            causes an error. If operation=createfile or operation=createsheet is specified, the sheet
+            keyword is optional. If it is omitted, the Excel default worksheet name will be used.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="location" default="lastColumn">
+        <xs:annotation>
+          <xs:documentation>
+            The location attribute specifies the worksheet location at which the first exported item will start.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="lastColumn">
+              <xs:annotation>
+                <xs:documentation>
+                          Add exported items after the last column. This is the default choice. Exported
+                          items will be added after the last column without modifying any existing
+                          contents. This is a good choice for adding new columns to an existing worksheet.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="lastRow">
+              <xs:annotation>
+                <xs:documentation>
+                          Add exported items below the last row. Exported items will be added below the
+                          last row without modifying any existing contents. This is a good choice for
+                          adding new rows to an existing worksheet.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="startCell">
+              <xs:annotation>
+                <xs:documentation>
+                          Add exported items at a specific cell location. Exported items will be added
+                          starting at the cell specified in the startCell attribute. Existing contents
+                          may be overwritten.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="startCell" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            Specifies the starting cell (e.g. "A1").  Only used if location is set to "startCell"
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="notesCaptions" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The notesCaptions keyword specifies whether to export footnotes and captions for pivot tables.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the XLSX subcommand -->
+  <xs:element name="xlsx">
+    <xs:annotation>
+      <xs:documentation>
+                The xlsx element is used to specify options for exporting to Excel 2007 and higher documents (*.xlsx).
+                Pivot table rows, columns, and cells are exported as Excel rows, columns, and cells, with all
+                formatting attributes intact--for example, cell borders, font styles, and background colors.
+                Text output is exported with all font attributes intact. Each line in the text output is a row
+                in the Excel file, with the entire contents of the line contained in a single cell. Graphics are
+                included in PNG format.
+            </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="documentfile" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+                        The documentfile attribute specifies the name of the document file that will receive the
+                        exported contents.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="operation" default="createFile">
+        <xs:annotation>
+          <xs:documentation>
+                        The operation attribute specifies the type of operation to be performed by the export.
+                    </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="createFile">
+              <xs:annotation>
+                <xs:documentation>
+                                    Create a file. This is the default choice. Statistics will create an Excel file
+                                    using the path and filename specified in the documentfile attribute and will
+                                    export items to a single worksheet. If the specified file already exists,
+                                    it will be overwritten.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="createSheet">
+              <xs:annotation>
+                <xs:documentation>
+                                    Create a worksheet. Statistics will create a worksheet in the file specified in the
+                                    documentfile attribute and will export items to that worksheet. If a worksheet
+                                    having the name specified in the sheet attribute already exists, that
+                                    worksheet will be overwritten.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="modifySheet">
+              <xs:annotation>
+                <xs:documentation>
+                                    Modify a worksheet. Statistics will export items to the worksheet specified in the sheet attribute.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="sheet" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+                        The sheet attribute specifies the name of the worksheet to which items will be exported.
+                        If operation=modifysheet is specified, the sheet attribute is required and omitting it
+                        causes an error. If operation=createfile or operation=createsheet is specified, the sheet
+                        keyword is optional. If it is omitted, the Excel default worksheet name will be used.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="location" default="lastColumn">
+        <xs:annotation>
+          <xs:documentation>
+                        The location attribute specifies the worksheet location at which the first exported item will start.
+                    </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="lastColumn">
+              <xs:annotation>
+                <xs:documentation>
+                                    Add exported items after the last column. This is the default choice. Exported
+                                    items will be added after the last column without modifying any existing
+                                    contents. This is a good choice for adding new columns to an existing worksheet.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="lastRow">
+              <xs:annotation>
+                <xs:documentation>
+                                    Add exported items below the last row. Exported items will be added below the
+                                    last row without modifying any existing contents. This is a good choice for
+                                    adding new rows to an existing worksheet.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="startCell">
+              <xs:annotation>
+                <xs:documentation>
+                                    Add exported items at a specific cell location. Exported items will be added
+                                    starting at the cell specified in the startCell attribute. Existing contents
+                                    may be overwritten.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="startCell" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+                        Specifies the starting cell (e.g. "A1").  Only used if location is set to "startCell"
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="notesCaptions" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+                        The notesCaptions keyword specifies whether to export footnotes and captions for pivot tables.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the XLSM subcommand -->
+  <xs:element name="xlsm">
+    <xs:annotation>
+      <xs:documentation>
+                The xlsx element is used to specify options for exporting to Excel 2007 and higher macro enabled documents (*.xlsm).
+                Pivot table rows, columns, and cells are exported as Excel rows, columns, and cells, with all
+                formatting attributes intact--for example, cell borders, font styles, and background colors.
+                Text output is exported with all font attributes intact. Each line in the text output is a row
+                in the Excel file, with the entire contents of the line contained in a single cell. Graphics are
+                included in PNG format.
+            </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="documentfile" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+                        The documentfile attribute specifies the name of the document file that will receive the
+                        exported contents.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="operation" default="createFile">
+        <xs:annotation>
+          <xs:documentation>
+                        The operation attribute specifies the type of operation to be performed by the export.
+                    </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="createFile">
+              <xs:annotation>
+                <xs:documentation>
+                                    Create a file. This is the default choice. Statistics will create an Excel file
+                                    using the path and filename specified in the documentfile attribute and will
+                                    export items to a single worksheet. If the specified file already exists,
+                                    it will be overwritten.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="createSheet">
+              <xs:annotation>
+                <xs:documentation>
+                                    Create a worksheet. Statistics will create a worksheet in the file specified in the
+                                    documentfile attribute and will export items to that worksheet. If a worksheet
+                                    having the name specified in the sheet attribute already exists, that
+                                    worksheet will be overwritten.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="modifySheet">
+              <xs:annotation>
+                <xs:documentation>
+                                    Modify a worksheet. Statistics will export items to the worksheet specified in the sheet attribute.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="sheet" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+                        The sheet attribute specifies the name of the worksheet to which items will be exported.
+                        If operation=modifysheet is specified, the sheet attribute is required and omitting it
+                        causes an error. If operation=createfile or operation=createsheet is specified, the sheet
+                        keyword is optional. If it is omitted, the Excel default worksheet name will be used.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="location" default="lastColumn">
+        <xs:annotation>
+          <xs:documentation>
+                        The location attribute specifies the worksheet location at which the first exported item will start.
+                    </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="lastColumn">
+              <xs:annotation>
+                <xs:documentation>
+                                    Add exported items after the last column. This is the default choice. Exported
+                                    items will be added after the last column without modifying any existing
+                                    contents. This is a good choice for adding new columns to an existing worksheet.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="lastRow">
+              <xs:annotation>
+                <xs:documentation>
+                                    Add exported items below the last row. Exported items will be added below the
+                                    last row without modifying any existing contents. This is a good choice for
+                                    adding new rows to an existing worksheet.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="startCell">
+              <xs:annotation>
+                <xs:documentation>
+                                    Add exported items at a specific cell location. Exported items will be added
+                                    starting at the cell specified in the startCell attribute. Existing contents
+                                    may be overwritten.
+                                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="startCell" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+                        Specifies the starting cell (e.g. "A1").  Only used if location is set to "startCell"
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="notesCaptions" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+                        The notesCaptions keyword specifies whether to export footnotes and captions for pivot tables.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the BMP subcommand -->
+  <xs:element name="bmp">
+    <xs:annotation>
+      <xs:documentation>
+        The bmp element is used when graphics are exported as bitmaps (*.bmp).
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="imageRoot" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The imageRoot attribute specifies the root name of the image files that will receive the
+            exported graphics. A digit will be appended after the root name to distinguish the image
+            files. For example, if ‘MyExportedOutput’ is specified as the imageRoot, the names of the
+            image files will be MyExportedOutput0.bmp, MyExportedOutput1.bmp, MyExportedOutput2.bmp, etc.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="percentSize" default="100">
+        <xs:annotation>
+          <xs:documentation>
+            The percentSize attribute specifies the size of graphics as a percentage of their original
+            size. The default value is 100. Any positive real number up to 200 may be specified.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:double">
+            <xs:minExclusive value="0" />
+            <xs:maxInclusive value="200" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="compress" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The compress attribute specifies whether to compress images to reduce file size.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the EMF subcommand -->
+  <xs:element name="emf">
+    <xs:annotation>
+      <xs:documentation>
+        The emf attribute is used to specify options for exporting graphics as Enhanced Metafiles (*.emf).
+        This format is available on Windows systems only and is often used for graphics that will be
+        placed in Word documents.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="imageRoot" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The imageRoot attribute specifies the root name of the image files that will receive the
+            exported graphics. A digit will be appended after the root name to distinguish the image
+            files. For example, if ‘MyExportedOutput’ is specified as the imageRoot, the names of the
+            image files will be MyExportedOutput0.emf, MyExportedOutput1.emf, MyExportedOutput2.emf, etc.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="percentSize" default="100">
+        <xs:annotation>
+          <xs:documentation>
+            The percentSize attribute specifies the size of graphics as a percentage of their original
+            size. The default value is 100. Any positive real number up to 200 may be specified.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:double">
+            <xs:minExclusive value="0" />
+            <xs:maxInclusive value="200" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the EPS subcommand -->
+  <xs:element name="eps">
+    <xs:annotation>
+      <xs:documentation>
+        The eps element is used to specify options for exporting graphics in Encapsulated PostScript
+        format (*.eps).  This format is often used when the quality of the image when printed on a
+        printer is important.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="imageRoot" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The imageRoot attribute specifies the root name of the image files that will receive the
+            exported graphics. A digit will be appended after the root name to distinguish the image
+            files. For example, if ‘MyExportedOutput’ is specified as the imageRoot, the names of the
+            image files will be MyExportedOutput0.eps, MyExportedOutput1.eps, MyExportedOutput2.eps, etc.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="widthUnits" default="percent">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The widthUnits attribute specifies the units to use for the width of the exported image as
+            a percentage of its original width or as measured in centimeters, inches, or points.
+            The original aspect ratio is always maintained.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="percent">
+              <xs:annotation>
+                <xs:documentation>
+                          Width is specified as a percentage.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="inches">
+              <xs:annotation>
+                <xs:documentation>
+                          Width is specified in inches.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="cm">
+              <xs:annotation>
+                <xs:documentation>
+                          Width is specified in centimeters.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="points">
+              <xs:annotation>
+                <xs:documentation>
+                          Width is specified in points.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="width" use="required" type="xs:double">
+        <xs:annotation>
+          <xs:documentation>
+            The width attribute specifies the width of the exported image, with units specified in the
+            widthUnits attribute.  The original aspect ratio is always maintained.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="preview" type="xs:boolean" default="true">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The preview attribute specifies whether to create a TIFF (Tagged Image File Format) preview
+            image along with the EPS image. The preview image will be displayed if the application you
+            are using is unable to display EPS images on the screen.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="fontHandling" default="references">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The fontHandling attribute controls the treatment of fonts in EPS images.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="references">
+              <xs:annotation>
+                <xs:documentation>
+                          Use font references. This is the default choice. If the fonts that are used
+                          in the graphic are available on the output device, those fonts are used.
+                          Otherwise, the output device uses alternate fonts.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="curves">
+              <xs:annotation>
+                <xs:documentation>
+                          Convert fonts to curves. This option turns fonts into PostScript curve data.
+                          The text itself is no longer editable as text in applications that can edit
+                          EPS graphics. This option is useful if the fonts that are used in the chart
+                          are not available on the output device.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the JPG subcommand -->
+  <xs:element name="jpg">
+    <xs:annotation>
+      <xs:documentation>
+        The jpg element is used to specify options for exporting graphics in Joint Photographic Experts
+        Group format (*.jpg).  This format is often used for graphics that contain a large number of
+        colors.  It is a good choice for graphics that will be displayed on the web.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="imageRoot" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The imageRoot attribute specifies the root name of the image files that will receive the
+            exported graphics. A digit will be appended after the root name to distinguish the image
+            files. For example, if ‘MyExportedOutput’ is specified as the imageRoot, the names of the
+            image files will be MyExportedOutput0.bmp, MyExportedOutput1.bmp, MyExportedOutput2.bmp, etc.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="percentSize" default="100">
+        <xs:annotation>
+          <xs:documentation>
+            The percentSize attribute specifies the size of graphics as a percentage of their original
+            size. The default value is 100. Any positive real number up to 200 may be specified.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:double">
+            <xs:minExclusive value="0" />
+            <xs:maxInclusive value="200" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="grayscale" type="xs:boolean" default="false">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The grayscale attribute specifies whether to export graphics as grayscale images.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the PNG subcommand -->
+  <xs:element name="png">
+    <xs:annotation>
+      <xs:documentation>
+        The png element is used to specify options for exporting graphics as Portable Network Graphics
+        files (*.png). This format is a good choice for graphics that will be displayed on the web,
+        especially if they do not contain a large number of colors.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="imageRoot" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The imageRoot attribute specifies the root name of the image files that will receive the
+            exported graphics. A digit will be appended after the root name to distinguish the image
+            files. For example, if ‘MyExportedOutput’ is specified as the imageRoot, the names of the
+            image files will be MyExportedOutput0.bmp, MyExportedOutput1.bmp, MyExportedOutput2.bmp, etc.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="percentSize" default="100">
+        <xs:annotation>
+          <xs:documentation>
+            The percentSize attribute specifies the size of graphics as a percentage of their original
+            size. The default value is 100. Any positive real number up to 200 may be specified.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:double">
+            <xs:minExclusive value="0" />
+            <xs:maxInclusive value="200" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="depth" default="screen">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The depth attribute specifies the number of colors in the exported chart. A chart that is
+            saved under any depth will have a minimum of the number of colors that are actually used
+            and a maximum of the number of colors that are allowed by the depth. For example, if the
+            chart contains three colors--red, white, and black--and you save it as 16 colors, the chart
+            will remain as three colors. If the number of colors in the chart exceeds the number of
+            colors for that depth, the colors will be dithered to replicate the colors in the chart.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="screen">
+              <xs:annotation>
+                <xs:documentation>
+                          Current screen depth. This is the default choice. It is the number of colors
+                          currently displayed on your computer monitor.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="blackWhite">
+              <xs:annotation>
+                <xs:documentation>
+                          Black and white. Each color will be converted to either black or white.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="256grays">
+              <xs:annotation>
+                <xs:documentation>
+                          Grayscale. Each color will be converted to a shade of gray.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="16colors">
+              <xs:annotation>
+                <xs:documentation>
+                          16 colors.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="256colors">
+              <xs:annotation>
+                <xs:documentation>
+                          256 colors.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="true24bit">
+              <xs:annotation>
+                <xs:documentation>
+                          24-bit true color.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="true32bit">
+              <xs:annotation>
+                <xs:documentation>
+                          32-bit true color.
+                        </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <!-- Information residing on the TIF subcommand -->
+  <xs:element name="tif">
+    <xs:annotation>
+      <xs:documentation>
+        The TIF subcommand is used to specify options for exporting graphics as Tagged Image Format
+        files (*.tif). This format is often used in the printing industry.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="imageRoot" use="required" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>
+            The imageRoot attribute specifies the root name of the image files that will receive the
+            exported graphics. A digit will be appended after the root name to distinguish the image
+            files. For example, if ‘MyExportedOutput’ is specified as the imageRoot, the names of the
+            image files will be MyExportedOutput0.bmp, MyExportedOutput1.bmp, MyExportedOutput2.bmp, etc.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="percentSize" default="100">
+        <xs:annotation>
+          <xs:documentation>
+            The percentSize attribute specifies the size of graphics as a percentage of their original
+            size. The default value is 100. Any positive real number up to 200 may be specified.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:double">
+            <xs:minExclusive value="0" />
+            <xs:maxInclusive value="200" />
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="outputExportResponse">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">
+        This element describes the response from the client.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            This element describes the objects that were not exported due to an error
+            condition.  For example, if a table has row labels that are too wide to fit
+            on a page, and "wrap" was specified, the table will not be wrapped and that
+            table's information will be includeded in this response.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:element ref="oex:warnings" minOccurs="0" maxOccurs="unbounded" />
+      </xs:sequence>
+      <xs:attribute name="success" type="xs:boolean" use="required">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+              Indicates if the export finished successfully or not.
+            </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="name" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+              Specifies the name of the viewer document whose contents were exported.
+            </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="documentFile" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+              The name of the created file
+            </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="imageRoot" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+              The name of the image root directory
+            </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="imageCount" type="xs:integer">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+              The number of image files created.
+            </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="imageFormat" type="oex:imageFormat">
+        <xs:annotation>
+          <xs:documentation>
+            The format of the exported image files.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="errorCode" type="oex:errorCode">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Specifies the type of error that occurred.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="warnings">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">
+        Identifies the command that had an warning associated with it.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="commandName" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+              The procedure or command name.
+            </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="label" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+              The procedure or command name label.
+            </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="warningCode" type="oex:warningCode">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Specifies the type of warning that occurred.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  <xs:simpleType name="measurementUnits">
+    <xs:annotation>
+      <xs:documentation>Specifies the units used for measurements.</xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="inches">
+        <xs:annotation>
+          <xs:documentation>
+                    Dimensions are specified in inches.
+                  </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="mm">
+        <xs:annotation>
+          <xs:documentation>
+                    Dimensions are specified in millimeters.
+                  </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="imageFormat">
+    <xs:annotation>
+      <xs:documentation>
+        The imageFormat attribute specifies the image file format to use for exported images.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="BMP">
+        <xs:annotation>
+          <xs:documentation>
+                      Bitmap format (*.bmp). Graphics are exported as bitmaps.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EMF">
+        <xs:annotation>
+          <xs:documentation>
+                      Enhanced Metafile format (*.emf). This format is available on Windows systems
+                      only and is often used for graphics that will be placed in Word documents.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="EPS">
+        <xs:annotation>
+          <xs:documentation>
+                      Encapsulated PostScript format (*.eps). This format is often used when the
+                      quality of the image when printed on a printer is important.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="JPG">
+        <xs:annotation>
+          <xs:documentation>
+                      Joint Photographic Experts Group format (*.jpg). This format is often used
+                      for graphics that contain a large number of colors. It is a good choice for
+                      graphics that will be displayed on the web. This is the default.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="PNG">
+        <xs:annotation>
+          <xs:documentation>
+                      Portable Network Graphics format (*.png). This format is a good choice for
+                      graphics that will be displayed on the web, especially if they do not contain
+                      a large number of colors.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="TIF">
+        <xs:annotation>
+          <xs:documentation>
+                      Tagged Image File Format (*.tif). This format is often used in the printing
+                      industry.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="errorCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="noViewer">
+        <xs:annotation>
+          <xs:documentation>
+                      No open viewer instance was found.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="viewerNotExist">
+        <xs:annotation>
+          <xs:documentation>
+                      The viewer specified by the name does not exist.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="viewerEmpty">
+        <xs:annotation>
+          <xs:documentation>
+                      The viewer to be exported contains only the root node.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="noVisible">
+        <xs:annotation>
+          <xs:documentation>
+                      Requested to export all visible items, but the viewer contains
+                      only hidden items.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="noImages">
+        <xs:annotation>
+          <xs:documentation>
+                      Requested to export all images, but no images were selected.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="invalidDocumentFile">
+        <xs:annotation>
+          <xs:documentation>
+                      The filespec specified with the documentfile keyword is either
+                      invalid or not accessible.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="invalidImageRoot">
+        <xs:annotation>
+          <xs:documentation>
+                      The filespec specified with the imageroot keyword is either
+                      invalid or not accessible.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="emfNotSupported">
+        <xs:annotation>
+          <xs:documentation>
+                      The EMF subcommand or an imageformat of emf was specified on
+                      a non-Windows system.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pptNotSupported">
+        <xs:annotation>
+          <xs:documentation>
+                      The PPT subcommand was specified on a non-Windows system.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="pptNotInstalled">
+        <xs:annotation>
+          <xs:documentation>
+                      The PPT subcommand was specified on a machine that does not
+                      have PowerPoint installed.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="xlsMaxColumnsLimitExceeded">
+        <xs:annotation>
+          <xs:documentation>
+                      One or more of the exported items exceeded the 256 column limit for
+                      Excel worksheets. Data was truncated.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="xlsxMaxColumnsLimitExceeded">
+        <xs:annotation>
+          <xs:documentation>
+                        One or more of the exported items exceeded the 16384 column limit for
+                        Excel worksheets. Data was truncated.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="xlsMaxCellCharacterLimitExceeded">
+        <xs:annotation>
+          <xs:documentation>
+                      One or more of the exported items exceeded the 32,767 characters
+                      limit for Excel cells. Data was truncated.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="maxSheetNameCharacterLimitExceeded">
+        <xs:annotation>
+          <xs:documentation>
+                      The specified sheet name is invalid -- it is longer than 31 characters.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="generalError">
+        <xs:annotation>
+          <xs:documentation>
+                      Catch-all "unspecified" error.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+  <xs:simpleType name="warningCode">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="maxColLimitExceeded">
+        <xs:annotation>
+          <xs:documentation>
+                      The following exported items exceeded the 256 column limit for
+                      Excel worksheets. Data was truncated.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="maxXlsxColLimitExceeded">
+        <xs:annotation>
+          <xs:documentation>
+                        The following exported items exceeded the 16384 column limit for
+                        Excel worksheets. Data was truncated.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="cellCharacterLimitExceeded">
+        <xs:annotation>
+          <xs:documentation>
+                      The following exported items exceeded the 32,767 characters
+                      limit for Excel cells. Data was truncated.
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+      <xs:enumeration value="longRowLabels">
+        <xs:annotation>
+          <xs:documentation>
+                      The following pivot tables contain a very long row label.
+                      The tables cannot be wrapped and were exported “as is."
+                    </xs:documentation>
+        </xs:annotation>
+      </xs:enumeration>
+    </xs:restriction>
+  </xs:simpleType>
+</xs:schema>

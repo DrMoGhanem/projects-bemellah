@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8" standalone="no"?>
+<SPSSComplexSamples version="1.0">
+	<Header copyright="Copyright (c) SPSS Inc., 2006. All Rights Reserved."/>
+	<AnalysisDesign SRSestimator="wr" numberOfStages="1">
+		<AnalysisStage estimationMethod="wr" stageNumber="1"/>
+		<Weight>
+			<Variable name="sampleweight"/>
+		</Weight>
+	</AnalysisDesign>
+</SPSSComplexSamples>

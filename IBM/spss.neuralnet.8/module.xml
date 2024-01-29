@@ -1,0 +1,371 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: <Analytic Components>                          -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 2009, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<!-- Sample Module XML for Descriptives -->
+<Module xmlns="http://www.ibm.com/software/analytics/spss/xml/extension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" debug="false" version="8.0" xsi:schemaLocation="http://www.ibm.com/software/analytics/spss/xml/extension http://www.ibm.com/software/analytics/spss/xml/extension/ModuleSpecification.xsd">
+    <ModuleDetails copyright="(c) 2009 SPSS, Inc." description="neuralnet Node" id="neuralnet" label="neuralnet" provider="SPSS, Inc."  providerTag="pasw" version="8.0"/>
+    
+    <!--  On Windows, the shared library would called *.dll, on Unix/Linux *.so/.lib/whatever -->
+    <SharedLibrary basename="neuralnet_cfmodule"/>
+    
+    <!-- Resources used by the module. -->	
+    <Resources>                    
+        <Bundle id="neuralnet_module_res" path="messages" type="properties"/>
+        <HelpInfo id="help" type="native"/>    
+    </Resources>
+    
+    <CommonObjects>
+        <!--  Property type definitions. -->
+        <PropertyTypes>           
+            
+            <!-- common parameter setting's enumeration definitions. -->            
+            <Enumeration id="ValidMetaData_Enum">
+              <Enum value="Default"/>
+              <Enum value="PSM"/>
+            </Enumeration>
+            
+            <Enumeration id="TaskType_Type">
+                <Enum value="buildNewModel"/>
+                <Enum value="updateExistingModel"/>
+            </Enumeration>
+            
+            <Enumeration id="NeuralNetworkAlgorithm_Type">
+                <Enum value="multilayerPerceptron" resourceKey="NeuralNetworkAlgorithm_Type.multilayerPerceptron"/>
+                <Enum value="radialBasisFunction" resourceKey="NeuralNetworkAlgorithm_Type.radialBasisFunction"/>
+            </Enumeration>
+            
+            <Enumeration id="MissingValueHandling_Type">
+                <Enum value="listwiseDeletion" resourceKey="MissingValueHandling_Type.listwiseDeletion"/>
+                <Enum value="missingValueImputation" resourceKey="MissingValueHandling_Type.missingValueImputation"/>
+            </Enumeration>
+                      
+            <Enumeration id="RescalingRangeInputs_Type">
+              <Enum value="standardized"/>
+              <Enum value="normalized"/>
+              <Enum value="adjustedNormalized"/>
+              <Enum value="none"/>
+            </Enumeration>
+                      
+            <!--Mapping: It replaces a enum of MLP, like as: -->
+            <!--Enumeration id="MLPArchitecture_Type"-->            
+               <!--Enum value="automaticArchitectureSelection"/-->
+               <!--Enum value="customArchitecture"/-->
+            <!--/Enumeration-->
+                             
+            <!--Mapping: It replaces a enum of RBF, like as:-->
+            <!--Enumeration id="RBFHiddenLayerUnits_Type"-->
+               <!--Enum value="findBestNumber"/-->
+               <!--Enum value="customSpecified"/-->
+            <!--/Enumeration-->
+                          
+            <Enumeration id="HiddenLayers_Type">
+              <Enum value="automaticUnits" resourceKey="HiddenLayers_Type.automaticUnits"/>
+              <Enum value="customUnits" resourceKey="HiddenLayers_Type.customUnits"/>
+            </Enumeration>
+            
+            <Enumeration id="RescalingRangeTargets_Type">
+                <Enum value="standardized"/>
+                <Enum value="normalized"/>
+                <Enum value="adjustedNormalized"/>        
+                <Enum value="none"/>                
+            </Enumeration>            
+            
+            <!-- MLP algorithm parameter setting's enumeration definitions. -->                        
+            <Enumeration id="MLPHiddenLayerUnits_Type">
+                <Enum value="automaticallyCompute"/>
+                <Enum value="customize"/>
+            </Enumeration>
+            
+            <Enumeration id="MLPHiddenLayerActivationFunction_Type">
+                <Enum value="hyperbolicTangent"/>
+                <Enum value="sigmoid"/>
+            </Enumeration>
+            
+            <Enumeration id="MLPOutputLayerActivationFunction_Type">
+                <Enum value="identity"/>
+                <Enum value="softmax"/>
+                <Enum value="hyperbolicTangent"/>        
+                <Enum value="igmoid"/>                
+            </Enumeration>
+            
+            <!-- MLP algorithm training's parameter settings definitions-->
+            <Enumeration id="MLPTrainingType_Type">
+                <Enum value="batch"/>
+                <Enum value="online"/>
+                <Enum value="miniBatch"/>           
+            </Enumeration>
+            
+            <Enumeration id="MLPTrainingMiniBatchRecords_Type">
+                <Enum value="automaticallyCompute"/>
+                <Enum value="custom"/>           
+            </Enumeration>
+            
+            <Enumeration id="MLPTrainingOptimizationAlgorithm_Type">
+                <Enum value="scaledConjugateGradient"/>
+                <Enum value="gradientDescent"/>           
+            </Enumeration>
+            
+            <!-- MLP algorithm stop's parameter settings definitions-->
+            <Enumeration id="MLPStoppingDataComputingPredictionError_Type">
+                <Enum value="chooseAutomatically"/>
+                <Enum value="bothTrainingAndTestData"/>           
+            </Enumeration>
+            
+            <Enumeration id="MLPStoppingTrainingEpochsMaximum_Type">
+                <Enum value="computeAutomatically" resourceKey="MLPStoppingTrainingEpochsMaximum_computeAutomatically"/>
+                <Enum value="specifyCustomValue" resourceKey="MLPStoppingTrainingEpochsMaximum_specifyCustomValue"/>           
+            </Enumeration>                        
+            
+            <!-- RBF algorithm parameter setting's enumeration definitions. -->
+            <Enumeration id="RBFHiddenLayerUnitsRange_Type">
+                <Enum value="automaticallyComputeRange"/>
+                <Enum value="customSpecifiedRange"/>
+            </Enumeration>            
+            
+            <Enumeration id="RBFHiddenLayerActivationFunction_Type">
+                <Enum value="normalizedRadialBasis"/>
+                <Enum value="ordinaryRadialBasis"/>
+            </Enumeration>
+            
+            <Enumeration id="RBFHiddenUnitsOverlap_Type">
+                <Enum value="automaticallyCompute"/>
+                <Enum value="customSpecified"/>
+            </Enumeration>
+                                                                                  
+        </PropertyTypes>
+    </CommonObjects>
+    
+    <!-- Status Codes -->
+    <StatusCodes>
+      
+      <!-- mcpeer error code-->
+      <StatusCode code="240000" status="error" messageKey="unknownErrorMsg.LABEL"/>
+  		<StatusCode code="240001" status="error" messageKey="initErrMsg.LABEL"/>
+  		<StatusCode code="240002" status="error" messageKey="inputErrMsg.LABEL"/>
+  		<StatusCode code="240003" status="error" messageKey="internalErrMsg.LABEL"/>
+  		<StatusCode code="240004" status="error" messageKey="invalidMetadataErrMsg.LABEL"/>
+  		<StatusCode code="240005" status="error" messageKey="fileNotExistErrorMsg.LABEL"/>
+  		<StatusCode code="240006" status="error" messageKey="storageNotSupportErrorMsg.LABEL"/>
+  		<StatusCode code="240007" status="error" messageKey="invalidTargetErrorMsg.LABEL"/>
+  		<StatusCode code="240008" status="error"
+  			messageKey="invalidTarResponseErrorMsg.LABEL"/>
+  		<StatusCode code="240009" status="error" messageKey="predictorsEmptyErrMsg.LABEL"/>
+  		<StatusCode code="240010" status="error" messageKey="targetAsInputErrorMsg.LABEL"/>
+  		<StatusCode code="240011" status="error" messageKey="invalidFrequencyErrorMsg.LABEL"/>
+  		<StatusCode code="240012" status="error"
+  			messageKey="invalidTargetResponseErrorMsg.LABEL"/>
+  		<StatusCode code="240013" status="error"
+  			messageKey="invlidResponseCatErrorMsg.LABEL"/>
+  		<StatusCode code="240014" status="error" messageKey="noFrequencyErrorMsg.LABEL"/>
+  		<StatusCode code="240015" status="error" messageKey="noTargetErrorMsg.LABEL"/>
+  		<StatusCode code="240016" status="error" messageKey="invalidtarValueMsg.LABEL"/>
+  		<StatusCode code="240017" status="error" messageKey="getfilePathMsg.LABEL"/>
+  		<StatusCode code="240018" status="error" messageKey="creationAlgorithmMsg.LABEL"/>
+  		<StatusCode code="240019" status="error" messageKey="buildModelErrorMsg.LABEL"/>
+  		<StatusCode code="240020" status="error" messageKey="assessModelErrorMsg.LABEL"/>
+  		<StatusCode code="240021" status="error" messageKey="exportPMLLErrorMsg.LABEL"/>
+  		<StatusCode code="240022" status="error" messageKey="getDataFieldErrorMsg.LABEL"/>
+  		<StatusCode code="240023" status="error" messageKey="tarResIsSameErrorMsg.LABEL"/>
+  		<StatusCode code="240024" status="error" messageKey="NoTargetFieldErrorMsg.LABEL"/>
+  		<StatusCode code="240025" status="error" messageKey="NoTargetResFieldErrorMsg.LABEL"/>
+  		<StatusCode code="240026" status="error" messageKey="targetResTrueErrorMsg.LABEL"/>
+  		<StatusCode code="240027" status="error" messageKey="PMMLNotExistErrorMsg.LABEL"/>
+  		<StatusCode code="240028" status="error" messageKey="PMMLIsInvalidErrorMsg.LABEL"/>
+  		<StatusCode code="240029" status="error" messageKey="NoPredVarInPMMLErrorMsg.LABEL"/>
+  		<StatusCode code="240030" status="error" messageKey="PMMLNotMatchDataErrorMsg.LABEL"/>
+  		<StatusCode code="240031" status="error" messageKey="getDataSourceErrorMsg.LABEL"/>
+  		<StatusCode code="240032" status="error" messageKey="dataFileISValidErrorMsg.LABEL"/>
+  		<StatusCode code="240033" status="error" messageKey="TarFieldNOTMatchErrMsg.LABEL"/>
+  		<StatusCode code="240034" status="error" messageKey="TRFieldNOTMatchErrMsg.LABEL"/>
+  		<StatusCode code="240035" status="error" messageKey="FreFieldNOTMatchErrMsg.LABEL"/>
+  		<StatusCode code="240036" status="error" messageKey="InputFieldNOTMatchMsg.LABEL"/>
+  		<StatusCode code="240037" status="error" messageKey="NoValidRecordsMsg.LABEL"/>
+  		<StatusCode code="240038" status="error" messageKey="NoRecordsScoringMsg.LABEL"/>
+  		<StatusCode code="240039" status="error" messageKey="PartionInValidMsg.LABEL"/>
+  		<StatusCode code="240040" status="error" messageKey="InputFieldConstantMsg.LABEL"/>
+  		<StatusCode code="240041" status="error" messageKey="InvalidSettingsErrorMsg.LABEL"/>
+  		<StatusCode code="240042" status="error" messageKey="NoValidFieldValuesErrorMsg.LABEL"/>  		  
+      <StatusCode code="240045" status="error" messageKey="kMC_DiscreteStatMissing.LABEL"/>
+      <StatusCode code="240046" status="error" messageKey="kMC_ContinuousStatMissing.LABEL"/>
+  		
+      <!-- common error code -->
+  	  <StatusCode code="1" status="error" messageKey="kMCCANCEL.LABEL"/>
+  	  <StatusCode code="2" status="error" messageKey="kMC_IO_ERROR.LABEL"/>
+  	  <StatusCode code="3" status="error" messageKey="kMC_MEMORY_LIMIT_EXCEEDED.LABEL"/>
+  	  <StatusCode code="4" status="error" messageKey="kMC_INVALID_SAVE_STATE.LABEL"/>
+  	  <StatusCode code="5" status="error" messageKey="kMC_FAILED_RESTART.LABEL"/>
+  	  <StatusCode code="6" status="error" messageKey="kMC_WRONG_STATE.LABEL"/>
+		
+      <!-- neural network error code -->
+      <StatusCode code="50001" status="error" messageKey="kMC_FailedCreateNetwork.LABEL"/>
+      <StatusCode code="50002" status="error" messageKey="kMC_TemporaryFile.LABEL"/>
+      <StatusCode code="50003" status="error" messageKey="kMC_InvalidCategory.LABEL"/>
+      <StatusCode code="50004" status="error" messageKey="kMC_NoValidRecords.LABEL"/>
+      <StatusCode code="50005" status="error" messageKey="kMC_InvalidSpecSensAnalysis.LABEL"/>
+      <StatusCode code="50006" status="error" messageKey="kMC_FailedRestoreFromBinary.LABEL"/>
+      <StatusCode code="50007" status="error" messageKey="kMC_FailedRestoreFromXML.LABEL"/>
+      <StatusCode code="50008" status="error" messageKey="kMC_EncodedDataError.LABEL"/>
+      <StatusCode code="50009" status="error" messageKey="kMC_InvalidVariableList.LABEL"/>
+      <StatusCode code="50010" status="error" messageKey="kMC_VarlistVsSettingsInputs.LABEL"/>
+      <StatusCode code="50011" status="error" messageKey="kMC_VarlistVsSettingsOutputs.LABEL"/>
+      <StatusCode code="50012" status="error" messageKey="kMC_NotPositiveNTrainRecs.LABEL"/>
+      <StatusCode code="50013" status="error" messageKey="kMC_NotPositiveNTestRecs.LABEL"/>
+      <StatusCode code="50014" status="error" messageKey="kMC_NoValidTrainRecords.LABEL"/>
+      <StatusCode code="50015" status="error" messageKey="kMC_NoValidTestRecords.LABEL"/>
+      <StatusCode code="50016" status="error" messageKey="kMC_CantReadFile.LABEL"/>
+      <StatusCode code="50017" status="error" messageKey="kMC_MustReadVarList.LABEL"/>
+      <StatusCode code="50018" status="error" messageKey="kMC_MissingScoringInput.LABEL"/>
+      <StatusCode code="50019" status="error" messageKey="kMCNN_NumberOfWeights.LABEL"/>
+      <StatusCode code="50020" status="error" messageKey="kMCNN_Invalid_InnerPartition.LABEL"/>
+      <StatusCode code="50021" status="warning" messageKey="kMCNN_OneVarSpecifiedMoreThanOnceForTheSameRole.LABEL"/>
+      <StatusCode code="50022" status="error" messageKey="kMCNN_OneVarSpecifiedMoreThanOnceForDifferentRoles.LABEL"/>
+      <StatusCode code="50023" status="error" messageKey="kMCNN_NotSpecifiedInputVariable.LABEL"/>
+      <StatusCode code="50024" status="error" messageKey="kMCNN_NotSpecifiedTargetVariable.LABEL"/>
+      <StatusCode code="50025" status="error" messageKey="kMCNN_NotSpecifiedFrequenceWeightVariable.LABEL"/>
+	  <StatusCode code="50026" status="message" messageKey="kMCNN_TrainingProcessCompletedAndTakingTime.LABEL"/>
+       
+    </StatusCodes>
+    
+    <!-- ContainerType declarations -->
+    <ContainerTypes>
+        <ContainerType  id="neuralnetwork_pmml_container"     mimeType="pmml" resourceKey="" fileSuffix="" />
+        <ContainerType  id="neuralnetwork_statxml_container"  mimeType="xml"  resourceKey="" fileSuffix="" />
+        <ContainerType  id="neuralnetwork_savexml_container"  mimeType="xml"  resourceKey="" fileSuffix="" />        
+        <ContainerType  id="neuralnetwork_inputxml_container" mimeType="xml"  resourceKey="" fileSuffix="" />
+    </ContainerTypes>
+    
+    <!-- Component definition. Component names are used as name-spaces and should be unique across component instances. -->
+    <!-- Aadp have two dll files. One is adpnode.dll that is for CF, the other is mcadpr.dll file that is the 
+        real adp component dll file. On windows, it is mcadpr.dll, other platform, it is libmcadpr +".so or whatever suffix" -->
+    <Component id="neuralnet">
+        <Capabilities>
+            <Consumer/>
+        </Capabilities>
+        
+        <!-- Property declarations -->
+        <Properties>
+            <!--the following is to define the settings for the oprations-->
+            
+            <!--common parameter settings-->
+            <Property name="MetaDataSource" type="ValidMetaData_Enum" defaultValue="Default"/>            
+            <Property name="TaskType" type="TaskType_Type" defaultValue="buildNewModel"/>
+       
+            <Property name="UseOverFitPreventionSet" valueType="boolean" defaultValue="true"/>
+            <Property name="OverFitPreventionSetPct" valueType="double" min="0.0" max="99.0" defaultValue="30.0" resourceKey="OverFitPreventionSetPct.LABEL"/>
+       
+            <Property name="UseRandomSeed" valueType="boolean" defaultValue="true" resourceKey="UseRandomSeed"/>
+            <Property name="RandomSeed" valueType="integer" min="1" max="999999999" defaultValue="229176228" resourceKey="RandomSeed"/>
+       
+            <Property name="MissingValueHandling" type="MissingValueHandling_Type" defaultValue="listwiseDeletion" resourceKey="MissingValueHandling_Type_title"/>
+            <Property name="IncludeUserMissing" valueType="boolean" defaultValue="false"/>
+            
+            <Property name="ComputeSensitivity" valueType="boolean" defaultValue="true"/>
+            <Property name="UseMetaDataRole" valueType="boolean" defaultValue="false"/>                        
+            
+            <Property name="NeuralNetworkAlgorithm" type="NeuralNetworkAlgorithm_Type" defaultValue="multilayerPerceptron" resourceKey="NeuralNetworkAlgorithm_Type.LABEL"/>
+            <Property name="RescalingRangeInputs" type="RescalingRangeInputs_Type" defaultValue="standardized"/>
+            
+            <!--Mapping: It replaces a property of MLP, like as:-->
+            <!--Property name="MLPArchitecture" type="MLPArchitecture_Type" defaultValue="automaticArchitectureSelection"/-->
+            <!--Mapping: It replaces a property of RBF, like as:-->
+            <!--Property name="RBFHiddenLayerUnits" type="RBFHiddenLayerUnits_Type" defaultValue="findBestNumber"/-->
+            <Property name="HiddenLayers" type="HiddenLayers_Type" defaultValue="automaticUnits" resourceKey="HiddenLayers_Type_title"/>
+     
+            <!--Mapping: It replaces a property of MLP, like as:-->
+            <!--Property name="MLPFirstHiddenLayerUnitsNumber" valueType="integer" min="1" defaultValue="0"/-->
+            <!--Mapping: It replaces a property of RBF, like as:-->
+            <!--Property name="RBFHiddenLayerUnitsNumber" valueType="integer" min="1"/-->
+            <Property name="HiddenLayer1Units" valueType="integer" min="1" resourceKey="HiddenLayer1Units"/>
+            
+            <!--Mapping: It replaces a property of MLP, like as:-->
+            <!--Property name="MLPSecondHiddenLayerUnitsNumber" valueType="integer" min="1" defaultValue="0"/-->
+            <Property name="HiddenLayer2Units" valueType="integer" min="0" resourceKey="HiddenLayer2Units"/>
+            
+            <!--It uses to MLP or RBF about rescaling range targets-->
+            <Property name="RescalingRangeTargets" type="RescalingRangeTargets_Type" defaultValue="standardized"/>                        
+    
+            <!--if algorithm is MLP-->            
+            <Property name="MLPStoppingMinimumAccuracy" valueType="boolean" defaultValue="false" resourceKey="MLPStoppingMinimumAccuracy.LABEL"/>
+            <Property name="MLPStoppingMinimumAccuracyValue" valueType="double" min="0.0" max="100.0" defaultValue="90.0" resourceKey="MLPStoppingMinimumAccuracyValue.LABEL"/>
+            
+            <Property name="MLPHiddenLayerUnitsMinimumNumber" valueType="integer" min="1" defaultValue="1"/>
+            <Property name="MLPHiddenLayerUnitsMaximumNumber" valueType="integer" min="2" defaultValue="50"/>  
+            <Property name="MLPHiddenLayerUnits" type="MLPHiddenLayerUnits_Type" defaultValue="automaticallyCompute"/>
+
+            <Property name="MLPHiddenLayerActivationFunction" type="MLPHiddenLayerActivationFunction_Type" defaultValue="hyperbolicTangent"/>
+            <Property name="MLPOutputLayerActivationFunction" type="MLPOutputLayerActivationFunction_Type" defaultValue="identity"/>            
+            <Property name="MLPRescalingNormalizedCorrection" valueType="double" defaultValue="0.02"/>
+            <Property name="MLPRescalingAdjustedNormalizedCorrection" valueType="double" defaultValue="0.02"/>            
+                                        
+            <!--mlp's training definitions-->            
+            <Property name="MLPTrainingMaximumCasesMemoryStore" valueType="integer" min="2" defaultValue="1000"/>
+            <Property name="MLPTrainingType" type="MLPTrainingType_Type" defaultValue="batch"/>
+            <Property name="MLPTrainingMiniBatchRecords" type="MLPTrainingMiniBatchRecords_Type" defaultValue="automaticallyCompute"/>   
+            <Property name="MLPTrainingMiniBatchRecordsNumber" valueType="integer" defaultValue="2"/>
+            <Property name="MLPTrainingOptimizationAlgorithm" type="MLPTrainingOptimizationAlgorithm_Type" defaultValue="scaledConjugateGradient"/>
+            <Property name="MLPTrainingInitialLambda" valueType="double" defaultValue="0.0000005"/>
+            <Property name="MLPTrainingInitialSigma" valueType="double" defaultValue="0.00005"/>
+            <Property name="MLPTrainingIntervalCenter" valueType="double" defaultValue="0.0"/>
+            <Property name="MLPTrainingIntervalOffset" valueType="double" defaultValue="0.5"/>
+            <Property name="MLPTrainingInitialLearningRate" valueType="double" defaultValue="0.4"/>
+            <Property name="MLPTrainingMomentum" valueType="double" defaultValue="0.9" />
+            <Property name="MLPTrainingLearningRateLowerBoundary" valueType="double" defaultValue="0.001"/>
+            <Property name="MLPTrainingLearningRateReductionInEpochs" valueType="integer" defaultValue="10"/>
+            
+            <!-- mlp's stopping definitions-->
+            <Property name="MLPStoppingMaximumStepsWithoutErrorDecreasing" valueType="integer" min="1" defaultValue="1"/>
+            <Property name="MLPStoppingDataComputingPredictionError" type="MLPStoppingDataComputingPredictionError_Type" defaultValue="chooseAutomatically"/>
+            <Property name="MLPStoppingMaximumTrainingTime" valueType="boolean" defaultValue="true" resourceKey="MLPStoppingMaximumTrainingTime.LABEL"/>
+            <Property name="MLPStoppingMaximumTrainingTimeMinutes" valueType="integer" min="0" defaultValue="15" resourceKey="MLPStoppingMaximumTrainingTimeMinutes.LABEL"/>
+            <Property name="MLPStoppingTrainingEpochsMaximum" type="MLPStoppingTrainingEpochsMaximum_Type" defaultValue="computeAutomatically" resourceKey="MLPStoppingTrainingEpochsMaximum_Type.LABEL"/>
+            <Property name="MLPStoppingTrainingEpochsMaximumNumber" valueType="integer" min="1" defaultValue="250" resourceKey="MLPStoppingTrainingEpochsMaximumNumber.LABEL"/>
+            <Property name="MLPStoppingMinimumRelativeTrainingErrorChange" valueType="double" defaultValue="0.0001"/>
+            <Property name="MLPStoppingMinimumRelativeTrainingErrorRatioChange" valueType="double" defaultValue="0.001"/>
+            
+            <!--if algorithm is RBF-->
+            <Property name="RBFHiddenLayerUnitsRange" type="RBFHiddenLayerUnitsRange_Type" defaultValue="automaticallyComputeRange"/>
+                        
+            <Property name="RBFHiddenLayerUnitsRangeMinimum" valueType="integer" min="0" defaultValue="0"/>            
+            <Property name="RBFHiddenLayerUnitsRangeMaximum" valueType="integer" min="0" defaultValue="0"/>
+            <Property name="RBFHiddenLayerActivationFunction" type="RBFHiddenLayerActivationFunction_Type" defaultValue="normalizedRadialBasis"/>
+            <Property name="RBFHiddenUnitsOverlap" type="RBFHiddenUnitsOverlap_Type" defaultValue="automaticallyCompute"/>
+            <Property name="RBFHiddenUnitsOverlappingFactor" valueType="double" min="0.1" defaultValue="0.1"/>
+                    
+            <!-- definitions for variable's field-->       
+            <Property name="InputFieldList" valueType="fieldName" isList="true"/>
+            <Property name="TargetField" valueType="fieldName" isList="true"/>		
+            <Property name="FrequencyWeightField" valueType="fieldName" isList="false"/>
+        </Properties>
+        
+        <!-- Containers -->
+        <Containers>           
+            <Container name="PMML"     type="pmml_container"      usage="output" runtimeProperty="tmpReportFile"/>
+            <Container name="StatXML"  type="statxml_container"   usage="output" runtimeProperty="tmpReportFile"/>            
+            <Container name="SaveXML"  type="savexml_container"   usage="output" runtimeProperty="tmpReportFile"/>
+            <Container name="InputXML" type="inputxml_container"  usage="input"  runtimeProperty="tmpReportFile"/>
+        </Containers>
+        
+        <!-- Property constraints (component state preconditions). -->
+        <Constraints>
+            <!--  
+                <Constraint>
+                <PropertyCondition op="isNotEmpty" property="referenceDateForDurations"/>
+                </Constraint>-->
+        </Constraints>
+        
+    </Component>
+ 
+</Module>

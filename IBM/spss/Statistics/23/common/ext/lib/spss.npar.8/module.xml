@@ -1,0 +1,544 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: <Analytic Components>                            -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 2009, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<!-- Sample Module XML for Descriptives -->
+<Module xmlns="http://www.ibm.com/software/analytics/spss/xml/extension"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" debug="false" version="8.0"
+	xsi:schemaLocation="http://www.ibm.com/software/analytics/spss/xml/extension http://www.ibm.com/software/analytics/spss/xml/extension/ModuleSpecification.xsd">
+	<ModuleDetails copyright="(c) 2009 SPSS, Inc." description="NPAR Module" id="npar" label="NPAR"
+		provider="SPSS, Inc." providerTag="pasw" version="8.0"/>
+
+	<!--  On Windows, the shared library would called *.dll, on Unix/Linux *.so/.lib/whatever -->
+	<SharedLibrary basename="mcnpartestr"/>
+
+	<!-- Resources used by the module. -->
+	<Resources>
+		<Bundle id="npar_module_res" path="messages" type="properties"/>
+	</Resources>
+	<CommonObjects>
+		<!--  Property type definitions. -->
+		<PropertyTypes>
+			<!--  -->
+			<Enumeration id="userMissingType">
+				<Enum value="include"/>
+				<Enum value="exclude"/>
+			</Enumeration>
+
+			<Enumeration id="missingValueTreatment">
+				<Enum value="analysis"/>
+				<Enum value="listwise"/>
+			</Enumeration>
+
+			<Enumeration id="catVarClassFormationType">
+				<Enum value="getFromData"/>
+				<Enum value="givenCategoryList"/>
+			</Enumeration>
+
+			<Enumeration id="chiSquareClassFormationType">
+				<Enum value="getFromData"/>
+				<Enum value="givenExpectedValue"/>
+			</Enumeration>
+
+			<Enumeration id="runsContVarClassFormationType">
+				<Enum value="cutPointMedian"/>
+				<Enum value="cutPointMean"/>
+				<Enum value="cutPointValue"/>
+			</Enumeration>
+
+			<Enumeration id="binomialContVarClassFormationType">
+				<Enum value="sampleMidPoint"/>
+				<Enum value="givenCutPoint"/>
+			</Enumeration>
+
+			<Enumeration id="multipleType">
+				<Enum value="none"/>
+				<Enum value="pairWise"/>
+				<Enum value="stepWise"/>
+			</Enumeration>
+
+			<Enumeration id="hypothesesOrder">
+				<Enum value="orderSmallestToLargest"/>
+				<Enum value="orderLargestToSmallest"/>
+			</Enumeration>
+
+			<Structure id="value_probability_structure">
+				<Attribute name="categoryValue" resourceKey="" valueType="string" isList="false"/>
+				<Attribute name="expectedValue" resourceKey="" valueType="double" isList="false"
+					defaultValue="" min="0"/>
+			</Structure>
+
+			<!--One-Sample ChiSquare Test-->
+			<Structure id="OChiSquare_structure">
+				<!--  classFormation
+				custom
+			isSelected-->
+				<Attribute name="classFormation" resourceKey="" type="chiSquareClassFormationType"
+					defaultValue="getFromData"/>
+				<Attribute name="custom" resourceKey="" valueType="structure"
+					type="value_probability_structure" isList="true"/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	One Sample Runs Test -->
+			<Structure id="ORuns_structure">
+				<Attribute name="catVarClassFormation" resourceKey=""
+					type="catVarClassFormationType" defaultValue="getFromData"/>
+				<Attribute name="givenCategoryList" resourceKey="" valueType="string" isList="true"/>
+				<Attribute name="contVarClassFormation" resourceKey=""
+					type="runsContVarClassFormationType" defaultValue="cutPointMedian"/>
+				<Attribute name="cutPointValue" resourceKey="" valueType="double" defaultValue=""/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	One Sample Binomial Test -->
+			<Structure id="OBinomial_structure">
+				<Attribute name="catVarClassFormation" resourceKey=""
+					type="catVarClassFormationType" defaultValue="getFromData"/>
+				<Attribute name="givenCategoryList" resourceKey="" valueType="string" isList="true"/>
+				<Attribute name="contVarClassFormation" resourceKey=""
+					type="binomialContVarClassFormationType" defaultValue="sampleMidPoint"/>
+				<Attribute name="givenCutPoint" resourceKey="" valueType="double" defaultValue=""/>
+				<Attribute name="testProbability" resourceKey="" valueType="double"
+					defaultValue="0.5" min="0" max="1.0"/>
+				<Attribute name="isDoClopperPearson" resourceKey="" valueType="boolean"
+					defaultValue="false"/>
+				<Attribute name="isDoJeffreys" resourceKey="" valueType="boolean"
+					defaultValue="false"/>
+				<Attribute name="isDoProfileLikelihood" resourceKey="" valueType="boolean"
+					defaultValue="false"/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	One Sample KolmogorovSmirnor Normal Test -->
+			<Structure id="OKolmogorovSmirnovNormal_structure">
+				<!-- isUseSample
+			stdDev
+			mean
+			isSelected -->
+				<Attribute name="isUseSample" resourceKey="" valueType="boolean" defaultValue="true"/>
+				<Attribute name="stdDev" resourceKey="" valueType="double" defaultValue="1.0"
+					min="0"/>
+				<Attribute name="mean" resourceKey="" valueType="double"/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="true"
+				/>
+			</Structure>
+
+			<!--•	One Sample KolmogorovSmirnor Uniform Test -->
+			<Structure id="OKolmogorovSmirnovUniform_structure">
+				<!-- isUseSample
+			min
+			max
+			isSelected -->
+				<Attribute name="isUseSample" resourceKey="" valueType="boolean" defaultValue="true"/>
+				<Attribute name="min" resourceKey="" valueType="double"/>
+				<Attribute name="max" resourceKey="" valueType="double" defaultValue="1.0"/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	One Sample KolmogorovSmirnor Poisson  Test -->
+			<Structure id="OKolmogorovSmirnovPoisson_structure">
+				<!-- isUseSample
+				mean
+			isSelected -->
+				<Attribute name="isUseSample" resourceKey="" valueType="boolean" defaultValue="true"/>
+				<Attribute name="mean" resourceKey="" valueType="double"/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	One Sample KolmogorovSmirnor Exponential  Test -->
+			<Structure id="OKolmogorovSmirnovExponential_structure">
+				<!-- isUseSample
+			mean
+			isSelected -->
+				<Attribute name="isUseSample" resourceKey="" valueType="boolean" defaultValue="true"/>
+				<Attribute name="mean" resourceKey="" valueType="double"/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	One sample wilcoxon signed –rank test -->
+			<Structure id="OWilcoxonSignedRanks_structure">
+				<!-- userSpecifyTestValue
+			testValue
+			isSelected -->
+				<Attribute name="userSpecifyTestValue" resourceKey="" valueType="boolean"
+					defaultValue="false"/>
+				<Attribute name="testValue" resourceKey="" valueType="double" defaultValue=""/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	Two Related Sign Test -->
+			<Structure id="RSign_structure">
+				<!-- isSelected -->
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	Two Related McNemar’s Test -->
+			<Structure id="RMcNemar_structure">
+				<!-- classFormation
+			categoriesList	
+			isSelected -->
+				<Attribute name="classFormation" resourceKey="" type="catVarClassFormationType"
+					defaultValue="getFromData"/>
+				<Attribute name="categoriesList" resourceKey="" valueType="string" isList="true"/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	Two Related Marginal Homogeneity Test -->
+			<Structure id="RMarginalHomogeneity_structure">
+				<!-- isSelected -->
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	Two_Related: WilcoxonPairs Test -->
+			<Structure id="RWilcoxonSignedRanks_structure">
+				<!--isSelected-->
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	Two Related: Hodges-Lehman estimate Test -->
+			<Structure id="RHodgesLehmannEstimatePairs_structure">
+				<!-- isSelected -->
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	Related Test Cochran's Q Test -->
+			<Structure id="RCochransQ_structure">
+				<!-- classFormation
+			successCategoryList
+			typeOfMultipleComparison
+			isSelected -->
+				<Attribute name="classFormation" resourceKey="" type="catVarClassFormationType"
+					defaultValue="getFromData"/>
+				<Attribute name="successCategoryList" resourceKey="" valueType="string"
+					isList="true"/>
+				<Attribute name="typeOfMultipleComparison" resourceKey="" type="multipleType"
+					defaultValue="pairWise"/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	K_ Related :Friedman's Two-Way Analysis  Test -->
+			<Structure id="RFriedmansTwoWayByRanks_structure">
+				<!-- typeOfMultipleComparison
+			isSelected-->
+				<Attribute name="typeOfMultipleComparison" resourceKey="" type="multipleType"
+					defaultValue="pairWise"/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	K_Related: Kendall's Coefficient of Concordance Test -->
+			<Structure id="RKendallsCoefficient_structure">
+				<!--  typeOfMultipleComparison
+			isSelected-->
+				<Attribute name="typeOfMultipleComparison" resourceKey="" type="multipleType"
+					defaultValue="pairWise"/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	Two_Independent sample: Wald-Wolfowitz Runs Test -->
+			<Structure id="IWaldWolfowitzRuns_structure">
+				<!-- isSelected-->
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	Two_Independent sample: Hodges-Lehman estimate Test -->
+			<Structure id="IHodgesLehmannEstimateIndependent_structure">
+				<!--  isSelected-->
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	Independent Test K-Sample Median Test -->
+			<Structure id="IKMedian_structure">
+				<!--  typeOfMultipleComparison
+				userSpecifyMedian
+				userSpecifyGroupRange
+				median
+				isSelected -->
+				<Attribute name="typeOfMultipleComparison" resourceKey="" type="multipleType"
+					defaultValue="pairWise"/>
+				<Attribute name="userSpecifyMedian" resourceKey="" valueType="boolean"
+					defaultValue="false"/>
+				<Attribute name="userSpecifyGroupRange" resourceKey="" valueType="boolean"
+					defaultValue="false"/>
+				<Attribute name="median" resourceKey="" valueType="double"/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	Independent Test Moses Test of Extreme Reaction -->
+			<Structure id="IMoses_structure">
+				<!--  userSpecifyGroupList
+			userSpecifyNumberOfOutliers
+			NumberOfOutliers
+			isSelected-->
+				<Attribute name="userSpecifyGroupList" resourceKey="" valueType="boolean"
+					defaultValue="false"/>
+				<Attribute name="userSpecifyNumberOfOutliers" resourceKey="" valueType="boolean"
+					defaultValue="false"/>
+				<Attribute name="NumberOfOutliers" resourceKey="" valueType="integer"
+					defaultValue="1" min="1"/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	Independent Test Mann-Whitney U Test -->
+			<Structure id="IMannWhitneyU_structure">
+				<!-- userSpecifyGroupList
+			isSelected-->
+				<Attribute name="userSpecifyGroupList" resourceKey="" valueType="boolean"
+					defaultValue="false"/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	Independent sample: Kolmogorov-Smirnov Test -->
+			<Structure id="IKolmogorovSmirnov_structure">
+				<!--  isSelected-->
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	Independent Kruskal-Waillis One-Way Analysis of Variance -->
+			<Structure id="IKruskalWallis_structure">
+				<!--  typeOfMultipleComparison
+			isSelected-->
+				<Attribute name="typeOfMultipleComparison" resourceKey="" type="multipleType"
+					defaultValue="pairWise"/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+
+			<!-- •	Jonckheere-Terpstra test -->
+			<Structure id="IJonckheereTerpstra_structure">
+				<!--  typeOfMultipleComparison
+			orderOfHypotheses
+			isSelected-->
+				<Attribute name="typeOfMultipleComparison" resourceKey="" type="multipleType"
+					defaultValue="pairWise"/>
+				<Attribute name="orderOfHypotheses" resourceKey="" type="hypothesesOrder"
+					defaultValue="orderSmallestToLargest"/>
+				<Attribute name="isSelected" resourceKey="" valueType="boolean" defaultValue="false"
+				/>
+			</Structure>
+		</PropertyTypes>
+	</CommonObjects>
+
+	<!-- Status Codes -->
+	<StatusCodes>
+
+		<!-- shared peer error code may be returned in the CF integration -->
+		<StatusCode code="240000" status="error" messageKey="unknownErrorMsg.LABEL"/>
+		<StatusCode code="240001" status="error" messageKey="initErrMsg.LABEL"/>
+		<StatusCode code="240002" status="error" messageKey="inputErrMsg.LABEL"/>
+		<StatusCode code="240003" status="error" messageKey="internalErrMsg.LABEL"/>
+		<StatusCode code="240004" status="error" messageKey="invalidMetadataErrMsg.LABEL"/>
+		<StatusCode code="240005" status="error" messageKey="fileNotExistErrorMsg.LABEL"/>
+		<StatusCode code="240006" status="error" messageKey="storageNotSupportErrorMsg.LABEL"/>
+		<StatusCode code="240007" status="error" messageKey="invalidTargetErrorMsg.LABEL"/>
+		<StatusCode code="240008" status="error" messageKey="invalidTarResponseErrorMsg.LABEL"/>
+		<StatusCode code="240009" status="error" messageKey="predictorsEmptyErrMsg.LABEL"/>
+		<StatusCode code="240010" status="error" messageKey="targetAsInputErrorMsg.LABEL"/>
+		<StatusCode code="240011" status="error" messageKey="invalidFrequencyErrorMsg.LABEL"/>
+		<StatusCode code="240012" status="error" messageKey="invalidTargetResponseErrorMsg.LABEL"/>
+		<StatusCode code="240013" status="error" messageKey="invlidResponseCatErrorMsg.LABEL"/>
+		<StatusCode code="240014" status="error" messageKey="noFrequencyErrorMsg.LABEL"/>
+		<StatusCode code="240015" status="error" messageKey="noTargetErrorMsg.LABEL"/>
+		<StatusCode code="240016" status="error" messageKey="invalidtarValueMsg.LABEL"/>
+		<StatusCode code="240017" status="error" messageKey="getfilePathMsg.LABEL"/>
+		<StatusCode code="240018" status="error" messageKey="creationAlgorithmMsg.LABEL"/>
+		<StatusCode code="240019" status="error" messageKey="buildModelErrorMsg.LABEL"/>
+		<StatusCode code="240020" status="error" messageKey="assessModelErrorMsg.LABEL"/>
+		<StatusCode code="240021" status="error" messageKey="exportPMLLErrorMsg.LABEL"/>
+		<StatusCode code="240022" status="error" messageKey="getDataFieldErrorMsg.LABEL"/>
+		<StatusCode code="240023" status="error" messageKey="tarResIsSameErrorMsg.LABEL"/>
+		<StatusCode code="240024" status="error" messageKey="NoTargetFieldErrorMsg.LABEL"/>
+		<StatusCode code="240025" status="error" messageKey="NoTargetResFieldErrorMsg.LABEL"/>
+		<StatusCode code="240026" status="error" messageKey="targetResTrueErrorMsg.LABEL"/>
+		<StatusCode code="240027" status="error" messageKey="PMMLNotExistErrorMsg.LABEL"/>
+		<StatusCode code="240028" status="error" messageKey="PMMLIsInvalidErrorMsg.LABEL"/>
+		<StatusCode code="240029" status="error" messageKey="NoPredVarInPMMLErrorMsg.LABEL"/>
+		<StatusCode code="240030" status="error" messageKey="PMMLNotMatchDataErrorMsg.LABEL"/>
+		<StatusCode code="240031" status="error" messageKey="getDataSourceErrorMsg.LABEL"/>
+		<StatusCode code="240032" status="error" messageKey="dataFileISValidErrorMsg.LABEL"/>
+		<StatusCode code="240033" status="error" messageKey="TarFieldNOTMatchErrMsg.LABEL"/>
+		<StatusCode code="240034" status="error" messageKey="TRFieldNOTMatchErrMsg.LABEL"/>
+		<StatusCode code="240035" status="error" messageKey="FreFieldNOTMatchErrMsg.LABEL"/>
+		<StatusCode code="240036" status="error" messageKey="InputFieldNOTMatchMsg.LABEL"/>
+		<StatusCode code="240037" status="error" messageKey="NoValidRecordsMsg.LABEL"/>
+		<StatusCode code="240038" status="error" messageKey="NoRecordsScoringMsg.LABEL"/>
+		<StatusCode code="240039" status="error" messageKey="PartionInValidMsg.LABEL"/>
+		<StatusCode code="240040" status="error" messageKey="InputFieldConstantMsg.LABEL"/>
+		<StatusCode code="240041" status="error" messageKey="InvalidSettingsErrorMsg.LABEL"/>
+		<StatusCode code="240042" status="error" messageKey="NoValidFieldValuesErrorMsg.LABEL"/>
+
+		<!-- npar error code returned to CF, other tests error will be output in the xml to the MV -->
+		<StatusCode code="220001" status="error" messageKey="kNPAR_NoTestCreated.LABEL"/>
+		<StatusCode code="220002" status="error" messageKey="kNPAR_AllocatingBufferFault.LABEL"/>
+		<StatusCode code="220003" status="error" messageKey="kNPAR_NoValidRecords.LABEL"/>
+		<StatusCode code="220005" status="error" messageKey="kNPAR_InValidMultiPassRecordIter.LABEL"/>
+		<StatusCode code="220008" status="error"
+			messageKey="kNPAR_OneVarSpecifiedForBothFrenquentVarAndOthers.LABEL"/>
+		<StatusCode code="220009" status="error"
+			messageKey="kNPAR_HasIndependentVarsNotGroupVar.LABEL"/>
+		<StatusCode code="220010" status="error" messageKey="kNPAR_NotSpecifiedAnyVariables.LABEL"/>
+		<StatusCode code="220011" status="error"
+			messageKey="kNPAR_SpecifiedVarNotInDataModule.LABEL"/>
+		<StatusCode code="220012" status="error" messageKey="kNPAR_MemoryLimitExceeded.LABEL"/>
+		<StatusCode code="220014" status="warning"
+			messageKey="kNPAR_RelatedTestContVarNotUsed.LABEL"/>
+		<StatusCode code="220015" status="warning"
+			messageKey="kNPAR_RelatedTestOrdinalVarNotUsed.LABEL"/>
+		<StatusCode code="220016" status="warning"
+			messageKey="kNPAR_RelatedTestNominalVarNotUsed.LABEL"/>
+		<StatusCode code="220017" status="warning"
+			messageKey="kNPAR_RelatedTestContVarNumNotSuitable.LABEL"/>
+		<StatusCode code="220018" status="warning"
+			messageKey="kNPAR_RelatedTestOrdinalVarNumNotSuitable.LABEL"/>
+		<StatusCode code="220019" status="warning"
+			messageKey="kNPAR_RelatedTestNominalVarNumNotSuitable.LABEL"/>
+		<StatusCode code="220020" status="warning"
+			messageKey="kNPAR_RelatedTestNoVarsForTheTests.LABEL"/>
+		<StatusCode code="220021" status="warning"
+			messageKey="kNPAR_OneSampleContVarsForChisquare.LABEL"/>
+		<StatusCode code="220022" status="warning"
+			messageKey="kNPAR_OneSampleNoVarsForTheTests.LABEL"/>
+		<StatusCode code="220023" status="warning"
+			messageKey="kNPAR_OneSampleCatVarsForTheContTests.LABEL"/>
+		<StatusCode code="220024" status="warning" messageKey="kNPAR_IndepTestNotCatGroupVar.LABEL"/>
+		<StatusCode code="220025" status="warning" messageKey="kNPAR_IndepTestCatVarsCantUse.LABEL"/>
+		<StatusCode code="220026" status="error"
+			messageKey="kNPAR_FreqWeightValueIsGreaterThanMaxVal.LABEL"/>
+	</StatusCodes>
+
+	<!-- ContainerType declarations -->
+	<ContainerTypes>
+		<!--  
+		Container types:
+        -   XML documents
+		-	PMML / Model
+		-	Pivot Tables / Multi-Dimensional Variables
+		-	Chart Visualizations
+	    -	Table Visualizations
+		-	Text output
+		-	Static Image
+		-	Case data – a subset
+		__
+		The "fileSuffix" attribute is used when generating the temporary files used to store or retrieve the various components.
+		They don't provide explicit meaning to the application or component but potentially would be useful when debugging.
+        -->
+		<!-- TBD -->
+		<ContainerType id="ct_output_container_npar" mimeType="xml" resourceKey="" fileSuffix=""/>
+	</ContainerTypes>
+
+	<!-- Component definition. Component names are used as name-spaces and should be unique across component instances. -->
+	<Component id="npar">
+
+		<!-- 
+		Component capabilities [TBD]:
+		-  Data Provider
+		-  Data Transformer
+		-  Data Consumer
+		-  Container Operator (operates upon Containers)
+		-->
+		<Capabilities>
+			<Consumer/>
+		</Capabilities>
+
+		<!-- Property declarations -->
+		<Properties>
+
+			<!-- global settings -->
+			<!--  <Property name="weightVariable" valueType="field"  />	-->
+			<Property name="userMissing" type="userMissingType" defaultValue="exclude"/>
+			<Property name="missingTreatment" type="missingValueTreatment" defaultValue="analysis"/>
+			<Property name="sigLevel" valueType="double" defaultValue="0.05" min="0" max="1.0"/>
+			<!-- <Property name="confidenceLevel" valueType="double" defaultValue="0.95" min="0" max="1.0"/> -->
+			<Property name="confidenceLevel" valueType="double" defaultValue="95" min="0" max="100"/>
+
+			<Property name="oneSampleVariables" valueType="fieldName" isList="true"/>
+			<Property name="relatedVariables" valueType="fieldName" isList="true"/>
+			<Property name="independentVariables" valueType="fieldName" isList="true"/>
+			<Property name="groupVariable" valueType="fieldName" isList="true"/>
+			<Property name="isAutomaticallyOneSample" valueType="boolean" defaultValue="true"/>
+		
+
+			<!-- npar tests -->
+			<Property name="OChiSquare" type="OChiSquare_structure"/>
+			<!--  <Property name="OChiSquareCustom" type="value_probability_structure" isList="true"/> -->
+			<Property name="ORuns" type="ORuns_structure"/>
+			<Property name="OBinomial" type="OBinomial_structure"/>
+			<Property name="OKolmogorovSmirnovNormal" type="OKolmogorovSmirnovNormal_structure"/>
+			<Property name="OKolmogorovSmirnovUniform" type="OKolmogorovSmirnovUniform_structure"/>
+			<Property name="OKolmogorovSmirnovPoisson" type="OKolmogorovSmirnovPoisson_structure"/>
+			<Property name="OKolmogorovSmirnovExponential"
+				type="OKolmogorovSmirnovExponential_structure"/>
+			<Property name="OWilcoxonSignedRanks" type="OWilcoxonSignedRanks_structure"/>
+			<Property name="isAutomaticallyRelated" valueType="boolean" defaultValue="true"/>
+			<Property name="RSign" type="RSign_structure"/>
+			<Property name="RMcNemar" type="RMcNemar_structure"/>
+			<Property name="RMarginalHomogeneity" type="RMarginalHomogeneity_structure"/>
+			<Property name="RWilcoxonSignedRanks" type="RWilcoxonSignedRanks_structure"/>
+			<Property name="RHodgesLehmannEstimatePairs"
+				type="RHodgesLehmannEstimatePairs_structure"/>
+			<Property name="RCochransQ" type="RCochransQ_structure"/>
+			<Property name="RFriedmansTwoWayByRanks" type="RFriedmansTwoWayByRanks_structure"/>
+			<Property name="RKendallsCoefficient" type="RKendallsCoefficient_structure"/>
+			
+			<Property name="isAutomaticallyIndependent" valueType="boolean" defaultValue="true"/>
+			<Property name="IWaldWolfowitzRuns" type="IWaldWolfowitzRuns_structure"/>
+			<Property name="IHodgesLehmannEstimateIndependent"
+				type="IHodgesLehmannEstimateIndependent_structure"/>
+			<Property name="IKMedian" type="IKMedian_structure"/>
+			<Property name="IMoses" type="IMoses_structure"/>
+			<Property name="IMannWhitneyU" type="IMannWhitneyU_structure"/>
+			<Property name="IKolmogorovSmirnov" type="IKolmogorovSmirnov_structure"/>
+			<Property name="IKruskalWallis" type="IKruskalWallis_structure"/>
+			<Property name="IJonckheereTerpstra" type="IJonckheereTerpstra_structure"/>
+
+			<Property name="caseIDField" valueType="fieldName" isList="false" defaultValue=""/>
+		</Properties>
+
+		<!-- Containers -->
+		<Containers>
+			<!-- TBD -->
+			<Container name="StatXML" type="ct_output_container_npar" usage="output"
+				runtimeProperty="tmpReportFile"/>
+		</Containers>
+
+		<!-- Property constraints (component state preconditions). -->
+		<Constraints>
+			<!--  	<Constraint>
+			</Constraint>-->
+		</Constraints>
+
+	</Component>
+</Module>

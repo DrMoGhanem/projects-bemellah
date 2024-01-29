@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: <Analytic Components>                          -->
+<!--                                                                   -->
+<!-- (c)Copyright IBM Corp. 2008, 2011                                 -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<Module xmlns="http://www.ibm.com/software/analytics/spss/xml/extension"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" debug="false" version="8.0"
+ xsi:schemaLocation="http://www.ibm.com/software/analytics/spss/xml/extension http://www.ibm.com/software/analytics/spss/xml/extension/ModuleSpecification.xsd">
+ <ModuleDetails copyright="(c) 2009 SPSS, Inc." description="Model Evaluation"
+  id="me" label="ModelEvaluation" provider="SPSS, Inc." providerTag="pasw" version="8.0"/>
+
+ <SharedLibrary basename="cfme"/>
+
+ <Resources>
+  <Bundle id="me_module_res" path="messages" type="properties"/>
+ </Resources>
+
+ <CommonObjects>
+  <PropertyTypes>
+   <Enumeration id="TAdjustedPropensityPartition">
+		  <Enum value="test" /> 
+		  <Enum value="validation" /> 
+	</Enumeration>
+  </PropertyTypes>
+ </CommonObjects>
+
+ <StatusCodes>
+  <!--  shared peer error code may be returned in the CF integration   -->
+  <StatusCode code="240000" status="error" messageKey="unknownErrorMsg.LABEL"/>
+  <StatusCode code="240001" status="error" messageKey="initErrMsg.LABEL"/>
+  <StatusCode code="240002" status="error" messageKey="inputErrMsg.LABEL"/>
+  <StatusCode code="240003" status="error" messageKey="internalErrMsg.LABEL"/>
+  <StatusCode code="240004" status="error" messageKey="invalidMetadataErrMsg.LABEL"/>
+  <StatusCode code="240005" status="error" messageKey="fileNotExistErrorMsg.LABEL"/>
+  <StatusCode code="240006" status="error" messageKey="storageNotSupportErrorMsg.LABEL"/>
+  <StatusCode code="240007" status="error" messageKey="invalidTargetErrorMsg.LABEL"/>
+  <StatusCode code="240008" status="error" messageKey="invalidTarResponseErrorMsg.LABEL"/>
+  <StatusCode code="240009" status="error" messageKey="predictorsEmptyErrMsg.LABEL"/>
+  <StatusCode code="240010" status="error" messageKey="targetAsInputErrorMsg.LABEL"/>
+  <StatusCode code="240011" status="error" messageKey="invalidFrequencyErrorMsg.LABEL"/>
+  <StatusCode code="240012" status="error" messageKey="invalidTargetResponseErrorMsg.LABEL"/>
+  <StatusCode code="240013" status="error" messageKey="invlidResponseCatErrorMsg.LABEL"/>
+  <StatusCode code="240014" status="error" messageKey="noFrequencyErrorMsg.LABEL"/>
+  <StatusCode code="240015" status="error" messageKey="noTargetErrorMsg.LABEL"/>
+  <StatusCode code="240016" status="error" messageKey="invalidtarValueMsg.LABEL"/>
+  <StatusCode code="240017" status="error" messageKey="getfilePathMsg.LABEL"/>
+  <StatusCode code="240018" status="error" messageKey="creationAlgorithmMsg.LABEL"/>
+  <StatusCode code="240019" status="error" messageKey="buildModelErrorMsg.LABEL"/>
+  <StatusCode code="240020" status="error" messageKey="assessModelErrorMsg.LABEL"/>
+  <StatusCode code="240021" status="error" messageKey="exportPMLLErrorMsg.LABEL"/>
+  <StatusCode code="240022" status="error" messageKey="getDataFieldErrorMsg.LABEL"/>
+  <StatusCode code="240023" status="error" messageKey="tarResIsSameErrorMsg.LABEL"/>
+  <StatusCode code="240024" status="error" messageKey="NoTargetFieldErrorMsg.LABEL"/>
+  <StatusCode code="240025" status="error" messageKey="NoTargetResFieldErrorMsg.LABEL"/>
+  <StatusCode code="240026" status="error" messageKey="targetResTrueErrorMsg.LABEL"/>
+  <StatusCode code="240027" status="error" messageKey="PMMLNotExistErrorMsg.LABEL"/>
+  <StatusCode code="240028" status="error" messageKey="PMMLIsInvalidErrorMsg.LABEL"/>
+  <StatusCode code="240029" status="error" messageKey="NoPredVarInPMMLErrorMsg.LABEL"/>
+  <StatusCode code="240030" status="error" messageKey="PMMLNotMatchDataErrorMsg.LABEL"/>
+  <StatusCode code="240031" status="error" messageKey="getDataSourceErrorMsg.LABEL"/>
+  <StatusCode code="240032" status="error" messageKey="dataFileISValidErrorMsg.LABEL"/>
+  <StatusCode code="240033" status="error" messageKey="TarFieldNOTMatchErrMsg.LABEL"/>
+  <StatusCode code="240034" status="error" messageKey="TRFieldNOTMatchErrMsg.LABEL"/>
+  <StatusCode code="240035" status="error" messageKey="FreFieldNOTMatchErrMsg.LABEL"/>
+  <StatusCode code="240036" status="error" messageKey="InputFieldNOTMatchMsg.LABEL"/>
+  <StatusCode code="240037" status="error" messageKey="NoValidRecordsMsg.LABEL"/>
+  <StatusCode code="240038" status="error" messageKey="NoRecordsScoringMsg.LABEL"/>
+  <StatusCode code="240039" status="error" messageKey="PartionInValidMsg.LABEL"/>
+  <StatusCode code="240040" status="error" messageKey="InputFieldConstantMsg.LABEL"/>
+  <StatusCode code="240041" status="error" messageKey="InvalidSettingsErrorMsg.LABEL"/>
+  <StatusCode code="240042" status="error" messageKey="NoValidFieldValuesErrorMsg.LABEL"/>
+  <!--   error code returned to CF  -->
+  <StatusCode code="290010" status="error" messageKey="kME_NoPMML.LABEL"/>
+  <StatusCode code="290011" status="error" messageKey="kME_NoStatXML.LABEL"/>
+  <StatusCode code="290012" status="error" messageKey="kME_InvalidPMML.LABEL"/>
+  <StatusCode code="290013" status="error" messageKey="kME_InvalidStatXML.LABEL"/>
+  <StatusCode code="290020" status="error" messageKey="kME_NoValidRecord.LABEL"/>
+ </StatusCodes>
+
+ <ContainerTypes>
+  <ContainerType id="ct_input_container_me" mimeType="xml" resourceKey="" fileSuffix=""/>
+  <ContainerType id="ct_output_container_me" mimeType="xml" resourceKey="" fileSuffix=""/>
+ </ContainerTypes>
+
+ <Component id="me" pattern="manager">
+  <Capabilities>
+   <Consumer/>
+  </Capabilities>
+
+  <Containers>
+   <Container name="InputPMML" type="ct_input_container_me" usage="input" runtimeProperty=""/>
+   <Container name="InputStatXML" type="ct_input_container_me" usage="input" runtimeProperty=""/>
+   <Container name="PMML" type="ct_output_container_me" usage="output" runtimeProperty=""/>
+   <Container name="StatXML" type="ct_output_container_me" usage="output" runtimeProperty=""/>
+  </Containers>
+
+  <Properties>
+   <Property name="CalculateAdjustedPropensity" valueType="boolean" defaultValue="false" /> 
+   <Property name="AdjustedPropensityPartition" type="TAdjustedPropensityPartition" defaultValue = "test"/>
+   <Property name="FrequencyWeightField" valueType="fieldName" isList="false" /> 
+   
+  </Properties>
+
+  <Constraints> </Constraints>
+ </Component>
+</Module>

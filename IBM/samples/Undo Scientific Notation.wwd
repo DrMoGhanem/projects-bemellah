@@ -1,0 +1,65 @@
+
+'Purpose: Removes scientific notation format in data cells.
+'Assumptions: The Pivot Table that is to be modified is selected, and strNewFormat is a valid format string
+'Effects: Changes the format of the data cells to strNewFormat from scientific notation
+'Inputs: PivotTable object that is already selected, new numeric format (strNewFormat)
+'Return Values: Modified Pivot Table
+
+
+'#Uses "Global.wwd"
+
+Sub Main
+
+	Dim objPivot As PivotTable
+	Dim objItem As ISpssItem
+
+	'Get first selcted pivot table
+	Dim bolFoundOutput As Boolean, bolFoundPivot As Boolean
+	Call GetFirstSelectedPivot(objPivot, objItem, bolFoundOutput, bolFoundPivot)
+	If Not (bolFoundOutput And bolFoundPivot) Then Exit Sub
+	
+	'defer drawing until all changes are made
+	objPivot.UpdateScreen = False
+	
+	Call UndoSciNotation(objPivot, "#.#")
+	
+	'do all the drawing
+	objPivot.UpdateScreen = True
+	'clean up
+	objItem.Deactivate
+	
+End Sub
+
+
+Sub UndoSciNotation(objPivotTable As PivotTable, strNewFormat As String)
+
+'See SPSS Objects Help topic "String Description of Numeric Formats"
+'or experiment with GetFormatString.
+		
+	Dim strFormat As String
+	Dim lngRow As Long, lngCol As Long	
+	Dim objDataCells As ISpssDataCells
+	
+	Set objDataCells = objPivotTable.DataCellArray
+
+	'changing to percent format will cause numeric errors!
+	If strNewFormat = "##.#%" Then
+		Exit Sub
+	End If
+	
+	With objDataCells
+		For lngRow = 0 To .NumRows - 1 
+			For lngCol = 0 To .NumColumns - 1
+				If Not IsNull (.ValueAt (lngRow, lngCol)) Then
+					strFormat = .NumericFormatAt (lngRow, lngCol)
+					If strFormat = "#.# ; #.##E-#" Or strFormat = "#.##E+##" Then
+						.NumericFormatAt (lngRow, lngCol) = strNewFormat
+					End If
+				End If
+			Next
+		Next
+	End With
+	
+	objPivotTable.Autofit
+	
+End Sub

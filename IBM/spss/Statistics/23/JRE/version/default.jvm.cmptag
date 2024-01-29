@@ -1,0 +1,24 @@
+<Component>
+	<ComponentName>IBM Java-Virtual Machine</ComponentName>
+	<ComponentVersion>2.7.0</ComponentVersion>
+	<BuildLevel>20141203_225288</BuildLevel>
+	<SWGFMIDX>JIJMAC270</SWGFMIDX>
+	<SubComponents>
+		<SubComponent> 
+			<SubComponentName>IBM Java - Virtual Machine</SubComponentName> 
+			<SubComponentVersion>R27_Java727_SR2_20141203_1047_B225288</SubComponentVersion> 
+		</SubComponent> 
+		<SubComponent> 
+			<SubComponentName>IBM Java - Garbage Collector</SubComponentName> 
+			<SubComponentVersion>R27_Java727_SR2_20141203_1047_B225288</SubComponentVersion> 
+		</SubComponent> 
+		<SubComponent> 
+			<SubComponentName>IBM Java - Kernel Class Library</SubComponentName> 
+			<SubComponentVersion>R27_Java727_SR2_20141203_1047_B225288</SubComponentVersion> 
+		</SubComponent> 
+		<SubComponent> 
+			<SubComponentName>IBM Java - Just In Time Compiler</SubComponentName> 
+			<SubComponentVersion>tr.r13.java_20141003_74587.05</SubComponentVersion> 
+		</SubComponent> 
+	</SubComponents> 
+</Component>

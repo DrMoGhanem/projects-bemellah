@@ -1,0 +1,63 @@
+' Global object representing SPSS application instance
+Public objSpssApp As Application16
+
+' Global object representing connection to SPSS
+Public connInfo As ConnectionInfo16
+
+' Global object representing script context to SPSS
+Public scriptContext As SpssScriptContext16
+
+' Environ variable name set by JavaClient while forking WWBProcessor
+Private Const JAVA_CLIENT_PORT As String = "JAVA_CLIENT_PORT" ' port number for connecting To java cliant xml rpc server
+
+Public Sub SetSpssApp()
+
+    On Error GoTo ErrorHandler
+
+    'Create connection info object
+    'MsgBox "Creating connInfo object"
+    Set connInfo = CreateObject("SPSS.ConnectionInfo16")
+    'MsgBox "Created connInfo object"
+
+    'Get SPSS application instance
+    'MsgBox "Creating objSpssApp object"
+    Set objSpssApp = connInfo.GetApplication()
+    'MsgBox "Created objSpssApp object"
+
+    'Get SPSS script context instance
+    'MsgBox "Creating scriptContext object"
+    Set scriptContext = connInfo.GetScriptContext()
+    'MsgBox "Created scriptContext object"
+    
+    Exit Sub
+ErrorHandler:
+    MsgBox Err.Description, vbCritical
+End Sub
+
+Public Sub FreeSpssApp()
+
+    On Error GoTo ErrorHandler
+    
+    'free the spssapp object
+    'MsgBox "Freeing objSpssApp object"
+    Set objSpssApp = Nothing
+    'MsgBox "Freed objSpssApp object"
+    
+    ' free the script context object
+    'MsgBox "Freeing scriptContext object"
+    Set scriptContext = Nothing
+    'MsgBox "Freed scriptContext object"
+
+    'Call the connection release method
+     If connInfo Is Nothing Then
+	'MsgBox "connInfo is nothing."
+     Else
+	'MsgBox "Calling connInfo.FreeConnection()"
+	connInfo.FreeConnection()
+	'MsgBox "Called connInfo.FreeConnection()"	
+    End If
+
+    Exit Sub
+ErrorHandler:
+    MsgBox Err.Description, vbCritical
+End Sub
