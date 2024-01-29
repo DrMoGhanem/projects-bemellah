@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/1/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="EXAMINE" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="COMPARE" EqualsSign="Optional">
+        <Parameter Name="GROUPS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLES" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TOTAL" EqualsSign="None"/>
+    <Subcommand Name="NOTOTAL" EqualsSign="None"/>
+    <Subcommand Name="ID" EqualsSign="Optional"/>
+    <Subcommand Name="PERCENTILES" EqualsSign="None">
+        <Parameter Name="HAVERAGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WAVERAGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROUND" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AEMPIRICAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EMPIRICAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="STEMLEAF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BOXPLOT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NPPLOT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SPREADLEVEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HISTOGRAM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STATISTICS" EqualsSign="Optional">
+        <Parameter Name="DESCRIPTIVES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXTREME" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CINTERVAL" EqualsSign="None"/>
+    <Subcommand Name="MESTIMATORS" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HUBER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ANDREW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HAMPEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TUKEY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="LISTWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOREPORT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PAIRWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REPORT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

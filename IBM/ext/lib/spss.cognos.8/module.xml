@@ -1,0 +1,255 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Modeler Common                                 -->
+<!--                                                                   -->
+<!-- (c)Copyright IBM Corp. 1994, 2011                                 -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<Module xmlns="http://xml.spss.com/pasw/extension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" debug="false" version="7.0"
+  xsi:schemaLocation="http://xml.spss.com/pasw/extension http://xml.spss.com/pasw/extension/ModuleSpecification.xsd">
+  <ModuleDetails copyright="(c) 2010 SPSS, Inc." description="Cognos" id="cognos" label="Cognos" provider="SPSS, Inc." providerTag="pasw" version="7.0"/>
+
+  <!--  On Windows, the shared library would be cognos.dll, on Unix/Linux cognos.so/.lib/whatever -->
+  <SharedLibrary basename="cognos"/>
+
+  <!-- Resources used by the module. -->
+  <Resources>
+    <Bundle id="cognos_module_res" path="messages" type="properties"/>
+    <HelpInfo id="help" type="native"/>
+  </Resources>
+
+  <CommonObjects>
+    <PropertyTypes>
+      <!-- Define the cognos connection structure -->
+      <Structure id="cognos_connection_type">
+        <Attribute name="server_url" valueType="string" defaultValue="" resourceKey="cognos_server_url"/>
+        <Attribute name="anonymous_login" valueType="boolean" defaultValue="true" resourceKey="cognos_login_mode"/>
+        <Attribute name="namespace" valueType="string" defaultValue="" resourceKey="cognos_namespace"/>
+        <Attribute name="user_name" valueType="string" defaultValue="" resourceKey="cognos_user_name"/>
+        <Attribute name="password" valueType="encryptedString" defaultValue="" resourceKey="cognos_password"/>
+        <Attribute name="is_encoded" valueType="boolean" defaultValue="false"/>
+      </Structure>
+
+      <Structure id="Parameter">
+        <Attribute name="name" valueType="string" defaultValue=""/>
+        <Attribute name="value" valueType="string" defaultValue=""/>
+      </Structure>
+
+      <Structure id="field">
+        <Attribute name="field_name" valueType="string" defaultValue=""/>
+        <Attribute name="storage" valueType="string" defaultValue=""/>
+      </Structure>
+
+      <Enumeration id="publish_mode">
+        <Enum value="publish_directly"/>
+        <Enum value="export_to_file"/>
+      </Enumeration>
+
+      <!-- Define the field structure -->
+      <Structure id="Field">
+        <Attribute name="name" valueType="string" defaultValue=""/>
+        <Attribute name="storage" valueType="string" defaultValue=""/>
+      </Structure>
+    </PropertyTypes>
+
+    <!-- Since the read content and importer share common properties, create a shared property set -->
+    <PropertySets>
+      <PropertySet/>
+    </PropertySets>
+  </CommonObjects>
+
+  <!-- Status Codes -->
+  <StatusCodes>
+    <StatusCode code="240000" status="error" messageKey="unknownErrorMsg.LABEL"/>
+    <StatusCode code="240001" status="error" messageKey="initErrMsg.LABEL"/>
+    <StatusCode code="240002" status="error" messageKey="inputErrMsg.LABEL"/>
+    <StatusCode code="240003" status="error" messageKey="internalErrMsg.LABEL"/>
+    <StatusCode code="240004" status="error" messageKey="invalidMetadataErrMsg.LABEL"/>
+    <StatusCode code="240005" status="error" messageKey="fileNotExistErrorMsg.LABEL"/>
+    <StatusCode code="240006" status="error" messageKey="storageNotSupportErrorMsg.LABEL"/>
+    <StatusCode code="240007" status="error" messageKey="invalidTargetErrorMsg.LABEL"/>
+    <StatusCode code="240008" status="error" messageKey="invalidTarResponseErrorMsg.LABEL"/>
+    <StatusCode code="240009" status="error" messageKey="predictorsEmptyErrMsg.LABEL"/>
+    <StatusCode code="240010" status="error" messageKey="targetAsInputErrorMsg.LABEL"/>
+    <StatusCode code="240011" status="error" messageKey="invalidFrequencyErrorMsg.LABEL"/>
+    <StatusCode code="240012" status="error" messageKey="invalidTargetResponseErrorMsg.LABEL"/>
+    <StatusCode code="240013" status="error" messageKey="invlidResponseCatErrorMsg.LABEL"/>
+    <StatusCode code="240014" status="error" messageKey="noFrequencyErrorMsg.LABEL"/>
+    <StatusCode code="240015" status="error" messageKey="noTargetErrorMsg.LABEL"/>
+    <StatusCode code="240016" status="error" messageKey="invalidtarValueMsg.LABEL"/>
+    <StatusCode code="240017" status="error" messageKey="getfilePathMsg.LABEL"/>
+    <StatusCode code="240018" status="error" messageKey="creationAlgorithmMsg.LABEL"/>
+    <StatusCode code="240019" status="error" messageKey="buildModelErrorMsg.LABEL"/>
+    <StatusCode code="240020" status="error" messageKey="assessModelErrorMsg.LABEL"/>
+    <StatusCode code="240021" status="error" messageKey="exportPMLLErrorMsg.LABEL"/>
+    <StatusCode code="240022" status="error" messageKey="getDataFieldErrorMsg.LABEL"/>
+    <StatusCode code="240023" status="error" messageKey="tarResIsSameErrorMsg.LABEL"/>
+    <StatusCode code="240024" status="error" messageKey="NoTargetFieldErrorMsg.LABEL"/>
+    <StatusCode code="240025" status="error" messageKey="NoTargetResFieldErrorMsg.LABEL"/>
+    <StatusCode code="240026" status="error" messageKey="targetResTrueErrorMsg.LABEL"/>
+    <StatusCode code="240027" status="error" messageKey="PMMLNotExistErrorMsg.LABEL"/>
+    <StatusCode code="240028" status="error" messageKey="PMMLIsInvalidErrorMsg.LABEL"/>
+    <StatusCode code="240029" status="error" messageKey="NoPredVarInPMMLErrorMsg.LABEL"/>
+    <StatusCode code="240030" status="error" messageKey="PMMLNotMatchDataErrorMsg.LABEL"/>
+    <StatusCode code="240031" status="error" messageKey="getDataSourceErrorMsg.LABEL"/>
+    <StatusCode code="240032" status="error" messageKey="dataFileISValidErrorMsg.LABEL"/>
+    <StatusCode code="240033" status="error" messageKey="TarFieldNOTMatchErrMsg.LABEL"/>
+    <StatusCode code="240034" status="error" messageKey="TRFieldNOTMatchErrMsg.LABEL"/>
+    <StatusCode code="240035" status="error" messageKey="FreFieldNOTMatchErrMsg.LABEL"/>
+    <StatusCode code="240036" status="error" messageKey="InputFieldNOTMatchMsg.LABEL"/>
+    <StatusCode code="240037" status="error" messageKey="NoValidRecordsMsg.LABEL"/>
+    <StatusCode code="240038" status="error" messageKey="NoRecordsScoringMsg.LABEL"/>
+    <StatusCode code="240039" status="error" messageKey="PartionInValidMsg.LABEL"/>
+    <StatusCode code="240040" status="error" messageKey="InputFieldConstantMsg.LABEL"/>
+    <StatusCode code="240041" status="error" messageKey="InvalidSettingsErrorMsg.LABEL"/>
+    <StatusCode code="240042" status="error" messageKey="NoValidFieldValuesErrorMsg.LABEL"/>
+
+    <!-- common error code -->
+    <StatusCode code="1" status="error" messageKey="kMCCANCEL.LABEL"/>
+    <StatusCode code="2" status="error" messageKey="kMC_IO_ERROR.LABEL"/>
+    <StatusCode code="3" status="error" messageKey="kMC_MEMORY_LIMIT_EXCEEDED.LABEL"/>
+    <StatusCode code="4" status="error" messageKey="kMC_INVALID_SAVE_STATE.LABEL"/>
+    <StatusCode code="5" status="error" messageKey="kMC_FAILED_RESTART.LABEL"/>
+    <StatusCode code="6" status="error" messageKey="kMC_WRONG_STATE.LABEL"/>
+
+    <!-- cognos error codes -->
+    <StatusCode code="320001" status="error" messageKey="kCOGNOS_Connection_Failed.LABEL"/>
+    <StatusCode code="320002" status="error" messageKey="kCOGNOS_Connection_Maleformed_URL.LABEL"/>
+    <StatusCode code="320003" status="error" messageKey="kCOGNOS_Connection_Service_Error.LABEL"/>
+    <StatusCode code="320004" status="error" messageKey="kCOGNOS_Logon_Failed.LABEL"/>
+    <StatusCode code="320005" status="error" messageKey="kCOGNOS_Connection_Invalid_ID.LABEL"/>
+    <StatusCode code="320006" status="error" messageKey="kCOGNOS_Anonymous_Access_Deny.LABEL"/>
+    <StatusCode code="320007" status="error" messageKey="kCOGNOS_Server_URL_Error.LABEL"/>
+    <StatusCode code="320008" status="error" messageKey="kCOGNOS_Host_Not_Found.LABEL"/>
+    <StatusCode code="320009" status="error" messageKey="kCOGNOS_Connect_Refused.LABEL"/>
+    <StatusCode code="320010" status="error" messageKey="kCOGNOS_Invalid_Namespace.LABEL"/>
+    <StatusCode code="320011" status="error" messageKey="kCOGNOS_Invalid_Credential.LABEL"/>
+
+    <StatusCode code="320101" status="error" messageKey="kCOGNOS_Invalid_Package_Name.LABEL"/>
+    <StatusCode code="320102" status="error" messageKey="kCOGNOS_Invalid_Type.LABEL"/>
+    <StatusCode code="320103" status="error" messageKey="kCOGNOS_Invalid_Path.LABEL"/>
+    <StatusCode code="320104" status="error" messageKey="kCOGNOS_Query_Object_Fail.LABEL"/>
+    <StatusCode code="320105" status="error" messageKey="kCOGNOS_Query_Namespace_Fail.LABEL"/>
+    <StatusCode code="320106" status="error" messageKey="kCOGNOS_Construct_Dom_Fail.LABEL"/>
+
+    <StatusCode code="320201" status="error" messageKey="kCOGNOS_Render_Report_Failed.LABEL"/>
+    <StatusCode code="320202" status="error" messageKey="kCOGNOS_Get_Metadata_Failed.LABEL"/>
+    <StatusCode code="320203" status="error" messageKey="kCOGNOS_Missing_Parameter.LABEL"/>
+    <StatusCode code="320204" status="error" messageKey="kCOGNOS_Invalid_Row_Index.LABEL"/>
+    <StatusCode code="320205" status="error" messageKey="kCOGNOS_Get_Report_Output_Fail.LABEL"/>
+    <StatusCode code="320206" status="error" messageKey="kCOGNOS_Param_Input_Not_Enough.LABEL"/>
+    <StatusCode code="320207" status="error" messageKey="kCOGNOS_Parse_Attach_Fail.LABEL"/>
+    <StatusCode code="320208" status="error" messageKey="kCOGNOS_Create_Report_Fail.LABEL"/>
+    <StatusCode code="320209" status="error" messageKey="kCOGNOS_Invalid_Attachment_Type.LABEL"/>
+    <StatusCode code="320210" status="error" messageKey="kCOGNOS_Render_Response_Fail.LABEL"/>
+    <StatusCode code="320211" status="error" messageKey="kCOGNOS_Query_Report_Spec_Fail.LABEL"/>
+    <StatusCode code="320212" status="error" messageKey="kCOGNOS_Read_Data_Fail.LABEL"/>
+    <StatusCode code="320213" status="error" messageKey="kCOGNOS_Get_Parameters_Fail.LABEL"/>
+    <StatusCode code="320214" status="error" messageKey="kCOGNOS_Unknown_Output_Format.LABEL"/>
+    <StatusCode code="320215" status="error" messageKey="kCOGNOS_Not_Really_List_Report.LABEL"/>
+    <StatusCode code="320216" status="error" messageKey="kCOGNOS_Incorrect_Parameter.LABEL"/>
+    <StatusCode code="320301" status="error" messageKey="kCOGNOS_Publish_Package_Fail.LABEL"/>
+    <StatusCode code="320302" status="error" messageKey="kCOGNOS_Get_Catalog_Fail.LABEL"/>
+    <StatusCode code="320303" status="error" messageKey="kCOGNOS_Execute_Actionlog_Fail.LABEL"/>
+    <StatusCode code="320304" status="error" messageKey="kCOGNOS_Data_Source_Error.LABEL"/>
+    <StatusCode code="320305" status="error" messageKey="kCOGNOS_Access_Data_Fail.LABEL"/>
+    <StatusCode code="320401" status="error" messageKey="kCOGNOS_Get_Report_Metadata_Fail.LABEL"/>
+    <StatusCode code="320402" status="error" messageKey="kCOGNOS_Parse_Metadata_Fail.LABEL"/>
+
+    <StatusCode code="320901" status="error" messageKey="kCOGNOS_Invalid_Parameter.LABEL"/>
+    <StatusCode code="320902" status="error" messageKey="kCOGNOS_Parse_Xml_Fail.LABEL"/>
+    <StatusCode code="320903" status="error" messageKey="kCOGNOS_Get_Report_Param_Fail.LABEL"/>
+    <StatusCode code="320904" status="error" messageKey="kCOGNOS_Get_Namespace_Fail.LABEL"/>
+    <StatusCode code="320905" status="error" messageKey="kCOGNOS_Get_Datasource_Fail.LABEL"/>
+    <StatusCode code="320906" status="error" messageKey="kCOGNOS_Construct_XML_FROM_DOM_Fail.LABEL"/>
+    <StatusCode code="320999" status="error" messageKey="kCOGNOS_Unknown_Error.LABEL"/>
+
+    <StatusCode code="324001" status="error" messageKey="kCOGNOS_Open_JVM_Fail.LABEL"/>
+    <StatusCode code="324002" status="error" messageKey="kCOGNOS_Close_JVM_Fail.LABEL"/>
+    <StatusCode code="324003" status="error" messageKey="kCOGNOS_Invalid_Class_Path.LABEL"/>
+    <StatusCode code="324004" status="error" messageKey="kCOGNOS_Miss_Classloader.LABEL"/>
+    <StatusCode code="324005" status="error" messageKey="kCOGNOS_Load_Classloader_Fail.LABEL"/>
+    <StatusCode code="324006" status="error" messageKey="kCOGNOS_Init_Classloader_Fail.LABEL"/>
+    <StatusCode code="324007" status="error" messageKey="kCOGNOS_Miss_Java_Interface.LABEL"/>
+    <StatusCode code="324008" status="error" messageKey="kCOGNOS_Load_Java_Interface_Fail.LABEL"/>
+    <StatusCode code="324009" status="error" messageKey="kCOGNOS_Init_Java_Interface_Fail.LABEL"/>
+    <StatusCode code="324010" status="error" messageKey="kCOGNOS_Miss_Interface_Method.LABEL"/>
+    <!-- warning codes -->
+    <!-- StatusCode code="310051" status="warning" messageKey="noMatchingRootErrMsg.LABEL"/ -->
+  </StatusCodes>
+
+  <ContainerTypes> </ContainerTypes>
+
+  <!-- Components -->
+  <Component id="cognosInteractor">
+    <Properties>
+      <Property name="connection_backend" type="cognos_connection_type"/>
+	  <Property name="connection" type="cognos_connection_type"/>
+      <Property name="packagePath" valueType="string" defaultValue=""/>
+      <Property name="reportDirectory" valueType="string" defaultValue=""/>
+      <Property name="reportPath" valueType="string" defaultValue=""/>
+      <!-- selected field -->
+      <Property name="selected_query_item" valueType="string" isList="true"/>
+      <Property name="filtersChosen" valueType="string" isList="true"/>
+      <Property name="packageParameters" type="Parameter" isList="true"/>
+      <Property name="reportParameters" type="Parameter" isList="true"/>
+    </Properties>
+  </Component>
+
+  <Component id="cognosImporter">
+    <Properties>
+      <Property name="connection_backend" type="cognos_connection_type"/>
+	  <Property name="connection" type="cognos_connection_type"/>
+      <Property name="packagePath" valueType="string" defaultValue=""/>
+      <Property name="autoSummary" valueType="boolean" defaultValue="false"/>
+      <!-- selected field -->
+      <Property name="selected_query_item" valueType="string" isList="true"/>
+      <Property name="filtersChosen" valueType="string" isList="true"/>
+      <Property name="packageParameters" type="Parameter" isList="true"/>
+      <!-- old data model property-->
+      <Property name="selected_fields" type="field" isList="true"/>
+      <Property name="newfields" valueType="string" isList="true"/>
+      <!-- data model -->
+      <Property name="dataDataModel" type="Field" isList="true"/>
+    </Properties>
+  </Component>
+
+  <Component id="cognosReportImporter">
+    <Properties>
+      <Property name="connection_backend" type="cognos_connection_type"/>
+	  <Property name="connection" type="cognos_connection_type"/>
+      <Property name="reportDirectory" valueType="string" defaultValue=""/>
+      <Property name="reportPath" valueType="string" defaultValue=""/>
+      <Property name="reportParameters" type="Parameter" isList="true"/>
+
+      <!-- data model -->
+      <Property name="reportDataModel" type="Field" isList="true"/>
+    </Properties>
+  </Component>
+
+  <Component id="cognosExporter">
+    <Properties>
+      <Property name="connection_backend" type="cognos_connection_type"/>
+	  <Property name="connection" type="cognos_connection_type"/>
+      <!-- ODBC related properties -->
+      <Property name="selected_data_source" valueType="string" defaultValue=""/>
+      <Property name="schemaName" valueType="string" defaultValue=""/>
+      <Property name="tableName" valueType="string" defaultValue=""/>
+      <!-- MetaDataRelated properties -->
+      <Property name="selected_folder" valueType="string" defaultValue=""/>
+      <Property name="package_name" valueType="string" defaultValue=""/>
+      <!-- Action Script file name -->
+      <Property name="export_mode" type="publish_mode" defaultValue="publish_directly"/>
+      <Property name="file_name" valueType="string" defaultValue=""/>
+      <!-- generate import flag property -->
+      <Property name="generate_import" valueType="boolean" defaultValue="false"/>
+    </Properties>
+  </Component>
+</Module>

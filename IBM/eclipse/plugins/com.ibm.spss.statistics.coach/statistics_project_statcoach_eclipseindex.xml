@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="utf-8"?>
+<index>
+  <entry keyword="bar chart">
+    <topic href="spss/statcoach/statcoach_desc_categories_charts_bycat_bar.htm#statcoach_desc_categories_charts_bycat_bar" title="Bar Chart"/>
+    <topic href="spss/statcoach/statcoach_desc_scale-within_charts_bar.htm#statcoach_desc_scale-within_charts_bar" title="Bar chart of summary statistics within categories"/>
+    <topic href="spss/statcoach/statcoach_var-dist_cat_chart_bar.htm#statcoach_var-dist_cat_chart_bar" title="Bar chart"/>
+  </entry>
+  <entry keyword="pie chart">
+    <topic href="spss/statcoach/statcoach_desc_categories_charts_bycat_pie.htm#statcoach_desc_categories_charts_bycat_pie" title="Pie Chart"/>
+    <topic href="spss/statcoach/statcoach_var-dist_cat_chart_pie.htm#statcoach_var-dist_cat_chart_pie" title="Pie chart"/>
+  </entry>
+  <entry keyword="clustered bar chart">
+    <topic href="spss/statcoach/statcoach_desc_categories_charts_withincat_clustered-bar.htm#statcoach_desc_categories_charts_withincat_clustered-bar" title="Clustered bar chart"/>
+  </entry>
+  <entry keyword="stacked bar chart">
+    <topic href="spss/statcoach/statcoach_desc_categories_charts_withincat_stacked-bar.htm#statcoach_desc_categories_charts_withincat_stacked-bar" title="Stacked bar chart"/>
+  </entry>
+  <entry keyword="3D bar chart">
+    <topic href="spss/statcoach/statcoach_desc_categories_charts_withincat_3dbar.htm#statcoach_desc_categories_charts_withincat_3dbar" title="3-D bar chart"/>
+    <topic href="spss/statcoach/statcoach_desc_scale-within_charts_3d.htm#statcoach_desc_scale-within_charts_3d" title="3-D chart of summary statistics within categories of two variables"/>
+  </entry>
+  <entry keyword="Frequencies">
+    <topic href="spss/statcoach/statcoach_desc_scale_table_freq.htm#statcoach_desc_scale_table_freq" title="Descriptive statistics plus quartiles, quantiles, and percentiles"/>
+    <entry keyword="frequency table">
+      <topic href="spss/statcoach/statcoach_var-dist_cat_table_bycat.htm#statcoach_var-dist_cat_table_bycat" title="Counts or percentages by category"/>
+    </entry>
+    <entry keyword="quantiles">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_freq.htm#statcoach_var-dist_scale_table_freq" title="Descriptive statistics plus quartiles, quantiles, and percentiles"/>
+    </entry>
+    <entry keyword="quartiles">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_freq.htm#statcoach_var-dist_scale_table_freq" title="Descriptive statistics plus quartiles, quantiles, and percentiles"/>
+    </entry>
+    <entry keyword="percentiles">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_freq.htm#statcoach_var-dist_scale_table_freq" title="Descriptive statistics plus quartiles, quantiles, and percentiles"/>
+    </entry>
+  </entry>
+  <entry keyword="Descriptives">
+    <entry keyword="z scores">
+      <topic href="spss/statcoach/statcoach_desc_scale_table_desc.htm#statcoach_desc_scale_table_desc" title="Descriptive statistics (except median and mode) plus z scores"/>
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_desc.htm#statcoach_var-dist_scale_table_desc" title="Descriptive statistics (except median and mode) plus z scores"/>
+    </entry>
+  </entry>
+  <entry keyword="z scores">
+    <entry keyword="in Descriptives">
+      <topic href="spss/statcoach/statcoach_desc_scale_table_desc.htm#statcoach_desc_scale_table_desc" title="Descriptive statistics (except median and mode) plus z scores"/>
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_desc.htm#statcoach_var-dist_scale_table_desc" title="Descriptive statistics (except median and mode) plus z scores"/>
+    </entry>
+  </entry>
+  <entry keyword="Explore">
+    <topic href="spss/statcoach/statcoach_var-dist_scale_table_explore.htm#statcoach_var-dist_scale_table_explore" title="Descriptive statistics plus quartiles, percentiles, m-estimators, and outliers"/>
+    <entry keyword="descriptive statistics">
+      <topic href="spss/statcoach/statcoach_desc_scale_table_explore.htm#statcoach_desc_scale_table_explore" title="Descriptive statistics plus quartiles, percentiles, m-estimators, and outliers"/>
+      <topic href="spss/statcoach/statcoach_desc_scale-within_tables_explore.htm#statcoach_desc_scale-within_tables_explore" title="Descriptive statistics, plus quartiles, percentiles, m-estimators, and outliers"/>
+    </entry>
+    <entry keyword="stem-and-leaf plot">
+      <topic href="spss/statcoach/statcoach_desc_scale_charts_stem-leaf.htm#statcoach_desc_scale_charts_stem-leaf" title="Stem-and-leaf plot"/>
+    </entry>
+    <entry keyword="stem-and-leaf plots">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_chart_stem.htm#statcoach_var-dist_scale_chart_stem" title="Stem-and-leaf plot "/>
+    </entry>
+  </entry>
+  <entry keyword="Case Summaries">
+    <topic href="spss/statcoach/statcoach_desc_scale_table_case-listing.htm#statcoach_desc_scale_table_case-listing" title="Individual case listings and descriptive statistics"/>
+    <topic href="spss/statcoach/statcoach_var-dist_scale_table_summarize.htm#statcoach_var-dist_scale_table_summarize" title="Individual case listings and descriptive statistics"/>
+    <entry keyword="case listings within categories">
+      <topic href="spss/statcoach/statcoach_var-dist_cat_table_case.htm#statcoach_var-dist_cat_table_case" title="Individual case listings within categories"/>
+    </entry>
+  </entry>
+  <entry keyword="histogram">
+    <topic href="spss/statcoach/statcoach_desc_scale_charts_hist.htm#statcoach_desc_scale_charts_hist" title="Histogram with normal curve"/>
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_two-groups_one-scale_test-normality.htm#statcoach_compare-groups_scale_two-groups_one-scale_test-normality" title="Check for normality of data"/>
+    <entry keyword="with normal curve">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_chart_histogram.htm#statcoach_var-dist_scale_chart_histogram" title="Histogram with normal curve"/>
+    </entry>
+  </entry>
+  <entry keyword="boxplot">
+    <topic href="spss/statcoach/statcoach_desc_scale_charts_boxplot.htm#statcoach_desc_scale_charts_boxplot" title="Boxplot with interquartile range and outliers"/>
+    <topic href="spss/statcoach/statcoach_desc_scale-within_charts_box.htm#statcoach_desc_scale-within_charts_box" title="Boxplots with interquartile range and outliers"/>
+    <topic href="spss/statcoach/statcoach_var-dist_scale_chart_boxplot.htm#statcoach_var-dist_scale_chart_boxplot" title="Boxplot with interquartile range and outliers"/>
+  </entry>
+  <entry keyword="stem-and-leaf plot">
+    <entry keyword="Explore">
+      <topic href="spss/statcoach/statcoach_desc_scale_charts_stem-leaf.htm#statcoach_desc_scale_charts_stem-leaf" title="Stem-and-leaf plot"/>
+    </entry>
+  </entry>
+  <entry keyword="Crosstabs">
+    <topic href="spss/statcoach/statcoach_compare-groups_cat.htm#statcoach_compare-groups_cat" title="Data in categories (nominal, ordinal)"/>
+    <topic href="spss/statcoach/statcoach_sig-var-relationships_cat.htm#statcoach_sig-var-relationships_cat" title="Data in categories (nominal, ordinal)"/>
+    <entry keyword="descriptive statistics">
+      <topic href="spss/statcoach/statcoach_desc_scale-within_tables_summarize.htm#statcoach_desc_scale-within_tables_summarize" title="Descriptive statistics for categories of one variable within categories of another"/>
+    </entry>
+  </entry>
+  <entry keyword="quantiles">
+    <entry keyword="in Frequencies">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_freq.htm#statcoach_var-dist_scale_table_freq" title="Descriptive statistics plus quartiles, quantiles, and percentiles"/>
+    </entry>
+  </entry>
+  <entry keyword="quartiles">
+    <entry keyword="in Frequencies">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_freq.htm#statcoach_var-dist_scale_table_freq" title="Descriptive statistics plus quartiles, quantiles, and percentiles"/>
+    </entry>
+  </entry>
+  <entry keyword="percentiles">
+    <entry keyword="in Frequencies">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_freq.htm#statcoach_var-dist_scale_table_freq" title="Descriptive statistics plus quartiles, quantiles, and percentiles"/>
+    </entry>
+  </entry>
+  <entry keyword="stem-and-leaf plots">
+    <entry keyword="in Explore">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_chart_stem.htm#statcoach_var-dist_scale_chart_stem" title="Stem-and-leaf plot "/>
+    </entry>
+  </entry>
+  <entry keyword="OLAP Cubes">
+    <topic href="spss/statcoach/statcoach_olap.htm#statcoach_olap" title="Create OLAP report cubes"/>
+  </entry>
+  <entry keyword="One-Sample T Test">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_one.htm#statcoach_compare-groups_scale_one" title="One group or variable compared to a known value"/>
+  </entry>
+  <entry keyword="Independent-Samples T Test">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_two-groups_one-scale_assume-normal.htm#statcoach_compare-groups_scale_two-groups_one-scale_assume-normal" title="Test that assumes data are normally distributed within groups"/>
+  </entry>
+  <entry keyword="Two-Independent-Samples Tests">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_two-groups_one-scale_not-assume-normal.htm#statcoach_compare-groups_scale_two-groups_one-scale_not-assume-normal" title="Test that does not assume data are normally distributed"/>
+  </entry>
+  <entry keyword="Paired-Samples T Test">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_two-groups_two-scale_assume-normal.htm#statcoach_compare-groups_scale_two-groups_two-scale_assume-normal" title="Test that assumes both variables have a normal distribution"/>
+  </entry>
+  <entry keyword="Two-Related-Samples Tests">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_two-groups_two-scale_not-assume-normal.htm#statcoach_compare-groups_scale_two-groups_two-scale_not-assume-normal" title="Test that does not assume data are normally distributed"/>
+  </entry>
+  <entry keyword="One-Way ANOVA">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_three-groups_one-factor_assume-normal.htm#statcoach_compare-groups_scale_three-groups_one-factor_assume-normal" title="Test that assumes data are normally distributed within groups"/>
+  </entry>
+  <entry keyword="Tests for Several Independent Samples">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_three-groups_one-factor_not-assume-normal.htm#statcoach_compare-groups_scale_three-groups_one-factor_not-assume-normal" title="Test that does not assume data are normally distributed"/>
+  </entry>
+  <entry keyword="histograms">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_three-groups_one-factor_check-normal.htm#statcoach_compare-groups_scale_three-groups_one-factor_check-normal" title="Check normality of data"/>
+  </entry>
+  <entry keyword="Univariate ANOVA">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_three-groups_two-factor.htm#statcoach_compare-groups_scale_three-groups_two-factor" title="Two or more (e.g., revenue for groups defined by division within each region)"/>
+  </entry>
+  <entry keyword="rank-order correlations">
+    <entry keyword="in Bivariate Correlations">
+      <topic href="spss/statcoach/statcoach_sig-var-relationships_ordinal.htm#statcoach_sig-var-relationships_ordinal" title="Ordinal, rank-order, or non-normal scale data"/>
+    </entry>
+  </entry>
+  <entry keyword="Pearson correlations">
+    <entry keyword="in Bivariate Correlations">
+      <topic href="spss/statcoach/statcoach_sig-var-relationships_scale_two-at-time_table.htm#statcoach_sig-var-relationships_scale_two-at-time_table" title="Tables and numbers"/>
+    </entry>
+  </entry>
+  <entry keyword="scatterplot matrix">
+    <topic href="spss/statcoach/statcoach_sig-var-relationships_scale_two-at-time_chart_two-pair.htm#statcoach_sig-var-relationships_scale_two-at-time_chart_two-pair" title="Two or more pairs of variables"/>
+  </entry>
+  <entry keyword="Partial Correlations">
+    <topic href="spss/statcoach/statcoach_sig-var-relationships_scale_two.htm#statcoach_sig-var-relationships_scale_two" title="Two, controlling for the effects of one or more additional variables"/>
+  </entry>
+  <entry keyword="3D scatterplots">
+    <topic href="spss/statcoach/statcoach_sig-var-relationships_scale_three.htm#statcoach_sig-var-relationships_scale_three" title="Exactly three"/>
+  </entry>
+  <entry keyword="Linear Regression">
+    <topic href="spss/statcoach/statcoach_sig-var-relationships_scale_pred.htm#statcoach_sig-var-relationships_scale_pred" title="One dependent variable and two or more independent (predictor) variables"/>
+  </entry>
+  <entry keyword="Ordinal Regression">
+    <topic href="spss/statcoach/statcoach_sig-var-relationships_ord-dep.htm#statcoach_sig-var-relationships_ord-dep" title="Ordinal dependent and scale or categorical independent variables"/>
+  </entry>
+  <entry keyword="Hierarchical Cluster Analysis">
+    <topic href="spss/statcoach/statcoach_sim-cases_scale_unknonwn-groups_less200.htm#statcoach_sim-cases_scale_unknonwn-groups_less200" title="Less than 200 cases"/>
+  </entry>
+  <entry keyword="K-Means Cluster Analysis">
+    <topic href="spss/statcoach/statcoach_sim-cases_scale_unknonwn-groups_more200.htm#statcoach_sim-cases_scale_unknonwn-groups_more200" title="200 or more cases"/>
+  </entry>
+  <entry keyword="Discriminant Analysis">
+    <topic href="spss/statcoach/statcoach_sim-cases_scale_known-groups.htm#statcoach_sim-cases_scale_known-groups" title="Identify characteristics of known groups"/>
+  </entry>
+  <entry keyword="TwoStep Cluster Analysis">
+    <topic href="spss/statcoach/statcoach_sim-cases_cat.htm#statcoach_sim-cases_cat" title="Categorical (nominal, ordinal) or a mix of scale and categorical"/>
+  </entry>
+  <entry keyword="Factor Analysis">
+    <topic href="spss/statcoach/statcoach_sim-vars.htm#statcoach_sim-vars" title="Identify groups of similar variables"/>
+  </entry>
+</index>

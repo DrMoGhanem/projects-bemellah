@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/22/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="SUMMARIZE" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="TABLES" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TABLES" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TITLE" EqualsSign="Optional"/>
+    <Subcommand Name="FOOTNOTE" EqualsSign="Optional"/>
+    <Subcommand Name="CELLS" EqualsSign="Optional">
+        <Parameter Name="COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GMEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RANGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="KURT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEKURT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SKEW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SESKEW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FIRST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NPCT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SPCT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HARMONIC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GEOMETRIC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VAR" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEPENDENT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FORMAT" EqualsSign="Optional">
+        <Parameter Name="NOLIST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LIST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VALIDLIST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LIMIT" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CASENUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOCASENUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TOTAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOTOTAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MISSING" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STATISTICS" EqualsSign="Optional">
+        <Parameter Name="ANOVA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LINEARITY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

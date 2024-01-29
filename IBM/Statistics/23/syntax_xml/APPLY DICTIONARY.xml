@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2013                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 4/28/08 -->
+<Command xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:SyntaxSchema.xsd"
+ xmlns="http://xml.spss.com/spss/extension"
+ xmlns:p1="http://xml.spss.com/spss/extension"
+ Name="APPLY DICTIONARY"
+ EndRequired="None"
+ IsArbitrary="No"
+ Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="FROM" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="PASSWORD" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FROM" EqualsSign="Optional"/>
+    <Subcommand Name="SOURCE VARIABLES" EqualsSign="Required"/>
+    <Subcommand Name="TARGET VARIABLES" EqualsSign="Required"/>
+    <Subcommand Name="NEWVARS" EqualsSign="None"/>
+    <Subcommand Name="FILEINFO" EqualsSign="None">
+        <Parameter Name="ATTRIBUTES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="REPLACE"/>
+            <EnumValue Name="MERGE"/>
+        </Parameter>
+        <Parameter Name="DOCUMENTS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="REPLACE"/>
+            <EnumValue Name="MERGE"/>
+        </Parameter>
+        <Parameter Name="FILELABEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MRSETS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="REPLACE"/>
+            <EnumValue Name="MERGE"/>
+        </Parameter>
+        <Parameter Name="VARSETS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="REPLACE"/>
+            <EnumValue Name="MERGE"/>
+        </Parameter>
+        <Parameter Name="WEIGHT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="VARINFO" EqualsSign="None">
+        <Parameter Name="ALIGNMENT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ATTRIBUTES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="REPLACE"/>
+            <EnumValue Name="MERGE"/>
+        </Parameter>
+        <Parameter Name="FORMATS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LEVEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MISSING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VALLABELS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="REPLACE"/>
+            <EnumValue Name="MERGE"/>
+        </Parameter>
+        <Parameter Name="VARLABEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WIDTH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

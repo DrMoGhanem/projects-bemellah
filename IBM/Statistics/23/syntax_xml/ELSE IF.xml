@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Checked 4/28/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    xmlns:p1="http://xml.spss.com/spss/extension" Name="ELSE IF" EndRequired="None" IsArbitrary="No"
+    Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="EQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AND" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

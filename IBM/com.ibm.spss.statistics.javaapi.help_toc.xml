@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--============createExtensionToc(List pkgs)============-->
+<?NLS TYPE="org.eclipse.help.toc"?>
+
+<toc label="Integration Plug-In for Java API Reference">
+      <topic label="Overview" href="overview-summary.html"/>
+      <topic label="com.ibm.statistics.plugin Package" href="com/ibm/statistics/plugin/package-summary.html">
+         <topic label="Alignment" href="com/ibm/statistics/plugin/Alignment.html"/>
+         <topic label="Case" href="com/ibm/statistics/plugin/Case.html"/>
+         <topic label="CellValueFormat" href="com/ibm/statistics/plugin/CellValueFormat.html"/>
+         <topic label="Cursor" href="com/ibm/statistics/plugin/Cursor.html"/>
+         <topic label="DataUtil" href="com/ibm/statistics/plugin/DataUtil.html"/>
+         <topic label="Extension" href="com/ibm/statistics/plugin/Extension.html"/>
+         <topic label="FormatSpec" href="com/ibm/statistics/plugin/FormatSpec.html"/>
+         <topic label="MeasurementLevel" href="com/ibm/statistics/plugin/MeasurementLevel.html"/>
+         <topic label="MissingType" href="com/ibm/statistics/plugin/MissingType.html"/>
+         <topic label="MultiResponseSet" href="com/ibm/statistics/plugin/MultiResponseSet.html"/>
+         <topic label="NumericMissingValueType" href="com/ibm/statistics/plugin/NumericMissingValueType.html"/>
+         <topic label="OutputLanguages" href="com/ibm/statistics/plugin/OutputLanguages.html"/>
+         <topic label="ParamName" href="com/ibm/statistics/plugin/ParamName.html"/>
+         <topic label="PivotTable" href="com/ibm/statistics/plugin/PivotTable.html"/>
+         <topic label="StatsException" href="com/ibm/statistics/plugin/StatsException.html"/>
+         <topic label="StatsUtil" href="com/ibm/statistics/plugin/StatsUtil.html"/>
+         <topic label="Variable" href="com/ibm/statistics/plugin/Variable.html"/>
+         <topic label="VariableFormat" href="com/ibm/statistics/plugin/VariableFormat.html"/>
+         <topic label="VariableRole" href="com/ibm/statistics/plugin/VariableRole.html"/>
+   </topic>
+</toc>

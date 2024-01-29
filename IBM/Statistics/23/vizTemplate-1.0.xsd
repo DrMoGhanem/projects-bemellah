@@ -1,0 +1,332 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema xmlns:vtm="http://xml.spss.com/spss/viewer/vizTemplate" 
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           xmlns:vizml="http://xml.spss.com/visualization"
+           targetNamespace="http://xml.spss.com/spss/viewer/vizTemplate"
+           elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+  <xs:annotation>
+    <xs:documentation xml:lang="en">
+        Copyright 2008 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties
+        with respect to your use of this specification, expressed, implied, or otherwise, including
+        without limitation, all warranties of merchantability and fitness for a particular purpose.
+        SPSS shall not be liable for any special, incidental, or consequential damages, including
+        without limitation lost revenues or lost profits resulting from the use of the information 
+        herein.
+    </xs:documentation>
+  </xs:annotation>
+  
+  <!-- imports -->
+	<xs:import namespace="http://xml.spss.com/visualization" schemaLocation="http://xml.spss.com/visualization/vizml-2.5.xsd"/>
+  
+  <!-- the root element -->
+  <xs:element name="vizTemplate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ViZml" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any processContents="skip" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">
+                      The entire graph structure will be represented using the ViZml schema.   
+                      The visualization element is described in a seperate schema (see http://xml.spss.com/visualization/vizml-2.5.xsd )
+                      and thus will not be validated as part of this schema.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:any>
+            </xs:sequence>
+            <xs:attribute name="success" type="xs:boolean">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">
+                      A value of true indicates that there were no errors in the conversion, and that
+                      the ViZml element contains the converted ViZml.  A value of false indicates that
+                      an error occurred.  The errorCode attribute describes the error.
+                  </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="errorCode" type="xs:string">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">
+                      An internationalized string idicating the reason that the conversion failed.
+                      The type of errors that can occur include template name not found, required
+                      variables missing, invalid statistic, etc.
+                  </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="styleSheet" minOccurs="0">
+          <xs:complexType mixed="true">
+            <xs:attribute name="success" type="xs:boolean">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">
+                      A value of true indicates that there were no errors style sheet retreival process,
+                      and that the styleSheet element contains the style sheet specification.
+                      A value of false indicates that an error occurred.  The errorCode attribute
+                      describes the error.
+                  </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="errorCode" type="xs:string">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">
+                      An internationalized string idicating the reason that the lookup failed.
+                      The type of errors that can occur include style sheet name not found.
+                  </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="templateSpecification" minOccurs="0">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="mapping" maxOccurs="unbounded">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">
+                      This element maps the variables and statistics to the appropriate slots in the
+                      specified visualization template.
+                   </xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="vizml:format" minOccurs="0"/>
+                  </xs:sequence>
+                  <xs:attribute name="slotName" type="xs:string" use="required">
+                    <xs:annotation>
+                      <xs:documentation xml:lang="en">
+                         The name of the slot in the visualization template.
+                       </xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="slotValue" type="xs:string" use="required">
+                    <xs:annotation>
+                      <xs:documentation xml:lang="en">
+                        The name of the variable or statistic to map to the slotName in the
+                        visualization template.
+                       </xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="slotLabel" type="xs:string">
+                    <xs:annotation>
+                      <xs:documentation xml:lang="en">
+                        The label of the variable or statistic specified by the SlotValue attribute.
+                       </xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="categorical" type="xs:boolean" default="true">
+                    <xs:annotation>
+                      <xs:documentation xml:lang="en">
+                         Indicates if the slotValue variable is categorical or not (scalar).
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="labelingVariableName" type="xs:string">
+                    <xs:annotation>
+                      <xs:documentation xml:lang="en">
+                         If set, the data set should create two variables, one for the
+                         variable's value (slotValue), and another for the variable's label.
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="dataSetName" type="xs:string" use="optional">
+                    <xs:annotation>
+                      <xs:documentation xml:lang="en">
+                         The name of the dataset where the specified variable in the slotValue exists.
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="variableType">
+                    <xs:annotation>
+                      <xs:documentation xml:lang="en">
+                        Set if this is a mulitple response set variable.
+                       </xs:documentation>
+                    </xs:annotation>
+                    <xs:simpleType>
+                      <xs:restriction base="xs:NMTOKEN">
+                        <xs:enumeration value="MultipleDichotomy">
+                          <xs:annotation>
+                            <xs:documentation xml:lang="en">
+                              This is a Miltiple dichotomy variable.  Multiple dichotomy
+                              MD) groups combine variables so that each variable becomes
+                              a category in the group.
+                            </xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                        <xs:enumeration value="MultipleCategory">
+                          <xs:annotation>
+                            <xs:documentation xml:lang="en">
+                             This is a Miltiple category variable.  Multiple category
+                             MC) groups combine variables that have identical categories.
+                            </xs:documentation>
+                          </xs:annotation>
+                        </xs:enumeration>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="MRSetName" type="xs:string">
+                    <xs:annotation>
+                      <xs:documentation xml:lang="en">
+                         The name of the Mulitple Response Set, if this variable is a MR variable.
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                  <xs:attribute name="weight" type="xs:boolean" default="false">
+                    <xs:annotation>
+                      <xs:documentation xml:lang="en">
+                         Indicates if the slotValue variable is to be used as a weight variable.
+                      </xs:documentation>
+                    </xs:annotation>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="templateContents" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:any processContents="skip" minOccurs="0">
+                      <xs:annotation>
+                        <xs:documentation xml:lang="en">
+                            The entire template contents structure will be represented using the ViZml schema.
+                            The visualization element is described in a seperate schema (see http://xml.spss.com/visualization/vizml-2.5.xsd )
+                            and thus will not be validated as part of this schema.
+                            This is for use when the user want's to pass a custom template
+                            to the converter rather than using an installed template.
+                        </xs:documentation>
+                      </xs:annotation>
+                    </xs:any>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="templateName" type="xs:string" use="required">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">
+                   The name of the vizualization template to be converted into ViZml.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="location" use="required" type="vtm:location">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">
+                  Specifies where to look for the specified visualization template.
+                 </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="repositoryFolderSpec" type="xs:string">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">
+                   If the location is set to PES, this attribute holds the directory specification
+                   for the predictive enterprise repository where the template name exists.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="locale" type="xs:string">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">
+                   The Statistics backend locale.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="styleSheetSpecification" minOccurs="0">
+          <xs:complexType>
+            <xs:attribute name="styleSheetName" type="xs:string" use="required">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">
+                   The name of the styleSheet to retreive.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="location" use="required" type="vtm:location">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">
+                  Specifies where to look for the specified style sheet.
+                 </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="repositoryFolderSpec" type="xs:string">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">
+                   If the location is set to PES, this attribute holds the directory specification
+                   for the predictive enterprise repository where the style sheet name exists.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="type">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Indicates if this XML contains the tempalte specification or the translated result.
+           </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="request">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">
+                  This is a request.  It contains a template spcification which includes
+                  the template identifier along with any mapping elements necessary.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="response">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">
+                 This is a response.  It contains the converted ViZml from the request.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+  
+  <xs:simpleType name="location">
+    <xs:annotation>
+        <xs:documentation>Specifies where to look for the specified name.</xs:documentation>
+    </xs:annotation>
+      <xs:restriction base="xs:NMTOKEN">
+        <xs:enumeration value="file">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">
+              The name is a file name of a visualization template file stored on disk.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="local">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">
+              Look for the name in the client machine.  These are either built-in names,
+              or names that the user has imported into the template chooser.
+            </xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+        <xs:enumeration value="PES">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">
+             Look for the name in the Predictive Enterprise Repository (PES).
+            </xs:documentation>
+          </xs:annotation>
+        </xs:enumeration>
+      </xs:restriction>
+  </xs:simpleType>
+  
+</xs:schema>

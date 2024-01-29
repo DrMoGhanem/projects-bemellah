@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema targetNamespace="http://xml.spss.com/spss/viewer/viewer-treemodel"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:vtt="http://xml.spss.com/spss/viewer/viewer-treemodel" 
+    xmlns:vst="http://xml.spss.com/spss/viewer/viewer-style" 
+    xmlns:pmml="http://www.dmg.org/PMML-3_1" 
+    xmlns:dxml="http://xml.spss.com/spss/treeview" 
+    elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">
+		    Copyright 2006 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties with
+		    respect to your use of this specification, expressed, implied, or otherwise, including without
+		    limitation, all warranties of merchantability and fitness for a particular purpose.  SPSS shall
+		    not be liable for any special, incidental, or consequential damages, including without limitation
+		    lost revenues or lost profits resulting from the use of the information herein.
+		</xs:documentation>
+	</xs:annotation>
+	<!-- imports -->
+	<xs:import namespace="http://xml.spss.com/spss/viewer/viewer-style" schemaLocation="viewer-style-1.0.xsd"/>
+	<xs:import namespace="http://xml.spss.com/spss/treeview" schemaLocation="http://xml.spss.com/spss/treeview/treeview-1.0.xsd"/>
+	<xs:import namespace="http://www.dmg.org/PMML-3_1" schemaLocation="http://www.dmg.org/v3-1/pmml-3-1.xsd"/>
+	
+	<!-- the root element -->
+	<xs:element name="tree">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="1">
+				<xs:element ref="dxml:displaySettings">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The tree model display attributes are represented using the displayXML schema.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+				<xs:element ref="pmml:PMML">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">The tree model structure is represented using the PMML schema.</xs:documentation>
+					</xs:annotation>
+				</xs:element>
+			</xs:sequence>
+			<xs:attribute name="name" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        The type of tree.  Currently only "tree-model" is supported.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+            <xs:attribute name="commandName" type="xs:string" use="required">
+                <xs:annotation>
+                    <xs:documentation xml:lang="en">
+                        The language invarient command name. This corresponds to the Command Identifier as seen 
+                        in the OMS Control Panel UI.
+                    </xs:documentation>
+                </xs:annotation>
+            </xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,692 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: <Analytic Components>                          -->
+<!--                                                                   -->
+<!-- (c)Copyright IBM Corp. 2009, 2014                                 -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
+  <xs:element name="SimulationPlan">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Header"/>
+        <xs:element ref="ModelFiles"/>
+        <xs:element ref="SimulatedFields"/>
+        <xs:element ref="FixedFields" minOccurs="0"/>
+        <xs:element ref="CorrMatrix" minOccurs="0"/>
+        <xs:element ref="ContingencyTable" minOccurs="0"/>
+        <xs:element ref="Settings" minOccurs="1"/>
+      </xs:sequence>
+      <xs:attribute name="version" type="xs:string" use="required"/>
+      <xs:attribute name="autofitTimeStamp" type="xs:dateTime"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Header">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Application">
+          <xs:complexType>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="version" type="xs:string"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="copyright" type="xs:string" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ModelFiles">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ModelFile">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="Target" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="file" type="xs:string" use="required"/>
+            <xs:attribute name="numberOfTargets" type="xs:positiveInteger" default="1"/>
+            <xs:attribute name="customModels">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="yes"/>
+                  <xs:enumeration value="no"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfFiles" type="xs:positiveInteger" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="SimulatedFields">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="SimulatedField" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:choice>
+                <xs:element ref="DistBernoulli"/>
+                <xs:element ref="DistBeta"/>
+                <xs:element ref="DistBinomial"/>
+                <xs:element ref="DistCategorical"/>
+                <xs:element ref="DistEmpirical"/>
+                <xs:element ref="DistExponential"/>
+                <xs:element ref="DistGamma"/>
+                <xs:element ref="DistLognormal"/>
+                <xs:element ref="DistNegbinomial"/>
+                <xs:element ref="DistNormal"/>
+                <xs:element ref="DistPoisson"/>
+                <xs:element ref="DistTriangular"/>
+                <xs:element ref="DistUniform"/>
+                <xs:element ref="DistUserRanges"/>
+                <xs:element ref="DistWeibull"/>
+              </xs:choice>
+              <xs:element ref="AssociatedTarget" minOccurs="1" maxOccurs="unbounded"/>
+              <xs:element name="AutofitDistList" minOccurs="0">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="DistName" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="name">
+                          <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                              <xs:enumeration value="Bernoulli"/>
+                              <xs:enumeration value="Beta"/>
+                              <xs:enumeration value="Binomial"/>
+                              <xs:enumeration value="Categorical"/>
+                              <xs:enumeration value="Exponential"/>
+                              <xs:enumeration value="Gamma"/>
+                              <xs:enumeration value="Lognormal"/>
+                              <xs:enumeration value="Negbinomial"/>
+                              <xs:enumeration value="Normal"/>
+                              <xs:enumeration value="Poisson"/>
+                              <xs:enumeration value="Triangular"/>
+                              <xs:enumeration value="Uniform"/>
+                              <xs:enumeration value="Weibull"/>
+                            </xs:restriction>
+                          </xs:simpleType>
+                        </xs:attribute>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                  <xs:attribute name="numberOfDists" type="xs:positiveInteger"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="ValueLabels" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="displayName" type="xs:string"/>
+            <xs:attribute name="mappedName" type="xs:string"/>
+            <xs:attribute name="min" type="DOUBLE_NEGINFINITY"/>
+            <xs:attribute name="max" type="DOUBLE_POSINFINITY"/>
+            <xs:attribute name="measurementLevel" type="opType"/>
+            <xs:attribute name="invalidRangeLower" type="xs:double"/>
+            <xs:attribute name="invalidRangeUpper" type="xs:double"/>
+            <xs:attribute name="valueType">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="string"/>
+                  <xs:enumeration value="double"/>
+                  <xs:enumeration value="integer"/>
+                  <xs:enumeration value="time"/>
+                  <xs:enumeration value="date"/>
+                  <xs:enumeration value="timestamp"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute ref="locked"/>
+            <xs:attribute name="autofitted">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="yes"/>
+                  <xs:enumeration value="no"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute ref="excludeFromOutput" default="no"/>
+            <xs:attribute ref="outputFormat"/>
+            <xs:attribute name="numberOfTargets" type="xs:positiveInteger" default="1"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfFields" type="xs:positiveInteger" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="FixedFields">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="FixedField" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Value" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="value" use="required">
+                    <xs:simpleType>
+                      <xs:union memberTypes="xs:double xs:string"/>
+                    </xs:simpleType>
+                  </xs:attribute>
+                </xs:complexType>
+              </xs:element>
+              <xs:element ref="AssociatedTarget" minOccurs="1" maxOccurs="unbounded"/>
+              <xs:element ref="ValueLabels" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required"/>
+            <xs:attribute name="displayName" type="xs:string"/>
+            <xs:attribute name="valueType">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="string"/>
+                  <xs:enumeration value="double"/>
+                  <xs:enumeration value="integer"/>
+                  <xs:enumeration value="time"/>
+                  <xs:enumeration value="date"/>
+                  <xs:enumeration value="timestamp"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="numberOfValues" type="xs:positiveInteger" default="1"/>
+            <xs:attribute name="numberOfTargets" type="xs:positiveInteger" default="1"/>
+            <xs:attribute name="invalidRangeLower" type="xs:double"/>
+            <xs:attribute name="invalidRangeUpper" type="xs:double"/>
+            <xs:attribute ref="locked"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfFields" type="xs:positiveInteger" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="CorrMatrix">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CorrCell" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="rowVar" type="xs:string" use="required"/>
+            <xs:attribute name="colVar" type="xs:string" use="required"/>
+            <xs:attribute name="value" type="CORRELATION" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute ref="locked"/>
+      <xs:attribute name="numberOfCells" type="xs:positiveInteger" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ContingencyTable">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="CrossFactors" minOccurs="1" maxOccurs="1">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="Factor" minOccurs="2" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="name" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="TableCell" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="CrossCategory" minOccurs="2" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:attribute name="category" type="xs:string" use="required"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="probability" type="PROBABILITY" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numOfCrossFactors" type="xs:positiveInteger" use="required"/>
+      <xs:attribute name="numOfCrossProbValues" type="xs:positiveInteger" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Settings">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Criteria" minOccurs="0" maxOccurs="1">
+          <xs:complexType>
+            <xs:choice>
+              <xs:element name="PointValue" minOccurs="0">
+                <xs:complexType>
+                  <xs:attribute name="parameter" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="mean"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="threshold" type="xs:double" use="required"/>
+                  <xs:attribute name="unit" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="value"/>
+                        <xs:enumeration value="percent"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="confidenceLevel" type="CONFIDENCE"/>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="Tail" minOccurs="0">
+                <xs:complexType>
+                  <xs:attribute name="threshold" type="xs:double" use="required"/>
+                  <xs:attribute name="side" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="right"/>
+                        <xs:enumeration value="left"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="type" use="required">
+                    <xs:simpleType>
+                      <xs:restriction base="xs:string">
+                        <xs:enumeration value="value"/>
+                        <xs:enumeration value="percentile"/>
+                      </xs:restriction>
+                    </xs:simpleType>
+                  </xs:attribute>
+                  <xs:attribute name="frequency" type="xs:positiveInteger"/>
+                </xs:complexType>
+              </xs:element>
+            </xs:choice>
+            <xs:attribute name="target" type="xs:string" use="required"/>
+            <xs:attribute name="type" use="required">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="point_value"/>
+                  <xs:enumeration value="tail"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="simulatedCases" type="xs:positiveInteger" use="required"/>
+      <xs:attribute name="numberOfCriteria" type="xs:positiveInteger"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DistNormal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Parameters" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="mean" type="xs:double" use="required"/>
+            <xs:attribute name="stddev" type="xs:double" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfParamSets" type="xs:positiveInteger" default="1"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DistLognormal">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Parameters" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="a" type="DOUBLE-POSITIVE" use="required"/>
+            <xs:attribute name="b" type="DOUBLE-POSITIVE" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfParamSets" type="xs:positiveInteger" default="1"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DistBeta">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Parameters" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="shape1" type="DOUBLE-POSITIVE" use="required"/>
+            <xs:attribute name="shape2" type="DOUBLE-POSITIVE" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfParamSets" type="xs:positiveInteger" default="1"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DistBernoulli">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Parameters" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="prob" type="PROBABILITY" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfParamSets" type="xs:positiveInteger" default="1"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DistBinomial">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Parameters" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="n" type="xs:positiveInteger" use="required"/>
+            <xs:attribute name="prob" type="PROBABILITY" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfParamSets" type="xs:positiveInteger" default="1"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DistCategorical">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Category" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="Probability" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="value" type="xs:string" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfCategories" type="xs:positiveInteger" use="required"/>
+      <xs:attribute name="numberOfProbSets" type="xs:positiveInteger" default="1"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DistEmpirical">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="Probability" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="min" type="xs:double" use="required"/>
+      <xs:attribute name="max" type="xs:double" use="required"/>
+      <xs:attribute name="nbins" type="xs:positiveInteger" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DistExponential">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Parameters" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="scale" type="DOUBLE-POSITIVE" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfParamSets" type="xs:positiveInteger" default="1"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DistGamma">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Parameters" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="shape" type="DOUBLE-POSITIVE" use="required"/>
+            <xs:attribute name="scale" type="DOUBLE-POSITIVE" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfParamSets" type="xs:positiveInteger" default="1"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DistNegbinomial">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Parameters" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="thresh" type="xs:positiveInteger" use="required"/>
+            <xs:attribute name="prob" type="PROBABILITY" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfParamSets" type="xs:positiveInteger" default="1"/>
+      <xs:attribute name="type" default="failures">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="trials"/>
+            <xs:enumeration value="failures"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DistPoisson">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Parameters" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="mean" type="DOUBLE-POSITIVE" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfParamSets" type="xs:positiveInteger" default="1"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DistTriangular">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Parameters" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="min" type="DOUBLE-POSITIVE" use="required"/>
+            <xs:attribute name="max" type="DOUBLE-POSITIVE" use="required"/>
+            <xs:attribute name="mode" type="DOUBLE-POSITIVE" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfParamSets" type="xs:positiveInteger" default="1"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DistUniform">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Parameters" minOccurs="1" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="min" type="DOUBLE-POSITIVE" use="required"/>
+            <xs:attribute name="max" type="DOUBLE-POSITIVE" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfParamSets" type="xs:positiveInteger" default="1"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DistUserRanges">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Interval" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="Probability" minOccurs="1" maxOccurs="unbounded"/>
+            </xs:sequence>
+            <xs:attribute name="min" type="DOUBLE-POSITIVE" use="required"/>
+            <xs:attribute name="max" type="DOUBLE-POSITIVE" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfIntervals" type="xs:positiveInteger" use="required"/>
+      <xs:attribute name="numberOfProbSets" type="xs:positiveInteger" default="1"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="DistWeibull">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="Parameters" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:attribute name="a" type="DOUBLE-POSITIVE" use="required"/>
+            <xs:attribute name="b" type="DOUBLE-POSITIVE"/>
+            <xs:attribute name="c" type="DOUBLE-POSITIVE" use="required"/>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="numberOfParamSets" type="xs:positiveInteger" default="1"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="Target">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="TargetFilter" minOccurs="0">
+          <xs:complexType>
+            <xs:attribute name="low" type="DOUBLE_NEGINFINITY"/>
+            <xs:attribute name="high" type="DOUBLE_POSINFINITY"/>
+            <xs:attribute name="includeLow" default="yes">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="yes"/>
+                  <xs:enumeration value="no"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+            <xs:attribute name="includeHigh" default="yes">
+              <xs:simpleType>
+                <xs:restriction base="xs:string">
+                  <xs:enumeration value="yes"/>
+                  <xs:enumeration value="no"/>
+                </xs:restriction>
+              </xs:simpleType>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="Comment" minOccurs="0"/>
+      </xs:sequence>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+      <xs:attribute name="mappedName" type="xs:string"/>
+      <xs:attribute ref="excludeFromOutput" default="no"/>
+      <xs:attribute ref="outputFormat"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="AssociatedTarget">
+    <xs:complexType>
+      <xs:attribute name="name"/>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ValueLabels">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ValueLabel" minOccurs="1" maxOccurs="unbounded"/>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:element name="ValueLabel">
+    <xs:complexType>
+      <xs:attribute name="value" type="xs:string" use="required"/>
+      <xs:attribute name="displayValue" type="xs:string"/>
+      <xs:attribute name="property" default="valid">
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="valid"/>
+            <xs:enumeration value="invalid"/>
+            <xs:enumeration value="missing"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+  <xs:simpleType name="opType">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="categorical"/>
+      <xs:enumeration value="ordinal"/>
+      <xs:enumeration value="continuous"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="DOUBLE-POSITIVE">
+    <xs:restriction base="xs:double">
+      <xs:minExclusive value="0"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="PROBABILITY">
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="0"/>
+      <xs:maxInclusive value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CORRELATION">
+    <xs:restriction base="xs:double">
+      <xs:minInclusive value="-1"/>
+      <xs:maxInclusive value="1"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="CONFIDENCE">
+    <xs:restriction base="xs:int">
+      <xs:minExclusive value="0"/>
+      <xs:maxExclusive value="100"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="DOUBLE_NEGINFINITY">
+    <xs:union memberTypes="xs:double negInfinity"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="DOUBLE_POSINFINITY">
+    <xs:union memberTypes="xs:double posInfinity"/>
+  </xs:simpleType>
+
+  <xs:simpleType name="negInfinity">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="neg_infinity"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:simpleType name="posInfinity">
+    <xs:restriction base="xs:string">
+      <xs:enumeration value="pos_infinity"/>
+    </xs:restriction>
+  </xs:simpleType>
+
+  <xs:attribute name="locked">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="yes"/>
+        <xs:enumeration value="no"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+
+  <xs:attribute name="excludeFromOutput">
+    <xs:simpleType>
+      <xs:restriction base="xs:string">
+        <xs:enumeration value="yes"/>
+        <xs:enumeration value="no"/>
+      </xs:restriction>
+    </xs:simpleType>
+  </xs:attribute>
+
+  <xs:attribute name="outputFormat" type="xs:string"/>
+
+  <xs:element name="Probability">
+    <xs:complexType>
+      <xs:attribute name="value" type="PROBABILITY" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 4/28/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="CONJOINT" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="PLAN" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DATA" EqualsSign="Optional"/>
+    <Subcommand Name="SEQUENCE" EqualsSign="Optional"/>
+    <Subcommand Name="RANK" EqualsSign="Optional"/>
+    <Subcommand Name="SCORE" EqualsSign="Optional"/>
+    <Subcommand Name="SUBJECT" EqualsSign="Optional"/>
+    <Subcommand Name="FACTORS" EqualsSign="Optional">
+        <Parameter Name="DISCRETE" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="MORE"/>
+            <EnumValue Name="LESS"/>
+        </Parameter>
+        <Parameter Name="LINEAR" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="MORE"/>
+            <EnumValue Name="LESS"/>
+        </Parameter>
+        <Parameter Name="IDEAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ANTIIDEAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ANALYSIS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIMULATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMMARYONLY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="UTILITY" EqualsSign="Optional"/>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="SUMMARY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUBJECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

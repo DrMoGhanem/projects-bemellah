@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    xmlns:p1="http://xml.spss.com/spss/extension" Name="NPTESTS" EndRequired="None"
+    IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="MISSING">
+        <Parameter Name="SCOPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ANALYSIS"/>
+            <EnumValue Name="LISTWISE"/>
+		</Parameter>
+        <Parameter Name="USERMISSING" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CRITERIA">
+        <Parameter Name="ALPHA" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="CILEVEL" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ONESAMPLE TEST">
+        <Parameter Name="CHISQUARE" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="EXPECTED"/>
+            <EnumValue Name="EQUAL"/>
+            <EnumValue Name="CUSTOM"/>
+            <EnumValue Name="FREQUENCIES"/>
+            <EnumValue Name="CATEGORIES"/>
+		</Parameter>
+        <Parameter Name="BINOMIAL" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="TESTVALUE"/>
+            <EnumValue Name="SUCCESSCATEGORICAL"/>
+            <EnumValue Name="FIRST"/>
+            <EnumValue Name="LIST"/>
+            <EnumValue Name="SUCCESSCONTINUOUS"/>
+            <EnumValue Name="CUTPOINT"/>
+            <EnumValue Name="MIDPOINT"/>
+            <EnumValue Name="CLOPPERPEARSON"/>
+            <EnumValue Name="JEFFREYS"/>
+            <EnumValue Name="LIKELIHOOD"/>
+        </Parameter>
+        <Parameter Name="KOLMOGOROV_SMIRNOV" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="NORMAL"/>
+            <EnumValue Name="SAMPLE"/>
+            <EnumValue Name="CUSTOM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="SD"/>
+            <EnumValue Name="UNIFORM"/>
+            <EnumValue Name="SAMPLE"/>
+            <EnumValue Name="MIN"/>
+            <EnumValue Name="MAX"/>
+            <EnumValue Name="EXPONENTIAL"/>
+		</Parameter>
+        <Parameter Name="POISSON" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SAMPLE"/>
+            <EnumValue Name="CUSTOM"/>
+		</Parameter>
+        <Parameter Name="RUNS" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="GROUPCATEGORICAL"/>
+            <EnumValue Name="SAMPLE"/>
+            <EnumValue Name="LIST"/>
+            <EnumValue Name="GROUPCONTINUOUS"/>
+            <EnumValue Name="CUTPOINT"/>
+            <EnumValue Name="SAMPLEMEDIAN"/>
+            <EnumValue Name="SAMPLEMEAN"/>
+		</Parameter>
+        <Parameter Name="WILCOXON" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="TESTVALUE"/>
+		</Parameter>
+    </Subcommand>
+    <Subcommand Name="INDEPENDENT">
+        <Parameter Name="TEST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GROUP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MANN_WHITNEY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WALD_WOLFOWITZ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="KOLMOGOROV_SMIRNOV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HODGES_LEHMAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MOSES" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="TRIMOUTLIERS"/>
+            <EnumValue Name="SAMPLE"/>
+        </Parameter>
+        <Parameter Name="KRUSKAL_WALLIS" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="COMPARE"/>
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="PAIRWISE"/>
+            <EnumValue Name="STEPWISE"/>
+        </Parameter>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="TESTVALUE"/>
+            <EnumValue Name="SAMPLE"/>
+            <EnumValue Name="COMPARE"/>
+            <EnumValue Name="PAIRWISE"/>
+            <EnumValue Name="STEPWISE"/>            
+        </Parameter>
+        <Parameter Name="JONCKHEERE_TERPSTRA" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ORDER"/>
+            <EnumValue Name="ASCENDING"/>
+            <EnumValue Name="DESCENDING"/>
+            <EnumValue Name="COMPARE"/>
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="PAIRWISE"/>
+            <EnumValue Name="STEPWISE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="RELATED TEST">
+        <Parameter Name="MCNEMAR" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="SUCCESS"/>
+            <EnumValue Name="FIRST"/>
+            <EnumValue Name="LIST"/>
+		</Parameter>
+        <Parameter Name="WILCOXON" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="SIGN" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MARGINAL_HOMOGENEITY" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="HODGES_LEHMAN" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="COCHRAN" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="SUCCESS"/>
+            <EnumValue Name="FIRST"/>
+            <EnumValue Name="LIST"/>
+            <EnumValue Name="COMPARE"/>
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="PAIRWISE"/>
+            <EnumValue Name="STEPWISE"/>
+		</Parameter>
+        <Parameter Name="FRIEDMAN" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="COMPARE"/>
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="PAIRWISE"/>
+            <EnumValue Name="STEPWISE"/>
+		</Parameter>
+        <Parameter Name="KENDALL" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="COMPARE"/>
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="PAIRWISE"/>
+            <EnumValue Name="STEPWISE"/>
+		</Parameter>
+    </Subcommand>
+</Command>

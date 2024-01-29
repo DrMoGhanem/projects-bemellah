@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 4/30/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="CSSELECT" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="PLAN" EqualsSign="None">
+        <Parameter Name="FILE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="None">
+        <Parameter Name="STAGES" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SEED" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="RANDOM"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CLASSMISSING" EqualsSign="None">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DATA" EqualsSign="None">
+        <Parameter Name="RENAMEVARS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PRESORTED" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAMPLEFILE" EqualsSign="None">
+        <Parameter Name="OUTFILE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="KEEP" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="DROP" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="JOINTPROB" EqualsSign="None">
+        <Parameter Name="OUTFILE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SELECTRULE" EqualsSign="None">
+        <Parameter Name="OUTFILE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="None">
+        <Parameter Name="SELECTION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CPS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

@@ -1,0 +1,496 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 4/30/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="CTABLES" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="FORMAT" EqualsSign="None">
+        <Parameter Name="MINCOLWIDTH" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="DEFAULT"/>
+        </Parameter>
+        <Parameter Name="MAXCOLWIDTH" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="DEFAULT"/>
+        </Parameter>
+        <Parameter Name="UNITS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="POINTS"/>
+            <EnumValue Name="INCHES"/>
+            <EnumValue Name="CM"/>
+        </Parameter>
+        <Parameter Name="EMPTY" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ZERO"/>
+            <EnumValue Name="BLANK"/>
+        </Parameter>
+        <Parameter Name="MISSING" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="VLABELS" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="DISPLAY" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="DEFAULT"/>
+            <EnumValue Name="NAME"/>
+            <EnumValue Name="LABEL"/>
+            <EnumValue Name="BOTH"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MRSETS" EqualsSign="None">
+        <Parameter Name="COUNTDUPLICATES" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SMISSING" EqualsSign="None">
+        <Parameter Name="VARIABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LISTWISE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PCOMPUTE" EqualsSign="None">
+        <Parameter Name="EXPR" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PPROPERTIES" EqualsSign="None">
+        <Parameter Name="LABEL" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="''"/>
+        </Parameter>
+        <Parameter Name="FORMAT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="ROWPCT.COUNT"/>
+            <EnumValue Name="COLPCT.COUNT"/>
+            <EnumValue Name="TABLEPCT.COUNT"/>
+            <EnumValue Name="SUBTABLEPCT.COUNT"/>
+            <EnumValue Name="LAYERPCT.COUNT"/>
+            <EnumValue Name="LAYERROWPCT.COUNT"/>
+            <EnumValue Name="LAYERCOLPCT.COUNT"/>
+            <EnumValue Name="ROWPCT.VALIDN"/>
+            <EnumValue Name="COLPCT.VALIDN"/>
+            <EnumValue Name="TABLEPCT.VALIDN"/>
+            <EnumValue Name="SUBTABLEPCT.VALIDN"/>
+            <EnumValue Name="LAYERPCT.VALIDN"/>
+            <EnumValue Name="LAYERROWPCT.VALIDN"/>
+            <EnumValue Name="LAYERCOLPCT.VALIDN"/>
+            <EnumValue Name="ROWPCT.TOTALN"/>
+            <EnumValue Name="COLPCT.TOTALN"/>
+            <EnumValue Name="TABLEPCT.TOTALN"/>
+            <EnumValue Name="SUBTABLEPCT.TOTALN"/>
+            <EnumValue Name="LAYERPCT.TOTALN"/>
+            <EnumValue Name="LAYERROWPCT.TOTALN"/>
+            <EnumValue Name="LAYERCOLPCT.TOTALN"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="MINIMUM"/>
+            <EnumValue Name="MISSING"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="RANGE"/>
+            <EnumValue Name="SEMEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="TOTALN"/>
+            <EnumValue Name="VALIDN"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="ROWPCT.SUM"/>
+            <EnumValue Name="COLPCT.SUM"/>
+            <EnumValue Name="TABLEPCT.SUM"/>
+            <EnumValue Name="SUBTABLEPCT.SUM"/>
+            <EnumValue Name="LAYERPCT.SUM"/>
+            <EnumValue Name="LAYERROWPCT.SUM"/>
+            <EnumValue Name="LAYERCOLPCT.SUM"/>
+            <EnumValue Name="RESPONSES"/>
+            <EnumValue Name="ROWPCT.RESPONSES"/>
+            <EnumValue Name="COLPCT.RESPONSES"/>
+            <EnumValue Name="TABLEPCT.RESPONSES"/>
+            <EnumValue Name="SUBTABLEPCT.RESPONSES"/>
+            <EnumValue Name="LAYERPCT.RESPONSES"/>
+            <EnumValue Name="LAYERROWPCT.RESPONSES"/>
+            <EnumValue Name="LAYERCOLPCT.RESPONSES"/>
+            <EnumValue Name="ROWPCT.RESPONSES.COUNT"/>
+            <EnumValue Name="COLPCT.RESPONSES.COUNT"/>
+            <EnumValue Name="TABLEPCT.RESPONSES.COUNT"/>
+            <EnumValue Name="SUBTABLEPCT.RESPONSES.COUNT"/>
+            <EnumValue Name="LAYERPCT.RESPONSES.COUNT"/>
+            <EnumValue Name="LAYERROWPCT.RESPONSES.COUNT"/>
+            <EnumValue Name="LAYERCOLPCT.RESPONSES.COUNT"/>
+            <EnumValue Name="ROWPCT.COUNT.RESPONSES"/>
+            <EnumValue Name="COLPCT.COUNT.RESPONSES"/>
+            <EnumValue Name="TABLEPCT.COUNT.RESPONSES"/>
+            <EnumValue Name="SUBTABLEPCT.COUNT.RESPONSES"/>
+            <EnumValue Name="LAYERPCT.COUNT.RESPONSES"/>
+            <EnumValue Name="LAYERROWPCT.COUNT.RESPONSES"/>
+            <EnumValue Name="LAYERCOLPCT.COUNT.RESPONSES"/>
+            <EnumValue Name="UCOUNT"/>
+            <EnumValue Name="UROWPCT.COUNT"/>
+            <EnumValue Name="UCOLPCT.COUNT"/>
+            <EnumValue Name="UTABLEPCT.COUNT"/>
+            <EnumValue Name="USUBTABLEPCT.COUNT"/>
+            <EnumValue Name="ULAYERPCT.COUNT"/>
+            <EnumValue Name="ULAYERROWPCT.COUNT"/>
+            <EnumValue Name="ULAYERCOLPCT.COUNT"/>
+            <EnumValue Name="UROWPCT.VALIDN"/>
+            <EnumValue Name="UCOLPCT.VALIDN"/>
+            <EnumValue Name="UTABLEPCT.VALIDN"/>
+            <EnumValue Name="USUBTABLEPCT.VALIDN"/>
+            <EnumValue Name="ULAYERPCT.VALIDN"/>
+            <EnumValue Name="ULAYERROWPCT.VALIDN"/>
+            <EnumValue Name="ULAYERCOLPCT.VALIDN"/>
+            <EnumValue Name="UROWPCT.TOTALN"/>
+            <EnumValue Name="UCOLPCT.TOTALN"/>
+            <EnumValue Name="UTABLEPCT.TOTALN"/>
+            <EnumValue Name="USUBTABLEPCT.TOTALN"/>
+            <EnumValue Name="ULAYERPCT.TOTALN"/>
+            <EnumValue Name="ULAYERROWPCT.TOTALN"/>
+            <EnumValue Name="ULAYERCOLPCT.TOTALN"/>
+            <EnumValue Name="UMAXIMUM"/>
+            <EnumValue Name="UMEAN"/>
+            <EnumValue Name="UMEDIAN"/>
+            <EnumValue Name="UMINIMUM"/>
+            <EnumValue Name="UMISSING"/>
+            <EnumValue Name="UMODE"/>
+            <EnumValue Name="UPTILE"/>
+            <EnumValue Name="URANGE"/>
+            <EnumValue Name="USEMEAN"/>
+            <EnumValue Name="USTDDEV"/>
+            <EnumValue Name="USUM"/>
+            <EnumValue Name="UTOTALN"/>
+            <EnumValue Name="UVALIDN"/>
+            <EnumValue Name="UVARIANCE"/>
+            <EnumValue Name="UROWPCT.SUM"/>
+            <EnumValue Name="UCOLPCT.SUM"/>
+            <EnumValue Name="UTABLEPCT.SUM"/>
+            <EnumValue Name="USUBTABLEPCT.SUM"/>
+            <EnumValue Name="ULAYERPCT.SUM"/>
+            <EnumValue Name="ULAYERROWPCT.SUM"/>
+            <EnumValue Name="ULAYERCOLPCT.SUM"/>
+            <EnumValue Name="URESPONSES"/>
+            <EnumValue Name="UROWPCT.RESPONSES"/>
+            <EnumValue Name="UCOLPCT.RESPONSES"/>
+            <EnumValue Name="UTABLEPCT.RESPONSES"/>
+            <EnumValue Name="USUBTABLEPCT.RESPONSES"/>
+            <EnumValue Name="ULAYERPCT.RESPONSES"/>
+            <EnumValue Name="ULAYERROWPCT.RESPONSES"/>
+            <EnumValue Name="ULAYERCOLPCT.RESPONSES"/>
+            <EnumValue Name="UROWPCT.RESPONSES.COUNT"/>
+            <EnumValue Name="UCOLPCT.RESPONSES.COUNT"/>
+            <EnumValue Name="UTABLEPCT.RESPONSES.COUNT"/>
+            <EnumValue Name="USUBTABLEPCT.RESPONSES.COUNT"/>
+            <EnumValue Name="ULAYERPCT.RESPONSES.COUNT"/>
+            <EnumValue Name="ULAYERROWPCT.RESPONSES.COUNT"/>
+            <EnumValue Name="ULAYERCOLPCT.RESPONSES.COUNT"/>
+            <EnumValue Name="UROWPCT.COUNT.RESPONSES"/>
+            <EnumValue Name="UCOLPCT.COUNT.RESPONSES"/>
+            <EnumValue Name="UTABLEPCT.COUNT.RESPONSES"/>
+            <EnumValue Name="USUBTABLEPCT.COUNT.RESPONSES"/>
+            <EnumValue Name="ULAYERPCT.COUNT.RESPONSES"/>
+            <EnumValue Name="ULAYERROWPCT.COUNT.RESPONSES"/>
+            <EnumValue Name="ULAYERCOLPCT.COUNT.RESPONSES"/>
+            <EnumValue Name="COMMAw.d"/>
+            <EnumValue Name="DOLLARw.d"/>
+            <EnumValue Name="Fw.d"/>
+            <EnumValue Name="NEGPARENw.d"/>
+            <EnumValue Name="NEQUALw.d"/>
+            <EnumValue Name="PARENw.d"/>
+            <EnumValue Name="PCTw.d"/>
+            <EnumValue Name="PCTPARENw.d"/>
+            <EnumValue Name="DOTw.d"/>
+            <EnumValue Name="CCA...CCEw.d"/>
+            <EnumValue Name="Nw.d"/>
+            <EnumValue Name="Ew.d"/>
+            <EnumValue Name="DATEw"/>
+            <EnumValue Name="ADATEw"/>
+            <EnumValue Name="JDATEw"/>
+            <EnumValue Name="SDATEw"/>
+            <EnumValue Name="QYRw"/>
+            <EnumValue Name="MOYRw"/>
+            <EnumValue Name="WKYRw"/>
+            <EnumValue Name="WKDAYw"/>
+            <EnumValue Name="MONTHw"/>
+            <EnumValue Name="TIMEw"/>
+            <EnumValue Name="SDATEw"/>
+            <EnumValue Name="TIMEw.d"/>
+            <EnumValue Name="DTIMEw"/>
+            <EnumValue Name="DTIMEw.d"/>
+            <EnumValue Name="DATETIMEw"/>
+            <EnumValue Name="DATETIMEw.d"/>
+        </Parameter>
+        <Parameter Name="HIDESOURCECATS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="TABLE" EqualsSign="None">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="S" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="D" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROWPCT.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLPCT.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLEPCT.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUBTABLEPCT.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERPCT.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERROWPCT.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERCOLPCT.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROWPCT.VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLPCT.VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLEPCT.VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUBTABLEPCT.VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERPCT.VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERROWPCT.VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERCOLPCT.VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROWPCT.TOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLPCT.TOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLEPCT.TOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUBTABLEPCT.TOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERPCT.TOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERROWPCT.TOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERCOLPCT.TOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MINIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MISSING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PTILE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RANGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROWPCT.SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLPCT.SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLEPCT.SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUBTABLEPCT.SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERPCT.SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERROWPCT.SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERCOLPCT.SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROWPCT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLPCT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLEPCT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUBTABLEPCT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERPCT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERROWPCT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERCOLPCT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROWPCT.RESPONSES.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLPCT.RESPONSES.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLEPCT.RESPONSES.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUBTABLEPCT.RESPONSES.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERPCT.RESPONSES.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERROWPCT.RESPONSES.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERCOLPCT.RESPONSES.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROWPCT.COUNT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLPCT.COUNT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLEPCT.COUNT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUBTABLEPCT.COUNT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERPCT.COUNT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERROWPCT.COUNT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAYERCOLPCT.COUNT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UCOUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UROWPCT.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UCOLPCT.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UTABLEPCT.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="USUBTABLEPCT.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERPCT.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERROWPCT.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERCOLPCT.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UROWPCT.VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UCOLPCT.VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UTABLEPCT.VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="USUBTABLEPCT.VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERPCT.VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERROWPCT.VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERCOLPCT.VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UROWPCT.TOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UCOLPCT.TOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UTABLEPCT.TOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="USUBTABLEPCT.TOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERPCT.TOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERROWPCT.TOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERCOLPCT.TOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UMAXIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UMEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UMINIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UMISSING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UMODE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UPTILE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="URANGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="USEMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="USTDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="USUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UTOTALN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UVALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UVARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UROWPCT.SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UCOLPCT.SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UTABLEPCT.SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="USUBTABLEPCT.SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERPCT.SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERROWPCT.SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERCOLPCT.SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="URESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UROWPCT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UCOLPCT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UTABLEPCT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="USUBTABLEPCT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERPCT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERROWPCT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERCOLPCT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UROWPCT.RESPONSES.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UCOLPCT.RESPONSES.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UTABLEPCT.RESPONSES.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="USUBTABLEPCT.RESPONSES.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERPCT.RESPONSES.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERROWPCT.RESPONSES.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERCOLPCT.RESPONSES.COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UROWPCT.COUNT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UCOLPCT.COUNT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UTABLEPCT.COUNT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="USUBTABLEPCT.COUNT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERPCT.COUNT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERROWPCT.COUNT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULAYERCOLPCT.COUNT.RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COMMAw.d" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DOLLARw.d" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="Fw.d" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NEGPARENw.d" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NEQUALw.d" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PARENw.d" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PCTw.d" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PCTPARENw.d" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DOTw.d" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CCA...CCEw.d" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="Nw.d" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="Ew.d" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DATEw" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ADATEw" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="JDATEw" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SDATEw" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="QYRw" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MOYRw" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WKYRw" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WKDAYw" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MONTHw" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TIMEw" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SDATEw" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TIMEw.d" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DTIMEw" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DTIMEw.d" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DATETIMEw" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DATETIMEw.d" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SLABELS" EqualsSign="None">
+        <Parameter Name="POSITION" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="COLUMN"/>
+            <EnumValue Name="ROW"/>
+            <EnumValue Name="LAYER"/>
+        </Parameter>
+        <Parameter Name="VISIBLE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CLABELS" EqualsSign="None">
+        <Parameter Name="AUTO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROWLABELS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="OPPOSITE"/>
+            <EnumValue Name="LAYER"/>
+        </Parameter>
+        <Parameter Name="COLLABELS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="OPPOSITE"/>
+            <EnumValue Name="LAYER"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CATEGORIES" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="ORDER" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="A"/>
+            <EnumValue Name="D"/>
+        </Parameter>
+        <Parameter Name="KEY" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="VALUE"/>
+            <EnumValue Name="LABEL"/>
+        </Parameter>
+        <Parameter Name="MISSING" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+        <Parameter Name="TOTAL" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+        <Parameter Name="LABEL" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="POSITION" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="AFTER"/>
+            <EnumValue Name="BEFORE"/>
+        </Parameter>
+        <Parameter Name="EMPTY" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="INCLUDE"/>
+            <EnumValue Name="EXCLUDE"/>
+        </Parameter>
+        <Parameter Name="SUBTOTAL" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="HSUBTOTAL" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="OTHERNM" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TITLES" EqualsSign="None">
+        <Parameter Name="CAPTION" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CORNER" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="TITLE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SIGTEST" EqualsSign="None">
+        <Parameter Name="TYPE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="CHISQUARE"/>
+        </Parameter>
+        <Parameter Name="ALPHA" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDEMRSETS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CATEGORIES" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ALLVISIBLE"/>
+            <EnumValue Name="SUBTOTALS"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="COMPARETEST" EqualsSign="None">
+        <Parameter Name="TYPE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="PROP"/>
+            <EnumValue Name="MEAN"/>
+        </Parameter>
+        <Parameter Name="ALPHA" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="ADJUST" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BONFERRONI"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="ORIGIN" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="COLUMN"/>
+        </Parameter>
+        <Parameter Name="INCLUDEMRSETS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="MEANSVARIANCE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ALLCATS"/>
+            <EnumValue Name="TESTEDCATS"/>
+        </Parameter>
+        <Parameter Name="CATEGORIES" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ALLVISIBLE"/>
+            <EnumValue Name="SUBTOTALS"/>
+        </Parameter>
+        <Parameter Name="MERGE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="HIDESMALLCOUNTS" EqualsSign="None">
+        <Parameter Name="COUNT" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

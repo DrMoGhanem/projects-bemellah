@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/22/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="TSET" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="PRINT" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="DEFAULT"/>
+            <EnumValue Name="BRIEF"/>
+            <EnumValue Name="DETAILED"/>
+        </Parameter>
+        <Parameter Name="NEWVAR" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="CURRENT"/>
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="MXAUTO" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MXCROSS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MXNEWVAR" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MXPREDICT" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MISSING" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+        <Parameter Name="CIN" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="TOLER" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CNVERGE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="ACFSE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="IND"/>
+            <EnumValue Name="MA"/>
+        </Parameter>
+        <Parameter Name="PERIOD" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="ID" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CONSTANT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOCONSTANT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BRIEF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DETAILED" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="NEWVAR" EqualsSign="Optional">
+        <Parameter Name="CURRENT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MXAUTO" EqualsSign="Optional"/>
+    <Subcommand Name="MXCROSS" EqualsSign="Optional"/>
+    <Subcommand Name="MXNEWVARS" EqualsSign="Optional"/>
+    <Subcommand Name="MXPREDICT" EqualsSign="Optional"/>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CIN" EqualsSign="Optional"/>
+    <Subcommand Name="TOLER" EqualsSign="Optional"/>
+    <Subcommand Name="CNVERGE" EqualsSign="Optional"/>
+    <Subcommand Name="ACFSE" EqualsSign="Optional">
+        <Parameter Name="IND" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MA" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PERIOD" EqualsSign="Optional"/>
+    <Subcommand Name="ID" EqualsSign="Optional"/>
+    <Subcommand Name="CONSTANT" EqualsSign="None"/>
+    <Subcommand Name="NOCONSTANT" EqualsSign="None"/>
+    <Subcommand Name="DEFAULT" EqualsSign="None"/>
+</Command>

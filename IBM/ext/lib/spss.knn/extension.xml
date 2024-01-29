@@ -1,0 +1,1107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: <Analytic Components>                          -->
+<!--                                                                   -->
+<!-- (c)Copyright IBM Corp. 2008, 2011                                 -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<Extension version="1.0">
+  <ExtensionDetails providerTag="spss" id="KNN_id" label="KNN" version="1.0" provider="SPSS Ltd."
+    copyright="(c)2008  SPSS Ltd." description="KNN Node"/>
+  <Resources>
+    <SharedLibrary id="KNNnode" path="spss.knn/knn"/>
+    <Bundle id="translations.KNN" type="properties" path="messages"/>
+    <HelpInfo id="help" type="native"/>
+  </Resources>
+  <CommonObjects>
+    <ContainerTypes>
+      <ModelType id="knn_model" format="utf8"/>
+    </ContainerTypes>
+    <PropertyTypes>
+      <PropertyType id="analysisTypeEnum" valueType="enum">
+        <Enumeration>
+          <Enum value="PredictTarget" label="Predict a target field"
+            labelKey="AnalysisType_PredictTarget.LABEL"/>
+          <Enum value="IdentifyNeighbors" label="Only identify the nearest neighbors"
+            labelKey="AnalysisType_IdentifyNeighbors.LABEL"/>
+        </Enumeration>
+      </PropertyType>
+    </PropertyTypes>
+  </CommonObjects>
+  <Node id="KNNbuilder" type="modelBuilder" palette="modeling.classification"
+    relativePosition="after" relativeTo="svm" scriptName="knn"
+    description="Constructs a k-nearest neighbor model" descriptionKey="KNN_tooltip.LABEL"
+    helpLink="knnnode_general.htm" label="KNN" labelKey="KNNnode.LABEL">
+    <ModelBuilder miningFunctions="[classification approximation]" allowNoOutputs="true">
+      <Algorithm value="KNNAlgorithm" label="KNN Algorithm" labelKey="KNNAlgorithm.LABEL"/>
+      <ModelingFields controlsId="modelingFields">
+        <InputFields property="inputs" multiple="true" label="Inputs"
+          types="[range set orderedSet flag]" labelKey="inputFields.LABEL"> </InputFields>
+        <OutputFields property="target" multiple="false" label="Target"
+          types="[range set orderedSet flag]" labelKey="targetField.LABEL">
+          <Condition property="AnalysisType" op="equals" value="PredictTarget"/>
+        </OutputFields>
+      </ModelingFields>
+      <ModelGeneration controlsId="ModelGeneration"/>
+      <ModelFields inputDirections="[in]" outputDirections="[out]">
+        <ForEach var="field" inFields="outputs">
+          <!-- classification only -->
+
+          <AddField prefix="$KNN" name="${field}" fieldRef="${field}" role="predictedValue"
+            targetField="${field}">
+            <And>
+              <Condition property="AnalysisType" op="equals" value="PredictTarget"/>
+              <Not>
+                <Condition property="field" op="typeEquals" value="range"/>
+              </Not>
+            </And>
+          </AddField>
+          <AddField prefix="$KNNP" name="${field}" storage="real" role="probability"
+            targetField="${field}">
+            <And>
+              <Condition property="AnalysisType" op="equals" value="PredictTarget"/>
+              <Not>
+                <Condition property="field" op="typeEquals" value="range"/>
+              </Not>
+            </And>
+            <Range min="0.0" max="1.0"/>
+          </AddField>
+          <!--All probabilities fields for classification ONLY -->
+          <ForEach var="fieldValue" inFieldValues="${field}">
+            <AddField prefix="$KNNP" name="${fieldValue}" storage="real" role="probability"
+              targetField="${field}" value="${fieldValue}">
+              <And>
+                <Condition property="AnalysisType" op="equals" value="PredictTarget"/>
+                <Not>
+                  <Condition property="field" op="typeEquals" value="range"/>
+                </Not>
+              </And>
+              <Range min="0.0" max="1.0"/>
+            </AddField>
+          </ForEach>
+          <!--Propensity fields for binary classification ONLY -->
+          <AddField prefix="$KNNRP" name="${field}" storage="real" role="propensity" tag="RAW"
+            targetField="${field}">
+            <And>
+              <Condition property="AnalysisType" op="equals" value="PredictTarget"/>
+              <Condition property="field" op="typeEquals" value="flag"/>
+            </And>
+            <Range min="0.0" max="1.0"/>
+          </AddField>
+          <AddField prefix="$KNNAP" name="${field}" storage="real" role="propensity" tag="ADJUSTED" targetField="${field}">
+            <And>
+              <Condition property="AnalysisType" op="equals" value="PredictTarget"/>
+              <Condition property="field" op="typeEquals" value="flag"/>
+            </And>
+            <Range min="0.0" max="1.0"/>
+          </AddField>
+          <!-- approximation only, NOTE: predict real even if target is integer -->
+          <AddField prefix="$KNN" name="${field}" type="range" storage="real" role="predictedValue"
+            targetField="${field}">
+            <And>
+              <Condition property="AnalysisType" op="equals" value="PredictTarget"/>
+              <Condition property="field" op="typeEquals" value="range"/>
+            </And>
+          </AddField>
+        </ForEach>
+      </ModelFields>
+      <ModelEvaluation container="model" controlsId="modelevaluation">
+        <RawPropensity property="raw_propensity" availabilityProperty="raw_propensity_available"/>
+        <AdjustedPropensity property="adjusted_propensity"
+          availabilityProperty="adjusted_propensity_available"/>
+        <!--        <VariableImportance property="variable_importance"
+          availabilityProperty="variable_importance_available" defaultValue="false"/>-->
+      </ModelEvaluation>
+      <AutoModeling enabledByDefault="false">
+        <SimpleSettings>
+          <PropertyGroup label="automodel_NoSimpleSettings"
+            labelKey="automodel_NoSimpleSettings.LABEL" properties=""/>
+        </SimpleSettings>
+        <ExpertSettings>
+          <PropertyGroup label="Model" labelKey="automodel_ExpertSettings_Model.LABEL"
+            properties="[RescaleMethod use_caselabels CaseLabelVar use_focalcase FocalVar]"/>
+          <PropertyGroup label="Neighbors" labelKey="automodel_ExpertSettings_Neighbors.LABEL"
+            properties="[IsAutoKSelection SpecifiedK MinK MaxK DistMetric IsFeatureWeight ComputePredValFunc]"/>
+          <PropertyGroup label="Feature Selection"
+            labelKey="automodel_ExpertSettings_FeatureSelection.LABEL"
+            properties="[IsFeatureSelection IsAutoFeatureSelection NSpecifiedFeatures SpecifiedErrRange]"/>
+          <!-- <PropertyGroup label="Feature Selection"
+            labelKey="automodel_ExpertSettings_FeatureSelection.LABEL"
+	    properties="[IsFeatureSelection ForcedVariables IsAutoFeatureSelection NSpecifiedFeatures SpecifiedErrRange]"/> -->
+          <PropertyGroup label="Cross-Validation"
+            labelKey="automodel_ExpertSettings_CrossValidation.LABEL"
+            properties="[choose_vfold VFoldValue use_vfoldrandomseed VFold_randomseed VFoldVar]"/>
+        </ExpertSettings>
+        <Constraint property="use_caselabels" singleSelection="true"/>
+        <Constraint property="CaseLabelVar" singleSelection="true">
+          <Condition property="use_caselabels" op="equals" value="true"/>
+        </Constraint>
+        <Constraint property="use_focalcase" singleSelection="true"/>
+        <Constraint property="FocalVar" singleSelection="true">
+          <Condition property="use_focalcase" op="equals" value="true"/>
+        </Constraint>
+        <Constraint property="IsAutoKSelection" />
+        <Constraint property="SpecifiedK" >
+          <Condition property="IsAutoKSelection" op="equals" value="false"/>
+        </Constraint>
+        <Constraint property="MinK" singleSelection="true">
+          <Condition property="IsAutoKSelection" op="equals" value="true"/>
+        </Constraint>
+        <Constraint property="MaxK" singleSelection="true">
+          <Condition property="IsAutoKSelection" op="equals" value="true"/>
+        </Constraint>
+        <Constraint property="IsFeatureSelection" />
+        <!-- <Constraint property="ForcedVariables">
+          <Condition property="IsFeatureSelection" op="equals" value="true"/>
+  </Constraint> -->
+        <Constraint property="IsAutoFeatureSelection" />
+        <Constraint property="NSpecifiedFeatures" >
+          <Condition property="IsAutoFeatureSelection" op="equals" value="false"/>
+        </Constraint>
+        <Constraint property="SpecifiedErrRange" >
+          <Condition property="IsAutoFeatureSelection" op="equals" value="true"/>
+        </Constraint>
+        <Constraint property="choose_vfold" singleSelection="true">
+          <Condition property="IsFeatureSelection" op="equals" value="false"/>
+        </Constraint>
+        <Constraint property="VFoldValue" singleSelection="true">
+          <And>
+            <Condition property="IsFeatureSelection" op="equals" value="false"/>
+            <Condition property="choose_vfold" op="equals" value="false"/>
+          </And>
+        </Constraint>
+        <Constraint property="use_vfoldrandomseed" singleSelection="true">
+          <And>
+            <Condition property="IsFeatureSelection" op="equals" value="false"/>
+            <Condition property="choose_vfold" op="equals" value="false"/>
+          </And>
+        </Constraint>
+        <Constraint property="VFold_randomseed" singleSelection="true">
+          <And>
+            <Condition property="IsFeatureSelection" op="equals" value="false"/>
+            <Condition property="choose_vfold" op="equals" value="false"/>
+            <Condition property="use_vfoldrandomseed" op="equals" value="true"/>
+          </And>
+        </Constraint>
+        <Constraint property="VFoldVar" singleSelection="true">
+          <And>
+            <Condition property="IsFeatureSelection" op="equals" value="false"/>
+            <Condition property="choose_vfold" op="equals" value="true"/>
+          </And>
+        </Constraint>
+      </AutoModeling>
+    </ModelBuilder>
+    <Properties>
+      <!-- properties in "Objectives" Tab-->
+      <Property name="AnalysisType" type="analysisTypeEnum" defaultValue="PredictTarget"
+        label="What type of analysis do you want to perform?" labelKey="AnalysisType.LABEL"
+        scriptName="analysis"> </Property>
+      <Property name="UserObjective" valueType="enum" defaultValue="Balance"
+        label="What is your objective?" labelKey="UserObjective.LABEL" scriptName="objective">
+        <Enumeration>
+          <Enum value="Balance" label="Balance speed and accuracy"
+            labelKey="UserObjective_BalanceSpeed.LABEL"/>
+          <Enum value="Speed" label="Speed" labelKey="UserObjective_OptimizeSpeed.LABEL"/>
+          <Enum value="Accuracy" label="Accuracy" labelKey="UserObjective_OptimizeAccurary.LABEL"/>
+          <Enum value="Custom" label="Custom analysis" labelKey="UserObjective_CustomAnalysis.LABEL"
+          />
+        </Enumeration>
+      </Property>
+      <!-- properties in "Model" Tab-->
+      <Property name="CaseIDVar" valueType="fieldName" label="Case ID variable"
+        labelKey="CaseIDVar.LABEL"/>
+      <Property name="use_caselabels" valueType="boolean" label="Use case labels"
+        defaultValue="false" labelKey="use_caselabels.LABEL" scriptName="use_case_labels"/>
+      <Property name="CaseLabelVar" valueType="fieldName" label="Case Label variable"
+        labelKey="CaseLabelVar.LABEL" scriptName="case_labels_field"/>
+      <Property name="use_focalcase" valueType="boolean" label="Identify focal record"
+        defaultValue="false" labelKey="use_focalcase.LABEL" scriptName="identify_focal_cases"/>
+      <Property name="FocalVar" valueType="fieldName" label="Focal case variable"
+        labelKey="FocalVar.LABEL" scriptName="focal_cases_field"/>
+      <Property name="FocalCaseValue" valueType="integer" label="Focal Case Value"
+        labelKey="FocalCaseValue.LABEL"/>
+      <Property name="RescaleMethod" valueType="boolean" label="Normalize range inputs"
+        defaultValue="true" labelKey="RescaleMethod.LABEL" scriptName="normalize_ranges"/>
+      <!-- properties in "Neighbors" Tab-->
+      <Property name="DistMetric" valueType="enum" defaultValue="Euclidean"
+        label="Distance Computation" labelKey="DistMetric.LABEL" scriptName="distance_computation">
+        <Enumeration>
+          <Enum value="Euclidean" label="Euclidean metric" labelKey="DistMetric_Euclidean.LABEL"/>
+          <Enum value="CityBlock" label="City Block metric" labelKey="DistMetric_CityBlock.LABEL"/>
+        </Enumeration>
+      </Property>
+      <Property name="ComputePredValFunc" valueType="enum" defaultValue="Mean"
+        label="Predictions for Range Target" labelKey="ComputePredValFunc.LABEL"
+        scriptName="range_predictions">
+        <Enumeration>
+          <Enum value="Mean" label="Mean of nearest neighbor values"
+            labelKey="ComputePredValFunc_Mean.LABEL"/>
+          <Enum value="Median" label="Median of nearest neighbor values"
+            labelKey="ComputePredValFunc_Median.LABEL"/>
+        </Enumeration>
+      </Property>
+      <Property name="IsFeatureWeight" valueType="boolean"
+        label="Weight features by importance when computing distances" defaultValue="true"
+        labelKey="IsFeatureWeight.LABEL" scriptName="weight_by_importance"/>
+      <Property name="IsAutoKSelection" valueType="boolean" label="Number of Nearest Neighbors (k)"
+        defaultValue="false" labelKey="IsAutoKSelection_trueKey.LABEL" scriptName="automatic_k_selection"/>
+      <Property name="SpecifiedK" valueType="integer" label="K" defaultValue="3" min="1"
+        labelKey="SpecifiedK.LABEL" scriptName="fixed_k"/>
+      <Property name="MinK" valueType="integer" label="Minimum" defaultValue="3" min="1"
+        labelKey="MinK.LABEL" scriptName="minimum_k"/>
+      <Property name="MaxK" valueType="integer" label="Maximum" defaultValue="5" min="1"
+        labelKey="MaxK.LABEL" scriptName="maximum_k"/>
+      <!-- properties in "Feature Selection" Tab-->
+      <Property name="IsFeatureSelection" valueType="boolean" label="Perform feature selection"
+        defaultValue="false" labelKey="IsFeatureSelection.LABEL"
+        scriptName="perform_feature_selection"/>
+      <Property name="ForcedVariables" valueType="fieldName" label="Forced entry" isList="true"
+        labelKey="ForcedVariables.LABEL" scriptName="forced_entry_inputs"/>
+      <Property name="IsAutoFeatureSelection" valueType="boolean" label="Stopping Criterion"
+        defaultValue="false" labelKey="StoppingCriterion_trueKey.LABEL" scriptName="stop_on_error_ratio"/>
+      <Property name="NSpecifiedFeatures" valueType="integer" defaultValue="10" min="1"
+        label="Number to select" labelKey="NSpecifiedFeatures.LABEL" scriptName="number_to_select"/>
+      <Property name="SpecifiedErrRange" valueType="double" label="Minimum change" min="0.01"
+        defaultValue="0.01" labelKey="SpecifiedErrRange.LABEL" scriptName="minimum_change"/>
+      <!-- properties in "Cross-Validation" Tab-->
+      <Property name="choose_vfold" valueType="boolean" label="Use V Fold var" defaultValue="false"
+        labelKey="choosevfold_trueKey.LABEL" scriptName="validation_fold_assign_by_field"/>
+      <Property name="VFoldVar" valueType="fieldName" defaultValue="" label="Folds variable"
+        labelKey="VFoldVar.LABEL" scriptName="folds_field"/>
+      <Property name="VFoldValue" valueType="integer" label="Number of folds" defaultValue="10" min="2"
+        labelKey="VFoldValue.LABEL" scriptName="number_of_folds"/>
+      <Property name="use_vfoldrandomseed" valueType="boolean" label="Set random seed"
+        defaultValue="false" labelKey="use_vfoldrandomseed.LABEL" scriptName="set_random_seed"/>
+      <Property name="VFold_randomseed" valueType="integer" label="Seed" defaultValue="12345" min="1"
+        labelKey="VFold_randomseed.LABEL" scriptName="random_seed"/>
+      <!-- properties in "Analyze" Tab -->
+      <Property name="all_probabilities" valueType="boolean" label="Append all probabilities"
+        defaultValue="false" labelKey="all_probabilities_builder.LABEL"
+        scriptName="all_probabilities"/>
+      <Property name="neighbour_details" valueType="boolean"
+        label="Save distances between cases and k nearest neighbors" defaultValue="false"
+        labelKey="neighbour_details.LABEL" scriptName="save_distances"/>
+    </Properties>
+    <!-- Preset properties provide pre-specified values for a common set of properties. Values must be provided for each objective "mode" apart from the custom mode -->
+    <PresetProperties modeProperty="UserObjective" customMode="Custom">
+      <PresetProperty property="IsAutoKSelection">
+        <PresetValue mode="Balance" value="true"/>
+        <PresetValue mode="Speed" value="false"/>
+        <PresetValue mode="Accuracy" value="true"/>
+      </PresetProperty>
+      <PresetProperty property="MinK">
+        <PresetValue mode="Balance" value="3"/>
+        <!-- <PresetValue mode="Speed" value="false"/> -->
+        <PresetValue mode="Accuracy" value="3"/>
+      </PresetProperty>
+      <PresetProperty property="MaxK">
+        <PresetValue mode="Balance" value="5"/>
+        <!-- <PresetValue mode="Speed" value="false"/> -->
+        <PresetValue mode="Accuracy" value="7"/>
+      </PresetProperty>
+      <PresetProperty property="IsFeatureWeight">
+        <PresetValue mode="Balance" value="false"/>
+        <PresetValue mode="Speed" value="false"/>
+        <PresetValue mode="Accuracy" value="true"/>
+      </PresetProperty>
+    </PresetProperties>
+    <UserInterface actionHandler="com.spss.myextension.MyActionHandler">
+      <Icons>
+        <Icon type="standardNode" imagePath="images/lg_nearestneighbor.gif"/>
+        <Icon type="smallNode" imagePath="images/sm_nearestneighbor.gif"/>
+      </Icons>
+      <Tabs defaultTab="0">
+        <Tab label="Objectives" labelKey="Objectives.LABEL" helpLink="knn_node_objectives.htm">
+          <PropertiesPanel>
+            <StaticText
+              text="The kNN procedure will identify the most similar training cases (the nearest neighbors) to your cases"
+              textKey="objectives_statictext_1.LABEL"/>
+            <StaticText
+              text="of interest. A target field can be predicted based on the neighboring values."
+              textKey="objectives_statictext_2.LABEL"/>
+            <StaticText text="What type of analysis do you want to perform?"
+              textKey="objectives_statictext_analysistype.LABEL"/>
+            <RadioButtonGroupControl property="AnalysisType" rows="2" showLabel="false">
+              <Layout leftIndent="1"/>
+            </RadioButtonGroupControl>
+            <StaticText text="What is your objective?"
+              textKey="objectives_statictext_objective.LABEL">
+              <Enabled>
+                <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+              </Enabled>
+              <Layout rowIncrement="2"/>
+            </StaticText>
+            <RadioButtonGroupControl property="UserObjective" showLabel="false" rows="4"
+              useSubPanel="false">
+              <Layout rowIncrement="1" gridColumn="0" gridWidth="1" gridHeight="15" leftIndent="1">
+                <Cell row="0" column="0" width="0"/>
+                <Cell row="2" column="0" width="0"/>
+                <Cell row="4" column="0" width="0"/>
+                <Cell row="7" column="0" width="0"/>
+              </Layout>
+              <Enabled>
+                <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+              </Enabled>
+            </RadioButtonGroupControl>
+            <StaticText
+              text="Automatically selects the best number of neighbors within a small range."
+              textKey="objectives_statictext_balance.LABEL">
+              <Layout rowIncrement="2" leftIndent="3"/>
+              <Enabled>
+                <And>
+                  <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                  <Condition control="UserObjective" op="equals" value="Balance"/>
+                </And>
+              </Enabled>
+            </StaticText>
+            <StaticText text="Finds a fixed number of neighbors."
+              textKey="objectives_statictext_speed.LABEL">
+              <Layout rowIncrement="2" leftIndent="3"/>
+              <Enabled>
+                <And>
+                  <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                  <Condition control="UserObjective" op="equals" value="Speed"/>
+                </And>
+              </Enabled>
+            </StaticText>
+            <StaticText
+              text="Automatically selects the best number of neighbors within a larger range and uses"
+              textKey="objectives_statictext_accruacy_1.LABEL">
+              <Layout rowIncrement="1" leftIndent="3"/>
+              <Enabled>
+                <And>
+                  <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                  <Condition control="UserObjective" op="equals" value="Accuracy"/>
+                </And>
+              </Enabled>
+            </StaticText>
+            <StaticText text="predictor importance when calculating distances."
+              textKey="objectives_statictext_accruacy_2.LABEL">
+              <Layout rowIncrement="3" leftIndent="3"/>
+              <Enabled>
+                <And>
+                  <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                  <Condition control="UserObjective" op="equals" value="Accuracy"/>
+                </And>
+              </Enabled>
+            </StaticText>
+            <StaticText text="Choose this option to fine tune the algorithm on the Settings tab."
+              textKey="objectives_statictext_custom.LABEL">
+              <Layout rowIncrement="1" leftIndent="3"/>
+              <Enabled>
+                <And>
+                  <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                  <Condition control="UserObjective" op="equals" value="Custom"/>
+                </And>
+              </Enabled>
+            </StaticText>
+          </PropertiesPanel>
+        </Tab>
+        <Tab label="Fields" labelKey="Fields.LABEL" helpLink="modeling_fieldstab.htm">
+          <PropertiesPanel>
+            <SystemControls controlsId="modelingFields">
+              <Layout fill="both" columnWeight="1.0" rowWeight="1.0"/>
+            </SystemControls>
+          </PropertiesPanel>
+        </Tab>
+        <Tab label="Settings" labelKey="Settings.LABEL">
+          <TabbedPanel style="sidebar">
+            <Tabs>
+              <Tab label="Model" labelKey="Model.LABEL" helpLink="knn_node_settings.htm">
+                <PropertiesPanel>
+                  <!--<StaticText
+                    text="These settings relate to how Clementine will use the procedure to build a model"
+                    textKey="Model_statictext_1.LABEL"/>-->
+                  <SystemControls controlsId="ModelGeneration"> </SystemControls>
+                  <CheckBoxControl property="RescaleMethod">
+                    <!--              <Layout rowIncrement="0" gridWidth="1"/>-->
+                  </CheckBoxControl>
+                  <CheckBoxControl property="use_caselabels">
+                    <Layout rowIncrement="0" gridWidth="1"/>
+                  </CheckBoxControl>
+                  <SingleFieldChooserControl property="CaseLabelVar" showLabel="false"
+                    types="[set orderedSet flag typeless]">
+                    <Enabled>
+                      <Condition control="use_caselabels" op="equals" value="true"/>
+                    </Enabled>
+                    <Layout gridColumn="1" fill="horizontal" columnWeight="0.001"/>
+                  </SingleFieldChooserControl>
+                  <CheckBoxControl property="use_focalcase">
+                    <Layout rowIncrement="0" gridWidth="1"/>
+                  </CheckBoxControl>
+                  <SingleFieldChooserControl property="FocalVar" showLabel="false" types="[flag]">
+                    <Enabled>
+                      <Condition control="use_focalcase" op="equals" value="true"/>
+                    </Enabled>
+                    <Layout gridColumn="1" fill="horizontal" columnWeight="0.001"/>
+                  </SingleFieldChooserControl>
+                  <!--<PropertiesPanel label="Fields - Use Type Node Settings">
+                    <StaticText
+                      text="To select fields manually, choose 'Use custom settings' on the Fields tab."
+                      textKey="Model_statictext_2.LABEL"/>
+                  </PropertiesPanel>-->
+                </PropertiesPanel>
+              </Tab>
+              <Tab label="Neighbors" labelKey="Neighbors.LABEL"
+                helpLink="knn_node_settings_neighbors.htm">
+                <PropertiesPanel>
+                  <PropertiesPanel label="Number of Nearest Neighbors (k)"
+                    labelKey="Neighbors_Panel_K.LABEL">
+                    <RadioButtonGroupControl property="IsAutoKSelection" rows="2" showLabel="false"
+                      falseLabel="Specify fixed K" trueLabel="Automatically select k"
+                      useSubPanel="false" falseLabelKey="IsAutoKSelection_falseKey.LABEL"
+                      trueLabelKey="IsAutoKSelection_trueKey.LABEL">
+                      <Layout rowIncrement="1" gridColumn="0" gridWidth="1" gridHeight="5">
+                        <Cell row="0" column="0" width="3"/>
+                        <Cell row="2" column="0" width="3"/>
+                      </Layout>
+                      <Visible>
+                        <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                      </Visible>
+                    </RadioButtonGroupControl>
+                    <SpinnerControl property="SpecifiedK" minDecimalDigits="3" maxDecimalDigits="10"
+                      stepSize="1">
+                      <Layout rowIncrement="2" gridColumn="0" columnWeight="0.001" leftIndent="2"/>
+                      <Enabled>
+                        <Or>
+                          <Condition control="IsAutoKSelection" op="equals" value="false"/>
+                          <Condition control="AnalysisType" op="equals" value="IdentifyNeighbors"/>
+                        </Or>
+                      </Enabled>
+                    </SpinnerControl>
+                    <SpinnerControl property="MinK" minDecimalDigits="3" maxDecimalDigits="10"
+                      stepSize="1">
+                      <Layout rowIncrement="1" gridColumn="0" columnWeight="0.001" leftIndent="2"/>
+                      <Enabled>
+                        <Condition control="IsAutoKSelection" op="equals" value="true"/>
+                      </Enabled>
+                      <Visible>
+                        <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                      </Visible>
+                    </SpinnerControl>
+                    <SpinnerControl property="MaxK" minDecimalDigits="5" maxDecimalDigits="10"
+                      stepSize="1">
+                      <Layout rowIncrement="1" gridColumn="0" columnWeight="0.001" leftIndent="2"/>
+                      <Enabled>
+                        <Condition control="IsAutoKSelection" op="equals" value="true"/>
+                      </Enabled>
+                      <Visible>
+                        <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                      </Visible>
+                    </SpinnerControl>
+                  </PropertiesPanel>
+                  <PropertiesPanel label="Distance Computation"
+                    labelKey="Neighbors_Panel_DistanceComputation.LABEL">
+                    <RadioButtonGroupControl property="DistMetric" labelWidth="2" rows="2"
+                      showLabel="false"> </RadioButtonGroupControl>
+                  </PropertiesPanel>
+                  <CheckBoxControl property="IsFeatureWeight">
+                    <Visible>
+                      <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                    </Visible>
+                  </CheckBoxControl>
+                  <PropertiesPanel label="Predictions for Range Target"
+                    labelKey="Neighbors_Panel_PredictforRangeTarget.LABEL">
+                    <Visible>
+                      <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                    </Visible>
+                    <RadioButtonGroupControl property="ComputePredValFunc" labelWidth="2" rows="2"
+                      showLabel="false"> </RadioButtonGroupControl>
+                  </PropertiesPanel>
+                </PropertiesPanel>
+              </Tab>
+              <Tab label="Feature Selection" labelKey="FeatureSelection.LABEL"
+                helpLink="knn_node_settings_featuresel.htm">
+                <PropertiesPanel>
+                  <Enabled>
+                    <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                  </Enabled>
+                  <CheckBoxControl property="IsFeatureSelection"> </CheckBoxControl>
+                  <StaticText
+                    text="Forward selection is used to evaluate features for inclusion. To force a feature"
+                    textKey="feature_tabtext_1.LABEL">
+                    <Enabled>
+                      <Condition control="IsFeatureSelection" op="equals" value="true"/>
+                    </Enabled>
+                  </StaticText>
+                  <StaticText
+                    text="into the model prior to forward selection, select it in the Forced entry list."
+                    textKey="feature_tabtext_2.LABEL">
+                    <Enabled>
+                      <Condition control="IsFeatureSelection" op="equals" value="true"/>
+                    </Enabled>
+                  </StaticText>
+                  <MultiFieldChooserControl property="ForcedVariables">
+                    <Enabled>
+                      <And>
+                        <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                        <Condition control="IsFeatureSelection" op="equals" value="true"/>
+                      </And>
+                    </Enabled>
+                  </MultiFieldChooserControl>
+                  <PropertiesPanel label="Stopping Criterion" labelKey="StoppingCriterion.LABEL">
+                    <RadioButtonGroupControl property="IsAutoFeatureSelection" rows="2"
+                      useSubPanel="false"
+                      falseLabel="Stop when the specified number of features have been selected"
+                      trueLabel="Stop when the change in the absolute error ratio is less than or equal to the minimum"
+                      falseLabelKey="StoppingCriterion_falseKey.LABEL"
+                      trueLabelKey="StoppingCriterion_trueKey.LABEL" showLabel="false">
+                      <Layout rowIncrement="1" gridColumn="0" gridWidth="1" gridHeight="5">
+                        <Cell row="0" column="0" width="3"/>
+                        <Cell row="2" column="0" width="3"/>
+                      </Layout>
+                      <Enabled>
+                        <Condition control="IsFeatureSelection" op="equals" value="true"/>
+                      </Enabled>
+                    </RadioButtonGroupControl>
+                    <SpinnerControl property="NSpecifiedFeatures" minDecimalDigits="3"
+                      maxDecimalDigits="10" stepSize="1">
+                      <Layout rowIncrement="2" gridColumn="0" columnWeight="0.001" leftIndent="2"/>
+                      <Enabled>
+                        <And>
+                          <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                          <Condition control="IsFeatureSelection" op="equals" value="true"/>
+                          <Condition control="IsAutoFeatureSelection" op="equals" value="false"/>
+                        </And>
+                      </Enabled>
+                    </SpinnerControl>
+                    <SpinnerControl property="SpecifiedErrRange" minDecimalDigits="3"
+                      maxDecimalDigits="10" stepSize="0.01">
+                      <Layout rowIncrement="1" gridColumn="0" columnWeight="0.001" leftIndent="2"/>
+                      <Enabled>
+                        <And>
+                          <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                          <Condition control="IsFeatureSelection" op="equals" value="true"/>
+                          <Condition control="IsAutoFeatureSelection" op="equals" value="true"/>
+                        </And>
+                      </Enabled>
+                    </SpinnerControl>
+                  </PropertiesPanel>
+                </PropertiesPanel>
+              </Tab>
+              <Tab label="Cross-Validation" labelKey="Cross-Validation.LABEL"
+                helpLink="knn_node_settings_crossval.htm">
+                <PropertiesPanel>
+                  <Enabled>
+                    <And>
+                      <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                      <Condition control="IsFeatureSelection" op="equals" value="false"/>
+                    </And>
+                  </Enabled>
+                  <PropertiesPanel label="Cross-Validation Folds"
+                    labelKey="CrossValidationFolds.LABEL">
+                    <!--                    <Enabled>
+                      <Condition control="IsFeatureSelection" op="equals" value="false"/>
+                    </Enabled>-->
+                    <StaticText
+                      text="V-fold cross-validation is performed if you choose automatic k selection but"
+                      textKey="crossvalidation_tabtext_1.LABEL"/>
+                    <StaticText text="do not choose feature selection."
+                      textKey="crossvalidation_tabtext_2.LABEL"/>
+                    <RadioButtonGroupControl property="choose_vfold" rows="2" useSubPanel="false"
+                      showLabel="false" falseLabel="Randomly assign cases to folds"
+                      trueLabel="Use field to assign cases"
+                      falseLabelKey="choosevfold_falseKey.LABEL"
+                      trueLabelKey="choosevfold_trueKey.LABEL">
+                      <Layout rowIncrement="1" gridColumn="0" gridWidth="2" gridHeight="5">
+                        <Cell row="0" column="0" width="3"/>
+                        <Cell row="3" column="0" width="3"/>
+                      </Layout>
+                    </RadioButtonGroupControl>
+                    <SpinnerControl property="VFoldValue" minDecimalDigits="10"
+                      maxDecimalDigits="10" stepSize="1">
+                      <Layout rowIncrement="1" gridColumn="0" columnWeight="0.001" leftIndent="2"
+                        gridWidth="2"/>
+                      <Enabled>
+                        <And>
+                          <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                          <Condition control="IsFeatureSelection" op="equals" value="false"/>
+                          <Condition control="choose_vfold" op="equals" value="false"/>
+                        </And>
+                      </Enabled>
+                    </SpinnerControl>
+                    <CheckBoxControl property="use_vfoldrandomseed">
+                      <Layout rowIncrement="0" gridColumn="0" columnWeight="0.001" leftIndent="2"
+                        gridWidth="1"/>
+                      <Enabled>
+                        <And>
+                          <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                          <Condition control="IsFeatureSelection" op="equals" value="false"/>
+                          <Condition control="choose_vfold" op="equals" value="false"/>
+                        </And>
+                      </Enabled>
+                    </CheckBoxControl>
+                    <SpinnerControl property="VFold_randomseed" minDecimalDigits="12345"
+                      maxDecimalDigits="54321" stepSize="1">
+                      <Layout rowIncrement="2" gridColumn="1" columnWeight="0.001" leftIndent="0"/>
+                      <Enabled>
+                        <And>
+                          <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                          <Condition control="IsFeatureSelection" op="equals" value="false"/>
+                          <Condition control="choose_vfold" op="equals" value="false"/>
+                          <Condition control="use_vfoldrandomseed" op="equals" value="true"/>
+                        </And>
+                      </Enabled>
+                    </SpinnerControl>
+                    <SingleFieldChooserControl property="VFoldVar" showLabel="false"
+                      types="[flag set orderedSet]">
+                      <Layout rowIncrement="1" gridColumn="0" columnWeight="0.001" leftIndent="2"/>
+                      <Enabled>
+                        <Condition control="choose_vfold" op="equals" value="true"/>
+                      </Enabled>
+                      <!--<Layout gridColumn="1" fill="horizontal" columnWeight="0.001"/>-->
+                    </SingleFieldChooserControl>
+                  </PropertiesPanel>
+                </PropertiesPanel>
+              </Tab>
+              <Tab label="Analyze" labelKey="Analyze.LABEL" helpLink="knn_node_settings_analyze.htm">
+                <PropertiesPanel>
+                  <Enabled>
+                    <Condition control="AnalysisType" op="equals" value="PredictTarget"/>
+                  </Enabled>
+                  <CheckBoxControl property="all_probabilities" labelWidth="1"> </CheckBoxControl>
+                  <CheckBoxControl property="neighbour_details" labelWidth="1">
+                    <!--                    <Enabled>
+                      <Condition property="AnalysisType" op="equals" value="PredictTarget"/>
+                    </Enabled>-->
+                  </CheckBoxControl>
+                  <SystemControls controlsId="modelevaluation"> </SystemControls>
+                </PropertiesPanel>
+              </Tab>
+            </Tabs>
+          </TabbedPanel>
+        </Tab>
+      </Tabs>
+    </UserInterface>
+    <Execution>
+      <Properties>
+        <Property name="tempfile" valueType="string">
+          <DefaultValue>
+            <ServerTempFile basename="KNNnodetemp"/>
+          </DefaultValue>
+        </Property>
+      </Properties>
+      <OutputFiles>
+        <ContainerFile id="pmml" path="${tempfile}.pmml" containerType="knn_model"/>
+        <!--ContainerFile id="htmloutput" path="${tempfile}.html" containerType="html_output" /-->
+        <!--ContainerFile id="zipoutput" path="${tempfile}.zip" containerType="zip_outputType" /-->
+      </OutputFiles>
+      <Module libraryId="KNNnode" name="">
+        <StatusCodes>
+          <StatusCode code="0" status="error" messageKey="unknownErrorMsg.LABEL"/>
+          <StatusCode code="1" status="error" messageKey="inputErrMsg.LABEL"/>
+          <StatusCode code="2" status="error" messageKey="internalErrMsg.LABEL"/>
+          <StatusCode code="3" status="error" messageKey="invalidMetadataErrMsg.LABEL"/>
+          <StatusCode code="4" status="error" messageKey="fileNotExistErrorMsg.LABEL"/>
+          <StatusCode code="5" status="error" messageKey="storageNotSupportErrorMsg.LABEL"/>
+          <StatusCode code="6" status="error" messageKey="invalidTargetErrorMsg.LABEL"/>
+          <StatusCode code="7" status="error" messageKey="invalidTarResponseErrorMsg.LABEL"/>
+          <StatusCode code="8" status="error" messageKey="predictorsEmptyErrMsg.LABEL"/>
+          <StatusCode code="9" status="error" messageKey="invalidTargetErrorMsg.LABEL"/>
+          <StatusCode code="10" status="error" messageKey="invalidFrequencyErrorMsg.LABEL"/>
+          <StatusCode code="11" status="error" messageKey="invalidTargetResponseErrorMsg.LABEL"/>
+          <StatusCode code="12" status="error" messageKey="invlidResponseCatErrorMsg.LABEL"/>
+          <StatusCode code="13" status="error" messageKey="noFrequencyErrorMsg.LABEL"/>
+          <StatusCode code="14" status="error" messageKey="noTargetErrorMsg.LABEL"/>
+          <StatusCode code="15" status="error" messageKey="invalidtarValueMsg.LABEL"/>
+          <StatusCode code="16" status="error" messageKey="getfilePathMsg.LABEL"/>
+          <StatusCode code="17" status="error" messageKey="creationAlgorithmMsg.LABEL"/>
+          <StatusCode code="18" status="error" messageKey="buildModelErrorMsg.LABEL"/>
+          <StatusCode code="19" status="error" messageKey="assessModelErrorMsg.LABEL"/>
+          <StatusCode code="20" status="error" messageKey="exportPMLLErrorMsg.LABEL"/>
+          <StatusCode code="21" status="error" messageKey="getDataFieldErrorMsg.LABEL"/>
+          <StatusCode code="22" status="error" messageKey="tarResIsSameErrorMsg.LABEL"/>
+          <StatusCode code="23" status="error" messageKey="NoTargetFieldErrorMsg.LABEL"/>
+          <StatusCode code="24" status="error" messageKey="NoTargetResFieldErrorMsg.LABEL"/>
+          <StatusCode code="25" status="error" messageKey="targetResTrueErrorMsg.LABEL"/>
+          <StatusCode code="26" status="error" messageKey="PMMLNotExistErrorMsg.LABEL"/>
+          <StatusCode code="27" status="error" messageKey="PMMLIsInvalidErrorMsg.LABEL"/>
+          <StatusCode code="28" status="error" messageKey="NoPredVarInPMMLErrorMsg.LABEL"/>
+          <StatusCode code="29" status="error" messageKey="PMMLNotMatchDataErrorMsg.LABEL"/>
+          <StatusCode code="30" status="error" messageKey="getDataSourceErrorMsg.LABEL"/>
+          <StatusCode code="31" status="error" messageKey="dataFileISValidErrorMsg.LABEL"/>
+          <StatusCode code="32" status="error" messageKey="TarFieldNOTMatchErrMsg.LABEL"/>
+          <StatusCode code="33" status="error" messageKey="TRFieldNOTMatchErrMsg.LABEL"/>
+          <StatusCode code="34" status="error" messageKey="FreFieldNOTMatchErrMsg.LABEL"/>
+          <StatusCode code="35" status="error" messageKey="InputFieldNOTMatchMsg.LABEL"/>
+          <StatusCode code="36" status="error" messageKey="NoValidRecordsMsg.LABEL"/>
+          <StatusCode code="37" status="error" messageKey="NoRecordsScoringMsg.LABEL"/>
+          <StatusCode code="38" status="error" messageKey="PartionInValidMsg.LABEL"/>
+          <StatusCode code="39" status="error" messageKey="InputFieldConstantMsg.LABEL"/>
+          <StatusCode code="40" status="error" messageKey="unknownErrorMsg.LABEL"/>
+          <StatusCode code="41" status="error" messageKey="InvalidSettingsErrorMsg.LABEL"/>
+          <StatusCode code="42" status="error" messageKey="NoValidFieldValuesErrorMsg.LABEL"/>
+          <StatusCode code="43" status="error" messageKey="UserStopExecution.LABEL"/>
+          <StatusCode code="44" status="error" messageKey="ShouldHaveTarget.LABEL"/>
+          <StatusCode code="1001" status="error" messageKey="mcCancelMsg.LABEL"/>
+          <StatusCode code="1002" status="error" messageKey="mcIOErrorMsg.LABEL"/>
+          <StatusCode code="1003" status="error" messageKey="mcMemoryLimitExceedMsg.LABEL"/>
+          <StatusCode code="1004" status="error" messageKey="mcInvalidSaveStateMsg.LABEL"/>
+          <StatusCode code="1005" status="error" messageKey="mcFailedRestartMsg.LABEL"/>
+          <StatusCode code="1006" status="error" messageKey="mcWrongStateMsg.LABEL"/>
+          <StatusCode code="200001" status="error" messageKey="KMCKNN_NoValidRecords.LABEL"/>
+          <StatusCode code="200002" status="error" messageKey="KMCKNN_CantReadFile.LABEL"/>
+          <StatusCode code="200003" status="error" messageKey="kMCKNN_FailedReadXML.LABEL"/>
+          <StatusCode code="200004" status="error" messageKey="KMCKNN_EmptyTrainingDataSet.LABEL"/>
+          <StatusCode code="200005" status="error"
+            messageKey="KMCKNN_NoValidSpecifiedFeatureNum.LABEL"/>
+          <StatusCode code="200006" status="error" messageKey="KMCKNN_NoValidMinOrMax.LABEL"/>
+          <StatusCode code="200007" status="error" messageKey="KMCKNN_NoValidVFoldValue.LABEL"/>
+          <StatusCode code="200008" status="error" messageKey="KMCKNN_NoValidVFoldVariable.LABEL"/>
+          <StatusCode code="200009" status="error" messageKey="KMCKNN_NoSpecifiedCaseIDVar.LABEL"/>
+          <StatusCode code="200010" status="error"
+            messageKey="KMCKNN_SpecifiedAsFeaAndResponse.LABEL"/>
+          <StatusCode code="200011" status="error" messageKey="KMCKNN_NoValidRescaleMethod.LABEL"/>
+          <StatusCode code="200012" status="error" messageKey="KMCKNN_NoValidDistMetric.LABEL"/>
+          <StatusCode code="200013" status="error" messageKey="KMCKNN_NoValidComPredFunction.LABEL"/>
+          <StatusCode code="200014" status="error" messageKey="KMCKNN_NoValidIfFeaImportance.LABEL"/>
+          <StatusCode code="200015" status="error" messageKey="KMCKNN_NoValidIfFeaWeight.LABEL"/>
+          <StatusCode code="200016" status="error" messageKey="KMCKNN_NoValidIfFeaSelection.LABEL"/>
+          <StatusCode code="200017" status="error"
+            messageKey="KMCKNN_NoValidIfAutoFeaSelection.LABEL"/>
+          <StatusCode code="200018" status="error" messageKey="KMCKNN_NoValidK.LABEL"/>
+          <StatusCode code="200019" status="error"
+            messageKey="KMCKNN_NoValidTempFileOutputDir.LABEL"/>
+          <StatusCode code="200020" status="error"
+            messageKey="KMCKNN_NoValidTempFileOutputName.LABEL"/>
+          <StatusCode code="200021" status="error" messageKey="KMCKNN_SpecifiedFeaError.LABEL"/>
+          <StatusCode code="200022" status="error" messageKey="KMCKNN_NoExistFeaNameInDict.LABEL"/>
+          <StatusCode code="200023" status="error"
+            messageKey="KMCKNN_NoValEqualToFocalCaseSet.LABEL"/>
+          <StatusCode code="200024" status="error" messageKey="KMCKNN_FocalVarHasMoreThanTwo.LABEL"/>
+          <StatusCode code="200025" status="error" messageKey="KMCKNN_FocalVarIsNotCat.LABEL"/>
+          <StatusCode code="200026" status="error" messageKey="KMCKNN_SpecifiedCaseIDVarError.LABEL"/>
+          <StatusCode code="200027" status="error" messageKey="KMCKNN_SpecifiedFocalVarError.LABEL"/>
+          <StatusCode code="200028" status="error" messageKey="KMCKNN_NoExistResNameInDict.LABEL"/>
+          <StatusCode code="200029" status="error" messageKey="KMCKNN_SpecifiedResError.LABEL"/>
+          <StatusCode code="200030" status="error" messageKey="KMCKNN_NoExistFocalVarInDict.LABEL"/>
+          <StatusCode code="200031" status="error" messageKey="KMCKNN_SpecifiedFocalValError.LABEL"/>
+          <StatusCode code="200032" status="error" messageKey="KMCKNN_VFoldVarIsNotCat.LABEL"/>
+          <StatusCode code="200033" status="error" messageKey="KMCKNN_VFoldVarHasMoreThanV.LABEL"/>
+          <StatusCode code="200034" status="error" messageKey="KMCKNN_LessThanVVal.LABEL"/>
+          <StatusCode code="200035" status="error" messageKey="KMCKNN_FeaConstant.LABEL"/>
+          <StatusCode code="200036" status="error" messageKey="KMCKNN_NoExistVFoldVarInDict.LABEL"/>
+          <StatusCode code="200037" status="error" messageKey="KMCKNN_ConVarNoMaxOrMinInDict.LABEL"/>
+          <StatusCode code="200038" status="error" messageKey="KMCKNN_NoSpecifiedFeaVariable.LABEL"/>
+          <StatusCode code="200039" status="error"
+            messageKey="KMCKNN_NoValidSpecifiedErrorRange.LABEL"/>
+          <StatusCode code="200040" status="error"
+            messageKey="KMCKNN_SpecifiedForcedVariableErr.LABEL"/>
+          <StatusCode code="200041" status="error"
+            messageKey="KMCKNN_SpecifiedVFoldValNotMatchDict.LABEL"/>
+          <StatusCode code="200042" status="error"
+            messageKey="KMCKNN_ConVarMaxEqualsToMinInDict.LABEL"/>
+          <StatusCode code="200043" status="error"
+            messageKey="KMCKNN_CaseIDVarIsNotContinuous.LABEL"/>
+          <StatusCode code="200044" status="error"
+            messageKey="KMCKNN_ZeroResCannotModelSelection.LABEL"/>
+          <StatusCode code="200045" status="error" messageKey="KMCKNN_MoreNNThanData.LABEL"/>
+          <StatusCode code="200046" status="error" messageKey="KMCKNN_NoResNoModelSelection.LABEL"/>
+          <StatusCode code="200047" status="error" messageKey="KMCKNN_NoValidSpecifiedFeature.LABEL"/>
+          <StatusCode code="200048" status="error" messageKey="KMCKNN_MissingValueInRecord.LABEL"/>
+          <StatusCode code="200049" status="error" messageKey="KMCKNN_ScoreRecordInvalid.LABEL"/>
+          <StatusCode code="200050" status="error"
+            messageKey="KMCKNN_OneVarSpecifiedMoreThanOnce.LABEL"/>
+          <StatusCode code="200051" status="error"
+            messageKey="KMCKNN_SpecifiedForcedVarNotInDict.LABEL"/>
+          <StatusCode code="200052" status="error"
+            messageKey="KMCKNN_SpecifiedCaseIDVarNotInDict.LABEL"/>
+          <StatusCode code="200053" status="error"
+            messageKey="KMCKNN_CaseLabelVarIsNotCategorical.LABEL"/>
+          <StatusCode code="200054" status="error"
+            messageKey="KMCKNN_SpecifiedCaseLabelNotInDict.LABEL"/>
+          <StatusCode code="200055" status="error"
+            messageKey="KMCKNN_SpecifiedCaseLabelVarError.LABEL"/>
+          <StatusCode code="200056" status="error" messageKey="KMCKNN_ExportPMMLError.LABEL"/>
+          <StatusCode code="200057" status="error" messageKey="KMCKNN_CreateTempFileError.LABEL"/>
+          <StatusCode code="200058" status="error"
+            messageKey="KMCKNN_OnlyOneCaseInTrainingDataSet.LABEL"/>
+          <StatusCode code="200059" status="error" messageKey="KMCKNN_PredictionOverFlow.LABEL"/>
+          <StatusCode code="200060" status="error"
+            messageKey="KMCKNN_FeatureSelectionCantDone.LABEL"/>
+          <StatusCode code="200061" status="error"
+            messageKey="KMCKNN_BothKAndFeatureSelectionCantDone.LABEL"/>
+          <StatusCode code="200062" status="error" messageKey="KMCKNN_AutoKSelectionCantDone.LABEL"/>
+          <StatusCode code="200063" status="error" messageKey="KMCKNN_PMMLOutputOverflow.LABEL"/>
+          <StatusCode code="200064" status="error" messageKey="KMCKNN_ComputeDistOverflow.LABEL"/>
+          <StatusCode code="200065" status="error" messageKey="KMCKNN_SpecifiedCaseLabelNotInClefDict.LABEL"/>
+          <StatusCode code="200066" status="error" messageKey="KMCKNN_SpecifiedFeaWeightForSmartScoreErr.LABEL"/>
+          <StatusCode code="200067" status="error" messageKey="KMCKNN_NoValidSpecifedFeaWeight.LABEL"/>
+          <StatusCode code="200068" status="warning" messageKey="KMCKNN_AllInputsSeletedForForcedEntry.LABEL"/>
+          <StatusCode code="200069" status="warning" messageKey="KMCKNN_MaxKNotLessThanTrainingDataSize.LABEL"/>
+          <StatusCode code="200070" status="warning" messageKey="KMCKNN_SpecifiedKNotLessThanTrainingDataSize.LABEL"/>
+          <StatusCode code="200201" status="warning" messageKey="KMCKNN_kCases.LABEL"/>
+          <StatusCode code="200202" status="warning" messageKey="KMCKNN_kModelSelection.LABEL"/>
+          <StatusCode code="200203" status="warning" messageKey="KMCKNN_kBuildModel.LABEL"/>
+          <StatusCode code="200204" status="warning" messageKey="KMCKNN_kScoreTraining.LABEL"/>
+          <StatusCode code="200205" status="warning" messageKey="KMCKNN_kKSelection.LABEL"/>
+          <StatusCode code="200206" status="warning" messageKey="KMCKNN_kFeatSelection.LABEL"/>
+          <StatusCode code="200207" status="warning" messageKey="KMCKNN_kFeatAndKSelection.LABEL"/>
+          <StatusCode code="200208" status="warning" messageKey="KMCKNN_kFeatImportantce.LABEL"/>
+          <StatusCode code="200209" status="warning" messageKey="KMCKNN_kFeatWeight.LABEL"/>
+          <StatusCode code="200210" status="warning" messageKey="KMCKNN_kWriteOrigToDisk.LABEL"/>
+          <StatusCode code="200211" status="warning" messageKey="KMCKNN_kCompDiskSaveToDisk.LABEL"/>
+          <StatusCode code="200212" status="warning" messageKey="KMCKNN_kWritePMML.LABEL"/>
+          <StatusCode code="200301" status="warning" messageKey="KMCKNN_InnoreTargetFieldbyCF.LABEL"/>
+		  <StatusCode code="200302" status="error" messageKey="KMCKNN_TargetIsAlsoSetAsPartition.LABEL"/>
+        </StatusCodes>
+      </Module>
+      <Constructors>
+        <CreateModelOutput type="KNNmodel">
+          <CreateModel type="knn_model" target="model" sourceFile="pmml"/>
+          <!--CreateDocument type="html_output" target="advanced_output" sourceFile="htmloutput" /-->
+          <!--CreateDocument type="zip_outputType" target="zip_output" sourceFile="zipoutput" /-->
+        </CreateModelOutput>
+      </Constructors>
+    </Execution>
+    <OutputDataModel mode="replace"> </OutputDataModel>
+  </Node>
+  <ModelOutput id="KNNmodel" label="KNN" helpLink="knn_output.htm">
+    <ModelProvider container="model" isPMML="true"/>
+    <Properties>
+      <Property name="AnalysisType" type="analysisTypeEnum" defaultValue="PredictTarget"
+        label="What type of analysis do you want to perform?" labelKey="AnalysisType.LABEL"
+        scriptName="analysis"/>
+      <Property name="IsAutoKSelection" valueType="boolean" label="" defaultValue="false"
+        labelKey="IsAutoKSelection.LABEL"/>
+      <Property name="SpecifiedK" valueType="integer" label="K" defaultValue="3"
+        labelKey="SpecifiedK.LABEL"/>
+      <Property name="MaxK" valueType="integer" label="Maximum" defaultValue="5"
+        labelKey="MaxK.LABEL"/>
+      <Property name="all_probabilities" valueType="boolean"
+        label="Append all probabilities (valid only for categorical targets)" defaultValue="false"
+        labelKey="all_probabilities.LABEL"/>
+      <Property name="raw_propensity" scriptName="calculate_raw_propensities" valueType="boolean"
+        defaultValue="false" labelKey="raw_propensities.LABEL"/>
+      <Property name="adjusted_propensity" scriptName="calculate_adjusted_propensities"
+        valueType="boolean" defaultValue="false" labelKey="adjusted_propensities.LABEL"/>
+      <Property name="raw_propensity_available" valueType="boolean" defaultValue="false"/>
+      <Property name="adjusted_propensity_available" valueType="boolean" defaultValue="false"/>
+      <Property name="neighbour_details" valueType="boolean"
+        label="Save distances between cases and k nearest neighbors" defaultValue="false"
+        labelKey="DisplayK.LABEL"/>
+      <!--<Property name="variable_importance" valueType="boolean" defaultValue="false"/>
+      <Property name="variable_importance_available" valueType="boolean" defaultValue="false"/>-->
+      <Property name="use_caselabels" valueType="boolean" label="Use case labels"
+        defaultValue="false" labelKey="use_caselabels.LABEL" scriptName="use_case_labels"/>
+    </Properties>
+    <Containers>
+      <Container name="model"/>
+      <!--Container name="advanced_output" /-->
+      <!--Container name="zip_output" /-->
+    </Containers>
+    <UserInterface>
+      <Icons>
+        <Icon type="standardWindow" imagePath="images/nearestneighbor16.gif"/>
+      </Icons>
+      <Tabs>
+        <Tab label="Model" labelKey="Model.LABEL" helpLink="idh_model_knn.htm">
+          <ModelViewerPanel container="model"/>
+          <!--<Enabled>
+            <Condition property="variable_importance" op="equals" value="true"/>
+          </Enabled>-->
+        </Tab>
+      </Tabs>
+    </UserInterface>
+    <Constructors>
+      <CreateModelApplier type="KNNapplier"/>
+    </Constructors>
+  </ModelOutput>
+  <Node id="KNNapplier" type="modelApplier" helpLink="knn_output.htm" label="Apply KNN" scriptName="applyknn">
+    <ModelProvider container="model" isPMML="true"/>
+    <Properties>
+      <Property name="AnalysisType" type="analysisTypeEnum" defaultValue="PredictTarget"
+        label="What type of analysis do you want to perform?" labelKey="AnalysisType.LABEL"
+        scriptName="analysis"/>
+      <Property name="IsAutoKSelection" valueType="boolean" label="" defaultValue="false"
+        labelKey="IsAutoKSelection.LABEL"/>
+      <Property name="SpecifiedK" valueType="integer" label="K" defaultValue="3"
+        labelKey="SpecifiedK.LABEL"/>
+      <Property name="MaxK" valueType="integer" label="Maximum" defaultValue="5"
+        labelKey="MaxK.LABEL"/>
+      <Property name="all_probabilities" valueType="boolean"
+        label="Append all probabilities (valid only for categorical targets)" defaultValue="false"
+        labelKey="all_probabilities.LABEL"/>
+      <Property name="raw_propensity" scriptName="calculate_raw_propensities" valueType="boolean"
+        defaultValue="false" labelKey="raw_propensities.LABEL"/>
+      <Property name="adjusted_propensity" scriptName="calculate_adjusted_propensities"
+        valueType="boolean" defaultValue="false" labelKey="adjusted_propensities.LABEL"/>
+      <Property name="raw_propensity_available" valueType="boolean" defaultValue="false"/>
+      <Property name="adjusted_propensity_available" valueType="boolean" defaultValue="false"/>
+      <!--<Property name="variable_importance" valueType="boolean" defaultValue="false"/>
+      <Property name="variable_importance_available" valueType="boolean" defaultValue="false"/>-->
+      <Property name="neighbour_details" valueType="boolean"
+        label="Save distances between cases and k nearest neighbors" defaultValue="false"
+        labelKey="DisplayK.LABEL"/>
+      <Property name="use_caselabels" valueType="boolean" label="Use case labels"
+        defaultValue="false" labelKey="use_caselabels.LABEL" scriptName="use_case_labels"/>
+	  <Property name="GenerateSQL" valueType="enum" defaultValue="false"
+        label="Generate SQL for this model" labelKey="GenerateSQL.LABEL" scriptName="enable_sql_generation">
+        <Enumeration>         
+          <Enum value="false" label="UDF" labelKey="GenerateSQL_UDF.LABEL"/>
+          <Enum value="native" label="Native" labelKey="GenerateSQL_Native.LABEL"/>         
+        </Enumeration>
+      </Property>
+    </Properties>
+    <Containers>
+      <Container name="model"/>
+      <!--Container name="advanced_output" /-->
+      <!--Container name="zip_output" /-->
+    </Containers>
+    <UserInterface>
+      <Icons>
+        <Icon type="standardNode" imagePath="images/lg_gm_nearestneighbor.gif"/>
+        <Icon type="smallNode" imagePath="images/sm_gm_nearestneighbor.gif"/>
+      </Icons>
+      <Tabs>
+        <Tab label="Model" labelKey="modelTab.LABEL" helpLink="idh_model_knn.htm">
+          <ModelViewerPanel container="model"/>
+        </Tab>
+        <Tab label="Settings" labelKey="settingsTab.LABEL" helpLink="knn_output_settings.htm">
+          <Enabled>
+            <Condition property="AnalysisType" op="equals" value="PredictTarget"/>
+          </Enabled>
+          <PropertiesPanel>
+            <CheckBoxControl property="all_probabilities" labelWidth="1"> </CheckBoxControl>
+            <CheckBoxControl property="neighbour_details" labelWidth="1"> </CheckBoxControl>
+            <CheckBoxControl property="raw_propensity" labelWidth="1">
+              <Enabled>
+                <Condition property="raw_propensity_available" op="equals" value="true"/>
+              </Enabled>
+            </CheckBoxControl>
+            <CheckBoxControl property="adjusted_propensity" labelWidth="1">
+              <Enabled>
+                <Condition property="adjusted_propensity_available" op="equals" value="true"/>
+              </Enabled>
+            </CheckBoxControl>
+	    <RadioButtonGroupControl property="GenerateSQL" rows="2" showLabel="true"  labelAbove="true">             
+            </RadioButtonGroupControl>
+          </PropertiesPanel>
+        </Tab>
+      </Tabs>
+    </UserInterface>
+    <OutputDataModel mode="extend">
+      <ForEach var="field" inFields="modelOutputs" container="model">
+        <AddField name="${field}" fieldRef="${field}">
+          <Or>
+            <!-- Always include predicted field -->
+            <Condition property="field" op="modelOutputRoleEquals" value="predictedValue"/>
+            <!-- Approximation only - always include standard error -->
+            <Condition property="field" op="modelOutputRoleEquals" value="standardError"/>
+            <!-- Classification only - include probability field(s) -->
+            <And>
+              <Condition property="field" op="modelOutputRoleEquals" value="probability"/>
+              <Or>
+                <!-- probability is the probabilty of the prediction and should always be included -->
+                <Not>
+                  <Condition property="field" op="modelOutputHasValue"/>
+                </Not>
+                <!-- all probabilities should be output -->
+                <Condition property="all_probabilities" op="equals" value="true"/>
+              </Or>
+            </And>
+            <!-- Binary classification only, include raw propensity field -->
+            <And>
+              <Condition property="field" op="modelOutputRoleEquals" value="propensity"/>
+              <Not>
+                <Condition property="field" op="modelOutputTagEquals" value="ADJUSTED"/>
+              </Not>
+              <Condition property="raw_propensity" op="equals" value="true"/>
+              <Condition property="raw_propensity_available" op="equals" value="true"/>
+            </And>
+            <!-- Binary classification only, include adjusted propensity field -->
+            <And>
+              <Condition property="field" op="modelOutputRoleEquals" value="propensity"/>
+              <Condition property="field" op="modelOutputTagEquals" value="ADJUSTED"/>
+              <Condition property="adjusted_propensity" op="equals" value="true"/>
+              <Condition property="adjusted_propensity_available" op="equals" value="true"/>
+            </And>
+          </Or>
+        </AddField>
+      </ForEach>
+      <ForEach var="group" from="1" to="${SpecifiedK}">
+        <AddField prefix="$KNN" name="neighbor-${group}" storage="string" role="entityId" type="set"
+          tag="CASELABEL">
+          <And>
+            <Condition property="use_caselabels" op="equals" value="true"/>
+            <Condition property="IsAutoKSelection" op="equals" value="false"/>
+            <Or>
+              <Condition property="neighbour_details" op="equals" value="true"/>
+              <Condition property="AnalysisType" op="equals" value="IdentifyNeighbors"/>
+            </Or>
+          </And>
+        </AddField>
+        <AddField prefix="$KNN" name="neighbor-${group}" storage="integer" role="entityId"
+          type="set" tag="CASELABEL">
+          <And>
+            <Condition property="use_caselabels" op="equals" value="false"/>
+            <Condition property="IsAutoKSelection" op="equals" value="false"/>
+            <Or>
+              <Condition property="neighbour_details" op="equals" value="true"/>
+              <Condition property="AnalysisType" op="equals" value="IdentifyNeighbors"/>
+            </Or>
+          </And>
+        </AddField>
+        <AddField prefix="$KNN" name="distance-${group}" storage="real" role="entityAffinity"
+          type="range" tag="CASEDIST">
+          <And>
+            <Condition property="IsAutoKSelection" op="equals" value="false"/>
+            <Or>
+              <Condition property="neighbour_details" op="equals" value="true"/>
+              <Condition property="AnalysisType" op="equals" value="IdentifyNeighbors"/>
+            </Or>
+          </And>
+        </AddField>
+      </ForEach>
+      <ForEach var="group" from="1" to="${MaxK}">
+        <AddField prefix="$KNN" name="neighbor-${group}" storage="string" role="entityId" type="set"
+          tag="CASELABEL">
+          <And>
+            <Condition property="use_caselabels" op="equals" value="true"/>
+            <Condition property="IsAutoKSelection" op="equals" value="true"/>
+            <Or>
+              <Condition property="neighbour_details" op="equals" value="true"/>
+              <Condition property="AnalysisType" op="equals" value="IdentifyNeighbors"/>
+            </Or>
+          </And>
+        </AddField>
+        <AddField prefix="$KNN" name="neighbor-${group}" storage="integer" role="entityId"
+          type="set" tag="CASELABEL">
+          <And>
+            <Condition property="use_caselabels" op="equals" value="false"/>
+            <Condition property="IsAutoKSelection" op="equals" value="true"/>
+            <Or>
+              <Condition property="neighbour_details" op="equals" value="true"/>
+              <Condition property="AnalysisType" op="equals" value="IdentifyNeighbors"/>
+            </Or>
+          </And>
+        </AddField>
+        <AddField prefix="$KNN" name="distance-${group}" storage="real" role="entityAffinity"
+          type="range" tag="CASEDIST">
+          <And>
+            <Condition property="IsAutoKSelection" op="equals" value="true"/>
+            <Or>
+              <Condition property="neighbour_details" op="equals" value="true"/>
+              <Condition property="AnalysisType" op="equals" value="IdentifyNeighbors"/>
+            </Or>
+          </And>
+        </AddField>
+      </ForEach>
+    </OutputDataModel>
+    <Execution>
+      <Module systemModule="SmartScore">
+        <StatusCodes> </StatusCodes>
+      </Module>
+    </Execution>
+    <Constructors>
+      <CreateModelOutput type="KNNmodel"/>
+    </Constructors>
+  </Node>
+</Extension>

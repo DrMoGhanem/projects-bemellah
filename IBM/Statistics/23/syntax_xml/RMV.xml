@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/21/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="RMV" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="LINT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TREND" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SPEC_PARAMS">
+        <Parameter Name="LINT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TREND" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

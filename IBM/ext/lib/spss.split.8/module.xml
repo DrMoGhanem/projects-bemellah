@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: <Analytic Components>                          -->
+<!--                                                                   -->
+<!-- (c)Copyright IBM Corp. 2009, 2011                                 -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<!-- Split Module XML -->
+<Module xmlns="http://www.ibm.com/software/analytics/spss/xml/extension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" debug="false" version="8.0" xsi:schemaLocation="http://www.ibm.com/software/analytics/spss/xml/extension http://www.ibm.com/software/analytics/spss/xml/extension/ModuleSpecification.xsd">
+	<ModuleDetails copyright="(c) 2009 SPSS, Inc." description="Split Module" id="split" label="split" provider="SPSS, Inc."  providerTag="pasw" version="8.0"/>
+	
+	<!--  On Windows, the shared library would be split.dll, on Unix/Linux split.so/.lib/whatever -->
+	<SharedLibrary basename="split"/>
+
+    <!-- Resources used by the module. -->	
+	<Resources>
+		<Bundle id="split_res" path="messages" type="properties"/> 
+	</Resources>
+
+	<CommonObjects>
+		<!--  Property type definitions. -->
+		<PropertyTypes>
+		</PropertyTypes>
+	</CommonObjects>
+	
+	<!-- Status Codes -->
+	<StatusCodes>
+		<StatusCode code="280001" status="error" messageKey="NoSplitFieldsError"/>
+		<StatusCode code="280002" status="error" messageKey="NoValidRecordsError"/>
+		<StatusCode code="280003" status="error" messageKey="CreateWorkerFailedError"/>
+		<StatusCode code="280004" status="error" messageKey="SplitFieldNotExistError"/>
+		<StatusCode code="280005" status="error" messageKey="GetValueFailedError"/>
+		<StatusCode code="280006" status="error" messageKey="CreateCacheFailedError"/>
+		<StatusCode code="280007" status="error" messageKey="CacheRecordFailedError"/>
+		<StatusCode code="280008" status="error" messageKey="GetIteratorFailedError"/>
+		<StatusCode code="280009" status="error" messageKey="CloseCacheFailedError"/>
+		<StatusCode code="280010" status="error" messageKey="UnknownStorageTypeError"/>
+        <StatusCode code="280011" status="error" messageKey="ParseTaskMetadataFailedError"/>
+        <StatusCode code="280012" status="error" messageKey="SetThreadLockFailedError"/>
+        <StatusCode code="280013" status="error" messageKey="UnsetThreadLockFailedError"/>
+		<StatusCode code="280014" status="error" messageKey="AllSplitsFailedError"/>
+		<StatusCode code="280015" status="error" messageKey="AddDataModelFailedError"/>
+		<StatusCode code="280016" status="warning" messageKey="UnknownMeasurementLevelError"/>
+	</StatusCodes>
+	
+	<!-- ContainerType declarations -->
+	<ContainerTypes>
+		<ContainerType  id="PMML_report_container" mimeType="xml" resourceKey="" fileSuffix="" />
+		<ContainerType  id="StatXML_report_container" mimeType="xml" resourceKey="" fileSuffix="" />
+	</ContainerTypes>
+	
+	<!-- split_distribute component definition -->
+	<Component id="split_distribute">
+		<!-- Component capabilities -->
+		<Capabilities>
+			<Consumer/>
+		</Capabilities>
+		<!-- Property declarations -->
+		<Properties>
+			<!--the following is to define the settings for the oprations-->
+			<Property name="split_fields" valueType="fieldName" isList="true"/>
+		</Properties>
+		<!-- Containers -->
+		<Containers>
+		</Containers>
+	</Component>
+	
+	<!-- split_collect component definition -->
+	<Component id="split_collect">
+		<!-- Component capabilities -->
+		<Capabilities>
+			<Consumer/>
+		</Capabilities>
+		<!-- Property declarations -->
+		<Properties>
+			<Property name="TargetFieldList" valueType="fieldName" isList="true"/>
+			<Property name="InputFieldList" valueType="fieldName" isList="true"/>
+		</Properties>
+		<!-- Containers -->
+		<Containers>
+			<Container name="PMML" type="PMML_report_container" usage="output" runtimeProperty="tmpReportFile"/>
+			<Container name="StatXML" type="StatXML_report_container" usage="output" runtimeProperty="tmpReportFile"/>
+		</Containers>
+	</Component>
+</Module>

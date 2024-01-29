@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/22/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="TWOSTEP CLUSTER" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="CATEGORICAL" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CONTINUOUS" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="None">
+        <Parameter Name="INITHRESHOLD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MXBRANCH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MXLEVEL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DISTANCE" EqualsSign="None">
+        <Parameter Name="EUCLIDEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LIKELIHOOD" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="HANDLENOISE" EqualsSign="None"/>
+    <Subcommand Name="INFILE" EqualsSign="None">
+        <Parameter Name="FILE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MEMALLOCATE" EqualsSign="None"/>
+    <Subcommand Name="MISSING" EqualsSign="None">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="NOSTANDARDIZE" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="NUMCLUSTERS" EqualsSign="None">
+        <Parameter Name="AUTO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AIC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BIC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FIXED" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="None">
+        <Parameter Name="MODEL" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="STATE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="None">
+        <Parameter Name="IC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMMARY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="None">
+        <Parameter Name="CLUSTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="VIEWMODEL" EqualsSign="None">
+        <Parameter Name="DISPLAY" EqualsSign="Optional" ParameterType="Keyword">
+			<EnumValue Name="YES"/>
+			<EnumValue Name="NO"/>
+		</Parameter>
+        <Parameter Name="EVALUATIONFIELDS" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

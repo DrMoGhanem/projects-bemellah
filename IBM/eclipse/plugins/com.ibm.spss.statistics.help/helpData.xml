@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--Arbortext, Inc., 1988-2007, v.4002-->
+<extensions>     
+<tocOrder>         
+<toc id="/com.ibm.spss.statistics.help/statistics_mainhelp.xml"/> 
+<toc id="/com.ibm.spss.statistics.reference/statistics_reference_project.xml"/>
+<toc id="/com.ibm.spss.statistics.tut/statistics_spsstut_project.xml"/>
+<toc id="/com.ibm.spss.statistics.cs/statistics_casestudies_project.xml"/>         
+<toc id="/com.ibm.spss.statistics.coach/statistics_project_statcoach.xml"/>         
+<toc id="/com.ibm.spss.statistics.algorithms/com.ibm.spss.statistics.algorithms_toc.xml"/>
+<toc id="/com.ibm.spss.statistics.extras/statistics_extras_project.xml"/>
+<toc id="/com.ibm.spss.statistics.python.help/statistics_python_plugin_uber_project.xml"/>
+<toc id="/com.ibm.spss.statistics.r.help/statistics_r_package_project.xml"/>
+<toc id="/com.ibm.spss.statistics.java.help/statistics_java_package_project.xml"/>
+<toc id="/com.ibm.spss.statistics.javaapi.help/com.ibm.spss.statistics.javaapi.help_toc.xml"/>
+<toc id="/com.ibm.spss.statistics.NET.help/statistics_net_guide_project.xml"/>
+<toc id="/com.ibm.spss.statistics.r.tut/statistics_r_tutorial_project.xml"/>
+</tocOrder>
+</extensions>

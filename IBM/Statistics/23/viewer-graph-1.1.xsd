@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema targetNamespace="http://xml.spss.com/spss/viewer/viewer-graph"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:vgr="http://xml.spss.com/spss/viewer/viewer-graph" 
+    xmlns:vst="http://xml.spss.com/spss/viewer/viewer-style" 
+    elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Copyright 2006 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties with respect to your use of this specification, expressed, implied, or otherwise, including without limitation, all warranties of merchantability and fitness for a particular purpose.  SPSS shall not be liable for any special, incidental, or consequential damages, including without limitation lost revenues or lost profits resulting from the use of the information herein.</xs:documentation>
+	</xs:annotation>
+	<!-- imports -->
+	<xs:import namespace="http://xml.spss.com/spss/viewer/viewer-style" schemaLocation="viewer-style-1.0.xsd"/>
+	<!-- the root element -->
+	<xs:element name="graph">
+		<xs:complexType>
+			<xs:sequence minOccurs="0">
+				<xs:any processContents="skip">
+		            <xs:annotation>
+			            <xs:documentation xml:lang="en">
+                            The entire graph structure will be represented using the ViZml schema.   
+                            The visualization element is described in a seperate schema (see http://xml.spss.com/visualization/vizml-2.2.xsd )
+                            and thus will not be validated as part of this schema.
+                        </xs:documentation>
+		            </xs:annotation>
+				</xs:any>
+			</xs:sequence>
+			<xs:attribute name="VDPId" type="xs:positiveInteger" use="optional">
+			    <xs:annotation>
+				    <xs:documentation xml:lang="en">
+                        This id is used to identify the data associated with this graph.
+                        When a visualization XML contains userSource data, the client needs to associate
+                        this graph with a VDP sent in another message containing the same id.
+                    </xs:documentation>
+			    </xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="ViZmlSource" type="xs:positiveInteger" use="optional">
+			    <xs:annotation>
+				    <xs:documentation xml:lang="en">
+                        This id is used to identify the vizualization XML needed to draw this graph.  This is
+                        an optional attribute.  If used, the id should be a globally unique id that refers to
+                        a separate ViZml source with the same id.
+                    </xs:documentation>
+			    </xs:annotation>
+			</xs:attribute>
+      <xs:attribute name="commandName" type="xs:string" use="required">
+          <xs:annotation>
+              <xs:documentation xml:lang="en">
+                  The language invarient command name. This corresponds to the Command Identifier as seen 
+                  in the OMS Control Panel UI.
+              </xs:documentation>
+          </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="editable">
+          <xs:annotation>
+              <xs:documentation xml:lang="en">
+                  Specifies the type of editor to use when editing this chart.
+              </xs:documentation>
+          </xs:annotation>
+          <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="yes">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">Chart is fully editable.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="no">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">Chart is not editable.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="stylesOnly">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">Only style attributes (e.g. color) are editable.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+          </xs:simpleType>        
+      </xs:attribute>
+      <xs:attribute name="editor">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Specifies if the chart is editable or not.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="ChartEditor">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">Use the SPSS Chart Editor to edit the chart.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="Graphboard">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">Use the nViZn Graphboard editor to edit the chart.</xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+    </xs:complexType>
+	</xs:element>
+</xs:schema>

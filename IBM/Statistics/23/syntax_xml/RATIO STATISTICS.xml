@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/19/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="RATIO STATISTICS" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ASCENDING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DESCENDING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOSORT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="None">
+        <Parameter Name="AAD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BCOC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MDCOV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MNCOV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PRD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RANGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WCOC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WGTMEAN" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="AAD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BCOC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MDCOV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MNCOV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PRD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RANGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WCOC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WGTMEAN" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

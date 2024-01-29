@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2012                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+
+<vap:viewerAppearance xmlns:vap="http://xml.spss.com/spss/viewer/viewer-appearance"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:vst="http://xml.spss.com/spss/viewer/viewer-style"
+  xmlns:vps="http://xml.spss.com/spss/viewer/viewer-pagesetup"
+  xmlns:vtx="http://xml.spss.com/spss/viewer/viewer-text"
+  xsi:schemaLocation="http://xml.spss.com/spss/viewer/viewer-appearance http://xml.spss.com/spss/viewer/viewer-appearance-1.1.xsd">
+
+	<!-- Set the text style for text viewer output items. -->
+	<vap:setStyle color="black" font-family="sans-serif" font-size="10pt" font-weight="normal">
+		<vap:element type="title" font-size="14pt" font-weight="bold"/>
+		<vap:element type="page-title" font-size="10pt"/>
+		<vap:element type="text"/>
+	</vap:setStyle>
+
+	<!-- Set the visibility and alignment of the output objects -->
+	<vap:setInitialOutputState text-align="left" visibility="visible">
+		<vap:element type="log"/>
+		<vap:element type="warning"/>
+		<vap:element type="note" visibility="hidden"/>
+		<vap:element type="title"/>
+		<vap:element type="page-title"/>
+		<vap:element type="pivot-table"/>
+		<vap:element type="text"/>
+		<vap:element type="graph"/>
+		<vap:element type="map"/>
+		<vap:element type="tree"/>
+		<vap:element type="model"/>
+		<vap:element type="other"/>
+	</vap:setInitialOutputState>
+
+	<!-- Sets the default page setup information -->
+	<vap:setPageSetup>
+	    <!-- Sets the default page setup and page attributes information -->
+		<vps:pageSetup initial-page-number="1"  chart-size="as-is" reference-orientation="0deg" space-after="12pt" paper-width="8.5in" paper-height="11in" margin-left="0.5in" margin-right="0.5in" margin-bottom="0.5in" margin-top="0.5in">
+			<vps:pageHeader>
+				<vps:pageParagraph>
+					<vtx:text type="text">
+						<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+							<head>
+							    <!-- Font properties for the page header -->
+								<style type="text/css">
+									p { font-family: sans-serif;
+									     font-size: 10pt; text-align: center;
+									     font-weight: normal;
+									     color: #000000;
+									     }
+								</style>
+							</head>
+							<body>
+							    <!-- The default page header is the current page title. -->
+								<p><span title="page-title"/></p>
+							</body>
+						</html>
+					</vtx:text>
+				</vps:pageParagraph>
+			</vps:pageHeader>
+			<vps:pageFooter>
+				<vps:pageParagraph>
+					<vtx:text type="text">
+						<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+							<head>
+							    <!-- Font properties for the page footer -->
+								<style type="text/css">
+									p { font-family: sans-serif;
+									     font-size: 10pt; text-align: right;
+									     font-weight: normal;
+									     color: #000000;
+									     }
+								</style>
+							</head>
+							<body>
+							    <!-- The default page footer is the page number -->
+								<p>Page <span title="page-number" /></p>
+							</body>
+						</html>
+					</vtx:text>
+				</vps:pageParagraph>
+			</vps:pageFooter>
+		</vps:pageSetup>
+	</vap:setPageSetup>
+	
+</vap:viewerAppearance>

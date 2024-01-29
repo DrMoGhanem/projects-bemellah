@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2012                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/22/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="TSAPPLY" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="MODELSUMMARY" EqualsSign="None">
+        <Parameter Name="PRINT" EqualsSign="Required">
+            <EnumValue Name="MODELFIT"/>
+            <EnumValue Name="RESIDACF"/>
+            <EnumValue Name="RESIDPACF"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="PLOT" EqualsSign="Required">
+            <EnumValue Name="SRSQUARE"/>
+            <EnumValue Name="RSQUARE"/>
+            <EnumValue Name="RMSE"/>
+            <EnumValue Name="MAPE"/>
+            <EnumValue Name="MAE"/>
+            <EnumValue Name="MAXAPE"/>
+            <EnumValue Name="MAXAE"/>
+            <EnumValue Name="NORMBIC"/>
+            <EnumValue Name="RESIDACF"/>
+            <EnumValue Name="RESIDPACF"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MODELSTATISTICS" EqualsSign="None">
+        <Parameter Name="DISPLAY" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="MODELFIT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SRSQUARE"/>
+            <EnumValue Name="RSQUARE"/>
+            <EnumValue Name="RMSE"/>
+            <EnumValue Name="MAPE"/>
+            <EnumValue Name="MAE"/>
+            <EnumValue Name="MAXAPE"/>
+            <EnumValue Name="MAXAE"/>
+            <EnumValue Name="NORMBIC"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MODELDETAILS" EqualsSign="None">
+        <Parameter Name="PRINT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="PARAMETERS"/>
+            <EnumValue Name="RESIDACF"/>
+            <EnumValue Name="RESIDPACF"/>
+            <EnumValue Name="FORECASTS"/>
+        </Parameter>
+        <Parameter Name="PLOT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="RESIDACF"/>
+            <EnumValue Name="RESIDPACF"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SERIESPLOT" EqualsSign="None">
+        <Parameter Name="OBSERVED"/>
+        <Parameter Name="FORECAST"/>
+        <Parameter Name="FIT"/>
+        <Parameter Name="FORECASTCI"/>
+        <Parameter Name="FITCI"/>
+    </Subcommand>
+    <Subcommand Name="OUTPUTFILTER" EqualsSign="None">
+        <Parameter Name="DISPLAY" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ALLMODELS"/>
+            <EnumValue Name="BESTFIT"/>
+            <EnumValue Name="WORSTFIT"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="PCT"/>
+        </Parameter>
+        <Parameter Name="MODELFIT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SRSQUARE"/>
+            <EnumValue Name="RSQUARE"/>
+            <EnumValue Name="RMSE"/>
+            <EnumValue Name="MAPE"/>
+            <EnumValue Name="MAE"/>
+            <EnumValue Name="MAXAPE"/>
+            <EnumValue Name="MAXAE"/>
+            <EnumValue Name="NORMBIC"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="None">
+        <Parameter Name="PREDICTED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LCL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UCL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NRESIDUAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="AUXILIARY" EqualsSign="None">
+        <Parameter Name="REESTIMATE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+        <Parameter Name="CILEVEL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MAXACFLAGS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SEASONLENGTH" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="None">
+        <Parameter Name="USERMISSING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MODEL" EqualsSign="None">
+        <Parameter Name="FILE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="DROP"/>
+            <EnumValue Name="KEEP"/>
+        </Parameter>
+        <Parameter Name="OUTFILE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="OUTPMML" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://xml.spss.com/spss/visualization" xmlns:data="http://xml.spss.com/spss/visualization" xmlns:vizml="http://xml.spss.com/visualization" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Copyright 2005 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties with respect to your use of this specification, expressed, implied, or otherwise, including without limitation, all warranties of merchantability and fitness for a particular purpose.  SPSS shall not be liable for any special, incidental, or consequential damages, including without limitation lost revenues or lost profits resulting from the use of the information herein.</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://xml.spss.com/visualization" schemaLocation="http://xml.spss.com/visualization/vizml-2.0.xsd"/>
+	<xs:element name="graphSources">
+		<xs:annotation>
+			<xs:documentation>container for vizml data sources</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="vizml:embeddedSource" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

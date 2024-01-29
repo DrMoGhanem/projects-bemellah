@@ -1,0 +1,49 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-01-18 10:41+Mountain Standard Time\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: extension.py:59
+msgid "option type must be in: "
+msgstr "o tipo de opção deve estar em: "
+
+#: extension.py:190
+msgid "A syntax keyword was used that is not defined in the extension module Syntax object: %s"
+msgstr "Foi usada uma palavra-chave de sintaxe que não está definida no objeto Sintaxe do módulo de extensão: %s"
+
+#: extension.py:196
+msgid "Invalid value for keyword: "
+msgstr "Valor inválido para a palavra-chave: "
+
+#: extension.py:210
+msgid "Value for keyword is out of range: %s"
+msgstr "O valor da palavra-chave está fora da amplitude: %s"
+
+#: extension.py:233
+msgid "More than one variable specified where only one is allowed"
+msgstr "Foi especificada mais de uma variável onde é permitida apenas uma"
+
+#: extension.py:258 extension.py:298
+msgid ""
+"The following required parameters were not supplied:\n"
+msgstr ""
+"Os seguintes parâmetros obrigatórios não foram fornecidos:\n"
+
+#: extension.py:307
+msgid "Warnings "
+msgstr "Avisos "
+
+msgid "Messages"
+msgstr "Mensagens"

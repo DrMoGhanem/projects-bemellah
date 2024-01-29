@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: <Analytic Components>                          -->
+<!--                                                                   -->
+<!-- (c)Copyright IBM Corp. 2009, 2011                                 -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<!-- Sample Module XML for Descriptives -->
+<Module xmlns="http://www.ibm.com/software/analytics/spss/xml/extension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" debug="false" version="8.0" xsi:schemaLocation="http://www.ibm.com/software/analytics/spss/xml/extension http://www.ibm.com/software/analytics/spss/xml/extension/ModuleSpecification.xsd">
+	<ModuleDetails copyright="(c) 2009 SPSS, Inc." description="ADP Module" id="adp" label="ADP" provider="SPSS, Inc."  providerTag="pasw" version="8.0"/>
+	
+	<!--  On Windows, the shared library would called cf_adpr.dll, on Unix/Linux cf_adp.so/.lib/whatever -->
+	<SharedLibrary basename="adpnode"/>
+
+    <!-- Resources used by the module. -->	
+	<Resources>
+		<Bundle id="adp_module_res" path="messages" type="properties"/> 
+	</Resources>
+
+	<CommonObjects>
+		<!--  Property type definitions. -->
+		<PropertyTypes>
+			
+			<!-- The reference date type  -->
+			<Enumeration  id="referenceDateTypes" >
+				<Enum value="todaysDate" /> 
+				<Enum value="fixedDate" /> 
+			</Enumeration>
+			
+			<!-- The reference time type  -->
+			<Enumeration  id="referenceTimeTypes" >
+				<Enum value="currentTime" /> 
+				<Enum value="fixedTime" /> 
+			</Enumeration>
+		
+		   <!--  How to choose date field unit: automatic or a fixed value --> 
+			<Enumeration  id="choosetDateFieldUnitFashion" >
+				<Enum value="automatic" /> 
+				<Enum value="fixed" /> 
+			</Enumeration>
+		
+			<!-- The date field unit -->
+			<Enumeration id="dateUnitValue" >
+				<Enum value="year" />
+				<Enum value="month" />
+				<Enum value="day" />
+			</Enumeration>
+	
+			<!--  How to choose time field unit: automatic or a fixed value --> 
+			 <Enumeration id="chooseTimeFieldUnitFashion" >
+				<Enum value="automatic" /> 
+				<Enum value="fixed" /> 
+			</Enumeration>
+		
+			<!-- The time field unit -->
+			<Enumeration id="timeUnitValue" >
+				<Enum value="hour" />
+				<Enum value="minute" />
+				<Enum value="second" />
+			</Enumeration>
+			
+			<!-- The rescaling method for scale feature -->	
+			<Enumeration id="featureRescalingMethod" >
+				<Enum value="zScore" />				
+				<Enum value="minMax" />
+				<Enum value="noRescaling" />
+			</Enumeration>
+		
+			<!-- The outliers operation fashion -->
+			<Enumeration id="outliersOperationFashion" >
+				<Enum value="coerceToCutoffVal" />
+				<Enum value="setToMissingVal" />
+			</Enumeration>
+		</PropertyTypes>
+	</CommonObjects>
+	
+	<!-- Status Codes -->
+	<StatusCodes>
+		<StatusCode code="240000" status="error" messageKey="unknownErrorMsg.LABEL"/>
+		<StatusCode code="240001" status="error" messageKey="initErrMsg.LABEL"/>
+		<StatusCode code="240002" status="error" messageKey="inputErrMsg.LABEL"/>
+		<StatusCode code="240003" status="error" messageKey="internalErrMsg.LABEL"/>
+		<StatusCode code="240004" status="error" messageKey="invalidMetadataErrMsg.LABEL"/>
+		<StatusCode code="240005" status="error" messageKey="fileNotExistErrorMsg.LABEL"/>
+		<StatusCode code="240006" status="error" messageKey="storageNotSupportErrorMsg.LABEL"/>
+		<StatusCode code="240007" status="error" messageKey="invalidTargetErrorMsg.LABEL"/>
+		<StatusCode code="240008" status="error"
+			messageKey="invalidTarResponseErrorMsg.LABEL"/>
+		<StatusCode code="240009" status="error" messageKey="predictorsEmptyErrMsg.LABEL"/>
+		<StatusCode code="240010" status="error" messageKey="targetAsInputErrorMsg.LABEL"/>
+		<StatusCode code="240011" status="error" messageKey="invalidFrequencyErrorMsg.LABEL"/>
+		<StatusCode code="240012" status="error"
+			messageKey="invalidTargetResponseErrorMsg.LABEL"/>
+		<StatusCode code="240013" status="error"
+			messageKey="invlidResponseCatErrorMsg.LABEL"/>
+		<StatusCode code="240014" status="error" messageKey="noFrequencyErrorMsg.LABEL"/>
+		<StatusCode code="240015" status="error" messageKey="noTargetErrorMsg.LABEL"/>
+		<StatusCode code="240016" status="error" messageKey="invalidtarValueMsg.LABEL"/>
+		<StatusCode code="240017" status="error" messageKey="getfilePathMsg.LABEL"/>
+		<StatusCode code="240018" status="error" messageKey="creationAlgorithmMsg.LABEL"/>
+		<StatusCode code="240019" status="error" messageKey="buildModelErrorMsg.LABEL"/>
+		<StatusCode code="240020" status="error" messageKey="assessModelErrorMsg.LABEL"/>
+		<StatusCode code="240021" status="error" messageKey="exportPMLLErrorMsg.LABEL"/>
+		<StatusCode code="240022" status="error" messageKey="getDataFieldErrorMsg.LABEL"/>
+		<StatusCode code="240023" status="error" messageKey="tarResIsSameErrorMsg.LABEL"/>
+		<StatusCode code="240024" status="error" messageKey="NoTargetFieldErrorMsg.LABEL"/>
+		<StatusCode code="240025" status="error" messageKey="NoTargetResFieldErrorMsg.LABEL"/>
+		<StatusCode code="240026" status="error" messageKey="targetResTrueErrorMsg.LABEL"/>
+		<StatusCode code="240027" status="error" messageKey="PMMLNotExistErrorMsg.LABEL"/>
+		<StatusCode code="240028" status="error" messageKey="PMMLIsInvalidErrorMsg.LABEL"/>
+		<StatusCode code="240029" status="error" messageKey="NoPredVarInPMMLErrorMsg.LABEL"/>
+		<StatusCode code="240030" status="error" messageKey="PMMLNotMatchDataErrorMsg.LABEL"/>
+		<StatusCode code="240031" status="error" messageKey="getDataSourceErrorMsg.LABEL"/>
+		<StatusCode code="240032" status="error" messageKey="dataFileISValidErrorMsg.LABEL"/>
+		<StatusCode code="240033" status="error" messageKey="TarFieldNOTMatchErrMsg.LABEL"/>
+		<StatusCode code="240034" status="error" messageKey="TRFieldNOTMatchErrMsg.LABEL"/>
+		<StatusCode code="240035" status="error" messageKey="FreFieldNOTMatchErrMsg.LABEL"/>
+		<StatusCode code="240036" status="error" messageKey="InputFieldNOTMatchMsg.LABEL"/>
+		<StatusCode code="240037" status="error" messageKey="NoValidRecordsMsg.LABEL"/>
+		<StatusCode code="240038" status="error" messageKey="NoRecordsScoringMsg.LABEL"/>
+		<StatusCode code="240039" status="error" messageKey="PartionInValidMsg.LABEL"/>
+		<StatusCode code="240040" status="error" messageKey="InputFieldConstantMsg.LABEL"/>
+		<StatusCode code="240041" status="error" messageKey="InvalidSettingsErrorMsg.LABEL"/>
+		<StatusCode code="240042" status="error" messageKey="NoValidFieldValuesErrorMsg.LABEL"/>
+		<StatusCode code="240052" status="error" messageKey="InvalidXmlCharError.LABEL"/>
+		
+		<!-- common error code -->
+		<StatusCode code="1" status="error" messageKey="kMCCANCEL.LABEL"/>
+		<StatusCode code="2" status="error" messageKey="kMC_IO_ERROR.LABEL"/>
+		<StatusCode code="3" status="error" messageKey="kMC_MEMORY_LIMIT_EXCEEDED.LABEL"/>
+		<StatusCode code="4" status="error" messageKey="kMC_INVALID_SAVE_STATE.LABEL"/>
+		<StatusCode code="5" status="error" messageKey="kMC_FAILED_RESTART.LABEL"/>
+		<StatusCode code="6" status="error" messageKey="kMC_WRONG_STATE.LABEL"/>
+		
+		<!-- adp error code -->
+		<StatusCode code="210001" status="error" messageKey="kADP_NoValidRecords.LABEL"/>
+		<StatusCode code="210002" status="error" messageKey="kADP_NoValidTestRecords.LABEL"/>
+		<StatusCode code="210003" status="error" messageKey="kADP_InValidMultiRawPassRecordIter.LABEL"/>
+		<StatusCode code="210004" status="error" messageKey="kADP_MaxIterationIsReached.LABEL"/>
+		<StatusCode code="210005" status="error" messageKey="kADP_OperationTypeIsWrong.LABEL"/>
+		<StatusCode code="210006" status="error" messageKey="kADP_NullPointer.LABEL"/>
+		<StatusCode code="210007" status="error" messageKey="kADP_DynamicCastPointerFailed.LABEL"/>
+		<StatusCode code="210008" status="error" messageKey="kADP_WrongStorageTypeForFrequencyWeightVar.LABEL"/>
+		<StatusCode code="210009" status="error" messageKey="kADP_WrongStorageTypeForAnalysisWeightVar.LABEL"/>
+		<StatusCode code="210010" status="error" messageKey="kADP_WrongStorageType.LABEL"/>
+		<StatusCode code="210011" status="error" messageKey="kADP_InvalidUnivariateStatisticsInfo.LABEL"/>
+		<StatusCode code="210012" status="error" messageKey="kADP_TargetIsExcluded.LABEL"/>
+		<StatusCode code="210013" status="error" messageKey="kADP_AllFeaturesAreExcluded.LABEL"/>
+		<StatusCode code="210014" status="error" messageKey="kADP_InvalidParametersPassed.LABEL"/>
+		<StatusCode code="210015" status="error" messageKey="kADP_FailedCalculateStatistics.LABEL"/>
+		<StatusCode code="210016" status="error" messageKey="kADP_InvalidBivariateStatisticsInfo.LABEL"/>
+		<StatusCode code="210017" status="error" messageKey="kADP_ComputationError.LABEL"/>
+		
+		<StatusCode code="210030" status="error" messageKey="kADP_NoValidRecastThresholdParam.LABEL"/>
+		<StatusCode code="210031" status="error" messageKey="kADP_MinValShouldLessThanMaxVal.LABEL"/>
+		<StatusCode code="210032" status="error" messageKey="kADP_CutOffValOrSDValNotGreaterThanZero.LABEL"/>
+		<StatusCode code="210033" status="error" messageKey="kADP_NoValidPVal.LABEL"/>
+		<StatusCode code="210034" status="error" messageKey="kADP_NoValidWeightVariable.LABEL"/>
+		<StatusCode code="210035" status="error" messageKey="kADP_NotSupportTimestamp.LABEL"/>
+		<StatusCode code="210036" status="error" messageKey="kADP_NotSupportUnknownStorageType.LABEL"/>
+				
+		<StatusCode code="210040" status="error" messageKey="kADP_NoMapOfMissingValueOutputPMML.LABEL"/>
+		<StatusCode code="210041" status="error" messageKey="kADP_UnknownStepActionID.LABEL"/>
+		<StatusCode code="210042" status="error" messageKey="kADP_InvalidVarIndx.LABEL"/>
+		<StatusCode code="210043" status="error" messageKey="kADP_EmptyReorderValues.LABEL"/>
+		<StatusCode code="210044" status="error" messageKey="kADP_OneVarSpecifiedMoreThanOnceForDifferentRoles.LABEL"/>
+		<StatusCode code="210045" status="error" messageKey="kADP_MoreThanOneVarsSpecifiedForTarget.LABEL"/>
+		<StatusCode code="210046" status="error" messageKey="kADP_NotSpecifiedAnyInputVariables.LABEL"/>
+		<StatusCode code="210047" status="error" messageKey="kADP_ExtensionNameHasBlank.LABEL"/>
+					
+		<!-- Warning for the adp component -->
+		<StatusCode code="210100" status="warning" messageKey="kADP_ReorderTargetNoNominalTarget.LABEL"/>	
+		<StatusCode code="210101" status="warning" messageKey="kADP_RescaleTargetNoScaleTarget.LABEL"/>
+		<StatusCode code="210102" status="warning" messageKey="kADP_RescaleFeatureNoScaleFeature.LABEL"/>
+		<StatusCode code="210103" status="warning" messageKey="kADP_SupervisedBinningNoCatTarget.LABEL"/>
+		<StatusCode code="210104" status="warning" messageKey="kADP_SupervisedBinningNoScaleFeature.LABEL"/>
+		<StatusCode code="210105" status="warning" messageKey="kADP_FeatureSelectionNoTarget.LABEL"/>
+		<StatusCode code="210106" status="warning" messageKey="kADP_FeatureSelectionCatTargetWithoutCatFeature.LABEL"/>
+		<StatusCode code="210107" status="warning" messageKey="kADP_FeatureSelectionScaleTargetWithoutScaleFeature.LABEL"/>
+		<StatusCode code="210108" status="warning" messageKey="kADP_FeatureConstructionNoScaleFeature.LABEL"/>
+		<StatusCode code="210109" status="warning" messageKey="kADP_ReorderNominalFeatureNoNominalFeature.LABEL"/>
+		<StatusCode code="210110" status="warning" messageKey="kADP_SupervisedMergingNoTarget.LABEL"/>
+		<StatusCode code="210111" status="warning" messageKey="kADP_SupervisedMergingNoCatFeature.LABEL"/>
+		<StatusCode code="210112" status="warning" messageKey="kADP_UnsupervisedMergingNoCatFeature.LABEL"/>
+		<StatusCode code="210113" status="warning" messageKey="kADP_NoPredictorsRecommended.LABEL"/>
+		<StatusCode code="210114" status="warning" messageKey="kADP_OneVarSpecifiedMoreThanOnce.LABEL"/>
+		<!-- added -->
+		<StatusCode code="210115" status="warning" messageKey="kADP_UnsupervisedMergingWithTarget.LABEL"/>
+		<StatusCode code="210116" status="warning" messageKey="kADP_EmptySuffix.LABEL"/>
+		<StatusCode code="210117" status="warning" messageKey="kADP_OneVarSpecifiedMoreThanOnceForTheSameRole.LABEL"/>
+		
+		<!-- Progress report  -->
+		<StatusCode code="101" status="warning" messageKey="PreparedDataHandleMsg.LABEL"/>	
+		<StatusCode code="102" status="warning" messageKey="HandleDataProcessMsg.LABEL"/>
+		<StatusCode code="103" status="warning" messageKey="HandleDataProcessEndMsg.LABEL"/>
+		<StatusCode code="104" status="warning" messageKey="ExportPmmlProgressMsg.LABEL"/>
+	</StatusCodes>
+	
+	<!-- ContainerType declarations -->
+	<ContainerTypes>
+		<!--  
+		Container types:
+        -   XML documents
+		-	PMML / Model
+		-	Pivot Tables / Multi-Dimensional Variables
+		-	Chart Visualizations
+	    -	Table Visualizations
+		-	Text output
+		-	Static Image
+		-	Case data – a subset
+		__
+		The "fileSuffix" attribute is used when generating the temporary files used to store or retrieve the various components.
+		They don't provide explicit meaning to the application or component but potentially would be useful when debugging.
+        -->
+        <!-- TBD -->
+		<!--  <ContainerType id="compressed_report_container" type="multi_dim_table" format="binary" fileSuffix="zip"/>-->
+		<ContainerType  id="pmml_report_container" mimeType="pmml" resourceKey="" fileSuffix="" />
+	</ContainerTypes>
+	
+	<!-- Component definition. Component names are used as name-spaces and should be unique across component instances. -->
+	<!-- Aadp have two dll files. One is adpnode.dll that is for CF, the other is mcadpr.dll file that is the 
+		real adp component dll file. On windows, it is mcadpr.dll, other platform, it is libmcadpr +".so or whatever suffix" -->
+	<Component id="adp">
+	
+		<!-- 
+		Component capabilities [TBD]:
+		-  Data Provider
+		-  Data Transformer
+		-  Data Consumer
+		-  Container Operator (operates upon Containers)
+		-->
+		<Capabilities>
+			<Consumer/>
+		</Capabilities>
+	
+		<!-- Property declarations -->
+		<Properties>
+			<!--the following is to define the settings for the oprations-->
+			<Property name="trimBlanks" valueType="boolean" defaultValue="true" />
+			<Property name="excludeFeatureIfHasManyUniqueCatogories" valueType="boolean"
+				 defaultValue="true" />
+			<Property name="maxNOfUniqueCategories" valueType="integer" defaultValue="100" min="2"/>
+			
+			<!-- the six properties from extract date/tme  -->
+			<Property name="extractYearFromDate" valueType="boolean"
+				 defaultValue="false"/>
+			<Property name="extractMonthFromDate" valueType="boolean"
+				defaultValue="false" />
+			<Property name="extractDayFromDate" valueType="boolean" 
+				defaultValue="false" />
+			<Property name="extractHourFromTime" valueType="boolean"
+				defaultValue="false" />
+			<Property name="extractMinuteFromTime" valueType="boolean"
+				defaultValue="false"/>
+			<Property name="extractSecondFromTime" valueType="boolean"
+				defaultValue="false" />
+			
+			<!--  the following four properties for date/time field unit choises -->
+			<Property name="autoChooseDateFieldUnit" type="choosetDateFieldUnitFashion"  defaultValue="fixed" />
+			<Property name="dateUnit" type="dateUnitValue"  defaultValue="month" /> 
+			<Property name="autoChooseTimeFieldUnit" type="chooseTimeFieldUnitFashion" defaultValue="fixed" />
+			<Property name="timeUnit" type="timeUnitValue"  defaultValue="hour"	/> 
+			
+			<!-- the property is no use in the component, just be transfered  to clementine -->
+			<!-- <Property name="excludeNoUsedField" valueType="enum"  defaultValue="filterOut" /> -->	
+				
+			<!-- date/time duration -->
+			<Property name="computeDateDuration" valueType="boolean" 
+				defaultValue="true" />
+			<Property name="computeTimeDuration" valueType="boolean" 
+			defaultValue="true" />
+			<Property name="referenceDateType" type="referenceDateTypes" defaultValue="fixedDate" />
+			<Property name="todaysDate" valueType="date" />
+			<Property name="referenceDateForDurations" valueType="date" />
+			
+			<Property name="referenceTimeType" type="referenceTimeTypes" defaultValue="fixedTime" />
+			<Property name="currentTime" valueType="time" />
+			<Property name="referenceTimeForDurations" valueType="time" />
+			
+			<Property name="excludeFeatureIfHasHigherPercentageOfMissingValue" valueType="boolean" defaultValue="true" />
+			<Property name="maxPercentageOfMissingvalue" valueType="double" min="0" max="100" defaultValue="50" />
+			<Property name="excludeAlmostConstantCatFeature" valueType="boolean" defaultValue="false" />
+			<Property name="catFeatureScreenThreshold" valueType="double" min="0" max="100" defaultValue="95" />
+			
+			<!--  check set measure level includes two items: for target and for feature  -->
+			<Property name="checkFeatureMeasureLevel" valueType="boolean" defaultValue="true" />
+			<Property name="checkTargetMeasureLevel" valueType="boolean" defaultValue="true"/>
+			<Property name="scaleToOrdinalValuesNumThreshold" valueType="integer" defaultValue="5" min = "1"/>
+			<Property name="ordinalToScaleCategoriesNumThreshold" valueType="integer" defaultValue="10" min = "1"/>
+			
+			<!-- replace missing value for both target and feature -->		
+			<Property name="replaceOrdinalTargetMissingValue" valueType="boolean" defaultValue="true" />
+			<Property name="replaceNominalTargetMissingValue" valueType="boolean" defaultValue="true" />
+			<Property name="replaceScaleTargetMissingValue" valueType="boolean"  defaultValue="true" />
+			<Property name="replaceOrdinalFeaturesMissingValue" valueType="boolean" defaultValue="true" />
+			<Property name="replaceNominalFeaturesMissingValue" valueType="boolean" defaultValue="true" />
+			<Property name="replaceScaleFeaturesMissingValue" valueType="boolean"  defaultValue="true" />
+			
+			<!-- target -->
+			<Property name="reorderNominalTargetCategories" valueType="boolean" defaultValue="true" />
+			<Property name="rescaleScaleTargetUsingBoxCox" valueType="boolean"  defaultValue="true" />
+			<Property name="targetMean" valueType="double" defaultValue="0" max="4294967295"/>
+			<Property name="targetSD" valueType="double" defaultValue="1" min="10E-10"  max="4294967295"/>
+			
+			<!-- scale feature -->
+			<Property name="scaleFeatureRescalingMethod" type="featureRescalingMethod" defaultValue="zScore" />
+				
+			<Property name="zScore_mean" valueType="double" defaultValue="0"  max="4294967295"/>
+			<Property name="zScore_SD" valueType="double" defaultValue="1" min="10E-10"  max="4294967295" />
+			<Property name="minMax_min" valueType="double" defaultValue="0" max="4294967295" />
+			<Property name="minMax_max" valueType="double" defaultValue="100" max="4294967295" />
+			
+			<!-- outliers should also be sperated into target and feature part -->
+			<Property name="detectTargetOutliers" valueType="boolean" defaultValue="true" />
+			<Property name="detectFeatureOutliers" valueType="boolean" defaultValue="true" />
+			<Property name="outliersOperation" type="outliersOperationFashion" defaultValue="coerceToCutoffVal" />
+			<Property name="outlierIdentCutoff" valueType="double" defaultValue="3"  min = "10E-8" max="4294967295"/>
+							
+			<!-- deal with the features -->
+			<Property name="supervisedBinning" valueType="boolean" 	defaultValue="true" />
+			<Property name="homogeneousSubsetsPValue" valueType="double" defaultValue="0.05" min = "10E-10" max = "1.0"	/>
+			<Property name="featureSelection" valueType="boolean" defaultValue="true" />
+			<Property name="featureSelectionPValue" valueType="double" defaultValue="0.05" min = "10E-10" max = "1.0" />
+			<Property name="featureConstruction" valueType="boolean" defaultValue="true" />
+			<Property name="reorderNominalCatsPriorToMerging" valueType="boolean" defaultValue="true" />
+			<Property name="supervisedMerging" valueType="boolean" defaultValue="true" />
+			<Property name="supervisedMergingPValue" valueType="double" defaultValue="0.05" min = "10E-10" max = "1.0" />
+			<!-- here we seperate unsupervisedmerge into two parts: unsupervisedMergeOrdinal & unsupervisiedMergeNominal
+				and remove the original -->
+			<Property name="unsupervisedMergeOrdinal" valueType="boolean" defaultValue="true" />
+			<Property name="unsupervisedMergeNominal" valueType="boolean" defaultValue="true" />
+			<Property name="unsupervisedMergingMinPercentageOfCases" valueType="double"  defaultValue="10" min="10E-8" max="49.99999999"/>
+			
+			<!--the following is to define the variables settings -->
+			<Property name="UseMetaDataRole" valueType="boolean" defaultValue="false"/>
+			<Property name="FrequencyWeightField" valueType="fieldName" isList="false"/>
+			<Property name="analysisWeight" valueType="fieldName" />
+			<Property name="targetfield" valueType="fieldName" isList = "true"/>
+			<Property name="inputfields" valueType="fieldName" isList = "true"/>
+			
+			<!-- name extension -->
+			<Property name="nameExtForTarget" valueType="fieldName" defaultValue="_transformed"/> 
+			<Property name="nameExtForInputs" valueType="fieldName" defaultValue="_transformed"/>
+			<Property name="rootNameForConsturctedFeature" valueType="newFieldName" defaultValue="feature"/> 
+			
+			<!-- date/time name extension -->
+			<!--			 Handle Date Attributes-->
+			<!-- year (ordinal).-->
+			<Property name="suffixYear" valueType="fieldName" defaultValue="_year"/>
+			<!--month (ordinal)-->
+			<Property name="suffixMonth" valueType="fieldName" defaultValue="_month"/>
+			<!--day of month (ordinal)-->
+			<Property name="suffixDay" valueType="fieldName"  defaultValue="_day"/>
+			
+			<Property name="suffixElapsedYears" valueType="fieldName" defaultValue="_years"/>
+			<Property name="suffixElapsedMonths" valueType="fieldName" defaultValue="_months"/>
+			<!--	number of elapsed days since reference date (continuous).-->
+			<Property name="suffixElapsedDays" valueType="fieldName"  defaultValue="_days"/>
+			
+			<!--			 Handle Time Attributes-->
+			<!-- hour (ordinal).-->
+			<Property name="suffixHour" valueType="fieldName" defaultValue="_hour"/>
+			<!--minute (ordinal)-->
+			<Property name="suffixMinute" valueType="fieldName" defaultValue="_minute"/>
+			<!--second (ordinal)-->
+			<Property name="suffixSecond" valueType="fieldName"  defaultValue="_second"/>
+			
+			<Property name="suffixElapsedHours" valueType="fieldName" defaultValue="_hours"/>
+			<Property name="suffixElapsedMinutes" valueType="fieldName" defaultValue="_minutes"/>
+			<!--	number of elapsed seconds since reference time (continuous)..-->
+			<Property name="suffixElapsedSeconds" valueType="fieldName" defaultValue="_seconds"/>
+			
+			<!--  the property is used to decide whether to set option. if it is not present or its value is 
+				nonnegative, will use the wired-in ADP option code to set option; if its value is negative, will skip
+			the call to set option-->
+			<Property name="adjustThreshold" valueType="integer" />
+		</Properties>
+			
+		<!-- Containers -->
+		<Containers>
+			<!-- TBD -->
+			<!-- <Container name="compressedReport" type="compressed_report_container" usage="output" runtimeProperty="tmpReportFile"/> -->
+			<Container name="pmmlReport" type="pmml_report_container" usage="output" runtimeProperty="tmpReportFile"/>
+		</Containers>
+		
+		<!-- Property constraints (component state preconditions). -->
+		<Constraints>
+			<!--  
+			<Constraint>
+				<PropertyCondition op="isNotEmpty" property="referenceDateForDurations"/>
+				</Constraint>-->
+		</Constraints>
+		
+	</Component>
+</Module>

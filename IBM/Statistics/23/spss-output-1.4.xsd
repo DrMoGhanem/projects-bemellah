@@ -1,0 +1,388 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema targetNamespace="http://xml.spss.com/spss/oms" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://xml.spss.com/spss/oms" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.4">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Copyright 2008 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties with respect to your use of this specification, expressed, implied, or otherwise, including without limitation, all warranties of merchantability and fitness for a particular purpose.  SPSS shall not be liable for any special, incidental, or consequential damages, including without limitation lost revenues or lost profits resulting from the use of the information herein.</xs:documentation>
+	</xs:annotation>
+	<xs:import namespace="http://www.w3.org/XML/1998/namespace" schemaLocation="http://www.w3.org/2001/xml.xsd">
+		<xs:annotation>
+			<xs:documentation>
+				Get access to the xml: attribute groups for xml:lang
+			</xs:documentation>
+		</xs:annotation>
+	</xs:import>
+	<xs:element name="outputTree">
+		<xs:annotation>
+			<xs:documentation>Output from Statistics</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="textBlock"/>
+				<xs:element name="command">
+					<xs:annotation>
+						<xs:documentation>A command element contains all the output from one execution of a Statistics command.  Some commands (typically those with no normal output) do not produce command elements, but write their error messages directly to the log file. </xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:complexContent>
+							<xs:extension base="TextType">
+								<xs:choice minOccurs="0" maxOccurs="unbounded">
+									<xs:element ref="heading"/>
+									<xs:element ref="textBlock"/>
+									<xs:element ref="chartTitle"/>
+									<xs:element ref="treeTitle"/>
+									<xs:element ref="pivotTable"/>
+                  <xs:element ref="modelTitle"/>
+                </xs:choice>
+                <xs:attribute name="lang">
+                  <xs:annotation>
+                    <xs:documentation>Taken from xml.xsd.</xs:documentation>
+                  </xs:annotation>
+                  <xs:simpleType>
+                    <xs:union memberTypes="xs:language">
+                      <xs:simpleType>    
+                        <xs:restriction base="xs:string">
+                          <xs:enumeration value=""/>
+                        </xs:restriction>
+                      </xs:simpleType>
+                    </xs:union>
+                  </xs:simpleType>
+                </xs:attribute>
+								<xs:attribute name="command" type="xs:string" use="required"/>
+								<xs:attribute name="displayOutlineVariables">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:enumeration value="name"/>
+											<xs:enumeration value="label"/>
+											<xs:enumeration value="both"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+								<xs:attribute name="displayOutlineValues">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:enumeration value="value"/>
+											<xs:enumeration value="label"/>
+											<xs:enumeration value="both"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+								<xs:attribute name="displayTableVariables">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:enumeration value="name"/>
+											<xs:enumeration value="label"/>
+											<xs:enumeration value="both"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+								<xs:attribute name="displayTableValues">
+									<xs:simpleType>
+										<xs:restriction base="xs:string">
+											<xs:enumeration value="value"/>
+											<xs:enumeration value="label"/>
+											<xs:enumeration value="both"/>
+										</xs:restriction>
+									</xs:simpleType>
+								</xs:attribute>
+							</xs:extension>
+						</xs:complexContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="pageTitle">
+					<xs:annotation>
+						<xs:documentation>A pageTitle contains 0 to two lines to be shown at the top of each page of printed output.</xs:documentation>
+					</xs:annotation>
+					<xs:complexType>
+						<xs:sequence minOccurs="0" maxOccurs="2">
+							<xs:element name="line"/>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:complexType name="TextType">
+		<xs:attribute name="null" type="xs:boolean" use="optional" default="false"/>
+		<xs:attribute name="number" type="xs:double" use="optional"/>
+		<xs:attribute name="format" use="optional" default="f">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="a"/>
+					<xs:enumeration value="f"/>
+					<xs:enumeration value="comma"/>
+					<xs:enumeration value="dollar"/>
+					<xs:enumeration value="date"/>
+					<xs:enumeration value="adate"/>
+					<xs:enumeration value="ahex"/>
+					<xs:enumeration value="ibhex"/>
+					<xs:enumeration value="rbhex"/>
+					<xs:enumeration value="z"/>
+					<xs:enumeration value="n"/>
+					<xs:enumeration value="e"/>
+					<xs:enumeration value="time"/>
+					<xs:enumeration value="datetime"/>
+					<xs:enumeration value="jdate"/>
+					<xs:enumeration value="dtime"/>
+					<xs:enumeration value="week"/>
+					<xs:enumeration value="wkday"/>
+					<xs:enumeration value="month"/>
+					<xs:enumeration value="moyr"/>
+					<xs:enumeration value="qyr"/>
+					<xs:enumeration value="wkyr"/>
+					<xs:enumeration value="pct"/>
+					<xs:enumeration value="dot"/>
+					<xs:enumeration value="cca"/>
+					<xs:enumeration value="ccb"/>
+					<xs:enumeration value="ccc"/>
+					<xs:enumeration value="ccd"/>
+					<xs:enumeration value="cce"/>
+					<xs:enumeration value="edate"/>
+					<xs:enumeration value="sdate"/>
+					<xs:enumeration value="g"/>
+					<xs:enumeration value=""/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="decimals" type="xs:unsignedInt" use="optional" default="0"/>
+		<xs:attribute name="variable" type="xs:boolean" use="optional" default="false"/>
+		<xs:attribute name="label" type="xs:string" use="optional"/>
+		<xs:attribute name="varName" type="xs:string" use="optional"/>
+		<xs:attribute name="text" type="xs:string"/>
+		<xs:attribute name="display" use="optional">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:enumeration value="name"/>
+					<xs:enumeration value="value"/>
+					<xs:enumeration value="label"/>
+					<xs:enumeration value="both"/>
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+		<xs:attribute name="time" type="xs:time" use="optional"/>
+		<xs:attribute name="date" type="xs:dateTime" use="optional"/>
+		<xs:attribute name="duration" type="xs:duration" use="optional"/>
+		<xs:attribute name="string" type="xs:string" use="optional"/>
+	</xs:complexType>
+	<xs:complexType name="NodeType">
+		<xs:complexContent>
+			<xs:extension base="TextType">
+				<xs:sequence>
+					<xs:element name="footnote" minOccurs="0" maxOccurs="unbounded">
+						<xs:complexType>
+							<xs:complexContent>
+								<xs:extension base="TextType">
+									<xs:sequence>
+										<xs:element name="marker" type="TextType" minOccurs="0"/>
+										<xs:element name="note" type="TextType"/>
+									</xs:sequence>
+								</xs:extension>
+							</xs:complexContent>
+						</xs:complexType>
+					</xs:element>
+				</xs:sequence>
+			</xs:extension>
+		</xs:complexContent>
+	</xs:complexType>
+	<xs:element name="textBlock">
+		<xs:annotation>
+			<xs:documentation>A textBlock that is a direct child of the outputTree element is always labeled "Log" (in English language output) and is referred to in documentation as a "log file."</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="TextType">
+					<xs:sequence>
+						<xs:element name="line" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="heading">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="TextType">
+					<xs:choice minOccurs="0" maxOccurs="unbounded">
+						<xs:element ref="heading"/>
+						<xs:element ref="pivotTable"/>
+						<xs:element ref="chartTitle"/>
+            <xs:element ref="treeTitle"/>
+            <xs:element ref="textBlock"/>
+            <xs:element ref="modelTitle"/>
+          </xs:choice>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="pivotTable">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="NodeType">
+					<xs:sequence>
+						<xs:element name="caption" type="TextType" minOccurs="0"/>
+						<xs:element name="cornerText" type="TextType" minOccurs="0"/>
+						<xs:element ref="dimension"/>
+					</xs:sequence>
+					<xs:attribute name="subType" type="xs:string" use="required"/>
+					<xs:attribute name="option" type="xs:int" use="optional"/>
+					<xs:attribute name="rowVertical" type="xs:boolean" use="optional" default="false"/>
+					<xs:attribute name="columnVertical" type="xs:boolean" use="optional" default="false"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="chartTitle">
+		<xs:annotation>
+			<xs:documentation>The chartTitle element contains a chart in the output.  Its attributes describe the chart's title.  Its chart element specifies the chart, including data, structure and styling.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="TextType">
+					<xs:sequence>
+						<xs:element name="chart">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any processContents="skip" minOccurs="0"/>
+								</xs:sequence>
+								<xs:attribute name="imageFile" type="xs:string" use="optional">
+									<xs:annotation>
+										<xs:documentation>File path to image file representing this chart.</xs:documentation>
+									</xs:annotation>
+								</xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="treeTitle">
+		<xs:annotation>
+			<xs:documentation>The treeTitle element contains a chart in the output.  Its attributes describe the tree's title.  Its model element specifies structure and treeView specifies styling.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="TextType">
+					<xs:sequence>
+						<xs:element name="model">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any processContents="skip"/>
+								</xs:sequence>
+							</xs:complexType>
+						</xs:element>
+						<xs:element name="treeView">
+							<xs:complexType>
+								<xs:sequence>
+									<xs:any processContents="skip" minOccurs="0"/>
+								</xs:sequence>
+					            <xs:attribute name="imageFile" type="xs:string" use="optional">
+						            <xs:annotation>
+							            <xs:documentation>File path to image file representing this tree.</xs:documentation>
+						            </xs:annotation>
+					            </xs:attribute>
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+  <xs:element name="modelTitle">
+    <xs:annotation>
+      <xs:documentation>The modelTitle element contains a model in the output.</xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:complexContent>
+        <xs:extension base="TextType">
+          <xs:sequence>
+            <xs:element name="model" minOccurs="0">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:any processContents="skip" minOccurs="0"/>
+                </xs:sequence>
+              </xs:complexType>
+            </xs:element>
+            <xs:element name="modelView" minOccurs="0" maxOccurs="unbounded">
+              <xs:complexType>
+                <xs:sequence>
+                  <xs:any processContents="skip" minOccurs="0"/>
+                </xs:sequence>
+                <xs:attribute name="imageFile" type="xs:string" use="optional">
+                  <xs:annotation>
+                    <xs:documentation>File path to image file representing this model.</xs:documentation>
+                  </xs:annotation>
+                </xs:attribute>
+              </xs:complexType>
+            </xs:element>
+          </xs:sequence>
+        </xs:extension>
+      </xs:complexContent>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="dimension">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="NodeType">
+					<xs:choice maxOccurs="unbounded">
+						<xs:element ref="group"/>
+						<xs:element ref="category"/>
+					</xs:choice>
+					<xs:attribute name="hideCategories" type="xs:boolean" use="optional" default="false"/>
+					<xs:attribute name="displayLastCategory" type="xs:boolean" use="optional" default="false"/>
+					<xs:attribute name="axis" use="required">
+						<xs:simpleType>
+							<xs:restriction base="xs:string">
+								<xs:enumeration value="row"/>
+								<xs:enumeration value="column"/>
+								<xs:enumeration value="layer"/>
+							</xs:restriction>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="group">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="NodeType">
+					<xs:choice maxOccurs="unbounded">
+						<xs:element ref="group"/>
+						<xs:element ref="category"/>
+					</xs:choice>
+					<xs:attribute name="hide" use="optional" default="false">
+						<xs:simpleType>
+							<xs:restriction base="xs:boolean"/>
+						</xs:simpleType>
+					</xs:attribute>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="category">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="NodeType">
+					<xs:choice>
+						<xs:element ref="dimension"/>
+						<xs:element name="cell" type="NodeType"/>
+					</xs:choice>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

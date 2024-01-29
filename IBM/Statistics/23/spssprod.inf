@@ -1,0 +1,24 @@
+[Language]
+SPSSLanguage=de
+[ProductRegistration]
+URL=http://www.ibm.com/software/analytics/spss/register/
+[Product]
+LicenseDescription= 
+FixPack=0
+CustomerName=Rechenzentrum
+VersionPatch=0 
+Organization=Uni Regensburg 
+ProductName=IBM SPSS Statistics 23
+ProductNickName=IBM SPSS Statistics 
+RegistryRoot=SPSS Statistics\23 
+CommonRoot=C:\Program Files (x86)\IBM\SPSS\Statistics\23\common
+Version=23.0.0.0
+VersionMajor=23
+VersionMinor=0 
+StartJVMAtStartup=no
+DaemonHost=rrzlic3.uni-regensburg.de 
+FeatureCode=1200
+PreferencesRoot=Statistics
+CodePage=65001
+Copyright=Copyright (c) IBM Corp. 1989, 2013.
+CommuterMaxLife=7

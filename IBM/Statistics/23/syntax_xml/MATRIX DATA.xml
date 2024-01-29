@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/12/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:/C:/temp/schema/SyntaxSchema.xsd"
+    Name="MATRIX DATA" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FILE" EqualsSign="Optional">
+        <Parameter Name="INLINE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FORMAT" EqualsSign="Optional">
+        <Parameter Name="LIST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FREE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOWER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UPPER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FULL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DIAGONAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NODIAGONAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SPLIT" EqualsSign="Optional"/>
+    <Subcommand Name="FACTORS" EqualsSign="Optional"/>
+    <Subcommand Name="CELLS" EqualsSign="Optional"/>
+    <Subcommand Name="N" EqualsSign="Optional"/>
+    <Subcommand Name="CONTENTS" EqualsSign="Optional">
+        <Parameter Name="CORR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MSE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DFE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PROX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="N_SCALAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="N_VECTOR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="N_MATRIX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="N" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

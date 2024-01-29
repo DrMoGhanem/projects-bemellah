@@ -1,0 +1,232 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 5/28/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="DMTREE" IsArbitrary="No" Language="Syntax" EndRequired="None">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FORCE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TREE" EqualsSign="None">
+        <Parameter Name="DISPLAY" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="TOPDOWN"/>
+            <EnumValue Name="LEFTTORIGHT"/>
+            <EnumValue Name="RIGHTTOLEFT"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="NODES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="STATISTICS"/>
+            <EnumValue Name="CHART"/>
+            <EnumValue Name="BOTH"/>
+        </Parameter>
+        <Parameter Name="BRANCHSTATISTICS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="NODEDEFS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="SCALE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="AUTO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="DEPCATEGORIES" EqualsSign="None">
+        <Parameter Name="USEVALUES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="VALID"/>
+            <EnumValue Name="MISSING"/>
+        </Parameter>
+        <Parameter Name="TARGET" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="None">
+        <Parameter Name="MODELSUMMARY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CLASSIFICATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RISK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CPS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="IMPORTANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SURROGATES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TREETABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CATEGORYSPECS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="GAIN" EqualsSign="None">
+        <Parameter Name="SUMMARYTABLE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="CATEGORYTABLE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NODE"/>
+            <EnumValue Name="PTILE"/>
+        </Parameter>
+        <Parameter Name="SORT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="DESCENDING"/>
+            <EnumValue Name="ASCENDING"/>
+        </Parameter>
+        <Parameter Name="INCREMENT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="CUMULATIVE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="None">
+        <Parameter Name="GAIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESPONSE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INDEX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PROFIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="IMPORTANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCREMENT" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="RULES" EqualsSign="None">
+        <Parameter Name="NODES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="TERMINAL"/>
+            <EnumValue Name="ALL"/>
+            <EnumValue Name="TOPN"/>
+            <EnumValue Name="TOPPCT"/>
+            <EnumValue Name="MININDEX"/>
+        </Parameter>
+        <Parameter Name="SYNTAX" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INTERNAL"/>
+            <EnumValue Name="SQL"/>
+            <EnumValue Name="GENERIC"/>
+        </Parameter>
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SCORING"/>
+            <EnumValue Name="SELECTION"/>
+        </Parameter>
+        <Parameter Name="SURROGATES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+        <Parameter Name="LABELS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="OUTFILE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="None">
+        <Parameter Name="NODEID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PREDVAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PREDPROB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ASSIGNMENT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="METHOD" EqualsSign="None">
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="CHAID"/>
+            <EnumValue Name="EXHAUSTIVECHAID"/>
+            <EnumValue Name="CRT"/>
+            <EnumValue Name="QUEST"/>
+        </Parameter>
+        <Parameter Name="MAXSURROGATES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="AUTO"/>
+        </Parameter>
+        <Parameter Name="PRUNE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="SE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="GROWTHLIMIT" EqualsSign="None">
+        <Parameter Name="MAXDEPTH" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="AUTO"/>
+        </Parameter>
+        <Parameter Name="MINPARENTSIZE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MINCHILDSIZE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="VALIDATION" EqualsSign="None">
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="SPLITSAMPLE"/>
+            <EnumValue Name="CROSSVALIDATION"/>
+        </Parameter>
+        <Parameter Name="OUTPUT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="BOTHSAMPLES"/>
+            <EnumValue Name="TESTSAMPLE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CHAID" EqualsSign="None">
+        <Parameter Name="ALPHASPLIT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="ALPHAMERGE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SPLITMERGED" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+        <Parameter Name="CHISQUARE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="PEARSON"/>
+            <EnumValue Name="LR"/>
+        </Parameter>
+        <Parameter Name="CONVERGE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MAXITERATIONS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="ADJUST" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="BONFERRONI"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="INTERVALS" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRT" EqualsSign="None">
+        <Parameter Name="IMPURITY" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="GINI"/>
+            <EnumValue Name="TWOING"/>
+            <EnumValue Name="ORDEREDTWOING"/>
+        </Parameter>
+        <Parameter Name="MINIMPROVEMENT" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="QUEST" EqualsSign="None">
+        <Parameter Name="ALPHASPLIT" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="COSTS" EqualsSign="None">
+        <Parameter Name="EQUAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CUSTOM" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRIORS" EqualsSign="None">
+        <Parameter Name="FROMDATA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EQUAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CUSTOM" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="ADJUST" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+     </Subcommand>
+    <Subcommand Name="SCORES" EqualsSign="None">
+        <Parameter Name="EQUALINCREMENTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CUSTOM" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PROFITS" EqualsSign="None">
+        <Parameter Name="CUSTOM" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="INFLUENCE" EqualsSign="None"/>
+    <Subcommand Name="OUTFILE" EqualsSign="None">
+        <Parameter Name="TRAININGMODEL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="TESTMODEL" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="None">
+        <Parameter Name="NOMINALMISSING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="MISSING"/>
+            <EnumValue Name="VALID"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="TARGETRESPONSE" EqualsSign="None">
+        <Parameter Name="RATE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+    </Subcommand>
+</Command>

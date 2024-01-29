@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/14/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="NOMREG" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="BASE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="FIRST"/>
+            <EnumValue Name="LAST"/>
+        </Parameter>
+        <Parameter Name="ORDER" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ASCENDING"/>
+            <EnumValue Name="DATA"/>
+            <EnumValue Name="DESCENDING"/>
+        </Parameter>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="Optional">
+        <Parameter Name="CIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DELTA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MXITER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MXSTEP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LCONVERGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PCONVERGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SINGULAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BIAS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CHKSEP" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FULLFACTORIAL" EqualsSign="None"/>
+    <Subcommand Name="INTERCEPT" EqualsSign="Optional">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MODEL" EqualsSign="Optional">
+        <Parameter Name="BACKWARD" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="FORWARD" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="BSTEP" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="FSTEP" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STEPWISE" EqualsSign="Optional">
+        <Parameter Name="RULE" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="SINGLE"/>
+            <EnumValue Name="SFACTOR"/>
+            <EnumValue Name="CONTAINMENT"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="MINEFFECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXEFFECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ENTRYMETHOD" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="LR"/>
+            <EnumValue Name="SCORE"/>
+        </Parameter>
+        <Parameter Name="REMOVALMETHOD" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="LR"/>
+            <EnumValue Name="WALD"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional">
+        <Parameter Name="MODEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PARAMETER" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="CELLPROB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CLASSTABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HISTORY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="IC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMMARY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PARAMETER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COVB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LRT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="KERNEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LRT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ASSOCIATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CPS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STEP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MFI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="ACPROB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ESTPROB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PCPROB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PREDCAT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SCALE" EqualsSign="Optional">
+        <Parameter Name="DEVIANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PEARSON" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SUBPOP" EqualsSign="Optional"/>
+    <Subcommand Name="TEST" EqualsSign="None">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

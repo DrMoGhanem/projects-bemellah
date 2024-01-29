@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="utf-8"?>
+<index>
+  <entry keyword="Balkendiagramm">
+    <topic href="spss/statcoach/statcoach_desc_categories_charts_bycat_bar.htm#statcoach_desc_categories_charts_bycat_bar" title="Balkendiagramm"/>
+    <topic href="spss/statcoach/statcoach_desc_scale-within_charts_bar.htm#statcoach_desc_scale-within_charts_bar" title="Balkendiagramm von Auswertungsstatistiken in Kategorien"/>
+    <topic href="spss/statcoach/statcoach_var-dist_cat_chart_bar.htm#statcoach_var-dist_cat_chart_bar" title="Balkendiagramm"/>
+  </entry>
+  <entry keyword="Kreisdiagramm">
+    <topic href="spss/statcoach/statcoach_desc_categories_charts_bycat_pie.htm#statcoach_desc_categories_charts_bycat_pie" title="Kreisdiagramm"/>
+    <topic href="spss/statcoach/statcoach_var-dist_cat_chart_pie.htm#statcoach_var-dist_cat_chart_pie" title="Kreisdiagramm"/>
+  </entry>
+  <entry keyword="Gruppiertes Balkendiagramm">
+    <topic href="spss/statcoach/statcoach_desc_categories_charts_withincat_clustered-bar.htm#statcoach_desc_categories_charts_withincat_clustered-bar" title="Gruppiertes Balkendiagramm"/>
+  </entry>
+  <entry keyword="Gestapeltes Balkendiagramm">
+    <topic href="spss/statcoach/statcoach_desc_categories_charts_withincat_stacked-bar.htm#statcoach_desc_categories_charts_withincat_stacked-bar" title="Gestapeltes Balkendiagramm"/>
+  </entry>
+  <entry keyword="3-D-Balkendiagramm">
+    <topic href="spss/statcoach/statcoach_desc_categories_charts_withincat_3dbar.htm#statcoach_desc_categories_charts_withincat_3dbar" title="3-D-Balkendiagramm"/>
+    <topic href="spss/statcoach/statcoach_desc_scale-within_charts_3d.htm#statcoach_desc_scale-within_charts_3d" title="3-D-Diagramm von Auswertungsstatistiken in Kategorien zweier Variablen"/>
+  </entry>
+  <entry keyword="Häufigkeiten">
+    <topic href="spss/statcoach/statcoach_desc_scale_table_freq.htm#statcoach_desc_scale_table_freq" title="Deskriptive Statistiken mit Quartilen, Quantilen und Perzentilen"/>
+    <entry keyword="Häufigkeitstabelle">
+      <topic href="spss/statcoach/statcoach_var-dist_cat_table_bycat.htm#statcoach_var-dist_cat_table_bycat" title="Häufigkeiten oder Prozentwerte nach Kategorie"/>
+    </entry>
+    <entry keyword="Quantile">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_freq.htm#statcoach_var-dist_scale_table_freq" title="Deskriptive Statistiken mit Quartilen, Quantilen und Perzentilen"/>
+    </entry>
+    <entry keyword="Quartile">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_freq.htm#statcoach_var-dist_scale_table_freq" title="Deskriptive Statistiken mit Quartilen, Quantilen und Perzentilen"/>
+    </entry>
+    <entry keyword="Perzentile">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_freq.htm#statcoach_var-dist_scale_table_freq" title="Deskriptive Statistiken mit Quartilen, Quantilen und Perzentilen"/>
+    </entry>
+  </entry>
+  <entry keyword="Deskriptive Statistiken">
+    <entry keyword="Z-Scores">
+      <topic href="spss/statcoach/statcoach_desc_scale_table_desc.htm#statcoach_desc_scale_table_desc" title="Deskriptive Statistiken (außer Median und Modalwert) mit Z-Scores"/>
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_desc.htm#statcoach_var-dist_scale_table_desc" title="Deskriptive Statistiken (außer Median und Modalwert) mit Z-Scores"/>
+    </entry>
+  </entry>
+  <entry keyword="Z-Scores">
+    <entry keyword="in deskriptiven Statistiken">
+      <topic href="spss/statcoach/statcoach_desc_scale_table_desc.htm#statcoach_desc_scale_table_desc" title="Deskriptive Statistiken (außer Median und Modalwert) mit Z-Scores"/>
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_desc.htm#statcoach_var-dist_scale_table_desc" title="Deskriptive Statistiken (außer Median und Modalwert) mit Z-Scores"/>
+    </entry>
+  </entry>
+  <entry keyword="Explorative Datenanalyse">
+    <topic href="spss/statcoach/statcoach_var-dist_scale_table_explore.htm#statcoach_var-dist_scale_table_explore" title="Deskriptive Statistiken mit Quartilen, Perzentilen, M-Schätzern und Ausreißern"/>
+    <entry keyword="deskriptive Statistiken">
+      <topic href="spss/statcoach/statcoach_desc_scale_table_explore.htm#statcoach_desc_scale_table_explore" title="Deskriptive Statistiken mit Quartilen, Perzentilen, M-Schätzern und Ausreißern"/>
+      <topic href="spss/statcoach/statcoach_desc_scale-within_tables_explore.htm#statcoach_desc_scale-within_tables_explore" title="Deskriptive Statistiken mit Quartilen, Perzentilen, M-Schätzern und Ausreißern"/>
+    </entry>
+    <entry keyword="Stamm-Blatt-Diagramm">
+      <topic href="spss/statcoach/statcoach_desc_scale_charts_stem-leaf.htm#statcoach_desc_scale_charts_stem-leaf" title="Stamm-Blatt-Diagramm"/>
+    </entry>
+    <entry keyword="Stamm-Blatt-Diagramme">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_chart_stem.htm#statcoach_var-dist_scale_chart_stem" title="Stamm-Blatt-Diagramm "/>
+    </entry>
+  </entry>
+  <entry keyword="Zusammenfassung von Fällen">
+    <topic href="spss/statcoach/statcoach_desc_scale_table_case-listing.htm#statcoach_desc_scale_table_case-listing" title="Auflistung von einzelnen Fällen und deskriptiven Statistiken"/>
+    <topic href="spss/statcoach/statcoach_var-dist_scale_table_summarize.htm#statcoach_var-dist_scale_table_summarize" title="Auflistung von einzelnen Fällen und deskriptiven Statistiken"/>
+    <entry keyword="Auflistung von Fällen in Kategorien">
+      <topic href="spss/statcoach/statcoach_var-dist_cat_table_case.htm#statcoach_var-dist_cat_table_case" title="Auflisten von einzelnen Fällen in Kategorien"/>
+    </entry>
+  </entry>
+  <entry keyword="Histogramm">
+    <topic href="spss/statcoach/statcoach_desc_scale_charts_hist.htm#statcoach_desc_scale_charts_hist" title="Histogramm mit Normalverteilungskurve"/>
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_two-groups_one-scale_test-normality.htm#statcoach_compare-groups_scale_two-groups_one-scale_test-normality" title="Prüfung auf Normalverteilung der Daten"/>
+    <entry keyword="mit Normalverteilungskurve">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_chart_histogram.htm#statcoach_var-dist_scale_chart_histogram" title="Histogramm mit Normalverteilungskurve"/>
+    </entry>
+  </entry>
+  <entry keyword="Boxplot">
+    <topic href="spss/statcoach/statcoach_desc_scale_charts_boxplot.htm#statcoach_desc_scale_charts_boxplot" title="Boxplot mit Interquartilbereich und Ausreißern"/>
+    <topic href="spss/statcoach/statcoach_desc_scale-within_charts_box.htm#statcoach_desc_scale-within_charts_box" title="Boxplots mit Interquartilbereichen und Ausreißern"/>
+    <topic href="spss/statcoach/statcoach_var-dist_scale_chart_boxplot.htm#statcoach_var-dist_scale_chart_boxplot" title="Boxplot mit Interquartilbereich und Ausreißern"/>
+  </entry>
+  <entry keyword="Stamm-Blatt-Diagramm">
+    <entry keyword="explorative Datenanalyse">
+      <topic href="spss/statcoach/statcoach_desc_scale_charts_stem-leaf.htm#statcoach_desc_scale_charts_stem-leaf" title="Stamm-Blatt-Diagramm"/>
+    </entry>
+    <entry keyword="in der explorativen Datenanalyse">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_chart_stem.htm#statcoach_var-dist_scale_chart_stem" title="Stamm-Blatt-Diagramm "/>
+    </entry>
+  </entry>
+  <entry keyword="Kreuztabellen">
+    <topic href="spss/statcoach/statcoach_compare-groups_cat.htm#statcoach_compare-groups_cat" title="Daten in Kategorien (nominal, ordinal)"/>
+    <topic href="spss/statcoach/statcoach_sig-var-relationships_cat.htm#statcoach_sig-var-relationships_cat" title="Daten in Kategorien (nominal, ordinal)"/>
+    <entry keyword="deskriptive Statistiken">
+      <topic href="spss/statcoach/statcoach_desc_scale-within_tables_summarize.htm#statcoach_desc_scale-within_tables_summarize" title="Deskriptive Statistiken für Kategorien einer Variablen in den Kategorien einer anderen Variablen"/>
+    </entry>
+  </entry>
+  <entry keyword="Quantile">
+    <entry keyword="in Häufigkeiten">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_freq.htm#statcoach_var-dist_scale_table_freq" title="Deskriptive Statistiken mit Quartilen, Quantilen und Perzentilen"/>
+    </entry>
+  </entry>
+  <entry keyword="Quartile">
+    <entry keyword="in Häufigkeiten">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_freq.htm#statcoach_var-dist_scale_table_freq" title="Deskriptive Statistiken mit Quartilen, Quantilen und Perzentilen"/>
+    </entry>
+  </entry>
+  <entry keyword="Perzentile">
+    <entry keyword="in Häufigkeiten">
+      <topic href="spss/statcoach/statcoach_var-dist_scale_table_freq.htm#statcoach_var-dist_scale_table_freq" title="Deskriptive Statistiken mit Quartilen, Quantilen und Perzentilen"/>
+    </entry>
+  </entry>
+  <entry keyword="OLAP-Würfel">
+    <topic href="spss/statcoach/statcoach_olap.htm#statcoach_olap" title="Erstellen von OLAP-Berichtswürfeln"/>
+  </entry>
+  <entry keyword="t-Test bei einer Stichprobe">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_one.htm#statcoach_compare-groups_scale_one" title="Eine Gruppe oder Variable im Vergleich zu einem bekannten Wert"/>
+  </entry>
+  <entry keyword="t-Test bei unabhängigen Stichproben">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_two-groups_one-scale_assume-normal.htm#statcoach_compare-groups_scale_two-groups_one-scale_assume-normal" title="Test, bei dem angenommen wird, dass die Daten innerhalb der Gruppen normalverteilt sind"/>
+  </entry>
+  <entry keyword="Tests bei zwei unabhängigen Stichproben">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_two-groups_one-scale_not-assume-normal.htm#statcoach_compare-groups_scale_two-groups_one-scale_not-assume-normal" title="Test, bei dem nicht angenommen wird, dass die Daten normalverteilt sind"/>
+  </entry>
+  <entry keyword="t-Test bei Stichproben mit paarigen Werten">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_two-groups_two-scale_assume-normal.htm#statcoach_compare-groups_scale_two-groups_two-scale_assume-normal" title="Test, bei dem angenommen wird, dass beide Variablen normalverteilt sind"/>
+  </entry>
+  <entry keyword="Tests bei zwei verbundenen Stichproben">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_two-groups_two-scale_not-assume-normal.htm#statcoach_compare-groups_scale_two-groups_two-scale_not-assume-normal" title="Test, bei dem nicht angenommen wird, dass die Daten normalverteilt sind"/>
+  </entry>
+  <entry keyword="Einfaktorielle ANOVA">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_three-groups_one-factor_assume-normal.htm#statcoach_compare-groups_scale_three-groups_one-factor_assume-normal" title="Test, bei dem angenommen wird, dass die Daten innerhalb der Gruppen normalverteilt sind"/>
+  </entry>
+  <entry keyword="Tests bei mehreren unabhängigen Stichproben">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_three-groups_one-factor_not-assume-normal.htm#statcoach_compare-groups_scale_three-groups_one-factor_not-assume-normal" title="Test, bei dem nicht angenommen wird, dass die Daten normalverteilt sind"/>
+  </entry>
+  <entry keyword="Histogramme">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_three-groups_one-factor_check-normal.htm#statcoach_compare-groups_scale_three-groups_one-factor_check-normal" title="Prüfung auf Normalverteilung der Daten"/>
+  </entry>
+  <entry keyword="Univariate ANOVA">
+    <topic href="spss/statcoach/statcoach_compare-groups_scale_three-groups_two-factor.htm#statcoach_compare-groups_scale_three-groups_two-factor" title="Zwei oder mehr (z. B. Ertrag für Gruppen, die durch Abteilungen in jedem Bereich definiert sind)"/>
+  </entry>
+  <entry keyword="Rangkorrelationen">
+    <entry keyword="in bivariaten Korrelationen">
+      <topic href="spss/statcoach/statcoach_sig-var-relationships_ordinal.htm#statcoach_sig-var-relationships_ordinal" title="Ordinale, nach Rang geordnete oder nicht normalverteilte metrische Daten"/>
+    </entry>
+  </entry>
+  <entry keyword="Pearson-Korrelationen">
+    <entry keyword="in bivariaten Korrelationen">
+      <topic href="spss/statcoach/statcoach_sig-var-relationships_scale_two-at-time_table.htm#statcoach_sig-var-relationships_scale_two-at-time_table" title="Tabellen und Zahlen"/>
+    </entry>
+  </entry>
+  <entry keyword="Streudiagrammmatrix">
+    <topic href="spss/statcoach/statcoach_sig-var-relationships_scale_two-at-time_chart_two-pair.htm#statcoach_sig-var-relationships_scale_two-at-time_chart_two-pair" title="Zwei oder mehr Variablenpaare"/>
+  </entry>
+  <entry keyword="Partielle Korrelationen">
+    <topic href="spss/statcoach/statcoach_sig-var-relationships_scale_two.htm#statcoach_sig-var-relationships_scale_two" title="Zwei, mit Kontrolle der Effekte von mindestens einer zusätzlichen Variablen"/>
+  </entry>
+  <entry keyword="3-D-Streudiagramme">
+    <topic href="spss/statcoach/statcoach_sig-var-relationships_scale_three.htm#statcoach_sig-var-relationships_scale_three" title="Genau drei"/>
+  </entry>
+  <entry keyword="Lineare Regression">
+    <topic href="spss/statcoach/statcoach_sig-var-relationships_scale_pred.htm#statcoach_sig-var-relationships_scale_pred" title="Eine abhängige Variable und mindestens zwei unabhängige Variablen (Prädiktorvariablen)"/>
+  </entry>
+  <entry keyword="Ordinale Regression">
+    <topic href="spss/statcoach/statcoach_sig-var-relationships_ord-dep.htm#statcoach_sig-var-relationships_ord-dep" title="Ordinale abhängige und metrische oder kategoriale unabhängige Variablen"/>
+  </entry>
+  <entry keyword="Hierarchische Clusteranalyse">
+    <topic href="spss/statcoach/statcoach_sim-cases_scale_unknonwn-groups_less200.htm#statcoach_sim-cases_scale_unknonwn-groups_less200" title="Weniger als 200 Fälle"/>
+  </entry>
+  <entry keyword="Clusterzentrenanalyse">
+    <topic href="spss/statcoach/statcoach_sim-cases_scale_unknonwn-groups_more200.htm#statcoach_sim-cases_scale_unknonwn-groups_more200" title="200 oder mehr Fälle"/>
+  </entry>
+  <entry keyword="Diskriminanzanalyse">
+    <topic href="spss/statcoach/statcoach_sim-cases_scale_known-groups.htm#statcoach_sim-cases_scale_known-groups" title="Identifizieren von Merkmale bereits bekannter Gruppen"/>
+  </entry>
+  <entry keyword="Two-Step-Clusteranalyse">
+    <topic href="spss/statcoach/statcoach_sim-cases_cat.htm#statcoach_sim-cases_cat" title="Kategoriale Daten (nominal, ordinal) oder eine Mischung aus metrischen und kategorialen Daten"/>
+  </entry>
+  <entry keyword="Faktorenanalyse">
+    <topic href="spss/statcoach/statcoach_sim-vars.htm#statcoach_sim-vars" title="Identifizieren von Gruppen mit ähnlichen Variablen"/>
+  </entry>
+</index>

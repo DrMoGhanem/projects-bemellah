@@ -1,0 +1,60 @@
+#/***********************************************************************
+# * Licensed Materials - Property of IBM 
+# *
+# * IBM SPSS Products: Statistics Common
+# *
+# * (C) Copyright IBM Corp. 1989, 2011
+# *
+# * US Government Users Restricted Rights - Use, duplication or disclosure
+# * restricted by GSA ADP Schedule Contract with IBM Corp. 
+# ************************************************************************/
+
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2010-01-18 10:41+Mountain Standard Time\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: ENCODING\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: extension.py:59
+msgid "option type must be in: "
+msgstr "옵션 유형은 다음과 같아야 합니다. "
+
+#: extension.py:190
+msgid "A syntax keyword was used that is not defined in the extension module Syntax object: %s"
+msgstr "다음 확장 모듈 구문 개체에 정의되지 않은 구문 키워드가 사용되었습니다. %s"
+
+#: extension.py:196
+msgid "Invalid value for keyword: "
+msgstr "키워드에 유효하지 않은 값: "
+
+#: extension.py:210
+msgid "Value for keyword is out of range: %s"
+msgstr "키워드에 대한 값이 다음과 같이 범위를 벗어났습니다. %s"
+
+#: extension.py:233
+msgid "More than one variable specified where only one is allowed"
+msgstr "한 변수만 허락되는데 두 개 이상의 변수가 지정되었습니다."
+
+#: extension.py:258 extension.py:298
+msgid ""
+"The following required parameters were not supplied:\n"
+msgstr ""
+"다음 필수 모수가 제공되지 않았음:\n"
+
+#: extension.py:307
+msgid "Warnings "
+msgstr "경고 "
+
+msgid "Messages"
+msgstr "메시지"

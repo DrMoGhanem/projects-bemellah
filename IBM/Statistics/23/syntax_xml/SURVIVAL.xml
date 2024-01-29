@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/22/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="SURVIVAL" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="TABLE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="INTERVAL" EqualsSign="Optional">
+        <Parameter Name="THRU" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STATUS" EqualsSign="Optional">
+        <Parameter Name="FOR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOTS" EqualsSign="None">
+        <Parameter Name="ALL" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="LOGSURV" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="SURVIVAL" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="HAZARD" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="DENSITY" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="OMS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="TABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOTABLE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="COMPARE" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CALCULATE" EqualsSign="Optional">
+        <Parameter Name="EXACT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CONDITIONAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="APPROXIMATE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PAIRWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COMPARE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="GROUPWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LISTWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="WRITE" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BOTH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="TABLES " EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="AUTOLABEL " EqualsSign="None">
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ON" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OFF" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FORMAT" EqualsSign="Optional">
+        <Parameter Name="BLANK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MISSING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ZERO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TITLE" EqualsSign="Optional"/>
+    <Subcommand Name="CAPTION" EqualsSign="Optional">
+        <Parameter Name="DATE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OBSERVATION" EqualsSign="Optional"/>
+    <Subcommand Name="MDGROUP" EqualsSign="Optional"/>
+    <Subcommand Name="PTOTAL" EqualsSign="Optional"/>
+    <Subcommand Name="FTOTAL" EqualsSign="Optional"/>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="BASE" EqualsSign="Optional">
+        <Parameter Name="ANSWERING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="QUALIFIED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="GBASE" EqualsSign="Optional">
+        <Parameter Name="CASES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESPONSES" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TABLE" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STATISTICS " EqualsSign="Optional">
+        <Parameter Name="UNWEIGHTED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="U" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MINIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RANGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PTILE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CASES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESPONSES " EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CPCT " EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RPCT " EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SPCT " EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VPCT " EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="Fw.d " EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DOLLARw.d " EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COMMAw.d " EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PCTw.d " EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PARENw.d " EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PCTPARENw.d " EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NEGPARENw.d " EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NEQUALw.d" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SORT" EqualsSign="Optional">
+        <Parameter Name="DESCENDING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ASCENDING" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CORNER" EqualsSign="Optional"/>
+</Command>

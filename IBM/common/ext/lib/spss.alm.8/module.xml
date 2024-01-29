@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: <Analytic Components>                          -->
+<!--                                                                   -->
+<!-- (c)Copyright IBM Corp. 2010, 2011                                 -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+<!-- Sample Module XML for Descriptives -->
+<Module xmlns="http://www.ibm.com/software/analytics/spss/xml/extension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" debug="false" version="8.0" xsi:schemaLocation="http://www.ibm.com/software/analytics/spss/xml/extension http://www.ibm.com/software/analytics/spss/xml/extension/ModuleSpecification.xsd">
+	<ModuleDetails copyright="(c) 2009 SPSS, Inc." description="ALM Module" id="alm" label="ALM" provider="SPSS, Inc."  providerTag="pasw" version="8.0"/>
+	
+	<!--  On Windows, the shared library would called cf_adpr.dll, on Unix/Linux cf_adp.so/.lib/whatever -->
+	<SharedLibrary basename="almcfmodule"/>
+	
+	<!-- Resources used by the module. -->	
+	<Resources>
+		<Bundle id="alm_module_res" path="messages" type="properties"/> 
+	</Resources>
+	
+	<CommonObjects>
+		<!--  Property type definitions. -->
+		
+		<PropertyTypes>
+			
+			<!-- Enumeration type definition -->			
+			<Enumeration id="VarSelectionMethod_Enum" >							
+				<Enum value="none" resourceKey="VarSelectionMethod_Type.none"/>
+				<Enum value="forwardStepwise" resourceKey="VarSelectionMethod_Type.forwardStepwise"/>
+				<Enum value="bestSubsets" resourceKey="VarSelectionMethod_Type.bestSubsets"/>
+			</Enumeration>
+			
+			<Enumeration id="CriteriaForForwardStepwise_Enum" >
+				<Enum value="AICC" resourceKey="CriteriaForVarSelection_Type.AICC" />
+				<Enum value="FStatistics" resourceKey="CriteriaForVarSelection_Type.FStatistics"/>
+				<Enum value="adjustedRSquare" resourceKey="CriteriaForVarSelection_Type.adjustedRSquare"/>
+				<Enum value="ASE" resourceKey="CriteriaForVarSelection_Type.ASE"/>
+			</Enumeration>
+			
+			<Enumeration id="CriteriaForBestSubsets_Enum" >
+				<Enum value="AICC" resourceKey="BestSubset_Type.AICC"/>
+        <Enum value="adjustedRSquare" resourceKey="BestSubset_Type.adjustedRSquare"/>
+				<Enum value="ASE" resourceKey="BestSubset_Type.ASE"/>
+			</Enumeration>
+
+      <Enumeration id="ValidMetaData_Enum">
+        <Enum value="Default"/>
+        <Enum value="PSM"/>
+      </Enumeration>
+
+    </PropertyTypes>
+	</CommonObjects>
+	
+	<!-- Status Codes -->
+	<StatusCodes>
+		
+		<StatusCode code="240000" status="error" messageKey="unknownErrorMsg.LABEL"/>
+		<StatusCode code="240001" status="error" messageKey="initErrMsg.LABEL"/>
+		<StatusCode code="240002" status="error" messageKey="inputErrMsg.LABEL"/>
+		<StatusCode code="240003" status="error" messageKey="internalErrMsg.LABEL"/>
+		<StatusCode code="240004" status="error" messageKey="invalidMetadataErrMsg.LABEL"/>
+		<StatusCode code="240005" status="error" messageKey="fileNotExistErrorMsg.LABEL"/>
+		<StatusCode code="240006" status="error" messageKey="storageNotSupportErrorMsg.LABEL"/>
+		<StatusCode code="240007" status="error" messageKey="invalidTargetErrorMsg.LABEL"/>
+		<StatusCode code="240008" status="error"
+			messageKey="invalidTarResponseErrorMsg.LABEL"/>
+		<StatusCode code="240009" status="error" messageKey="predictorsEmptyErrMsg.LABEL"/>
+		<StatusCode code="240010" status="error" messageKey="targetAsInputErrorMsg.LABEL"/>
+		<StatusCode code="240011" status="error" messageKey="invalidFrequencyErrorMsg.LABEL"/>
+		<StatusCode code="240012" status="error"
+			messageKey="invalidTargetResponseErrorMsg.LABEL"/>
+		<StatusCode code="240013" status="error"
+			messageKey="invlidResponseCatErrorMsg.LABEL"/>
+		<StatusCode code="240014" status="error" messageKey="noFrequencyErrorMsg.LABEL"/>
+		<StatusCode code="240015" status="error" messageKey="noTargetErrorMsg.LABEL"/>
+		<StatusCode code="240016" status="error" messageKey="invalidtarValueMsg.LABEL"/>
+		<StatusCode code="240017" status="error" messageKey="getfilePathMsg.LABEL"/>
+		<StatusCode code="240018" status="error" messageKey="creationAlgorithmMsg.LABEL"/>
+		<StatusCode code="240019" status="error" messageKey="buildModelErrorMsg.LABEL"/>
+		<StatusCode code="240020" status="error" messageKey="assessModelErrorMsg.LABEL"/>
+		<StatusCode code="240021" status="error" messageKey="exportPMLLErrorMsg.LABEL"/>
+		<StatusCode code="240022" status="error" messageKey="getDataFieldErrorMsg.LABEL"/>
+		<StatusCode code="240023" status="error" messageKey="tarResIsSameErrorMsg.LABEL"/>
+		<StatusCode code="240024" status="error" messageKey="NoTargetFieldErrorMsg.LABEL"/>
+		<StatusCode code="240025" status="error" messageKey="NoTargetResFieldErrorMsg.LABEL"/>
+		<StatusCode code="240026" status="error" messageKey="targetResTrueErrorMsg.LABEL"/>
+		<StatusCode code="240027" status="error" messageKey="PMMLNotExistErrorMsg.LABEL"/>
+		<StatusCode code="240028" status="error" messageKey="PMMLIsInvalidErrorMsg.LABEL"/>
+		<StatusCode code="240029" status="error" messageKey="NoPredVarInPMMLErrorMsg.LABEL"/>
+		<StatusCode code="240030" status="error" messageKey="PMMLNotMatchDataErrorMsg.LABEL"/>
+		<StatusCode code="240031" status="error" messageKey="getDataSourceErrorMsg.LABEL"/>
+		<StatusCode code="240032" status="error" messageKey="dataFileISValidErrorMsg.LABEL"/>
+		<StatusCode code="240033" status="error" messageKey="TarFieldNOTMatchErrMsg.LABEL"/>
+		<StatusCode code="240034" status="error" messageKey="TRFieldNOTMatchErrMsg.LABEL"/>
+		<StatusCode code="240035" status="error" messageKey="FreFieldNOTMatchErrMsg.LABEL"/>
+		<StatusCode code="240036" status="error" messageKey="InputFieldNOTMatchMsg.LABEL"/>
+		<StatusCode code="240037" status="error" messageKey="NoValidRecordsMsg.LABEL"/>
+		<StatusCode code="240038" status="error" messageKey="NoRecordsScoringMsg.LABEL"/>
+		<StatusCode code="240039" status="error" messageKey="PartionInValidMsg.LABEL"/>
+		<StatusCode code="240040" status="error" messageKey="InputFieldConstantMsg.LABEL"/>
+		<StatusCode code="240041" status="error" messageKey="InvalidSettingsErrorMsg.LABEL"/>
+		<StatusCode code="240042" status="error" messageKey="NoValidFieldValuesErrorMsg.LABEL"/>
+		
+		<StatusCode code="240047" status="error" messageKey="InvalidFrequencyWeightDataMsg.LABEL"/>
+		<StatusCode code="240048" status="error" messageKey="WeightSpecifiedAsTargetMsg.LABEL"/>
+		<StatusCode code="240049" status="error" messageKey="RecordIDSpecifiedAsTargetMsg.LABEL"/>
+		<StatusCode code="240050" status="error" messageKey="RecordIDSpecifiedAsPredictorMsg.LABEL"/>
+		<StatusCode code="240051" status="error" messageKey="WeightSpecifiedAsRecordIDMsg.LABEL"/>
+		
+		<!-- common error code -->
+		<StatusCode code="1" status="error" messageKey="kMCCANCEL.LABEL"/>
+		<StatusCode code="2" status="error" messageKey="kMC_IO_ERROR.LABEL"/>
+		<StatusCode code="3" status="error" messageKey="kMC_MEMORY_LIMIT_EXCEEDED.LABEL"/>
+		<StatusCode code="4" status="error" messageKey="kMC_INVALID_SAVE_STATE.LABEL"/>
+		<StatusCode code="5" status="error" messageKey="kMC_FAILED_RESTART.LABEL"/>
+		<StatusCode code="6" status="error" messageKey="kMC_WRONG_STATE.LABEL"/>
+		<StatusCode code="101" status="error" messageKey="kMCCom_BadVarIndex.LABEL"/>
+		<StatusCode code="102" status="error" messageKey="kMCCom_NoMetadataForVar.LABEL"/>
+		<StatusCode code="108" status="error" messageKey="kMCCom_XML_MissReqAttr.LABEL"/>
+		<StatusCode code="109" status="error" messageKey="kMCCom_XML_InvalidAttrVal.LABEL"/>
+		<StatusCode code="303" status="error" messageKey="kMCRegr_InternalError.LABEL"/>
+		<StatusCode code="304" status="error" messageKey="kMCRegr_DataSourceError.LABEL"/>
+		<StatusCode code="307" status="error" messageKey="kMCRegr_NoRecordsFound.LABEL"/>
+		<StatusCode code="315" status="error" messageKey="kMCRegr_RecordTooShort.LABEL"/>
+		<StatusCode code="316" status="error" messageKey="kMCRegr_InvalidRecordValue.LABEL"/>
+		<!-- alm error code -->
+    <StatusCode code="250001" status="error" messageKey="kALM_NullPointer.LABEL"/>
+    <StatusCode code="250003" status="error" messageKey="kALM_VarIsNotInVarList.LABEL"/>
+    <StatusCode code="250004" status="error" messageKey="kALM_InvalidTargetField.LABEL"/>
+    <StatusCode code="250005" status="error" messageKey="kALM_TargetIsSpecifiedAsPredictor.LABEL"/>
+    <StatusCode code="250006" status="error" messageKey="kALM_NoPredictorWithoutIntercept.LABEL"/>
+    <StatusCode code="250007" status="error" messageKey="kALM_InvalidRegressionWeight.LABEL"/>
+    <StatusCode code="250008" status="error" messageKey="kALM_InvalidFrequencyWeight.LABEL"/>
+    <StatusCode code="250009" status="error" messageKey="kALM_WeightSpecifiedAsTarget.LABEL"/>
+    <StatusCode code="250010" status="error" messageKey="kALM_WeghtSpecifiedAsPredictor.LABEL"/>
+    <StatusCode code="250011" status="error" messageKey="kALM_InvalidTolerance.LABEL"/>
+    <StatusCode code="250012" status="error" messageKey="kALM_POutNotLargerThanPIn.LABEL"/>
+    <StatusCode code="250013" status="error" messageKey="kALM_NoMetadataForVar.LABEL"/>
+    <StatusCode code="250014" status="error" messageKey="kALM_NoFactorCategs.LABEL"/>
+    <StatusCode code="250015" status="error" messageKey="kALM_NoTargetVarInMetadata.LABEL"/>
+    <StatusCode code="250016" status="error" messageKey="kALM_ConflictFreqVarInSettingAndMetadata.LABEL"/>
+    <StatusCode code="250017" status="error" messageKey="kALM_RecordIdUnDefinedInMetadata.LABEL"/>
+    <StatusCode code="250018" status="error" messageKey="kALM_AllConstantPredictors.LABEL"/>
+    <StatusCode code="250019" status="error" messageKey="kALM_NoValidCases.LABEL"/>
+    <StatusCode code="250020" status="error" messageKey="kALM_ASENoTestData.LABEL"/>
+    <StatusCode code="250021" status="error" messageKey="kALM_ConstantTargetField.LABEL"/>
+    <StatusCode code="250022" status="error" messageKey="kALM_OnlyOneValidCase.LABEL"/>
+    <StatusCode code="250023" status="error" messageKey="kALM_ErrorInDataPass.LABEL"/>
+
+    <StatusCode code="250033" status="error" messageKey="kALM_InternalError.LABEL"/>
+    
+    <StatusCode code="250035" status="error" messageKey="kALM_ModelNotBuilt.LABEL"/>
+	<StatusCode code="250036" status="error" messageKey="kALM_InvalidCovarianceMatrix.LABEL"/>
+   
+	<StatusCode code="250040" status="error" messageKey="kALM_UserCancelProcessing.LABEL"/>
+    <StatusCode code="250044" status="error" messageKey="kALM_InvalidSelectionMethod.LABEL"/>
+    <StatusCode code="250045" status="error" messageKey="kALM_InvalidSelectCriterion.LABEL"/>
+    <StatusCode code="250046" status="error" messageKey="kALM_InvalidPIn.LABEL"/>
+    <StatusCode code="250047" status="error" messageKey="kALM_InvalidPOut.LABEL"/>
+    <StatusCode code="250048" status="error" messageKey="kALM_InvalidMaxSteps.LABEL"/>
+    <StatusCode code="250049" status="error" messageKey="kALM_InvalidMaxEffects.LABEL"/>
+    <StatusCode code="250050" status="error" messageKey="kALM_InvalidMaxEffectsForAllPossibleSubset.LABEL"/>
+    <StatusCode code="250051" status="error" messageKey="kALM_InvalidNumOfTopN.LABEL"/>
+    <StatusCode code="250052" status="error" messageKey="kALM_InvalidNumOfThreads.LABEL"/>
+    <StatusCode code="250053" status="error" messageKey="kALM_InvalidCIn.LABEL"/>
+    <StatusCode code="250055" status="error" messageKey="kALM_RecordIDSpecifiedAsTarget.LABEL"/>
+    <StatusCode code="250056" status="error" messageKey="kALM_RecordIDSpecifiedAsPredictor.LABEL"/>
+    <StatusCode code="250057" status="error" messageKey="kALM_WeghtSpecifiedAsRecordID.LABEL"/>
+	<StatusCode code="250059" status="error" messageKey="kALM_TooManyCategories4OneCategoricalVariable.LABEL"/>	
+		
+    <!-- Warning for the alm component -->
+    <StatusCode code="250025" status="warning" messageKey="kALM_LoopIterLargeMaxIter.LABEL"/>
+	<StatusCode code="250026" status="warning" messageKey="kALM_NParamsMoreNCases.LABEL"/>
+    <StatusCode code="250027" status="warning" messageKey="kALM_NoAllEffectsSelected.LABEL"/>
+    <StatusCode code="250028" status="warning" messageKey="kALM_ReachMaxEffects.LABEL"/>
+    <StatusCode code="250029" status="warning" messageKey="kALM_PerfectFit.LABEL"/>
+    <StatusCode code="250030" status="warning" messageKey="kALM_ZeroOutlierofCooksDistance.LABEL"/>
+    <StatusCode code="250031" status="warning" messageKey="kALM_TooManyEffectsForBestSubsets.LABEL"/>
+
+    <StatusCode code="250041" status="warning" messageKey="kALM_DuplicatedPredictors.LABEL"/>
+
+
+  </StatusCodes>
+	
+	<!-- ContainerType declarations -->
+	<ContainerTypes>
+		<!--  
+			Container types:
+			-   XML documents
+			-	PMML / Model
+			-	Pivot Tables / Multi-Dimensional Variables
+			-	Chart Visualizations
+			-	Table Visualizations
+			-	Text output
+			-	Static Image
+			-	Case data – a subset
+			__
+			The "fileSuffix" attribute is used when generating the temporary files used to store or retrieve the various components.
+			They don't provide explicit meaning to the application or component but potentially would be useful when debugging.
+		-->
+		<!-- TBD -->
+		<!--  <ContainerType id="compressed_report_container" type="multi_dim_table" format="binary" fileSuffix="zip"/>-->
+		<!--model PMML from ALM component -->
+		<ContainerType id="pmml_container" mimeType="pmml" resourceKey="" fileSuffix="" />
+		<!-- StatXML from ALM component -->
+		<ContainerType id="statxml_container" mimeType="xml" resourceKey="" fileSuffix="" /> 
+		<!-- the transformation PMML from ADP -->
+		<ContainerType id="adpxml_container" mimeType="pmml" resourceKey="" fileSuffix="" />
+		<!-- final merged XML = "Transformation PMML" + "ALM model+PMML"-->
+		<ContainerType id="outputxml_container" mimeType="pmml" resourceKey="" fileSuffix="" />
+	</ContainerTypes>
+	
+	<!-- Component definition. Component names are used as name-spaces and should be unique across component instances. -->
+	<!-- Aadp have two dll files. One is adpnode.dll that is for CF, the other is mcadpr.dll file that is the 
+		real adp component dll file. On windows, it is mcadpr.dll, other platform, it is libmcadpr +".so or whatever suffix" -->
+	<Component id="linreg">
+		
+		<!-- 
+			Component capabilities [TBD]:
+			-  Data Provider
+			-  Data Transformer
+			-  Data Consumer
+			-  Container Operator (operates upon Containers)
+		-->
+		<Capabilities>
+			<Consumer/>
+		</Capabilities>
+		
+		<!-- Property declarations -->
+		<Properties>
+			
+			<!-- global settings -->
+			
+			<!-- Input Parameters -->
+			<Property name="TargetField" valueType="fieldName" />
+			<Property name="InputFieldList" valueType="fieldName" isList = "true" />
+			<Property name="RecordID" valueType="fieldName" />
+			<Property name="EffectList" valueType="string" isList = "true" />
+			<Property name="Intercept" valueType="boolean" defaultValue = "true"  />
+			<Property name="RegressionWeightField" valueType="fieldName" />
+			<Property name="FrequencyWeightField" valueType="fieldName" />
+			<Property name="RandomSeed" valueType="integer" defaultValue="54752075"  min="1" resourceKey="RandomSeed"/>
+			<Property name="UseMetaDataRole" valueType="boolean" defaultValue="false"/>
+			<Property name="IsOutRegModel" valueType="boolean" defaultValue="false"/>
+			<!-- Model Setting Inputs -->
+			<Property name="VarSelectionMethod"  type = "VarSelectionMethod_Enum" defaultValue = "forwardStepwise" resourceKey="modelSelection"/>			
+			<Property name="CriteriaForForwardStepwise"  type = "CriteriaForForwardStepwise_Enum" defaultValue = "AICC" resourceKey="ForwardStepwiseSelectionTitle"/>			
+			<Property name="CriteriaForBestSubsets"  type = "CriteriaForBestSubsets_Enum" defaultValue = "AICC" resourceKey="BestSubset_Type"/>			
+			<Property name="PIn" valueType="double" defaultValue = "0.05" min="0.0" max="1.0" resourceKey="Pin.LABEL"/>
+			<Property name="POut"  valueType = "double"  defaultValue = "0.1" min="0.0" max="1.0" resourceKey="Pout.LABEL"/>			
+			<Property name="EffectEntryTolerance"  valueType = "double"  defaultValue = "0.0001"/>			
+			<Property name="UseCustomMaxSteps" valueType="boolean" defaultValue = "false" resourceKey="customizedMaxSteps"/>
+			<Property name="MaxSteps" valueType="integer" defaultValue = ""  min="1" resourceKey="MaxSteps"/>
+			<Property name="UseCustomMaxEffects" valueType="boolean" defaultValue = "false" resourceKey="customizedMaxEffects" />
+			<Property name="MaxEffects" valueType="integer" defaultValue = ""  min="0" resourceKey="MaxEffects"/>
+			<Property name="MaxEffectsForAllPossibleSubset" valueType="integer" defaultValue = "20"  />
+			<Property name="NumOfTopN" valueType="integer" defaultValue = "10"  />
+			<Property name="CIn" valueType="double" defaultValue = "95" min="0" max="100" resourceKey="cInError.LABEL"/>
+			
+			<!-- Data Preparation-->
+			<Property name="AutoDataPreparation" valueType="boolean" defaultValue = "true" resourceKey="AutoDataPreparation"/>
+			
+			<!-- Outputs-->
+			<Property name="CalculateCookDistance" valueType="boolean" defaultValue = "true"  />
+			
+			<!-- Handling Missing Values-->
+			<Property name="ListwiseDeletion" valueType="boolean" defaultValue = "true"  />
+			<Property name="ExcludeUserMissing" valueType="boolean" defaultValue = "true"  />
+			
+			<!-- Others-->
+			<Property name="NumOfThreads" valueType="integer" defaultValue = "1"  />
+            <Property name="MetaDataSource" type="ValidMetaData_Enum" defaultValue="Default"/>
+			<Property name="MaxCategoryNumber" valueType="integer" defaultValue = "1000"  />
+
+    </Properties>
+		<!-- Containers -->
+		<Containers>
+			<!-- TBD -->
+			<Container name="PMML" type="pmml_container" usage="output" runtimeProperty="tmpReportFile" /> 
+			<Container name="StatXML" type="statxml_container" usage="output" runtimeProperty="tmpReportFile" />
+			<Container name="AdpPMML" type="adpxml_container" usage="output" runtimeProperty="tmpReportFile" /> 
+			<Container name="MergedXML" type="outputxml_container" usage="output" runtimeProperty="tmpReportFile" />
+		</Containers>
+		
+	</Component>
+</Module>

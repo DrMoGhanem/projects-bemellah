@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/19/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="PLUM" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="Optional">
+        <Parameter Name="CIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DELTA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MXITER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MXSTEP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LCONVERGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PCONVERGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SINGULAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BIAS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="LINK" EqualsSign="Optional">
+        <Parameter Name="CAUCHIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CLOGLOG" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOGIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NLOGLOG" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PROBIT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="LOCATION" EqualsSign="Optional"/>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="CELLINFO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COVB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HISTORY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="KERNEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TPARALLEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PARAMETER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMMARY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="ESTPROB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PREDCAT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ACPROB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PCPROB" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SCALE" EqualsSign="Optional"/>
+    <Subcommand Name="TEST" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

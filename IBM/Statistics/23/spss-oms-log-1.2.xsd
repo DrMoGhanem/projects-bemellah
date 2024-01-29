@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2012                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema targetNamespace="http://www.ibm.com/software/analytics/spss/xml/oms/log" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns="http://www.ibm.com/software/analytics/spss/xml/oms/log" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.2">
+	<xs:element name="omslog">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="event" maxOccurs="unbounded"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="event">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="filespec"/>
+				<xs:element ref="memo" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="name" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="create"/>
+						<xs:enumeration value="endlog"/>
+						<xs:enumeration value="error"/>
+						<xs:enumeration value="startlog"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="timestamp" type="xs:dateTime" use="required"/>
+			<xs:attribute name="tag" type="xs:string" use="optional"/>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="filespec">
+		<xs:complexType>
+			<xs:attribute name="name" type="xs:string" use="required"/>
+			<xs:attribute name="format" use="optional">
+				<xs:simpleType>
+					<xs:restriction base="xs:string">
+						<xs:enumeration value="oxml"/>
+						<xs:enumeration value="sav"/>
+						<xs:enumeration value="html"/>
+						<xs:enumeration value="svwsoxml"/>
+						<xs:enumeration value="text"/>
+						<xs:enumeration value="tabtext"/>
+						<xs:enumeration value="bmp"/>
+						<xs:enumeration value="jpg"/>
+						<xs:enumeration value="png"/>
+						<xs:enumeration value="emf"/>
+						<xs:enumeration value="svg"/>
+						<xs:enumeration value="vml"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="memo" type="xs:string"/>
+</xs:schema>

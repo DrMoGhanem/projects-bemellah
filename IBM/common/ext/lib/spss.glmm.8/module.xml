@@ -1,0 +1,648 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: <Analytic Components>                          -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 2010, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<!--  Module XML for GLMM -->
+<Module xmlns="http://www.ibm.com/software/analytics/spss/xml/extension"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" debug="false" version="8.0"
+	xsi:schemaLocation="http://www.ibm.com/software/analytics/spss/xml/extension http://www.ibm.com/software/analytics/spss/xml/extension/ModuleSpecification.xsd">
+	<ModuleDetails copyright="(c) 2010 SPSS, Inc." description="GLMM Module" id="glmm" label="GLMM"
+		provider="SPSS, Inc." providerTag="pasw" version="8.0"/>
+
+	<!--  On Windows, the shared library would be called glmmcfmodule.dll, on Unix/Linux libglmmcfmodule.so/whatever -->
+	<SharedLibrary basename="glmmcfmodule"/>
+
+	<!-- Resources used by the module. -->
+	<Resources>
+		<Bundle id="glmm_module_res" path="messages" type="properties"/>
+	</Resources>
+
+	<CommonObjects>
+		<!--  Property type definitions. -->
+
+		<PropertyTypes>
+
+			<!-- Enumeration type definition -->
+			<Enumeration id="SortType_Enum">
+				<Enum value="Ascending"/>
+				<Enum value="Descending"/>
+				<Enum value="Data"/>
+			</Enumeration>
+
+			<Enumeration id="ReferenceType_Enum">
+				<Enum value="Last"/>
+				<Enum value="Value"/>
+			</Enumeration>
+			<Enumeration id="UseTrial_enum">
+				<Enum value="field" resourceKey="use_trial_enum.field"/>
+				<Enum value="value" resourceKey="use_trial_enum.value"/>
+				<Enum value="None"/>
+			</Enumeration>
+
+			<Enumeration id="DistLinkCombination_Enum">
+				<Enum value="NormalIdentity"/>
+				<Enum value="NominalLogit"/>
+				<Enum value="GammaLog"/>
+				<Enum value="BinomialLogit"/>
+				<Enum value="PoissonLog"/>
+				<Enum value="BinomialProbit"/>
+				<Enum value="NegbinLog"/>
+				<Enum value="BinomialLogC"/>
+				<Enum value="Custom"/>
+			</Enumeration>
+
+			<Enumeration id="DistributionType_Enum">
+				<Enum value="NORMAL"/>
+				<Enum value="BINOMIAL"/>
+				<Enum value="MULTINOMIAL"/>
+				<Enum value="GAMMA"/>
+				<Enum value="IGAUSS"/>
+				<Enum value="NEGBIN"/>
+				<Enum value="POISSON"/>
+			</Enumeration>
+
+			<Enumeration id="LinkFunctionType_Enum">
+				<Enum value="IDENTITY"/>
+				<Enum value="LOGC"/>
+				<Enum value="LOG"/>
+				<Enum value="CLOGLOG"/>
+				<Enum value="LOGIT"/>
+				<Enum value="NLOGLOG"/>
+				<Enum value="PROBIT"/>
+				<Enum value="POWER"/>
+				<Enum value="CAUCHIT"/>
+			</Enumeration>
+
+			<Enumeration id="UseOffset_Enum">
+				<Enum value="None"/>
+				<Enum value="Value"/>
+				<Enum value="Variable"/>
+			</Enumeration>
+
+			<Enumeration id="CovarianceType_Enum">
+				<Enum value="AR1"/>
+				<Enum value="ARMA11"/>
+				<Enum value="CS"/>
+				<Enum value="DIAG"/>
+				<Enum value="ID"/>
+				<Enum value="TP"/>
+				<!-- 	<Enum value="TPt"/>  -->
+				<Enum value="UN"/>
+				<Enum value="VC"/>
+				<!-- 	<Enum value="AD1"/> -->
+				<!-- 	<Enum value="ARH1"/> -->
+				<!-- 	<Enum value="CSH"/> -->
+				<!-- 	<Enum value="CSR"/> -->
+				<!-- 	<Enum value="FA1"/> -->
+				<!-- 	<Enum value="FAH1"/> -->
+				<!-- 	<Enum value="HF"/> -->
+				<!-- 	<Enum value="UNR"/> -->
+				<!-- 	<Enum value="TPH"/> -->
+			</Enumeration>
+
+			<Enumeration id="ObjectiveFunMethod_Enum">
+				<Enum value="PL"/>
+				<Enum value="REPL"/>
+			</Enumeration>
+
+			<Enumeration id="RandomEffEstMethod_Enum">
+				<Enum value="PQL"/>
+				<Enum value="MQL"/>
+			</Enumeration>
+
+			<!--<Enumeration id="OptimizationTechType_Enum">
+				<Enum value="Fisher"/>
+				<Enum value="NewtonRaphson"/>
+				<Enum value="Hybrid"/>
+			</Enumeration>-->
+
+			<Enumeration id="ConvType_Enum">
+				<Enum value="Absolute"/>
+				<Enum value="Relative"/>
+			</Enumeration>
+
+			<Enumeration id="DistParameterType_Enum">
+				<Enum value="MLE"/>
+				<Enum value="Fixed"/>
+			</Enumeration>
+
+			<Enumeration id="ScaleParameterType_Enum">
+				<Enum value="MLE"/>
+				<Enum value="1"/>
+				<Enum value="Pearson"/>
+				<Enum value="Automatic"/>
+			</Enumeration>
+
+			<Enumeration id="AsymEffCovType_Enum">
+				<Enum value="Model"/>
+				<Enum value="Robust"/>
+			</Enumeration>
+
+			<Enumeration id="DegreesFreedom_Enum">
+				<Enum value="Residual"/>
+				<Enum value="Satterthwaite"/>
+			</Enumeration>
+
+			<Enumeration id="AnalysisType_Enum">
+				<Enum value="TypeI"/>
+				<Enum value="TypeIII"/>
+				<Enum value="TypeIAndTypeIII"/>
+			</Enumeration>
+
+			<Enumeration id="MeanScale_Enum">
+				<Enum value="Original"/>
+				<Enum value="Transformed"/>
+			</Enumeration>
+
+			<Enumeration id="ContrastType_Enum">
+				<Enum value="Pairwise"/>
+				<Enum value="Deviation"/>
+				<Enum value="Simple"/>
+				<Enum value="None"/>
+			</Enumeration>
+
+			<Enumeration id="pAdjustment_Enum">
+				<Enum value="LSD"/>
+				<Enum value="SEQBONFERRONI"/>
+				<Enum value="SEQSIDAK"/>
+			</Enumeration>
+
+			<Enumeration id="ConfidenceBaseOn_Enum">
+				<Enum value="highest"/>
+				<Enum value="difference"/>
+			</Enumeration>
+
+			<Enumeration id="CovariateConstantType_Enum">
+				<Enum value="Mean"/>
+				<Enum value="Value"/>
+			</Enumeration>
+
+			<Enumeration id="Propensities_Enum">
+				<Enum value="raw"/>
+				<Enum value="adjusted"/>
+			</Enumeration>
+
+			<Enumeration id="DirectionMethod_Enum">
+				<Enum value="Newton"/>
+				<Enum value="QuasiNewton"/>
+			</Enumeration>
+
+			<Enumeration id="Newton_Enum">
+				<Enum value="Raphson"/>
+				<Enum value="Fisher"/>
+				<Enum value="Hybrid"/>
+			</Enumeration>
+
+			<Enumeration id="QuasiNewton_Enum">
+				<Enum value="DFP"/>
+				<Enum value="BFGS"/>
+				<Enum value="DDFP"/>
+				<Enum value="DBFGS"/>
+			</Enumeration>
+
+			<Enumeration id="TerminationRule_Enum">
+				<Enum value="Armijo"/>
+				<Enum value="ArmijoGold"/>
+				<Enum value="Wolfe"/>
+			</Enumeration>
+
+			<Enumeration id="SelectionMethod_Enum">
+				<Enum value="Backtrack"/>
+				<Enum value="NMBacktrack"/>
+				<Enum value="Bisection"/>
+				<Enum value="Quadratic"/>
+				<Enum value="Cubic"/>
+			</Enumeration>
+
+			<Enumeration id="OptimizationTech_Enum">
+				<Enum value="ADM"/>
+				<Enum value="ASM"/>
+			</Enumeration>
+
+
+			<!-- Structure type definition -->
+			<Structure id="RandomSpecs_Structure">
+				<Attribute name="EffectList" resourceKey="" valueType="effectStructure"
+					isList="true"/>
+				<Attribute name="Intercept" resourceKey="" valueType="boolean" defaultValue="false"/>
+				<Attribute name="SubjectSpec" resourceKey="" valueType="effectStructure"
+					isList="false"/>
+				<Attribute name="GroupSpec" resourceKey="" valueType="fieldName" isList="true"/>
+				<Attribute name="CovarianceType" resourceKey="" type="CovarianceType_Enum"
+					isList="false" defaultValue="VC"/>
+				<Attribute name="CovarianceTBand" resourceKey="" valueType="integer"
+					defaultValue="2"/>
+			</Structure>
+
+			<Structure id="EMMEANS_Structure">
+				<Attribute name="Factors" resourceKey="" valueType="effectStructure" isList="false"/>
+				<Attribute name="EstimateMeans" resourceKey="" valueType="boolean"
+					defaultValue="false" isList="false"/>
+				<Attribute name="CompareFactor" resourceKey="" valueType="fieldName" isList="false"/>
+				<Attribute name="ContrastType" resourceKey="" type="ContrastType_Enum"
+					defaultValue="None"/>
+				<Attribute name="ReferenceType" resourceKey="" type="ReferenceType_Enum"
+					defaultValue="Last"/>
+				<Attribute name="ReferenceValue" resourceKey="" valueType="string"/>
+			</Structure>
+
+			<Structure id="EMMEANS_Covariate_Structure">
+				<Attribute name="Field" valueType="fieldName" isList="false"/>
+				<Attribute name="Constant" type="CovariateConstantType_Enum" isList="false"
+					defaultValue="Mean"/>
+				<Attribute name="Value" valueType="double" defaultValue="" isList="false"/>
+			</Structure>
+
+			<!-- Structure for Selftesting -->
+			<Structure id="EstimateMethod_Structure">
+				<Attribute name="ObjectiveFunMethod" resourceKey="" type="ObjectiveFunMethod_Enum"
+					defaultValue="REPL"/>
+				<Attribute name="RandomEffEstMethod" resourceKey="" type="RandomEffEstMethod_Enum"
+					defaultValue="PQL"/>
+			</Structure>
+
+			<Structure id="StopCritSingInn_Structure">
+				<Attribute name="loglikelihoodCheck" resourceKey="" valueType="boolean" defaultValue="false"/>
+				<Attribute name="LoglikelihoodConvMin" resourceKey="" valueType="double"
+					defaultValue="" min="0.0"/>
+				<Attribute name="LoglikelihoodConvType" resourceKey="" type="ConvType_Enum"
+					defaultValue="Absolute"/>
+				<Attribute name="parameterCheck" resourceKey="" valueType="boolean" defaultValue="true"/>
+				<Attribute name="ParameterConvInnMin" resourceKey="" valueType="double" defaultValue="0.000001"
+				          min="0.0"/>
+				<Attribute name="ParameterConvInnType" resourceKey="" type="ConvType_Enum"
+					defaultValue="Absolute"/>
+				<Attribute name="hessianCheck" resourceKey="" valueType="boolean" defaultValue="false"/>
+				<Attribute name="HessianConvMin" resourceKey="" valueType="double" defaultValue="" min="0.0"/>
+				<Attribute name="HessianConvType" resourceKey="" type="ConvType_Enum"
+					defaultValue="Absolute"/>
+				<Attribute name="MaxStepHalving" resourceKey="" valueType="integer" defaultValue="5"
+					min="1" max="99999999"/>
+			</Structure>
+
+			<Structure id="StopCritSingOut_Structure">
+				<Attribute name="ParameterConvOutMin" resourceKey="" valueType="double"
+					defaultValue="1e-6"/>
+			</Structure>
+
+			<Structure id="DistParamEst_Structure">
+				<Attribute name="DistParamType" resourceKey="" type="DistParameterType_Enum"
+					defaultValue="MLE"/>
+				<Attribute name="DistParamFixVal" resourceKey="" valueType="double" defaultValue="1"
+				/>
+			</Structure>
+			<Structure id="Propensities_Structure">
+				<Attribute name="PropensityName" resourceKey="" valueType="fieldName" isList="false"/>
+				<Attribute name="PropensityType" resourceKey="" type="Propensities_Enum"
+					defaultValue="raw"/>
+			</Structure>
+
+			<Structure id="UpdateDirectionTech_Structure">
+				<Attribute name="DirectionMethod" resourceKey="" type="DirectionMethod_Enum"
+					defaultValue="Newton"/>
+				<Attribute name="Newton" resourceKey="" type="Newton_Enum" defaultValue="Hybrid"/>
+				<Attribute name="QuasiNewton" resourceKey="" type="QuasiNewton_Enum"
+					defaultValue="BFGS"/>
+				<Attribute name="MaxFisherIterNum" resourceKey="" valueType="integer"
+					defaultValue="0"/>
+			</Structure>
+
+			<Structure id="LineSearchTech_Structure">
+				<Attribute name="TerminationRule" resourceKey="" type="TerminationRule_Enum"
+					defaultValue="Wolfe"/>
+				<Attribute name="SelectionMethod" resourceKey="" type="SelectionMethod_Enum"
+					defaultValue="Cubic"/>
+				<Attribute name="BacktrackingRatio" resourceKey="" valueType="double"
+					defaultValue="0.5"/>
+				<Attribute name="InterConstFactor" resourceKey="" valueType="double"
+					defaultValue="0.1"/>
+				<Attribute name="MaxIterNum" resourceKey="" valueType="integer" defaultValue="15"/>
+			</Structure>
+
+			<Structure id="InitialParameters_Structure">
+				<Attribute name="InitialValues" resourceKey="" valueType="double" isList="true"/>
+			</Structure>
+		</PropertyTypes>
+	</CommonObjects>
+
+	<!-- Status Codes -->
+	<StatusCodes>
+		<!-- GLMM error code -->
+		<StatusCode code="230001" status="error" messageKey="kGLMM_NullPointer.LABEL"/>
+		<StatusCode code="230005" status="error"
+			messageKey="kGLMM_VarInFixedEffectCanNotBeTargetOrTrials.LABEL"/>
+		<StatusCode code="230006" status="error"
+			messageKey="kGLMM_VarInRandomEffectCanNotBeTargetOrTrials.LABEL"/>
+		<StatusCode code="230008" status="warning" messageKey="kGLMM_DuplicatedEffectInFixed.LABEL"/>
+		<StatusCode code="230009" status="error"
+			messageKey="kGLMM_VarInSomeRolesCanNotBeTargetOrTrials.LABEL"/>
+		<StatusCode code="230010" status="error"
+			messageKey="kGLMM_OffsetCanNotBeSomeOtherRole.LABEL"/>
+		<StatusCode code="230011" status="error"
+			messageKey="kGLMM_DuplicatedVarInRepeatedSubjectAndMeasure.LABEL"/>
+		<StatusCode code="230012" status="error"
+			messageKey="kGLMM_AnalysisWeightCanNotBeSomeOtherRole.LABEL"/>
+		<StatusCode code="230013" status="error"
+			messageKey="kGLMM_RepeatedMeasureAsSubjectInRandom.LABEL"/>
+		<StatusCode code="230014" status="error" messageKey="kGLMM_RandomSubjectNotInRepeated.LABEL"/>
+		<StatusCode code="230015" status="error" messageKey="kGLMM_NoSubjectInRepeated.LABEL"/>
+		<StatusCode code="230016" status="error" messageKey="kGLMM_DuplicatedEffectInRandoms.LABEL"/>
+		<StatusCode code="230017" status="error" messageKey="kGLMM_NoEffectsInRandom.LABEL"/>
+		<StatusCode code="230018" status="error"
+			messageKey="kGLMM_GroupingOnRandEffIsNotSupportedForMultinomial.LABEL"/>
+		<StatusCode code="230022" status="error"
+			messageKey="kGLMM_UnmatchedDistributionAndLink.LABEL"/>
+		<StatusCode code="230023" status="error" messageKey="kGLMM_InsufficientMemory.LABEL"/>
+		<StatusCode code="230024" status="error" messageKey="kGLMM_NoValidCase.LABEL"/>
+		<StatusCode code="230025" status="error" messageKey="kGLMM_DuplicatedRepeatedLevels.LABEL"/>
+		<StatusCode code="230026" status="error"
+			messageKey="kGLMM_DuplicatedRepeatedLevelForCaseWeight.LABEL"/>
+		<StatusCode code="230027" status="error"
+			messageKey="kGLMM_UndistinctDependentDataInBinomial.LABEL"/>
+		<StatusCode code="230031" status="warning"
+			messageKey="kGLMM_IllegalDependentValInGammaOrIGauss.LABEL"/>
+		<StatusCode code="230032" status="warning"
+			messageKey="kGLMM_IllegalDependentValInNebinomialOrPoisson.LABEL"/>
+		<StatusCode code="230033" status="error" messageKey="kGLMM_InvalidInitialValue.LABEL"/>
+		<StatusCode code="230036" status="warning"
+			messageKey="kGLMM_IterationTerminatedButNoConv.LABEL"/>
+		<StatusCode code="230037" status="warning"
+			messageKey="kGLMM_ConvButHessianNotPositive.LABEL"/>
+		<StatusCode code="230043" status="warning" messageKey="kGLMM_QuasiCompleteSeparation.LABEL"/>
+		<StatusCode code="230046" status="error"
+			messageKey="kGLMM_InvalidCaseInLastIteration.LABEL"/>
+		<StatusCode code="230051" status="error"
+			messageKey="kGLMM_FrequencyWeightVarInCovariate.LABEL"/>
+		<StatusCode code="230052" status="error"
+			messageKey="kGLMM_VarInFixedEffectCanNotBeAnalysisWeightOrOffset.LABEL"/>
+		<StatusCode code="230053" status="error"
+			messageKey="kGLMM_VarInRandomEffectCanNotBeAnalysisWeightOrOffset.LABEL"/>
+		<StatusCode code="230054" status="error" messageKey="kGLMM_DuplicatedFactorInEffect.LABEL"/>
+		<StatusCode code="230055" status="error" messageKey="kGLMM_InternalError.LABEL"/>
+		<StatusCode code="230056" status="warning" messageKey="kGLMM_ComputeCovarianceFailed.LABEL"/>
+		<StatusCode code="230059" status="error"
+			messageKey="kGLMM_TargetIsNotCatForMultinomial.LABEL"/>
+		<StatusCode code="230060" status="error"
+			messageKey="kGLMM_TargetIsNotContForSomeDistribution.LABEL"/>
+		<StatusCode code="230064" status="error" messageKey="kGLMM_RegWeightFieldIsNotNumeric.LABEL"/>
+		<StatusCode code="230066" status="error" messageKey="kGLMM_OffsetFieldIsNotContinuous.LABEL"/>
+		<StatusCode code="230068" status="error" messageKey="kGLMM_FreWeightFieldIsNotNumeric.LABEL"/>
+		<StatusCode code="230069" status="error"
+			messageKey="kGLMM_EMMeansEffectIsNotInFixedEffect.LABEL"/>
+		<StatusCode code="230070" status="error"
+			messageKey="kGLMM_EMMeansCovariateIsNotInCovariates.LABEL"/>
+		<StatusCode code="230072" status="error"
+			messageKey="kGLMM_NumericalProblemInEstimation.LABEL"/>
+		<StatusCode code="230073" status="error"
+			messageKey="kGLMM_TargetIsNotCont4BinomialEventTrials.LABEL"/>
+		<StatusCode code="230074" status="error" messageKey="kGLMM_ConstantTarget.LABEL"/>
+		<StatusCode code="230075" status="error"
+			messageKey="kGLMM_ResGroupingWhileNoRepMeasure.LABEL"/>
+		<StatusCode code="230081" status="error"
+			messageKey="kGLMM_EMMeansHasContinuousFieldInEffect.LABEL"/>
+		<StatusCode code="230082" status="error"
+			messageKey="kGLMM_EMMeansEffectIsMoreThan3Ways.LABEL"/>
+		<StatusCode code="230083" status="error"
+			messageKey="kGLMM_EMMeansContrastFieldIsNotInEffect.LABEL"/>
+		<StatusCode code="230084" status="error"
+			messageKey="kGLMM_EMMeansContrastFieldGoAgainstNestingRules.LABEL"/>
+		<StatusCode code="230085" status="error"
+			messageKey="kGLMM_TargetReferenceValueIsNotInDataSet.LABEL"/>
+		<StatusCode code="230086" status="error"
+			messageKey="kGLMM_NoValidCasesForSpecifiedLinkFunction.LABEL"/>
+		<StatusCode code="230087" status="error"
+			messageKey="kGLMM_RMatrixIsNotPositiveInIteProcess.LABEL"/>
+		<StatusCode code="230089" status="error"
+			messageKey="kGLMM_NumericalOverflowByLargeCovariateValue.LABEL"/>
+		<StatusCode code="230090" status="warning"
+			messageKey="kGLMM_DuplicateRandomEffectBlockFound.LABEL"/>
+		<StatusCode code="230091" status="warning"
+			messageKey="kGLMM_DuplicateEMMeansSpecFound.LABEL"/>
+		<StatusCode code="230093" status="error"
+			messageKey="kGLMM_ContFieldHaveAnotherEffectNestedInIt.LABEL"/>
+		<StatusCode code="230094" status="warning" messageKey="kGLMM_MaxIterReachedButNotConv.LABEL"/>
+		<StatusCode code="230095" status="warning" messageKey="kGLMM_GMatrIsNotPositive.LABEL"/>
+		<StatusCode code="230096" status="warning"
+			messageKey="kGLMM_CompleteSeparation4BinomialAndNominal.LABEL"/>
+		<StatusCode code="230111" status="warning"
+			messageKey="kGLMM_RecordsFoundWithNonPositiveAnalysisWeightValue.LABEL"/>
+		<StatusCode code="230112" status="warning"
+			messageKey="kGLMM_InvalidOrMissingRecordsAreFiltered.LABEL"/>
+		<StatusCode code="230113" status="warning"
+		messageKey="kGLMM_InvalidEventTrialsRecordsAreFiltered.LABEL"/>
+		<StatusCode code="230116" status="error"
+		messageKey="kGLMM_SubjectWithContField.LABEL"/>
+		<StatusCode code="230117" status="error"
+		messageKey="kGLMM_GroupInRandomWithContField.LABEL"/>
+		<StatusCode code="230119" status="error"
+			messageKey="kGLMM_AllCasesWithNegativeMu.LABEL"/>
+		
+		
+		<!-- mcpeer error code -->
+		<StatusCode code="240047" status="error" messageKey="kMCPeerErr_InvalidFrequencyWeight.LABEL"/>
+
+		<!-- common error code -->
+		<StatusCode code="1" status="error" messageKey="kMCCANCEL.LABEL"/>
+		<StatusCode code="2" status="error" messageKey="kMC_IO_ERROR.LABEL"/>
+		<StatusCode code="6" status="error" messageKey="kMC_WRONG_STATE.LABEL"/>
+		<StatusCode code="7" status="error" messageKey="kMC_CREATE_OR_WRITE_TEMPORARY_FILE_ERROR.LABEL"/>
+		<StatusCode code="101" status="error" messageKey="kMCCom_BadVarIndex.LABEL"/>
+		<StatusCode code="102" status="error" messageKey="kMCCom_NoMetadataForVar.LABEL"/>
+		<StatusCode code="303" status="error" messageKey="kMCRegr_InternalError.LABEL"/>
+		<StatusCode code="304" status="error" messageKey="kMCRegr_DataSourceError.LABEL"/>
+		<StatusCode code="307" status="error" messageKey="kMCRegr_NoRecordsFound.LABEL"/>
+		<StatusCode code="315" status="error" messageKey="kMCRegr_RecordTooShort.LABEL"/>
+		<StatusCode code="316" status="error" messageKey="kMCRegr_InvalidRecordValue.LABEL"/>
+		<StatusCode code="321" status="error" messageKey="kMCRegr_LMatrixEmpty.LABEL"/>
+		<StatusCode code="322" status="error" messageKey="kMCRegr_LMatrixNCols.LABEL"/>
+		<StatusCode code="323" status="error" messageKey="kMCRegr_GEFMatrixEmpty.LABEL"/>
+
+		<!-- Progress report  -->
+		<StatusCode code="101" status="warning" messageKey="PreparedDataHandleMsg.LABEL"/>
+		<StatusCode code="102" status="warning" messageKey="HandleDataProcessMsg.LABEL"/>
+		<StatusCode code="103" status="warning" messageKey="HandleDataProcessEndMsg.LABEL"/>
+		<StatusCode code="104" status="warning" messageKey="ExportPmmlProgressMsg.LABEL"/>
+	</StatusCodes>
+
+	<!-- ContainerType declarations -->
+	<ContainerTypes>
+		<!--  
+		Container types:
+        -   XML documents
+		-	PMML / Model
+		-	Pivot Tables / Multi-Dimensional Variables
+		-	Chart Visualizations
+	    -	Table Visualizations
+		-	Text output
+		-	Static Image
+		-	Case data - a subset
+		__
+		The "fileSuffix" attribute is used when generating the temporary files used to store or retrieve the various components.
+		They don't provide explicit meaning to the application or component but potentially would be useful when debugging.
+        -->
+		<!-- TBD -->
+		<!--  <ContainerType id="compressed_report_container" type="multi_dim_table" format="binary" fileSuffix="zip"/>-->
+		<ContainerType id="pmml_container" mimeType="pmml" resourceKey="" fileSuffix=""/>
+		<ContainerType id="statxml_container" mimeType="xml" resourceKey="" fileSuffix=""/>
+	</ContainerTypes>
+
+	<!-- Component definition. Component names are used as name-spaces and should be unique across component instances. -->
+	<!-- GLMM has three dll files. One is glmmcfmodule.dll that is for CF, the others are mcglmmr.dll and mcgzlmr.dll that are the 
+		real GLMM component dll files. On Windows, it is mcglmmr.dll, other platform, it is libmcglmmr +".so or whatever suffix" -->
+	<Component id="glmm">
+
+		<!-- 
+		Component capabilities [TBD]:
+		-  Data Provider
+		-  Data Transformer
+		-  Data Consumer
+		-  Container Operator (operates upon Containers)
+		-->
+		<Capabilities>
+			<Consumer/>
+		</Capabilities>
+
+		<!-- Property declarations -->
+		<Properties>
+
+			<!-- global settings -->
+			<Property name="UseMetaDataRole" valueType="boolean" defaultValue="false"/>
+			
+			<!-- Data Structure tab -->
+			<Property name="RepeatedMeasure" valueType="effectStructure" isList="false"/>
+			<Property name="ResidualSubjectSpec" valueType="effectStructure" isList="false"/>
+			<Property name="ResidualGroupSpec" valueType="fieldName" isList="true"/>
+			<Property name="ResidualCovarianceType" type="CovarianceType_Enum" isList="false"
+				defaultValue="DIAG"/>
+			<Property name="ResidualCovarianceTBand" valueType="integer" defaultValue="2"/>
+
+
+			<!-- Fields & Effects tab -->
+			<!-- Target sidebar -->
+			<Property name="TargetField" valueType="fieldName" isList="false"/>
+			<Property name="UseTrials" valueType="boolean" defaultValue="false"/>
+			<Property name="UseFieldOrValue" type="UseTrial_enum" defaultValue="None"/>
+			<Property name="TrialsField" valueType="fieldName" isList="false"/>
+			<Property name="TrialsValue" valueType="integer" defaultValue="" min="1" isList="false"/>
+			<Property name="CustomTargetReference" valueType="boolean" defaultValue="false"/>
+			<Property name="TargetReferenceValue" valueType="string" isList="false"/>
+			<Property name="DistLinkCombination" type="DistLinkCombination_Enum"
+				defaultValue="NormalIdentity"/>
+			<Property name="DistributionOfTarget" type="DistributionType_Enum" defaultValue="NORMAL"/>
+			<Property name="LinkFunctionType" type="LinkFunctionType_Enum" defaultValue="IDENTITY"/>
+			<Property name="LinkFunctionParam" valueType="double" defaultValue="1"/>
+			<Property name="UseDefaultDistribution" valueType="boolean" defaultValue="false"/>
+			<Property name="UseDefaultLink" valueType="boolean" defaultValue="false"/>
+
+			<!-- Fixed Effects sidebar -->
+			<Property name="UsePredefinedInputs" valueType="boolean" defaultValue="false"/>
+			<Property name="FixedEffectList" valueType="effectStructure" isList="true"/>
+			<Property name="Intercept" valueType="boolean" defaultValue="true"/>
+			<!-- We will build model on transformed scale always, but statisticians need to test without transformation too -->
+			<Property name="FixedEffsTrans" valueType="boolean" defaultValue="true"/>
+
+			<!-- Random Effects sidebar -->
+			<Property name="RandomSpecs" type="RandomSpecs_Structure" isList="true"/>
+
+			<!-- Weight and Offset sidebar -->
+			<Property name="RegressionWeightField" valueType="fieldName"/>
+			<Property name="UseOffset" resourceKey="" type="UseOffset_Enum" isList="false"
+				defaultValue="None"/>
+			<Property name="OffsetField" resourceKey="" valueType="fieldName" isList="false"/>
+			<Property name="OffsetValue" resourceKey="" valueType="double" isList="false"/>
+
+			<!-- Build option tab -->
+			<!-- Sort order group box -->
+			<Property name="SortTarget" type="SortType_Enum" defaultValue="Ascending"/>
+			<Property name="SortFactors" type="SortType_Enum" defaultValue="Ascending"/>
+			<!-- Post estimation group box -->
+			<Property name="AsymEffCov" type="AsymEffCovType_Enum" defaultValue="Model"/>
+			<Property name="DegreesFreedom" type="DegreesFreedom_Enum" defaultValue="Residual"/>
+			<Property name="CIn" valueType="double" defaultValue="95" min="0" max="100"/>
+			<!-- Stopping rules group box -->
+			<Property name="MaxIterations" valueType="integer" defaultValue="100" min="0"/>
+
+			<!-- Model option tab -->
+			<!-- Estimate Means sidebar -->
+			<Property name="EMMEANS" type="EMMEANS_Structure" isList="true"/>
+			<Property name="EMMEANS_COVARIATES" type="EMMEANS_Covariate_Structure" isList="true"/>
+			<Property name="MeanScale" type="MeanScale_Enum" defaultValue="Original"/>
+			<Property name="pAdjustment" type="pAdjustment_Enum" defaultValue="LSD"/>
+
+			<!-- Saved fields sidebar -->
+			<!-- Save to the Dataset groupbox -->
+			<Property name="PredValue" valueType="fieldName" isList="false"/>
+			<Property name="PredProbability" valueType="fieldName" isList="true"/>
+			<Property name="MaxCategories" valueType="integer" defaultValue="25" min="1"/>
+			<Property name="LBCIMeanPred" valueType="fieldName" isList="true"/>
+			<Property name="UBCIMeanPred" valueType="fieldName" isList="true"/>
+			<Property name="PearsonResid" valueType="fieldName" isList="false"/>
+			<Property name="Confidence" valueType="fieldName" isList="false"/>
+			<Property name="ConfidenceBaseOn" type="ConfidenceBaseOn_Enum" defaultValue="highest"/>
+			<!-- Export model -->
+			<Property name="OutFile" valueType="string" isList="false"/>
+
+			<!-- Below properties have no controls in UI -->
+			<!-- post estimation? -->
+			<Property name="AnalysisType" resourceKey="" type="AnalysisType_Enum"
+				defaultValue="TypeIII"/>
+			<!-- Frequency Weight should come from global setting (or data model?) -->
+			<Property name="FrequencyWeightField" valueType="fieldName"/>
+			<!-- Handling Missing Values-->
+			<Property name="ExcludeUserMissing" valueType="boolean" defaultValue="true"/>
+			<!-- Estimation Inputs -->
+			<Property name="EstimateMethod" type="EstimateMethod_Structure"/>
+			<Property name="OptimizationTech" type="OptimizationTech_Enum" defaultValue="ASM"/>
+			<Property name="UpdateDirectionTech" type="UpdateDirectionTech_Structure"/>
+			<Property name="LineSearchTech" type="LineSearchTech_Structure"/>
+			<Property name="StopCritSingInn" type="StopCritSingInn_Structure"/>
+			<Property name="StopCritSingOut" type="StopCritSingOut_Structure"/>
+			<Property name="ZeroTolerance" valueType="double" defaultValue="1e-6"/>
+			<Property name="SingTolerance" valueType="double" defaultValue="1e-12" min="0.0" max="99999999" />
+			<Property name="DistParamEst" type="DistParamEst_Structure"/>
+			<Property name="ScaleParameter" type="ScaleParameterType_Enum" defaultValue="Automatic"/>
+			<!-- Self Testing for score -->
+			<Property name="XBPred" valueType="fieldName" isList="true"/>
+			<Property name="XBStdError" valueType="fieldName" isList="true"/>
+			<Property name="Propensities" type="Propensities_Structure" isList="false"/>
+			<Property name="XBResid" valueType="fieldName" isList="false"/>
+			<Property name="MeanResid" valueType="fieldName" isList="false"/>
+			<Property name="XBPearsonResid" valueType="fieldName" isList="false"/>
+			<Property name="MQLXBPred" valueType="fieldName" isList="true"/>
+			<Property name="MQLXBStdError" valueType="fieldName" isList="true"/>
+			<Property name="MQLPredValue" valueType="fieldName" isList="false"/>
+			<Property name="MQLPredProbability" valueType="fieldName" isList="true"/>
+			<Property name="MQLLBCIMeanPred" valueType="fieldName" isList="true"/>
+			<Property name="MQLUBCIMeanPred" valueType="fieldName" isList="true"/>
+			<Property name="MQLXBResid" valueType="fieldName" isList="false"/>
+			<Property name="MQLMeanResid" valueType="fieldName" isList="false"/>
+			<Property name="MQLPearsonResid" valueType="fieldName" isList="false"/>
+			<Property name="MQLXBPearsonResid" valueType="fieldName" isList="false"/>
+			<!-- Initialize theta parameters -->
+			<Property name="InitialParameters" type="InitialParameters_Structure" isList="true"/>
+		</Properties>
+
+		<!-- Containers -->
+		<Containers>
+			<!-- TBD -->
+			<!-- <Container name="compressedReport" type="compressed_report_container" usage="output" runtimeProperty="tmpReportFile"/> -->
+			<Container name="PMML" type="pmml_container" usage="output"
+				runtimeProperty="tmpReportFile"/>
+			<Container name="StatXML" type="statxml_container" usage="output"
+				runtimeProperty="tmpReportFile"/>
+		</Containers>
+
+	</Component>
+</Module>

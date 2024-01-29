@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 5/12/08 -->
+<Command xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:SyntaxSchema.xsd"
+    xmlns="http://xml.spss.com/spss/extension" Name="CATPCA" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ANALYSIS" EqualsSign="Optional">
+        <Parameter Name="WEIGHT" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="LEVEL" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="SPORD"/>
+            <EnumValue Name="SPNOM"/>
+            <EnumValue Name="ORDI"/>
+            <EnumValue Name="NOMI"/>
+            <EnumValue Name="MNOM"/>
+            <EnumValue Name="NUME"/>
+        </Parameter>
+        <Parameter Name="DEGREE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="INKNOT" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DISCRETIZATION" EqualsSign="Optional">
+        <Parameter Name="GROUPING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EQINTV" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="RANKING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MULTIPLYING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NCAT" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="DISTR" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NORMAL"/>
+            <EnumValue Name="UNIFORM"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="PASSIVE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ACTIVE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODEIMPU" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXTRACAT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LISTWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RANDIMPU" EqualsSign="None" ParameterType="Keyword"></Parameter>
+    </Subcommand>
+    <Subcommand Name="SUPPLEMENTARY" EqualsSign="Optional">
+        <Parameter Name="OBJECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CONFIGURATION" EqualsSign="Optional">
+        <Parameter Name="INITIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FIXED" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DIMENSION" EqualsSign="Optional"/>
+    <Subcommand Name="NORMALIZATION" EqualsSign="Optional">
+        <Parameter Name="VPRINCIPAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name=" OPRINCIPAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SYMMETRICAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INDEPENDENT" ParameterType="Keyword" EqualsSign="None"/>
+    </Subcommand>
+    <Subcommand Name="MAXITER" EqualsSign="Optional"/>
+    <Subcommand Name="CRITITER" EqualsSign="Optional"/>
+    <Subcommand Name="PRINT">
+        <Parameter Name="DESCRIP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VAF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOADING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="QUANT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HISTORY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OCORR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OBJECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SORT" ParameterType="Keyword" EqualsSign="None"></Parameter>
+        <Parameter Name="NOSORT" ParameterType="Keyword" EqualsSign="None"></Parameter>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="OBJECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOADING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CATEGORY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CENTR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="JOINTCAT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TRANS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BIPLOT" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="LOADING"/>
+        </Parameter>
+        <Parameter Name="TRIPLOT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PROJCENTR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NDIM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VAF" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="OBELLAREA" ParameterType="Keyword" EqualsSign="None"></Parameter>
+        <Parameter Name="CTELLAREA" ParameterType="Keyword" EqualsSign="None"></Parameter>
+        <Parameter Name="LDELLAREA" ParameterType="Keyword" EqualsSign="None"></Parameter>
+        <Parameter Name="STDEV" ParameterType="Keyword" EqualsSign="None"></Parameter>
+        <Parameter Name="AREA" ParameterType="Keyword" EqualsSign="None"></Parameter>
+        <Parameter Name="GT" ParameterType="Keyword" EqualsSign="None"></Parameter>
+        <Parameter Name="LT" ParameterType="Keyword" EqualsSign="None"></Parameter>
+        <Parameter Name="NELLPNT" ParameterType="Keyword" EqualsSign="None"></Parameter>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="TRDATA" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="TRA"/>
+        </Parameter>
+        <Parameter Name="OBJECT" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="OBSCO"/>
+        </Parameter>
+        <Parameter Name="APPROX" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="APP"/>
+        </Parameter>
+        <Parameter Name="LDELLAREA" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="OBELLAREA" ParameterType="Keyword" EqualsSign="None"></Parameter>
+        <Parameter Name="CTELLAREA" ParameterType="Keyword" EqualsSign="None"></Parameter>
+        <Parameter Name="ELLAREAOBJ" ParameterType="Keyword" EqualsSign="None"></Parameter>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional">
+        <Parameter Name="TRDATA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OBJECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DISCRDATA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="APPROX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ELLCOORD" ParameterType="Keyword" EqualsSign="None"></Parameter>
+    </Subcommand>
+    <Subcommand Name="ROTATION" EqualsSign="Optional" Occurrence="Optional">
+        <Parameter Name="NOROTATE" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="KAISER" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="NOKAISER" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="VARIMAX" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="EQUAMAX" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="QUARTIMAX" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="PROMAX" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="OBLIMIN" EqualsSign="None" ParameterType="Keyword"></Parameter>
+    </Subcommand>
+    <Subcommand Name="RESAMPLE" EqualsSign="Optional" Occurrence="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="BOOTSTRAP" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="BALANCED" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="UNBALANCED" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="PROCRU" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="REFLEC" EqualsSign="None" ParameterType="Keyword"></Parameter>
+    </Subcommand>
+
+</Command>

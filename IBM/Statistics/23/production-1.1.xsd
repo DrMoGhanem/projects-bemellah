@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema targetNamespace="http://xml.spss.com/spss/production" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:pj="http://xml.spss.com/spss/production" 
+    elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1">
+  <xs:annotation>
+    <xs:documentation xml:lang="en">
+        Copyright 2007 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties with
+        respect to your use of this specification, expressed, implied, or otherwise, including without
+        limitation, all warranties of merchantability and fitness for a particular purpose.  SPSS shall
+        not be liable for any special, incidental, or consequential damages, including without limitation
+        lost revenues or lost profits resulting from the use of the information herein.
+    </xs:documentation>
+  </xs:annotation>
+
+<!-- job -->
+  <xs:element name="job">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">
+        The job is the top-level element, also known as the document or root element.  This element
+        contains a complete description of the production document. Symbol names must be unique 
+				within this context.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element ref="pj:output" minOccurs="1" maxOccurs="1"/>
+        <xs:element ref="pj:syntax" minOccurs="1" maxOccurs="unbounded"/>
+        <xs:element ref="pj:symbol" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+      <xs:attribute name="syntaxFormat" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="interactive"/>
+            <xs:enumeration value="batch"/>
+          </xs:restriction>
+        </xs:simpleType>        
+      </xs:attribute>
+      <xs:attribute name="syntaxErrorHandling" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="continue"/>
+            <xs:enumeration value="stop"/>
+          </xs:restriction>
+        </xs:simpleType>        
+      </xs:attribute>
+      <xs:attribute name="print" type="xs:boolean" use="required">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Whether to print the SPSS Viewer file on completion of the production job.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="creator" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>For documentation purposes; does not affect the job.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="date" type="xs:dateTime">
+        <xs:annotation>
+          <xs:documentation>For documentation purposes; does not affect the job.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="repository_host" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Repository hostname.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="repository_port" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Repository port number.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="repository_ssl" type="xs:string">
+          <xs:annotation>
+             <xs:documentation>Repository SSL enabled.</xs:documentation>
+          </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="repository_username" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Repository user name.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="repository_password" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Repository user encrypted password.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="repository_provider" type="xs:string">
+        <xs:annotation>
+          <xs:documentation>Repository provider.</xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+	<xs:unique name="symbolNameUnique">
+	  <xs:selector xpath="symbol"/>
+	  <xs:field xpath="@symbolName"/>
+	</xs:unique>
+  </xs:element>
+
+<!-- output -->
+  <xs:element name="output">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">
+        The output element describes the path and format of the production job output. The
+        path is relative to the SPSS Client file system. It can be either a file or a
+        directory depending on the format.
+
+        Note: Not all table and image attributes apply to all output formats or on all
+        platforms.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="outputPath" type="xs:anyURI" use="required"/>
+      <xs:attribute name="outputFormat" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="viewer"/>
+            <xs:enumeration value="viewer-pes"/>
+            <xs:enumeration value="web-reports"/>
+            <xs:enumeration value="html"/>
+            <xs:enumeration value="excel"/>
+            <xs:enumeration value="word"/>
+            <xs:enumeration value="power-point"/>
+            <xs:enumeration value="pdf"/>
+            <xs:enumeration value="text-codepage"/>
+            <xs:enumeration value="text-utf8"/>
+            <xs:enumeration value="text-utf16"/>
+          </xs:restriction>
+        </xs:simpleType>        
+      </xs:attribute>
+      <xs:attribute name="imageFormat" use="optional">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="bmp"/>
+            <xs:enumeration value="emf"/>
+            <xs:enumeration value="eps"/>
+            <xs:enumeration value="jpg"/>
+            <xs:enumeration value="png"/>
+            <xs:enumeration value="tif"/>
+          </xs:restriction>
+        </xs:simpleType>        
+      </xs:attribute>
+      <xs:attribute name="imageSize" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Image size is a percentage between 1 and 200 inclusive.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:positiveInteger">
+            <xs:minInclusive value="1"/>
+            <xs:maxInclusive value="200"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="tableSlideTitle" type="xs:boolean" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Whether to use SPSS Viewer outline entries as slide titles for PowerPoint output.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="tableEmbedBookmark" type="xs:boolean" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Whether to use SPSS Viewer outline entries as embedded bookmarks for PDF output.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="tableEmbedFont" type="xs:boolean" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Whether to embed fonts with each table for PDF output.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="tableColumnSeparator" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The column separator to use for text output. 
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="space"/>
+            <xs:enumeration value="tab"/>
+          </xs:restriction>
+        </xs:simpleType>        
+      </xs:attribute>
+      <xs:attribute name="tableRowBorder" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The table row border character to use for text output. Only valid 
+            when the tableColumnSeparator attribute is set to 'space'.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:length value="1"/>
+          </xs:restriction>
+        </xs:simpleType>        
+      </xs:attribute>
+      <xs:attribute name="tableColumnBorder" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The table column border character to use for text output. Only valid 
+            when the tableColumnSeparator attribute is set to 'space'.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:length value="1"/>
+          </xs:restriction>
+        </xs:simpleType>        
+      </xs:attribute>
+      <xs:attribute name="tableColumnAutofit" type="xs:boolean" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Whether to autofit table column widths for text output. This attribute is
+            mutually exclusive with the tableColumnWidth attribute.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="tableColumnWidth" type="xs:positiveInteger" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Defines a table column width in character units for text output. This 
+            attribute is mutually exclusive with the tableColumnAutofit attribute.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+<!-- syntax -->
+  <xs:element name="syntax">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">
+        The syntax element describes the path of a syntax file run by the production job. The
+        path is relative to the SPSS Backend file system.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="syntaxPath" type="xs:anyURI" use="required"/>
+    </xs:complexType>
+  </xs:element>
+
+<!-- symbol -->
+  <xs:element name="symbol">
+    <xs:annotation>
+      <xs:documentation xml:lang="en">
+        The symbol element describes a symbol definition for the production job. Each symbol
+				must have a name. A leading '@' is not part of the symbol name in this context. A 
+				symbol must indicate whether its value should be quoted or not. The user prompt 
+				and default value are optional.
+      </xs:documentation>
+    </xs:annotation>
+    <xs:complexType>
+      <xs:attribute name="name" type="xs:string" use="required"/>
+      <xs:attribute name="quote" type="xs:boolean" use="required"/>
+      <xs:attribute name="default" type="xs:string" use="optional"/>
+      <xs:attribute name="prompt" type="xs:string" use="optional"/>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

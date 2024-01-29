@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema targetNamespace="http://xml.spss.com/spss/viewer/viewer-text" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:vtx="http://xml.spss.com/spss/viewer/viewer-text" 
+    xmlns:vst="http://xml.spss.com/spss/viewer/viewer-style" 
+    elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+  <xs:annotation>
+    <xs:documentation xml:lang="en">Copyright 2006 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties with respect to your use of this specification, expressed, implied, or otherwise, including without limitation, all warranties of merchantability and fitness for a particular purpose.  SPSS shall not be liable for any special, incidental, or consequential damages, including without limitation lost revenues or lost profits resulting from the use of the information herein.</xs:documentation>
+  </xs:annotation>
+
+  <!-- styles -->
+  <xs:import namespace="http://xml.spss.com/spss/viewer/viewer-style" schemaLocation="viewer-style-1.0.xsd"/>
+
+  <!-- the root element -->
+  <xs:element name="text">
+    <xs:complexType>
+      <xs:sequence minOccurs="0" maxOccurs="unbounded">
+        <xs:any processContents="skip">
+            <xs:annotation>
+                <xs:documentation xml:lang="en">
+                    The entire text block structure will be represented using the XHTML/HTML.
+                    This text block will include the DOCTYPE declarations, etc., and thus is represented
+                    in this schema using the processContents="skip" method, so that it's contents are not
+                    disturbed.
+                </xs:documentation>
+            </xs:annotation>
+        </xs:any>
+      </xs:sequence>
+      <xs:attribute name="commandName" type="xs:string" use="optional">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+             The language invarient command name. This corresponds to the Command Identifier as seen 
+             in the OMS Control Panel UI.  Not all text blocks are associated with a procedure,
+             so this attribute is optional.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="subType" type="xs:string" use="optional">
+        <xs:annotation>
+           <xs:documentation xml:lang="en">
+              The language invarient sub-type. It is used to trigger Autoscripts, etc.
+           </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="type" use="required">
+        <xs:simpleType>
+          <xs:restriction base="xs:NMTOKEN">
+            <xs:enumeration value="log"/>
+            <xs:enumeration value="text"/>
+            <xs:enumeration value="title"/>
+            <xs:enumeration value="page-title"/>
+            <xs:enumeration value="page-header"/>
+            <xs:enumeration value="page-footer"/>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attributeGroup ref="vst:block-properties"/>
+      <xs:attribute name="cssStyleSheet" type="xs:anyURI" use="optional">
+        <xs:annotation>
+           <xs:documentation xml:lang="en">
+              Specifies the styleSheet to use to style the text.  This is optional.  If applied, it will not
+              override any styles specified in the inline styles in the text block.
+           </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+
+</xs:schema>

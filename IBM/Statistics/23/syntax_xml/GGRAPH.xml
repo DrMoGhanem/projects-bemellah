@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 5/23/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="GGRAPH" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GRAPHDATASET" EqualsSign="None">
+        <Parameter Name="NAME" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="DATASET" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NAME"/>
+            <EnumValue Name="LEVEL"/>
+            <EnumValue Name="SCALE"/>
+            <EnumValue Name="NOMINAL"/>
+            <EnumValue Name="ORDINAL"/>
+            <EnumValue Name="CASEVALUE"/>
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="RESPONSES"/>
+            <EnumValue Name="DUP"/>
+            <EnumValue Name="NODUP"/>
+            <EnumValue Name="MINIMUM"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="VALIDN"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="GMEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="GPTILE"/>
+            <EnumValue Name="PLT"/>
+            <EnumValue Name="PGT"/>
+            <EnumValue Name="NLT"/>
+            <EnumValue Name="NGT"/>
+            <EnumValue Name="PIN"/>
+            <EnumValue Name="NIN"/>
+            <EnumValue Name="NLE"/>
+            <EnumValue Name="PLE"/>
+            <EnumValue Name="NEQ"/>
+            <EnumValue Name="PEQ"/>
+            <EnumValue Name="PGE"/>
+            <EnumValue Name="COUNTCI"/>
+            <EnumValue Name="MEDIANCI"/>
+            <EnumValue Name="MEANCI"/>
+            <EnumValue Name="MEANSD"/>
+            <EnumValue Name="MEANSE"/>
+        </Parameter>
+        <Parameter Name="TRANSFORM" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="VARSTOCASES"/>
+            <EnumValue Name="SUMMARY"/>
+            <EnumValue Name="INDEX"/>
+            <EnumValue Name="HIGH"/>
+            <EnumValue Name="LOW"/>
+        </Parameter>
+        <Parameter Name="MISSING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="LISTWISE"/>
+            <EnumValue Name="VARIABLEWISE"/>
+        </Parameter>
+        <Parameter Name="REPORTMISSING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+        <Parameter Name="CASELIMIT" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="GRAPHSPEC" EqualsSign="None">
+        <Parameter Name="SOURCE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INLINE"/>
+            <EnumValue Name="GPLFILE"/>
+            <EnumValue Name="VIZMLFILE"/>
+            <EnumValue Name="VIZTEMPLATE"/>
+        </Parameter>
+        <Parameter Name="EDITABLE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="LABEL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULTTEMPLATE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="TEMPLATE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="VIZSTYLESHEET" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LOCATION" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="LOCAL"/>
+        </Parameter>
+     </Subcommand>
+</Command>
