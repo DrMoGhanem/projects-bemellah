@@ -1,0 +1,667 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: <Analytic Components>                          -->
+<!--                                                                   -->
+<!-- (c)Copyright IBM Corp. 2010, 2011                                 -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<!-- Sample Module XML for Descriptives -->
+<Module xmlns="http://www.ibm.com/software/analytics/spss/xml/extension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" debug="false" version="8.0" xsi:schemaLocation="http://www.ibm.com/software/analytics/spss/xml/extension http://www.ibm.com/software/analytics/spss/xml/extension/ModuleSpecification.xsd">
+	<ModuleDetails copyright="(c) 2009 SPSS, Inc." description="Scoring Module" id="scoring" label="Scoring" provider="SPSS, Inc."  providerTag="pasw" version="8.0"/>
+	
+	<!--  On Windows, the shared library would called cf_scoringr.dll, on Unix/Linux cf_scoring.so/.lib/whatever -->
+	<SharedLibrary basename="cfscoring"/>
+
+    <!-- Resources used by the module. -->	
+	<Resources>
+		<Bundle id="scoring_module_res" path="messages" type="properties"/> 
+	</Resources>
+
+	<CommonObjects>
+		<!--  Property type definitions. -->
+		<PropertyTypes>
+			
+			<!-- The missing value policy  -->
+			<Enumeration  id="missingValuePolicyType" >
+				<Enum value="asMissingPredictor" /> 
+				<Enum value="scoreAsMissing" /> 
+			</Enumeration>
+
+			<!-- The confidence based on method  -->
+			<Enumeration  id="confidenceBasedOnType" >
+				<Enum value="onProbability" /> 
+				<Enum value="onIncrease" /> 
+			</Enumeration>
+
+		    <!-- The encoding  -->
+		    <Enumeration  id="encodingType" >
+		        <Enum value="UTF-8" />
+		        <Enum value="local" />
+		        <Enum value="others" />
+		    </Enumeration>
+			
+		    <!-- The settings of scoring the association model from Modeler UI settings. -->
+		    <Enumeration  id="assocRuleCriterionType" >
+			    <Enum value="confidence" />
+			    <Enum value="support" />
+				<Enum value="rulesupport" />
+		  		<Enum value="lift" />
+		  		<Enum value="deployability" />
+		    </Enumeration>
+			
+			<!-- The settings of scoring the association model from Modeler UI settings. -->
+			<Enumeration  id="assocCheckBasketType" >
+				<Enum value="isOutsideBasket" />
+				<Enum value="isInsideBasket" />
+				<Enum value="notCheckBasket" />
+			</Enumeration>
+
+	        <!-- The score method for Anomaly Dectection Model  -->
+	        <Enumeration  id="adScoreMethodType" >
+	        	<Enum value="FLAG_AND_SCORE" />
+	        	<Enum value="FLAG_ONLY" />
+	        	<Enum value="SCORE_ONLY" />
+	        </Enumeration>
+			
+			<!-- The score method for Selflearning Model from Modeler UI settings. -->
+			<Enumeration  id="selflearningSortEnum" >
+				<Enum value="descending" />
+				<Enum value="ascending" />
+			</Enumeration>
+	  
+			<!-- The future time type for CoxReg Model from Modeler UI settings. -->
+			<Enumeration  id="CoxRegFutureTimeTypeEnum" >
+				<Enum value="Intervals" />
+				<Enum value="Fields" />
+				<Enum value="None" />
+			</Enumeration>
+			
+			<!-- The future SQL scoring type from Modeler UI settings. -->
+			<Enumeration  id="SQLScoreTypeEnum" >
+				<Enum value="false" resourceKey="enableSQL.false"/>
+				<Enum value="true" resourceKey="enableSQL.true"/>
+				<Enum value="native" resourceKey="enableSQL.native"/>
+			</Enumeration>			
+			
+			<!-- The variable name structure for association model -->
+			<Structure id="assocNameStruct">
+				<Attribute name="name" resourceKey="" valueType="string" isList="false" /> 
+				<Attribute name="originalName" resourceKey="" valueType="string" isList="false" /> 
+				<Attribute name="predicate" resourceKey="" valueType="string" isList="false" /> 
+			</Structure>
+  		<!-- The dll names for the scoring -->
+		<Structure id="scoringDllStructure">
+			<Attribute name="SmartScore" resourceKey ="" valueType ="string" defaultValue = "mcscorersmart" isList="false" />
+			<Attribute name="NeuralNetwork" resourceKey ="" valueType ="string" defaultValue = "mcscorernnet" isList="false" />
+			<Attribute name="MiningModel" resourceKey ="" valueType ="string" defaultValue = "mcscorermining" isList="false" />
+		</Structure>
+
+  		<!-- The dll names for the Smart Score -->
+		<Structure id="modelDllStructure">
+			<Attribute name="TreeModel" resourceKey ="" valueType ="string" defaultValue = "TreeModel" isList="false" />
+		 	<Attribute name="discriminant-model" resourceKey ="" valueType="string" defaultValue="discriminant-model" isList="false" />
+		 	<Attribute name="GeneralRegressionModel" resourceKey ="" valueType="string" defaultValue="GeneralRegressionModel" isList="false" />
+		 	<Attribute name="ClusteringModel" resourceKey ="" valueType="string" defaultValue="ClusteringModel" isList="false" />
+		 	<Attribute name="NeuralNetwork" resourceKey ="" valueType="string" defaultValue="NeuralNetwork" isList="false" />
+		 	<Attribute name="AssociationModelLattice" resourceKey ="" valueType="string" defaultValue="AssociationModelLattice" isList="false" />
+		 	<Attribute name="SeqAssociationLattice" resourceKey ="" valueType="string" defaultValue="SeqAssociationLattice" isList="false" />
+		 	<Attribute name="NaiveBayesModel" resourceKey ="" valueType="string" defaultValue="NaiveBayesModel" isList="false" />
+		 	<Attribute name="AssociationModel" resourceKey ="" valueType="string" defaultValue="AssociationModel" isList="false" />
+		 	<Attribute name="RuleSetModel" resourceKey ="" valueType="string" defaultValue="RuleSetModel" isList="false" />
+		 	<Attribute name="BayesNetModel" resourceKey ="" valueType="string" defaultValue="BayesNetModel" isList="false" />
+		 	<Attribute name="SupportVectorMachineModel" resourceKey ="" valueType="string" defaultValue="SupportVectorMachineModel" isList="false" />
+		 	<Attribute name="NearestNeighborModel" resourceKey ="" valueType="string" defaultValue="NearestNeighborModel" isList="false" />
+		 	<Attribute name="MiningModel" resourceKey ="" valueType="string" defaultValue="MiningModel" isList="false" />
+		 	<Attribute name="RegressionModel" resourceKey ="" valueType="string" defaultValue="RegressionModel" isList="false" />
+		 	<Attribute name="TimeSeriesModel" resourceKey ="" valueType="string" defaultValue="TimeSeriesModel" isList="false" />
+		</Structure>
+
+  		<!-- The model id for output field name pattern -->
+		<Structure id="modelIDStructure">
+			<Attribute name="TreeModel" resourceKey ="" valueType ="string" defaultValue = "R" isList="false" />
+		 	<Attribute name="discriminant-model" resourceKey ="" valueType="string" defaultValue="discriminant-model" isList="false" />
+		 	<Attribute name="GeneralRegressionModel" resourceKey ="" valueType="string" defaultValue="L" isList="false" />
+		 	<Attribute name="ClusteringModel" resourceKey ="" valueType="string" defaultValue="ClusteringModel" isList="false" />
+		 	<Attribute name="NeuralNetwork" resourceKey ="" valueType="string" defaultValue="N" isList="false" />
+		 	<Attribute name="AssociationModelLattice" resourceKey ="" valueType="string" defaultValue="AssociationModelLattice" isList="false" />
+		 	<Attribute name="SeqAssociationLattice" resourceKey ="" valueType="string" defaultValue="SeqAssociationLattice" isList="false" />
+		 	<Attribute name="NaiveBayesModel" resourceKey ="" valueType="string" defaultValue="NaiveBayesModel" isList="false" />
+		 	<Attribute name="AssociationModel" resourceKey ="" valueType="string" defaultValue="A" isList="false" />
+		 	<Attribute name="RuleSetModel" resourceKey ="" valueType="string" defaultValue="RuleSetModel" isList="false" />
+		 	<Attribute name="BayesNetModel" resourceKey ="" valueType="string" defaultValue="B" isList="false" />
+			<Attribute name="SelflearningModel" resourceKey ="" valueType="string" defaultValue="S" isList="false" />
+		 	<Attribute name="SupportVectorMachineModel" resourceKey ="" valueType="string" defaultValue="S" isList="false" />
+		 	<Attribute name="NearestNeighborModel" resourceKey ="" valueType="string" defaultValue="KNN" isList="false" />
+		 	<Attribute name="MiningModel" resourceKey ="" valueType="string" defaultValue="MiningModel" isList="false" />
+		 	<Attribute name="CLUSTER_KOHONEN" resourceKey ="" valueType="string" defaultValue="K" isList="false" />
+		 	<Attribute name="ANOMALYDETECTION" resourceKey ="" valueType="string" defaultValue="O" isList="false" />
+		 	<Attribute name="CLUSTER_KMEANS" resourceKey ="" valueType="string" defaultValue="KM" isList="false" />
+		 	<Attribute name="RULESET_DL" resourceKey ="" valueType="string" defaultValue="D" isList="false" />
+			<Attribute name="GZLR" resourceKey ="" valueType="string" defaultValue="G" isList="false" />
+			<Attribute name="LR" resourceKey ="" valueType="string" defaultValue="E" isList="false" />
+		 	<Attribute name="RegressionModel" resourceKey ="" valueType="string" defaultValue="RegressionModel" isList="false" />
+		 	<Attribute name="TimeSeriesModel" resourceKey ="" valueType="string" defaultValue="TS" isList="false" />			
+			<Attribute name="SELF_LEARNING" resourceKey ="" valueType="string" defaultValue="S" isList="false" />
+			<Attribute name="CLUSTER_TWOSTEP" resourceKey ="" valueType="string" defaultValue="T" isList="false" />
+		</Structure>
+
+  		<!-- The result type for output field name pattern -->
+		<Structure id="resultTypeStructure">
+			<Attribute name="prediction" resourceKey ="" valueType ="string" defaultValue="" isList="false" />
+		 	<Attribute name="probability" resourceKey ="" valueType="string" defaultValue="P" isList="false" />
+		 	<Attribute name="probcategory" resourceKey ="" valueType="string" defaultValue="P" isList="false" />
+		 	<Attribute name="confidence" resourceKey ="" valueType="string" defaultValue="C" isList="false" />
+		 	<Attribute name="stddev" resourceKey ="" valueType="string" defaultValue="S" isList="false" />
+
+		 	<Attribute name="clustering-kohonen-x" resourceKey ="" valueType="string" defaultValue="X" isList="false" />
+		 	<Attribute name="clustering-kohonen-y" resourceKey ="" valueType="string" defaultValue="Y" isList="false" />
+		 	<Attribute name="clustering-kohonen-xy" resourceKey ="" valueType="string" defaultValue="XY" isList="false" />
+		 	<Attribute name="clustering-kmeans-distance" resourceKey ="" valueType="string" defaultValue="D" isList="false" />
+		 	
+			<Attribute name="association_confidence" resourceKey ="" valueType="string" defaultValue="C" isList="false" />			
+			<Attribute name="selflearning_confidence" resourceKey ="" valueType="string" defaultValue="C" isList="false" />
+			</Structure>
+
+  		<!-- The output field name pattern -->
+		<Structure id="namePatternStructure">
+			<Attribute name="prediction" resourceKey ="" valueType ="string" defaultValue="${M}{S}-{T}" isList="false" />
+		 	<Attribute name="probability" resourceKey ="" valueType="string" defaultValue="${M}{R}{S}-{T}" isList="false" />
+		 	<Attribute name="probcategory" resourceKey ="" valueType="string" defaultValue="${M}{R}{S}-{C}" isList="false" />
+		 	<Attribute name="confidence" resourceKey ="" valueType="string" defaultValue="${M}{R}{S}-{T}" isList="false" />
+		 	<Attribute name="stddev" resourceKey ="" valueType="string" defaultValue="${M}{R}-{T}" isList="false" />
+		 	<Attribute name="tree-nodeid" resourceKey ="" valueType="string" defaultValue="NodeID" isList="false" />
+		 	<Attribute name="cox-cumhazard" resourceKey ="" valueType="string" defaultValue="CumHazard" isList="false" />
+		 	<Attribute name="knn-caseid" resourceKey ="" valueType="string" defaultValue="${M}{S}-neighbor-{G}" isList="false" />
+		 	<Attribute name="knn-distance" resourceKey ="" valueType="string" defaultValue="${M}{S}-distance-{G}" isList="false" />
+		 	<Attribute name="knn-caselabel" resourceKey ="" valueType="string" defaultValue="${M}{S}-neighbor-{G}" isList="false" />
+		 	<Attribute name="adjustedpropensity" resourceKey ="" valueType="string" defaultValue="$AP{S}-{T}" isList="false" />
+		 	<Attribute name="rawpropensity" resourceKey ="" valueType="string" defaultValue="$RP{S}-{T}" isList="false" />
+		 	<Attribute name="clustering-clusterid" resourceKey ="" valueType="string" defaultValue="clustering-clusterid" isList="false" />
+
+		 	<Attribute name="clustering-kohonen-x" resourceKey ="" valueType="string" defaultValue="${M}{R}{S}-Kohonen" isList="false" />
+		 	<Attribute name="clustering-kohonen-y" resourceKey ="" valueType="string" defaultValue="${M}{R}{S}-Kohonen" isList="false" />
+		 	<Attribute name="clustering-kohonen-xy" resourceKey ="" valueType="string" defaultValue="${M}{R}{S}-Kohonen" isList="false" />
+
+		 	<Attribute name="anomaly-flag" resourceKey ="" valueType="string" defaultValue="${M}{S}-Anomaly" isList="false" />
+		 	<Attribute name="anomaly-index" resourceKey ="" valueType="string" defaultValue="${M}{S}-AnomalyIndex" isList="false" />
+		 	<Attribute name="anomaly-clusterid" resourceKey ="" valueType="string" defaultValue="${M}{S}-PeerGroup" isList="false" />
+		 	<Attribute name="anomaly-varname" resourceKey ="" valueType="string" defaultValue="${M}{S}-Field-{G}" isList="false" />
+		 	<Attribute name="anomaly-avrimpact" resourceKey ="" valueType="string" defaultValue="${M}{S}-FieldImpact-{G}" isList="false" />			
+			
+		 	<Attribute name="clustering-kmeans-clusterid" resourceKey ="" valueType="string" defaultValue="${M}{S}-{N}" isList="false" />			
+		 	<Attribute name="clustering-kmeans-distance" resourceKey ="" valueType="string" defaultValue="${M}{R}{S}-{N}" isList="false" />
+			
+			<Attribute name="association_prediction" resourceKey ="" valueType ="string" defaultValue="${M}{S}-{T}-{G}" isList="false" />
+			<Attribute name="association_confidence" resourceKey ="" valueType="string" defaultValue="${M}{R}{S}-{T}-{G}" isList="false" />
+			<Attribute name="association_ruleid" resourceKey ="" valueType="string" defaultValue="${M}{S}-Rule_ID-{G}" isList="false" />
+			
+			<Attribute name="selflearning_prediction" resourceKey ="" valueType ="string" defaultValue="${M}{S}-{T}-{G}" isList="false" />
+			<Attribute name="selflearning_confidence" resourceKey ="" valueType="string" defaultValue="${M}{R}{S}-{T}-{G}" isList="false" />
+
+			<Attribute name="ruleset-dl-probability" resourceKey ="" valueType="string" defaultValue="${M}P{S}-{T}" isList="false" />
+			<Attribute name="ruleset-firstid" resourceKey ="" valueType="string" defaultValue="${M}I{S}-{T}" isList="false" />
+
+			<Attribute name="timeseries-lowerconfidence" resourceKey ="" valueType="string" defaultValue="${M}LCI{S}-{T}" isList="false" />
+			<Attribute name="timeseries-upperconfidence" resourceKey ="" valueType="string" defaultValue="${M}UCI{S}-{T}" isList="false" />
+			<Attribute name="timeseries-noiseresiduals" resourceKey ="" valueType="string" defaultValue="${M}NR{S}-{T}" isList="false" />
+			</Structure>
+
+  		<!-- The output field label pattern -->
+		<Structure id="labelPatternStructure">
+			<Attribute name="prediction" resourceKey ="" valueType ="string" defaultValue="kSCORING_PredictedValue_0" isList="false" />
+		 	<Attribute name="probability" resourceKey ="" valueType="string" defaultValue="kSCORING_UndefinedLabel_0" isList="false" />
+		 	<Attribute name="probcategory" resourceKey ="" valueType="string" defaultValue="kSCORING_Probability_2" isList="false" />
+		 	<Attribute name="confidence" resourceKey ="" valueType="string" defaultValue="kSCORING_ConfidencePP_0" isList="false" />
+		 	<Attribute name="stddev" resourceKey ="" valueType="string" defaultValue="kSCORING_UndefinedLabel_0" isList="false" />
+		 	<Attribute name="tree-nodeid" resourceKey ="" valueType="string" defaultValue="kSCORING_UndefinedLabel_0" isList="false" />
+		 	<Attribute name="cox-cumhazard" resourceKey ="" valueType="string" defaultValue="kSCORING_UndefinedLabel_0" isList="false" />
+		 	<Attribute name="knn-caseid" resourceKey ="" valueType="string" defaultValue="kSCORING_UndefinedLabel_0" isList="false" />
+		 	<Attribute name="knn-distance" resourceKey ="" valueType="string" defaultValue="kSCORING_UndefinedLabel_0" isList="false" />
+		 	<Attribute name="knn-caselabel" resourceKey ="" valueType="string" defaultValue="kSCORING_UndefinedLabel_0" isList="false" />
+		 	<Attribute name="adjustedpropensity" resourceKey ="" valueType="string" defaultValue="kSCORING_UndefinedLabel_0" isList="false" />
+		 	<Attribute name="rawpropensity" resourceKey ="" valueType="string" defaultValue="kSCORING_UndefinedLabel_0" isList="false" />
+		</Structure>
+		<!-- The output field label pattern -->
+		<Structure id="predicateListStructure">
+			<Attribute name="closeTo" resourceKey ="" valueType ="string" defaultValue="kSCORING_Predicate_CloseTo" isList="false" />
+			<Attribute name="crosses" resourceKey ="" valueType="string" defaultValue="kSCORING_Predicate_Crosses" isList="false" />
+			<Attribute name="intersect" resourceKey ="" valueType="string" defaultValue="kSCORING_Predicate_Intersect" isList="false" />
+			<Attribute name="touch" resourceKey ="" valueType="string" defaultValue="kSCORING_Predicate_Touch" isList="false" />
+			<Attribute name="overlap" resourceKey ="" valueType="string" defaultValue="kSCORING_Predicate_Overlap" isList="false" />
+			<Attribute name="within" resourceKey ="" valueType="string" defaultValue="kSCORING_Predicate_Within" isList="false" />
+			<Attribute name="contain" resourceKey ="" valueType="string" defaultValue="kSCORING_Predicate_Contain" isList="false" />
+			<Attribute name="northOf" resourceKey ="" valueType="string" defaultValue="kSCORING_Predicate_NorthOf" isList="false" />
+			<Attribute name="southOf" resourceKey ="" valueType="string" defaultValue="kSCORING_Predicate_SouthOf" isList="false" />
+			<Attribute name="eastOf" resourceKey ="" valueType="string" defaultValue="kSCORING_Predicate_EastOf" isList="false" />
+			<Attribute name="westOf" resourceKey ="" valueType="string" defaultValue="kSCORING_Predicate_WestOf" isList="false" />
+		</Structure>
+
+  		<!-- The output field name list -->
+		<Structure id="nameListStructure">
+			<Attribute name="prediction" resourceKey ="" valueType ="string" defaultValue="" isList="false" />
+		 	<Attribute name="probability" resourceKey ="" valueType="string" defaultValue="" isList="false" />
+		 	<Attribute name="probcategory" resourceKey ="" valueType="string" isList="true" />
+		 	<Attribute name="confidence" resourceKey ="" valueType="string" defaultValue="" isList="false" />
+		 	<Attribute name="stddev" resourceKey ="" valueType="string" defaultValue="" isList="false" />
+		 	<Attribute name="tree-nodeid" resourceKey ="" valueType="string" defaultValue="" isList="false" />
+		 	<Attribute name="cox-cumhazard" resourceKey ="" valueType="string" defaultValue="" isList="false" />
+		 	<Attribute name="knn-caseid" resourceKey ="" valueType="string" isList="true" />
+		 	<Attribute name="knn-distance" resourceKey ="" valueType="string" isList="true" />
+		 	<Attribute name="knn-caselabel" resourceKey ="" valueType="string" isList="true" />
+		 	<Attribute name="adjustedpropensity" resourceKey ="" valueType="string" defaultValue="" isList="false" />
+		 	<Attribute name="rawpropensity" resourceKey ="" valueType="string" defaultValue="" isList="false" />
+		</Structure>
+
+    </PropertyTypes>
+	</CommonObjects>
+	
+	<!-- Status Codes -->
+	<StatusCodes>
+		<StatusCode code="240000" status="error" messageKey="unknownErrorMsg.LABEL"/>
+		<StatusCode code="240001" status="error" messageKey="initErrMsg.LABEL"/>
+		<StatusCode code="240002" status="error" messageKey="inputErrMsg.LABEL"/>
+		<StatusCode code="240003" status="error" messageKey="internalErrMsg.LABEL"/>
+		<StatusCode code="240004" status="error" messageKey="invalidMetadataErrMsg.LABEL"/>
+		<StatusCode code="240005" status="error" messageKey="fileNotExistErrorMsg.LABEL"/>
+		<StatusCode code="240006" status="error" messageKey="storageNotSupportErrorMsg.LABEL"/>
+		<StatusCode code="240007" status="error" messageKey="invalidTargetErrorMsg.LABEL"/>
+		<StatusCode code="240008" status="error"
+			messageKey="invalidTarResponseErrorMsg.LABEL"/>
+		<StatusCode code="240009" status="error" messageKey="predictorsEmptyErrMsg.LABEL"/>
+		<StatusCode code="240010" status="error" messageKey="targetAsInputErrorMsg.LABEL"/>
+		<StatusCode code="240011" status="error" messageKey="invalidFrequencyErrorMsg.LABEL"/>
+		<StatusCode code="240012" status="error"
+			messageKey="invalidTargetResponseErrorMsg.LABEL"/>
+		<StatusCode code="240013" status="error"
+			messageKey="invlidResponseCatErrorMsg.LABEL"/>
+		<StatusCode code="240014" status="error" messageKey="noFrequencyErrorMsg.LABEL"/>
+		<StatusCode code="240015" status="error" messageKey="noTargetErrorMsg.LABEL"/>
+		<StatusCode code="240016" status="error" messageKey="invalidtarValueMsg.LABEL"/>
+		<StatusCode code="240017" status="error" messageKey="getfilePathMsg.LABEL"/>
+		<StatusCode code="240018" status="error" messageKey="creationAlgorithmMsg.LABEL"/>
+		<StatusCode code="240019" status="error" messageKey="buildModelErrorMsg.LABEL"/>
+		<StatusCode code="240020" status="error" messageKey="assessModelErrorMsg.LABEL"/>
+		<StatusCode code="240021" status="error" messageKey="exportPMLLErrorMsg.LABEL"/>
+		<StatusCode code="240022" status="error" messageKey="getDataFieldErrorMsg.LABEL"/>
+		<StatusCode code="240023" status="error" messageKey="tarResIsSameErrorMsg.LABEL"/>
+		<StatusCode code="240024" status="error" messageKey="NoTargetFieldErrorMsg.LABEL"/>
+		<StatusCode code="240025" status="error" messageKey="NoTargetResFieldErrorMsg.LABEL"/>
+		<StatusCode code="240026" status="error" messageKey="targetResTrueErrorMsg.LABEL"/>
+		<StatusCode code="240027" status="error" messageKey="PMMLNotExistErrorMsg.LABEL"/>
+		<StatusCode code="240028" status="error" messageKey="PMMLIsInvalidErrorMsg.LABEL"/>
+		<StatusCode code="240029" status="error" messageKey="NoPredVarInPMMLErrorMsg.LABEL"/>
+		<StatusCode code="240030" status="error" messageKey="PMMLNotMatchDataErrorMsg.LABEL"/>
+		<StatusCode code="240031" status="error" messageKey="getDataSourceErrorMsg.LABEL"/>
+		<StatusCode code="240032" status="error" messageKey="dataFileISValidErrorMsg.LABEL"/>
+		<StatusCode code="240033" status="error" messageKey="TarFieldNOTMatchErrMsg.LABEL"/>
+		<StatusCode code="240034" status="error" messageKey="TRFieldNOTMatchErrMsg.LABEL"/>
+		<StatusCode code="240035" status="error" messageKey="FreFieldNOTMatchErrMsg.LABEL"/>
+		<StatusCode code="240036" status="error" messageKey="InputFieldNOTMatchMsg.LABEL"/>
+		<StatusCode code="240037" status="error" messageKey="NoValidRecordsMsg.LABEL"/>
+		<StatusCode code="240038" status="error" messageKey="NoRecordsScoringMsg.LABEL"/>
+		<StatusCode code="240039" status="error" messageKey="PartionInValidMsg.LABEL"/>
+		<StatusCode code="240040" status="error" messageKey="InputFieldConstantMsg.LABEL"/>
+		<StatusCode code="240041" status="error" messageKey="InvalidSettingsErrorMsg.LABEL"/>
+		<StatusCode code="240042" status="error" messageKey="NoValidFieldValuesErrorMsg.LABEL"/>
+		
+		<!-- common error code -->
+		<StatusCode code="1" status="error" messageKey="kMCCANCEL.LABEL"/>
+		<StatusCode code="2" status="error" messageKey="kMC_IO_ERROR.LABEL"/>
+		<StatusCode code="3" status="error" messageKey="kMC_MEMORY_LIMIT_EXCEEDED.LABEL"/>
+		<StatusCode code="4" status="error" messageKey="kMC_INVALID_SAVE_STATE.LABEL"/>
+		<StatusCode code="5" status="error" messageKey="kMC_FAILED_RESTART.LABEL"/>
+		<StatusCode code="6" status="error" messageKey="kMC_WRONG_STATE.LABEL"/>
+		
+		<StatusCode code="103" status="error" messageKey="kMCCom_Xerces_Init_Fail.LABEL"/>
+		<StatusCode code="104" status="error" messageKey="kMCCom_Xerces_Parse_Fail.LABEL"/>
+		<StatusCode code="105" status="error" messageKey="kMCCom_No_Top_XML_Elem.LABEL"/>
+		<StatusCode code="108" status="error" messageKey="kMCCom_XML_MissReqAttr.LABEL"/>
+		<StatusCode code="109" status="error" messageKey="kMCCom_XML_InvalidAttrVal.LABEL"/>
+		<StatusCode code="111" status="error" messageKey="kMCCom_XML_AddVarFailed.LABEL"/>	
+		
+		<!-- scoring error code -->
+		<StatusCode code="260001" status="error" messageKey="kSCORING_NullPointer.LABEL"/>
+		<StatusCode code="260002" status="error" messageKey="kSCORING_ModelAlreadyExisted.LABEL"/>
+		<StatusCode code="260003" status="error" messageKey="kSCORING_InvalidPMMLStream.LABEL"/>
+		<StatusCode code="260004" status="error" messageKey="kSCORING_MissingPMMLStream.LABEL"/>
+		<StatusCode code="260005" status="error" messageKey="kSCORING_MissingPMMLPathName.LABEL"/>
+		<StatusCode code="260006" status="error" messageKey="kSCORING_OpenModelFailed.LABEL"/>
+		<StatusCode code="260007" status="error" messageKey="kSCORING_FailedReadConfig.LABEL"/>
+		<StatusCode code="260008" status="error" messageKey="kSCORING_Xerces_Init_Fail.LABEL"/>
+		<StatusCode code="260009" status="error" messageKey="kSCORING_Xerces_Parse_Fail.LABEL"/>
+		
+		<StatusCode code="260021" status="error" messageKey="kSCORING_UnSupportedModelName.LABEL"/>
+		<StatusCode code="260022" status="error" messageKey="kSCORING_UnSupportedModel.LABEL"/>
+		<StatusCode code="260023" status="error" messageKey="kSCORING_NotScorable.LABEL"/>
+		<StatusCode code="260024" status="error" messageKey="kSCORING_UnexpectError.LABEL"/>
+		
+		<StatusCode code="260031" status="error" messageKey="kSCORING_MissingAttributeOf.LABEL"/>
+		<StatusCode code="260032" status="error" messageKey="kSCORING_MissingValueInValueList.LABEL"/>
+		<StatusCode code="260033" status="error" messageKey="kSCORING_MissingTargetVar.LABEL"/>
+		<StatusCode code="260034" status="error" messageKey="kSCORING_MissingCategoriesDefine.LABEL"/>
+		<StatusCode code="260035" status="error" messageKey="kSCORING_MissingPredictor.LABEL"/>
+		<StatusCode code="260036" status="error" messageKey="kSCORING_Missing.LABEL"/>
+		<StatusCode code="260037" status="error" messageKey="kSCORING_MissingVariableDefinition.LABEL"/>
+		<StatusCode code="260038" status="error" messageKey="kSCORING_MissingValueList.LABEL"/>
+		<StatusCode code="260039" status="error" messageKey="kSCORING_MissingElement.LABEL"/>
+		<StatusCode code="260040" status="error" messageKey="kSCORING_MissingKohonenDimension.LABEL"/>	
+
+		<StatusCode code="260051" status="error" messageKey="kSCORING_InvalidValueRange.LABEL"/>
+		<StatusCode code="260052" status="error" messageKey="kSCORING_InvalidValue.LABEL"/>
+		<StatusCode code="260053" status="error" messageKey="kSCORING_InvalidValueIn.LABEL"/>
+		<StatusCode code="260054" status="error" messageKey="kSCORING_InvalidAttributeValueIn.LABEL"/>
+		<StatusCode code="260055" status="error" messageKey="kSCORING_HasElementMissingAttribute.LABEL"/>
+		<StatusCode code="260056" status="error" messageKey="kSCORING_HasElementMissingAttribute2.LABEL"/>
+		<StatusCode code="260057" status="error" messageKey="kSCORING_MismatchFieldsAndCategories.LABEL"/>
+		<StatusCode code="260058" status="error" messageKey="kSCORING_IncorrectVariableReference.LABEL"/>
+		
+		<StatusCode code="260071" status="error" messageKey="kSCORING_RequireTwoCategories.LABEL"/>
+		<StatusCode code="260072" status="error" messageKey="kSCORING_NoChildElement.LABEL"/>	
+		<StatusCode code="260073" status="error" messageKey="kSCORING_RequireMoreThanOne.LABEL"/>
+		<StatusCode code="260074" status="error" messageKey="kSCORING_XML_AddVarFailed.LABEL"/>
+		<StatusCode code="260075" status="error" messageKey="kSCORING_NullElementAttribute.LABEL"/>
+		<StatusCode code="260076" status="error" messageKey="kSCORING_MissingTopElement.LABEL"/>
+		<StatusCode code="260077" status="error" messageKey="kSCORING_IncorrectElement.LABEL"/>
+		<StatusCode code="260078" status="error" messageKey="kSCORING_IncorrectTopElement.LABEL"/>
+		
+		<StatusCode code="260081" status="error" messageKey="kSCORING_NoScorer.LABEL"/>
+		<StatusCode code="260082" status="error" messageKey="kSCORING_ValidationErr.LABEL"/>
+		<StatusCode code="260083" status="error" messageKey="kSCORING_INVALID_VALUE.LABEL"/>		
+		<StatusCode code="260084" status="error" messageKey="kSCORING_MISSINGVAR.LABEL"/>
+		<StatusCode code="260085" status="error" messageKey="kSCORING_NotSupportedErr.LABEL"/>
+		<StatusCode code="260086" status="error" messageKey="kSCORING_NumberNotMatch.LABEL"/>	
+		
+
+		<!-- smart score error code -->
+		<StatusCode code="260101" status="error" messageKey="kSMARTSCORE_UnexpectError.LABEL"/>		
+		<StatusCode code="260102" status="error" messageKey="kSMARTSCORE_ErrorInitXml4C.LABEL"/>
+		<StatusCode code="260103" status="error" messageKey="kSMARTSCORE_FailedOpenFile.LABEL"/>
+		<StatusCode code="260104" status="error" messageKey="kSMARTSCORE_ErrorOpenNamedXml.LABEL"/>
+		<StatusCode code="260105" status="error" messageKey="kSMARTSCORE_ErrorOpenXml.LABEL"/>
+		<StatusCode code="260106" status="error" messageKey="kSMARTSCORE_ErrorParseFileToDOM.LABEL"/>
+		<StatusCode code="260107" status="error" messageKey="kSMARTSCORE_ErrorParseToDOM.LABEL"/>		
+		<StatusCode code="260108" status="error" messageKey="kSMARTSCORE_ErrorParseNamedXML.LABEL"/>
+		<StatusCode code="260109" status="error" messageKey="kSMARTSCORE_ErrorParseXML.LABEL"/>		
+		<StatusCode code="260110" status="error" messageKey="kSMARTSCORE_MissingRootElement.LABEL"/>
+		<StatusCode code="260111" status="error" messageKey="kSMARTSCORE_MissingRootElementInXml.LABEL"/>
+		<StatusCode code="260112" status="error" messageKey="kSMARTSCORE_MissingRootTagName.LABEL"/>
+		<StatusCode code="260113" status="error" messageKey="kSMARTSCORE_MissingModelDll.LABEL"/>
+		<StatusCode code="260114" status="error" messageKey="kSMARTSCORE_MissingNode.LABEL"/>		
+		<StatusCode code="260115" status="error" messageKey="kSMARTSCORE_MissingElement.LABEL"/>
+		
+		<StatusCode code="260116" status="error" messageKey="kSMARTSCORE_MissingSpecialElement.LABEL"/>
+		<StatusCode code="260117" status="error" messageKey="kSMARTSCORE_MissingMinimum.LABEL"/>
+		<StatusCode code="260118" status="error" messageKey="kSMARTSCORE_MissingMaximum.LABEL"/>
+		<StatusCode code="260119" status="error" messageKey="kSMARTSCORE_MissingAttribute.LABEL"/>
+		<StatusCode code="260120" status="error" messageKey="kSMARTSCORE_MissingAttributeOf.LABEL"/>
+		<StatusCode code="260121" status="error" messageKey="kSMARTSCORE_MissingAttributeIn.LABEL"/>
+		<StatusCode code="260122" status="error" messageKey="kSMARTSCORE_MissingDefinition.LABEL"/>
+		<StatusCode code="260123" status="error" messageKey="kSMARTSCORE_MissingDefinitionOf.LABEL"/>
+		<StatusCode code="260124" status="error" messageKey="kSMARTSCORE_MissingVariableDefinition.LABEL"/>
+		<StatusCode code="260125" status="error" messageKey="kSMARTSCORE_MissingVariableDefinition2.LABEL"/>
+		<StatusCode code="260126" status="error" messageKey="kSMARTSCORE_MissingValueList.LABEL"/>
+		<StatusCode code="260127" status="error" messageKey="kSMARTSCORE_MissingValueInValueList.LABEL"/>	
+		<StatusCode code="260128" status="error" messageKey="kSMARTSCORE_MissingValueDefinitionIn.LABEL"/>
+		<StatusCode code="260129" status="error" messageKey="kSMARTSCORE_MissingCutpoints.LABEL"/>
+		<StatusCode code="260130" status="error" messageKey="kSMARTSCORE_MissingCovariate.LABEL"/>
+		<StatusCode code="260131" status="error" messageKey="kSMARTSCORE_MissingCovariate2.LABEL"/>
+		<StatusCode code="260132" status="error" messageKey="kSMARTSCORE_MissingBinningInfo.LABEL"/>
+		<StatusCode code="260133" status="error" messageKey="kSMARTSCORE_MissingTargetVariable.LABEL"/>
+		<StatusCode code="260134" status="error" messageKey="kSMARTSCORE_MissingPredictorVariable.LABEL"/>
+		<StatusCode code="260135" status="error" messageKey="kSMARTSCORE_MissingEncoder.LABEL"/>
+
+		<StatusCode code="260151" status="error" messageKey="kSMARTSCORE_InvalidValue.LABEL"/>
+		<StatusCode code="260152" status="error" messageKey="kSMARTSCORE_InvalidAttributeValue.LABEL"/>
+		<StatusCode code="260153" status="error" messageKey="kSMARTSCORE_InvalidAttributeValueIn.LABEL"/>
+		<StatusCode code="260154" status="error" messageKey="kSMARTSCORE_InvalidTag.LABEL"/>
+		<StatusCode code="260155" status="error" messageKey="kSMARTSCORE_InvalidPredictor.LABEL"/>
+		<StatusCode code="260156" status="error" messageKey="kSMARTSCORE_InvalidContent.LABEL"/>				
+		<StatusCode code="260157" status="error" messageKey="kSMARTSCORE_InvalidValueRange.LABEL"/>
+		<StatusCode code="260158" status="error" messageKey="kSMARTSCORE_NotInValueRange.LABEL"/>
+		<StatusCode code="260159" status="error" messageKey="kSMARTSCORE_IncorrectElement.LABEL"/>
+		<StatusCode code="260160" status="error" messageKey="kSMARTSCORE_IncorrectTopElement.LABEL"/>
+		<StatusCode code="260161" status="error" messageKey="kSMARTSCORE_IncorrectVariableRole.LABEL"/>
+		<StatusCode code="260162" status="error" messageKey="kSMARTSCORE_IncorrectDefinition.LABEL"/>
+		<StatusCode code="260163" status="error" messageKey="kSMARTSCORE_IncorrectPredictorNumber.LABEL"/>
+		<StatusCode code="260164" status="error" messageKey="kSMARTSCORE_IncorrectNeuronConnection.LABEL"/>
+		<StatusCode code="260165" status="error" messageKey="kSMARTSCORE_IncorrectSumNeuronConnection.LABEL"/>
+
+		<StatusCode code="260171" status="error" messageKey="kSMARTSCORE_RequireEqualOperator.LABEL"/>
+		<StatusCode code="260172" status="error" messageKey="kSMARTSCORE_ValueRequirement.LABEL"/>
+		<StatusCode code="260173" status="error" messageKey="kSMARTSCORE_RequireParamters.LABEL"/>
+		<StatusCode code="260174" status="error" messageKey="kSMARTSCORE_RequireNode.LABEL"/>
+		<StatusCode code="260175" status="error" messageKey="kSMARTSCORE_RequireOneOf.LABEL"/>
+		<StatusCode code="260176" status="error" messageKey="kSMARTSCORE_RequireMoreThanOne.LABEL"/>
+		<StatusCode code="260177" status="error" messageKey="kSMARTSCORE_RequireCorrectElement.LABEL"/>
+		<StatusCode code="260178" status="error" messageKey="kSMARTSCORE_RequireCorrectElementIn.LABEL"/>
+		<StatusCode code="260179" status="error" messageKey="kSMARTSCORE_RequireAttributeValueForUnsupport.LABEL"/>
+		<StatusCode code="260180" status="error" messageKey="kSMARTSCORE_RequireAttributeValue.LABEL"/>
+		<StatusCode code="260181" status="error" messageKey="kSMARTSCORE_RequireTwoCategories.LABEL"/>
+		<StatusCode code="260182" status="error" messageKey="kSMARTSCORE_ValueRequirePositive.LABEL"/>
+		<StatusCode code="260183" status="error" messageKey="kSMARTSCORE_ValueRequireZeroPositive.LABEL"/>
+		<StatusCode code="260184" status="error" messageKey="kSMARTSCORE_RequireVariableAttribute.LABEL"/>
+		<StatusCode code="260185" status="error" messageKey="kSMARTSCORE_RequireVariableAttribute2.LABEL"/>
+		<StatusCode code="260186" status="error" messageKey="kSMARTSCORE_RequireNumericOridnal.LABEL"/>
+		<StatusCode code="260187" status="error" messageKey="kSMARTSCORE_RequireNumericVariable.LABEL"/>
+		<StatusCode code="260188" status="error" messageKey="kSMARTSCORE_RequireTwoAttributeValue.LABEL"/>
+		<StatusCode code="260189" status="error" messageKey="kSMARTSCORE_RequireBothThreeElement.LABEL"/>
+		<StatusCode code="260190" status="error" messageKey="kSMARTSCORE_RequireOneOrTwoElement.LABEL"/>
+		<StatusCode code="260191" status="error" messageKey="kSMARTSCORE_RequireNullAttribute.LABEL"/>
+
+
+		<StatusCode code="260192" status="error" messageKey="kSMARTSCORE_RequireInterceptOneCat.LABEL"/>
+
+		<StatusCode code="260201" status="error" messageKey="kSMARTSCORE_DuplicateVariable.LABEL"/>
+		<StatusCode code="260202" status="error" messageKey="kSMARTSCORE_DuplicateVariableIn.LABEL"/>
+		<StatusCode code="260203" status="error" messageKey="kSMARTSCORE_DuplicateObject.LABEL"/>
+		<StatusCode code="260204" status="error" messageKey="kSMARTSCORE_DuplicateDefineTarget.LABEL"/>
+		<StatusCode code="260211" status="error" messageKey="kSMARTSCORE_ConflictAttributeValue.LABEL"/>
+		<StatusCode code="260212" status="error" messageKey="kSMARTSCORE_ConflictAttribute.LABEL"/>
+		<StatusCode code="260213" status="error" messageKey="kSMARTSCORE_ConflictValueDefine.LABEL"/>
+		<StatusCode code="260214" status="error" messageKey="kSMARTSCORE_ConflictSetting.LABEL"/>
+		<StatusCode code="260215" status="error" messageKey="kSMARTSCORE_ConflictDefinition.LABEL"/>
+		<StatusCode code="260216" status="error" messageKey="kSMARTSCORE_ConflictElement.LABEL"/>
+		<StatusCode code="260217" status="error" messageKey="kSMARTSCORE_ConsistentRequirement.LABEL"/>
+		
+		<StatusCode code="260221" status="error" messageKey="kSMARTSCORE_ErrorProcessObject.LABEL"/>	
+		<StatusCode code="260222" status="error" messageKey="kSMARTSCORE_ErrorProcessAttribute.LABEL"/>
+		<StatusCode code="260223" status="error" messageKey="kSMARTSCORE_ErrorProcessObjectIn.LABEL"/>
+		<StatusCode code="260224" status="error" messageKey="kSMARTSCORE_ErrorProcessOperatorIn.LABEL"/>
+		<StatusCode code="260225" status="error" messageKey="kSMARTSCORE_ErrorProcessObjectValue.LABEL"/>
+		<StatusCode code="260226" status="error" messageKey="kSMARTSCORE_ErrorValidateVariableDefinition.LABEL"/>
+		<StatusCode code="260227" status="error" messageKey="kSMARTSCORE_ErrorProcessVariable.LABEL"/>
+		<StatusCode code="260241" status="error" messageKey="kSMARTSCORE_ArraySizeMismatch.LABEL"/>	
+		<StatusCode code="260242" status="error" messageKey="kSMARTSCORE_NumberMismatch.LABEL"/>
+		<StatusCode code="260243" status="error" messageKey="kSMARTSCORE_MismatchChildFunction.LABEL"/>		
+		<StatusCode code="260244" status="error" messageKey="kSMARTSCORE_MismatchVariable.LABEL"/>
+		<StatusCode code="260245" status="error" messageKey="kSMARTSCORE_MissmatchFunctionParameter.LABEL"/>			
+		<StatusCode code="260246" status="error" messageKey="kSMARTSCORE_MismatchElementsAndAttrirbute.LABEL"/>
+		<StatusCode code="260247" status="error" messageKey="kSMARTSCORE_MismatchSpecialElements.LABEL"/>
+
+		<StatusCode code="260248" status="error" messageKey="kSMARTSCORE_CategoriesMismatch.LABEL"/>		
+		<StatusCode code="260249" status="error" messageKey="kSMARTSCORE_CategoriesMismatchIn.LABEL"/>				
+		<StatusCode code="260250" status="error" messageKey="kSMARTSCORE_TotalCategoriesMismatch.LABEL"/>	
+		<StatusCode code="260251" status="error" messageKey="kSMARTSCORE_MismatchElementNumber.LABEL"/>
+		<StatusCode code="260252" status="error" messageKey="kSMARTSCORE_MismatchFunctionsAndAttrirbute.LABEL"/>
+		<StatusCode code="260253" status="error" messageKey="kSMARTSCORE_MismatchValueType.LABEL"/>
+		<StatusCode code="260254" status="error" messageKey="kSMARTSCORE_MismatchTargetVariable.LABEL"/>
+		<StatusCode code="260255" status="error" messageKey="kSMARTSCORE_MismatchAttributeWithUniqueValues.LABEL"/>
+		<StatusCode code="260256" status="error" messageKey="kSMARTSCORE_MismatchLayerNeuron.LABEL"/>
+		<StatusCode code="260257" status="error" messageKey="kSMARTSCORE_MismatchNeuronConnection.LABEL"/>
+		<StatusCode code="260258" status="error" messageKey="kSMARTSCORE_MismatchAttributeValue.LABEL"/>
+		<StatusCode code="260259" status="error" messageKey="kSMARTSCORE_MismatchPredictorElement.LABEL"/>
+		<StatusCode code="260260" status="error" messageKey="kSMARTSCORE_MismatchFieldsAndCategories.LABEL"/>
+		<StatusCode code="260271" status="error" messageKey="kSMARTSCORE_DefineMoreThanTwo.LABEL"/>
+		<StatusCode code="260272" status="error" messageKey="kSMARTSCORE_DefineMoreThanOne.LABEL"/>
+		<StatusCode code="260273" status="error" messageKey="kSMARTSCORE_DefineMultipleTarget.LABEL"/>
+		<StatusCode code="260274" status="error" messageKey="kSMARTSCORE_MoreThanOneExpression.LABEL"/>
+		<StatusCode code="260281" status="error" messageKey="kSMARTSCORE_NotScorable.LABEL"/>
+		<StatusCode code="260282" status="error" messageKey="kSMARTSCORE_TypeSupportRequirement.LABEL"/>
+		<StatusCode code="260283" status="error" messageKey="kSMARTSCORE_NoChildElement.LABEL"/>
+		<StatusCode code="260284" status="error" messageKey="kSMARTSCORE_EmptyObject.LABEL"/>	
+		<StatusCode code="260285" status="error" messageKey="kSMARTSCORE_NullElementAttribute.LABEL"/>	
+		<StatusCode code="260286" status="error" messageKey="kSMARTSCORE_NoElementsInAttribute.LABEL"/>
+		<StatusCode code="260291" status="error" messageKey="kSMARTSCORE_NoValidValue.LABEL"/>			
+		<StatusCode code="260292" status="error" messageKey="kSMARTSCORE_ValueMissingOrIntersect.LABEL"/>
+		<StatusCode code="260293" status="error" messageKey="kSMARTSCORE_ValueIntersect.LABEL"/>
+		<StatusCode code="260294" status="error" messageKey="kSMARTSCORE_ValueMissingVaildConflict.LABEL"/>	
+		<StatusCode code="260295" status="error" messageKey="kSMARTSCORE_DerivedVariableAsTarget.LABEL"/>
+		<StatusCode code="260296" status="error" messageKey="kSMARTSCORE_NotInputAndTarget.LABEL"/>		
+		<StatusCode code="260297" status="error" messageKey="kSMARTSCORE_SourceEqualDestination.LABEL"/>		
+		<StatusCode code="260298" status="error" messageKey="kSMARTSCORE_TwoSplitVariable.LABEL"/>
+		<StatusCode code="260299" status="error" messageKey="kSMARTSCORE_NotSupportContinousTarget.LABEL"/>
+		<StatusCode code="260301" status="error" messageKey="kSMARTSCORE_UnsupportedModel.LABEL"/>
+		<StatusCode code="260302" status="error" messageKey="kSMARTSCORE_UnsupportedElement.LABEL"/>
+		<StatusCode code="260303" status="error" messageKey="kSMARTSCORE_UnsupportAttributeValue.LABEL"/>
+		<StatusCode code="260304" status="error" messageKey="kSMARTSCORE_FailedBuildModel.LABEL"/>
+		<StatusCode code="260305" status="error" messageKey="kSMARTSCORE_FailedRestoreBaseModel.LABEL"/>
+		<StatusCode code="260306" status="error" messageKey="kSMARTSCORE_RepeateBinValuesIn.LABEL"/>
+				
+		<!-- Warning for the scoring component -->
+		
+		<!-- Progress report  -->
+		<StatusCode code="101" status="warning" messageKey="PreparedDataHandleMsg.LABEL"/>	
+		<StatusCode code="102" status="warning" messageKey="HandleDataProcessMsg.LABEL"/>
+		<StatusCode code="103" status="warning" messageKey="HandleDataProcessEndMsg.LABEL"/>
+		<StatusCode code="104" status="warning" messageKey="ExportPmmlProgressMsg.LABEL"/>
+	</StatusCodes>
+	
+	<!-- ContainerType declarations -->
+	<ContainerTypes>
+		<!--  
+		Container types:
+        -   XML documents
+		-	PMML / Model
+		-	Pivot Tables / Multi-Dimensional Variables
+		-	Chart Visualizations
+	    -	Table Visualizations
+		-	Text output
+		-	Static Image
+		-	Case data – a subset
+		__
+		The "fileSuffix" attribute is used when generating the temporary files used to store or retrieve the various components.
+		They don't provide explicit meaning to the application or component but potentially would be useful when debugging.
+        -->
+        <!-- TBD -->
+		<!--  <ContainerType id="compressed_report_container" type="multi_dim_table" format="binary" fileSuffix="zip"/>-->
+		<ContainerType  id="pmml_input_container" mimeType="pmml" resourceKey="" fileSuffix="" />
+	</ContainerTypes>
+	
+	<!-- Component definition. Component names are used as name-spaces and should be unique across component instances. -->
+	<!-- A scoring have two dll files. One is cfscoring.dll that is for CF, the other is mcscoringr.dll file that is the 
+		real scoring component dll file. On windows, it is mcscoringr.dll, other platform, it is libmcscoringr +".so or whatever suffix" -->
+	<Component id="scoring">
+	
+		<!-- 
+		Component capabilities [TBD]:
+		-  Data Provider
+		-  Data Transformer
+		-  Data Consumer
+		-  Container Operator (operates upon Containers)
+		-->
+		<Capabilities>
+      <Transformer/>
+		</Capabilities>
+	
+		<!-- Property declarations -->
+		<Properties>
+			<!--the following is to define the settings for the oprations-->
+			<Property name="missingValuePolicy" type="missingValuePolicyType" defaultValue="asMissingPredictor" />
+			<Property name="encoding" type="encodingType" defaultValue="UTF-8" />
+			<Property name="scoringDll" type="scoringDllStructure" />
+			<Property name="modelDll" type="modelDllStructure" />
+			<Property name="maxPredictions" valueType="integer" defaultValue="3" min="1" />
+			<Property name="versionSupported" valueType="string" defaultValue="4.0" />
+			<Property name="isOutputInputData" valueType="boolean" defaultValue="true" />
+			<Property name="isOutputAll" valueType="boolean" defaultValue="false" />
+			<Property name="isPrediction" valueType="boolean" defaultValue="true" />
+			<Property name="isProbability" valueType="boolean" defaultValue="false" />
+			<Property name="isProbabilityCategory" valueType="boolean" defaultValue="false" />
+			<Property name="isConfidence" valueType="boolean" defaultValue="true" />
+			<Property name="isStandardDeviation" valueType="boolean" defaultValue="false" />
+			<Property name="isPropensity" valueType="boolean" defaultValue="false" />
+			<Property name="isRawPropensity" valueType="boolean" defaultValue="false" />
+			<Property name="isNodeID" valueType="boolean" defaultValue="false" />
+			<Property name="isCumHazard" valueType="boolean" defaultValue="false" />
+			<Property name="future_time_as" type="CoxRegFutureTimeTypeEnum" defaultValue="None" />
+			
+			<Property name="time_field" valueType="string" defaultValue="" />
+			<Property name="past_survival_time" valueType="string" defaultValue="" />
+			<Property name="time_interval" valueType="double" defaultValue="1.0" />
+			<Property name="num_future_times" valueType="integer" defaultValue="1" />
+			<Property name="all_probabilities" valueType="boolean" defaultValue="true" />
+			<Property name="cumulative_hazard" valueType="boolean" defaultValue="false" />
+			<Property name="isNeighbor" valueType="boolean" defaultValue="false" />
+			<Property name="isDistance" valueType="boolean" defaultValue="false" />
+			<Property name="isOthers" valueType="boolean" defaultValue="false" />
+			<Property name="isEnsemble" valueType="boolean" defaultValue="true" />
+			<Property name="isBaseModels" valueType="boolean" defaultValue="false" />
+			<Property name="isReferenceModel" valueType="boolean" defaultValue="false" />
+			<Property name="modelID" type="modelIDStructure" />
+			<Property name="resultType" type="resultTypeStructure" />
+			<Property name="namePattern" type="namePatternStructure" />
+			<Property name="labelPattern" type="labelPatternStructure" />
+			<Property name="nameList" type="nameListStructure" />
+			<Property name="predicateList" type="predicateListStructure" />
+			<Property name="useNameList" valueType="boolean" defaultValue="false" />
+			<Property name="resolveNameConflict" valueType="boolean" defaultValue="true" />
+			<Property name="enableSQL" type="SQLScoreTypeEnum" defaultValue="false" />
+			<Property name="maxCategories" valueType="integer" defaultValue="25" min="1" />
+			<Property name="confidenceBasedOn" type="confidenceBasedOnType" defaultValue="onProbability" />
+			<Property name="scoreValue" valueType="string" defaultValue="" />
+
+			<Property name="adSupressNonAnomalousRecords" valueType="boolean" defaultValue="false" />
+			<Property name="adNumAnomalyFields" valueType="integer" defaultValue="3" min="1" />
+			<Property name="adAnomalyIndexCutoff" valueType="double" defaultValue="0.0" />
+			<Property name="adScoreMethod" type="adScoreMethodType" defaultValue="FLAG_AND_SCORE" />
+			
+			<Property name="assocRuleCriterion" type="assocRuleCriterionType" defaultValue="confidence" />
+			<Property name="assocRepeatPredications" valueType="boolean" defaultValue="false" />
+			<Property name="assocEqualsBasket" valueType="boolean" defaultValue="false" />
+			<Property name="assocCheckBasket" type="assocCheckBasketType" defaultValue="isOutsideBasket" />
+			<Property name="assocIsOnlyTrueForFlag" valueType="boolean" defaultValue="true" />
+			<Property name="assocTransactionalID" valueType="string" defaultValue="" />
+			<Property name="assocNameTable" type="assocNameStruct" defaultValue="" isList="true"/>
+			<Property name="assocIsOnlyOutputValue" valueType="boolean" defaultValue="false" />
+			<Property name="assocIsOutputOrigInterval" valueType="boolean" defaultValue="false" />
+						
+			<Property name="selflearningRandomization" valueType="double" defaultValue="0.0" min="0.0" max="1.0" />
+			<Property name="selflearningRandomSeed" valueType="integer" defaultValue="876547" min="0" />
+			<Property name="selflearningSort" type="selflearningSortEnum" defaultValue="descending" />
+			<Property name="selflearningTargetFields" valueType="string" isList = "true" />
+			<Property name="selflearningReliability" valueType="boolean" defaultValue="true" />
+
+			<Property name="isCaseLabel" valueType="boolean" defaultValue="false" />
+			<Property name="isRuleID" valueType="boolean" defaultValue="false" />
+			<Property name="isKohonenX" valueType="boolean" defaultValue="true" />
+			<Property name="isKohonenY" valueType="boolean" defaultValue="true" />
+			<Property name="isStandardDeviationRequired" valueType="boolean" defaultValue="false" />
+			
+			<Property name="kmLabelPrefix" valueType="string" defaultValue="" />
+		</Properties>
+			
+		<!-- Containers -->
+		<Containers>
+			<!-- TBD -->
+			<!-- <Container name="compressedReport" type="compressed_report_container" usage="output" runtimeProperty="tmpReportFile"/> -->
+			<Container name="InputPMML" type="pmml_input_container" usage="input" runtimeProperty="tmpReportFile"/>
+		</Containers>
+		
+		<!-- Property constraints (component state preconditions). -->
+		<Constraints>
+			<!--  
+			<Constraint>
+				<PropertyCondition op="isNotEmpty" property="referenceDateForDurations"/>
+				</Constraint>-->
+		</Constraints>
+		
+	</Component>
+</Module>

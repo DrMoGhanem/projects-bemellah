@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<index>
+  <entry keyword="extension commands">
+    <topic href="spss/tutorials/rtut_extcmds_intro.htm#rtut_extcmds_intro" title="Creating Extension Commands"/>
+    <entry keyword="syntax diagrams">
+      <topic href="spss/tutorials/rtut_extcmds_syndiagram.htm#rtut_extcmds_syndiagram" title="Syntax Diagrams"/>
+    </entry>
+    <entry keyword="XML specification of syntax">
+      <topic href="spss/tutorials/rtut_extcmds_xmlspec.htm#rtut_extcmds_xmlspec" title="XML Specification of the Syntax Diagram"/>
+    </entry>
+    <entry keyword="Run function">
+      <topic href="spss/tutorials/rtut_extcmds_code.htm#rtut_extcmds_code" title="Implementation Code"/>
+    </entry>
+    <entry keyword="spsspkg.Syntax function">
+      <topic href="spss/tutorials/rtut_extcmds_code.htm#rtut_extcmds_code" title="Implementation Code"/>
+    </entry>
+    <entry keyword="spsspkg.Template function">
+      <topic href="spss/tutorials/rtut_extcmds_code.htm#rtut_extcmds_code" title="Implementation Code"/>
+    </entry>
+    <entry keyword="spsspkg.processcmd function">
+      <topic href="spss/tutorials/rtut_extcmds_code.htm#rtut_extcmds_code" title="Implementation Code"/>
+    </entry>
+  </entry>
+  <entry keyword="syntax diagrams">
+    <topic href="spss/tutorials/rtut_extcmds_syndiagram.htm#rtut_extcmds_syndiagram" title="Syntax Diagrams"/>
+  </entry>
+  <entry keyword="XML specification of syntax">
+    <topic href="spss/tutorials/rtut_extcmds_xmlspec.htm#rtut_extcmds_xmlspec" title="XML Specification of the Syntax Diagram"/>
+  </entry>
+  <entry keyword="Run function">
+    <topic href="spss/tutorials/rtut_extcmds_code.htm#rtut_extcmds_code" title="Implementation Code"/>
+  </entry>
+  <entry keyword="spsspkg.Syntax function">
+    <topic href="spss/tutorials/rtut_extcmds_code.htm#rtut_extcmds_code" title="Implementation Code"/>
+  </entry>
+  <entry keyword="spsspkg.Template function">
+    <topic href="spss/tutorials/rtut_extcmds_code.htm#rtut_extcmds_code" title="Implementation Code"/>
+  </entry>
+  <entry keyword="spsspkg.processcmd function">
+    <topic href="spss/tutorials/rtut_extcmds_code.htm#rtut_extcmds_code" title="Implementation Code"/>
+  </entry>
+  <entry keyword="custom dialogs">
+    <topic href="spss/tutorials/rtut_customdialogs_intro.htm#rtut_customdialogs_intro" title="Creating Custom Dialogs"/>
+    <entry keyword="syntax template">
+      <topic href="spss/tutorials/rtut_customdialogs_extcmd_syntax.htm#rtut_customdialogs_extcmd_syntax" title="Creating the Syntax Template"/>
+      <topic href="spss/tutorials/rtut_customdialogs_rcode_syntax.htm#rtut_customdialogs_rcode_syntax" title="Creating the Syntax Template"/>
+    </entry>
+    <entry keyword="saving">
+      <topic href="spss/tutorials/rtut_customdialogs_extcmd_saving.htm#rtut_customdialogs_extcmd_saving" title="Saving Your Custom Dialog"/>
+    </entry>
+    <entry keyword="installing">
+      <topic href="spss/tutorials/rtut_customdialogs_rcode_install.htm#rtut_customdialogs_rcode_install" title="Installing Your Dialog"/>
+    </entry>
+    <entry keyword="distributing">
+      <topic href="spss/tutorials/rtut_customdialogs_rcode_share.htm#rtut_customdialogs_rcode_share" title="Sharing Your Dialog with Other Users"/>
+    </entry>
+  </entry>
+  <entry keyword="syntax template">
+    <topic href="spss/tutorials/rtut_customdialogs_extcmd_syntax.htm#rtut_customdialogs_extcmd_syntax" title="Creating the Syntax Template"/>
+    <topic href="spss/tutorials/rtut_customdialogs_rcode_syntax.htm#rtut_customdialogs_rcode_syntax" title="Creating the Syntax Template"/>
+  </entry>
+  <entry keyword="extension bundles">
+    <topic href="spss/tutorials/rtut_extbundles_intro.htm#rtut_extbundles_intro" title="Deploying Custom Components"/>
+    <entry keyword="creating">
+      <topic href="spss/tutorials/rtut_extbundles_create.htm#rtut_extbundles_create" title="Creating an Extension Bundle"/>
+    </entry>
+    <entry keyword="installing">
+      <topic href="spss/tutorials/rtut_extbundles_install.htm#rtut_extbundles_install" title="Installing an Extension Bundle"/>
+    </entry>
+  </entry>
+</index>

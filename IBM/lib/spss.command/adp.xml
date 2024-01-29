@@ -1,0 +1,789 @@
+
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<Command Name="ADP" ProcedureTitle="Automated Data Preparation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:noNamespaceSchemaLocation="file:../schema/commanddescription.xsd">
+  <Integration>
+    <Architecture>CF</Architecture>
+    <CommandType>Procedure</CommandType>
+    <TmsMode>NotPermitted</TmsMode>
+    <ClemMode>NotPermitted</ClemMode>
+    <LicenseOption>13</LicenseOption>
+    <CommandState>
+      <State1>105</State1>
+      <State2>105</State2>
+      <State3>4</State3>
+      <State4>0</State4>
+    </CommandState>
+    <ExtensionDetails providerTag="spss" id="adp-extension" label="ADP" version="1.0"/>
+    <CPS Display="true"/> 
+    <Splits AppSupport="false" Viewer="false"/>
+  </Integration>
+  <Subcommand Name="FIELDS" Occurrence="Required" Delimiter="EqualDelimited">
+    <Parameter Name="TARGET" ParameterType="VariableName" MeasurementLevel="MeasLevelSubset"/>
+    <Parameter Name="INPUT" ParameterType="VariableNameList" MeasurementLevel="MeasLevelSubset" Occurrence="Required"/>
+    <Parameter Name="ANALYSISWEIGHT" ParameterType="VariableName" MeasurementLevel="MeasLevelSubset"/>
+  </Subcommand>
+  <Subcommand Name="PREPDATETIME" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="DATEDURATION" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="YES" ParameterType="StringQualifList">
+          <Qualification style="Parenthesis">
+            <Parameter Name="REFERENCE" ParameterType="StringQualif">
+              <Qualification>
+                <Parameter Name="CURRENT" ParameterType="SortDate" Occurrence="Optional" />
+                <Parameter Name="YMD" ParameterType="SortDate"/>
+              </Qualification>                
+            </Parameter>  
+            <Parameter Name="UNIT" ParameterType="StringQualif">
+              <Qualification style="Equal">
+                <Parameter Name="AUTO" ParameterType="LeadingToken"/>
+                <Parameter Name="YEARS" ParameterType="StringQualif" Occurrence="Optional">
+                  <Qualification>
+                    <Parameter Name="SUFFIX" ParameterType="QuotedString" />
+                  </Qualification>
+                </Parameter>
+                <Parameter Name="MONTHS" ParameterType="StringQualif" Occurrence="Optional">
+                  <Qualification>
+                    <Parameter Name="SUFFIX" ParameterType="QuotedString"/>
+                  </Qualification>
+                </Parameter>
+                <Parameter Name="DAYS" ParameterType="StringQualif" Occurrence="Optional">
+                  <Qualification>
+                    <Parameter Name="SUFFIX" ParameterType="QuotedString"/>
+                  </Qualification>
+                </Parameter>
+              </Qualification>
+            </Parameter>
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification>
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="TIMEDURATION" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="YES" ParameterType="StringQualifList">
+          <Qualification style="Parenthesis">
+            <Parameter Name="REFERENCE" ParameterType="StringQualif">
+              <Qualification>
+                <Parameter Name="CURRENT" ParameterType="Time" Occurrence="Optional"/>
+                <Parameter Name="HMS" ParameterType="Time"/>
+              </Qualification>                            
+            </Parameter>               
+            <Parameter Name="UNIT" ParameterType="StringQualif">
+              <Qualification style="Equal">
+                <Parameter Name="AUTO" ParameterType="LeadingToken"/>
+                <Parameter Name="HOURS" ParameterType="StringQualif" Occurrence="Optional">
+                  <Qualification>
+                    <Parameter Name="SUFFIX" ParameterType="QuotedString" />
+                  </Qualification>
+                </Parameter>
+                <Parameter Name="MINUTES" ParameterType="StringQualif" Occurrence="Optional">
+                  <Qualification>
+                    <Parameter Name="SUFFIX" ParameterType="QuotedString"/>
+                  </Qualification>
+                </Parameter>
+                <Parameter Name="SECONDS" ParameterType="StringQualif" Occurrence="Optional">
+                  <Qualification>
+                    <Parameter Name="SUFFIX" ParameterType="QuotedString"/>
+                  </Qualification>
+                </Parameter>
+              </Qualification>
+            </Parameter>
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification>
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="EXTRACTYEAR" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="YES" ParameterType="StringQualif" Occurrence="Optional">
+          <Qualification>          
+            <Parameter Name="SUFFIX" ParameterType="QuotedString"/>
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification>
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="EXTRACTMONTH" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="YES" ParameterType="StringQualif" Occurrence="Optional">
+          <Qualification>          
+            <Parameter Name="SUFFIX" ParameterType="QuotedString"/>
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification>
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="EXTRACTDAY" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="YES" ParameterType="StringQualif" Occurrence="Optional">
+          <Qualification>          
+            <Parameter Name="SUFFIX" ParameterType="QuotedString"/>
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification>
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="EXTRACTHOUR" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="YES" ParameterType="StringQualif" Occurrence="Optional">
+          <Qualification>          
+            <Parameter Name="SUFFIX" ParameterType="QuotedString"/>
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification>
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="EXTRACTMINUTE" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="YES" ParameterType="StringQualif" Occurrence="Optional">
+          <Qualification>          
+            <Parameter Name="SUFFIX" ParameterType="QuotedString"/>
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification>
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="EXTRACTSECOND" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="YES" ParameterType="StringQualif" Occurrence="Optional">
+          <Qualification>          
+            <Parameter Name="SUFFIX" ParameterType="QuotedString"/>
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification>
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="SCREENING" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="PCTMISSING" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="YES" ParameterType="StringQualif">
+          <Qualification>          
+            <Parameter Name="MAXPCT" ParameterType="Number" LowerBdryOption="InclLowerBdry" LowerBdryValue="0" UpperBdryOption="InclUpperBdry" UpperBdryValue="100"/>
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification>
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="UNIQUECAT" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="YES" ParameterType="StringQualif">
+          <Qualification>          
+            <Parameter Name="MAXCAT" ParameterType="Integer" LowerBdryOption="ExclLowerBdry" LowerBdryValue="0"/>
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification>
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="SINGLECAT" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="YES" ParameterType="StringQualif">
+          <Qualification>          
+            <Parameter Name="MAXPCT" ParameterType="Number" LowerBdryOption="InclLowerBdry" LowerBdryValue="0" UpperBdryOption="InclUpperBdry" UpperBdryValue="100"/>
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification>
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="ADJUSTLEVEL" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="INPUT" ParameterType="Keyword">
+      <EnumValue Name="YES"/>
+      <EnumValue Name="NO"/>
+    </Parameter>
+    <Parameter Name="TARGET" ParameterType="Keyword">
+      <EnumValue Name="YES"/>
+      <EnumValue Name="NO"/>
+    </Parameter>
+    <Parameter Name="MAXVALORDINAL" ParameterType="Integer" LowerBdryOption="ExclLowerBdry" LowerBdryValue="0" />
+    <Parameter Name="MINVALCONTINUOUS" ParameterType="Integer" LowerBdryOption="ExclLowerBdry" LowerBdryValue="0" />
+  </Subcommand>
+  <Subcommand Name="OUTLIERHANDLING" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="INPUT" ParameterType="Keyword">
+      <EnumValue Name="YES"/>
+      <EnumValue Name="NO"/>
+    </Parameter>
+    <Parameter Name="TARGET" ParameterType="Keyword">
+      <EnumValue Name="YES"/>
+      <EnumValue Name="NO"/>
+    </Parameter>
+    <Parameter Name="CUTOFF" ParameterType="StringQualif">
+      <Qualification>          
+        <Parameter Name="SD" ParameterType="Number" LowerBdryOption="ExclLowerBdry" LowerBdryValue="0" />
+      </Qualification>
+    </Parameter>
+    <Parameter Name="REPLACEWITH" ParameterType="Keyword">
+      <EnumValue Name="CUTOFFVALUE"/>
+      <EnumValue Name="MISSING"/>     
+    </Parameter>    
+  </Subcommand>
+  <Subcommand Name="REPLACEMISSING" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="INPUT" ParameterType="StringQualif">
+      <Qualification style="Parenthesis">
+        <Parameter Name="YES" ParameterType="StringQualif" Occurrence="Optional">
+          <Qualification style="Parenthesis"> 
+            <Parameter Name="EXCLUDE" ParameterType="StringQualifList">
+              <Qualification >
+                <Parameter Name="CONTINUOUS" ParameterType="LeadingToken" />
+                <Parameter Name="NOMINAL" ParameterType="LeadingToken" />
+                <Parameter Name="ORDINAL" ParameterType="LeadingToken" />                    
+              </Qualification>
+             </Parameter>          
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification style="Equal">
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="TARGET" ParameterType="StringQualif">
+      <Qualification style="Parenthesis">
+        <Parameter Name="YES" ParameterType="StringQualif" Occurrence="Optional">
+          <Qualification style="Parenthesis"> 
+            <Parameter Name="EXCLUDE" ParameterType="StringQualifList">
+              <Qualification >
+                <Parameter Name="CONTINUOUS" ParameterType="LeadingToken" />
+                <Parameter Name="NOMINAL" ParameterType="LeadingToken" />
+                <Parameter Name="ORDINAL" ParameterType="LeadingToken" />                    
+              </Qualification>
+            </Parameter>          
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification style="Equal">
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="REORDERNOMINAL" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="INPUT" ParameterType="Keyword">
+      <EnumValue Name="YES"/>
+      <EnumValue Name="NO"/>
+    </Parameter>
+    <Parameter Name="TARGET" ParameterType="Keyword">
+      <EnumValue Name="YES"/>
+      <EnumValue Name="NO"/>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="RESCALE" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="INPUT" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="ZSCORE" ParameterType="StringQualifList" Occurrence="Optional">
+          <Qualification>          
+            <Parameter Name="MEAN" ParameterType="Number" />
+            <Parameter Name="SD" ParameterType="Number" LowerBdryOption="ExclLowerBdry" LowerBdryValue="0" />            
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification style="Equal">
+        <Parameter Name="MINMAX" ParameterType="StringQualifList" Occurrence="Optional">
+          <Qualification>          
+            <Parameter Name="MIN" ParameterType="Number" />
+            <Parameter Name="MAX" ParameterType="Number" />            
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification>
+        <Parameter Name="NONE" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="TARGET" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="BOXCOX" ParameterType="StringQualifList" Occurrence="Optional">
+          <Qualification>          
+            <Parameter Name="MEAN" ParameterType="Number" />
+            <Parameter Name="SD" ParameterType="Number" LowerBdryOption="ExclLowerBdry" LowerBdryValue="0" />            
+          </Qualification>
+        </Parameter>
+      </Qualification>      
+      <Qualification>
+        <Parameter Name="NONE" ParameterType="LeadingToken"/>
+      </Qualification>
+     </Parameter>
+  </Subcommand>
+  <Subcommand Name="TRANSFORM" Delimiter="EqualDelimited" Occurrence="Optional">
+    <Parameter Name="MERGESUPERVISED" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="YES" ParameterType="StringQualif" Occurrence="Optional">
+          <Qualification>          
+            <Parameter Name="PVALUE" ParameterType="Number" LowerBdryOption="ExclLowerBdry" LowerBdryValue="0" UpperBdryOption="InclUpperBdry" UpperBdryValue="1"/>            
+          </Qualification>
+        </Parameter>
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="MERGEUNSUPERVISED" ParameterType="StringQualifList">
+      <Qualification style="Equal">
+        <Parameter Name="YES" ParameterType="StringQualifList" Occurrence="Optional">
+          <Qualification>          
+            <Parameter Name="ORDINAL" ParameterType="LeadingToken" />
+            <Parameter Name="NOMINAL" ParameterType="LeadingToken" />
+            <Parameter Name="MINPCT" ParameterType="Number" LowerBdryOption="InclLowerBdry" LowerBdryValue="0" UpperBdryOption="InclUpperBdry" UpperBdryValue="100" />            
+          </Qualification>
+        </Parameter>
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="BINNING" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="SUPERVISED" ParameterType="StringQualif" Occurrence="Optional">
+          <Qualification>          
+            <Parameter Name="PVALUE" ParameterType="Number" LowerBdryOption="ExclLowerBdry" LowerBdryValue="0" UpperBdryOption="InclUpperBdry" UpperBdryValue="1"/>            
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification>
+        <Parameter Name="NONE" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="SELECTION" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="YES" ParameterType="StringQualif" Occurrence="Optional">
+          <Qualification>          
+            <Parameter Name="PVALUE" ParameterType="Number" LowerBdryOption="ExclLowerBdry" LowerBdryValue="0" UpperBdryOption="InclUpperBdry" UpperBdryValue="1"/>            
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification>
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+    <Parameter Name="CONSTRUCTION" ParameterType="StringQualif">
+      <Qualification style="Equal">
+        <Parameter Name="YES" ParameterType="StringQualif"  Occurrence="Optional">
+          <Qualification>          
+            <Parameter Name="ROOT" ParameterType="VariableName" />            
+          </Qualification>
+        </Parameter>
+      </Qualification>
+      <Qualification style="Equal">
+        <Parameter Name="NO" ParameterType="LeadingToken"/>
+      </Qualification>
+    </Parameter>
+  </Subcommand>
+  <Subcommand Name="CRITERIA" Delimiter="ParenDelimited" Occurrence="Optional">
+    <Qualification style="Equal">
+      <Parameter Name="SUFFIX" ParameterType="StringQualifList">
+        <Qualification>
+          <Parameter Name="TARGET" ParameterType="QuotedString"/>
+          <Parameter Name="INPUT" ParameterType="QuotedString"/>        
+        </Qualification>
+      </Parameter>
+    </Qualification>
+  </Subcommand>
+  <Subcommand Name="OUTFILE" Delimiter="EqualDelimited" Occurrence="Required">
+    <Parameter Name="PREPXML" ParameterType="OutputFile"/>
+  </Subcommand>
+  <ExecutionGeneration>
+    <ComponentGeneration>
+      <CFComponent id="1" componentId="adp" providerId="pasw" moduleId="adp" inputIds="" dependencyIds="" version="1.2">
+        <CFContainer id="C1" name="pmmlReport" type="Output" containerType="PMML" boundary="Global" mvRequired="false" path="[OUTFILE]"/>
+      </CFComponent>     
+    </ComponentGeneration>
+   <ParameterGeneration>
+     <ComponentSetting id="adp">
+       <SyntaxProperties Name="">
+         <CFProperty Name="trimBlanks" ValueFrom="Fixed" Value="false"/>   
+         <CFProperty Name="todaysDate" ValueFrom="Evaluate" Value="GetDoubleDate('CURRENT')"/>
+         <CFProperty Name="currentTime" ValueFrom="Evaluate" Value="GetDoubleTime('CURRENT')" />
+         <CFProperty Name="reorderNominalCatsPriorToMerging" ValueFrom="Fixed" Value="false"/>
+         <CFProperty Name="reorderNominalTargetCategories" ValueFrom="Fixed" Value="false"/>
+         <CFProperty Name="replaceOrdinalTargetMissingValue" ValueFrom="Fixed" Value="false"/>         
+         <CFProperty Name="replaceNominalTargetMissingValue" ValueFrom="Fixed" Value="false"/>         
+         <CFProperty Name="replaceScaleTargetMissingValue" ValueFrom="Fixed" Value="false"/>
+         <CFProperty Name="autoChooseDateFieldUnit" ValueFrom="Fixed" Value="automatic"/>
+         <CFProperty Name="autoChooseTimeFieldUnit" ValueFrom="Fixed" Value="automatic"/>
+         <CFProperty Name="unsupervisedMergeOrdinal" ValueFrom="Fixed" Value="false"/>
+         <CFProperty Name="unsupervisedMergeNominal" ValueFrom="Fixed" Value="false"/>
+         <CFProperty Name="featureConstruction" ValueFrom="Fixed" Value="false"/>
+         <CFProperty Name="FrequencyWeightField" ValueFrom="System" Value="[FrequencyWeightField]"/>
+         <CFProperty Name="adjustThreshold" ValueFrom="Fixed" Value="0"/>
+       </SyntaxProperties>     
+       <SyntaxProperties Name="FIELDS.TARGET">
+         <CFProperty Name="targetfield" ValueFrom="Input" MaxValueCount="unbounded"/>
+       </SyntaxProperties> 
+       <SyntaxProperties Name="FIELDS.INPUT">
+         <CFProperty Name="inputfields" ValueFrom="Input" MaxValueCount="unbounded"/>
+       </SyntaxProperties> 
+       <SyntaxProperties Name="FIELDS.ANALYSISWEIGHT">
+         <CFProperty Name="analysisWeight" ValueFrom="Input"/>
+       </SyntaxProperties>   
+       <SyntaxProperties Name="PREPDATETIME.DATEDURATION.YES" >
+         <CFProperty Name="computeDateDuration" ValueFrom="Fixed" Value="true"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.DATEDURATION.YES.REFERENCE.CURRENT" >
+         <CFProperty Name="referenceDateType" ValueFrom="Fixed" Value="todaysDate"/>
+         <CFProperty Name="todaysDate" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.DATEDURATION.YES.REFERENCE.YMD" >
+         <CFProperty Name="referenceDateType" ValueFrom="Fixed" Value="fixedDate"/>
+         <CFProperty Name="referenceDateForDurations" ValueFrom="Evaluate" Value="GetDoubleDate(##)"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.DATEDURATION.YES.UNIT.AUTO" >
+         <CFProperty Name="autoChooseDateFieldUnit" ValueFrom="Fixed" Value="automatic" Operation="Replace"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.DATEDURATION.YES.UNIT.YEARS" >
+         <CFProperty Name="autoChooseDateFieldUnit" ValueFrom="Fixed" Value="fixed" Operation="Replace"/>
+         <CFProperty Name="dateUnit" ValueFrom="Fixed" Value="year"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.DATEDURATION.YES.UNIT.MONTHS" >
+         <CFProperty Name="autoChooseDateFieldUnit" ValueFrom="Fixed" Value="fixed" Operation="Replace"/>
+         <CFProperty Name="dateUnit" ValueFrom="Fixed" Value="month"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.DATEDURATION.YES.UNIT.DAYS" >
+         <CFProperty Name="autoChooseDateFieldUnit" ValueFrom="Fixed" Value="fixed" Operation="Replace"/>
+         <CFProperty Name="dateUnit" ValueFrom="Fixed" Value="day"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.DATEDURATION.YES.UNIT.YEARS.SUFFIX" >
+         <CFProperty Name="suffixElapsedYears" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.DATEDURATION.YES.UNIT.MONTHS.SUFFIX" >
+         <CFProperty Name="suffixElapsedMonths" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.DATEDURATION.YES.UNIT.DAYS.SUFFIX" >
+         <CFProperty Name="suffixElapsedDays" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.DATEDURATION.NO" >
+         <CFProperty Name="computeDateDuration" ValueFrom="Fixed" Value="false"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.TIMEDURATION.YES" >
+         <CFProperty Name="computeTimeDuration" ValueFrom="Fixed" Value="true"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.TIMEDURATION.YES.REFERENCE.CURRENT" >
+         <CFProperty Name="referenceTimeType" ValueFrom="Fixed" Value="currentTime"/>
+         <CFProperty Name="currentTime" ValueFrom="Input" />
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.TIMEDURATION.YES.REFERENCE.HMS" >
+         <CFProperty Name="referenceTimeType" ValueFrom="Fixed" Value="fixedTime"/>
+         <CFProperty Name="referenceTimeForDurations" ValueFrom="Evaluate" Value="GetDoubleTime(##)"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.TIMEDURATION.YES.UNIT.AUTO" >
+         <CFProperty Name="autoChooseTimeFieldUnit" ValueFrom="Fixed" Value="automatic" Operation="Replace"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.TIMEDURATION.YES.UNIT.HOURS" >
+         <CFProperty Name="autoChooseTimeFieldUnit" ValueFrom="Fixed" Value="fixed" Operation="Replace"/>
+         <CFProperty Name="timeUnit" ValueFrom="Fixed" Value="hour"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.TIMEDURATION.YES.UNIT.MINUTES" >
+         <CFProperty Name="autoChooseTimeFieldUnit" ValueFrom="Fixed" Value="fixed" Operation="Replace"/>
+         <CFProperty Name="timeUnit" ValueFrom="Fixed" Value="minute"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.TIMEDURATION.YES.UNIT.SECONDS" >
+         <CFProperty Name="autoChooseTimeFieldUnit" ValueFrom="Fixed" Value="fixed" Operation="Replace"/>
+         <CFProperty Name="timeUnit" ValueFrom="Fixed" Value="second"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.TIMEDURATION.YES.UNIT.HOURS.SUFFIX" >
+         <CFProperty Name="suffixElapsedHours" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.TIMEDURATION.YES.UNIT.MINUTES.SUFFIX" >
+         <CFProperty Name="suffixElapsedMinutes" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.TIMEDURATION.YES.UNIT.SECONDS.SUFFIX" >
+         <CFProperty Name="suffixElapsedSeconds" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.TIMEDURATION.NO" >
+         <CFProperty Name="computeTimeDuration" ValueFrom="Fixed" Value="false"/>
+       </SyntaxProperties>     
+       <SyntaxProperties Name="PREPDATETIME.EXTRACTYEAR">
+         <CFProperty Name="extractYearFromDate" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>                
+         </CFProperty>
+       </SyntaxProperties>     
+       <SyntaxProperties Name="PREPDATETIME.EXTRACTYEAR.YES.SUFFIX">
+         <CFProperty Name="suffixYear" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.EXTRACTMONTH">
+         <CFProperty Name="extractMonthFromDate" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>                
+         </CFProperty>
+       </SyntaxProperties>     
+       <SyntaxProperties Name="PREPDATETIME.EXTRACTMONTH.YES.SUFFIX">
+         <CFProperty Name="suffixMonth" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.EXTRACTDAY">
+         <CFProperty Name="extractDayFromDate" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>                
+         </CFProperty>
+       </SyntaxProperties>     
+       <SyntaxProperties Name="PREPDATETIME.EXTRACTDAY.YES.SUFFIX">
+         <CFProperty Name="suffixDay" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.EXTRACTHOUR">
+         <CFProperty Name="extractHourFromTime" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>                
+         </CFProperty>
+       </SyntaxProperties>     
+       <SyntaxProperties Name="PREPDATETIME.EXTRACTHOUR.YES.SUFFIX">
+         <CFProperty Name="suffixHour" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.EXTRACTMINUTE">
+         <CFProperty Name="extractMinuteFromTime" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>                
+         </CFProperty>
+       </SyntaxProperties>     
+       <SyntaxProperties Name="PREPDATETIME.EXTRACTMINUTE.YES.SUFFIX">
+         <CFProperty Name="suffixMinute" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="PREPDATETIME.EXTRACTSECOND">
+         <CFProperty Name="extractSecondFromTime" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>                
+         </CFProperty>
+       </SyntaxProperties>     
+       <SyntaxProperties Name="PREPDATETIME.EXTRACTSECOND.YES.SUFFIX">
+         <CFProperty Name="suffixSecond" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="SCREENING.PCTMISSING">
+         <CFProperty Name="excludeFeatureIfHasHigherPercentageOfMissingValue" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="SCREENING.PCTMISSING.YES.MAXPCT">
+         <CFProperty Name="maxPercentageOfMissingvalue" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="SCREENING.UNIQUECAT">
+         <CFProperty Name="excludeFeatureIfHasManyUniqueCatogories" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="SCREENING.UNIQUECAT.YES.MAXCAT">
+         <CFProperty Name="maxNOfUniqueCategories" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="SCREENING.SINGLECAT">
+         <CFProperty Name="excludeAlmostConstantCatFeature" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="SCREENING.SINGLECAT.YES.MAXPCT">
+         <CFProperty Name="catFeatureScreenThreshold" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="ADJUSTLEVEL.INPUT">
+         <CFProperty Name="checkFeatureMeasureLevel" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="ADJUSTLEVEL.TARGET">
+         <CFProperty Name="checkTargetMeasureLevel" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="ADJUSTLEVEL.MAXVALORDINAL">
+         <CFProperty Name="ordinalToScaleCategoriesNumThreshold" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="ADJUSTLEVEL.MINVALCONTINUOUS">
+         <CFProperty Name="scaleToOrdinalValuesNumThreshold" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="OUTLIERHANDLING.INPUT">
+         <CFProperty Name="detectFeatureOutliers" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="OUTLIERHANDLING.TARGET">
+         <CFProperty Name="detectTargetOutliers" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="OUTLIERHANDLING.CUTOFF.SD">
+         <CFProperty Name="outlierIdentCutoff" ValueFrom="Input"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="OUTLIERHANDLING.REPLACEWITH">
+         <CFProperty Name="outliersOperation" ValueFrom="Input">
+           <CFValueMap SyntaxValue="CUTOFFVALUE" PropertyValue="coerceToCutoffVal"/>
+           <CFValueMap SyntaxValue="MISSING" PropertyValue="setToMissingVal"/>
+         </CFProperty>
+       </SyntaxProperties>       
+       <SyntaxProperties Name="REPLACEMISSING.INPUT">
+         <CFProperty Name="replaceScaleFeaturesMissingValue" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+         <CFProperty Name="replaceNominalFeaturesMissingValue" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+         <CFProperty Name="replaceOrdinalFeaturesMissingValue" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="REPLACEMISSING.INPUT.YES.EXCLUDE.CONTINUOUS">
+         <CFProperty Name="replaceScaleFeaturesMissingValue" Value="false" ValueFrom="Fixed" Operation="CreateReplace"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="REPLACEMISSING.INPUT.YES.EXCLUDE.NOMINAL">
+         <CFProperty Name="replaceNominalFeaturesMissingValue" Value="false" ValueFrom="Fixed" Operation="CreateReplace"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="REPLACEMISSING.INPUT.YES.EXCLUDE.ORDINAL">
+         <CFProperty Name="replaceOrdinalFeaturesMissingValue" Value="false" ValueFrom="Fixed" Operation="CreateReplace"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="REPLACEMISSING.TARGET">
+         <CFProperty Name="replaceOrdinalTargetMissingValue" ValueFrom="Input" Operation="CreateReplace">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+         <CFProperty Name="replaceNominalTargetMissingValue" ValueFrom="Input" Operation="CreateReplace">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+         <CFProperty Name="replaceScaleTargetMissingValue" ValueFrom="Input" Operation="CreateReplace">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="REPLACEMISSING.TARGET.YES.EXCLUDE.CONTINUOUS">
+         <CFProperty Name="replaceScaleTargetMissingValue" Value="false" ValueFrom="Fixed" Operation="CreateReplace"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="REPLACEMISSING.TARGET.YES.EXCLUDE.NOMINAL">
+         <CFProperty Name="replaceNominalTargetMissingValue" Value="false" ValueFrom="Fixed" Operation="CreateReplace"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="REPLACEMISSING.TARGET.YES.EXCLUDE.ORDINAL">
+         <CFProperty Name="replaceOrdinalTargetMissingValue" Value="false" ValueFrom="Fixed" Operation="CreateReplace"/>
+       </SyntaxProperties>
+       <SyntaxProperties Name="REORDERNOMINAL.INPUT">
+         <CFProperty Name="reorderNominalCatsPriorToMerging" ValueFrom="Input" Operation="Replace">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="REORDERNOMINAL.TARGET">
+         <CFProperty Name="reorderNominalTargetCategories" ValueFrom="Input" Operation="Replace">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="RESCALE.INPUT">
+         <CFProperty Name="scaleFeatureRescalingMethod" ValueFrom="Input">
+           <CFValueMap SyntaxValue="ZSCORE" PropertyValue="zScore"/>
+           <CFValueMap SyntaxValue="MINMAX" PropertyValue="minMax"/>
+           <CFValueMap SyntaxValue="NONE" PropertyValue="noRescaling"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="RESCALE.INPUT.ZSCORE.MEAN">
+         <CFProperty Name="zScore_mean" ValueFrom="Input"/>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="RESCALE.INPUT.ZSCORE.SD">
+         <CFProperty Name="zScore_SD" ValueFrom="Input"/>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="RESCALE.INPUT.MINMAX.MIN">
+         <CFProperty Name="minMax_min" ValueFrom="Input"/>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="RESCALE.INPUT.MINMAX.MAX">
+         <CFProperty Name="minMax_max" ValueFrom="Input"/>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="RESCALE.TARGET">
+         <CFProperty Name="rescaleScaleTargetUsingBoxCox" ValueFrom="Input">
+           <CFValueMap SyntaxValue="BOXCOX" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NONE" PropertyValue="false"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="RESCALE.TARGET.BOXCOX.MEAN">
+         <CFProperty Name="targetMean" ValueFrom="Input"/>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="RESCALE.TARGET.BOXCOX.SD">
+         <CFProperty Name="targetSD" ValueFrom="Input"/>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="TRANSFORM.MERGESUPERVISED">
+         <CFProperty Name="supervisedMerging" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="TRANSFORM.MERGESUPERVISED.YES.PVALUE">
+         <CFProperty Name="supervisedMergingPValue" ValueFrom="Input"/>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="TRANSFORM.MERGEUNSUPERVISED.YES.ORDINAL">
+         <CFProperty Name="unsupervisedMergeOrdinal" ValueFrom="Fixed" Value="true" Operation="Replace"/>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="TRANSFORM.MERGEUNSUPERVISED.YES.NOMINAL">
+         <CFProperty Name="unsupervisedMergeNominal" ValueFrom="Fixed" Value="true"  Operation="Replace"/>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="TRANSFORM.MERGEUNSUPERVISED.YES.MINPCT">
+         <CFProperty Name="unsupervisedMergingMinPercentageOfCases" ValueFrom="Input"/>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="TRANSFORM.BINNING">
+         <CFProperty Name="supervisedBinning" ValueFrom="Input">
+           <CFValueMap SyntaxValue="SUPERVISED" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NONE" PropertyValue="false"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="TRANSFORM.BINNING.SUPERVISED.PVALUE">
+         <CFProperty Name="homogeneousSubsetsPValue" ValueFrom="Input"/>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="TRANSFORM.SELECTION">
+         <CFProperty Name="featureSelection" ValueFrom="Input">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="TRANSFORM.SELECTION.YES.PVALUE">
+         <CFProperty Name="featureSelectionPValue" ValueFrom="Input"/>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="TRANSFORM.CONSTRUCTION">
+         <CFProperty Name="featureConstruction" ValueFrom="Input" Operation="Replace">
+           <CFValueMap SyntaxValue="YES" PropertyValue="true"/>
+           <CFValueMap SyntaxValue="NO" PropertyValue="false"/>
+         </CFProperty>
+       </SyntaxProperties>
+       <SyntaxProperties Name="TRANSFORM.CONSTRUCTION.YES.ROOT">
+         <CFProperty Name="rootNameForConsturctedFeature" ValueFrom="Input"/>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="CRITERIA.SUFFIX.TARGET">
+         <CFProperty Name="nameExtForTarget" ValueFrom="Input"/>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="CRITERIA.SUFFIX.INPUT">
+         <CFProperty Name="nameExtForInputs" ValueFrom="Input"/>       
+       </SyntaxProperties>
+       <SyntaxProperties Name="OUTFILE.PREPXML">
+         <CFProperty Name="[OUTFILE]" ValueFrom="Input"/>       
+       </SyntaxProperties>
+     </ComponentSetting>
+   </ParameterGeneration>
+  </ExecutionGeneration>
+</Command>

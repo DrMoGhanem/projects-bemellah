@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<index>
+  <entry keyword=".NET">
+    <entry keyword="Processor class">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_start.htm#programmability_sdk_vbapps_start" title="Getting Started  (.NET) "/>
+    </entry>
+    <entry keyword="class template">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_start.htm#programmability_sdk_vbapps_start" title="Getting Started  (.NET) "/>
+    </entry>
+    <entry keyword="Submit method">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_submit.htm#programmability_sdk_vbapps_submit" title="Running IBM SPSS Statistics Commands  (.NET)"/>
+    </entry>
+    <entry keyword="DataCursor class">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_cursors_read.htm#programmability_sdk_vbapps_cursors_read" title="Reading Case Data  (.NET) "/>
+    </entry>
+    <entry keyword="DataCursorWrite class">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_cursors_write.htm#programmability_sdk_vbapps_cursors_write" title="Creating New Variables in the Active Dataset  (.NET)"/>
+    </entry>
+    <entry keyword="DataCursorAppend class">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_cursors_append.htm#programmability_sdk_vbapps_cursors_append" title="Appending New Cases  (.NET)"/>
+    </entry>
+    <entry keyword="EvaluateXPath method">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_getoutput.htm#programmability_sdk_vbapps_getoutput" title="Retrieving Output from Syntax Commands  (.NET) "/>
+    </entry>
+  </entry>
+  <entry keyword="SPSS.BackendAPI.dll">
+    <topic href="spss/programmability_option/programmability_sdk_vbapps_start.htm#programmability_sdk_vbapps_start" title="Getting Started  (.NET) "/>
+  </entry>
+  <entry keyword="SPSS.BackendAPI.Controller.dll">
+    <topic href="spss/programmability_option/programmability_sdk_vbapps_start.htm#programmability_sdk_vbapps_start" title="Getting Started  (.NET) "/>
+  </entry>
+  <entry keyword="Visual Studio">
+    <topic href="spss/programmability_option/programmability_sdk_vbapps_start.htm#programmability_sdk_vbapps_start" title="Getting Started  (.NET) "/>
+  </entry>
+  <entry keyword="running command syntax from .NET">
+    <topic href="spss/programmability_option/programmability_sdk_vbapps_submit.htm#programmability_sdk_vbapps_submit" title="Running IBM SPSS Statistics Commands  (.NET)"/>
+  </entry>
+  <entry keyword="dictionary">
+    <entry keyword="reading dictionary information from .NET">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_vardict.htm#programmability_sdk_vbapps_vardict" title="Retrieving Dictionary Information  (.NET)"/>
+    </entry>
+  </entry>
+  <entry keyword="data">
+    <entry keyword="reading active dataset from .NET">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_cursors.htm#programmability_sdk_vbapps_cursors" title="Working With Case Data in the Active Dataset  (.NET)"/>
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_cursors_read.htm#programmability_sdk_vbapps_cursors_read" title="Reading Case Data  (.NET) "/>
+    </entry>
+    <entry keyword="creating new variables">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_cursors.htm#programmability_sdk_vbapps_cursors" title="Working With Case Data in the Active Dataset  (.NET)"/>
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_cursors_write.htm#programmability_sdk_vbapps_cursors_write" title="Creating New Variables in the Active Dataset  (.NET)"/>
+    </entry>
+    <entry keyword="appending cases">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_cursors.htm#programmability_sdk_vbapps_cursors" title="Working With Case Data in the Active Dataset  (.NET)"/>
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_cursors_append.htm#programmability_sdk_vbapps_cursors_append" title="Appending New Cases  (.NET)"/>
+    </entry>
+  </entry>
+  <entry keyword="output">
+    <entry keyword="reading output results from .NET">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_getoutput.htm#programmability_sdk_vbapps_getoutput" title="Retrieving Output from Syntax Commands  (.NET) "/>
+    </entry>
+  </entry>
+  <entry keyword="OXML">
+    <entry keyword="reading output XML from .NET">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_getoutput.htm#programmability_sdk_vbapps_getoutput" title="Retrieving Output from Syntax Commands  (.NET) "/>
+    </entry>
+  </entry>
+  <entry keyword="XML workspace">
+    <topic href="spss/programmability_option/programmability_sdk_vbapps_getoutput.htm#programmability_sdk_vbapps_getoutput" title="Retrieving Output from Syntax Commands  (.NET) "/>
+    <entry keyword="writing contents to an XML file">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_getoutput.htm#programmability_sdk_vbapps_getoutput" title="Retrieving Output from Syntax Commands  (.NET) "/>
+    </entry>
+  </entry>
+  <entry keyword="XPath expressions">
+    <topic href="spss/programmability_option/programmability_sdk_vbapps_getoutput.htm#programmability_sdk_vbapps_getoutput" title="Retrieving Output from Syntax Commands  (.NET) "/>
+  </entry>
+  <entry keyword="pivot tables">
+    <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables.htm#programmability_sdk_vbapps_makeoutput_tables" title="Creating Pivot Tables  (.NET)"/>
+  </entry>
+  <entry keyword="SimplePivotTable method">
+    <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_simple.htm#programmability_sdk_vbapps_makeoutput_tables_simple" title="The SimplePivotTable Method  (.NET)"/>
+  </entry>
+  <entry keyword="BasePivotTable class">
+    <entry keyword="SimplePivotTable method">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_simple.htm#programmability_sdk_vbapps_makeoutput_tables_simple" title="The SimplePivotTable Method  (.NET)"/>
+    </entry>
+    <entry keyword="Append method">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_dimensions.htm#programmability_sdk_vbapps_makeoutput_tables_general_dimensions" title="Step 1: Adding Dimensions  (.NET)"/>
+    </entry>
+    <entry keyword="Insert method">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_dimensions.htm#programmability_sdk_vbapps_makeoutput_tables_general_dimensions" title="Step 1: Adding Dimensions  (.NET)"/>
+    </entry>
+    <entry keyword="SetCategory method">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_categories.htm#programmability_sdk_vbapps_makeoutput_tables_general_categories" title="Step 2: Defining Categories  (.NET)"/>
+    </entry>
+    <entry keyword="SetCellsByColumn method">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_cells.htm#programmability_sdk_vbapps_makeoutput_tables_general_cells" title="Step 3: Setting Cell Values  (.NET)"/>
+    </entry>
+    <entry keyword="SetCellsByRow method">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_cells.htm#programmability_sdk_vbapps_makeoutput_tables_general_cells" title="Step 3: Setting Cell Values  (.NET)"/>
+    </entry>
+    <entry keyword="SetCell method">
+      <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_cells.htm#programmability_sdk_vbapps_makeoutput_tables_general_cells" title="Step 3: Setting Cell Values  (.NET)"/>
+    </entry>
+  </entry>
+  <entry keyword="Append method">
+    <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_dimensions.htm#programmability_sdk_vbapps_makeoutput_tables_general_dimensions" title="Step 1: Adding Dimensions  (.NET)"/>
+  </entry>
+  <entry keyword="Insert method">
+    <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_dimensions.htm#programmability_sdk_vbapps_makeoutput_tables_general_dimensions" title="Step 1: Adding Dimensions  (.NET)"/>
+  </entry>
+  <entry keyword="SetCategory method">
+    <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_categories.htm#programmability_sdk_vbapps_makeoutput_tables_general_categories" title="Step 2: Defining Categories  (.NET)"/>
+  </entry>
+  <entry keyword="SetCellsByColumn method">
+    <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_cells.htm#programmability_sdk_vbapps_makeoutput_tables_general_cells" title="Step 3: Setting Cell Values  (.NET)"/>
+  </entry>
+  <entry keyword="SetCellsByRow method">
+    <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_cells.htm#programmability_sdk_vbapps_makeoutput_tables_general_cells" title="Step 3: Setting Cell Values  (.NET)"/>
+  </entry>
+  <entry keyword="SetCell method">
+    <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_tables_general_cells.htm#programmability_sdk_vbapps_makeoutput_tables_general_cells" title="Step 3: Setting Cell Values  (.NET)"/>
+  </entry>
+  <entry keyword="TextBlock class">
+    <topic href="spss/programmability_option/programmability_sdk_vbapps_makeoutput_text.htm#programmability_sdk_vbapps_makeoutput_text" title="Creating Text Blocks  (.NET)"/>
+  </entry>
+</index>

@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: <Analytic Components>                          -->
+<!--                                                                   -->
+<!-- (c)Copyright IBM Corp. 2009, 2011                                 -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<Module xmlns="http://xml.spss.com/pasw/extension" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" debug="false" version="8.0" xsi:schemaLocation="http://xml.spss.com/pasw/extension http://xml.spss.com/pasw/extension/ModuleSpecification.xsd">
+  <ModuleDetails copyright="(c) 2009 SPSS, Inc." description="Outer Partition" id="outerpartition" label="outerpartition" provider="SPSS, Inc."  providerTag="pasw" version="8.0"/>
+  <SharedLibrary basename="outerpartition"/>
+  <Resources>
+    <Bundle id="outerpartition_res" path="messages" type="properties"/>
+  </Resources>
+  <CommonObjects>
+    <PropertyTypes>
+      <!-- define the various kinds of partition -->
+      <Enumeration id="SelectedPartition_Type">
+        <Enum value="training"/>
+        <!-- this is represented by the first category value in the metadata -->
+        <Enum value="testing"/>
+        <!-- this is represented by the second category value in the metadata -->
+        <Enum value="validation"/>
+        <!-- this is represented by the third category value in the metadata -->
+      </Enumeration>
+    </PropertyTypes>
+  </CommonObjects>
+  <StatusCodes>
+    <!-- the following error is returned if the partition field metadata does not contain ANY category information -->
+    <StatusCode code="1" status="error" messageKey="INSUFFICIENT_METADATA.LABEL"/>
+  </StatusCodes>
+  <ContainerTypes></ContainerTypes>
+  <Component id="outerpartition">
+    <Capabilities>
+      <Transformer/>
+    </Capabilities>
+    <Properties>
+      <Property name="partitionField" valueType="fieldName" />
+      <Property name="trainingValue" valueType="string" />
+      <Property name="testingValue" valueType="string" />
+      <!-- everything that does not match the trainingValue and the testingValue is considered to belong to the validation partition -->
+      <Property name="selectedPartition" type="SelectedPartition_Type" defaultValue="training" />
+    </Properties>
+    <Containers></Containers>
+    <Constraints></Constraints>
+  </Component>
+</Module>

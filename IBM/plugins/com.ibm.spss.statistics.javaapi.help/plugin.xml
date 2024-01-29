@@ -1,0 +1,12 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<plugin
+    name = "Integration Plug-in for Java API Reference"
+    id = "com.ibm.spss.statistics.javaapi.help"
+    version = "23"
+    provider-name = "IBM">
+
+  <extension point="org.eclipse.help.toc">
+    <toc file="com.ibm.spss.statistics.javaapi.help_toc.xml" primary="true"/>
+  </extension>
+
+</plugin>

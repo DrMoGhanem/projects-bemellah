@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<!--© Copyright IBM Corporation 1989, 2014-->
+<toc label="Lernprogramm" topic="spss/tutorials/introtut2.htm">
+   <topic label="Einführung" href="spss/tutorials/introtut2.htm">
+      <topic label="Beispieldateien" href="spss/tutorials/introtut_sample_files.htm"/>
+      <topic label="Öffnen einer Datendatei" href="spss/tutorials/introtut5.htm"/>
+      <topic label="Durchführen einer Analyse" href="spss/tutorials/introtut6.htm"/>
+      <topic label="Erstellen von Diagrammen" href="spss/tutorials/introtut8.htm"/>
+   </topic>
+   <topic label="Einlesen von Daten" href="spss/tutorials/datatut_intro.htm">
+      <topic label="Grundlegende Struktur von IBM SPSS Statistics-Datendateien"
+             href="spss/tutorials/datatut_datastructure.htm"/>
+      <topic label="Einlesen von IBM SPSS Statistics-Datendateien"
+             href="spss/tutorials/datatut_spssfile.htm"/>
+      <topic label="Einlesen von Daten aus Tabellenkalkulationsdateien"
+             href="spss/tutorials/datatut_excel.htm"/>
+      <topic label="Einlesen von Daten aus einer Datenbank"
+             href="spss/tutorials/datatut_database.htm"/>
+      <topic label="Einlesen von Daten aus einer Textdatei"
+             href="spss/tutorials/datatut_textfile.htm"/>
+   </topic>
+   <topic label="Verwenden des Dateneditors"
+          href="spss/tutorials/dataeditortut_intro.htm">
+      <topic label="Eingeben von numerischen Daten"
+             href="spss/tutorials/dataeditortut_numeric.htm"/>
+      <topic label="Eingeben von Zeichenfolgedaten"
+             href="spss/tutorials/dataeditortut_string.htm"/>
+      <topic label="Definieren von Daten" href="spss/tutorials/dataeditortut_definedata.htm">
+         <topic label="Hinzufügen von Variablenbeschriftungen"
+                href="spss/tutorials/dataeditortut_labels.htm"/>
+         <topic label="Ändern des Datentyps und Formats von Variablen"
+                href="spss/tutorials/dataeditortut_type.htm"/>
+         <topic label="Hinzufügen von Wertbeschriftungen"
+                href="spss/tutorials/dataeditortut_addnumlabel.htm"/>
+         <topic label="Umgang mit fehlenden Daten"
+                href="spss/tutorials/dataeditortut_missing.htm"/>
+         <topic label="Fehlende Werte für eine numerische Variable"
+                href="spss/tutorials/dataeditortut_missingnumber.htm"/>
+         <topic label="Fehlende Werte für eine Zeichenfolgevariable"
+                href="spss/tutorials/dataeditortut_missingstring.htm"/>
+      </topic>
+   </topic>
+   <topic label="Untersuchen der Auswertungsstatistik auf einzelne Variablen"
+          href="spss/tutorials/sumstats_intro.htm">
+      <topic label="Messniveau" href="spss/tutorials/sumstats_measlev.htm"/>
+      <topic label="Auswertungsmaße für kategoriale Daten"
+             href="spss/tutorials/sumstats_catvars.htm">
+         <topic label="Diagramme für kategoriale Daten"
+                href="spss/tutorials/sumstats_catvars_bar.htm"/>
+      </topic>
+      <topic label="Auswertungsmaße für metrische Variablen"
+             href="spss/tutorials/sumstats_scalevars.htm">
+         <topic label="Histogramme für metrische Variablen"
+                href="spss/tutorials/sumstats_scalevars_hist.htm"/>
+      </topic>
+   </topic>
+   <topic label="Kreuztabellen" href="spss/tutorials/bcrosstabstut_intro.htm">
+      <topic label="Einfache Kreuztabelle" href="spss/tutorials/bcrosstabstut_simple.htm"/>
+      <topic label="Häufigkeiten und Prozentwerte"
+             href="spss/tutorials/bcrosstabstut_percent.htm"/>
+      <topic label="Signifikanztests für Kreuztabellen"
+             href="spss/tutorials/bcrosstabstut_sigtest.htm"/>
+      <topic label="Hinzufügen einer Schichtvariablen"
+             href="spss/tutorials/bcrosstabstut_layer.htm"/>
+   </topic>
+   <topic label="Erstellen und Bearbeiten von Diagrammen"
+          href="spss/tutorials/bcharttut_intro.htm">
+      <topic label="Grundlagen der Diagrammerstellung"
+             href="spss/tutorials/bcharttut_standard_create.htm">
+         <topic label="Verwenden der Galerie für die Diagrammerstellung"
+                href="spss/tutorials/bcharttut_gallery.htm"/>
+         <topic label="Definieren von Variablen und Statistiken"
+                href="spss/tutorials/bcharttut_variables.htm"/>
+         <topic label="Hinzufügen von Text"
+                href="spss/tutorials/bcharttut_optionalelements.htm"/>
+         <topic label="Erstellen des Diagramms" href="spss/tutorials/bcharttut_createfinal.htm"/>
+      </topic>
+   </topic>
+   <topic label="Arbeiten mit Ausgaben" href="spss/tutorials/outputtut_intro.htm">
+      <topic label="Arbeiten mit dem Viewer" href="spss/tutorials/outputtut_useviewer.htm"/>
+      <topic label="Verwenden des Editors für Pivot-Tabellen"
+             href="spss/tutorials/outputtut_pivottable.htm">
+         <topic label="Aufrufen von Ausgabedefinitionen"
+                href="spss/tutorials/outputtut_defineoutput.htm"/>
+         <topic label="Pivot-Tabellen" href="spss/tutorials/outputtut_pivotatable.htm"/>
+         <topic label="Erstellen und Anzeigen von Schichten"
+                href="spss/tutorials/outputtut_displaylayer.htm"/>
+         <topic label="Bearbeiten von Tabellen" href="spss/tutorials/outputtut_edittable.htm"/>
+         <topic label="Ausblenden von Zeilen und Spalten"
+                href="spss/tutorials/outputtut_hiderows.htm"/>
+         <topic label="Ändern der Anzeigeformate für Daten"
+                href="spss/tutorials/outputtut_changeformat.htm"/>
+      </topic>
+      <topic label="Tabellenvorlagen" href="spss/tutorials/outputtut_looksintro.htm">
+         <topic label="Verwenden von vordefinierten Formaten"
+                href="spss/tutorials/outputtut_looksselect.htm"/>
+         <topic label="Anpassen von Tabellenvorlagen"
+                href="spss/tutorials/outputtut_lookscustom.htm"/>
+         <topic label="Ändern der Standardtabellenformate"
+                href="spss/tutorials/outputtut_lookschangedef.htm"/>
+         <topic label="Ändern der anfänglichen Einstellungen für die Anzeige"
+                href="spss/tutorials/outputtut_lookssettings.htm"/>
+         <topic label="Anzeigen von Variablen- und Wertbeschriftungen"
+                href="spss/tutorials/outputut_labels.htm"/>
+      </topic>
+      <topic label="Verwenden von Ergebnissen in anderen Anwendungen"
+             href="spss/tutorials/outputtut_export.htm">
+         <topic label="Einfügen von Ergebnissen als Tabellen in Word"
+                href="spss/tutorials/outputtut_rtf.htm"/>
+         <topic label="Einfügen von Ergebnissen als Text"
+                href="spss/tutorials/outputtut_text.htm"/>
+         <topic label="Exportieren von Ergebnissen in Microsoft Word-, PowerPoint- und Excel-Dateien"
+                href="spss/tutorials/outputtut_msapps.htm"/>
+         <topic label="Exportieren von Ergebnissen als PDF"
+                href="spss/tutorials/export_output_pdf.htm"/>
+         <topic label="Exportieren von Ergebnissen als HTML"
+                href="spss/tutorials/features_exportoutput_01.htm"/>
+      </topic>
+   </topic>
+   <topic label="Arbeiten mit Syntax" href="spss/tutorials/syntax_intro.htm">
+      <topic label="Übernehmen von Befehlssyntax" href="spss/tutorials/syntax_paste.htm"/>
+      <topic label="Bearbeiten von Befehlssyntax" href="spss/tutorials/syntax_edit.htm"/>
+      <topic label="Öffnen und Ausführen einer Syntaxdatei"
+             href="spss/tutorials/syntax_openrun.htm"/>
+      <topic label="Verwenden von Haltepunkten" href="spss/tutorials/syntax_breakpoints.htm"/>
+   </topic>
+   <topic label="Ändern von Datenwerten" href="spss/tutorials/bmodvals_tut_intro.htm">
+      <topic label="Erstellen einer kategorialen Variablen aus einer metrischen Variablen"
+             href="spss/tutorials/bmodvalstut_recode.htm"/>
+      <topic label="Berechnen von neuen Variablen"
+             href="spss/tutorials/bmodvalstut_compute.htm">
+         <topic label="Verwenden von Funktionen in Ausdrücken"
+                href="spss/tutorials/bmodvalstut_functions.htm"/>
+         <topic label="Verwenden von bedingten Ausdrücken"
+                href="spss/tutorials/bmodvalstut_condexps.htm"/>
+      </topic>
+      <topic label="Arbeiten mit Datumsangaben und Uhrzeiten"
+             href="spss/tutorials/bmodvalstut_datetime.htm">
+         <topic label="Berechnen des Zeitabstands zwischen zwei Datumsangaben"
+                href="spss/tutorials/bmodvalstut_datetime_subdates.htm"/>
+         <topic label="Hinzufügen einer Dauer zu einem Datum"
+                href="spss/tutorials/bmodvalstut_datetime_adddur.htm"/>
+      </topic>
+   </topic>
+   <topic label="Funktionen für zeitsparendes Arbeiten"
+          href="spss/tutorials/timesave_intro.htm">
+      <topic label="Kopieren von Dateneigenschaften"
+             href="spss/tutorials/timesave_dictionary.htm"/>
+      <topic label="Anzeigen von Informationen aus dem Datenwörterbuch"
+             href="spss/tutorials/displaydictionary.htm"/>
+      <topic label="Zuletzt verwendete Dialogfelder"
+             href="spss/tutorials/features_dlgrecall_01.htm"/>
+   </topic>
+   <topic label="Anpassen von IBM SPSS Statistics"
+          href="spss/tutorials/customizetut_intro.htm">
+      <topic label="Erstellen von eigenen Menüoptionen"
+             href="spss/tutorials/customizetut_menu.htm"/>
+      <topic label="Erstellen von angepassten Symbolleisten"
+             href="spss/tutorials/customizetut_toolbar.htm"/>
+      <topic label="Erstellen von benutzerdefinierten Dialogfeldern"
+             href="spss/tutorials/dialogbuilder_intro.htm">
+         <topic label="Erstellen eines neuen Dialogfelds und Festlegen der Dialogfeldeigenschaften"
+                href="spss/tutorials/dialogbuilder_dialog_properties.htm"/>
+         <topic label="Hinzufügen von Steuerelementen zu Ihrem Dialogfeld"
+                href="spss/tutorials/dialogbuilder_controls.htm"/>
+         <topic label="Erstellung der Syntaxvorlage"
+                href="spss/tutorials/dialogbuilder_syntax_template.htm"/>
+         <topic label="Vorschau Ihres Dialogfelds"
+                href="spss/tutorials/dialogbuilder_preview.htm"/>
+         <topic label="Installieren Ihres Dialogfelds"
+                href="spss/tutorials/dialogbuilder_install.htm"/>
+         <topic label="Freigabe Ihres Dialogfelds für andere Benutzer"
+                href="spss/tutorials/dialogbuilder_share.htm"/>
+         <topic label="Speichern Ihrer Arbeit" href="spss/tutorials/dialogbuilder_save.htm"/>
+      </topic>
+   </topic>
+   <topic label="Automatisierte Produktion" href="spss/tutorials/autotut_intro.htm">
+      <topic label="Erstellen eines Produktionsjobs" href="spss/tutorials/autotut_use.htm"/>
+   </topic>
+   <topic label="Scoring von Daten mit Vorhersagemodellen"
+          href="spss/tutorials/scoring_container.htm">
+      <topic label="Einführung" href="spss/tutorials/scoring_intro.htm"/>
+      <topic label="Aufbau eines Vorhersagemodells"
+             href="spss/tutorials/scoring_building_model.htm">
+         <topic label="Bewertung des Modells" href="spss/tutorials/scoring_evaluate_model.htm"/>
+      </topic>
+      <topic label="Anwendung des Modells" href="spss/tutorials/scoring_applying_model.htm"/>
+   </topic>
+   <topic label="Beispieldateien" href="spss/tutorials/data_files.htm"/>
+</toc>

@@ -1,0 +1,124 @@
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2014                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+<Command Name="SAVETM1" ProcedureTitle="Save TM1"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="file:../schema/commanddescription.xsd">
+    <Integration>
+        <Architecture>CF</Architecture>
+        <CommandType>Procedure</CommandType>
+        <TmsMode>NotPermitted</TmsMode>
+        <ClemMode>NotPermitted</ClemMode>
+        <LicenseOption>13</LicenseOption>
+        <CommandState>
+            <State1>105</State1>
+            <State2>105</State2>
+            <State3>4</State3>
+            <State4>0</State4>
+        </CommandState>
+        <ProcedureLibraryName>statcognosdata</ProcedureLibraryName>
+        <ExtensionDetails providerTag="spss" id="TM1-extension" label="Save TM1" version="1.0"/>
+        <CPS Display="false"/>
+        <Splits AppSupport="false" Viewer="false"/>
+        <CaseIdVariabale Need="false"/>
+        <MeasurementLevel AppSupport="false"/>
+        <Feature Id="tm1Exporter"/>
+    </Integration>
+    
+    <Subcommand Name="CONNECTION" Occurrence="Required">
+        <Parameter Name="PMSYSURL" ParameterType="QuotedString" Occurrence="Required"/>
+        <Parameter Name="SERVER" ParameterType="QuotedString" Occurrence="Required"/>
+        <Parameter Name="MODE" ParameterType="StringQualif">
+            <Qualification>
+                <Parameter Name="SETCREDENTIALS" ParameterType="LeadingToken"/>
+                <Parameter Name="STOREDCREDENTIAL" ParameterType="LeadingToken"/>
+            </Qualification>
+        </Parameter>
+        <Parameter Name="NAMESPACE" ParameterType="QuotedString" />
+        <Parameter Name="USERNAME" ParameterType="QuotedString" />
+        <Parameter Name="PASSWORD" ParameterType="QuotedString" />
+        <Parameter Name="ENCRYPTED" ParameterType="StringQualif">
+            <Qualification>
+                <Parameter Name="YES" ParameterType="LeadingToken"/>
+                <Parameter Name="NO" ParameterType="LeadingToken"/>
+            </Qualification>
+        </Parameter>
+        <Parameter Name="CREDENTIAL" ParameterType="QuotedString"/>
+    </Subcommand>
+    <Subcommand Name="CUBE" Occurrence="Required">
+        <Parameter Name="NAME" ParameterType="QuotedString" Occurrence="Required"/>
+    </Subcommand>
+    <Subcommand Name="MAPPINGS" Occurrence="Required" IsArbitrary="True">
+        <Parameter Name="" ParameterType="TokenList"/>
+    </Subcommand>
+    
+    <ExecutionGeneration>
+        <ComponentGeneration>
+            <CFComponent id="1" componentId="tm1Exporter" providerId="pasw" moduleId="tm1" inputIds=""
+                dependencyIds="" version="8.0"> </CFComponent>
+        </ComponentGeneration>
+        <ParameterGeneration>
+            <ComponentSetting id="tm1Exporter">
+                <SyntaxProperties Name="CONNECTION.PMSYSURL">
+                    <CFProperty Name="pm_host" ValueFrom="Input"/>
+                </SyntaxProperties>
+                
+                <SyntaxProperties Name="CONNECTION.MODE.STOREDCREDENTIAL">
+                    <CFProperty Name="[Credential]" ValueFrom="Empty"/>
+                </SyntaxProperties>
+                
+                <SyntaxProperties Name="CONNECTION">
+                    <CFProperty Name="server_connection" ValueFrom="Empty">
+                        <CFPStructure>
+                            <SyntaxProperties Name="">
+                                <CFProperty Name="server_name" ValueFrom="Empty"/>
+                                <CFProperty Name="namespace" ValueFrom="Fixed" Value=""/>
+                                <CFProperty Name="user_name" ValueFrom="Empty"/>
+                                <CFProperty Name="password" ValueFrom="Empty"/>
+                                <CFProperty Name="is_encoded" ValueFrom="Fixed" Value="false"/>
+                            </SyntaxProperties>
+                            <SyntaxProperties Name="CONNECTION.SERVER">
+                                <CFProperty Name="server_name" ValueFrom="Input" Operation="Replace"/>
+                            </SyntaxProperties>
+                            <SyntaxProperties Name="CONNECTION.NAMESPACE">
+                                <CFProperty Name="namespace" ValueFrom="Input" Operation="Replace"/>
+                            </SyntaxProperties>
+                            <SyntaxProperties Name="CONNECTION.USERNAME">
+                                <CFProperty Name="user_name" ValueFrom="Input" Operation="Replace"/>
+                            </SyntaxProperties>
+                            <SyntaxProperties Name="CONNECTION.PASSWORD">
+                                <CFProperty Name="password" ValueFrom="Input" Operation="Replace"/>
+                            </SyntaxProperties>
+                            <SyntaxProperties Name="CONNECTION.ENCRYPTED.YES">
+                                <CFProperty Name="password" ValueFrom="Empty" IsEncrypt="true"
+                                    Operation="ReplaceAttribute"/>
+                            </SyntaxProperties>
+                            <SyntaxProperties Name="CONNECTION.CREDENTIAL" Validation="BeadgeCredential">
+                                <CFProperty Name="namespace" ValueFrom="Validation" Operation="Replace"/>
+                                <CFProperty Name="user_name" ValueFrom="Validation" Operation="Replace"/>
+                                <CFProperty Name="password" ValueFrom="Validation" Operation="Replace"/>
+                            </SyntaxProperties>
+                        </CFPStructure>
+                    </CFProperty>
+                </SyntaxProperties>
+                <SyntaxProperties Name="CUBE.NAME">
+                    <CFProperty Name="selected_cube" ValueFrom="Input"/>
+                </SyntaxProperties>
+                <SyntaxProperties Name="MAPPINGS." Validation="TM1Mappings">
+                    <CFProperty Name="fields_to_cube" ValueFrom="Validation"/>
+                </SyntaxProperties>
+            </ComponentSetting>
+        </ParameterGeneration>
+    </ExecutionGeneration>
+</Command>

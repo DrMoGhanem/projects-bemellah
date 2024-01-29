@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<!--© Copyright IBM Corporation year1-->
+<toc label="Arbeiten mit R" topic="spss/tutorials/rtut_intro.htm">
+   <topic label="Einführung" href="spss/tutorials/rtut_intro.htm"/>
+   <topic label="Erstellen von Erweiterungsbefehlen"
+          href="spss/tutorials/rtut_extcmds_intro.htm">
+      <topic label="Syntaxdiagramme" href="spss/tutorials/rtut_extcmds_syndiagram.htm"/>
+      <topic label="XML-Spezifikation des Syntaxdiagramms"
+             href="spss/tutorials/rtut_extcmds_xmlspec.htm"/>
+      <topic label="Implementierungscode" href="spss/tutorials/rtut_extcmds_code.htm"/>
+   </topic>
+   <topic label="Erstellen von benutzerdefinierten Dialogfeldern"
+          href="spss/tutorials/rtut_customdialogs_intro.htm">
+      <topic label="Benutzerdefinierte Dialogfelder für Erweiterungsbefehle"
+             href="spss/tutorials/rtut_customdialogs_extcmd.htm">
+         <topic label="Erstellen des Dialogfelds"
+                href="spss/tutorials/rtut_customdialogs_extcmd_controls.htm"/>
+         <topic label="Erstellen der Syntaxvorlage"
+                href="spss/tutorials/rtut_customdialogs_extcmd_syntax.htm"/>
+         <topic label="Speichern Ihres benutzerdefinierten Dialogfelds"
+                href="spss/tutorials/rtut_customdialogs_extcmd_saving.htm"/>
+      </topic>
+      <topic label="Benutzerdefinierte Dialogfelder zum Erzeugen von eindeutigem R-Code"
+             href="spss/tutorials/rtut_customdialogs_rcode.htm">
+         <topic label="Erstellen des Dialogfelds"
+                href="spss/tutorials/rtut_customdialogs_rcode_controls.htm"/>
+         <topic label="Erstellen der Syntaxvorlage"
+                href="spss/tutorials/rtut_customdialogs_rcode_syntax.htm"/>
+         <topic label="Installieren Ihres Dialogfelds"
+                href="spss/tutorials/rtut_customdialogs_rcode_install.htm"/>
+         <topic label="Freigabe Ihres Dialogfelds für andere Benutzer"
+                href="spss/tutorials/rtut_customdialogs_rcode_share.htm"/>
+      </topic>
+   </topic>
+   <topic label="Einsetzen benutzerdefinierter Komponenten"
+          href="spss/tutorials/rtut_extbundles_intro.htm">
+      <topic label="Erstellen eines Erweiterungsbundles"
+             href="spss/tutorials/rtut_extbundles_create.htm"/>
+      <topic label="Installation eines Erweiterungsbundles"
+             href="spss/tutorials/rtut_extbundles_install.htm"/>
+   </topic>
+   <topic label="Zusätzliche Ressourcen für die Arbeit mit R"
+          href="spss/tutorials/rtut_resources.htm"/>
+</toc>
