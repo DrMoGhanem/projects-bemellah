@@ -1,0 +1,2495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?NLS TYPE="org.eclipse.help.toc"?>
+<!--© Copyright IBM Corporation year1-->
+<toc label="Case Studies" topic="spss/tutorials/casestudies_intro.htm">
+   <topic label="Introduction" href="spss/tutorials/casestudies_intro.htm"/>
+   <topic label="Statistics Base">
+      <topic label="Summary Statistics Using Frequencies"
+             href="spss/tutorials/frequencies_table.htm">
+         <topic label="Using Frequencies to Study Nominal Data"
+                href="spss/tutorials/freq_contacts_nominal_intro.htm"/>
+         <topic label="Using Frequencies to Study Ordinal Data"
+                href="spss/tutorials/freq_contacts_ordinal_intro.htm"/>
+         <topic label="Using Frequencies to Study Scale Data"
+                href="spss/tutorials/freq_contacts_scale_intro.htm">
+            <topic label="Statistics table" href="spss/tutorials/freq_contacts_stats_01.htm"/>
+            <topic label="Histogram" href="spss/tutorials/freq_contacts_hist_01.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/freq_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/freq_readings.htm"/>
+      </topic>
+      <topic label="Summary Statistics Using Descriptives"
+             href="spss/tutorials/descriptives_table.htm">
+         <topic label="Using Descriptives to Study Quantitative Data"
+                href="spss/tutorials/desc_telco_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/desc_telco_howto.htm"/>
+            <topic label="Descriptive statistics table"
+                   href="spss/tutorials/desc_telco_stattable.htm"/>
+            <topic label="Recoding the Variables"
+                   href="spss/tutorials/desc_telco_recode_howto.htm">
+               <topic label="Running the Analysis" href="spss/tutorials/desc_telco_howto_03.htm"/>
+               <topic label="Descriptive Statistics"
+                      href="spss/tutorials/desc_telco_stattable_03.htm"/>
+            </topic>
+            <topic label="Finding Unusual Cases" href="spss/tutorials/desc_telco_zscores.htm">
+               <topic label="Running the Analysis" href="spss/tutorials/desc_telco_zscores_howto.htm"/>
+               <topic label="Descriptive statistics table"
+                      href="spss/tutorials/desc_telco_stattable_02.htm"/>
+               <topic label="Boxplots of Z Scores" href="spss/tutorials/desc_telco_boxplots.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/desc_telco_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/desc_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/desc_readings.htm"/>
+      </topic>
+      <topic label="Exploratory Data Analysis" href="spss/tutorials/explore_table.htm">
+         <topic label="Descriptive Statistics across Groups"
+                href="spss/tutorials/explore_problem.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/explore_alfa_howto_01.htm"/>
+            <topic label="Pivoting the Descriptives Table" href="spss/tutorials/explore_pivot.htm"/>
+            <topic label="Using Boxplots to Compare Groups"
+                   href="spss/tutorials/explore_boxplots.htm"/>
+            <topic label="Summary" href="spss/tutorials/explore_alfatoxin_summary.htm"/>
+         </topic>
+         <topic label="Exploring Distributions" href="spss/tutorials/explore_distributions.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/explore_ceram_howto.htm"/>
+            <topic label="Numerical Descriptions of Shape" href="spss/tutorials/explore_stats.htm"/>
+            <topic label="Robustness and Influential Values"
+                   href="spss/tutorials/explore_robust.htm"/>
+            <topic label="Are the Distributions Normal?"
+                   href="spss/tutorials/explore_normality.htm"/>
+            <topic label="Summary" href="spss/tutorials/explore_ceramics_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/explore_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/explore_readings.htm"/>
+      </topic>
+      <topic label="Analysis of cross-classifications using Crosstabs"
+             href="spss/tutorials/crosstabs_table.htm">
+         <topic label="Using Crosstabs to study nominal-by-nominal relationships"
+                href="spss/tutorials/xtab_satisf_intro_01.htm">
+            <topic label="Running the analysis" href="spss/tutorials/xtab_satisf_howto_01.htm"/>
+            <topic label="Crosstabulation table" href="spss/tutorials/xtab_crosstab_satisf_01.htm"/>
+            <topic label="Chi-square tests" href="spss/tutorials/xtab_chisquare_satisf_01.htm"/>
+            <topic label="Adding contact with employee as a layer variable"
+                   href="spss/tutorials/xtab_addlayer_satisf_01.htm">
+               <topic label="Crosstabulation table" href="spss/tutorials/xtab_crosstab_satisf_02.htm"/>
+               <topic label="Chi-square tests" href="spss/tutorials/xtab_chisquare_satisf_02.htm"/>
+               <topic label="Symmetric measures" href="spss/tutorials/xtab_symmetric.htm"/>
+               <topic label="Directional measures"
+                      href="spss/tutorials/xtab_directional_satisf_01.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/xtab_satisf_summary_01.htm"/>
+         </topic>
+         <topic label="Using Crosstabs to study ordinal-by-ordinal relationships"
+                href="spss/tutorials/xtab_satisf_intro_02.htm">
+            <topic label="Running the analysis" href="spss/tutorials/xtab_satisf_howto_02.htm"/>
+            <topic label="Crosstabulation table" href="spss/tutorials/xtab_crosstab_satisf_03.htm"/>
+            <topic label="Symmetric and directional measures"
+                   href="spss/tutorials/xtab_measures_satisf_01.htm">
+               <topic label="Symmetric and directional measures"
+                      href="spss/tutorials/xtab_symmetric_satisf_02.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/xtab_satisf_summary.htm"/>
+         </topic>
+         <topic label="Using Crosstabs to measure the relative risk of an event"
+                href="spss/tutorials/xtab_intro_demo_01.htm">
+            <topic label="Running the analysis" href="spss/tutorials/xtab_demo_howto.htm"/>
+            <topic label="Crosstabulation" href="spss/tutorials/xtab_crosstab_demo_01.htm"/>
+            <topic label="Risk estimate" href="spss/tutorials/xtab_risk_demo_01.htm">
+               <topic label="Odds ratio versus relative risk"
+                      href="spss/tutorials/xtab_demo_oddsratio.htm"/>
+            </topic>
+            <topic label="Adding income category as a layer variable"
+                   href="spss/tutorials/xtab_demo_layer_var.htm">
+               <topic label="Rerunning the analysis"
+                      href="spss/tutorials/xtab_demo_layer_var_howto.htm"/>
+               <topic label="Risk estimate" href="spss/tutorials/xtab_risk_demo_02.htm"/>
+               <topic label="Tests of homogeneity of the odds ratio"
+                      href="spss/tutorials/xtab_oddstest_demo_01.htm"/>
+               <topic label="Tests of conditional independence"
+                      href="spss/tutorials/xtab_indeptest_demo_01.htm"/>
+               <topic label="Mantel-Haenszel common odds ratio estimate"
+                      href="spss/tutorials/xtab_oddsest_demo_01.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/xtab_demo_summary.htm"/>
+         </topic>
+         <topic label="Using Crosstabs to measure agreement"
+                href="spss/tutorials/xtab_intro_site_01.htm">
+            <topic label="Running the analysis" href="spss/tutorials/xtab_site_howto.htm"/>
+            <topic label="Kappa measure of agreement" href="spss/tutorials/xtab_kappa_site_01.htm"/>
+            <topic label="Crosstabulation" href="spss/tutorials/xtab_crosstab_site_01.htm"/>
+            <topic label="Summary" href="spss/tutorials/xtab_site_summary.htm"/>
+         </topic>
+         <topic label="Comparing column proportions in Crosstabs"
+                href="spss/tutorials/xtab_demo_intro_02.htm">
+            <topic label="Running the analysis" href="spss/tutorials/xtab_demo_howto_02.htm"/>
+            <topic label="Chi-square tests" href="spss/tutorials/xtab_chisquare_demo_02.htm"/>
+            <topic label="Crosstabulation table with column proportions tests"
+                   href="spss/tutorials/xtab_crosstab_demo_col_proportion.htm"/>
+            <topic label="Summary" href="spss/tutorials/xtab_demo_summary_02.htm"/>
+         </topic>
+         <topic label="Related procedures" href="spss/tutorials/xtab_related.htm"/>
+         <topic label="Recommended readings" href="spss/tutorials/xtab_readings.htm"/>
+      </topic>
+      <topic label="The Summarize Procedure" href="spss/tutorials/summarize_table.htm">
+         <topic label="Using Summarize to Create Summary Reports"
+                href="spss/tutorials/summ_homesales.htm">
+            <topic label="Creating a Grouped Summary Report"
+                   href="spss/tutorials/summ_homesales_howto_01.htm"/>
+            <topic label="The Summary Report Table" href="spss/tutorials/summ_reporttable_1.htm"/>
+            <topic label="Displaying Individual Cases"
+                   href="spss/tutorials/summ_casedisplay_1.htm">
+               <topic label="Selecting and Sorting Cases" href="spss/tutorials/summ_caseselect.htm"/>
+               <topic label="Specifying the Analysis" href="spss/tutorials/summ_casedisplay_2.htm"/>
+               <topic label="Case Listing Display" href="spss/tutorials/summ_caselisting.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/summ_marketvalues_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/summ_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/summ_readings.htm"/>
+      </topic>
+      <topic label="The Means Procedure" href="spss/tutorials/means_table.htm">
+         <topic label="Using Means to Obtain Descriptive Statistics"
+                href="spss/tutorials/means_onegroup.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/means_wage_howto.htm"/>
+            <topic label="Means Table with One Grouping Variable"
+                   href="spss/tutorials/means_table_1.htm"/>
+            <topic label="Layering Variables" href="spss/tutorials/means_layering.htm">
+               <topic label="Re-running the Analysis" href="spss/tutorials/means_wage_howto_02.htm"/>
+               <topic label="Layered Means Table" href="spss/tutorials/means_twogrpvars.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/means_hourlywage_summary.htm"/>
+         </topic>
+         <topic label="One-way ANOVA and Test of Linearity"
+                href="spss/tutorials/means_anova.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/means_smoke_howto_01.htm"/>
+            <topic label="Means of Age by Smoking Level" href="spss/tutorials/means_table_2.htm"/>
+            <topic label="ANOVA and Tests of Linearity" href="spss/tutorials/means_anovatests.htm"/>
+            <topic label="Association Measures" href="spss/tutorials/means_assoc.htm"/>
+            <topic label="Summary" href="spss/tutorials/means_smoker_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/means_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/means_readings.htm"/>
+      </topic>
+      <topic label="The OLAP Cubes Procedure" href="spss/tutorials/olapcubes_table.htm">
+         <topic label="Analyzing Churn Using OLAP Cubes" href="spss/tutorials/olap_problem.htm">
+            <topic label="Defining the Data" href="spss/tutorials/olap_definedata.htm"/>
+            <topic label="Creating an OLAP Cube" href="spss/tutorials/olap_definecube.htm">
+               <topic label="The Default OLAP Cubes Table"
+                      href="spss/tutorials/olap_layeredtable.htm"/>
+            </topic>
+            <topic label="Drilling Down" href="spss/tutorials/olap_drillingdown.htm">
+               <topic label="Pivoting the Table" href="spss/tutorials/olap_pivot.htm"/>
+            </topic>
+            <topic label="Pivoted OLAP Cubes Table" href="spss/tutorials/olap_pivotedtable.htm"/>
+            <topic label="Summary" href="spss/tutorials/olap_telco_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/olap_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/olap_readings.htm"/>
+      </topic>
+      <topic label="T Tests" href="spss/tutorials/t_test_table.htm">
+         <topic label="One-Sample T Test" href="spss/tutorials/ttest0_toc.htm">
+            <topic label="One-Sample T Test" href="spss/tutorials/ttest0_intro.htm">
+               <topic label="A Production-Line Problem" href="spss/tutorials/ttest0_problem.htm">
+                  <topic label="Treating Each Machine as a Separate Sample"
+                         href="spss/tutorials/ttest0_splitfile.htm"/>
+                  <topic label="Testing Sample Means against a Known Value"
+                         href="spss/tutorials/ttest0_knownvalue.htm"/>
+                  <topic label="Descriptive Statistics" href="spss/tutorials/ttest0_brakes_desc.htm"/>
+                  <topic label="Test Results" href="spss/tutorials/ttest0_brakes_testresults.htm"/>
+               </topic>
+               <topic label="Related Procedures" href="spss/tutorials/ttest0_related.htm"/>
+               <topic label="Recommended Readings" href="spss/tutorials/ttest0_readings.htm"/>
+            </topic>
+         </topic>
+         <topic label="Paired-Samples T Test" href="spss/tutorials/ttest1_toc.htm">
+            <topic label="Paired-Samples T Test" href="spss/tutorials/ttest1_intro.htm">
+               <topic label="Does Diet Make a Difference?" href="spss/tutorials/ttest1_problem.htm">
+                  <topic label="Running the Analysis" href="spss/tutorials/ttest1_analysis.htm"/>
+                  <topic label="Descriptive Statistics" href="spss/tutorials/ttest1_stattable.htm"/>
+                  <topic label="Pearson Correlations" href="spss/tutorials/ttest1_corrtable.htm"/>
+                  <topic label="Paired Test Table" href="spss/tutorials/ttest1_testtable.htm"/>
+               </topic>
+               <topic label="Related Procedures" href="spss/tutorials/ttest1_related.htm"/>
+               <topic label="Recommended Readings" href="spss/tutorials/ttest1_readings.htm"/>
+            </topic>
+         </topic>
+         <topic label="Independent-Samples T Test" href="spss/tutorials/ttest2_toc.htm">
+            <topic label="Independent-Samples T Test" href="spss/tutorials/ttest2_intro.htm">
+               <topic label="Determining the Groups in an Independent-Samples T Test"
+                      href="spss/tutorials/ttest2_methods.htm"/>
+               <topic label="Testing Two Independent Sample Means"
+                      href="spss/tutorials/ttest2_problem.htm">
+                  <topic label="Running the Analysis" href="spss/tutorials/ttest2_promo_howto_01.htm"/>
+                  <topic label="Group Statistics Table" href="spss/tutorials/ttest2_stattable_1.htm"/>
+                  <topic label="Independent Samples Test Table"
+                         href="spss/tutorials/ttest2_testtable_1.htm">
+                     <topic label="Pivoting the Test Table"
+                            href="spss/tutorials/ttest2_stattable_pivot.htm"/>
+                  </topic>
+                  <topic label="The Pivoted Test Table"
+                         href="spss/tutorials/ttest2_stattable_pivot_02.htm"/>
+               </topic>
+               <topic label="Using a Cut Point to Define the Samples"
+                      href="spss/tutorials/ttest2_cutpoint.htm">
+                  <topic label="Running the Analysis" href="spss/tutorials/ttest2_cellular_howto_01.htm"/>
+                  <topic label="Group Statistics by Cut Point"
+                         href="spss/tutorials/ttest2_cutpt_stats.htm"/>
+                  <topic label="Test Table by Cut Point" href="spss/tutorials/ttest2_testtable_2.htm">
+                     <topic label="Pivoting the Test Table"
+                            href="spss/tutorials/ttest2_stattable_pivot_2.htm"/>
+                  </topic>
+                  <topic label="Pivoted Test Table by Cut Point"
+                         href="spss/tutorials/ttest2_cutpt_testtable.htm"/>
+               </topic>
+               <topic label="Related Procedures" href="spss/tutorials/ttest2_related.htm"/>
+               <topic label="Recommended Readings" href="spss/tutorials/ttest2_readings.htm"/>
+            </topic>
+         </topic>
+      </topic>
+      <topic label="One-Way analysis of variance" href="spss/tutorials/oneway_table.htm">
+         <topic label="Testing the equality of group variances"
+                href="spss/tutorials/oneway_equal_variance_test.htm">
+            <topic label="An error bar chart" href="spss/tutorials/oneway_sales_errorbar.htm"/>
+            <topic label="Running the analysis" href="spss/tutorials/oneway_sales_howto_01.htm"/>
+            <topic label="Descriptive statistics table"
+                   href="spss/tutorials/oneway_descriptives_table.htm"/>
+            <topic label="Levene test table" href="spss/tutorials/oneway_levene_table.htm"/>
+         </topic>
+         <topic label="Performing a One-Way ANOVA" href="spss/tutorials/oneway_standard.htm">
+            <topic label="Running the analysis" href="spss/tutorials/oneway_dvd_howto_01.htm"/>
+            <topic label="ANOVA table" href="spss/tutorials/oneway_anova_table.htm"/>
+            <topic label="A Plot of Group Means" href="spss/tutorials/oneway_means_plot.htm"/>
+         </topic>
+         <topic label="Contrasts between means"
+                href="spss/tutorials/oneway_contrast_problem.htm">
+            <topic label="Running the analysis" href="spss/tutorials/oneway_contrast_howto.htm"/>
+            <topic label="Contrast coefficients table"
+                   href="spss/tutorials/oneway_contrast_coef_table.htm"/>
+            <topic label="Contrast test table"
+                   href="spss/tutorials/oneway_contrast_test_table.htm"/>
+         </topic>
+         <topic label="All possible comparisons between means"
+                href="spss/tutorials/oneway_pairwise.htm">
+            <topic label="Running the analysis" href="spss/tutorials/oneway_sales_howto_02.htm"/>
+            <topic label="Post hoc test table" href="spss/tutorials/oneway_post_hoc_table.htm"/>
+         </topic>
+         <topic label="Summary" href="spss/tutorials/oneway_summary.htm"/>
+         <topic label="Related procedures" href="spss/tutorials/oneway_related.htm"/>
+         <topic label="Recommended readings" href="spss/tutorials/oneway_readings.htm"/>
+      </topic>
+      <topic label="GLM Univariate" href="spss/tutorials/unianova_table.htm">
+         <topic label="GLM Univariate Model" href="spss/tutorials/glmu_model.htm"/>
+         <topic label="Using GLM Univariate to Perform a Two-Factor Analysis of Variance"
+                href="spss/tutorials/glmu_gr1mo_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/glmu_gr1mo_howto.htm"/>
+            <topic label="Descriptive Statistics" href="spss/tutorials/glmu_gr1mo_desc.htm"/>
+            <topic label="Testing Homogeneity of the Variances"
+                   href="spss/tutorials/glmu_gr1mo_eqvar.htm"/>
+            <topic label="Post Hoc Tests" href="spss/tutorials/glmu_gr1mo_posthoc.htm"/>
+            <topic label="Estimated Marginal Means" href="spss/tutorials/glmu_gr1mo_emm_01.htm"/>
+            <topic label="Tests of Between-Subjects Effects"
+                   href="spss/tutorials/glmu_gr1mo_bseff.htm"/>
+            <topic label="Summary" href="spss/tutorials/glmu_gr1mo_summary_01.htm"/>
+         </topic>
+         <topic label="Using GLM Univariate to Perform an Analysis of Covariance"
+                href="spss/tutorials/glmu_work_intro_01.htm">
+            <topic label="Checking Homogeneity of the Covariate Coefficients"
+                   href="spss/tutorials/glmu_work_homslopes_01.htm">
+               <topic label="Tests of Between-Subjects Effects"
+                      href="spss/tutorials/glmu_work_bseff_01.htm"/>
+            </topic>
+            <topic label="Running the Analysis" href="spss/tutorials/glmu_work_ancova_01.htm"/>
+            <topic label="Descriptive Statistics" href="spss/tutorials/glmu_work_desc_01.htm"/>
+            <topic label="Testing Homogeneity of Variances"
+                   href="spss/tutorials/glmu_work_eqvar.htm"/>
+            <topic label="Tests of Between-Subjects Effects"
+                   href="spss/tutorials/glmu_work_bseff.htm"/>
+            <topic label="Parameter Estimates" href="spss/tutorials/glmu_work_param.htm"/>
+            <topic label="Summary" href="spss/tutorials/glmu_work_summary_01.htm"/>
+         </topic>
+         <topic label="Using GLM Univariate to Account for Random Effects"
+                href="spss/tutorials/glmu_gr1mo_intro_02.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/glmu_gr1mo_howto_02.htm"/>
+            <topic label="Tests of Between-Subjects Effects"
+                   href="spss/tutorials/glmu_gr1mo_bseff_02.htm"/>
+            <topic label="Adding the Random Effect"
+                   href="spss/tutorials/glmu_gr1mo_mixed_howto.htm">
+               <topic label="Test of Between-Subjects Effects"
+                      href="spss/tutorials/glmu_gr1mo_bseff_03.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/glmu_gr1mo_summary_02.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/glmu_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/glmu_readings.htm"/>
+      </topic>
+      <topic label="Bivariate Correlations" href="spss/tutorials/correlations_table.htm">
+         <topic label="Using Correlations to Study the Association between Motor Vehicles Sales and Fuel Efficiency"
+                href="spss/tutorials/corr_cars_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/corr_cars_howto.htm"/>
+            <topic label="Correlation Matrix" href="spss/tutorials/corr_cars_matrix.htm"/>
+            <topic label="Improving Correlation Estimates"
+                   href="spss/tutorials/corr_cars_logsales.htm">
+               <topic label="Correlations" href="spss/tutorials/corr_cars_matrix_02.htm"/>
+            </topic>
+            <topic label="Improving Correlation Estimates: Splitting the File"
+                   href="spss/tutorials/corr_cars_split.htm">
+               <topic label="Correlations" href="spss/tutorials/corr_cars_matrix_03.htm"/>
+            </topic>
+            <topic label="Nonparametric Correlation Estimates"
+                   href="spss/tutorials/corr_cars_npar.htm">
+               <topic label="Correlations" href="spss/tutorials/corr_cars_matrix_04.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/corr_cars_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/corr_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/corr_readings.htm"/>
+      </topic>
+      <topic label="Partial Correlations" href="spss/tutorials/partialcorr_table.htm">
+         <topic label="Using Partial Correlations to Unravel &#34;Relationships&#34;"
+                href="spss/tutorials/partial_corr_example.htm"/>
+         <topic label="Running the Analysis" href="spss/tutorials/partial_corr_running.htm"/>
+         <topic label="Partial Correlations Table"
+                href="spss/tutorials/partial_corr_output.htm"/>
+         <topic label="Related Procedures" href="spss/tutorials/partial_corr_related.htm"/>
+      </topic>
+      <topic label="Linear models" href="components/linear_models/linear_table.htm">
+         <topic label="Predicting insurance claim costs (linear models)"
+                href="components/linear_models/linear_insurance_intro.htm">
+            <topic label="Running the analysis (linear models)"
+                   href="components/linear_models/linear_insurance_howto.htm"/>
+            <topic label="Model Summary (linear models)"
+                   href="components/linear_models/linear_insurance_model_summary.htm"/>
+            <topic label="Automatic Data Preparation (linear models)"
+                   href="components/linear_models/linear_insurance_adp.htm"/>
+            <topic label="Model Building Summary (linear models)"
+                   href="components/linear_models/linear_insurance_model_building_summary.htm"/>
+            <topic label="Predictor Importance (linear models)"
+                   href="components/linear_models/linear_insurance_predictor_importance.htm"/>
+            <topic label="Predicted by Observed (linear models)"
+                   href="components/linear_models/linear_insurance_predicted_by_observed.htm"/>
+            <topic label="Effects (linear models)"
+                   href="components/linear_models/linear_insurance_effects.htm"/>
+            <topic label="Coefficients (linear models)"
+                   href="components/linear_models/linear_insurance_coefficients.htm"/>
+            <topic label="Checking the stability of the selected model (linear models)"
+                   href="components/linear_models/linear_insurance_howto_02.htm"/>
+            <topic label="Model Building Summary (linear models)"
+                   href="components/linear_models/linear_insurance_model_building_summary_02.htm"/>
+            <topic label="Predictor Importance and Model Summary (linear models)"
+                   href="components/linear_models/linear_insurance_predictor_importance_02.htm"/>
+            <topic label="Saving the model for deployment (linear models)"
+                   href="components/linear_models/linear_insurance_scoring.htm"/>
+         </topic>
+      </topic>
+      <topic label="Linear regression" href="spss/tutorials/regression_table.htm">
+         <topic label="Using linear regression to model vehicle sales"
+                href="spss/tutorials/reg_cars_intro.htm">
+            <topic label="Running the analysis" href="spss/tutorials/reg_cars_howto.htm"/>
+            <topic label="Checking the model fit" href="spss/tutorials/reg_cars_modelfit_01.htm"/>
+            <topic label="Coefficients" href="spss/tutorials/reg_cars_coeff.htm"/>
+            <topic label="Collinearity diagnostics" href="spss/tutorials/reg_cars_collin_01.htm"/>
+            <topic label="Running a linear regression on the z-scores"
+                   href="spss/tutorials/reg_cars_zscores_01.htm">
+               <topic label="Collinearity Diagnostics" href="spss/tutorials/reg_cars_collin_02.htm"/>
+            </topic>
+            <topic label="Running a linear regression on factor component scores"
+                   href="spss/tutorials/reg_cars_factor_01.htm"/>
+            <topic label="Running a stepwise linear regression"
+                   href="spss/tutorials/reg_cars_stepwise_01.htm">
+               <topic label="Checking the model fit" href="spss/tutorials/reg_cars_modelfit_02.htm"/>
+               <topic label="Stepwise Coefficients" href="spss/tutorials/reg_cars_coeff_02.htm"/>
+               <topic label="Checking the Normality of the Error Term"
+                      href="spss/tutorials/reg_cars_resids_01.htm"/>
+               <topic label="Casewise diagnostics" href="spss/tutorials/reg_cars_case_01.htm"/>
+               <topic label="Residual scatterplots" href="spss/tutorials/reg_cars_resids_02.htm"/>
+               <topic label="Identifying influential points" href="spss/tutorials/reg_cars_lever.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/reg_cars_summary.htm"/>
+         </topic>
+         <topic label="Related procedures" href="spss/tutorials/reg_related.htm"/>
+         <topic label="Recommended readings" href="spss/tutorials/reg_readings.htm"/>
+      </topic>
+      <topic label="Ordinal Regression" href="spss/tutorials/plum_table.htm">
+         <topic label="Using Ordinal Regression to Build a Credit Scoring Model"
+                href="spss/tutorials/plum_germcr_intro.htm">
+            <topic label="Constructing a Model" href="spss/tutorials/plum_germcr_build_model.htm">
+               <topic label="Identifying the Outcome Variable"
+                      href="spss/tutorials/plum_germcr_identify_target.htm"/>
+               <topic label="Choosing Predictors for the Location Model"
+                      href="spss/tutorials/plum_germcr_choose_location.htm"/>
+               <topic label="Scale Component" href="spss/tutorials/plum_germcr_choose_scale.htm"/>
+               <topic label="Choosing a Link Function"
+                      href="spss/tutorials/plum_germcr_choose_link.htm"/>
+            </topic>
+            <topic label="Running the Analysis" href="spss/tutorials/plum_germcr_howto.htm"/>
+            <topic label="Evaluating the Model" href="spss/tutorials/plum_germcr_modeleval.htm">
+               <topic label="Predictive Value of the Model"
+                      href="spss/tutorials/plum_germcr_modelfit.htm"/>
+               <topic label="Chi-Square-Based Fit Statistics"
+                      href="spss/tutorials/plum_germcr_chisquare.htm"/>
+               <topic label="Pseudo R-Squared Measures" href="spss/tutorials/plum_germcr_rsquare.htm"/>
+               <topic label="Classification Table"
+                      href="spss/tutorials/plum_germcr_classification.htm"/>
+            </topic>
+            <topic label="Test of Parallel Lines" href="spss/tutorials/plum_germcr_parallel.htm"/>
+            <topic label="Evaluating the Choice of Link Function"
+                   href="spss/tutorials/plum_germcr_intro_02.htm">
+               <topic label="Revising the Model" href="spss/tutorials/plum_germcr_howto_02.htm"/>
+               <topic label="Model-fitting information"
+                      href="spss/tutorials/plum_germcr_modelfit_02.htm"/>
+               <topic label="Pseudo R-squared Measures" href="spss/tutorials/plum_germcr_rsq_02.htm"/>
+               <topic label="Classification Table"
+                      href="spss/tutorials/plum_germcr_classtable_02.htm"/>
+            </topic>
+            <topic label="Interpreting the Model" href="spss/tutorials/plum_germcr_paramest.htm"/>
+            <topic label="Summary : Using the Model to Make Predictions"
+                   href="spss/tutorials/plum_germcr_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/plum_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/plum_readings.htm"/>
+      </topic>
+      <topic label="Curve Estimation" href="spss/tutorials/curvefit_table.htm">
+         <topic label="Using Curve Estimation to Model the Law of Diminishing Returns"
+                href="spss/tutorials/curveest_advert.htm">
+            <topic label="Running the Analysis"
+                   href="spss/tutorials/curveest_advert_howto_01c.htm"/>
+            <topic label="Model Summary and Parameter Estimates"
+                   href="spss/tutorials/curveest_coeff.htm"/>
+            <topic label="Curve Fit" href="spss/tutorials/curveest_curvefit.htm"/>
+            <topic label="Residuals vs. Fit Values Plots"
+                   href="spss/tutorials/curveest_resids.htm"/>
+            <topic label="Summary" href="spss/tutorials/curveest_advert_summary.htm"/>
+         </topic>
+         <topic label="Using Curve Estimation to Model Viral Growth"
+                href="spss/tutorials/curveest_virus_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/curveest_virus_howto.htm"/>
+            <topic label="ANOVA Table" href="spss/tutorials/curveest_anova_virus.htm"/>
+            <topic label="Model Summary" href="spss/tutorials/curveest_modelsummary_virus.htm"/>
+            <topic label="Parameter Estimates" href="spss/tutorials/curveest_coeff_virus.htm"/>
+            <topic label="Curve Fit" href="spss/tutorials/curveest_curvefit_virus.htm"/>
+            <topic label="Residuals vs. Fit Values Plots"
+                   href="spss/tutorials/curveest_resids_virus.htm"/>
+            <topic label="Summary" href="spss/tutorials/curveest_virus_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/curveest_related.htm"/>
+      </topic>
+      <topic label="Partial Least Squares Regression" href="spss/tutorials/pls_table.htm">
+         <topic label="Using Partial Least Squares Regression to Model Vehicle Sales"
+                href="spss/tutorials/pls_carsales_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/pls_carsales_howto.htm"/>
+            <topic label="Proportion of Variance Explained"
+                   href="spss/tutorials/pls_carsales_pve.htm"/>
+            <topic label="Output for Independent Variables"
+                   href="spss/tutorials/pls_carsales_independent-variables.htm"/>
+            <topic label="Output for Latent Factors"
+                   href="spss/tutorials/pls_carsales_latent-factors.htm"/>
+            <topic label="Output for Individual Cases"
+                   href="spss/tutorials/pls_carsales_individual-cases.htm"/>
+         </topic>
+      </topic>
+      <topic label="Nearest Neighbor Analysis" href="components/knn/knn_table.htm">
+         <topic label="Using Nearest Neighbor Analysis to Assess New Vehicle Offerings"
+                href="components/knn/knn_carsales_intro.htm">
+            <topic label="Preparing the Data" href="components/knn/knn_carsales_adddata.htm"/>
+            <topic label="Examining the Feature Space of Predictors"
+                   href="components/knn/knn_carsales_examine_howto.htm">
+               <topic label="Case Processing Summary"
+                      href="components/knn/knn_carsales_examine_cps.htm"/>
+               <topic label="Model Viewer" href="components/knn/knn_carsales_examine_modelviewer.htm">
+                  <topic label="Feature Space"
+                         href="components/knn/knn_carsales_examine_modelviewer_feature-space.htm"/>
+                  <topic label="Peers Chart"
+                         href="components/knn/knn_carsales_examine_modelviewer_peers.htm"/>
+               </topic>
+            </topic>
+            <topic label="Checking Vehicle Type"
+                   href="components/knn/knn_carsales_check-type_howto.htm">
+               <topic label="Feature Space"
+                      href="components/knn/knn_carsales_check-type_modelviewer_feature-space.htm"/>
+               <topic label="Peers"
+                      href="components/knn/knn_carsales_check-type_modelviewer_peers.htm"/>
+               <topic label="Variable Importance"
+                      href="components/knn/knn_carsales_check-type_modelviewer_importance.htm"/>
+               <topic label="k Selection Error Log"
+                      href="components/knn/knn_carsales_check-type_modelviewer_k-selection.htm"/>
+               <topic label="Classification Table"
+                      href="components/knn/knn_carsales_check-type_modelviewer_classification.htm"/>
+            </topic>
+            <topic label="Predicting Sales"
+                   href="components/knn/knn_carsales_predict-sales_howto.htm">
+               <topic label="Feature Space"
+                      href="components/knn/knn_carsales_predict-sales_feature-space.htm"/>
+               <topic label="Quadrant Map"
+                      href="components/knn/knn_carsales_predict-sales_quadrant-map.htm"/>
+               <topic label="k and Feature Selection"
+                      href="components/knn/knn_carsales_predict-sales_k-feature-selection.htm"/>
+            </topic>
+         </topic>
+      </topic>
+      <topic label="Discriminant Analysis" href="spss/tutorials/discriminant_table.htm">
+         <topic label="Using Discriminant Analysis to Assess Credit Risk"
+                href="spss/tutorials/discrim_bankloan_intro.htm">
+            <topic label="Preparing the Data for Analysis"
+                   href="spss/tutorials/discriminant_bankloan_dataprep.htm"/>
+            <topic label="Running the Analysis" href="spss/tutorials/discrim_bankloan_howto.htm"/>
+            <topic label="Classifying Customers as High or Low Credit Risks"
+                   href="spss/tutorials/discrim_bankloan_classification.htm"/>
+            <topic label="Checking Collinearity of Predictors"
+                   href="spss/tutorials/discrim_bankloan_corr.htm"/>
+            <topic label="Checking for Correlation of Group Means and Variances"
+                   href="spss/tutorials/discrim_bankloan_means.htm"/>
+            <topic label="Checking Homogeneity of Covariance Matrices"
+                   href="spss/tutorials/discrim_bankloan_boxsm.htm"/>
+            <topic label="Assessing the Contribution of Individual Predictors"
+                   href="spss/tutorials/discrim_bankloan_varselect.htm">
+               <topic label="Tests of Equality of Group Means"
+                      href="spss/tutorials/discrim_bankloan_groupmean.htm"/>
+               <topic label="Standardized Canonical Discriminant Function Coefficients"
+                      href="spss/tutorials/discrim_bankloan_canoncoeff.htm"/>
+               <topic label="Structure Matrix" href="spss/tutorials/discrim_bankloan_structure.htm"/>
+            </topic>
+            <topic label="Assessing Model Fit" href="spss/tutorials/discrim_bankloan_modelfit.htm">
+               <topic label="Eigenvalues" href="spss/tutorials/discrim_bankloan_eigen.htm"/>
+               <topic label="Wilks' Lambda" href="spss/tutorials/discrim_bankloan_wilks.htm"/>
+            </topic>
+            <topic label="Model Validation" href="spss/tutorials/discrim_bankloan_validate.htm"/>
+            <topic label="Specifying Separate-Groups Covariance Matrices"
+                   href="spss/tutorials/disc_loan_separate_groups.htm"/>
+            <topic label="Adjusting Prior Probabilities"
+                   href="spss/tutorials/disc_loan_adjust_priors.htm"/>
+            <topic label="Summary" href="spss/tutorials/discrim_loan_summary.htm"/>
+         </topic>
+         <topic label="Using Discriminant Analysis to Classify Telecommunications Customers"
+                href="spss/tutorials/discrim_telco_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/discrim_telco_howto.htm"/>
+            <topic label="Analyzing Output of Using Discriminant Analysis to Classify Telecommunications Customers"
+                   href="spss/tutorials/discriminant_telco_output_container.htm">
+               <topic label="Stepwise Discriminant Analysis"
+                      href="spss/tutorials/discrim_telco_stepwise.htm"/>
+               <topic label="A Note of Caution Concerning Stepwise Methods"
+                      href="spss/tutorials/discrim_using_stepwise.htm"/>
+               <topic label="Checking Model Fit" href="spss/tutorials/discrim_telco_fit.htm"/>
+               <topic label="Structure Matrix" href="spss/tutorials/discrim_telco_structure.htm"/>
+               <topic label="Territorial Map" href="spss/tutorials/discrim_telco_terrimap.htm"/>
+               <topic label="Classification Results"
+                      href="spss/tutorials/discrim_telco_classtable.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/disc_telco_summary.htm"/>
+            <topic label="Related Procedures" href="spss/tutorials/discrim_related.htm"/>
+            <topic label="Recommended Readings" href="spss/tutorials/discrim_readings.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/discrim_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/discrim_readings.htm"/>
+      </topic>
+      <topic label="Factor Analysis" href="spss/tutorials/factoranalysis_table.htm">
+         <topic label="Factor Analysis Methods" href="spss/tutorials/factor_methodology.htm"/>
+         <topic label="Using Factor Analysis for Data Reduction"
+                href="spss/tutorials/factor_cars_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/factor_cars_howto_01.htm"/>
+            <topic label="Communalities" href="spss/tutorials/fac_cars_communalities_01.htm"/>
+            <topic label="Total Variance Explained" href="spss/tutorials/fac_cars_tve.htm"/>
+            <topic label="Scree Plot" href="spss/tutorials/fac_cars_scree_01.htm"/>
+            <topic label="Rotated Component Matrix"
+                   href="spss/tutorials/fac_cars_rotcompmtrx_01.htm"/>
+            <topic label="Component Score Coefficient Matrix"
+                   href="spss/tutorials/fac_cars_compsccoeffmtrx_01.htm"/>
+            <topic label="Scatterplot Matrix of Component Scores"
+                   href="spss/tutorials/fac_cars_fscorescatter.htm"/>
+            <topic label="Summary" href="spss/tutorials/fac_cars_summary.htm"/>
+         </topic>
+         <topic label="Using Factor Analysis for Structure Detection"
+                href="spss/tutorials/fac_telco_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/factor_telco_howto_01.htm"/>
+            <topic label="KMO and Bartlett's Test" href="spss/tutorials/fac_telco_kmo_01.htm"/>
+            <topic label="Communalities" href="spss/tutorials/fac_telco_communalities.htm"/>
+            <topic label="Total Variance Explained" href="spss/tutorials/fac_telco_tve_01.htm"/>
+            <topic label="Scree Plot" href="spss/tutorials/fac_telco_scree_01.htm"/>
+            <topic label="Factor Matrix" href="spss/tutorials/fac_telco_facmtrx.htm"/>
+            <topic label="Rotated Factor Matrix" href="spss/tutorials/fac_telco_rotfacmtrx_01.htm"/>
+            <topic label="Summary" href="spss/tutorials/fac_telco_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/fac_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/fac_readings.htm"/>
+      </topic>
+      <topic label="TwoStep Cluster Analysis" href="spss/tutorials/twostepcluster_table.htm">
+         <topic label="Clustering Principles" href="spss/tutorials/twostep_methodology.htm"/>
+         <topic label="Using TwoStep Cluster Analysis to Classify Motor Vehicles"
+                href="spss/tutorials/twostep_cars_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/twostep_cars_howto.htm"/>
+            <topic label="Model Summary and Cluster Quality"
+                   href="spss/tutorials/twostep_cars_quality.htm"/>
+            <topic label="Cluster Distribution"
+                   href="spss/tutorials/twostep_cars_distribution.htm"/>
+            <topic label="Cluster Profiles" href="spss/tutorials/twostep_cars_profiles.htm"/>
+            <topic label="Summary" href="spss/tutorials/twostep_cars_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/twostep_related.htm"/>
+      </topic>
+      <topic label="Hierarchical Cluster Analysis" href="spss/tutorials/cluster_table.htm">
+         <topic label="Clustering Principles" href="spss/tutorials/hca_methodology.htm"/>
+         <topic label="Using HCA to Classify Automobiles"
+                href="spss/tutorials/hca_cars_intro.htm">
+            <topic label="Preparing the Data" href="spss/tutorials/hca_cars_dataprep.htm"/>
+            <topic label="Running the Analysis" href="spss/tutorials/hca_cars_howto.htm"/>
+            <topic label="Dendrogram" href="spss/tutorials/hca_cars_single_dendrogram.htm"/>
+            <topic label="Agglomeration Schedule"
+                   href="spss/tutorials/hca_cars_single_agglomeration.htm"/>
+            <topic label="Complete Linkage Solution"
+                   href="spss/tutorials/hca_cars_complete_linkage.htm">
+               <topic label="Agglomeration Schedule"
+                      href="spss/tutorials/hca_cars_complete_agglomeration.htm"/>
+               <topic label="Dendrogram" href="spss/tutorials/hca_cars_complete_dendrogram.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/hca_cars_summary.htm"/>
+         </topic>
+         <topic label="Using HCA to Study Relationships between Telecommunications Services"
+                href="spss/tutorials/hca_telco_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/hca_telco_howto.htm"/>
+            <topic label="Agglomeration Schedule"
+                   href="spss/tutorials/hca_telco_simple_agglomeration.htm"/>
+            <topic label="Dendrogram" href="spss/tutorials/hca_telco_simple_dendrogram.htm"/>
+            <topic label="Solution Using the Jaccard Measure"
+                   href="spss/tutorials/hca_telco_jaccard.htm">
+               <topic label="Dendrogram" href="spss/tutorials/hca_telco_jaccard_dendrogram.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/hca_telco_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/hca_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/hca_readings.htm"/>
+      </topic>
+      <topic label="K-Means Cluster Analysis" href="spss/tutorials/quickcluster_table.htm">
+         <topic label="Clustering Principles" href="spss/tutorials/kmeans_methodology.htm"/>
+         <topic label="Using K-Means to Classify Customers"
+                href="spss/tutorials/kmeans_telco_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/kmeans_telco_howto.htm"/>
+            <topic label="Initial Cluster Centers" href="spss/tutorials/kmeans_telco_initial.htm"/>
+            <topic label="Iteration History" href="spss/tutorials/kmeans_telco_iteration.htm"/>
+            <topic label="ANOVA" href="spss/tutorials/kmeans_telco_anova.htm"/>
+            <topic label="Final Cluster Centers" href="spss/tutorials/kmeans_telco_final.htm"/>
+            <topic label="Distances between Final Cluster Centers"
+                   href="spss/tutorials/kmeans_telco_distance.htm"/>
+            <topic label="Number of Cases in Each Cluster"
+                   href="spss/tutorials/kmeans_telco_cases.htm"/>
+            <topic label="Building a Four-Cluster Solution"
+                   href="spss/tutorials/kmeans_telco_4cluster.htm">
+               <topic label="Plot of Distances from Cluster Center by Cluster Membership"
+                      href="spss/tutorials/kmeans_telco_plot_01.htm"/>
+               <topic label="Final Cluster Centers" href="spss/tutorials/kmeans_telco_final_02.htm"/>
+               <topic label="Distances between Final Cluster Centers"
+                      href="spss/tutorials/kmeans_telco_distance_02.htm"/>
+               <topic label="Number of Cases in Each Cluster"
+                      href="spss/tutorials/kmeans_telco_cases_02.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/kmeans_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/kmeans_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/kmeans_readings.htm"/>
+      </topic>
+      <topic label="Nonparametric Tests" href="spss/tutorials/npartests_table.htm">
+         <topic label="Using Nonparametric Tests to Study Credit Card Data"
+                href="components/nonparametric_tests/npar_credit_card_intro.htm">
+            <topic label="Preparing the Data for Independent Samples Analysis"
+                   href="components/nonparametric_tests/npar_credit_card_prepare_data_01.htm"/>
+            <topic label="Running an Independent Samples Nonparametric Analysis"
+                   href="components/nonparametric_tests/npar_credit_card_independent_howto.htm"/>
+            <topic label="Hypothesis Test Summary"
+                   href="components/nonparametric_tests/npar_credit_card_hypothesis_test_summary.htm"/>
+            <topic label="Independent Samples Test View"
+                   href="components/nonparametric_tests/npar_credit_card_independent_samples_test.htm"/>
+            <topic label="Pairwise Comparisons"
+                   href="components/nonparametric_tests/npar_credit_card_pairwise_comparisons.htm"/>
+            <topic label="Categorical Field Information"
+                   href="components/nonparametric_tests/npar_credit_card_categorical_field_information.htm"/>
+            <topic label="Preparing the Data for Related Samples Analysis"
+                   href="components/nonparametric_tests/npar_credit_card_prepare_data_02.htm"/>
+            <topic label="Running a Related Samples Nonparametric Analysis"
+                   href="components/nonparametric_tests/npar_credit_card_related_howto.htm"/>
+            <topic label="Hypothesis Test Summary"
+                   href="components/nonparametric_tests/npar_credit_card_hypothesis_test_summary_02.htm"/>
+            <topic label="Homogeneous Subsets"
+                   href="components/nonparametric_tests/npar_credit_card_homogeneous_subsets.htm"/>
+            <topic label="Summary"
+                   href="components/nonparametric_tests/npar_credit_card_summary.htm"/>
+         </topic>
+      </topic>
+      <topic label="Multiple Response Analysis"
+             href="spss/tutorials/multipleresponse_table.htm">
+         <topic label="Using Multiple Response Analysis to Track Service Usage"
+                href="spss/tutorials/multresponse_telco_intro.htm">
+            <topic label="Defining the Multiple Response Set"
+                   href="spss/tutorials/multresponse_telco_definesets_howto.htm"/>
+            <topic label="Producing Frequency Tables"
+                   href="spss/tutorials/multresponse_telco_howto.htm"/>
+            <topic label="Case Summary"
+                   href="spss/tutorials/multresponse_freq_telco_casesummary.htm"/>
+            <topic label="Frequency Table" href="spss/tutorials/multresponse_telco_freqtable.htm"/>
+            <topic label="Accounting for Customers Without Services"
+                   href="spss/tutorials/multresponse_telco_computenoservices_howto.htm"/>
+            <topic label="Producing Crosstabulation Tables"
+                   href="spss/tutorials/multresponse_xtab_telco_howto.htm"/>
+            <topic label="Crosstabulation Table"
+                   href="spss/tutorials/multresponse_telco_crosstabulation.htm"/>
+            <topic label="Summary" href="spss/tutorials/multresponse_telco_summary.htm"/>
+         </topic>
+      </topic>
+      <topic label="Measures of reliability in scale problems"
+             href="spss/tutorials/reliability_container.htm">
+         <topic label="Reliability analysis" href="spss/tutorials/reliability_table.htm"/>
+         <topic label="Using reliability measures to analyze survey items"
+                href="spss/tutorials/rely_tvsurvey_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/rely_tvsurvey_howto.htm"/>
+            <topic label="Descriptive statistics"
+                   href="spss/tutorials/rely_tvsurvey_descstats.htm"/>
+            <topic label="Split-half coefficients"
+                   href="spss/tutorials/rely_tvsurvey_splithalf.htm"/>
+            <topic label="Guttman's lower bounds" href="spss/tutorials/rely_tvsurvey_guttman.htm"/>
+            <topic label="Parallel and strictly parallel"
+                   href="spss/tutorials/rely_tvsurvey_parallel.htm"/>
+         </topic>
+         <topic label="Using reliability measures to analyze inter-rater agreement"
+                href="spss/tutorials/rely_judges_intro.htm">
+            <topic label="Running the analysis" href="spss/tutorials/rely_judges_howto.htm"/>
+            <topic label="Descriptive statistics" href="spss/tutorials/rely_judges_desc.htm"/>
+            <topic label="Intraclass correlation coefficients"
+                   href="spss/tutorials/rely_judges_icc.htm"/>
+            <topic label="Summary" href="spss/tutorials/rely_judges_summary.htm"/>
+         </topic>
+         <topic label="Recommended readings" href="spss/tutorials/rely_readings.htm"/>
+      </topic>
+      <topic label="Ratio Statistics" href="spss/tutorials/ratiostatistics_table.htm">
+         <topic label="Using Ratio Statistics to Aid Property Value Assessment"
+                href="spss/tutorials/ratio_property_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/ratio_property_howto.htm"/>
+            <topic label="Ratio Statistics" href="spss/tutorials/ratio_property_stats.htm"/>
+            <topic label="Summary" href="spss/tutorials/ratio_property_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/ratio_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/ratio_readings.htm"/>
+      </topic>
+      <topic label="ROC Curve" href="spss/tutorials/roccurve_table.htm">
+         <topic label="Using ROC Curve to Evaluate Assay Performance"
+                href="spss/tutorials/roc_hiv_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/roc_hiv_howto.htm"/>
+            <topic label="ROC Curve" href="spss/tutorials/roc_curve_hiv_01.htm"/>
+            <topic label="Area under the Curve" href="spss/tutorials/roc_area_hiv_01.htm"/>
+            <topic label="Coordinates of the Curve" href="spss/tutorials/roc_coord_hiv_01.htm"/>
+            <topic label="Summary" href="spss/tutorials/roc_hiv_summary.htm"/>
+         </topic>
+         <topic label="Using ROC Curves to Choose between Competing Classification Schemes"
+                href="spss/tutorials/roc_bankloan_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/roc_bankloan_howto.htm"/>
+            <topic label="ROC Curve" href="spss/tutorials/roc_curve_bankloan_01.htm"/>
+            <topic label="Area under the Curve" href="spss/tutorials/roc_area_bankloan_01.htm"/>
+            <topic label="Summary" href="spss/tutorials/roc_bankloan_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/roc_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/roc_readings.htm"/>
+      </topic>
+      <topic label="Control Charts" href="spss/tutorials/spchart_table.htm">
+         <topic label="Control Chart Principles" href="spss/tutorials/spch_model.htm"/>
+         <topic label="Using X-bar and R Charts to Monitor Shampoo pH"
+                href="spss/tutorials/spch_ph_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/spch_ph_howto.htm"/>
+            <topic label="Range Chart" href="spss/tutorials/spch_ph_rchart.htm"/>
+            <topic label="Relationship between the R Chart and X-bar Chart"
+                   href="spss/tutorials/spch_rchart_xbarchart.htm"/>
+            <topic label="X-bar Chart" href="spss/tutorials/spch_xbar_chart.htm"/>
+            <topic label="Rule Violations" href="spss/tutorials/spch_xbar_rules.htm"/>
+            <topic label="Process Statistics" href="spss/tutorials/spch_xbar_stat.htm"/>
+            <topic label="Summary" href="spss/tutorials/spch_ph_summary.htm"/>
+         </topic>
+         <topic label="Using p Charts to Track the Proportion of Defective Units"
+                href="spss/tutorials/spch_cloth_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/spch_cloth_howto.htm"/>
+            <topic label="p Chart" href="spss/tutorials/spch_cloth_pchart.htm"/>
+         </topic>
+         <topic label="Recommended Readings" href="spss/tutorials/spch_readings.htm"/>
+      </topic>
+      <topic label="Select Predictors" href="spss/tutorials/selectpred_table.htm">
+         <topic label="Using Select Predictors to Mine a Customer Database"
+                href="spss/tutorials/selectpred_customerdbase_intro.htm">
+            <topic label="Running the Analysis"
+                   href="spss/tutorials/selectpred_customerdbase_howto.htm"/>
+            <topic label="Excluded Predictors"
+                   href="spss/tutorials/selectpred_customerdbase_exclpred.htm"/>
+            <topic label="Predictor Summary"
+                   href="spss/tutorials/selectpred_customerdbase_predsummary.htm"/>
+            <topic label="Widening the Search"
+                   href="spss/tutorials/selectpred_customerdbase_howto_02.htm"/>
+            <topic label="Predictor Summary"
+                   href="spss/tutorials/selectpred_customerdbase_predsummary_02.htm"/>
+            <topic label="Selected Predictors"
+                   href="spss/tutorials/selectpred_customerdbase_selpred.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/selectpred_related.htm"/>
+      </topic>
+      <topic label="Naive Bayes" href="spss/tutorials/naivebayes_table.htm">
+         <topic label="Using Naive Bayes for Predictor Selection and Classification"
+                href="spss/tutorials/naivebayes_bankloan_intro.htm">
+            <topic label="Preparing the Data for Analysis"
+                   href="spss/tutorials/naivebayes_bankloan_dataprep.htm"/>
+            <topic label="Running the Analysis"
+                   href="spss/tutorials/naivebayes_bankloan_howto.htm"/>
+            <topic label="Case Processing Summary"
+                   href="spss/tutorials/naivebayes_bankloan_cps.htm"/>
+            <topic label="Subset Summary"
+                   href="spss/tutorials/naivebayes_bankloan_subsetsummary.htm"/>
+            <topic label="Classification"
+                   href="spss/tutorials/naivebayes_bankloan_classification.htm"/>
+            <topic label="Predictor Effects"
+                   href="spss/tutorials/naivebayes_bankloan_predvals.htm"/>
+            <topic label="Summary" href="spss/tutorials/naivebayes_telco_summary.htm"/>
+         </topic>
+         <topic label="Using Naive Bayes to Classify Respondents"
+                href="spss/tutorials/naivebayes_customerdbase_intro.htm">
+            <topic label="Running the Analysis"
+                   href="spss/tutorials/naivebayes_customerdbase_howto.htm"/>
+            <topic label="Classification"
+                   href="spss/tutorials/naivebayes_customerdbase_classification.htm"/>
+            <topic label="Summary" href="spss/tutorials/naivebayes_data_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/naivebayes_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/naivebayes_readings.htm"/>
+      </topic>
+      <topic label="Simulation" href="spss/tutorials/simulation_tutorial.htm">
+         <topic label="Using simulation to model treatment costs for diabetes"
+                href="spss/tutorials/simulation_diabetes_intro.htm">
+            <topic label="Running the simulation"
+                   href="spss/tutorials/simulation_diabetes_howto.htm"/>
+            <topic label="Simulation plan output"
+                   href="spss/tutorials/simulation_diabetes_simplan.htm"/>
+            <topic label="Simulation summary"
+                   href="spss/tutorials/simulation_diabetes_simrun_summary.htm"/>
+            <topic label="Descriptive statistics"
+                   href="spss/tutorials/simulation_diabetes_simrun_descriptives.htm"/>
+            <topic label="Correlation tornado chart"
+                   href="spss/tutorials/simulation_diabetes_simrun_tornado.htm"/>
+            <topic label="Probability Density chart"
+                   href="spss/tutorials/simulation_diabetes_simrun_pdf.htm"/>
+            <topic label="Summary" href="spss/tutorials/simulation_diabetes_summary.htm"/>
+         </topic>
+         <topic label="Accounting for risk in a net present value calculation"
+                href="spss/tutorials/simulation_npv_intro.htm">
+            <topic label="Setting up the simulation"
+                   href="spss/tutorials/simulation_npv_howto.htm"/>
+            <topic label="Checking the output"
+                   href="spss/tutorials/simulation_npv_checkoutput.htm"/>
+            <topic label="Running a sensitivity analysis"
+                   href="spss/tutorials/simulation_npv_sensitivity.htm"/>
+            <topic label="Analyzing the results" href="spss/tutorials/simulation_npv_results.htm"/>
+            <topic label="Summary" href="spss/tutorials/simulation_npv_summary.htm"/>
+         </topic>
+      </topic>
+      <topic label="Geospatial association rules"
+             href="spss/tutorials/gsar_example_intro.htm">
+         <topic label="Selecting a map" href="spss/tutorials/gsar_example_map.htm"/>
+         <topic label="Selecting data sources" href="spss/tutorials/gsar_example_data.htm"/>
+         <topic label="Selecting fields and options"
+                href="spss/tutorials/gsar_example_fields_options.htm"/>
+         <topic label="Model information" href="spss/tutorials/gsar_example_summary_stats.htm"/>
+         <topic label="Maps" href="spss/tutorials/gsar_example_map_output.htm"/>
+         <topic label="Rules Tables" href="spss/tutorials/gsar_example_rules_tables.htm"/>
+      </topic>
+      <topic label="Spatial Temporal Prediction" href="spss/tutorials/stp_example_intro.htm">
+         <topic label="Selecting a map" href="spss/tutorials/stp_example_map.htm"/>
+         <topic label="Selecting data sources" href="spss/tutorials/stp_example_data.htm"/>
+         <topic label="Selecting fields and options"
+                href="spss/tutorials/stp_example_fields_options.htm"/>
+         <topic label="Model information" href="spss/tutorials/stp_example_summary_stats.htm"/>
+         <topic label="Maps" href="spss/tutorials/stp_example_map_output.htm"/>
+      </topic>
+   </topic>
+   <topic label="Advanced Statistics Option">
+      <topic label="Multivariate General Linear Modeling"
+             href="spss/tutorials/glm_table.htm">
+         <topic label="GLM Multivariate" href="spss/tutorials/glm-multi_toc.htm">
+            <topic label="GLM Multivariate" href="spss/tutorials/glmm_intro.htm">
+               <topic label="The Model" href="spss/tutorials/glmm_model.htm"/>
+               <topic label="Multivariate Analysis of Variance (MANOVA) Using the GLM Multivariate Procedure"
+                      href="spss/tutorials/glmm_patlos_intro_01.htm">
+                  <topic label="Running the Analysis" href="spss/tutorials/glmm_patlos_howto_01.htm"/>
+                  <topic label="SSCP Matrices and Multivariate Tests"
+                         href="spss/tutorials/glmm_patlos_mult.htm"/>
+                  <topic label="Contrast Results" href="spss/tutorials/glmm_patlos_contrast.htm"/>
+                  <topic label="Testing Homogeneity of Covariance Matrices"
+                         href="spss/tutorials/glmm_patlos_homcov.htm"/>
+                  <topic label="Using Log-transformed Treatment Costs"
+                         href="spss/tutorials/glmm_patlos_intro_02.htm">
+                     <topic label="Testing Homogeneity of Covariance Matrices"
+                            href="spss/tutorials/glmm_patlos_homcov_02.htm"/>
+                     <topic label="Is the Assumption of Homogeneity Violated?"
+                            href="spss/tutorials/glmm_patlos_homcov_02b.htm"/>
+                     <topic label="Contrast Results" href="spss/tutorials/glmm_patlos_contrast_02.htm"/>
+                  </topic>
+                  <topic label="Summary" href="spss/tutorials/glmm_patlos_summary.htm"/>
+               </topic>
+               <topic label="Using GLM Multivariate to Profile Churners"
+                      href="spss/tutorials/glmm_telco_intro.htm">
+                  <topic label="Running the Analysis" href="spss/tutorials/glmm_telco_howto.htm"/>
+                  <topic label="Multivariate tests" href="spss/tutorials/glmm_telco_mult.htm"/>
+                  <topic label="Profile Plots" href="spss/tutorials/glmm_telco_profplt.htm"/>
+                  <topic label="Summary" href="spss/tutorials/glmm_telco_summary.htm"/>
+               </topic>
+               <topic label="Related Procedures" href="spss/tutorials/glmm_related.htm"/>
+               <topic label="Recommended Readings" href="spss/tutorials/glmm_readings.htm"/>
+            </topic>
+         </topic>
+         <topic label="GLM Repeated Measures" href="spss/tutorials/glm-repeated_toc.htm">
+            <topic label="GLM Repeated Measures" href="spss/tutorials/glmr_intro.htm">
+               <topic label="The GLM Repeated Measures Model" href="spss/tutorials/glmr_model.htm"/>
+               <topic label="A Repeated Measures Analysis of Variance"
+                      href="spss/tutorials/glmr_testmkt_intro.htm">
+                  <topic label="Preparing the Data File" href="spss/tutorials/glmr_testmkt_dataprep.htm"/>
+                  <topic label="Running the Analysis" href="spss/tutorials/glmr_testmkt_howto.htm"/>
+                  <topic label="Between-Subjects Effects"
+                         href="spss/tutorials/glmr_testmarket_bseff.htm"/>
+                  <topic label="Profile Plots" href="spss/tutorials/glmr_testmarket_profplt.htm"/>
+                  <topic label="Within-Subjects SSCP Matrices"
+                         href="spss/tutorials/glmr_testmarket_wssscp.htm"/>
+                  <topic label="Multivariate Tests of Within-Subjects Effects"
+                         href="spss/tutorials/glmr_testmarket_mult.htm"/>
+                  <topic label="Testing Homogeneity of Covariance Matrices"
+                         href="spss/tutorials/glmr_testmarket_homcov.htm"/>
+                  <topic label="Mauchly's Test of Sphericity"
+                         href="spss/tutorials/glmr_testmarket_mauchly.htm"/>
+                  <topic label="Univariate Tests of Within-Subjects Effects"
+                         href="spss/tutorials/glmr_testmarket_wseff.htm"/>
+                  <topic label="Contrast Results" href="spss/tutorials/glmr_testmarket_contrast.htm"/>
+                  <topic label="Summary" href="spss/tutorials/glmr_testmkt_summary.htm"/>
+               </topic>
+               <topic label="A Doubly Multivariate Analysis of Variance"
+                      href="spss/tutorials/glmr_diet_intro.htm">
+                  <topic label="Running the Analysis" href="spss/tutorials/glmr_diet_howto.htm"/>
+                  <topic label="Multivariate Tests" href="spss/tutorials/glmr_diet_mult.htm"/>
+                  <topic label="Contrast Results" href="spss/tutorials/glmr_diet_contrast.htm"/>
+                  <topic label="Estimated Marginal Means" href="spss/tutorials/glmr_diet_means.htm"/>
+                  <topic label="Profile Plots" href="spss/tutorials/glmr_diet_profile.htm"/>
+                  <topic label="Summary" href="spss/tutorials/glmr_diet_summary.htm"/>
+               </topic>
+               <topic label="Related Procedures" href="spss/tutorials/glmr_related.htm"/>
+               <topic label="Recommended Readings" href="spss/tutorials/glmr_readings.htm"/>
+            </topic>
+         </topic>
+      </topic>
+      <topic label="Variance Components"
+             href="spss/tutorials/variancecomponentsestimation_table.htm">
+         <topic label="The Model" href="spss/tutorials/varcomp_model.htm">
+            <topic label="Estimation Methods" href="spss/tutorials/varcomp_estimation_methods.htm">
+               <topic label="ANOVA Method" href="spss/tutorials/varcomp_anova_method.htm"/>
+               <topic label="MINQUE Method" href="spss/tutorials/varcomp_minque_method.htm"/>
+               <topic label="Maximum Likelihood Method" href="spss/tutorials/varcomp_ml_method.htm"/>
+               <topic label="Restricted Maximum Likelihood Method"
+                      href="spss/tutorials/varcomp_reml_method.htm"/>
+            </topic>
+         </topic>
+         <topic label="Using Variance Components to Assess a Random Effect"
+                href="spss/tutorials/varcomp_groc_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/varcomp_groc_howto_01.htm"/>
+            <topic label="Variance Estimates" href="spss/tutorials/varcomp_groc_varest.htm"/>
+            <topic label="Computing Variance Estimates (ANOVA Method)"
+                   href="spss/tutorials/varcomp_groc_anova_01.htm"/>
+            <topic label="Restricted Maximum Likelihood Estimation"
+                   href="spss/tutorials/varcomp_groc_intro_02.htm">
+               <topic label="Iteration History" href="spss/tutorials/varcomp_groc_iter_02.htm"/>
+               <topic label="Variance Estimates" href="spss/tutorials/varcomp_groc_varest_02.htm"/>
+               <topic label="Asymptotic Covariance Matrix"
+                      href="spss/tutorials/varcomp_groc_covmat_02.htm"/>
+            </topic>
+            <topic label="MINQUE (1) Estimation" href="spss/tutorials/varcomp_groc_intro_03.htm">
+               <topic label="Variance Estimates" href="spss/tutorials/varcomp_groc_varest_03.htm"/>
+            </topic>
+            <topic label="MINQUE (0) Estimation" href="spss/tutorials/varcomp_groc_intro_04.htm">
+               <topic label="Variance Estimates" href="spss/tutorials/varcomp_groc_varest_04.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/varcomp_groc_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/varcomp_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/varcomp_readings.htm"/>
+      </topic>
+      <topic label="Linear Mixed Models" href="spss/tutorials/mixed_table.htm">
+         <topic label="The Linear Mixed Model" href="spss/tutorials/mixed_model.htm"/>
+         <topic label="Using Linear Mixed Models to Analyze Product Test Results From Multiple Markets"
+                href="spss/tutorials/mixed_testmkt_intro_01.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/mixed_testmkt_howto_01.htm"/>
+            <topic label="Model Dimension" href="spss/tutorials/mixed_testmkt_modeldim_01.htm"/>
+            <topic label="Fixed Effects" href="spss/tutorials/mixed_testmkt_fixed_01.htm"/>
+            <topic label="Covariance Parameters" href="spss/tutorials/mixed_testmkt_covpar_01.htm"/>
+            <topic label="Random Effect Covariance (G) Matrix"
+                   href="spss/tutorials/mixed_testmkt_gmat_01.htm"/>
+            <topic label="Summary" href="spss/tutorials/mixed_testmkt_summary_01.htm"/>
+         </topic>
+         <topic label="Using Linear Mixed Models to Analyze Repeated Measurements"
+                href="spss/tutorials/mixed_diet_intro.htm">
+            <topic label="Preparing the Data File" href="spss/tutorials/mixed_diet_dataprep.htm"/>
+            <topic label="Running the Analysis" href="spss/tutorials/mixed_diet_howto.htm"/>
+            <topic label="Fixed Effects" href="spss/tutorials/mixed_fixed_diet_01.htm"/>
+            <topic label="Treating Time as a Repeated Effect"
+                   href="spss/tutorials/mixed_diet_intro_01b.htm">
+               <topic label="Running the Analysis" href="spss/tutorials/mixed_diet_howto_02.htm"/>
+               <topic label="Model Dimension" href="spss/tutorials/mixed_diet_moddim_02.htm"/>
+               <topic label="Information Criteria" href="spss/tutorials/mixed_diet_info_02.htm"/>
+               <topic label="Fixed Effects" href="spss/tutorials/mixed_diet_fixed_02.htm"/>
+               <topic label="Covariance Parameters" href="spss/tutorials/mixed_diet_covpar_02.htm"/>
+               <topic label="Residual Covariance (R) Matrix"
+                      href="spss/tutorials/mixed_diet_rmat_02.htm"/>
+            </topic>
+            <topic label="Restricting the Covariance Structure"
+                   href="spss/tutorials/mixed_diet_intro_02b.htm">
+               <topic label="Running the Analysis" href="spss/tutorials/mixed_diet_howto_03.htm"/>
+               <topic label="Model Dimension" href="spss/tutorials/mixed_diet_moddim_03.htm"/>
+               <topic label="Residual Covariance (R) Matrix"
+                      href="spss/tutorials/mixed_diet_rmat_03.htm"/>
+               <topic label="Information Criteria" href="spss/tutorials/mixed_diet_info_03.htm"/>
+            </topic>
+            <topic label="A Likelihood Ratio Test" href="spss/tutorials/mixed_diet_intro_04.htm">
+               <topic label="Computing the Likelihood Ratio Statistic"
+                      href="spss/tutorials/mixed_diet_lrtstat_04.htm"/>
+               <topic label="Computing the Significance Value of the Test Statistic"
+                      href="spss/tutorials/mixed_diet_howto_04.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/mixed_diet_summary.htm"/>
+         </topic>
+         <topic label="Using Linear Mixed Models to Analyze a Crossover Trial"
+                href="spss/tutorials/mixed_groc_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/mixed_groc_howto.htm"/>
+            <topic label="Model Dimension" href="spss/tutorials/mixed_groc_moddim_01.htm"/>
+            <topic label="Fixed Effects" href="spss/tutorials/mixed_groc_fixed_01.htm"/>
+            <topic label="Covariance Parameters" href="spss/tutorials/mixed_groc_covpar_01.htm"/>
+            <topic label="Using Repeated Effects to Model the Crossover Trial"
+                   href="spss/tutorials/mixed_groc_intro_02.htm">
+               <topic label="Running the Analysis" href="spss/tutorials/mixed_groc_howto_02.htm"/>
+               <topic label="Warning" href="spss/tutorials/mixed_groc_warning_02.htm"/>
+               <topic label="Model Dimension" href="spss/tutorials/mixed_groc_moddim_02.htm"/>
+               <topic label="Information Criteria" href="spss/tutorials/mixed_groc_info_02.htm"/>
+               <topic label="Fixed Effects" href="spss/tutorials/mixed_groc_fixtest_02.htm"/>
+               <topic label="Covariance Parameters" href="spss/tutorials/mixed_groc_covpar_02.htm"/>
+               <topic label="Residual Covariance (R) Matrix"
+                      href="spss/tutorials/mixed_groc_rmat_02.htm"/>
+            </topic>
+            <topic label="Specifying an Unstructured Covariance Matrix for the Repeated Effects"
+                   href="spss/tutorials/mixed_groc_intro_03.htm">
+               <topic label="Running the Analysis" href="spss/tutorials/mixed_groc_howto_03.htm"/>
+               <topic label="Model Dimension" href="spss/tutorials/mixed_groc_moddim_03.htm"/>
+               <topic label="Information Criteria" href="spss/tutorials/mixed_groc_info_03.htm"/>
+               <topic label="Fixed Effects" href="spss/tutorials/mixed_groc_fixtest_03.htm"/>
+               <topic label="Covariance Parameters" href="spss/tutorials/mixed_groc_covpar_03.htm"/>
+               <topic label="Residual Covariance (R) Matrix"
+                      href="spss/tutorials/mixed_groc_rmat_03.htm"/>
+            </topic>
+            <topic label="Specifying the Treatment as the Repeated Effect"
+                   href="spss/tutorials/mixed_groc_intro_04.htm">
+               <topic label="Running the Analysis" href="spss/tutorials/mixed_groc_howto_04.htm"/>
+               <topic label="Model Dimension" href="spss/tutorials/mixed_groc_moddim_04.htm"/>
+               <topic label="Information Criteria" href="spss/tutorials/mixed_groc_info_04.htm"/>
+               <topic label="Fixed Effects" href="spss/tutorials/mixed_groc_testfix_04.htm"/>
+               <topic label="Residual Covariance (R) Matrix"
+                      href="spss/tutorials/mixed_groc_rmat_04.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/mixed_groc_summary.htm"/>
+         </topic>
+         <topic label="Using Linear Mixed Models to Model Random Effects and Repeated Measures"
+                href="spss/tutorials/mixed_diet_intro_02.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/mixed_testmkt_howto_02.htm"/>
+            <topic label="Model Dimension" href="spss/tutorials/mixed_testmkt_moddim_02.htm"/>
+            <topic label="Fixed Effects" href="spss/tutorials/mixed_testmkt_fixed_02.htm"/>
+            <topic label="Covariance Parameters" href="spss/tutorials/mixed_testmkt_covpar_02.htm"/>
+            <topic label="An Unstructed Covariance Matrix for Repeated Effects"
+                   href="spss/tutorials/mixed_testmkt_intro_03.htm">
+               <topic label="Running the Analysis" href="spss/tutorials/mixed_testmkt_howto_03.htm"/>
+               <topic label="Model Dimension" href="spss/tutorials/mixed_testmkt_moddim_03.htm"/>
+               <topic label="Information Criteria" href="spss/tutorials/mixed_testmkt_info_03.htm"/>
+               <topic label="Fixed Effects" href="spss/tutorials/mixed_testmkt_fixed_03.htm"/>
+               <topic label="Random Effect Covariance (G) Matrix"
+                      href="spss/tutorials/mixed_testmkt_gmat_03.htm"/>
+               <topic label="Residual Covariance (R) Matrix"
+                      href="spss/tutorials/mixed_testmkt_rmat_03.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/mixed_testmkt_summary_02.htm"/>
+         </topic>
+         <topic label="Using Linear Mixed Models to Fit a Random Coefficients Model"
+                href="spss/tutorials/mixed_diet_intro_03.htm">
+            <topic label="Preparing the Data File"
+                   href="spss/tutorials/mixed_diet_dataprep_05.htm"/>
+            <topic label="Running the Analysis" href="spss/tutorials/mixed_diet_howto_05.htm"/>
+            <topic label="Model Dimension" href="spss/tutorials/mixed_diet_moddim_05.htm"/>
+            <topic label="Fixed Effects" href="spss/tutorials/mixed_diet_fixed_05.htm"/>
+            <topic label="Covariance Parameters" href="spss/tutorials/mixed_diet_covpar_05.htm"/>
+            <topic label="Summary" href="spss/tutorials/mixed_diet_summary_02.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/mixed_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/mixed_readings.htm"/>
+      </topic>
+      <topic label="Generalized Linear Models"
+             href="spss/tutorials/generalizedlinearmodel_table.htm">
+         <topic label="Generalized Linear Models" href="spss/tutorials/gzlm_toc.htm">
+            <topic label="Generalized Linear Models" href="spss/tutorials/genlin_intro.htm">
+               <topic label="Using Poisson Regression to Analyze Ship Damage Rates (Generalized Linear Models)"
+                      href="spss/tutorials/genlin_ships_intro.htm">
+                  <topic label="Fitting an &#34;Overdispersed&#34; Poisson Regression"
+                         href="spss/tutorials/genlin_ships_howto.htm"/>
+                  <topic label="Goodness-of-Fit Statistics" href="spss/tutorials/genlin_ships_fit.htm"/>
+                  <topic label="Omnibus Test" href="spss/tutorials/genlin_ships_omnibus.htm"/>
+                  <topic label="Tests of Model Effects"
+                         href="spss/tutorials/genlin_ships_test-model-effects.htm"/>
+                  <topic label="Parameter Estimates" href="spss/tutorials/genlin_ships_paramest.htm"/>
+                  <topic label="Estimated Marginal Means: Ship Type"
+                         href="spss/tutorials/genlin_ships_emmeans-shiptype.htm"/>
+                  <topic label="Estimated Marginal Means: Year of Construction"
+                         href="spss/tutorials/genlin_ships_emmeans-construction.htm"/>
+                  <topic label="A Residual Diagnostic Plot"
+                         href="spss/tutorials/genlin_ships_resid_plot.htm"/>
+                  <topic label="Fitting Alternative Models"
+                         href="spss/tutorials/genlin_ships_negbin_intro.htm"/>
+                  <topic label="Goodness-of-Fit Statistics"
+                         href="spss/tutorials/genlin_ships_negbin_fit.htm"/>
+                  <topic label="Summary" href="spss/tutorials/genlin_ships_summary.htm"/>
+                  <topic label="Related Procedures" href="spss/tutorials/genlin_related.htm"/>
+                  <topic label="Recommended Readings" href="spss/tutorials/genlin_readings.htm"/>
+               </topic>
+               <topic label="Fitting a Gamma Regression to Car Insurance Claims (Generalized Linear Models)"
+                      href="spss/tutorials/genlin_car-ins_intro.htm">
+                  <topic label="Running the Analysis" href="spss/tutorials/genlin_car-ins_howto.htm"/>
+                  <topic label="Parameter Estimates"
+                         href="spss/tutorials/genlin_car-claims_test-model-effects.htm"/>
+                  <topic label="Estimated Marginal Means: Policyholder Age"
+                         href="spss/tutorials/genlin_car-claims_emmeans-holderage.htm"/>
+                  <topic label="Estimated Marginal Means: Vehicle Type"
+                         href="spss/tutorials/genlin_car-claims_emmeans-vehicletype.htm"/>
+                  <topic label="Estimated Marginal Means: Vehicle Age"
+                         href="spss/tutorials/genlin_car-claims_emmeans-vehicleage.htm"/>
+                  <topic label="A Residual Diagnostic Plot"
+                         href="spss/tutorials/genlin_car-claims_resid_plot.htm"/>
+                  <topic label="Summary" href="spss/tutorials/genlin_car-ins_summary.htm"/>
+                  <topic label="Related Procedures" href="spss/tutorials/genlin_related.htm"/>
+                  <topic label="Recommended Readings" href="spss/tutorials/genlin_readings.htm"/>
+               </topic>
+               <topic label="Analyzing Interval-Censored Survival Data (Generalized Linear Models)"
+                      href="spss/tutorials/genlin_ulcer_intro.htm">
+                  <topic label="Running the Analysis" href="spss/tutorials/genlin_ulcer_howto.htm"/>
+                  <topic label="Tests of Model Effects"
+                         href="spss/tutorials/genlin_ulcer_test-model-effects.htm"/>
+                  <topic label="Fitting the Treatment-Only Model"
+                         href="spss/tutorials/genlin_ulcer_treatment-only_01.htm"/>
+                  <topic label="Parameter Estimates"
+                         href="spss/tutorials/genlin_ulcer_treatment-only_paramest_01.htm"/>
+                  <topic label="Predicted Recurrence and Survival Probabilities"
+                         href="spss/tutorials/genlin_ulcer_treatment-only_out_01.htm"/>
+                  <topic label="Modeling the Recurrence Probability by Period"
+                         href="spss/tutorials/genlin_ulcer_intro_02.htm"/>
+                  <topic label="Tests of Model Effects"
+                         href="spss/tutorials/genlin_ulcer_test-model-effects_02.htm"/>
+                  <topic label="Fitting the Reduced Model"
+                         href="spss/tutorials/genlin_ulcer_treatment-only_02.htm"/>
+                  <topic label="Parameter Estimates"
+                         href="spss/tutorials/genlin_ulcer_treatment-only_paramest_02.htm"/>
+                  <topic label="Predicted Recurrence and Survival Probabilities"
+                         href="spss/tutorials/genlin_ulcer_treatment-only_probrecur_02.htm"/>
+                  <topic label="Summary" href="spss/tutorials/genlin_ulcer_summary.htm"/>
+                  <topic label="Related Procedures" href="spss/tutorials/genlin_related.htm"/>
+                  <topic label="Recommended Readings" href="spss/tutorials/genlin_readings.htm"/>
+               </topic>
+               <topic label="Related Procedures" href="spss/tutorials/genlin_related.htm"/>
+               <topic label="Recommended Readings" href="spss/tutorials/genlin_readings.htm"/>
+            </topic>
+         </topic>
+         <topic label="Generalized Estimating Equations" href="spss/tutorials/gee_toc.htm">
+            <topic label="Generalized Estimating Equations" href="spss/tutorials/gee_intro.htm">
+               <topic label="Using Generalized Estimating Equations to Fit a Repeated Measures Logistic Regression"
+                      href="spss/tutorials/gee_wheeze_intro.htm">
+                  <topic label="Running the Analysis" href="spss/tutorials/gee_wheeze_howto.htm"/>
+                  <topic label="Model Information" href="spss/tutorials/gee_wheeze_modelinfo.htm"/>
+                  <topic label="Correlated Data Summary"
+                         href="spss/tutorials/gee_wheeze_correlated-data-summary.htm"/>
+                  <topic label="Goodness of Fit" href="spss/tutorials/gee_wheeze_fit.htm"/>
+                  <topic label="Parameter Estimates" href="spss/tutorials/gee_wheeze_paramest.htm"/>
+                  <topic label="Working Correlation Matrix"
+                         href="spss/tutorials/gee_wheeze_working-correlation.htm"/>
+                  <topic label="Choosing a Correlation Structure"
+                         href="spss/tutorials/gee_wheeze_corrtype.htm"/>
+                  <topic label="Choosing Model Terms" href="spss/tutorials/gee_wheeze_predsubset.htm"/>
+                  <topic label="Summary" href="spss/tutorials/gee_wheeze_summary.htm"/>
+               </topic>
+               <topic label="Related Procedures" href="spss/tutorials/gee_related.htm"/>
+               <topic label="Recommended Readings" href="spss/tutorials/gee_readings.htm"/>
+            </topic>
+         </topic>
+      </topic>
+      <topic label="Generalized linear mixed models" href="components/glmm/glmm_table.htm">
+         <topic label="Analyzing test scores (generalized linear mixed models)"
+                href="components/glmm/glmm_testscores_intro.htm">
+            <topic label="Running the analysis (generalized linear mixed models)"
+                   href="components/glmm/glmm_testscores_howto.htm"/>
+            <topic label="Model Summary (generalized linear mixed models)"
+                   href="components/glmm/glmm_testscores_model_summary.htm"/>
+            <topic label="Data Structure (generalized linear mixed models)"
+                   href="components/glmm/glmm_testscores_data_structure.htm"/>
+            <topic label="Predicted by Observed (generalized linear mixed models)"
+                   href="components/glmm/glmm_testscores_predicted_by_observed.htm"/>
+            <topic label="Fixed Effects (generalized linear mixed models)"
+                   href="components/glmm/glmm_testscores_fixed_effects.htm"/>
+            <topic label="Fixed Coefficients (generalized linear mixed models)"
+                   href="components/glmm/glmm_testscores_fixed_coefficients.htm"/>
+            <topic label="Covariance Parameters (generalized linear mixed models)"
+                   href="components/glmm/glmm_testscores_covariance_parameters.htm"/>
+            <topic label="Comparing to a linear regression model (generalized linear mixed models)"
+                   href="components/glmm/glmm_testscores_howto_02.htm"/>
+            <topic label="Model Summary (generalized linear mixed models)"
+                   href="components/glmm/glmm_testscores_model_summary_02.htm"/>
+            <topic label="Covariance Parameters (generalized linear mixed models)"
+                   href="components/glmm/glmm_testscores_covariance_parameters_02.htm"/>
+            <topic label="Fixed Coefficients (generalized linear mixed models)"
+                   href="components/glmm/glmm_testscores_fixed_coefficients_02.htm"/>
+         </topic>
+         <topic label="Determining treatment effectiveness in a clinical trial (generalized linear mixed models)"
+                href="components/glmm/glmm_anticonvulsant_intro.htm">
+            <topic label="Running the analysis (generalized linear mixed models)"
+                   href="components/glmm/glmm_anticonvulsant_howto.htm"/>
+            <topic label="Model Summary (generalized linear mixed models)"
+                   href="components/glmm/glmm_anticonvulsant_model_summary.htm"/>
+            <topic label="Fixed effect and covariance parameter estimates (generalized linear mixed models)"
+                   href="components/glmm/glmm_anticonvulsant_parameter_estimates.htm"/>
+            <topic label="Predicted by Observed (generalized linear mixed models)"
+                   href="components/glmm/glmm_anticonvulsant_predicted_by_observed.htm"/>
+            <topic label="Summary (generalized linear mixed models)"
+                   href="components/glmm/glmm_anticonvulsant_summary.htm"/>
+         </topic>
+         <topic label="Profiling cable customers (generalized linear mixed models)"
+                href="components/glmm/glmm_cablesurvey_intro.htm">
+            <topic label="Running the analysis (generalized linear mixed models)"
+                   href="components/glmm/glmm_cablesurvey_howto.htm"/>
+            <topic label="Accuracy and classification results (generalized linear mixed models)"
+                   href="components/glmm/glmm_cablesurvey_accuracy.htm"/>
+            <topic label="Fixed Coefficients (generalized linear mixed models)"
+                   href="components/glmm/glmm_cablesurvey_outputtype.htm"/>
+            <topic label="Summary (generalized linear mixed models)"
+                   href="components/glmm/glmm_cablesurvey_summary.htm"/>
+         </topic>
+      </topic>
+      <topic label="Loglinear Modeling" href="spss/tutorials/generalloglinear_table.htm">
+         <topic label="Model Selection Loglinear Analysis"
+                href="spss/tutorials/loglinear-modsel_toc.htm">
+            <topic label="Model Selection Loglinear Analysis"
+                   href="spss/tutorials/hierarchicalloglinearanalysis_table.htm">
+               <topic label="Using Model Selection Loglinear Analysis to Find the &#34;Best&#34; Model"
+                      href="spss/tutorials/hilog_accident_intro.htm">
+                  <topic label="Running the Analysis" href="spss/tutorials/hilog_demo_howto.htm"/>
+                  <topic label="Step Summary" href="spss/tutorials/hilog_demo_stepsummary.htm"/>
+                  <topic label="Goodness-of-Fit Tests" href="spss/tutorials/hilog_demo_fit.htm"/>
+                  <topic label="Cell Count and Residuals" href="spss/tutorials/hilog_demo_cellcount.htm"/>
+                  <topic label="Summary" href="spss/tutorials/hilog_demo_summary.htm"/>
+               </topic>
+               <topic label="Related Procedures" href="spss/tutorials/hilog_related.htm"/>
+               <topic label="Recommended Readings" href="spss/tutorials/hilog_readings.htm"/>
+            </topic>
+         </topic>
+         <topic label="General Loglinear Analysis"
+                href="spss/tutorials/loglinear-general_toc.htm">
+            <topic label="General Loglinear Analysis" href="spss/tutorials/genlog_intro.htm">
+               <topic label="The General Loglinear Model" href="spss/tutorials/genlog_model.htm"/>
+               <topic label="Using General Loglinear Analysis to Model Response to Mailings"
+                      href="spss/tutorials/genlog_accident_intro.htm">
+                  <topic label="Running the Analysis" href="spss/tutorials/genlog_demo_howto.htm"/>
+                  <topic label="Goodness-of-Fit Tests" href="spss/tutorials/genlog_demo_fit.htm"/>
+                  <topic label="Cell Count and Residuals"
+                         href="spss/tutorials/genlog_demo_cellcount.htm"/>
+                  <topic label="Adding the Interaction to the Model"
+                         href="spss/tutorials/genlog_demo_intro_02.htm">
+                     <topic label="Running the Analysis" href="spss/tutorials/genlog_demo_howto_02.htm"/>
+                     <topic label="Parameter Estimates" href="spss/tutorials/genlog_demo_param_01.htm"/>
+                  </topic>
+                  <topic label="Summary" href="spss/tutorials/genlog_demo_summary.htm"/>
+               </topic>
+               <topic label="Using General Loglinear Analysis to Model Accident Rates"
+                      href="spss/tutorials/genlog_acci_intro.htm">
+                  <topic label="Weighting the Cases" href="spss/tutorials/genlog_dataprep_howto.htm"/>
+                  <topic label="Running the Analysis" href="spss/tutorials/genlog_accident_howto.htm"/>
+                  <topic label="Parameter Estimates" href="spss/tutorials/genlog_acci_param_01.htm"/>
+                  <topic label="Summary" href="spss/tutorials/genlog_2nddata_summary.htm"/>
+               </topic>
+               <topic label="Paired Data" href="spss/tutorials/genlog_debate_intro.htm">
+                  <topic label="Models for Paired Data" href="spss/tutorials/genlog_paired_models.htm"/>
+                  <topic label="Weighting the Cases"
+                         href="spss/tutorials/genlog_debate_dataprep_howto.htm"/>
+                  <topic label="Running the Symmetry Model"
+                         href="spss/tutorials/genlog_debate_howto.htm"/>
+                  <topic label="Goodness-of-fit Tests" href="spss/tutorials/genlog_debate_fit_01.htm"/>
+                  <topic label="Running the Quasi-Symmetry Model"
+                         href="spss/tutorials/genlog_debate_howto_02.htm"/>
+                  <topic label="Goodness-of-fit Tests" href="spss/tutorials/genlog_debate_fit_02.htm"/>
+                  <topic label="Testing Marginal Homogeneity"
+                         href="spss/tutorials/genlog_debate_mhtest.htm">
+                     <topic label="Computing the Statistic"
+                            href="spss/tutorials/genlog_debate_howto_mh.htm"/>
+                  </topic>
+                  <topic label="Running the Quasi-Independence Model"
+                         href="spss/tutorials/genlog_debate_howto_04.htm"/>
+                  <topic label="Goodness-of-fit Tests" href="spss/tutorials/genlog_debate_fit_04.htm"/>
+                  <topic label="Summary" href="spss/tutorials/genlog_debate_summary.htm"/>
+               </topic>
+               <topic label="Related Procedures" href="spss/tutorials/genlog_related.htm"/>
+               <topic label="Recommended Readings" href="spss/tutorials/genlog_readings.htm"/>
+            </topic>
+         </topic>
+         <topic label="Logit Loglinear Analysis" href="spss/tutorials/loglinear-logit_toc.htm">
+            <topic label="Logit Loglinear Analysis" href="spss/tutorials/loglog_intro.htm">
+               <topic label="The Model" href="spss/tutorials/loglog_model.htm"/>
+               <topic label="Using Logit Loglinear Analysis to Model Consumer Preference of Packaged Goods"
+                      href="spss/tutorials/loglog_cereal_intro.htm">
+                  <topic label="Running the Analysis" href="spss/tutorials/loglog_cereal_howto.htm"/>
+                  <topic label="Goodness-of-Fit" href="spss/tutorials/loglog_cereal_gof.htm"/>
+                  <topic label="Cell Count and Residuals"
+                         href="spss/tutorials/loglog_cereal_cellprob.htm"/>
+                  <topic label="Analysis of Dispersion" href="spss/tutorials/loglog_cereal_disp.htm"/>
+                  <topic label="Logit Loglinear Analysis Parameter Estimates"
+                         href="spss/tutorials/loglog_cereal_est.htm"/>
+                  <topic label="Summary" href="spss/tutorials/loglog_cereal_summary.htm"/>
+               </topic>
+               <topic label="Related Procedures" href="spss/tutorials/loglog_related.htm"/>
+               <topic label="Recommended Readings" href="spss/tutorials/logitlog_readings.htm"/>
+            </topic>
+         </topic>
+      </topic>
+      <topic label="Life Tables" href="spss/tutorials/survivalanalysis_table.htm">
+         <topic label="Using Life Tables to Examine Customer Time to Churn"
+                href="spss/tutorials/lifetables_telco_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/lifetables_telco_howto.htm"/>
+            <topic label="Life Tables" href="spss/tutorials/lifetables_telco_tables.htm"/>
+            <topic label="Survival Curve" href="spss/tutorials/lifetables_telco_survival.htm"/>
+            <topic label="Comparisons" href="spss/tutorials/lifetables_telco_comparisons.htm"/>
+            <topic label="Summary" href="spss/tutorials/lifetables_telco_summary.htm"/>
+         </topic>
+         <topic label="Recommended Readings" href="spss/tutorials/lifetables_readings.htm"/>
+      </topic>
+      <topic label="Kaplan-Meier Survival Analysis"
+             href="spss/tutorials/kaplan_meier_table.htm">
+         <topic label="Using Kaplan-Meier Survival Analysis to Test Competing Pain Relief Treatments"
+                href="spss/tutorials/km_telco_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/km_telco_howto.htm"/>
+            <topic label="Survival Tables" href="spss/tutorials/km_painmeds_tables.htm"/>
+            <topic label="Survival Curve" href="spss/tutorials/km_painmeds_survival.htm"/>
+            <topic label="Comparing Survival Curves" href="spss/tutorials/km_painmeds_means.htm"/>
+            <topic label="Summary" href="spss/tutorials/km_telco_summary.htm"/>
+         </topic>
+         <topic label="Recommended Readings" href="spss/tutorials/km_readings.htm"/>
+      </topic>
+      <topic label="Cox Regression" href="spss/tutorials/coxregression_table.htm">
+         <topic label="The Cox Regression Model" href="spss/tutorials/coxreg_model.htm">
+            <topic label="The Proportional Hazards Model"
+                   href="spss/tutorials/coxreg_model_prop_haz.htm"/>
+            <topic label="Stratified Proportional Hazards"
+                   href="spss/tutorials/coxreg_model_strata.htm"/>
+            <topic label="Time-Dependent Covariates"
+                   href="spss/tutorials/coxreg_model_time_dep_cov.htm"/>
+         </topic>
+         <topic label="Using Cox Regression to Model Customer Time to Churn"
+                href="common/examples/coxreg_telco_intro.htm">
+            <topic label="Running the Analysis" href="common/examples/coxreg_telco_howto.htm"/>
+            <topic label="Censored Cases" href="common/examples/coxreg_telco_cps_01.htm"/>
+            <topic label="Categorical Variable Codings"
+                   href="common/examples/coxreg_telco_catcode.htm"/>
+            <topic label="Variable Selection" href="common/examples/coxreg_telco_varselect.htm"/>
+            <topic label="Covariate Means and Patterns"
+                   href="common/examples/coxreg_telco_means.htm"/>
+            <topic label="Survival Curve" href="common/examples/coxreg_telco_survival.htm"/>
+            <topic label="Hazard Curves" href="common/examples/coxreg_telco_hazard.htm"/>
+            <topic label="Summary" href="common/examples/coxreg_telco_summary.htm"/>
+            <topic label="Cox Regression with a Time-Dependent Covariate"
+                   href="spss/tutorials/coxreg_recid_intro.htm">
+               <topic label="Running the Analysis" href="spss/tutorials/coxreg_recid_howto_01.htm"/>
+               <topic label="Creating the Diagnostic Scatterplot"
+                      href="spss/tutorials/coxreg_recid_scat_howto_01.htm"/>
+               <topic label="Adding the Time-Dependent Covariate"
+                      href="spss/tutorials/coxreg_recid_howto_02.htm">
+                  <topic label="Variables in the Equation"
+                         href="spss/tutorials/coxreg_recid_varin_02.htm"/>
+               </topic>
+               <topic label="Summary" href="spss/tutorials/coxreg_recid_summary.htm"/>
+            </topic>
+            <topic label="Recommended Readings" href="spss/tutorials/coxreg_readings.htm"/>
+         </topic>
+         <topic label="Cox Regression with a Time-Dependent Covariate"
+                href="spss/tutorials/coxreg_recid_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/coxreg_recid_howto_01.htm"/>
+            <topic label="Creating the Diagnostic Scatterplot"
+                   href="spss/tutorials/coxreg_recid_scat_howto_01.htm"/>
+            <topic label="Adding the Time-Dependent Covariate"
+                   href="spss/tutorials/coxreg_recid_howto_02.htm">
+               <topic label="Variables in the Equation"
+                      href="spss/tutorials/coxreg_recid_varin_02.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/coxreg_recid_summary.htm"/>
+         </topic>
+         <topic label="Recommended Readings" href="spss/tutorials/coxreg_readings.htm"/>
+      </topic>
+   </topic>
+   <topic label="Bootstrapping Option">
+      <topic label="Bootstrapping" href="spss/tutorials/bootstrap_ex_intro.htm">
+         <topic label="Using Bootstrapping to Obtain Confidence Intervals for Proportions"
+                href="spss/tutorials/bootstrap_telco_intro.htm">
+            <topic label="Preparing the Data" href="spss/tutorials/bootstrap_telco_split.htm"/>
+            <topic label="Running the Analysis" href="spss/tutorials/bootstrap_telco_howto.htm"/>
+            <topic label="Bootstrap Specifications"
+                   href="spss/tutorials/bootstrap_telco_bootstrap-specs.htm"/>
+            <topic label="Statistics"
+                   href="spss/tutorials/bootstrap_telco_frequencies_statistics.htm"/>
+            <topic label="Frequency Table"
+                   href="spss/tutorials/bootstrap_telco_frequencies_table.htm"/>
+         </topic>
+         <topic label="Using Bootstrapping to Obtain Confidence Intervals for Medians"
+                href="spss/tutorials/bootstrap_employee01_intro.htm">
+            <topic label="Running the Analysis"
+                   href="spss/tutorials/bootstrap_employee01_howto.htm"/>
+            <topic label="Descriptives"
+                   href="spss/tutorials/bootstrap_employee01_descriptives.htm"/>
+         </topic>
+         <topic label="Using Bootstrapping to Choose Better Predictors"
+                href="spss/tutorials/bootstrap_employee02_intro.htm">
+            <topic label="Preparing the Data" href="spss/tutorials/bootstrap_employee02_prep.htm"/>
+            <topic label="Running the Analysis"
+                   href="spss/tutorials/bootstrap_employee02_howto.htm"/>
+            <topic label="Parameter Estimates"
+                   href="spss/tutorials/bootstrap_employee02_parameter-estimates.htm"/>
+         </topic>
+         <topic label="Recommended Readings" href="spss/tutorials/bootstrap_readings.htm"/>
+      </topic>
+   </topic>
+   <topic label="Categories Option">
+      <topic label="Categorical Regression" href="spss/tutorials/catreg_table.htm">
+         <topic label="Example: Carpet Cleaner Data"
+                href="spss/tutorials/catreg_data_intro.htm">
+            <topic label="A Standard Linear Regression Analysis"
+                   href="spss/tutorials/catreg_carpet_linear.htm">
+               <topic label="Model Summary" href="spss/tutorials/catreg_carpet_linear_summary.htm"/>
+               <topic label="Coefficients" href="spss/tutorials/catreg_carpet_linear_coeff.htm"/>
+               <topic label="Residual Scatterplots"
+                      href="spss/tutorials/catreg_carpet_linear_resids.htm"/>
+            </topic>
+            <topic label="A Categorical Regression Analysis"
+                   href="spss/tutorials/catreg_carpet_howto.htm">
+               <topic label="Running the Analysis" href="spss/tutorials/catreg_howto_01a.htm"/>
+               <topic label="Intercorrelations"
+                      href="spss/tutorials/catreg_carpet_intercorrelations.htm"/>
+               <topic label="Model Fit and Coefficients"
+                      href="spss/tutorials/catreg_carpet_modelfit.htm"/>
+               <topic label="Correlations and Importance"
+                      href="spss/tutorials/catreg_carpet_correlations.htm"/>
+               <topic label="Transformation Plots" href="spss/tutorials/catreg_carpet_transplots.htm"/>
+               <topic label="Residual Analysis"
+                      href="spss/tutorials/catreg_carpet_multicollinearity.htm"/>
+            </topic>
+         </topic>
+         <topic label="Example: Ozone Data" href="spss/tutorials/catreg_2nddata_intro.htm">
+            <topic label="Discretizing Variables"
+                   href="spss/tutorials/catreg_discretizing_ozone.htm"/>
+            <topic label="Selection of Transformation Type"
+                   href="spss/tutorials/catreg_ozone_howto.htm"/>
+            <topic label="Optimality of the Quantifications"
+                   href="spss/tutorials/catreg_ozone_optimality.htm"/>
+            <topic label="Effects of Transformations"
+                   href="spss/tutorials/catreg_ozone_transformations_effects.htm"/>
+         </topic>
+         <topic label="Recommended Readings" href="spss/tutorials/catreg_readings.htm"/>
+      </topic>
+      <topic label="Categorical Principal Components Analysis"
+             href="spss/tutorials/catpca_table.htm">
+         <topic label="Example: Examining Interrelations of Social Systems"
+                href="spss/tutorials/catpca_guttman_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/catpca_guttman_howto.htm"/>
+            <topic label="Number of Dimensions" href="spss/tutorials/catpca_guttman_dim.htm"/>
+            <topic label="Quantifications" href="spss/tutorials/catpca_guttman_quant.htm"/>
+            <topic label="Object Scores" href="spss/tutorials/catpca_guttman_objscores.htm"/>
+            <topic label="Component Loadings" href="spss/tutorials/catpca_guttman_loadings.htm"/>
+            <topic label="Additional Dimensions" href="spss/tutorials/catpca_guttman_intro_02.htm">
+               <topic label="Running the Analysis" href="spss/tutorials/catpca_data_howto_02.htm"/>
+               <topic label="Model Summary" href="spss/tutorials/catpca_guttman_summary.htm">
+                  <topic label="Object Scores" href="spss/tutorials/catpca_guttman_objscores_02.htm"/>
+                  <topic label="Component Loadings" href="spss/tutorials/catpca_guttman_loadings_02.htm"/>
+               </topic>
+            </topic>
+         </topic>
+         <topic label="Example: Symptomatology of Eating Disorders"
+                href="spss/tutorials/catpca_anorectic_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/catpca_anorectic_howto.htm"/>
+            <topic label="Transformation Plots"
+                   href="spss/tutorials/catpca_anorectic_transformationplots.htm"/>
+            <topic label="Model Summary" href="spss/tutorials/catpca_anorectic_summary.htm"/>
+            <topic label="Component Loadings" href="spss/tutorials/catpca_anorectic_loadings.htm"/>
+            <topic label="Object Scores" href="spss/tutorials/catpca_anorectic_objscores.htm"/>
+            <topic label="Examining the Structure of the Course of Illness"
+                   href="spss/tutorials/catpca_anorectic_categorypoints.htm">
+               <topic label="Differential Development for Selected Variables"
+                      href="spss/tutorials/catpca_anorectic_diffdevelop.htm"/>
+            </topic>
+         </topic>
+         <topic label="Recommended Readings" href="spss/tutorials/catpca_readings.htm"/>
+      </topic>
+      <topic label="Nonlinear Canonical Correlation Analysis"
+             href="spss/tutorials/overals_table.htm">
+         <topic label="Example: An Analysis of Survey Results"
+                href="spss/tutorials/overals_verd_intro.htm">
+            <topic label="Examining the Data" href="spss/tutorials/overals_verd_howto.htm"/>
+            <topic label="Accounting for Similarity between Sets"
+                   href="spss/tutorials/overals_verd_similarity.htm">
+               <topic label="Summary of Analysis" href="spss/tutorials/overals_verd_summary.htm"/>
+               <topic label="Weights and Component Loadings"
+                      href="spss/tutorials/overals_verd_weight.htm"/>
+               <topic label="Partitioning Fit and Loss" href="spss/tutorials/overals_verd_loss.htm"/>
+            </topic>
+            <topic label="Component Loadings" href="spss/tutorials/overals_verd_loadings.htm"/>
+            <topic label="Transformation Plots"
+                   href="spss/tutorials/overals_verd_plots_transformation.htm"/>
+            <topic label="Single Category versus Multiple Category Coordinates"
+                   href="spss/tutorials/overals_verd_catcoord.htm"/>
+            <topic label="Centroids and Projected Centroids"
+                   href="spss/tutorials/overals_verd_centroids.htm"/>
+            <topic label="An Alternative Analysis" href="spss/tutorials/overals_verd_intro_02.htm">
+               <topic label="To Run the Analysis" href="spss/tutorials/overals_verd_howto_02.htm"/>
+            </topic>
+            <topic label="General Suggestions" href="spss/tutorials/overals_verd_summary_02.htm"/>
+         </topic>
+         <topic label="Recommended Readings" href="spss/tutorials/overals_readings.htm"/>
+      </topic>
+      <topic label="Correspondence analysis" href="spss/tutorials/correspondence_table.htm">
+         <topic label="Normalization" href="spss/tutorials/corresp_normalization.htm"/>
+         <topic label="Example: Perceptions of Coffee Brands"
+                href="spss/tutorials/corresp_coffee_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/corresp_coffee_howto.htm"/>
+            <topic label="Dimensionality" href="spss/tutorials/corresp_coffee_dim.htm"/>
+            <topic label="Contributions" href="spss/tutorials/corresp_coffee_contrib.htm"/>
+            <topic label="Plots" href="spss/tutorials/corresp_coffee_plots.htm"/>
+            <topic label="Symmetrical Normalization"
+                   href="spss/tutorials/corresp_coffee_intro_02.htm"/>
+         </topic>
+         <topic label="Recommended readings" href="spss/tutorials/correspondence_readings.htm"/>
+      </topic>
+      <topic label="Multiple Correspondence Analysis"
+             href="spss/tutorials/multiplecorrespondence_table.htm">
+         <topic label="Example: Characteristics of Hardware"
+                href="spss/tutorials/homals_data_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/homals_data_howto.htm"/>
+            <topic label="Model Summary" href="spss/tutorials/mca_screws_summary.htm"/>
+            <topic label="Object Scores" href="spss/tutorials/mca_screws_objscores.htm"/>
+            <topic label="Discrimination Measures" href="spss/tutorials/mca_screws_discrim.htm"/>
+            <topic label="Category Quantifications" href="spss/tutorials/mca_screws_catquant.htm"/>
+            <topic label="A More Detailed Look at Object Scores"
+                   href="spss/tutorials/mca_screws_obscores_02.htm"/>
+            <topic label="Omission of Outliers" href="spss/tutorials/mca_screws_outliers.htm"/>
+         </topic>
+         <topic label="Recommended Readings" href="spss/tutorials/mca_readings.htm"/>
+      </topic>
+      <topic label="Multidimensional Scaling" href="spss/tutorials/proxscal_table.htm">
+         <topic label="Example: An Examination of Kinship Terms"
+                href="spss/tutorials/proxscal_kinship_intro.htm">
+            <topic label="Choosing the Number of Dimensions"
+                   href="spss/tutorials/proxscal_data_howto.htm"/>
+            <topic label="A Three-Dimensional Solution"
+                   href="spss/tutorials/proxscal_kinship_intro_02.htm">
+               <topic label="Running the Analysis"
+                      href="spss/tutorials/proxscal_kinship_howto_02.htm"/>
+               <topic label="Stress Measures" href="spss/tutorials/proxscal_kinship_stress.htm"/>
+               <topic label="Final Coordinates of the Common Space"
+                      href="spss/tutorials/proxscal_kinship_finalcoord.htm"/>
+            </topic>
+            <topic label="A Three-Dimensional Solution with Nondefault Transformations"
+                   href="spss/tutorials/proxscal_data_intro_02.htm">
+               <topic label="Transformation Plots"
+                      href="spss/tutorials/proxscal_kinship_transplots.htm"/>
+               <topic label="Stress Measures" href="spss/tutorials/proxscal_kinship_stress_02.htm"/>
+               <topic label="Final Coordinates of the Common Space"
+                      href="spss/tutorials/proxscal_kinship_finalcoord_02.htm"/>
+            </topic>
+            <topic label="Discussion" href="spss/tutorials/proxscal_data_summary.htm"/>
+         </topic>
+         <topic label="Recommended Readings" href="spss/tutorials/proxscal_readings.htm"/>
+      </topic>
+      <topic label="Multidimensional Unfolding" href="spss/tutorials/prefscal_table.htm">
+         <topic label="Example: Breakfast Item Preferences"
+                href="spss/tutorials/prefscal_breakfast_intro.htm">
+            <topic label="Producing a Degenerate Solution"
+                   href="spss/tutorials/prefscal_breakfast_howto_degenerate.htm"/>
+            <topic label="Measures"
+                   href="spss/tutorials/prefscal_breakfast_degenerate_measures.htm"/>
+            <topic label="Common Space"
+                   href="spss/tutorials/prefscal_breakfast_degenerate_common.htm"/>
+            <topic label="Running a Nondegenerate Analysis"
+                   href="spss/tutorials/prefscal_breakfast_howto_nondegenerate.htm"/>
+            <topic label="Measures"
+                   href="spss/tutorials/prefscal_breakfast_nondegenerate_measures.htm"/>
+            <topic label="Common Space"
+                   href="spss/tutorials/prefscal_breakfast_nondegenerate_common.htm"/>
+         </topic>
+         <topic label="Example: Three-Way Unfolding of Breakfast Item Preferences"
+                href="spss/tutorials/prefscal_breakfast_intro_02.htm">
+            <topic label="Running the Analysis"
+                   href="spss/tutorials/prefscal_breakfast_howto_02.htm"/>
+            <topic label="Measures" href="spss/tutorials/prefscal_breakfast_measures.htm"/>
+            <topic label="Common Space" href="spss/tutorials/prefscal_breakfast_jointplot.htm"/>
+            <topic label="Individual Spaces"
+                   href="spss/tutorials/prefscal_breakfast_individual-spaces.htm"/>
+            <topic label="Using a Different Initial Configuration"
+                   href="spss/tutorials/prefscal_breakfast_howto_03.htm"/>
+            <topic label="Measures" href="spss/tutorials/prefscal_breakfast_measures_02.htm"/>
+            <topic label="Common Space" href="spss/tutorials/prefscal_breakfast_jointplot_02.htm"/>
+            <topic label="Individual Spaces"
+                   href="spss/tutorials/prefscal_breakfast_individual-spaces_02.htm"/>
+         </topic>
+         <topic label="Example: Examining Behavior-Situation Appropriateness"
+                href="spss/tutorials/prefscal_behavior_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/prefscal_behavior_howto.htm"/>
+            <topic label="Measures" href="spss/tutorials/prefscal_behavior_measure.htm"/>
+            <topic label="Common Space" href="spss/tutorials/prefscal_behavior_common.htm"/>
+            <topic label="Proximity Transformations"
+                   href="spss/tutorials/prefscal_behavior_transform.htm"/>
+            <topic label="Changing the Proximities Transformation (Ordinal)"
+                   href="spss/tutorials/prefscal_behavior_howto_02.htm"/>
+            <topic label="Measures" href="spss/tutorials/prefscal_behavior_measure_02.htm"/>
+            <topic label="Common Space" href="spss/tutorials/prefscal_behavior_common_02.htm"/>
+            <topic label="Proximity Transformations"
+                   href="spss/tutorials/prefscal_behavior_transform_02.htm"/>
+         </topic>
+         <topic label="Recommended Readings" href="spss/tutorials/prefscal_readings.htm"/>
+      </topic>
+   </topic>
+   <topic label="Complex Samples Option">
+      <topic label="Planning for Complex Samples" href="spss/tutorials/csplan_table.htm"/>
+      <topic label="Complex Samples Sampling Wizard"
+             href="spss/tutorials/csselect_table.htm">
+         <topic label="Obtaining a Sample from a Full Sampling Frame"
+                href="spss/tutorials/cssample_property_intro.htm">
+            <topic label="Using the Wizard" href="spss/tutorials/cssample_property_howto.htm"/>
+            <topic label="Plan Summary" href="spss/tutorials/cssample_property_plansummary.htm"/>
+            <topic label="Sampling Summary"
+                   href="spss/tutorials/cssample_property_samplesummary.htm"/>
+            <topic label="Sample Results" href="spss/tutorials/cssample_property_results.htm"/>
+         </topic>
+         <topic label="Obtaining a Sample from a Partial Sampling Frame"
+                href="spss/tutorials/cssample_demo_intro.htm">
+            <topic label="Using the Wizard to Sample from the First Partial Frame"
+                   href="spss/tutorials/cssample_demo_howto.htm"/>
+            <topic label="Sample Results" href="spss/tutorials/cssample_demo_results.htm"/>
+            <topic label="Using the Wizard to Sample from the Second Partial Frame"
+                   href="spss/tutorials/cssample_demo_howto_02.htm"/>
+            <topic label="Sample Results" href="spss/tutorials/cssample_demo_results_01.htm"/>
+         </topic>
+         <topic label="Sampling with Probability Proportional to Size (PPS)"
+                href="spss/tutorials/cssample_poll_intro.htm">
+            <topic label="Using the Wizard" href="spss/tutorials/cssample_poll_howto.htm"/>
+            <topic label="Plan Summary" href="spss/tutorials/cssample_poll_plansummary.htm"/>
+            <topic label="Sampling Summary" href="spss/tutorials/cssample_poll_samplesummary.htm"/>
+            <topic label="Sample Results" href="spss/tutorials/cssample_poll_results.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/cssample_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/cssample_readings.htm"/>
+      </topic>
+      <topic label="Complex Samples Analysis Preparation Wizard"
+             href="spss/tutorials/cs_prepwiz_intro.htm">
+         <topic label="Using the Complex Samples Analysis Preparation Wizard to Ready NHIS Public Data"
+                href="spss/tutorials/prepwiz_nhis_intro.htm">
+            <topic label="Using the Wizard" href="spss/tutorials/prepwiz_nhis_howto.htm"/>
+            <topic label="Summary" href="spss/tutorials/prepwiz_nhis_summary.htm"/>
+         </topic>
+         <topic label="Preparing for Analysis When Sampling Weights Are Not in the Data File"
+                href="spss/tutorials/prepwiz_bankloan_intro.htm">
+            <topic label="Computing Inclusion Probabilities and Sampling Weights"
+                   href="spss/tutorials/prepwiz_bankloan_computeweights.htm"/>
+            <topic label="Using the Wizard" href="spss/tutorials/prepwiz_bankloan_howto.htm"/>
+            <topic label="Summary" href="spss/tutorials/prepwiz_bankloan_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/prepwiz_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/prepwiz_readings.htm"/>
+      </topic>
+      <topic label="Complex Samples Analysis Procedures: Tabulation"
+             href="spss/tutorials/cstabulate_table.htm"/>
+      <topic label="Complex Samples Analysis Procedures: Descriptives"
+             href="spss/tutorials/csdescriptives_table.htm"/>
+      <topic label="Complex Samples Frequencies"
+             href="spss/tutorials/csfrequencies_intro.htm">
+         <topic label="Using Complex Samples Frequencies to Analyze Nutritional Supplement Usage"
+                href="spss/tutorials/csfreq_data_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/csfreq_data_howto.htm"/>
+            <topic label="Frequency Table" href="spss/tutorials/csfreq_nhis_table.htm"/>
+            <topic label="Frequency by Subpopulation"
+                   href="spss/tutorials/csfreq_nhis_bysubpop.htm"/>
+            <topic label="Summary" href="spss/tutorials/csfreq_data_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/csfreq_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/csfreq_readings.htm"/>
+      </topic>
+      <topic label="Complex Samples Descriptives"
+             href="spss/tutorials/csdescriptives_intro.htm">
+         <topic label="Using Complex Samples Descriptives to Analyze Activity Levels"
+                href="spss/tutorials/csdesc_nhis_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/csdesc_nhis_howto.htm"/>
+            <topic label="Univariate Statistics" href="spss/tutorials/csdesc_nhis_univariate.htm"/>
+            <topic label="Univariate Statistics by Subpopulation"
+                   href="spss/tutorials/csdesc_data_outputtype.htm"/>
+            <topic label="Summary" href="spss/tutorials/csdesc_nhis_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/csdesc_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/csdesc_readings.htm"/>
+      </topic>
+      <topic label="Complex Samples Crosstabs" href="spss/tutorials/cscrosstabs_intro.htm">
+         <topic label="Using Complex Samples Crosstabs to Measure the Relative Risk of an Event"
+                href="spss/tutorials/cscrosstabs_intro_demo_01.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/cscrosstabs_demo_howto.htm"/>
+            <topic label="Crosstabulation" href="spss/tutorials/cscrosstabs_crosstab_demo_01.htm"/>
+            <topic label="Risk Estimate" href="spss/tutorials/cscrosstabs_demo_risk_01.htm">
+               <topic label="Odds Ratio versus Relative Risk"
+                      href="spss/tutorials/cscrosstabs_demo_oddsratio.htm"/>
+            </topic>
+            <topic label="Risk Estimate by Subpopulation"
+                   href="spss/tutorials/cscrosstabs_demo_risk_02.htm"/>
+            <topic label="Summary" href="spss/tutorials/cscrosstabs_demo_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/cscrosstabs_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/cscrosstabs_readings.htm"/>
+      </topic>
+      <topic label="Complex Samples Ratios" href="spss/tutorials/csratios_intro.htm">
+         <topic label="Using Complex Samples Ratios to Aid Property Value Assessment"
+                href="spss/tutorials/csratios_property_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/csratios_property_howto.htm"/>
+            <topic label="Ratios" href="spss/tutorials/csratios_property_ratios.htm">
+               <topic label="Pivoting the Ratios Table"
+                      href="spss/tutorials/csratios_ratios_pivot.htm"/>
+            </topic>
+            <topic label="Pivoted Ratios Table" href="spss/tutorials/csratios_ratios_pivot_02.htm"/>
+            <topic label="Summary" href="spss/tutorials/csratios_property_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/csratios_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/csratios_readings.htm"/>
+      </topic>
+      <topic label="Complex Samples General Linear Model"
+             href="spss/tutorials/csglm_table.htm">
+         <topic label="Using Complex Samples General Linear Model to Fit a Two-Factor ANOVA"
+                href="spss/tutorials/csglm_grocery_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/csglm_gr1mo_howto.htm"/>
+            <topic label="Model Summary" href="spss/tutorials/csglm_gr1mo_modsummary.htm"/>
+            <topic label="Tests of Model Effects" href="spss/tutorials/csglm_gr1mo_modeleff.htm"/>
+            <topic label="Parameter Estimates" href="spss/tutorials/csglm_gr1mo_paramest.htm"/>
+            <topic label="Estimated Marginal Means" href="spss/tutorials/csglm_gr1mo_emm_01.htm"/>
+            <topic label="Summary" href="spss/tutorials/csglm_gr1mo_summary_01.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/csglm_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/csglm_readings.htm"/>
+      </topic>
+      <topic label="Complex Samples Logistic Regression"
+             href="spss/tutorials/cslogistic_table.htm">
+         <topic label="Using Complex Samples Logistic Regression to Assess Credit Risk"
+                href="spss/tutorials/cslogistic_bankloan_intro.htm">
+            <topic label="Running the Analysis"
+                   href="spss/tutorials/cslogistic_bankloan_howto.htm"/>
+            <topic label="Pseudo R-Squares" href="spss/tutorials/cslogistic_bankloan_rsq.htm"/>
+            <topic label="Classification" href="spss/tutorials/cslogistic_loan_class.htm"/>
+            <topic label="Tests of Model Effects"
+                   href="spss/tutorials/cslogistic_bankloan_modeleff.htm"/>
+            <topic label="Parameter Estimates"
+                   href="spss/tutorials/cslogistic_bankloan_paramest.htm"/>
+            <topic label="Odds Ratios" href="spss/tutorials/cslogistic_bankloan_odds_01.htm"/>
+            <topic label="Summary" href="spss/tutorials/cslogistic_loan_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/cslogistic_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/cslogistic_readings.htm"/>
+      </topic>
+      <topic label="Complex Samples Ordinal Regression"
+             href="spss/tutorials/csordinal_table.htm">
+         <topic label="Using Complex Samples Ordinal Regression to Analyze Survey Results"
+                href="spss/tutorials/csordinal_poll_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/csordinal_poll_howto.htm"/>
+            <topic label="Pseudo R-Squares" href="spss/tutorials/csordinal_poll_rsq.htm"/>
+            <topic label="Tests of Model Effects"
+                   href="spss/tutorials/csordinal_poll_modeltest.htm"/>
+            <topic label="Parameter Estimates" href="spss/tutorials/csordinal_poll_paramest.htm"/>
+            <topic label="Classification" href="spss/tutorials/csordinal_poll_classification.htm"/>
+            <topic label="Odds Ratios" href="spss/tutorials/csordinal_poll_oddsratios.htm"/>
+            <topic label="Generalized Cumulative Model"
+                   href="spss/tutorials/csordinal_poll_gencummodel.htm"/>
+            <topic label="Dropping Non-Significant Predictors"
+                   href="spss/tutorials/csordinal_poll_howto_02.htm"/>
+            <topic label="Warnings" href="spss/tutorials/csordinal_poll_warnings_02.htm"/>
+            <topic label="Comparing Models" href="spss/tutorials/csordinal_poll_compare.htm"/>
+            <topic label="Summary" href="spss/tutorials/csordinal_poll_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/csordinal_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/csordinal_readings.htm"/>
+      </topic>
+      <topic label="Complex Samples Cox Regression" href="spss/tutorials/cscoxreg_table.htm">
+         <topic label="Using a Time-Dependent Predictor in Complex Samples Cox Regression"
+                href="spss/tutorials/cscoxreg_recidivism_intro.htm">
+            <topic label="Preparing the Data"
+                   href="spss/tutorials/cscoxreg_recidivism_dataprep.htm"/>
+            <topic label="Running the Analysis"
+                   href="spss/tutorials/cscoxreg_recidivism_howto.htm"/>
+            <topic label="Sample Design Information"
+                   href="spss/tutorials/cscoxreg_recidivism_sample-design-info.htm"/>
+            <topic label="Tests of Model Effects"
+                   href="spss/tutorials/cscoxreg_recidivism_test-model-effects_01.htm"/>
+            <topic label="Test of Proportional Hazards"
+                   href="spss/tutorials/cscoxreg_recidivism_testprophazard.htm"/>
+            <topic label="Adding a Time-Dependent Predictor"
+                   href="spss/tutorials/cscoxreg_recidivism_intro_02.htm">
+               <topic label="Tests of Model Effects"
+                      href="spss/tutorials/cscoxreg_recidivism_test-model-effects_02.htm"/>
+               <topic label="Parameter Estimates"
+                      href="spss/tutorials/cscoxreg_recidivism_parameter-estimates_02.htm"/>
+            </topic>
+         </topic>
+         <topic label="Multiple Cases per Subject in Complex Samples Cox Regression"
+                href="spss/tutorials/cscoxreg_stroke_intro.htm">
+            <topic label="Preparing the Data for Analysis"
+                   href="spss/tutorials/cscoxreg_stroke_dataprep.htm"/>
+            <topic label="Creating a Simple Random Sampling Analysis Plan"
+                   href="spss/tutorials/cscoxreg_stroke_srsplan.htm"/>
+            <topic label="Running the Analysis" href="spss/tutorials/cscoxreg_stroke_howto.htm"/>
+            <topic label="Sample Design Information"
+                   href="spss/tutorials/cscoxreg_stroke_sampleinfo.htm"/>
+            <topic label="Tests of Model Effects"
+                   href="spss/tutorials/cscoxreg_stroke_test-model-effects.htm"/>
+            <topic label="Parameter Estimates"
+                   href="spss/tutorials/cscoxreg_stroke_parameter-estimates.htm"/>
+            <topic label="Pattern Values" href="spss/tutorials/cscoxreg_stroke_pattern-values.htm"/>
+            <topic label="Log-Minus-Log Plot" href="spss/tutorials/cscoxreg_stroke_lml-plot.htm"/>
+            <topic label="Summary" href="spss/tutorials/cscoxreg_stroke_summary.htm"/>
+         </topic>
+      </topic>
+   </topic>
+   <topic label="Conjoint Option">
+      <topic label="Introduction and Methodology" href="spss/tutorials/conjoint_table.htm">
+         <topic label="Designing the Survey" href="spss/tutorials/conjoint_method_design.htm"/>
+         <topic label="Producing the Experimental Stimuli"
+                href="spss/tutorials/conjoint_method_stimuli.htm"/>
+         <topic label="Analyzing the Data" href="spss/tutorials/conjoint_method_analyze.htm"/>
+      </topic>
+      <topic label="Using Conjoint Analysis to Model Carpet-Cleaner Preference"
+             href="spss/tutorials/conjointanalysis_table.htm">
+         <topic label="Generating an Orthogonal Design"
+                href="spss/tutorials/conjoint_carpet_generate_plan.htm"/>
+         <topic label="Creating the Experimental Stimuli: Displaying the Design"
+                href="spss/tutorials/conjoint_carpet_display_plan.htm"/>
+         <topic label="Running the Analysis" href="spss/tutorials/conjoint_carpet_run.htm"/>
+         <topic label="Utility Scores" href="spss/tutorials/conjoint_carpet_utilities.htm"/>
+         <topic label="Coefficients" href="spss/tutorials/conjoint_carpet_coeff.htm"/>
+         <topic label="Relative Importance"
+                href="spss/tutorials/conjoint_carpet_importance.htm"/>
+         <topic label="Correlations" href="spss/tutorials/conjoint_carpet_corr.htm"/>
+         <topic label="Reversals" href="spss/tutorials/conjoint_carpet_reversals.htm"/>
+         <topic label="Running Simulations"
+                href="spss/tutorials/conjoint_carpet_simulations_run.htm"/>
+         <topic label="Preference Probabilities of Simulations"
+                href="spss/tutorials/conjoint_carpet_simulations_probs.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/conjoint_readings.htm"/>
+      </topic>
+   </topic>
+   <topic label="Data Preparation Option">
+      <topic label="Validate Data" href="spss/tutorials/validatedata_table.htm">
+         <topic label="Validating a Medical Database"
+                href="spss/tutorials/validatedata_stroke_intro.htm">
+            <topic label="Performing Basic Checks"
+                   href="spss/tutorials/validatedata_stroke_basicchecks.htm">
+               <topic label="Warnings" href="spss/tutorials/validatedata_stroke_warnings.htm"/>
+               <topic label="Incomplete Identifiers"
+                      href="spss/tutorials/validatedata_stroke_incompleteid.htm"/>
+               <topic label="Duplicate Identifiers"
+                      href="spss/tutorials/validatedata_stroke_duplicateid.htm"/>
+            </topic>
+            <topic label="Copying and Using Rules from Another File"
+                   href="spss/tutorials/validatedata_stroke_copyrules.htm">
+               <topic label="Rule Descriptions"
+                      href="spss/tutorials/validatedata_stroke_single-descrip.htm"/>
+               <topic label="Variable Summary"
+                      href="spss/tutorials/validatedata_stroke_single-varsummary.htm"/>
+               <topic label="Case Report" href="spss/tutorials/validatedata_stroke_casereport.htm"/>
+            </topic>
+            <topic label="Defining Your Own Rules"
+                   href="spss/tutorials/validatedata_stroke_definerules.htm"/>
+            <topic label="Cross-Variable Rules"
+                   href="spss/tutorials/validatedata_stroke_crossvar.htm"/>
+            <topic label="Case Report" href="spss/tutorials/validatedata_stroke_casereport_02.htm"/>
+            <topic label="Summary" href="spss/tutorials/validatedata_stroke_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/validatedata_related.htm"/>
+      </topic>
+      <topic label="Automated Data Preparation"
+             href="components/automated_data_preparation/adp_table.htm">
+         <topic label="Using Automated Data Preparation Interactively"
+                href="components/automated_data_preparation/adp_insurance_intro.htm">
+            <topic label="Choosing Between Objectives"
+                   href="components/automated_data_preparation/adp_insurance_objectives.htm"/>
+            <topic label="Fields and Field Details"
+                   href="components/automated_data_preparation/adp_insurance_field-processing-summary.htm"/>
+         </topic>
+         <topic label="Using Automated Data Preparation Automatically"
+                href="components/automated_data_preparation/adp_car_sales_intro.htm">
+            <topic label="Preparing the Data"
+                   href="components/automated_data_preparation/adp_car_sales_howto.htm"/>
+            <topic label="Building a Model on the Unprepared Data"
+                   href="components/automated_data_preparation/adp_car_sales_initial_model.htm"/>
+            <topic label="Building a Model on the Prepared Data"
+                   href="components/automated_data_preparation/adp_car_sales_prepared_model.htm"/>
+            <topic label="Comparing the Predicted Values"
+                   href="components/automated_data_preparation/adp_car_sales_graphs.htm"/>
+            <topic label="Backtransforming the Predicted Values"
+                   href="components/automated_data_preparation/adp_car_sales_backtransform.htm"/>
+            <topic label="Summary" href="components/automated_data_preparation/adp_cs_summary.htm"/>
+         </topic>
+      </topic>
+      <topic label="Identify Unusual Cases" href="spss/tutorials/detectanomaly_table.htm">
+         <topic label="Identify Unusual Cases Algorithm"
+                href="spss/tutorials/detectanomaly_model.htm"/>
+         <topic label="Identifying Unusual Cases in a Medical Database"
+                href="spss/tutorials/detectanomaly_stroke_intro.htm">
+            <topic label="Running the Analysis"
+                   href="spss/tutorials/detectanomaly_stroke_howto.htm"/>
+            <topic label="Case Processing Summary"
+                   href="spss/tutorials/detectanomaly_stroke_cps.htm"/>
+            <topic label="Anomaly Case Index List"
+                   href="spss/tutorials/detectanomaly_stroke_anomalycaselist.htm"/>
+            <topic label="Anomaly Case Peer ID List"
+                   href="spss/tutorials/detectanomaly_stroke_anomaly-case-peerid.htm"/>
+            <topic label="Anomaly Case Reason List"
+                   href="spss/tutorials/detectanomaly_stroke_anomaly-case-reason.htm"/>
+            <topic label="Scale Variable Norms"
+                   href="spss/tutorials/detectanomaly_stroke_continuous-norms.htm"/>
+            <topic label="Categorical Variable Norms"
+                   href="spss/tutorials/detectanomaly_stroke_categorical-norms.htm"/>
+            <topic label="Anomaly Index Summary"
+                   href="spss/tutorials/detectanomaly_stroke_anomaly-summary.htm"/>
+            <topic label="Reason Summary"
+                   href="spss/tutorials/detectanomaly_stroke_reason-summary.htm"/>
+            <topic label="Scatterplot of Anomaly Index by Variable Impact"
+                   href="spss/tutorials/detectanomaly_stroke_scatterplot.htm"/>
+            <topic label="Summary" href="spss/tutorials/detectanomaly_data_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/detectanomaly_related.htm"/>
+      </topic>
+      <topic label="Optimal Binning" href="spss/tutorials/optimalbinning_table.htm">
+         <topic label="The Optimal Binning Algorithm"
+                href="spss/tutorials/optimal-binning_model.htm"/>
+         <topic label="Using Optimal Binning to Discretize Loan Applicant Data"
+                href="spss/tutorials/optimal-binning_bankloan_intro.htm">
+            <topic label="Running the Analysis"
+                   href="spss/tutorials/optimal-binning_bankloan_howto.htm"/>
+            <topic label="Descriptive Statistics"
+                   href="spss/tutorials/optimal-binning_bankloan_descriptives.htm"/>
+            <topic label="Model Entropy"
+                   href="spss/tutorials/optimal-binning_bankloan_model-entropy.htm"/>
+            <topic label="Binning Summaries"
+                   href="spss/tutorials/optimal-binning_bankloan_binsummaries.htm"/>
+            <topic label="Binned Variables"
+                   href="spss/tutorials/optimal-binning_bankloand_binned-vars.htm"/>
+            <topic label="Applying Syntax Binning Rules"
+                   href="spss/tutorials/optimal-binning_bankloan_apply-binning-rules.htm"/>
+            <topic label="Summary" href="spss/tutorials/optimal-binning_data_summary.htm"/>
+         </topic>
+      </topic>
+   </topic>
+   <topic label="Decision Trees Option">
+      <topic label="Data assumptions and requirements"
+             href="spss/tutorials/classificationtree_table.htm">
+         <topic label="Effects of measurement level on tree models"
+                href="spss/tutorials/tree_req_2.htm">
+            <topic label="Permanently assigning measurement level"
+                   href="spss/tutorials/tree_req_3.htm"/>
+            <topic label="Variables with an unknown measurement level"
+                   href="spss/tutorials/tree_req3a.htm"/>
+         </topic>
+         <topic label="Effects of value labels on tree models"
+                href="spss/tutorials/tree_req_4.htm">
+            <topic label="Assigning value labels to all values"
+                   href="spss/tutorials/tree_req_5.htm"/>
+         </topic>
+         <topic label="Summary" href="spss/tutorials/tree_req_summary.htm"/>
+      </topic>
+      <topic label="Using Decision Trees to Evaluate Credit Risk"
+             href="spss/tutorials/trees_credit_intro1.htm">
+         <topic label="Creating the Model" href="spss/tutorials/tree_credit_default_chaid.htm">
+            <topic label="Building the CHAID Tree Model"
+                   href="spss/tutorials/tree_credit_howto_01.htm"/>
+            <topic label="Selecting Target Categories"
+                   href="spss/tutorials/tree_credit_howto_02.htm"/>
+            <topic label="Specifying Tree Growing Criteria"
+                   href="spss/tutorials/tree_credit_howto_criteria.htm"/>
+            <topic label="Selecting Additional Output"
+                   href="spss/tutorials/tree_credit_howto_03.htm"/>
+            <topic label="Saving Predicted Values" href="spss/tutorials/tree_credit_howto_04.htm"/>
+         </topic>
+         <topic label="Evaluating the Model" href="spss/tutorials/tree_credit_output.htm">
+            <topic label="Model Summary Table" href="spss/tutorials/tree_credit_model_summary.htm"/>
+            <topic label="Tree Diagram" href="spss/tutorials/tree_credit_tree_diagram.htm"/>
+            <topic label="Tree Table" href="spss/tutorials/tree_credit_treetable.htm"/>
+            <topic label="Gains for Nodes" href="spss/tutorials/tree_credit_node_gain.htm"/>
+            <topic label="Gains Chart" href="spss/tutorials/tree_credit_gain_chart.htm"/>
+            <topic label="Index Chart" href="spss/tutorials/tree_credit_index_chart.htm"/>
+            <topic label="Risk Estimate and Classification"
+                   href="spss/tutorials/tree_credit_risk_class.htm"/>
+            <topic label="Predicted Values" href="spss/tutorials/tree_credit_predicted_values.htm"/>
+         </topic>
+         <topic label="Refining the Model" href="spss/tutorials/tree_credit_refine1.htm">
+            <topic label="Selecting Cases in Nodes" href="spss/tutorials/tree_credit_refine2.htm"/>
+            <topic label="Examining the Selected Cases"
+                   href="spss/tutorials/tree_credit_refine3.htm"/>
+            <topic label="Assigning Costs to Outcomes"
+                   href="spss/tutorials/tree_credit_refine_costs.htm"/>
+         </topic>
+         <topic label="Summary" href="spss/tutorials/tree_credit_summary.htm"/>
+      </topic>
+      <topic label="Building a Scoring Model" href="spss/tutorials/trees_scoring_intro1.htm">
+         <topic label="Building the Model" href="spss/tutorials/tree_scoring_build1.htm"/>
+         <topic label="Evaluating the Model" href="spss/tutorials/tree_scoring_eval_intro.htm">
+            <topic label="Model Summary" href="spss/tutorials/tree_scoring_eval_modelsummary.htm"/>
+            <topic label="Tree Model Diagram" href="spss/tutorials/tree_scoring_treemodel.htm"/>
+            <topic label="Risk Estimate" href="spss/tutorials/tree_scoring_risk.htm"/>
+         </topic>
+         <topic label="Applying the Model to Another Data File"
+                href="spss/tutorials/tree_scoring_apply.htm"/>
+         <topic label="Summary" href="spss/tutorials/tree_scoring_summary.htm"/>
+      </topic>
+      <topic label="Missing Values in Tree Models"
+             href="spss/tutorials/trees_missing_intro1.htm">
+         <topic label="Missing Values with CHAID"
+                href="spss/tutorials/trees_chaid_missing_intro.htm">
+            <topic label="CHAID Results" href="spss/tutorials/tree_missing_chaid_results.htm"/>
+         </topic>
+         <topic label="Missing Values with CRT"
+                href="spss/tutorials/tree_missing_crt_intro.htm">
+            <topic label="CRT Results" href="spss/tutorials/tree_missing_crt_results.htm">
+               <topic label="Surrogates" href="spss/tutorials/tree_missing_crt_surrogates.htm"/>
+            </topic>
+         </topic>
+         <topic label="Summary" href="spss/tutorials/tree_missing_summary.htm"/>
+      </topic>
+   </topic>
+   <topic label="Direct Marketing">
+      <topic label="RFM Analysis from Transaction Data"
+             href="spss/tutorials/rfm_tut_transaction_intro.htm">
+         <topic label="Transaction Data" href="spss/tutorials/rfm_tut_transaction_intro2.htm"/>
+         <topic label="Running the Analysis" href="spss/tutorials/rfm_tuf_transaction_run1.htm"/>
+         <topic label="Evaluating the Results"
+                href="spss/tutorials/rfm_tut_transaction_results1.htm"/>
+         <topic label="Merging Score Data with Customer Data"
+                href="spss/tutorials/rfm_tut_transactions_merge.htm"/>
+      </topic>
+      <topic label="Cluster analysis" href="spss/tutorials/dm_cluster_cs_intro.htm">
+         <topic label="Running the analysis" href="spss/tutorials/dm_cluster_howto.htm"/>
+         <topic label="Output" href="spss/tutorials/dm_cluster_cs_output.htm"/>
+         <topic label="Selecting records based on clusters"
+                href="spss/tutorials/dm_cluster_cs_filter.htm">
+            <topic label="Creating a filter in the Cluster Model Viewer"
+                   href="spss/tutorials/dm_cluster_cs_filter_interactive.htm"/>
+            <topic label="Selecting records based on cluster field values"
+                   href="spss/tutorials/dm_cluster_cs_select.htm"/>
+         </topic>
+         <topic label="Summary" href="spss/tutorials/dm_cluster_cs_summary.htm"/>
+      </topic>
+      <topic label="Prospect profiles"
+             href="spss/tutorials/dm_prospect_profiles_cs_intro.htm">
+         <topic label="Data considerations" href="spss/tutorials/dm_prospect_profiles_data.htm"/>
+         <topic label="Running the analysis"
+                href="spss/tutorials/dm_prospect_profiles_howto.htm"/>
+         <topic label="Output" href="spss/tutorials/dm_prospect_profiles_cs_output.htm"/>
+         <topic label="Summary" href="spss/tutorials/dmtree_dmdata.sav_summary.htm"/>
+      </topic>
+      <topic label="Postal code response rates"
+             href="spss/tutorials/dm_postal_code_cs_intro.htm">
+         <topic label="Data considerations" href="spss/tutorials/dm_postal_code_data.htm"/>
+         <topic label="Running the analysis" href="spss/tutorials/dm_postal_code_howto.htm"/>
+         <topic label="Output" href="spss/tutorials/dm_postal_code_cs_output.htm"/>
+         <topic label="Summary" href="spss/tutorials/dm_postal_code_cs_summary.htm"/>
+      </topic>
+      <topic label="Propensity to purchase" href="spss/tutorials/dm_propensity_cs_intro.htm">
+         <topic label="Data considerations" href="spss/tutorials/dm_propensity_data.htm"/>
+         <topic label="Building a predictive model"
+                href="spss/tutorials/dm_propensity_build_model.htm">
+            <topic label="Evaluating the model"
+                   href="spss/tutorials/dm_propensity_evaluate_model.htm"/>
+         </topic>
+         <topic label="Applying the model" href="spss/tutorials/dm_propensity_apply_model.htm"/>
+         <topic label="Summary" href="spss/tutorials/dm_propensity_cs_summary.htm"/>
+      </topic>
+      <topic label="Control package test"
+             href="spss/tutorials/dm_control_package_cs_intro.htm">
+         <topic label="Running the analysis" href="spss/tutorials/dm_control_package_howto.htm"/>
+         <topic label="Output" href="spss/tutorials/dm_control_package_cs_output.htm"/>
+         <topic label="Summary" href="spss/tutorials/dm_control_package_cs_summary.htm"/>
+      </topic>
+   </topic>
+   <topic label="Missing Values Option">
+      <topic label="Missing Values Analysis"
+             href="spss/tutorials/mva_describe_container.htm">
+         <topic label="Missing Value Analysis" href="spss/tutorials/mva_tut_intro.htm"/>
+         <topic label="Describing the Pattern of Missing Data"
+                href="spss/tutorials/mva_describe_intro.htm"/>
+         <topic label="Running the Analysis to Display Descriptive Statistics"
+                href="spss/tutorials/mva_describe_run.htm"/>
+         <topic label="Evaluating the Descriptive Statistics"
+                href="spss/tutorials/mva_describe_evaldescriptives.htm"/>
+         <topic label="Rerunning the Analysis to Display Patterns"
+                href="spss/tutorials/mva_describe_rerun_patterns.htm"/>
+         <topic label="Evaluating the Patterns Table"
+                href="spss/tutorials/mva_describe_evalpatterns.htm"/>
+         <topic label="Rerunning the Analysis for Little's MCAR Test"
+                href="spss/tutorials/mva_describe_rerun_mcartest.htm"/>
+      </topic>
+      <topic label="Multiple Imputation" href="spss/tutorials/mi_table.htm">
+         <topic label="Using Multiple Imputation to Complete and Analyze a Dataset"
+                href="spss/tutorials/mi_telco_intro.htm">
+            <topic label="Analyze Patterns of Missing Values"
+                   href="spss/tutorials/mi_patterns_telco_howto.htm">
+               <topic label="Overall Summary"
+                      href="spss/tutorials/mi_patterns_telco_overall-summary.htm"/>
+               <topic label="Variable Summary"
+                      href="spss/tutorials/mi_patterns_telco_variable-summary.htm"/>
+               <topic label="Patterns" href="spss/tutorials/mi_patterns_telco_patterns.htm"/>
+            </topic>
+            <topic label="Automatic Imputation of Missing Values"
+                   href="spss/tutorials/mi_impute_telco_howto.htm">
+               <topic label="Imputation Specifications"
+                      href="spss/tutorials/mi_impute_telco_imputation-specification.htm"/>
+               <topic label="Imputation Results"
+                      href="spss/tutorials/mi_impute_telco_imputation-results.htm"/>
+               <topic label="Imputation Models"
+                      href="spss/tutorials/mi_impute_telco_imputation-models.htm"/>
+               <topic label="Descriptive Statistics"
+                      href="spss/tutorials/mi_impute_telco_descriptive-statistics.htm"/>
+            </topic>
+            <topic label="Custom Imputation Model"
+                   href="spss/tutorials/mi_impute-custom_telco_howto.htm">
+               <topic label="Imputation Constraints"
+                      href="spss/tutorials/mi_impute-custom_telco_constraints.htm"/>
+               <topic label="Descriptive Statistics"
+                      href="spss/tutorials/mi_impute-custom_telco_descriptives.htm"/>
+            </topic>
+            <topic label="Checking FCS Convergence"
+                   href="spss/tutorials/mi_fcs-convergence_telco_howto.htm">
+               <topic label="FCS Convergence Charts"
+                      href="spss/tutorials/mi_fcs-convergence_telco_convergence-charts.htm"/>
+            </topic>
+            <topic label="Analyze Complete Data" href="spss/tutorials/mi_analyze_telco_howto.htm">
+               <topic label="Step Summary" href="spss/tutorials/mi_analyze_telco_step-summary.htm"/>
+               <topic label="Running the Model with a Subset of Predictors"
+                      href="spss/tutorials/mi_analyze_telco_howto_02.htm"/>
+               <topic label="Pooled Parameter Estimates"
+                      href="spss/tutorials/mi_analyze_telco_outputtype.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/mi_telco_summary.htm"/>
+         </topic>
+      </topic>
+   </topic>
+   <topic label="Neural Networks Option">
+      <topic label="Multilayer Perceptron" href="spss/tutorials/mlp_table.htm">
+         <topic label="Using a Multilayer Perceptron to Assess Credit Risk"
+                href="spss/tutorials/mlp_bankloan_intro.htm">
+            <topic label="Preparing the Data for Analysis"
+                   href="spss/tutorials/mlp_bankloan_dataprep.htm"/>
+            <topic label="Running the Analysis" href="spss/tutorials/mlp_bankloan_howto.htm"/>
+            <topic label="Case Processing Summary" href="spss/tutorials/mlp_bankloan_cps.htm"/>
+            <topic label="Network Information"
+                   href="spss/tutorials/mlp_bankloan_network-information.htm"/>
+            <topic label="Model Summary" href="spss/tutorials/mlp_bankloan_model-summary.htm"/>
+            <topic label="Classification" href="spss/tutorials/mlp_bankloan_classification.htm"/>
+            <topic label="Correcting Overtraining" href="spss/tutorials/mlp_bankloan_intro_02.htm">
+               <topic label="Creating the Testing Sample"
+                      href="spss/tutorials/mlp_bankloan_dataprep_02.htm"/>
+               <topic label="Running the Analysis" href="spss/tutorials/mlp_bankloan_howto_02.htm"/>
+               <topic label="Case Processing Summary" href="spss/tutorials/mlp_bankloan_cps_02.htm"/>
+               <topic label="Network Information"
+                      href="spss/tutorials/mlp_bankloan_network-information_02.htm"/>
+               <topic label="Model Summary" href="spss/tutorials/mlp_bankloan_model-summary_02.htm"/>
+               <topic label="Classification" href="spss/tutorials/mlp_bankloan_classification_02.htm"/>
+               <topic label="ROC Curve" href="spss/tutorials/mlp_bankloan_roc-curve_02.htm"/>
+               <topic label="Predicted-by-Observed Chart"
+                      href="spss/tutorials/mlp_bankloan_predicted-by-observed_02.htm"/>
+               <topic label="Cumulative Gains and Lift Charts"
+                      href="spss/tutorials/mlp_bankloan_outputtype_02.htm"/>
+               <topic label="Independent Variable Importance"
+                      href="spss/tutorials/mlp_bankloan_importance_02.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/mlp_bankloan_summary.htm"/>
+            <topic label="Recommended Readings" href="spss/tutorials/mlp_readings.htm"/>
+         </topic>
+         <topic label="Using a Multilayer Perceptron to Estimate Healthcare Costs and Lengths of Stay"
+                href="spss/tutorials/mlp_patlos_intro.htm">
+            <topic label="Preparing the Data for Analysis"
+                   href="spss/tutorials/mlp_patlos_dataprep.htm"/>
+            <topic label="Running the Analysis" href="spss/tutorials/mlp_patlos_howto.htm"/>
+            <topic label="Warnings" href="spss/tutorials/mlp_patlos_warnings.htm"/>
+            <topic label="Case Processing Summary" href="spss/tutorials/mlp_patlos_cps.htm"/>
+            <topic label="Network Information"
+                   href="spss/tutorials/mlp_patlos_network-information.htm"/>
+            <topic label="Model Summary" href="spss/tutorials/mlp_patlos_model-summary.htm"/>
+            <topic label="Predicted-by-Observed Charts"
+                   href="spss/tutorials/mlp_patlos_predicted-by-observed.htm"/>
+            <topic label="Residual-by-Predicted Charts"
+                   href="spss/tutorials/mlp_patlos_residual-by-predicted.htm"/>
+            <topic label="Independent Variable Importance"
+                   href="spss/tutorials/mlp_patlos_importance.htm"/>
+            <topic label="Summary" href="spss/tutorials/mlp_patlos_summary.htm"/>
+            <topic label="Recommended Readings" href="spss/tutorials/mlp_readings.htm"/>
+         </topic>
+         <topic label="Recommended Readings" href="spss/tutorials/mlp_readings.htm"/>
+      </topic>
+      <topic label="Radial Basis Function" href="spss/tutorials/rbf_table.htm">
+         <topic label="Using Radial Basis Function to Classify Telecommunications Customers"
+                href="spss/tutorials/rbf_telco_intro.htm">
+            <topic label="Preparing the Data for Analysis"
+                   href="spss/tutorials/rbf_telco_dataprep.htm"/>
+            <topic label="Running the Analysis" href="spss/tutorials/rbf_telco_howto.htm"/>
+            <topic label="Case Processing Summary" href="spss/tutorials/rbf_telco_cps.htm"/>
+            <topic label="Network Information"
+                   href="spss/tutorials/rbf_telco_network-information.htm"/>
+            <topic label="Model Summary" href="spss/tutorials/rbf_telco_model-summary.htm"/>
+            <topic label="Classification" href="spss/tutorials/rbf_telco_classification.htm"/>
+            <topic label="Predicted-by-Observed Chart"
+                   href="spss/tutorials/rbf_telco_predicted-by-observed.htm"/>
+            <topic label="ROC Curve" href="spss/tutorials/rbf_telco_roc.htm"/>
+            <topic label="Cumulative Gains and Lift Charts"
+                   href="spss/tutorials/rbf_telco_gains-lift.htm"/>
+            <topic label="Recommended Readings" href="spss/tutorials/rbf_readings.htm"/>
+         </topic>
+         <topic label="Recommended Readings" href="spss/tutorials/rbf_readings.htm"/>
+      </topic>
+   </topic>
+   <topic label="Regression Option">
+      <topic label="Binary Logistic Regression"
+             href="spss/tutorials/logisticregression_table.htm">
+         <topic label="Using Binary Logistic Regression to Assess Credit Risk"
+                href="spss/tutorials/log_bankloan_intro.htm">
+            <topic label="Preparing the Data for Analysis"
+                   href="spss/tutorials/logistic_bankloan_dataprep.htm"/>
+            <topic label="Running the Analysis" href="spss/tutorials/log_bankloan_howto.htm"/>
+            <topic label="Model Diagnostics" href="spss/tutorials/log_loan_diagnostics.htm">
+               <topic label="Tests of Model Fit" href="spss/tutorials/log_loan_fit.htm"/>
+               <topic label="Change in Deviance Versus Predicted Probabilities"
+                      href="spss/tutorials/log_loan_residplot_chgdev_01.htm"/>
+               <topic label="Cook's Distances Versus Predicted Probabilities"
+                      href="spss/tutorials/log_loan_residplot_cooks_01.htm"/>
+            </topic>
+            <topic label="Choosing the Right Model" href="spss/tutorials/log_loan_modelchoice.htm">
+               <topic label="Variable Selection" href="spss/tutorials/log_loan_stepwise.htm"/>
+               <topic label="R-Squared Statistics" href="spss/tutorials/log_loan_rsquare.htm"/>
+               <topic label="Classification" href="spss/tutorials/log_loan_class.htm"/>
+            </topic>
+            <topic label="Logistic Regression Coefficients"
+                   href="spss/tutorials/log_loan_coeff.htm"/>
+            <topic label="Summary" href="spss/tutorials/log_loan_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/log_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/log_readings.htm"/>
+      </topic>
+      <topic label="Multinomial Logistic Regression"
+             href="spss/tutorials/nominalregression_table.htm">
+         <topic label="Using Multinomial Logistic Regression to Profile Consumers of Packaged Goods"
+                href="spss/tutorials/nomreg_cereal_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/nomreg_cereal_howto.htm"/>
+            <topic label="Model Diagnostics" href="spss/tutorials/nom_cereal_diag.htm">
+               <topic label="Warnings" href="spss/tutorials/nom_cereal_warnings.htm"/>
+               <topic label="Goodness-of-Fit" href="spss/tutorials/nom_cereal_gof.htm"/>
+               <topic label="Observed and Predicted Frequencies"
+                      href="spss/tutorials/nom_cereal_cellprob.htm"/>
+               <topic label="Model Fitting Information" href="spss/tutorials/nom_cereal_modelfit.htm"/>
+            </topic>
+            <topic label="Choosing the Right Model" href="spss/tutorials/nom_cereal_choose.htm">
+               <topic label="Likelihood Ratio Tests" href="spss/tutorials/nom_cereal_lrt.htm"/>
+               <topic label="Pseudo R Square" href="spss/tutorials/nom_cereal_rsq.htm"/>
+               <topic label="Classification Table" href="spss/tutorials/nom_cereal_classtable.htm"/>
+            </topic>
+            <topic label="Multinomial Logistic Regression Coefficients"
+                   href="spss/tutorials/nom_cereal_coeff.htm"/>
+            <topic label="Summary" href="spss/tutorials/nom_cereal_summary.htm"/>
+         </topic>
+         <topic label="Using Multinomial Logistic Regression to Classify Telecommunications Customers"
+                href="spss/tutorials/nom_telco_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/nom_telco_howto.htm"/>
+            <topic label="Stepwise Multinomial Logistic Regression"
+                   href="spss/tutorials/nom_telco_stepwise.htm"/>
+            <topic label="A Note of Caution Concerning Stepwise Methods"
+                   href="spss/tutorials/nomreg_using_stepwise.htm"/>
+            <topic label="Classification Results" href="spss/tutorials/nom_telco_classtable.htm"/>
+            <topic label="Summary" href="spss/tutorials/nom_telco_summary.htm"/>
+         </topic>
+         <topic label="Using Multinomial Logistic Regression to Analyze a 1-1 Matched Case-Control Study"
+                href="spss/tutorials/nom_insure_intro.htm">
+            <topic label="Data File Setup for Case-Control"
+                   href="spss/tutorials/nom_insure_data.htm"/>
+            <topic label="Running the Analysis" href="spss/tutorials/nom_insure_howto.htm"/>
+            <topic label="Model Diagnostics" href="spss/tutorials/nom_casecontrol_diag.htm">
+               <topic label="Model Fitting Information" href="spss/tutorials/nom_insure_modelfit.htm"/>
+            </topic>
+            <topic label="Choosing the Right Model" href="spss/tutorials/nom_insure_choose.htm">
+               <topic label="Likelihood Ratio Tests" href="spss/tutorials/nom_insure_lrt.htm"/>
+            </topic>
+            <topic label="Multinomial Logistic Regression Coefficients"
+                   href="spss/tutorials/nom_insure_coeff.htm"/>
+            <topic label="Summary" href="spss/tutorials/nom_insure_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/nom_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/nom_readings.htm"/>
+      </topic>
+      <topic label="Nonlinear Regression"
+             href="spss/tutorials/nonlinearregressionanalysis_table.htm">
+         <topic label="Using Nonlinear Regression to Model the Law of Diminishing Returns"
+                href="spss/tutorials/nlr_advert_intro.htm">
+            <topic label="Creating a Scatterplot of the Dependent by the Independent"
+                   href="spss/tutorials/nlr_advert_howto_01a.htm"/>
+            <topic label="Preparing to Fit an Asymptotic Regression Model"
+                   href="spss/tutorials/nlr_asymptotic_regression_advert.htm"/>
+            <topic label="Running the Analysis" href="spss/tutorials/nlr_advert_howto_01c.htm"/>
+            <topic label="Parameter Estimates" href="spss/tutorials/nlr_coeff_advert_01.htm"/>
+            <topic label="Model Fit" href="spss/tutorials/nlr_anova_advert.htm"/>
+            <topic label="Residuals vs. Fit Values Plots"
+                   href="spss/tutorials/nlr_resids_advert.htm"/>
+            <topic label="Summary/Discussion" href="spss/tutorials/nlr_advert_summary.htm"/>
+         </topic>
+         <topic label="Using Nonlinear Regression to Model Viral Growth"
+                href="spss/tutorials/nlr_virus_intro.htm">
+            <topic label="Creating a Scatterplot of the Dependent by the Independent"
+                   href="spss/tutorials/nlr_virus_howto_01a.htm"/>
+            <topic label="Preparing to Fit a Segmented Model"
+                   href="spss/tutorials/nlr_virus_prep_models.htm"/>
+            <topic label="Running the Analysis" href="spss/tutorials/nlr_virus_howto_01c.htm"/>
+            <topic label="Parameter Estimates" href="spss/tutorials/nlr_coeff_virus_01.htm"/>
+            <topic label="Model Fit" href="spss/tutorials/nlr_anova_virus.htm"/>
+            <topic label="Residuals vs. Fit Values Plots"
+                   href="spss/tutorials/nlr_resids_virus.htm"/>
+            <topic label="Summary" href="spss/tutorials/nlr_virus_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/nlr_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/nonlinear_readings.htm"/>
+      </topic>
+      <topic label="Probit Analysis" href="spss/tutorials/probitanalysis_table.htm">
+         <topic label="Using Probit Analysis to Test Promotional Effects on Sales"
+                href="spss/tutorials/probit_offer_intro.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/probit_offer_howto.htm"/>
+            <topic label="Chi-Square Tests" href="spss/tutorials/probit_offer_chisquare.htm"/>
+            <topic label="Parameter Estimates" href="spss/tutorials/probit_offer_est.htm"/>
+            <topic label="Relative Potencies" href="spss/tutorials/probit_offer_ci.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/probit_related.htm"/>
+         <topic label="Recommended Readings" href="spss/tutorials/probit_readings.htm"/>
+      </topic>
+      <topic label="Weight Estimation"
+             href="spss/tutorials/weightedleastsquaresanalysis_table.htm">
+         <topic label="Using Weight Estimation to Model the Cost of Mall Construction"
+                href="spss/tutorials/wls_mallcost.htm">
+            <topic label="Diagnosing the need for WLS" href="spss/tutorials/wls_diagnose.htm"/>
+            <topic label="Identify a Source Variable" href="spss/tutorials/wls_source.htm"/>
+            <topic label="Run Weight Estimation" href="spss/tutorials/wls_howto.htm">
+               <topic label="Power Summary" href="spss/tutorials/wls_mallcost_power.htm"/>
+            </topic>
+            <topic label="Re-Run Regression with Estimated Weights"
+                   href="spss/tutorials/wls_ols_2.htm">
+               <topic label="Model Summary" href="spss/tutorials/procedure_output4.htm"/>
+               <topic label="Parameter Coefficients" href="spss/tutorials/procedure_output9.htm"/>
+               <topic label="Residual Plots" href="spss/tutorials/wls_residual-plots.htm"/>
+            </topic>
+            <topic label="Summary" href="spss/tutorials/wls_mallcost_summary.htm"/>
+         </topic>
+      </topic>
+      <topic label="Two-Stage Least-Squares Regression"
+             href="spss/tutorials/two_stageleastsquaresanalysis_table.htm">
+         <topic label="The Two-Stage Least-Squares Regression Model"
+                href="spss/tutorials/twostage_model.htm"/>
+         <topic label="Using Two-Stage Least-Squares Regression to Model Cross-Sales"
+                href="spss/tutorials/tsls_crosssell.htm">
+            <topic label="Choosing Instruments" href="spss/tutorials/tsls_setup.htm"/>
+            <topic label="Running the Analysis" href="spss/tutorials/tsls_howto.htm"/>
+            <topic label="Model Description" href="spss/tutorials/tsls_crosssell_modeldescrip.htm"/>
+            <topic label="Model Summary" href="spss/tutorials/tsls_crosssell_modelsummary.htm"/>
+            <topic label="ANOVA Table" href="spss/tutorials/tsls_crosssell_anova.htm"/>
+            <topic label="Coefficients" href="spss/tutorials/tsls_crosssell_coefficients.htm"/>
+            <topic label="Summary" href="spss/tutorials/tsls_crosssell_summary.htm"/>
+         </topic>
+      </topic>
+   </topic>
+   <topic label="Forecasting Option">
+      <topic label="Time Series Modeling and Forecasting"
+             href="spss/tutorials/timeseriesmodeling_gateway.htm"/>
+      <topic label="Bulk Forecasting with the Expert Modeler"
+             href="spss/tutorials/tsmodel_table.htm">
+         <topic label="Examining Your Data"
+                href="spss/tutorials/timeseriesmodeler_expert_bulk_data.htm"/>
+         <topic label="Running the Analysis"
+                href="spss/tutorials/timeseriesmodeler_expert_bulk_run.htm"/>
+         <topic label="Model Summary Charts"
+                href="spss/tutorials/timeseriesmodeler_expert_bulk_summary_charts.htm"/>
+         <topic label="Model Predictions"
+                href="spss/tutorials/timeseriesmodeler_expert_bulk_pred.htm"/>
+         <topic label="Summary" href="spss/tutorials/timeseriesmodeler_expert_bulk_summary.htm"/>
+      </topic>
+      <topic label="Bulk Reforecasting by Applying Saved Models"
+             href="spss/tutorials/tsapply_table.htm">
+         <topic label="Running the Analysis"
+                href="spss/tutorials/timeseriesmodeler_apply_bulk_run.htm"/>
+         <topic label="Model Fit Statistics"
+                href="spss/tutorials/timeseriesmodeler_apply_bulk_modelfit.htm"/>
+         <topic label="Model Predictions"
+                href="spss/tutorials/timeseriesmodeler_apply_bulk_pred.htm"/>
+         <topic label="Summary" href="spss/tutorials/timeseriesmodeler_apply_bulk_summary.htm"/>
+      </topic>
+      <topic label="Using the Expert Modeler to Determine Significant Predictors"
+             href="spss/tutorials/timeseriesmodeler_expert_predictors.htm">
+         <topic label="Plotting Your Data"
+                href="spss/tutorials/timeseriesmodeler_expert_predictors_data.htm"/>
+         <topic label="Running the Analysis"
+                href="spss/tutorials/timeseriesmodeler_expert_predictors_run.htm"/>
+         <topic label="Series Plot"
+                href="spss/tutorials/timeseriesmodeler_expert_predictors_plot.htm"/>
+         <topic label="Model Description Table"
+                href="spss/tutorials/timeseriesmodeler_expert_predictors_model.htm"/>
+         <topic label="Model Statistics Table"
+                href="spss/tutorials/timeseriesmodeler_expert_predictors_statistics.htm"/>
+         <topic label="ARIMA Model Parameters Table"
+                href="spss/tutorials/timeseriesmodeler_expert_predictors_parameters.htm"/>
+         <topic label="Summary"
+                href="spss/tutorials/timeseriesmodeler_expert_predictors_summary.htm"/>
+      </topic>
+      <topic label="Experimenting with Predictors by Applying Saved Models"
+             href="spss/tutorials/timeseriesmodeler_apply_predictors.htm">
+         <topic label="Extending the Predictor Series"
+                href="spss/tutorials/timeseriesmodeler_apply_predictors_prepare.htm"/>
+         <topic label="Modifying Predictor Values in the Forecast Period"
+                href="spss/tutorials/timeseriesmodeler_apply_predictors_change.htm"/>
+         <topic label="Running the Analysis"
+                href="spss/tutorials/timeseriesmodeler_apply_predictors_run.htm"/>
+      </topic>
+      <topic label="Seasonal Decomposition" href="spss/tutorials/trnd_season_container.htm">
+         <topic label="Seasonal Decomposition"
+                href="spss/tutorials/seasonaldecomposition_table.htm"/>
+         <topic label="Models" href="spss/tutorials/season_models.htm"/>
+         <topic label="Removing Seasonality from Sales Data"
+                href="spss/tutorials/season_cat.htm">
+            <topic label="Determining and Setting the Periodicity"
+                   href="spss/tutorials/season_cat_periodicity.htm"/>
+            <topic label="Running the Analysis" href="spss/tutorials/season_cat_run.htm"/>
+            <topic label="Understanding the Output" href="spss/tutorials/season_cat_output.htm"/>
+            <topic label="Summary" href="spss/tutorials/season_cat_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/season_related.htm"/>
+      </topic>
+      <topic label="Spectral Plots" href="spss/tutorials/trnd_spectral_container.htm">
+         <topic label="Spectral Plots" href="spss/tutorials/spectralanalysis_table.htm"/>
+         <topic label="Using Spectral Plots to Verify Expectations about Periodicity"
+                href="spss/tutorials/spectral_cat.htm">
+            <topic label="Running the Analysis" href="spss/tutorials/spectral_cat_run.htm"/>
+            <topic label="Understanding the Periodogram and Spectral Density"
+                   href="spss/tutorials/spectral_cat_output.htm"/>
+            <topic label="Summary" href="spss/tutorials/spectral_cat_summary.htm"/>
+         </topic>
+         <topic label="Related Procedures" href="spss/tutorials/spectral_related.htm"/>
+      </topic>
+      <topic label="Uncovering causal relationships in business metrics"
+             href="spss/tutorials/tcm_kpi_intro.htm">
+         <topic label="Running the analysis" href="spss/tutorials/tcm_kpi_howto.htm"/>
+         <topic label="Overall Model Quality Chart"
+                href="spss/tutorials/tcm_kpi_modelquality.htm"/>
+         <topic label="Overall Model System" href="spss/tutorials/tcm_kpi_modelsystem.htm"/>
+         <topic label="Impact Diagrams" href="spss/tutorials/tcm_kpi_impactdiagram.htm"/>
+         <topic label="Determining root causes of outliers"
+                href="spss/tutorials/tcm_kpi_outlier_root_causes.htm"/>
+         <topic label="Running scenarios" href="spss/tutorials/tcm_kpi_scenarios.htm"/>
+         <topic label="Forecasting with updated data"
+                href="spss/tutorials/tcm_kpi_forecasts.htm"/>
+      </topic>
+   </topic>
+   <topic label="Sample Files" href="spss/tutorials/data_files.htm"/>
+</toc>

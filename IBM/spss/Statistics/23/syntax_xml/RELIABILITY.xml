@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/21/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="RELIABILITY" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="VARIABLES" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SCALE" EqualsSign="None"/>
+    <Subcommand Name="MODEL" EqualsSign="Optional">
+        <Parameter Name="ALPHA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SPLIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GUTTMAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PARALLEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STRICTPARALLEL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STATISTICS" EqualsSign="Optional">
+        <Parameter Name="DESCRIPTIVE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SCALE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ANOVA FRIEDMAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ANOVA COCHRAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COVARIANCES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TUKEY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORRELATIONS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HOTELLING" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SUMMARY" EqualsSign="Optional">
+        <Parameter Name="MEANS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TOTAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ICC" EqualsSign="Optional">
+        <Parameter Name="MODEL" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ONEWAY"/>
+            <EnumValue Name="MIXED"/>
+            <EnumValue Name="RANDOM"/>
+        </Parameter>
+        <Parameter Name="TYPE" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="CONSISTENCY"/>
+            <EnumValue Name="ABSOLUTE"/>
+        </Parameter>
+        <Parameter Name="CIN" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="TESTVAL" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="METHOD" EqualsSign="Optional">
+        <Parameter Name="COVARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MATRIX" EqualsSign="Optional">
+        <Parameter Name="IN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOPRINT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

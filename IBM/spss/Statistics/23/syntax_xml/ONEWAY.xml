@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="ONEWAY" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="POLYNOMIAL" EqualsSign="Optional"/>
+    <Subcommand Name="CONTRAST" EqualsSign="Optional"/>
+    <Subcommand Name="POSTHOC" EqualsSign="Optional">
+        <Parameter Name="SNK" EqualsSign="None"/>
+        <Parameter Name="TUKEY" EqualsSign="None"/>
+        <Parameter Name="BTUKEY" EqualsSign="None"/>
+        <Parameter Name="DUNCAN" EqualsSign="None"/>
+        <Parameter Name="SCHEFFE" EqualsSign="None"/>
+        <Parameter Name="DUNNETT" EqualsSign="None"/>
+        <Parameter Name="DUNNETTL" EqualsSign="None"/>
+        <Parameter Name="DUNNETTR" EqualsSign="None"/>
+        <Parameter Name="BONFERRONI" EqualsSign="None"/>
+        <Parameter Name="LSD" EqualsSign="None"/>
+        <Parameter Name="SIDAK" EqualsSign="None"/>
+        <Parameter Name="GT2" EqualsSign="None"/>
+        <Parameter Name="GABRIEL" EqualsSign="None"/>
+        <Parameter Name="FREGW" EqualsSign="None"/>
+        <Parameter Name="QREGW" EqualsSign="None"/>
+        <Parameter Name="T2" EqualsSign="None"/>
+        <Parameter Name="T3" EqualsSign="None"/>
+        <Parameter Name="GH" EqualsSign="None"/>
+        <Parameter Name="C" EqualsSign="None"/>
+        <Parameter Name="WALLER" EqualsSign="None"/>
+        <Parameter Name="ALPHA" EqualsSign="None"/>
+    </Subcommand>
+    <Subcommand Name="RANGES" EqualsSign="Optional">
+        <Parameter Name="LSD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DUNCAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SNK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TUKEYB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TUKEY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODLSD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SCHEFFE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STATISTICS" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DESCRIPTIVES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EFFECTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HOMOGENEITY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WELCH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BROWNFORSYTHE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT MEANS" EqualsSign="None"/>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="ANALYSIS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LISTWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MATRIX" EqualsSign="Optional">
+        <Parameter Name="IN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TEMPLATE" EqualsSign="Optional"/>
+</Command>

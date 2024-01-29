@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/21/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="SPCHART" Language="Syntax" IsArbitrary="No"  EndRequired="None"> 
+    <Subcommand Name="TEMPLATE" EqualsSign="Optional"/>
+    <Subcommand Name="TITLE" EqualsSign="Optional"/>
+    <Subcommand Name="SUBTITLE" EqualsSign="Optional"/>
+    <Subcommand Name="FOOTNOTE" EqualsSign="Optional"/>
+    <Subcommand Name="XR" EqualsSign="Optional">
+        <Parameter Name="XBARONLY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="XS" EqualsSign="Optional">
+        <Parameter Name="XBARONLY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="IR" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="I" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="NP" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="N" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="P" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="N" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="C" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="N" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="U" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="N" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CPCHART" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STATISTICS" EqualsSign="Optional">
+        <Parameter Name="CP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CPL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CPU" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="K" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CPK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CPM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CZL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CZU" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CZMIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CZMAX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CZOUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PPL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PPU" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PPK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PPM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PZL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PZU" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PZMIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PZMAX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PZOUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AZOUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="N" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CAPSIGMA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LSL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="USL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TARGET" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AZLOUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AZUOUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CZLOUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CZUOUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PZLOUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PZUOUT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="RULES" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UCL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="R2UPPER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="R4UPPER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="R8UPPER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="R8LOWER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="R4LOWER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="R2LOWER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LCL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TRUP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TRDOWN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALTERNATING" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ID" EqualsSign="Optional"/>
+    <Subcommand Name="CAPSIGMA" EqualsSign="Optional">
+        <Parameter Name="RBAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SBAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MRBAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITHIN" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SPAN" EqualsSign="Optional"/>
+    <Subcommand Name="CONFORM" EqualsSign="Optional"/>
+    <Subcommand Name="NONCONFORM" EqualsSign="Optional"/>
+    <Subcommand Name="SIGMAS" EqualsSign="Optional"/>
+    <Subcommand Name="MINSAMPLE" EqualsSign="Optional"/>
+    <Subcommand Name="LSL" EqualsSign="Optional"/>
+    <Subcommand Name="USL" EqualsSign="Optional"/>
+    <Subcommand Name="TARGET" EqualsSign="Optional"/>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="NOREPORT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REPORT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand> 
+    <Subcommand Name="NORMAL" EqualsSign="Optional">
+        <Parameter Name="CAPABILITY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PERFORMANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BOTH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand> 
+    <Subcommand Name="REFERENCE" EqualsSign="Optional">
+        <Parameter Name="SL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIGMAS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>   
+</Command>

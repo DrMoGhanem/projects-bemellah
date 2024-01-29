@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2013                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/15/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:SyntaxSchema.xsd"
+    Name="OMS" EndRequired="None" IsArbitrary="No" Language="Syntax"> 
+    <Subcommand Name="SELECT" EqualsSign="None">
+        <Parameter Name="CHARTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TEXTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOGS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WARNINGS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HEADINGS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TREES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXCEPT" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MODELS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="IF" EqualsSign="None">
+        <Parameter Name="COMMANDS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SUBTYPES" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LABELS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="INSTANCES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="LAST"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="EXCEPTIF" EqualsSign="None">
+        <Parameter Name="COMMANDS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SUBTYPES" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LABELS" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DESTINATION" EqualsSign="None">
+        <Parameter Name="FORMAT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="OXML"/>
+            <EnumValue Name="HTML"/>
+            <EnumValue Name="TEXT"/>
+            <EnumValue Name="TABTEXT"/>
+            <EnumValue Name="SAV"/>
+            <EnumValue Name="SPV"/>
+            <EnumValue Name="DOC"/>
+            <EnumValue Name="PDF"/>
+            <EnumValue Name="SPW"/>
+            <EnumValue Name="XLS"/>
+            <EnumValue Name="XLSX"/>
+            <EnumValue Name="REPORTHTML"/>
+            <EnumValue Name="REPORTMHT"/>
+        </Parameter>
+        <Parameter Name="OUTFILE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="XMLWORKSPACE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="OUTPUTSET" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SUBTYPES"/>
+            <EnumValue Name="LABELS"/>
+            <EnumValue Name="FOLDER"/>
+        </Parameter>
+        <Parameter Name="VIEWER" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="NUMBERED" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="IMAGES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="IMAGEFORMAT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="PNG"/>
+            <EnumValue Name="JPG"/>
+            <EnumValue Name="BMP"/>
+        </Parameter>
+        <Parameter Name="IMAGEROOT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="CHARTSIZE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="IMAGEMAP" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="TREEFORMAT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="XML"/>
+            <EnumValue Name="IMAGE"/>
+        </Parameter>
+        <Parameter Name="CHARTFORMAT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="XML"/>
+            <EnumValue Name="IMAGE"/>
+        </Parameter>
+        <Parameter Name="MODELFORMAT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="XML"/>
+            <EnumValue Name="IMAGE"/>
+        </Parameter>
+        <Parameter Name="TABLES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="PIVOTABLE"/>
+            <EnumValue Name="STATIC"/>
+        </Parameter>
+        <Parameter Name="REPORTTITLE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="FILENAME"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="COLUMNS" EqualsSign="None">
+        <Parameter Name="DIMNAMES" EqualsSign="Required"/>
+        <Parameter Name="SEQUENCE" EqualsSign="Required">
+            <EnumValue Name="R1"/>
+            <EnumValue Name="R2"/>
+            <EnumValue Name="RALL"/>
+            <EnumValue Name="C1"/>
+            <EnumValue Name="C2"/>
+            <EnumValue Name="CALL"/>
+            <EnumValue Name="L1"/>
+            <EnumValue Name="L2"/>
+            <EnumValue Name="LALL"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="TAG" EqualsSign="Required"/>
+    <Subcommand Name="NOWARN" EqualsSign="None"/>
+</Command>

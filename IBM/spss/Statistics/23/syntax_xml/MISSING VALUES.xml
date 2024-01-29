@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/12/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:/C:/temp/schema/SyntaxSchema.xsd"
+    Name="MISSING VALUES" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOWEST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HIGHEST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="THRU" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SPEC_PARAMS">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOWEST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HIGHEST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="THRU" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

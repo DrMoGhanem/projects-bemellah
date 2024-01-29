@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:/C:/temp/schema/SyntaxSchema.xsd"
+    Name="LOGISTIC REGRESSION" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CATEGORICAL" EqualsSign="Optional"/>
+    <Subcommand Name="CONTRAST" EqualsSign="Optional">
+        <Parameter Name="INDICATOR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEVIATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIMPLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DIFFERENCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HELMERT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REPEATED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POLYNOMIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SPECIAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="METHOD" EqualsSign="Optional">
+        <Parameter Name="ENTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BSTEP" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="COND"/>
+            <EnumValue Name="LR"/>
+            <EnumValue Name="WALD"/>
+        </Parameter>
+        <Parameter Name="FSTEP" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="COND"/>
+            <EnumValue Name="LR"/>
+            <EnumValue Name="WALD"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SELECT" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="NOORIGIN" EqualsSign="None"/>
+    <Subcommand Name="ORIGIN" EqualsSign="None"/>
+    <Subcommand Name="ID" EqualsSign="Optional"/>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMMARY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ITER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GOODFIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CI" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="Optional">
+        <Parameter Name="BCON" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ITERATE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LCON" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EPS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CUT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CLASSPLOT" EqualsSign="None"/>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CASEWISE" EqualsSign="Optional">
+        <Parameter Name="OUTLIER" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="PRED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PGROUP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LEVER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ZRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COOK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DFBETA" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional">
+        <Parameter Name="MODEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PARAMETER" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EXTERNAL" EqualsSign="None"/>
+</Command>

@@ -1,0 +1,109 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 4/28/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    xmlns:p1="http://xml.spss.com/spss/extension" Name="ALSCAL" EndRequired="None" IsArbitrary="No"
+    Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FILE" EqualsSign="Required">
+        <Parameter Name="CONFIG" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="INITIAL"/>
+            <EnumValue Name="FIXED"/>
+        </Parameter>
+        <Parameter Name="ROWCONF" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="INITIAL"/>
+            <EnumValue Name="FIXED"/>
+        </Parameter>
+        <Parameter Name="COLCONF" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="INITIAL"/>
+            <EnumValue Name="FIXED"/>
+        </Parameter>
+        <Parameter Name="SUBJWGHT" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="INITIAL"/>
+            <EnumValue Name="FIXED"/>
+        </Parameter>
+        <Parameter Name="STIMWGHT" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="INITIAL"/>
+            <EnumValue Name="FIXED"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="INPUT" EqualsSign="Optional">
+        <Parameter Name="ROWS" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SHAPE" EqualsSign="Optional">
+        <Parameter Name="SYMMETRIC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ASYMMETRIC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RECTANGULAR" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="LEVEL" EqualsSign="Optional">
+        <Parameter Name="ORDINAL" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="UNTIE"/>
+            <EnumValue Name="SIMILAR"/>
+        </Parameter>
+        <Parameter Name="INTERVAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RATIO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOMINAL" EqualsSign="None" ParameterType="Keyword"/>
+   </Subcommand>
+    <Subcommand Name="CONDITION" EqualsSign="Optional">
+        <Parameter Name="MATRIX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UNCONDITIONAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MODEL" EqualsSign="Optional">
+        <Parameter Name="EUCLID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INDSCAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ASCAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AINDS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GEMSCAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="METHOD" EqualsSign="Optional">
+        <Parameter Name="EUCLID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INDSCAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ASCAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AINDS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GEMSCAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="Optional">
+        <Parameter Name="NEGATIVE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CUTOFF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CONVERGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ITER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STRESSMIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOULB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DIMENS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DIRECTIONS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CONSTRAIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TIESTORE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="DATA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HEADER" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional"/>
+    <Subcommand Name="MATRIX" EqualsSign="Optional">
+        <Parameter Name="IN" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 5/23/08 -->
+<Command xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    xmlns="http://xml.spss.com/spss/extension" Name="CATREG" EndStatement="" IsArbitrary="No"
+    EndRequired="None">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ANALYSIS">
+        <Parameter Name="LEVEL" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="SPORD"/>
+            <EnumValue Name="SPNOM"/>
+            <EnumValue Name="NOMI"/>
+            <EnumValue Name="NUME"/>
+            <EnumValue Name="ORDI"/>
+        </Parameter>
+        <Parameter Name="DEGREE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="INKNOT" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DISCRETIZATION" EqualsSign="Optional">
+        <Parameter Name="GROUPING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EQUINTV" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="RANKING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MULTIPLYING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NCAT" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="DISTR" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NORMAL"/>
+            <EnumValue Name="UNIFORM"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LISTWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODEIMPU" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXTRACAT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SUPPLEMENTARY" EqualsSign="Optional">
+        <Parameter Name="OBJECT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="INITIAL" EqualsSign="Optional">
+        <Parameter Name="NUMERICAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RANDOM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MULTISTART" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>           
+        </Parameter>
+        <Parameter Name="FIXSIGNS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MAXITER" EqualsSign="Optional"/>
+    <Subcommand Name="CRITITER" EqualsSign="Optional"/>
+    <Subcommand Name="REGULARIZATION" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RIDGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LASSO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ENET" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="RESAMPLE" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CROSSVAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BOOTSTRAP" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="R" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COEFF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OCORR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DESCRIP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="QUANT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HISTORY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ANOVA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REGU" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="TRANS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REGU" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>           
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="TRDATA" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="TRA"/>
+        </Parameter>
+        <Parameter Name="PRED" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="PRE"/>
+        </Parameter>
+        <Parameter Name="RES">
+            <EnumValue Name="RES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional">
+        <Parameter Name="TRDATA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DISCRDATA" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

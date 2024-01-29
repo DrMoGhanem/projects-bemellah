@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 4/30/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd" Name="CSPLAN SAMPLE" EndRequired="None" IsArbitrary="No" Language="Syntax">
+  <Subcommand Name="PLAN" EqualsSign="None">
+        <Parameter Name="FILE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLANVARS" EqualsSign="None">
+        <Parameter Name="SAMPLEWEIGHT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PREVIOUSWEIGHT" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="None">
+        <Parameter Name="PLAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MATRIX" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DESIGN" EqualsSign="None">
+        <Parameter Name="STAGELABEL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="STRATA" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="CLUSTER" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="METHOD" EqualsSign="None">
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SIMPLE_WOR"/>
+            <EnumValue Name="SIMPLE_WR"/>
+            <EnumValue Name="SIMPLE_SYSTEMATIC"/>
+            <EnumValue Name="SIMPLE_CHROMY"/>
+            <EnumValue Name="PPS_WOR"/>
+            <EnumValue Name="PPS_WR"/>
+            <EnumValue Name="PPS_SYSTEMATIC"/>
+            <EnumValue Name="PPS_BREWER"/>
+            <EnumValue Name="PPS_MURTHY"/>
+            <EnumValue Name="PPS_SAMPFORD"/>
+            <EnumValue Name="PPS_CHROMY"/>
+        </Parameter>
+        <Parameter Name="ESTIMATION" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="DEFAULT"/>
+            <EnumValue Name="WR"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MOS" EqualsSign="None">
+        <Parameter Name="VARIABLE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SOURCE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="FROMDATA"/>
+        </Parameter>
+        <Parameter Name="MIN" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MAX" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SIZE" EqualsSign="None">
+        <Parameter Name="VALUE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MATRIX" EqualsSign="Required" ParameterType="Keyword"/>
+     </Subcommand>
+    <Subcommand Name="RATE" EqualsSign="None">
+        <Parameter Name="VALUE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MATRIX" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MINSIZE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MAXSIZE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STAGEVARS" EqualsSign="None">
+        <Parameter Name="INCLPROB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CUMWEIGHT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INDEX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POPSIZE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SAMPSIZE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RATE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WEIGHT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name=""></Subcommand>
+</Command>

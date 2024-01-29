@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 4/30/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="DESCRIPTIVES" EndRequired="None" IsArbitrary="No" Language="Syntax"> 
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="VARIABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LISTWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="None"/>
+    <Subcommand Name="STATISTICS" EqualsSign="Optional">
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SKEWNESS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="KURTOSIS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RANGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SORT" EqualsSign="Optional">
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="KURTOSIS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SKEWNESS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RANGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NAME" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="A" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="D" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

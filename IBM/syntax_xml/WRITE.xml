@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/22/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:SyntaxSchema.xsd"
+    Name="WRITE" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="OUTFILE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="ENCODING" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="RECORDS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="NOTABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UTF8" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UTF16" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="UTF16LE" ParameterType="Keyword" EqualsSign="None"></Parameter>
+        <Parameter Name="UTF16BE" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="LOCALE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BOM" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="1" EqualsSign="None"/>
+    <Subcommand Name="2" EqualsSign="None"/>
+</Command>

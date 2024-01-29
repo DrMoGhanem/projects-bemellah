@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema targetNamespace="http://xml.spss.com/spss/viewer/viewer-appearance"
+       xmlns:xs="http://www.w3.org/2001/XMLSchema"
+       xmlns:vap="http://xml.spss.com/spss/viewer/viewer-appearance"
+       xmlns:vst="http://xml.spss.com/spss/viewer/viewer-style"
+       xmlns:vps="http://xml.spss.com/spss/viewer/viewer-pagesetup"
+       elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Copyright 2007 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties with respect to your use of this specification, expressed, implied, or otherwise, including without limitation, all warranties of merchantability and fitness for a particular purpose.  SPSS shall not be liable for any special, incidental, or consequential damages, including without limitation lost revenues or lost profits resulting from the use of the information herein.</xs:documentation>
+	</xs:annotation>
+	<!-- imports -->
+	<xs:import namespace="http://xml.spss.com/spss/viewer/viewer-style" schemaLocation="viewer-style-1.0.xsd"/>
+	<xs:import namespace="http://xml.spss.com/spss/viewer/viewer-pagesetup" schemaLocation="viewer-pagesetup-1.0.xsd"/>
+	<!-- the root element -->
+	<xs:element name="viewerAppearance">
+		<xs:complexType>
+			<xs:sequence minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="vap:setStyle" minOccurs="0"/>
+				<xs:element ref="vap:setInitialOutputState" minOccurs="0"/>
+				<xs:element ref="vap:setPageSetup" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<!-- setStyle -->
+	<xs:element name="setStyle">
+		<xs:annotation>
+			<xs:documentation>Sets the font properties of the specified output object.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="element" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="type">
+							<xs:simpleType>
+								<xs:restriction base="xs:NMTOKEN">
+									<xs:enumeration value="title"/>
+									<xs:enumeration value="page-title"/>
+									<xs:enumeration value="text"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attributeGroup ref="vst:block-properties"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="vst:block-properties"/>
+		</xs:complexType>
+	</xs:element>
+	<!-- setInitialOutputState -->
+	<xs:element name="setInitialOutputState">
+		<xs:annotation>
+			<xs:documentation>Sets the initial output state of the specified output object.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="element" maxOccurs="unbounded">
+					<xs:complexType>
+						<xs:attribute name="type">
+							<xs:simpleType>
+								<xs:restriction base="xs:NMTOKEN">
+									<xs:enumeration value="log"/>
+									<xs:enumeration value="warning"/>
+									<xs:enumeration value="note"/>
+									<xs:enumeration value="title"/>
+									<xs:enumeration value="page-title"/>
+									<xs:enumeration value="pivot-table"/>
+									<xs:enumeration value="text"/>
+									<xs:enumeration value="graph"/>
+									<xs:enumeration value="map"/>
+									<xs:enumeration value="tree"/>
+									<xs:enumeration value="model"/>
+									<xs:enumeration value="other"/>
+								</xs:restriction>
+							</xs:simpleType>
+						</xs:attribute>
+						<xs:attributeGroup ref="vst:block-properties"/>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="vst:block-properties"/>
+		</xs:complexType>
+	</xs:element>
+	<!-- setPageSetup -->
+	<xs:element name="setPageSetup">
+		<xs:annotation>
+			<xs:documentation>Sets the page setup for the viewer document.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<!-- For now, pageSetup should be added to the root heading. -->
+				<xs:element ref="vps:pageSetup" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

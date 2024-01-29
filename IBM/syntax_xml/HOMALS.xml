@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:/C:/temp/schema/SyntaxSchema.xsd"
+    Name="HOMALS" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ANALYSIS" EqualsSign="Optional"/>
+    <Subcommand Name="NOBSERVATIONS" EqualsSign="Optional"/>
+    <Subcommand Name="DIMENSION" EqualsSign="Optional"/>
+    <Subcommand Name="MAXITER" EqualsSign="Optional"/>
+    <Subcommand Name="CONVERGENCE" EqualsSign="Optional"/>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FREQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EIGEN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DISCRIM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="QUANT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OBJECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HISTORY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="NDIM" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+            <EnumValue Name="MAX"/>
+        </Parameter>
+        <Parameter Name="QUANT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OBJECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DISCRIM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional"/>
+    <Subcommand Name="MATRIX" EqualsSign="Optional">
+        <Parameter Name="OUT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

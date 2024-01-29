@@ -1,0 +1,61 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 4/25/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    xmlns:p1="http://xml.spss.com/spss/extension" Name="AIM" EndRequired="None" IsArbitrary="No"
+    Language="Syntax">
+    <Subcommand Name="CATEGORICAL" EqualsSign="None"/>
+    <Subcommand Name="CONTINUOUS" EqualsSign="None"/>
+    <Subcommand Name="CRITERIA" EqualsSign="None">
+        <Parameter Name="ADJUST" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BONFERRONI"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="CI" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="HIDENOTSIG" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+        <Parameter Name="SHOWREFLINE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="None">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="None">
+        <Parameter Name="CATEGORY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CLUSTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TYPE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BAR"/>
+            <EnumValue Name="PIE"/>
+        </Parameter>
+        <Parameter Name="ERRORBAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="IMPORTANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="X" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="GROUP"/>
+            <EnumValue Name="VARIABLE"/>
+        </Parameter>
+        <Parameter Name="Y" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="TEST"/>
+            <EnumValue Name="PVALUE"/>
+        </Parameter>
+    </Subcommand>
+</Command>

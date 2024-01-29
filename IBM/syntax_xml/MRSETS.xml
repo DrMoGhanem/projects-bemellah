@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/13/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:/C:/temp/schema/SyntaxSchema.xsd"
+    Name="MRSETS" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="MDGROUP" EqualsSign="None">
+        <Parameter Name="NAME" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LABEL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LABELSOURCE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="VARLABEL"/>
+        </Parameter>
+        <Parameter Name="CATEGORYLABELS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="VARLABELS"/>
+            <EnumValue Name="COUNTEDVALUES"/>
+        </Parameter>
+        <Parameter Name="VARIABLES" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="VALUE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MCGROUP" EqualsSign="None">
+        <Parameter Name="NAME" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LABEL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLES" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DELETE" EqualsSign="None">
+        <Parameter Name="NAME" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="DISPLAY" EqualsSign="None">
+        <Parameter Name="NAME" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+        </Parameter>
+    </Subcommand>
+</Command>

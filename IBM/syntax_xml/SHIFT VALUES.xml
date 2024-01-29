@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="SHIFT VALUES" EndRequired="None" IsArbitrary="No">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="VARIABLE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="RESULT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LEAD" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LAG" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SHIFT" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="VARIABLE" EqualsSign="Required">
+        <Parameter Name="RESULT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LEAD" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LAG" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SHIFT" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

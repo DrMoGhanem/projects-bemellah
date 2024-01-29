@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2013                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/23/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:SyntaxSchema.xsd"
+    Name="OUTPUT EXPORT" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="NAME" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CONTENTS" EqualsSign="None">
+        <Parameter Name="EXPORT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+            <EnumValue Name="VISIBLE"/>
+        </Parameter>
+        <Parameter Name="LAYERS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="PRINTSETTING"/>
+            <EnumValue Name="ALL"/>
+            <EnumValue Name="VISIBLE"/>
+        </Parameter>
+        <Parameter Name="MODELVIEWS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="PRINTSETTING"/>
+            <EnumValue Name="ALL"/>
+            <EnumValue Name="VISIBLE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="DOC" EqualsSign="None">
+        <Parameter Name="DOCUMENTFILE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="NOTESCAPTIONS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="WIDETABLES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="WRAP"/>
+            <EnumValue Name="SHRINK"/>
+            <EnumValue Name="ASIS"/>
+        </Parameter>
+        <Parameter Name="PAGESIZE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INCHES"/>
+            <EnumValue Name="MM"/>
+        </Parameter>
+        <Parameter Name="TOPMARGIN" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INCHES"/>
+            <EnumValue Name="MM"/>
+        </Parameter>
+        <Parameter Name="BOTTOMMARGIN" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INCHES"/>
+            <EnumValue Name="MM"/>
+        </Parameter>
+        <Parameter Name="LEFTMARGIN" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INCHES"/>
+            <EnumValue Name="MM"/>
+        </Parameter>
+        <Parameter Name="RIGHTMARGIN" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INCHES"/>
+            <EnumValue Name="MM"/>
+        </Parameter>
+        <Parameter Name="BREAKPOINTS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+      
+    </Subcommand>
+    <Subcommand Name="HTML" EqualsSign="None">
+        <Parameter Name="DOCUMENTFILE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="NOTESCAPTIONS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="IMAGEFORMAT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="JPG"/>
+            <EnumValue Name="BMP"/>
+            <EnumValue Name="PNG"/>
+        </Parameter>
+        <Parameter Name="STYLING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="INTERACTLAYERS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PDF" EqualsSign="None">
+        <Parameter Name="DOCUMENTFILE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="EMBEDBOOKMARKS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="EMBEDFONTS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PPT" EqualsSign="None">
+        <Parameter Name="DOCUMENTFILE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="NOTESCAPTIONS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="SLIDETITLES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="WIDETABLES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="WRAP"/>
+            <EnumValue Name="SHRINK"/>
+            <EnumValue Name="ASIS"/>
+        </Parameter>
+        <Parameter Name="SLIDESIZE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INCHES"/>
+            <EnumValue Name="MM"/>
+        </Parameter>
+        <Parameter Name="TOPMARGIN" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INCHES"/>
+            <EnumValue Name="MM"/>
+        </Parameter>
+        <Parameter Name="BOTTOMMARGIN" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INCHES"/>
+            <EnumValue Name="MM"/>
+        </Parameter>
+        <Parameter Name="LEFTMARGIN" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INCHES"/>
+            <EnumValue Name="MM"/>
+        </Parameter>
+        <Parameter Name="RIGHTMARGIN" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INCHES"/>
+            <EnumValue Name="MM"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="TEXT" EqualsSign="None">
+        <Parameter Name="DOCUMENTFILE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="ENCODING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="LOCALE"/>
+            <EnumValue Name="UTF8"/>
+            <EnumValue Name="UTF16"/>
+        </Parameter>
+        <Parameter Name="NOTESCAPTIONS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="COLUMNWIDTH" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="AUTOFIT"/>
+        </Parameter>
+        <Parameter Name="SEPARATOR" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SPACE"/>
+            <EnumValue Name="TAB"/>
+        </Parameter>
+        <Parameter Name="ROWBORDER" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="COLUMNBORDER" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="IMAGEFORMAT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="JPG"/>
+            <EnumValue Name="BMP"/>
+            <EnumValue Name="EMF"/>
+            <EnumValue Name="EPS"/>
+            <EnumValue Name="PNG"/>
+            <EnumValue Name="TIF"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="XLS" EqualsSign="None">
+        <Parameter Name="DOCUMENTFILE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="OPERATION" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="CREATEFILE"/>
+            <EnumValue Name="CREATESHEET"/>
+            <EnumValue Name="MODIFYSHEET"/>
+        </Parameter>
+        <Parameter Name="SHEET" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LOCATION" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="LASTCOLUMN"/>
+            <EnumValue Name="LASTROW"/>
+            <EnumValue Name="STARTCELL"/>
+        </Parameter>
+        <Parameter Name="NOTESCAPTIONS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="XLSX" EqualsSign="None">
+        <Parameter Name="DOCUMENTFILE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="OPERATION" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="CREATEFILE"/>
+            <EnumValue Name="CREATESHEET"/>
+            <EnumValue Name="MODIFYSHEET"/>
+        </Parameter>
+        <Parameter Name="SHEET" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LOCATION" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="LASTCOLUMN"/>
+            <EnumValue Name="LASTROW"/>
+            <EnumValue Name="STARTCELL"/>
+        </Parameter>
+        <Parameter Name="NOTESCAPTIONS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="XLSM" EqualsSign="None">
+        <Parameter Name="DOCUMENTFILE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="OPERATION" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="CREATEFILE"/>
+            <EnumValue Name="CREATESHEET"/>
+            <EnumValue Name="MODIFYSHEET"/>
+        </Parameter>
+        <Parameter Name="SHEET" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LOCATION" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="LASTCOLUMN"/>
+            <EnumValue Name="LASTROW"/>
+            <EnumValue Name="STARTCELL"/>
+        </Parameter>
+        <Parameter Name="NOTESCAPTIONS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="REPORT" EqualsSign="None" Occurrence="Optional">
+        <Parameter Name="DOCUMENTFILE" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="TITLE" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="FILENAME"/>
+        </Parameter>
+        <Parameter Name="FORMAT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="HTML"/>
+            <EnumValue Name="MHT"/>
+        </Parameter>
+        <Parameter Name="EXCLUDE" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="TEXTS"/>
+            <EnumValue Name="LOGS"/>
+            <EnumValue Name="NOTES"/>
+            <EnumValue Name="WARNINGS"/>
+        </Parameter>
+        <Parameter Name="RESTYLE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="URL" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+    </Subcommand>
+    <Subcommand Name="BMP" EqualsSign="None">
+        <Parameter Name="IMAGEROOT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PERCENTSIZE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="COMPRESS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="EMF" EqualsSign="None">
+        <Parameter Name="IMAGEROOT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PERCENTSIZE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EPS" EqualsSign="None">
+        <Parameter Name="IMAGEROOT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="WIDTH" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="PERCENT"/>
+            <EnumValue Name="CENTIMETERS"/>
+            <EnumValue Name="INCHES"/>
+            <EnumValue Name="POINTS"/>
+        </Parameter>
+        <Parameter Name="PREVIEW" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="FONTHANDLING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="REFERENCES"/>
+            <EnumValue Name="CURVES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="JPG" EqualsSign="None">
+        <Parameter Name="IMAGEROOT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PERCENTSIZE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="GRAYSCALE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PNG" EqualsSign="None">
+        <Parameter Name="IMAGEROOT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PERCENTSIZE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="DEPTH" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SCREEN"/>
+            <EnumValue Name="BLACKWHITE"/>
+            <EnumValue Name="GRAYS256"/>
+            <EnumValue Name="COLORS16"/>
+            <EnumValue Name="COLORS256"/>
+            <EnumValue Name="TRUE24BIT"/>
+            <EnumValue Name="TRUE32BIT"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="TIF" EqualsSign="None">
+        <Parameter Name="IMAGEROOT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PERCENTSIZE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

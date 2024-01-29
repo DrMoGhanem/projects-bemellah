@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 5/23/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:/C:/temp/schema/SyntaxSchema.xsd" Name="GLM" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="WSFACTOR" EqualsSign="Optional">
+        <Parameter Name="DEVIATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIMPLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DIFFERENCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HELMERT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REPEATED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POLYNOMIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SPECIAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MEASURE" EqualsSign="Optional"/>
+    <Subcommand Name="WSDESIGN" EqualsSign="Optional"/>
+    <Subcommand Name="RANDOM" EqualsSign="Optional"/>
+    <Subcommand Name="REGWGT" EqualsSign="Optional"/>
+    <Subcommand Name="METHOD" EqualsSign="Optional">
+        <Parameter Name="SSTYPE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="INTERCEPT" EqualsSign="Optional">
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="Optional">
+        <Parameter Name="EPS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALPHA" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="DESCRIPTIVE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HOMOGENEITY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PARAMETER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ETASQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RSSCP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GEF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OPOWER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TEST" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ETASQ"/>
+            <EnumValue Name="SSCP"/>
+            <EnumValue Name="LMATRIX"/>
+            <EnumValue Name="MMATRIX"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="SPREADLEVEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESIDUALS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PROFILE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="MEAN"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="TEST" EqualsSign="Optional">
+        <Parameter Name="VS" EqualsSign="None" ParameterType="Keyword"/>
+          <Parameter Name="DF" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="LMATRIX" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+     </Subcommand>
+    <Subcommand Name="CONTRAST" EqualsSign="None">
+        <Parameter Name="DEVIATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIMPLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DIFFERENCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HELMERT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REPEATED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POLYNOMIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SPECIAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MMATRIX" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="KMATRIX"  EqualsSign="Optional"/>
+    <Subcommand Name="POSTHOC" EqualsSign="Optional">
+        <Parameter Name="SNK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TUKEY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BTUKEY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DUNCAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SCHEFFE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DUNNETT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DUNNETTL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DUNNETTR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BONFERRONI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LSD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIDAK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GT2" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GABRIEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FREGW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="QREGW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="T2" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="T3" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="C" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WALLER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EEMEANS" EqualsSign="Optional">
+        <Parameter Name="TABLES" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="OVERALL"/>
+        </Parameter>
+        <Parameter Name="COMPARE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ADJ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LSD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BONFERRONI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIDAK" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="DESIGN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PRED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WPRED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ZRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEPRED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COOK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LEVER" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional">
+        <Parameter Name="COVB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EFFECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DESIGN" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DESIGN" EqualsSign="Optional">
+        <Parameter Name="INTERCEPT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="RANDOM" EqualsSign="Optional"/>
+    <Subcommand Name="EMMEANS" EqualsSign="Optional">
+        <Parameter Name="TABLES" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="OVERALL"/>
+            <EnumValue Name="WITH"/>
+            <EnumValue Name="MEAN"/>
+        </Parameter>
+        <Parameter Name="COMPARE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ADJ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LSD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BONFERRONI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIDAK" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

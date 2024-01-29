@@ -1,0 +1,53 @@
+﻿<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2014                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+  
+<Command xmlns="www.ibm.com/software/analytics/spss/xml/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="www.ibm.com/software/analytics/spss/xml/extension
+    www.ibm.com/software/analytics/spss/xml/extension/SyntaxSchema.xsd"
+    Name="SAVETM1" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="CONNECTION" Occurrence="Required">
+        <Parameter Name="PMSYSURL" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="MODE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SETCREDENTIALS"/>
+            <EnumValue Name="STOREDCREDENTIAL"/>
+        </Parameter>
+        <Parameter Name="NAMESPACE" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="SERVER" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="USERNAME" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="PASSWORD" EqualsSign="Required" ParameterType="Keyword">
+        </Parameter>
+        <Parameter Name="ENCRYPTED" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="CREDENTIAL" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+    </Subcommand>
+    <Subcommand Name="CUBE" Occurrence="Required">
+        <Parameter Name="NAME" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+    </Subcommand>
+    <Subcommand Name="MAPPINGS" Occurrence="Required">
+        <Parameter Name="MEASURE_FIELDS" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="DIMENSION_FIELDS" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="MAPTO" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="LEAF" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="SLICES" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="NEW" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+</Command>

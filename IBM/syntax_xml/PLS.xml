@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/19/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="PLS" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="MLEVEL" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="N"/>
+            <EnumValue Name="O"/>
+            <EnumValue Name="S"/>
+        </Parameter>
+        <Parameter Name="REFERENCE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="FIRST"/>
+            <EnumValue Name="LAST"/>
+        </Parameter>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ID" EqualsSign="None">
+        <Parameter Name="VARIABLE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MODEL" EqualsSign="None"/>
+    <Subcommand Name="OUTDATASET" EqualsSign="None">
+        <Parameter Name="CASES" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LATENTFACTORS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PREDICTORS" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="None">
+        <Parameter Name="LATENTFACTORS" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

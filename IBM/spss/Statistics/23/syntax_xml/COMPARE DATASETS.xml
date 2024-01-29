@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2013                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 2/07/12 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="COMPARE DATASETS" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="COMPDATASET" Occurrence="Required">
+        <Parameter Name="PASSWORD" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="VARIABLES " Occurrence="Required">
+        <Parameter Name="ALL" ParameterType="Keyword">
+        </Parameter>    
+    </Subcommand>
+    <Subcommand Name="CASEID" Occurrence="Optional"/>
+    <Subcommand Name="SAVE" Occurrence="Optional">
+        <Parameter Name="FLAGMISMATCHES" EqualsSign="Required" ParameterType="Keyword">
+             <EnumValue Name="YES"/>
+	   <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="VARNAME" EqualsSign="Required" ParameterType="VariableName"/>
+        <Parameter Name="MATCHDATASET" EqualsSign="Required" ParameterType="Keyword">
+             <EnumValue Name="YES"/>
+	   <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="MATCHNAME" EqualsSign="Required" ParameterType="DatasetName"/>
+        <Parameter Name="MISMATCHNAME" EqualsSign="Required" ParameterType="DatasetName"/>
+        <Parameter Name="MISMATCHDATASET" EqualsSign="Required" ParameterType="Keyword">
+             <EnumValue Name="YES"/>
+	   <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="MATCHPASS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="MISMATCHPASS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="ENCRYPTEDPW" EqualsSign="Required" ParameterType="Keyword">
+             <EnumValue Name="YES"/>
+	   <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="OUTPUT" Occurrence="Optional">
+        <Parameter Name="VARPROPERTIES" EqualsSign="Required" ParameterType="Keyword">
+             <EnumValue Name="NONE"/>
+	        <EnumValue Name="ALL"/>
+             <EnumValue Name="FORMAT"/>
+	        <EnumValue Name="MEASURE"/>
+             <EnumValue Name="LABEL"/>
+	        <EnumValue Name="VALUELABELS"/>
+             <EnumValue Name="COLUMNS"/>
+	        <EnumValue Name="MISSING"/>
+             <EnumValue Name="ALIGN"/>
+	        <EnumValue Name="ROLE"/>
+             <EnumValue Name="ATTRIBUTES"/>
+             <EnumValue Name="WIDTH"/>
+        </Parameter>
+        <Parameter Name="CASETABLE" EqualsSign="Required" ParameterType="Keyword">
+             <EnumValue Name="YES"/>
+	   <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="TABLELIMIT" EqualsSign="Required" ParameterType="Keyword">
+             <EnumValue Name="NONE"/>
+        </Parameter>
+    </Subcommand>  
+</Command>

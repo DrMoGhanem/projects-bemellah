@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/12/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:/C:/temp/schema/SyntaxSchema.xsd"
+    Name="MIXED" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="Optional">
+        <Parameter Name="CIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HCONVERGE" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ABSOLUTE"/>
+            <EnumValue Name="RELATIVE"/>
+        </Parameter>
+        <Parameter Name="LCONVERGE" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ABSOLUTE"/>
+            <EnumValue Name="RELATIVE"/>
+        </Parameter>
+        <Parameter Name="MXITER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MXSTEP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PCONVERGE" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ABSOLUTE"/>
+            <EnumValue Name="RELATIVE"/>
+        </Parameter>
+        <Parameter Name="SCORING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SINGULAR" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EMMEANS" EqualsSign="Optional">
+        <Parameter Name="TABLES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OVERALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COMPARE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REFCAT" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="FIRST"/>
+            <EnumValue Name="LAST"/>
+        </Parameter>
+        <Parameter Name="ADJ" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="LSD"/>
+            <EnumValue Name="BONFERRONI"/>
+            <EnumValue Name="SIDAK"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="FIXED" EqualsSign="Optional">
+        <Parameter Name="NOINT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SSTYPE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="METHOD" EqualsSign="Optional">
+        <Parameter Name="ML" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REML" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="CORB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COVB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CPS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DESCRIPTIVES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="G" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HISTORY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LMATRIX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="R" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SOLUTION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TESTCOV" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="RANDOM" EqualsSign="Optional">
+        <Parameter Name="SUBJECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COVTYPE" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="VC"/>
+            <EnumValue Name="AD1"/>
+            <EnumValue Name="AR1"/>
+            <EnumValue Name="ARH1"/>
+            <EnumValue Name="ARMA11"/>
+            <EnumValue Name="CS"/>
+            <EnumValue Name="CSH"/>
+            <EnumValue Name="CSR"/>
+            <EnumValue Name="DIAG"/>
+            <EnumValue Name="FA1"/>
+            <EnumValue Name="FAH1"/>
+            <EnumValue Name="HF"/>
+            <EnumValue Name="ID"/>
+            <EnumValue Name="TP"/>
+            <EnumValue Name="TPH"/>
+            <EnumValue Name="UN"/>
+            <EnumValue Name="UNR"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="REGWGT" EqualsSign="Optional"/>
+    <Subcommand Name="REPEATED" EqualsSign="Optional">
+        <Parameter Name="SUBJECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COVTYPE" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="DIAG"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="FIXPRED" EqualsSign="None" ParameterType="Keyword"/>            
+        <Parameter Name="PRED" EqualsSign="None" ParameterType="Keyword"/>            
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>            
+        <Parameter Name="SEFIXP" EqualsSign="None" ParameterType="Keyword"/>            
+        <Parameter Name="SEPRED" EqualsSign="None" ParameterType="Keyword"/>            
+        <Parameter Name="DFFIXP" EqualsSign="None" ParameterType="Keyword"/>            
+        <Parameter Name="DFPRED" EqualsSign="None" ParameterType="Keyword"/>            
+    </Subcommand>
+    <Subcommand Name="TEST" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+
+</Command>

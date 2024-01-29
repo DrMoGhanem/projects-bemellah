@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 4/25/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="CORRESPONDENCE" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="TABLE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="OVERWRITE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="TABLE" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SUPPLEMENTARY" EqualsSign="Optional">
+        <Parameter Name="ROW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLUMN" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EQUAL" EqualsSign="Optional">
+        <Parameter Name="ROW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLUMN" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MEASURE" EqualsSign="Optional">
+        <Parameter Name="CHISQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EUCLID" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STANDARDIZE" EqualsSign="Optional">
+        <Parameter Name="RMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RCMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RSUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CSUM" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DIMENSIONS" EqualsSign="Optional"/>
+    <Subcommand Name="NORMALIZATION" EqualsSign="Optional">
+        <Parameter Name="SYMMETRICAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PRINCIPAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RPRINCIPAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CPRINCIPAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="TABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RPROF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CPROF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RPOINTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CPOINTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RCONF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CCONF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PERMUTATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="NDIM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RPOINTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CPOINTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TRROWS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TRCOLUMNS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BIPLOT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional">
+        <Parameter Name="SCORE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

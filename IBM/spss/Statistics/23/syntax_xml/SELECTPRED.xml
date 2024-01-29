@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/21/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="SELECTPRED" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="MLEVEL" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="S"/>
+            <EnumValue Name="O"/>
+            <EnumValue Name="N"/>
+        </Parameter>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EXCEPT" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SCREENING" EqualsSign="None">
+        <Parameter Name="STATUS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="PCTMISSING" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PCTEQUAL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PCTUNEQUAL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="CV" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="None">
+        <Parameter Name="SIZE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="AUTO"/>
+        </Parameter>
+        <Parameter Name="PCUTOFF" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="RANKING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="PEARSONCHISQ"/>
+            <EnumValue Name="LRCHISQ"/>
+            <EnumValue Name="CRAMERSV"/>
+            <EnumValue Name="LAMBDA"/>
+        </Parameter>
+        <Parameter Name="TIMER" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SHOWUNSELECTED" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="None">
+        <Parameter Name="USERMISSING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="None">
+        <Parameter Name="CPS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXCLUDED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SELECTED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMMARY" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="PEARSONCHISQ"/>
+            <EnumValue Name="LRCHISQ"/>
+            <EnumValue Name="CRAMERSV"/>
+            <EnumValue Name="LAMBDA"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="None">
+        <Parameter Name="SUMMARY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

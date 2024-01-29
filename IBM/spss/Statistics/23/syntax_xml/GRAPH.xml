@@ -1,0 +1,459 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/12/08  -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:/C:/temp/schema/SyntaxSchema.xsd"
+    Name="GRAPH" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="TITLE" EqualsSign="Optional"/>
+    <Subcommand Name="SUBTITLE" EqualsSign="Optional"/>
+    <Subcommand Name="FOOTNOTE" EqualsSign="Optional"/>
+    <Subcommand Name="BAR" EqualsSign="Optional">
+        <Parameter Name="SIMPLE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="VALUE"/>
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="PCT"/>
+            <EnumValue Name="CUPCT"/>
+            <EnumValue Name="CUFREQ"/>
+            <EnumValue Name="MIMIMUM"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="CUSUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="GMEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="PLT"/>
+            <EnumValue Name="PGT"/>
+            <EnumValue Name="NLT"/>
+            <EnumValue Name="NGT"/>
+            <EnumValue Name="PIN"/>
+            <EnumValue Name="NIN"/>
+        </Parameter>
+        <Parameter Name="GROUPED" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="VALUE"/>
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="PCT"/>
+            <EnumValue Name="CUPCT"/>
+            <EnumValue Name="CUFREQ"/>
+            <EnumValue Name="MIMIMUM"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="CUSUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="GMEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="PLT"/>
+            <EnumValue Name="PGT"/>
+            <EnumValue Name="NLT"/>
+            <EnumValue Name="NGT"/>
+            <EnumValue Name="PIN"/>
+            <EnumValue Name="NIN"/>
+        </Parameter>
+        <Parameter Name="STACKED" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="VALUE"/>
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="PCT"/>
+            <EnumValue Name="CUPCT"/>
+            <EnumValue Name="CUFREQ"/>
+            <EnumValue Name="MIMIMUM"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="CUSUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="GMEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="PLT"/>
+            <EnumValue Name="PGT"/>
+            <EnumValue Name="NLT"/>
+            <EnumValue Name="NGT"/>
+            <EnumValue Name="PIN"/>
+            <EnumValue Name="NIN"/>
+        </Parameter>
+        <Parameter Name="RANGE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="VALUE"/>
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="PCT"/>
+            <EnumValue Name="CUPCT"/>
+            <EnumValue Name="CUFREQ"/>
+            <EnumValue Name="MIMIMUM"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="CUSUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="GMEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="PLT"/>
+            <EnumValue Name="PGT"/>
+            <EnumValue Name="NLT"/>
+            <EnumValue Name="NGT"/>
+            <EnumValue Name="PIN"/>
+            <EnumValue Name="NIN"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="LINE" EqualsSign="Optional">
+        <Parameter Name="SIMPLE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="VALUE"/>
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="PCT"/>
+            <EnumValue Name="CUPCT"/>
+            <EnumValue Name="CUFREQ"/>
+            <EnumValue Name="MIMIMUM"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="CUSUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="GMEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="PLT"/>
+            <EnumValue Name="PGT"/>
+            <EnumValue Name="NLT"/>
+            <EnumValue Name="NGT"/>
+            <EnumValue Name="PIN"/>
+            <EnumValue Name="NIN"/>
+        </Parameter>
+        <Parameter Name="MULTIPLE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="VALUE"/>
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="PCT"/>
+            <EnumValue Name="CUPCT"/>
+            <EnumValue Name="CUFREQ"/>
+            <EnumValue Name="MIMIMUM"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="CUSUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="GMEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="PLT"/>
+            <EnumValue Name="PGT"/>
+            <EnumValue Name="NLT"/>
+            <EnumValue Name="NGT"/>
+            <EnumValue Name="PIN"/>
+            <EnumValue Name="NIN"/>
+        </Parameter>
+        <Parameter Name="DROP" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="VALUE"/>
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="PCT"/>
+            <EnumValue Name="CUPCT"/>
+            <EnumValue Name="CUFREQ"/>
+            <EnumValue Name="MIMIMUM"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="CUSUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="GMEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="PLT"/>
+            <EnumValue Name="PGT"/>
+            <EnumValue Name="NLT"/>
+            <EnumValue Name="NGT"/>
+            <EnumValue Name="PIN"/>
+            <EnumValue Name="NIN"/>
+        </Parameter>
+        <Parameter Name="AREA" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="VALUE"/>
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="PCT"/>
+            <EnumValue Name="CUPCT"/>
+            <EnumValue Name="CUFREQ"/>
+            <EnumValue Name="MIMIMUM"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="CUSUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="GMEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="PLT"/>
+            <EnumValue Name="PGT"/>
+            <EnumValue Name="NLT"/>
+            <EnumValue Name="NGT"/>
+            <EnumValue Name="PIN"/>
+            <EnumValue Name="NIN"/>
+        </Parameter>
+        <Parameter Name="DIFFERENCE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="VALUE"/>
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="PCT"/>
+            <EnumValue Name="CUPCT"/>
+            <EnumValue Name="CUFREQ"/>
+            <EnumValue Name="MIMIMUM"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="CUSUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="GMEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="PLT"/>
+            <EnumValue Name="PGT"/>
+            <EnumValue Name="NLT"/>
+            <EnumValue Name="NGT"/>
+            <EnumValue Name="PIN"/>
+            <EnumValue Name="NIN"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PIE" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VALUE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PCT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CUPCT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CUFREQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MIMIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="N" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CUSUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GMEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PTILE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PLT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PGT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NLT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NGT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NIN" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PARETO" EqualsSign="Optional">
+        <Parameter Name="CUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOCUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIMPLE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="VALUE"/>
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="PCT"/>
+            <EnumValue Name="CUPCT"/>
+            <EnumValue Name="CUFREQ"/>
+            <EnumValue Name="MIMIMUM"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="CUSUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="GMEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="PLT"/>
+            <EnumValue Name="PGT"/>
+            <EnumValue Name="NLT"/>
+            <EnumValue Name="NGT"/>
+            <EnumValue Name="PIN"/>
+            <EnumValue Name="NIN"/>
+        </Parameter>
+        <Parameter Name="STACKED" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="VALUE"/>
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="PCT"/>
+            <EnumValue Name="CUPCT"/>
+            <EnumValue Name="CUFREQ"/>
+            <EnumValue Name="MIMIMUM"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="CUSUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="GMEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="PLT"/>
+            <EnumValue Name="PGT"/>
+            <EnumValue Name="NLT"/>
+            <EnumValue Name="NGT"/>
+            <EnumValue Name="PIN"/>
+            <EnumValue Name="NIN"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="HILO" EqualsSign="Optional">
+        <Parameter Name="SIMPLE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="VALUE"/>
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="PCT"/>
+            <EnumValue Name="CUPCT"/>
+            <EnumValue Name="CUFREQ"/>
+            <EnumValue Name="MIMIMUM"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="CUSUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="GMEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="PLT"/>
+            <EnumValue Name="PGT"/>
+            <EnumValue Name="NLT"/>
+            <EnumValue Name="NGT"/>
+            <EnumValue Name="PIN"/>
+            <EnumValue Name="NIN"/>
+        </Parameter>
+        <Parameter Name="GROUPED" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="VALUE"/>
+            <EnumValue Name="MIMIMUM"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="CUSUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="GMEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="PLT"/>
+            <EnumValue Name="PGT"/>
+            <EnumValue Name="NLT"/>
+            <EnumValue Name="NGT"/>
+            <EnumValue Name="PIN"/>
+            <EnumValue Name="NIN"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="HISTOGRAM" EqualsSign="Optional">
+        <Parameter Name="NORMAL" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SCATTERPLOT" EqualsSign="Optional">
+        <Parameter Name="BIVARIATE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="WITH"/>
+            <EnumValue Name="BY"/>
+            <EnumValue Name="IDENTIFY"/>
+        </Parameter>
+        <Parameter Name="OVERLAY" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="WITH"/>
+            <EnumValue Name="PAIR"/>
+            <EnumValue Name="BY"/>
+            <EnumValue Name="NAME"/>
+            <EnumValue Name="IDENTIFY"/>
+        </Parameter>
+        <Parameter Name="MATRIX" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="NAME"/>
+            <EnumValue Name="IDENTIFY"/>
+        </Parameter>
+        <Parameter Name="XYZ" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="WITH"/>
+            <EnumValue Name="BY"/>
+            <EnumValue Name="NAME"/>
+            <EnumValue Name="IDENTIFY"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="ERRORBAR" EqualsSign="Optional">
+        <Parameter Name="CI" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+        </Parameter>
+        <Parameter Name="STERRIR" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+        </Parameter>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PANEL" EqualsSign="None">
+        <Parameter Name="COLVAR" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="COLOP" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="CROSS"/>
+            <EnumValue Name="NEST"/>
+        </Parameter>
+        <Parameter Name="ROWVAR" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="ROWOP" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="CROSS"/>
+            <EnumValue Name="NEST"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="INTERVAL" EqualsSign="None">
+        <Parameter Name="CI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TEMPLATE" EqualsSign="Optional"/>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="LISTWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOREPORT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REPORT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/19/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="QUICK CLUSTER" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="LISTWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PAIRWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FILE" EqualsSign="Optional"/>
+    <Subcommand Name="INITIAL" EqualsSign="Optional"/>
+    <Subcommand Name="CRITERIA" EqualsSign="Optional">
+        <Parameter Name="CLUSTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOINITIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MXITER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CONVERGE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="METHOD" EqualsSign="Optional">
+        <Parameter Name="KMEANS" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="NOUPDATE"/>
+            <EnumValue Name="UPDATE"/>
+        </Parameter>
+        <Parameter Name="CLASSIFY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="INITIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CLUSTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DISTAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ANOVA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional"/>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="CLUSTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DISTANCE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

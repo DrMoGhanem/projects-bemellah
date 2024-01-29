@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema targetNamespace="http://xml.spss.com/spss/viewer/viewer-model"
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:vmd="http://xml.spss.com/spss/viewer/viewer-model" 
+    xmlns:vst="http://xml.spss.com/spss/viewer/viewer-style" 
+    xmlns:pmml="http://www.dmg.org/PMML-3_1" 
+    elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1">
+  <xs:annotation>
+    <xs:documentation xml:lang="en">
+      Copyright 2008 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties with
+      respect to your use of this specification, expressed, implied, or otherwise, including without
+      limitation, all warranties of merchantability and fitness for a particular purpose.  SPSS shall
+      not be liable for any special, incidental, or consequential damages, including without limitation
+      lost revenues or lost profits resulting from the use of the information herein.
+    </xs:documentation>
+  </xs:annotation>
+  
+  <!-- the root element -->
+  <xs:element name="model">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ViZml" minOccurs="0" maxOccurs="unbounded">
+          <xs:annotation>
+            <xs:documentation xml:lang="en">
+              The ViZml element will be used for persisting information about each view
+              that PMML can not persist.
+            </xs:documentation>
+          </xs:annotation>
+          <xs:complexType>
+            <xs:sequence>
+              <xs:any processContents="skip" minOccurs="0">
+                <xs:annotation>
+                  <xs:documentation xml:lang="en">
+                    The entire view structure will be represented using the ViZml schema.
+                    The visualization element is described in a seperate schema
+                    (see http://xml.spss.com/visualization/vizml-2.5.xsd)
+                    and thus will not be validated as part of this schema.
+                  </xs:documentation>
+                </xs:annotation>
+              </xs:any>
+            </xs:sequence>
+            <xs:attribute name="viewName" type="xs:string" use="required">
+              <xs:annotation>
+                <xs:documentation xml:lang="en">
+                   The name of the view.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="commandName" type="xs:string" use="required">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            The language invarient command name. This corresponds to the Command Identifier as seen 
+            in the OMS Control Panel UI.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="PMMLId" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            This id is used to identify the PMML needed to draw this model.
+            The id should be a globally unique id that refers to a separate PMML source
+            with the same id.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="PMMLContainerId" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            This id is used to identify the PMML container needed to draw this model.
+            The id should be a globally unique id that refers to a separate PMML source
+            with the same id.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="StatXMLContainerId" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            This id is used to identify the Stat XML Container needed to draw this model.
+            The id should be a globally unique id that refers to a separate PMML source
+            with the same id.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="printSetting">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            Specifies the print property for each model.
+          </xs:documentation>
+        </xs:annotation>
+        <xs:simpleType>
+          <xs:restriction base="xs:string">
+            <xs:enumeration value="all">
+              <xs:annotation>
+                <xs:documentation>
+                  All views in the model should be printed/exported.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+            <xs:enumeration value="visible">
+              <xs:annotation>
+                <xs:documentation>
+                  Only the visible views in the model should be printed/exported.
+                </xs:documentation>
+              </xs:annotation>
+            </xs:enumeration>
+          </xs:restriction>
+        </xs:simpleType>
+      </xs:attribute>
+      <xs:attribute name="VDPId" type="xs:positiveInteger">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            This id is used to identify the test data associated with this model.  The id
+            should be a globally unique id that refers to a separate datasource source with
+            the same id.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="mainViewName" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            This is the name of the view that should be presented as the main view.
+            If not specified, the model viewer code will determine the default main view name.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+      <xs:attribute name="auxiliaryViewName" type="xs:string">
+        <xs:annotation>
+          <xs:documentation xml:lang="en">
+            This is the name of the view that should be presented as the auxiliary view.
+            If not specified, the model viewer code will determine the default auxiliary
+            view name.
+          </xs:documentation>
+        </xs:annotation>
+      </xs:attribute>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

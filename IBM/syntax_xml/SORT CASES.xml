@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2012                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="www.ibm.com/software/analytics/spss/xml/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="www.ibm.com/software/analytics/spss/xml/extension
+    www.ibm.com/software/analytics/spss/xml/extension/SyntaxSchema.xsd"
+    Name="SORT CASES" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="A" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="D" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional" Occurrence="Optional">
+       <Parameter Name="INDEX" EqualsSign="Optional" ParameterType="Keyword">
+           <EnumValue Name="NO"/>
+           <EnumValue Name="YES"/>
+       </Parameter>
+       <Parameter Name="SIZE" EqualsSign="Optional" ParameterType="Keyword">
+           <EnumValue Name="DEFAULT"/>
+       </Parameter>
+    </Subcommand>
+    <Subcommand Name="PASSPROTECT" EqualsSign="None">
+        <Parameter Name="PASSWORD" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="ENCRYPTEDPW" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>  
+</Command>

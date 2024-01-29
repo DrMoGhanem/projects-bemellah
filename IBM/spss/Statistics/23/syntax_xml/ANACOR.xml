@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 4/28/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    xmlns:p1="http://xml.spss.com/spss/extension" Name="ANACOR" EndRequired="None" IsArbitrary="No"
+    Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="TABLE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="ALL"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="DIMENSION" EqualsSign="Optional"/>
+    <Subcommand Name="NORMALIZATION" EqualsSign="Optional">
+        <Parameter Name="CANONICAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PRINCIPAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RPRINCIPAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CPRINCIPAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="VARIANCES" EqualsSign="Optional">
+        <Parameter Name="SINGULAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROWS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLUMNS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="TABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PROFILES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SCORES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CONTRIBUTIONS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PERMUTATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="NDIM" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+            <EnumValue Name="MAX"/>
+        </Parameter>
+        <Parameter Name="ROWS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLOMNS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TRROWS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TRCOLUMNS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="JOINT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MATRIX" EqualsSign="Optional">
+        <Parameter Name="OUT" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="SCORE"/>
+        </Parameter>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

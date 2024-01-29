@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:vtb="http://xml.spss.com/spss/viewer/viewer-table" xmlns:vtl="http://xml.spss.com/spss/viewer/table-looks" targetNamespace="http://xml.spss.com/spss/viewer/viewer-table" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.1">
+	<!-- imports -->
+	<xs:import namespace="http://xml.spss.com/spss/viewer/table-looks" schemaLocation="table-looks-1.1.xsd"/>
+	<!-- the root element -->
+	<xs:element name="table">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">
+				Represents the SPSS Pivot Table object.
+			</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence minOccurs="0">
+				<xs:element ref="vtl:tableProperties" minOccurs="0"/>
+				<xs:element ref="vtb:tableStructure" minOccurs="0"/>
+			</xs:sequence>
+			<xs:attribute name="type" use="required">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="note"/>
+						<xs:enumeration value="warning"/>
+						<xs:enumeration value="table"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="commandName" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+              The language invarient command name. This corresponds to the Command Identifier as seen 
+              in the OMS Control Panel UI.
+          </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="subType" type="xs:string" use="required">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+             The language invarient table sub-type.  This is the table subtype as seen in that list
+             in the OMS Control Panel.  It is used to trigger Autoscripts, etc.
+          </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="VDPId" type="xs:positiveInteger" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+             This id is used to identify the data associated with this table.  This is an optional
+             attribute.  If used, the id should be a globally unique id that refers to
+             a separate datasource source with the same id.
+          </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="ViZmlSource" type="xs:positiveInteger" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+              This id is used to identify the vizualization XML needed to draw this table.  This is
+              an optional attribute.  If used, the id should be a globally unique id that refers to
+              a separate ViZml source with the same id.
+          </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="tableLookId" type="xs:string" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+             This id is used to identify the tableLook associated with this table.  Multiple
+             tables can refer to the same tableLook by associating the table with the same id.
+          </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="displayFiltering" type="xs:boolean" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+            If true, large tables will be chopped up into a series of smaller tables.  
+          </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="rowBreakNumber" type="xs:positiveInteger" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+            The number of rows of the table to display when displayFiltering is true.
+          </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="maxNumCells" type="xs:positiveInteger" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+            The maximum number of cells to display.  If displayFiltering is set to true,
+            this value will override the rowBreakNumber if the table is very wide and the
+            maximum number of cells is encountered before the rowBreakNumber is encountered.
+          </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="orphanTolerance" type="xs:positiveInteger" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+            This is the widow/orphan tolerance level, in rows.  When a table is split into
+            groups of rows, the rowBreakNumber value can be adjusted by the number of rows
+            specified by this attribute, as per the design, to try to limit the orphan or
+            widow rows.
+          </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="activePageId" type="xs:positiveInteger" use="optional">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">
+            The currently displayed page number.  When the table is split into groups of
+            rows, this identifies the currently displayed row group.
+          </xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="tableStructure">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:any processContents="skip" minOccurs="0" maxOccurs="1">
+					<xs:annotation>
+						<xs:documentation xml:lang="en">
+               The entire table structure will be represented using the ViZml schema.   
+               The visualization element is described in a seperate schema (see http://xml.spss.com/visualization/vizml-2.2.xsd )
+               and thus will not be validated as part of this schema.
+            </xs:documentation>
+					</xs:annotation>
+				</xs:any>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

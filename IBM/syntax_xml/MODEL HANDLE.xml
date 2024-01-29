@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/13/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:/C:/temp/schema/SyntaxSchema.xsd"
+    Name="MODEL HANDLE" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="NAME" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="FILE" EqualsSign="Optional" ParameterType="Keyword"/>        
+    </Subcommand>
+    <Subcommand Name="OPTIONS" EqualsSign="None">
+        <Parameter Name="MISSING" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="SUBSTITUTE"/>
+            <EnumValue Name="SYSMIS"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MAP" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MODELVARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

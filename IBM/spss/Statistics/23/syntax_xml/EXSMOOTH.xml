@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="EXSMOOTH  " EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MODEL" EqualsSign="Optional">
+        <Parameter Name="SINGLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HOLT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WINTERS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DM" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PERIOD" EqualsSign="Optional"/>
+    <Subcommand Name="SEASFACT" EqualsSign="Optional"/>
+    <Subcommand Name="ALPHA" EqualsSign="Optional">
+        <Parameter Name="GRID" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="GAMMA" EqualsSign="Optional">
+        <Parameter Name="GRID" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DELTA" EqualsSign="Optional">
+        <Parameter Name="GRID" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PHI" EqualsSign="Optional">
+        <Parameter Name="GRID" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="INITIAL" EqualsSign="Optional">
+        <Parameter Name="CALCULATE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="APPLY" EqualsSign="Optional"/>
+</Command>

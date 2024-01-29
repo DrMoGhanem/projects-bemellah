@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="ARIMA" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MODEL" EqualsSign="Optional">
+        <Parameter Name="CONSTANT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOCONSTANT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOLOG" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LG10" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOG" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LN" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="P" EqualsSign="Optional"/>
+    <Subcommand Name="D" EqualsSign="Optional"/>
+    <Subcommand Name="Q" EqualsSign="Optional"/>
+    <Subcommand Name="SP" EqualsSign="Optional"/>
+    <Subcommand Name="SD" EqualsSign="Optional"/>
+    <Subcommand Name="SQ" EqualsSign="Optional"/>
+    <Subcommand Name="AR" EqualsSign="Optional"/>
+    <Subcommand Name="MA" EqualsSign="Optional"/>
+    <Subcommand Name="SAR" EqualsSign="Optional"/>
+    <Subcommand Name="SMA" EqualsSign="Optional"/>
+    <Subcommand Name="REG" EqualsSign="Optional"/>
+    <Subcommand Name="CON" EqualsSign="Optional"/>
+    <Subcommand Name="MXITER" EqualsSign="Optional"/>
+    <Subcommand Name="MXLAMB" EqualsSign="Optional"/>
+    <Subcommand Name="SSQPCT" EqualsSign="Optional"/>
+    <Subcommand Name="PAREPS" EqualsSign="Optional"/>
+    <Subcommand Name="CINPCT" EqualsSign="Optional"/>
+    <Subcommand Name="APPLY" EqualsSign="Optional">
+        <Parameter Name="SPECIFICATIONS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INITIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FIT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FORECAST" EqualsSign="Optional">
+        <Parameter Name="EXACT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CLS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AUTOINIT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

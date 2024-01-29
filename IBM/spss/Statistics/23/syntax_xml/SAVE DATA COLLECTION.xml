@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/21/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="SAVE DATA COLLECTION" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="OUTFILE" EqualsSign="Optional"/>
+    <Subcommand Name="METADATA" EqualsSign="Optional"/>
+    <Subcommand Name="UNSELECTED" EqualsSign="Optional">
+        <Parameter Name="RETAIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DELETE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="KEEP" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DROP" EqualsSign="Optional"/>
+    <Subcommand Name="MAP" EqualsSign="None"/>
+</Command>

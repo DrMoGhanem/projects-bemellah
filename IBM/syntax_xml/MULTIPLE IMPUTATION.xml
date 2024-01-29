@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/23/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="MULTIPLE IMPUTATION" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="IMPUTE" EqualsSign="None">
+        <Parameter Name="METHOD" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="AUTO"/>
+            <EnumValue Name="FCS"/>
+            <EnumValue Name="MONOTONE"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="NIMPUTATIONS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SCALEMODEL" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="LINEAR"/>
+            <EnumValue Name="PMM"/>
+        </Parameter>
+        <Parameter Name="INTERACTIONS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="TWOWAY"/>
+        </Parameter>
+        <Parameter Name="MAXPCTMISSING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="MAXCASEDRAWS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MAXPARAMDRAWS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MAXITER" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SINGULAR" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MAXMODELPARAM" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CONSTRAINTS" EqualsSign="None">
+        <Parameter Name="MIN" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="MAX" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="RND" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="ROLE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="BOTH"/>
+            <EnumValue Name="DEP"/>
+            <EnumValue Name="IND"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MISSINGSUMMARIES" EqualsSign="None">
+        <Parameter Name="OVERALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLES" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="MAXVARS"/>
+            <EnumValue Name="MINPCTMISSING"/>
+        </Parameter>
+        <Parameter Name="PATTERNS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="IMPUTATIONSUMMARIES" EqualsSign="None">
+        <Parameter Name="MODELS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DESCRIPTIVES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ANALYSISWEIGHT" EqualsSign="None"/>
+    <Subcommand Name="OUTFILE" EqualsSign="None">
+        <Parameter Name="IMPUTATIONS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="FCSITERATIONS" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

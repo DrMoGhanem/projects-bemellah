@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 4/28/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+ xmlns:p1="http://xml.spss.com/spss/extension"
+ Name="LOGLINEAR"
+ EndRequired="None"
+ IsArbitrary="No"
+ Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CWEIGHT" EqualsSign="Optional"/>
+    <Subcommand Name="GRESID" EqualsSign="Optional"/>
+    <Subcommand Name="CONTRAST" EqualsSign="None">
+        <Parameter Name="DEVIATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DIFFERENCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HELMERT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIMPLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REPEATED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POLYNOMIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BASIS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SPECIAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="Optional">
+        <Parameter Name="CONVERGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ITERATE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DELTA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="FREQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DESIGN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ESTIM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NORMPROB" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DESIGN" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    
+</Command>

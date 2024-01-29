@@ -1,0 +1,174 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2013                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/21/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="SHOW" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BLANKS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BOX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BLOCK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CCA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CCB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CCC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CCD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CACHE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CTEMPLATE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DECIMAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFOLANG" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DIRECTORY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DIGITGROUPING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ENVIRONMENT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EPOCH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ERRORS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXTPATHS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FILTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FORMAT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HEADER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LENGTH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LICENSE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOCALE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MESSAGES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEXPAND" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MITERATE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MNEST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MPRINT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MXCELLS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MXERRS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MXLOOPS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MXWARNS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="N" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OATTRS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OLANG" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ONUMBERS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OVARS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PLUGINS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PRINTBACK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REPDEFER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESULTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SCALEMIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SCOMPRESSION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SMALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SORT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SYSMIS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLERENDER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TFIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TLOOK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TMSRECORDING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TNUMBERS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TVARS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UNDEFINED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UNICODE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VERSION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WEIGHT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WIDTH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WORKSPACE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="XVERSION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="$VARS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FUZZBITS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MIOUTPUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CELLSBREAK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROWSBREAK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TOLERANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HANDLES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ZCOMPRESSION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CMPTRANS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SPLIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RNG" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ODISPLAY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BASETEXTDIRECTION" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ALL" EqualsSign="None"/>
+    <Subcommand Name="BLANKS" EqualsSign="None"/>
+    <Subcommand Name="BOX" EqualsSign="None"/>
+    <Subcommand Name="BLOCK" EqualsSign="None"/>
+    <Subcommand Name="CC" EqualsSign="None"/>
+    <Subcommand Name="CCA" EqualsSign="None"/>
+    <Subcommand Name="CCB" EqualsSign="None"/>
+    <Subcommand Name="CCC" EqualsSign="None"/>
+    <Subcommand Name="CCD" EqualsSign="None"/>
+    <Subcommand Name="CCE" EqualsSign="None"/>
+    <Subcommand Name="CACHE" EqualsSign="None"/>
+    <Subcommand Name="CTEMPLATE" EqualsSign="None"/>
+    <Subcommand Name="DIGITGROUPING" EqualsSign="None"/>
+    <Subcommand Name="DECIMAL" EqualsSign="None"/>
+    <Subcommand Name="DEFOLANG" EqualsSign="None"/>
+    <Subcommand Name="DIRECTORY" EqualsSign="None"/>
+    <Subcommand Name="ENVIRONMENT" EqualsSign="None"/>
+    <Subcommand Name="EPOCH" EqualsSign="None"/>
+    <Subcommand Name="ERRORS" EqualsSign="None"/>
+    <Subcommand Name="EXTPATHS" EqualsSign="None"/>
+    <Subcommand Name="FILTER" EqualsSign="None"/>
+    <Subcommand Name="FORMAT" EqualsSign="None"/>
+    <Subcommand Name="HEADER" EqualsSign="None"/>
+    <Subcommand Name="LENGTH" EqualsSign="None"/>
+    <Subcommand Name="LICENSE" EqualsSign="None"/>
+    <Subcommand Name="LOCALE" EqualsSign="None"/>
+    <Subcommand Name="MESSAGES" EqualsSign="None"/>
+    <Subcommand Name="MEXPAND" EqualsSign="None"/>
+    <Subcommand Name="MITERATE" EqualsSign="None"/>
+    <Subcommand Name="MNEST" EqualsSign="None"/>
+    <Subcommand Name="MPRINT" EqualsSign="None"/>
+    <Subcommand Name="MXCELLS" EqualsSign="None"/>
+    <Subcommand Name="MXERRS" EqualsSign="None"/>
+    <Subcommand Name="MXLOOPS" EqualsSign="None"/>
+    <Subcommand Name="MXWARNS" EqualsSign="None"/>
+    <Subcommand Name="N" EqualsSign="None"/>
+    <Subcommand Name="OATTRS" EqualsSign="None"/>
+    <Subcommand Name="OLANG" EqualsSign="None"/>
+    <Subcommand Name="ONUMBERS" EqualsSign="None"/>
+    <Subcommand Name="OVARS" EqualsSign="None"/>
+    <Subcommand Name="PLUGINS" EqualsSign="None"/>
+    <Subcommand Name="PRINTBACK" EqualsSign="None"/>
+    <Subcommand Name="REPDEFER" EqualsSign="None"/>
+    <Subcommand Name="RESULTS" EqualsSign="None"/>
+    <Subcommand Name="SCALEMIN" EqualsSign="None"/>
+    <Subcommand Name="SCOMPRESSION" EqualsSign="None"/>
+    <Subcommand Name="SEED" EqualsSign="None"/>
+    <Subcommand Name="SMALL" EqualsSign="None"/>
+    <Subcommand Name="SORT" EqualsSign="None"/>
+    <Subcommand Name="SYSMIS" EqualsSign="None"/>
+    <Subcommand Name="TABLERENDER" EqualsSign="None"/>
+    <Subcommand Name="TFIT" EqualsSign="None"/>
+    <Subcommand Name="TLOOK" EqualsSign="None"/>
+    <Subcommand Name="TMSRECORDING" EqualsSign="None"/>
+    <Subcommand Name="TNUMBERS" EqualsSign="None"/>
+    <Subcommand Name="TVARS" EqualsSign="None"/>
+    <Subcommand Name="UNDEFINED" EqualsSign="None"/>
+    <Subcommand Name="UNICODE" EqualsSign="None"/>
+    <Subcommand Name="VERSION" EqualsSign="None"/>
+    <Subcommand Name="WEIGHT" EqualsSign="None"/>
+    <Subcommand Name="WIDTH" EqualsSign="None"/>
+    <Subcommand Name="WORKSPACE" EqualsSign="None"/>
+    <Subcommand Name="XVERSION" EqualsSign="None"/>
+    <Subcommand Name="$VARS" EqualsSign="None"/>
+    <Subcommand Name="FUZZBITS" EqualsSign="None"/>
+    <Subcommand Name="MIOUTPUT" EqualsSign="None"/>
+    <Subcommand Name="CELLSBREAK" EqualsSign="None"/>
+    <Subcommand Name="ROWSBREAK" EqualsSign="None"/>
+    <Subcommand Name="TOLERANCE" EqualsSign="None"/>
+    <Subcommand Name="HANDLES" EqualsSign="None"/>
+    <Subcommand Name="ZCOMPRESSION" EqualsSign="None"/>
+    <Subcommand Name="CMPTRANS" EqualsSign="None"/>
+    <Subcommand Name="SPLIT" EqualsSign="None"/>
+    <Subcommand Name="RNG" EqualsSign="None"/>
+    <Subcommand Name="ODISPLAY" EqualsSign="None"/>
+</Command>

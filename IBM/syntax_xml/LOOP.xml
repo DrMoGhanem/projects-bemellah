@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Checked 4/28/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    xmlns:p1="http://xml.spss.com/spss/extension" Name="LOOP" EndRequired="Block"
+    EndStatement="END LOOP" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="TO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="IF" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="EQ"/>
+            <EnumValue Name="NE"/>
+            <EnumValue Name="LT"/>
+            <EnumValue Name="LE"/>
+            <EnumValue Name="GT"/>
+            <EnumValue Name="GE"/>
+            <EnumValue Name="AND"/>
+            <EnumValue Name="OR"/>
+            <EnumValue Name="NOT"/>
+        </Parameter>
+    </Subcommand>
+</Command>

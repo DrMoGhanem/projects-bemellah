@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/19/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="PROXSCAL" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="TABLE" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SHAPE" EqualsSign="Optional">
+        <Parameter Name="LOWER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UPPER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BOTH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="INITIAL" EqualsSign="Optional">
+        <Parameter Name="SIMPLEX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TORGERSON" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RANDOM" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="WEIGHTS" EqualsSign="Optional"/>
+    <Subcommand Name="CONDITION" EqualsSign="Optional">
+        <Parameter Name="MATRIX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UNCONDITIONAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TRANSFORMATION" EqualsSign="Optional">
+        <Parameter Name="RATIO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INTERVAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ORDINAL" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="UNTIE"/>
+            <EnumValue Name="KEEPTIES"/>
+        </Parameter>
+        <Parameter Name="SPLINE" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="DEGREE"/>
+            <EnumValue Name="INKNOT"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PROXIMITIES" EqualsSign="Optional">
+        <Parameter Name="DISSIMILARITIES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIMILARITIES" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MODEL" EqualsSign="Optional">
+        <Parameter Name="IDENTITY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WEIGHTED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GENERALIZED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REDUCED" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="RESTRICTIONS" EqualsSign="Optional">
+        <Parameter Name="COORDINATES" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="VARIABLES" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+            <EnumValue Name="INTERVAL"/>
+            <EnumValue Name="NOMINAL"/>
+            <EnumValue Name="ORDINAL"/>
+            <EnumValue Name="UNTIE"/>
+            <EnumValue Name="KEEPTIES"/>
+            <EnumValue Name="SPLINE"/>
+            <EnumValue Name="INKNOT"/>
+            <EnumValue Name="DEGREE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="ACCELERATION" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="Optional">
+        <Parameter Name="DIMENSIONS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXITER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DIFFSTRESS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MINSTRESS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INPUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RANDOM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HISTORY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STRESS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DECOMPOSITION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COMMON" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DISTANCES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WEIGHTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INDIVIDUAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TRANSFORMATIONS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORRELATIONS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STRESS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COMMON" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WEIGHTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORRELATIONS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INDIVIDUAL" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="TRANSFORMATIONS" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="RESIDUALS" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="VARIABLES" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional">
+        <Parameter Name="COMMON" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WEIGHTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DISTANCES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TRANSFORMATIONS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLES" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MATRIX" EqualsSign="Optional">
+        <Parameter Name="IN" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

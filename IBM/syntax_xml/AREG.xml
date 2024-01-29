@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="AREG" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="METHOD" EqualsSign="Optional">
+        <Parameter Name="PW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ML" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CONSTANT" EqualsSign="None"/>
+    <Subcommand Name="NOCONSTANT" EqualsSign="None"/>
+    <Subcommand Name="RHO" EqualsSign="Optional"/>
+    <Subcommand Name="MXITER" EqualsSign="Optional"/>
+    <Subcommand Name="APPLY" EqualsSign="Optional">
+        <Parameter Name="SPECIFICATIONS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INITIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FIT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

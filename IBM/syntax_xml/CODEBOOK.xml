@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/23/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="CODEBOOK" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="VARINFO" EqualsSign="None">
+        <Parameter Name="POSITION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LABEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TYPE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FORMAT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEASURE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ATTRIBUTES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VALUELABELS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MISSING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESERVEDATTRIBUTES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROLE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FILEINFO" EqualsSign="None">
+        <Parameter Name="NAME" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOCATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CASECOUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LABEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ATTRIBUTES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DOCUMENTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WEIGHT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESERVEDATTRIBUTES" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STATISTICS" EqualsSign="None">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PERCENT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="QUARTILES" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OPTIONS" EqualsSign="None">
+        <Parameter Name="MAXCATS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="VARORDER" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="FILE"/>
+            <EnumValue Name="ALPHA"/>
+            <EnumValue Name="VARLIST"/>
+            <EnumValue Name="MEASURE"/>
+            <EnumValue Name="ATTRIBUTE"/>
+        </Parameter>
+        <Parameter Name="SORT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ASCENDING"/>
+            <EnumValue Name="DESCENDING"/>
+        </Parameter>
+    </Subcommand>
+</Command>

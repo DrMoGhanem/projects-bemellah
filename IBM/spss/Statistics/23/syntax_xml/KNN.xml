@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/23/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="KNN" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="MLEVEL" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="S"/>
+            <EnumValue Name="O"/>
+            <EnumValue Name="N"/>
+        </Parameter>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EXCEPT" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Required"/>
+    </Subcommand>
+    <Subcommand Name="CASELABELS" EqualsSign="None">
+        <Parameter Name="VARIABLE" EqualsSign="Required"/>
+    </Subcommand>
+    <Subcommand Name="FOCALCASES" EqualsSign="None">
+        <Parameter Name="VARIABLE" EqualsSign="Required"/>
+    </Subcommand>
+    <Subcommand Name="RESCALE" EqualsSign="None">
+        <Parameter Name="COVARIATE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ADJNORMALIZED"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PARTITION" EqualsSign="None">
+        <Parameter Name="TRAINING" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="HOLDOUT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MODEL" EqualsSign="None">
+        <Parameter Name="METRIC" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EUCLID"/>
+            <EnumValue Name="CITYBLOCK"/>
+        </Parameter>
+        <Parameter Name="NEIGHBORS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="FIXED"/>
+            <EnumValue Name="K"/>
+            <EnumValue Name="AUTO"/>
+            <EnumValue Name="KMIN"/>
+            <EnumValue Name="KMAX"/>
+        </Parameter>
+        <Parameter Name="FEATURES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+            <EnumValue Name="AUTO"/>
+            <EnumValue Name="FORCE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="None">
+        <Parameter Name="NUMFEATURES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="AUTO"/>
+            <EnumValue Name="FIXED"/>
+            <EnumValue Name="ERRORRATIO"/>
+            <EnumValue Name="MINCHANGE"/>
+        </Parameter>
+        <Parameter Name="PREDICTED" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="MEDIAN"/>
+        </Parameter>
+        <Parameter Name="WEIGHTFEATURES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CROSSVALIDATION" EqualsSign="None">
+        <Parameter Name="FOLDS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="None">
+        <Parameter Name="USERMISSING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="VIEWMODEL" EqualsSign="None">
+        <Parameter Name="DISPLAY" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="None">
+        <Parameter Name="CPS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="None">
+        <Parameter Name="PREDVAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PREDPROB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FOLD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXCAT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PARTITION" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="None">
+        <Parameter Name="MODEL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="FOCALCASES" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

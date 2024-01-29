@@ -1,0 +1,162 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 4/28/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+ xmlns:p1="http://xml.spss.com/spss/extension"
+ Name="REGRESSION"
+ EndRequired="None"
+ IsArbitrary="No">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="Optional">
+        <Parameter Name="MATRIX" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="IN"/>
+            <EnumValue Name="OUT"/>
+        </Parameter>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="VARIABLES" EqualsSign="Optional">
+        <Parameter Name="COLLECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DESCRIPTIVES" EqualsSign="Optional">
+        <Parameter Name="DEFAULTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="XPROD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIG" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="N" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BADCORR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SELECT" EqualsSign="Optional"/>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="LISTWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PAIRWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEANSUBSTITUTION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="REGWGT" EqualsSign="Optional"/>
+    <Subcommand Name="STATISTICS" EqualsSign="Optional">
+        <Parameter Name="DEFAULTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="R" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COEFF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ANOVA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OUTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ZPP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LABEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="F" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BCOV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="XTX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLLIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TOL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SELECTION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CHANGE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="Optional">
+        <Parameter Name="DEFAULTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TOLERANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXSTEPS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FOUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CIN" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="NOORIGIN" EqualsSign="None"/>
+    <Subcommand Name="ORIGIN" EqualsSign="None"/>
+    <Subcommand Name="DEPENDENT" EqualsSign="Optional"/>
+    <Subcommand Name="METHOD" EqualsSign="Optional">
+        <Parameter Name="STEPWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FORWARD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BACKWARD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ENTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REMOVE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TEST" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="RESIDUALS" EqualsSign="Optional">
+        <Parameter Name="DEFAULTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DURBIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OUTLIERS" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ZRESID"/>
+        </Parameter>
+        <Parameter Name="ID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NORMPROB" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ZRESID"/>
+        </Parameter>
+        <Parameter Name="HISTOGRAM" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ZRESID"/>
+        </Parameter>
+        <Parameter Name="SIZE" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="SEPARATE"/>
+            <EnumValue Name="POOLED"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CASEWISE" EqualsSign="Optional">
+        <Parameter Name="DEFAULTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OUTLIERS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PLOT" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ZRESID"/>
+        </Parameter>
+        <Parameter Name="DEPENDENT PRED RESID" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SCATTERPLOT" EqualsSign="Optional"/>
+    <Subcommand Name="PARTIALPLOT" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional">
+        <Parameter Name="COVB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PARAMETER" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="PRED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ADJPRED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAHAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ZPRED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SDRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COOK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ZRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEPRED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LEVER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DFBETA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SDBETA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DFFIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SDFFIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COVRATIO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MCIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ICIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DFFIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SDFIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DFBETA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SDBETA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COVRATIO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FITS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TEMPLATE" EqualsSign="Optional"/>
+</Command>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/22/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="XGRAPH" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="CHART" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="BY"/>
+            <EnumValue Name="VALUE"/>
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="PCT"/>
+            <EnumValue Name="CUPCT"/>
+            <EnumValue Name="CUFREQ"/>
+            <EnumValue Name="MINIMUM"/>
+            <EnumValue Name="MAXIMUM"/>
+            <EnumValue Name="VALIDN"/>
+            <EnumValue Name="SUM"/>
+            <EnumValue Name="CSUM"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="STDDEV"/>
+            <EnumValue Name="VARIANCE"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="GMEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="PTILE"/>
+            <EnumValue Name="GPTILE"/>
+            <EnumValue Name="PLT"/>
+            <EnumValue Name="PGT"/>
+            <EnumValue Name="NLT"/>
+            <EnumValue Name="NGT"/>
+            <EnumValue Name="PIN"/>
+            <EnumValue Name="NIN"/>
+            <EnumValue Name="$CASENUM"/>
+            <EnumValue Name="COLOR"/>
+            <EnumValue Name="PATTERN"/>
+            <EnumValue Name="LABEL"/>
+            <EnumValue Name="BAR"/>
+            <EnumValue Name="HISTOBAR"/>
+            <EnumValue Name="POINT"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="BIN" EqualsSign="None">
+        <Parameter Name="START" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="AUTO"/>
+        </Parameter>
+        <Parameter Name="SIZE" ParameterType="Keyword">
+            <EnumValue Name="AUTO"/>
+            <EnumValue Name="WIDTH"/>
+            <EnumValue Name="COUNT"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="DISPLAY" EqualsSign="None">
+        <Parameter Name="DOT" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ASYMMETRIC"/>
+            <EnumValue Name="SYMMETRIC"/>
+            <EnumValue Name="FLAT"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="DISTRIBUTION" EqualsSign="None">
+        <Parameter Name="TYPE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NORMAL"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="COORDINATE" EqualsSign="None">
+        <Parameter Name="SPLIT" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="ERRORBAR" EqualsSign="None">
+        <Parameter Name="CI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="None">
+        <Parameter Name="USE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="LISTWISE"/>
+            <EnumValue Name="VARIABLEWISE"/>
+        </Parameter>
+        <Parameter Name="REPORT" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PANEL" EqualsSign="None">
+        <Parameter Name="COLVAR" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="COLOP" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="CROSS"/>
+            <EnumValue Name="NEST"/>
+        </Parameter>
+        <Parameter Name="ROWVAR" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="ROWOP" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="CROSS"/>
+            <EnumValue Name="NEST"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="TEMPLATE" EqualsSign="None">
+        <Parameter Name="FILE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TITLES" EqualsSign="None">
+        <Parameter Name="TITLE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="SUBTITLE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="FOOTNOTE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

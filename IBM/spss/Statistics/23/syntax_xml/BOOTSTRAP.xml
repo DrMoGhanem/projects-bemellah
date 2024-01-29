@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    xmlns:p1="http://xml.spss.com/spss/extension" Name="BOOTSTRAP" EndRequired="None"
+    IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="SAMPLING">
+        <Parameter Name="METHOD" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SIMPLE"/>
+            <EnumValue Name="STRATIFIED"/>
+            <EnumValue Name="RESIDUAL"/>
+            <EnumValue Name="WILD"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="VARIABLES">
+        <Parameter Name="TARGET" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="INPUT" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA">
+        <Parameter Name="CILEVEL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="CITYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="PERCENTILE"/>
+            <EnumValue Name="BCA"/>
+        </Parameter>
+        <Parameter Name="NSAMPLES" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING">
+        <Parameter Name="USERMISSING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+    </Subcommand>
+</Command>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+  <!-- updated 4/28/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    xmlns:p1="http://xml.spss.com/spss/extension" Name="2SLS" EndRequired="None" IsArbitrary="No"
+    Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="EQUATION" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EQUATION" EqualsSign="Optional"/>
+    <Subcommand Name="INSTRUMENTS" EqualsSign="Optional"/>
+    <Subcommand Name="ENDOGENOUS" EqualsSign="Optional"/>
+    <Subcommand Name="CONSTANT" EqualsSign="None"/>
+    <Subcommand Name="NOCONSTANT" EqualsSign="None"/>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="COV" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="PRED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="APPLY" EqualsSign="Optional"/>
+</Command>

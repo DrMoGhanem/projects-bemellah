@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/12/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:/C:/temp/schema/SyntaxSchema.xsd"
+    Name="KM" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="BY" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STATUS" EqualsSign="Optional">
+        <Parameter Name="EVENT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOST" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STRATA" EqualsSign="Optional"/>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="SURVIVAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOGSURV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HAZARD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OMS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ID" EqualsSign="Optional"/>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="TABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PERCENTILES" EqualsSign="Optional"/>
+    <Subcommand Name="TEST" EqualsSign="Optional">
+        <Parameter Name="LOGRANK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BRESLOW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TARONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="COMPARE" EqualsSign="Optional">
+        <Parameter Name="OVERALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POOLED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PAIRWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STRATA" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TREND" EqualsSign="Optional">
+        <Parameter Name="METRIC" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="SURVIVAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HAZARD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CUMEVENT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

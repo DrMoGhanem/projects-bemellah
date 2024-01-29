@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/1/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="GENLIN" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="REFERENCE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="LAST"/>
+            <EnumValue Name="FIRST"/>
+        </Parameter>
+        <Parameter Name="ORDER" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ASCENDING"/>
+            <EnumValue Name="DESCENDING"/>
+            <EnumValue Name="DATA"/>
+        </Parameter>
+        <Parameter Name="OF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MODEL" EqualsSign="None">
+        <Parameter Name="INTERCEPT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="OFFSET" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SCALEWEIGHT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="DISTRIBUTION" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="BINOMIAL"/>
+            <EnumValue Name="GAMMA"/>
+            <EnumValue Name="IGAUSS"/>
+            <EnumValue Name="MULTINOMIAL"/>
+            <EnumValue Name="NEGBIN"/>
+            <EnumValue Name="NORMAL"/>
+            <EnumValue Name="POISSON"/>
+            <EnumValue Name="TWEEDIE"/>
+        </Parameter>
+        <Parameter Name="LINK" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="CLOGLOG"/>
+            <EnumValue Name="IDENTITY"/>
+            <EnumValue Name="LOG"/>
+            <EnumValue Name="LOGC"/>
+            <EnumValue Name="LOGIT"/>
+            <EnumValue Name="NEGBIN"/>
+            <EnumValue Name="NLOGLOG"/>
+            <EnumValue Name="ODDSPOWER"/>
+            <EnumValue Name="POWER"/>
+            <EnumValue Name="PROBIT"/>
+            <EnumValue Name="CUMCAUCHIT"/>
+            <EnumValue Name="CUMCLOGLOG"/>
+            <EnumValue Name="CUMLOGIT"/>
+            <EnumValue Name="CUMNLOGLOG"/>
+            <EnumValue Name="CUMPROBIT"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="None">
+        <Parameter Name="ANALYSISTYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+            <EnumValue Name="WALD"/>
+            <EnumValue Name="LR"/>
+        </Parameter>
+        <Parameter Name="CHECKSEP" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="CILEVEL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="CITYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="WALD"/>
+            <EnumValue Name="PROFILE"/>
+        </Parameter>
+        <Parameter Name="COVB" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="MODEL"/>
+            <EnumValue Name="ROBUST"/>
+        </Parameter>
+        <Parameter Name="HCONVERGE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ABSOLUTE"/>
+            <EnumValue Name="RELATIVE"/>
+        </Parameter>
+        <Parameter Name="INITIAL" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NEGBIN"/>
+        </Parameter>
+        <Parameter Name="LCONVERGE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ABSOLUTE"/>
+            <EnumValue Name="RELATIVE"/>
+        </Parameter>
+        <Parameter Name="LIKELIHOOD" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="FULL"/>
+            <EnumValue Name="KERNEL"/>
+        </Parameter>
+        <Parameter Name="MAXITERATIONS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MAXSTEPHALVING" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="METHOD" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="FISHER"/>
+            <EnumValue Name="NEWTON"/>
+        </Parameter>
+        <Parameter Name="PCONVERGE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ABSOLUTE"/>
+            <EnumValue Name="RELATIVE"/>
+        </Parameter>
+        <Parameter Name="SCALE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="MLE"/>
+            <EnumValue Name="DEVIANCE"/>
+            <EnumValue Name="PEARSON"/>
+        </Parameter>
+        <Parameter Name="SINGULAR" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="REPEATED" EqualsSign="None">
+        <Parameter Name="SUBJECT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="WITHINSUBJECT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SORT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="CORRTYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INDEPENDENT"/>
+            <EnumValue Name="AR"/>
+            <EnumValue Name="EXCHANGEABLE"/>
+            <EnumValue Name="FIXED"/>
+            <EnumValue Name="MDEPENDENT"/>
+            <EnumValue Name="UNSTRUCTURED"/>
+        </Parameter>
+        <Parameter Name="ADJUSTCORR" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="COVB" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ROBUST"/>
+            <EnumValue Name="MODEL"/>
+        </Parameter>
+        <Parameter Name="HCONVERGE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MAXITERATIONS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PCONVERGE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ABSOLUTE"/>
+            <EnumValue Name="RELATIVE"/>
+        </Parameter>
+        <Parameter Name="UPDATECORR" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EMMEANS" EqualsSign="None">
+        <Parameter Name="TABLES" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="CONTROL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SCALE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ORIGINAL"/>
+            <EnumValue Name="TRANSFORMED"/>
+        </Parameter>
+        <Parameter Name="COMPARE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="CONTRAST" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="PAIRWISE"/>
+            <EnumValue Name="DEVIATION"/>
+            <EnumValue Name="DIFFERENCE"/>
+            <EnumValue Name="HELMERT"/>
+            <EnumValue Name="POLYNOMIAL"/>
+            <EnumValue Name="REPEATED"/>
+            <EnumValue Name="SIMPLE"/>
+        </Parameter>
+        <Parameter Name="PADJUST" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="LSD"/>
+            <EnumValue Name="BONFERRONI"/>
+            <EnumValue Name="SEQBONFERRONI"/>
+            <EnumValue Name="SIDAK"/>
+            <EnumValue Name="SEQSIDAK"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="None">
+        <Parameter Name="CLASSMISSING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="None">
+        <Parameter Name="CORB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COVB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CPS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GEF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HISTORY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAGRANGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LMATRIX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODELINFO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SOLUTION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXPONENTIATED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMMARY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DESCRIPTIVES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WORKINGCORR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="None">
+        <Parameter Name="XBPRED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="XBSTDERROR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEANPRED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CIMEANPREDL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CIMEANPREDU" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PREDVAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LEVERAGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PEARSONRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEVIANCERESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDPEARSONRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEVIANCERESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LIKELIHOODRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COOK" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="None">
+        <Parameter Name="CORB" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="COVB" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MODEL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PARAMETER" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2012                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+     <!-- Created 5/22/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="TSMODEL" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="MODELSUMMARY" EqualsSign="None">
+        <Parameter Name="PRINT" EqualsSign="Required">
+            <EnumValue Name="MODELFIT"/>
+            <EnumValue Name="RESIDACF"/>
+            <EnumValue Name="RESIDPACF"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="PLOT" EqualsSign="Required">
+            <EnumValue Name="SRSQUARE"/>
+            <EnumValue Name="RSQUARE"/>
+            <EnumValue Name="RMSE"/>
+            <EnumValue Name="MAPE"/>
+            <EnumValue Name="MAE"/>
+            <EnumValue Name="MAXAPE"/>
+            <EnumValue Name="MAXAE"/>
+            <EnumValue Name="NORMBIC"/>
+            <EnumValue Name="RESIDACF"/>
+            <EnumValue Name="RESIDPACF"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MODELSTATISTICS" EqualsSign="None">
+        <Parameter Name="DISPLAY" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="MODELFIT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SRSQUARE"/>
+            <EnumValue Name="RSQUARE"/>
+            <EnumValue Name="RMSE"/>
+            <EnumValue Name="MAPE"/>
+            <EnumValue Name="MAE"/>
+            <EnumValue Name="MAXAPE"/>
+            <EnumValue Name="MAXAE"/>
+            <EnumValue Name="NORMBIC"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MODELDETAILS" EqualsSign="None">
+        <Parameter Name="PRINT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="PARAMETERS"/>
+            <EnumValue Name="RESIDACF"/>
+            <EnumValue Name="RESIDPACF"/>
+            <EnumValue Name="FORECASTS"/>
+        </Parameter>
+        <Parameter Name="PLOT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="RESIDACF"/>
+            <EnumValue Name="RESIDPACF"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SERIESPLOT" EqualsSign="None">
+        <Parameter Name="OBSERVED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FORECAST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FORECASTCI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FITCI" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTPUTFILTER" EqualsSign="None">
+        <Parameter Name="DISPLAY" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ALLMODELS"/>
+            <EnumValue Name="BESTFIT"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="PCT"/>
+            <EnumValue Name="WORSTFIT"/>
+        </Parameter>
+        <Parameter Name="MODELFIT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SRSQUARE"/>
+            <EnumValue Name="RSQUARE"/>
+            <EnumValue Name="RMSE"/>
+            <EnumValue Name="MAPE"/>
+            <EnumValue Name="MAE"/>
+            <EnumValue Name="MAXAPE"/>
+            <EnumValue Name="MAXAE"/>
+            <EnumValue Name="NORMBIC"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="None">
+        <Parameter Name="PREDICTED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LCL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UCL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NRESIDUAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="AUXILIARY" EqualsSign="None">
+        <Parameter Name="CILEVEL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MAXACFLAGS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SEASONLENGTH" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="None">
+        <Parameter Name="USERMISSING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MODEL" EqualsSign="None">
+        <Parameter Name="DEPENDENT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="INDEPENDENT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="OUTFILE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="OUTPMML" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PREFIX" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EXPERTMODELER" EqualsSign="None">
+        <Parameter Name="TYPE" EqualsSign="Required">
+            <EnumValue Name="ARIMA"/>
+            <EnumValue Name="EXSMOOTH"/>
+        </Parameter>
+        <Parameter Name="TRYSEASONAL" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="EXSMOOTH" EqualsSign="None">
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="SIMPLE"/>
+            <EnumValue Name="SIMPLESEASONAL"/>
+            <EnumValue Name="HOLT"/>
+            <EnumValue Name="BROWN"/>
+            <EnumValue Name="DAMPEDTREND"/>
+            <EnumValue Name="WINTERSADDITIVE"/>
+            <EnumValue Name="WINTERSMULTIPLICATIVE"/>
+            <EnumValue Name="WINTERSMULTIPLICATIVE"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="TRANSFORM" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="SQRT"/>
+            <EnumValue Name="LN"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="ARIMA" EqualsSign="None">
+        <Parameter Name="AR" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="ARSEASONAL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MA" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MASEASONAL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="DIFF" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="DIFFSEASONAL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="CONSTANT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="TRANSFORM" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="SQRT"/>
+            <EnumValue Name="LN"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="TRANSFERFUNCTION" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+        </Parameter>
+        <Parameter Name="NUM" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="NUMSEASONAL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="DENOM" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="DENOMSEASONAL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="DIFF" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="DIFFSEASONAL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="DELAY" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="TRANSFORM" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="SQRT"/>
+            <EnumValue Name="LN"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="AUTOOUTLIER" EqualsSign="None">
+        <Parameter Name="DETECT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="OFF"/>
+            <EnumValue Name="ON"/>
+        </Parameter>
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ADDITIVE"/>
+            <EnumValue Name="LEVELSHIFT"/>
+            <EnumValue Name="INNOVATIONAL"/>
+            <EnumValue Name="TRANSIENT"/>
+            <EnumValue Name="SEASONALADDITIVE"/>
+            <EnumValue Name="LOCALTREND"/>
+            <EnumValue Name="ADDITIVEPATCH"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="OUTLIER" EqualsSign="None">
+        <Parameter Name="LOCATION" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ADDITIVE"/>
+            <EnumValue Name="LEVELSHIFT"/>
+            <EnumValue Name="INNOVATIONAL"/>
+            <EnumValue Name="TRANSIENT"/>
+            <EnumValue Name="SEASONALADDITIVE"/>
+            <EnumValue Name="LOCALTREND"/>
+        </Parameter>
+    </Subcommand>
+</Command>

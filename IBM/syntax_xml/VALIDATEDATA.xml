@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/22/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="VALIDATEDATA" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="ID" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CROSSVARRULES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="VARCHECKS" EqualsSign="None">
+        <Parameter Name="STATUS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="PCTMISSING" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="PCTEQUAL" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="PCTUNEQUAL" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CV" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="IDCHECKS" EqualsSign="None">
+        <Parameter Name="INCOMPLETE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DUPLICATE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CASECHECKS" EqualsSign="None">
+        <Parameter Name="REPORTEMPTY" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="SCOPE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ANALYSISVARS"/>
+            <EnumValue Name="ALLVARS"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="RULESUMMARIES" EqualsSign="None">
+        <Parameter Name="BYVARIABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BYRULE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CASEREPORT" EqualsSign="None">
+        <Parameter Name="DISPLAY" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="MINVIOLATIONS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CASELIMIT" EqualsSign="Optional" ParameterType="Keyword">            
+            <EnumValue Name="FIRSTN"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="None">
+        <Parameter Name="EMPTYCASE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCOMPLETEID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DUPLICATEID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RULEVIOLATIONS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

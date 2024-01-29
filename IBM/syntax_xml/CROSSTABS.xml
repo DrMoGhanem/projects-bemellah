@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 4/28/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd" Name="CROSSTABS" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="TABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TABLES" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="TABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REPORT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="WRITE" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CELLS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FORMAT" EqualsSign="Optional">
+        <Parameter Name="AVALUE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DVALUE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOTABLES" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="COUNT">
+        <Parameter Name="ASIS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CASE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CELL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROUND" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TRUNCATE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CELLS" EqualsSign="Optional">
+        <Parameter Name="COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLUMN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TOTAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXPECTED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ASRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PROP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BPROP" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STATISTICS" EqualsSign="Optional">
+        <Parameter Name="CHISQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PHI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAMBDA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RISK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BTAU" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CTAU" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="KAPPA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GAMMA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="D" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MCNEMAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ETA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CMH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="METHOD" EqualsSign="Optional">
+        <Parameter Name="MC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SAMPLES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXACT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TIMER" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="BARCHART" EqualsSign="None"/>
+    <Subcommand Name="HIDESMALLCOUNTS" EqualsSign="None">
+        <Parameter Name="COUNT" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SHOWDIM" EqualsSign="Optional"/>
+</Command>

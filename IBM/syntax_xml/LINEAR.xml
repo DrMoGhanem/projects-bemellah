@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command Name="LINEAR" IsArbitrary="No" Language="Syntax" EndRequired="None"     xmlns="http://xml.spss.com/spss/extension" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+  xmlns:p1="http://xml.spss.com/spss/extension">
+  <Subcommand Name="FIELDS" Occurrence="Optional">
+    <Parameter Name="TARGET" EqualsSign="Required" ParameterType="VariableName"/>
+    <Parameter Name="INPUTS" EqualsSign="Required" ParameterType="VariableNameList"/>
+    <Parameter Name="ANALYSIS_WEIGHT" EqualsSign="Required" ParameterType="VariableName"/>
+  </Subcommand>
+  <Subcommand Name="BUILD_OPTIONS" Occurrence="Optional">
+    <Parameter Name="OBJECTIVE" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="STANDARD"/>
+      <EnumValue Name="BOOSTING"/>
+      <EnumValue Name="BAGGING"/>
+      <EnumValue Name="LARGE"/>
+    </Parameter>
+    <Parameter Name="USE_AUTO_DATA_PREPARATION" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="TRUE"/>
+      <EnumValue Name="FALSE"/>
+    </Parameter>
+    <Parameter Name="CONFIDENCE_LEVEL" EqualsSign="Required" ParameterType="Number"/>
+    <Parameter Name="MODEL_SELECTION" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="FORWARDSTEPWISE"/>
+      <EnumValue Name="BESTSUBSETS"/>
+      <EnumValue Name="NONE"/>
+    </Parameter>
+    <Parameter Name="CRITERIA_FORWARD_STEPWISE" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="AICC"/>
+      <EnumValue Name="F"/>
+      <EnumValue Name="ADJUSTEDRSQUARED"/>
+      <EnumValue Name="ASE"/>
+    </Parameter>
+    <Parameter Name="PROBABILITY_ENTRY" EqualsSign="Required" ParameterType="Number"/>
+    <Parameter Name="PROBABILITY_REMOVAL" EqualsSign="Required" ParameterType="Number"/>
+    <Parameter Name="MAX_EFFECTS" EqualsSign="Required" ParameterType="Integer"/>
+    <Parameter Name="MAX_STEPS" EqualsSign="Required" ParameterType="Integer"/>
+    <Parameter Name="CRITERIA_BEST_SUBSETS" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="AICC"/>
+      <EnumValue Name="ADJUSTEDRSQUARED"/>
+      <EnumValue Name="ASE"/>
+    </Parameter>
+    <Parameter Name="REPLICATE_RESULTS" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="TRUE"/>
+      <EnumValue Name="FALSE"/>
+    </Parameter>
+    <Parameter Name="SEED" EqualsSign="Required" ParameterType="Integer"/>
+  </Subcommand>
+  <Subcommand Name="ENSEMBLES" Occurrence="Optional">
+    <Parameter Name="COMBINING_RULE_CONTINUOUS" EqualsSign="Required" ParameterType="Keyword">
+      <EnumValue Name="MEAN"/>
+      <EnumValue Name="MEDIAN"/>
+    </Parameter>
+    <Parameter Name="COMPONENT_MODELS_N" EqualsSign="Required" ParameterType="Integer"/>
+  </Subcommand>
+  <Subcommand Name="OUTFILE" Occurrence="Optional">
+    <Parameter Name="MODEL" EqualsSign="Required" ParameterType="OutputFile"/>
+  </Subcommand>
+  <Subcommand Name="SAVE" Occurrence="Optional">
+    <Parameter Name="PREDICTED_VALUES" EqualsSign="None" ParameterType="TokenList"/>
+  </Subcommand>
+</Command>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 4/30/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="DISCRIMINANT" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="GROUPS" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="GROUPS" EqualsSign="Optional"/>
+    <Subcommand Name="VARIABLES" EqualsSign="Optional"/>
+    <Subcommand Name="SELECT" EqualsSign="Optional"/>
+    <Subcommand Name="ANALYSIS" EqualsSign="Optional"/>
+    <Subcommand Name="OUTFILE" EqualsSign="None">
+        <Parameter Name="MODEL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="METHOD" EqualsSign="Optional">
+        <Parameter Name="DIRECT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WILKS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAHAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXMINF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MINRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RAO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TOLERANCE" EqualsSign="Optional"/>
+    <Subcommand Name="MAXSTEPS" EqualsSign="Optional"/>
+    <Subcommand Name="FIN" EqualsSign="Optional"/>
+    <Subcommand Name="FOUT" EqualsSign="Optional"/>
+    <Subcommand Name="PIN" EqualsSign="Optional"/>
+    <Subcommand Name="POUT" EqualsSign="Optional"/>
+    <Subcommand Name="VIN" EqualsSign="Optional"/>
+    <Subcommand Name="FUNCTIONS" EqualsSign="Optional"/>
+    <Subcommand Name="PRIORS" EqualsSign="Optional">
+        <Parameter Name="EQUAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIZE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="CLASS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="PROBS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="SCORES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ANALYSIS" EqualsSign="Optional"/>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MATRIX" EqualsSign="Optional">
+        <Parameter Name="OUT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="IN" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="HISTORY" EqualsSign="Optional">
+        <Parameter Name="STEP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ROTATE" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COEFF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STRUCTURE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CLASSIFY" EqualsSign="Optional">
+        <Parameter Name="NONMISSING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UNSELECTED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UNCLASSIFIED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POOLED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEPARATE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEANSUB" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="STATISTICS" EqualsSign="Optional">
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GCOV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BOXM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UNIVF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FPAIR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COEFF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CROSSVALID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RAW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TCOV" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="MAP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEPARATE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COMBINED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CASES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

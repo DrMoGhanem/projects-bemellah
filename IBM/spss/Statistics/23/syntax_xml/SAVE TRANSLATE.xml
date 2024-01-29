@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/21/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:SyntaxSchema.xsd" 
+    Name="SAVE TRANSLATE" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="OUTFILE" EqualsSign="Optional"/>
+    <Subcommand Name="CONNECT" EqualsSign="Optional">
+        <Parameter Name="ODBC" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ENCRYPTED" EqualsSign="None"/>
+    <Subcommand Name="UNENCRYPTED" EqualsSign="None"/>
+    <Subcommand Name="TYPE" EqualsSign="Optional">
+        <Parameter Name="CSV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DB2" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DB3" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DB4" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ODBC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SAS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STATA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SYM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SLK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TAB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WKS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WK1" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WK3" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="XLS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="VERSION" EqualsSign="Optional"/>
+    <Subcommand Name="ENCODING" EqualsSign="Optional">
+        <Parameter Name="UTF8" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UTF16" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="UTF16LE" ParameterType="Keyword" EqualsSign="None"></Parameter>
+        <Parameter Name="UTF16BE" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="LOCALE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BOM" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand> 
+    <Subcommand Name="FIELDNAMES" EqualsSign="None"/>
+    <Subcommand Name="CELLS" EqualsSign="Optional">
+        <Parameter Name="VALUES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LABELS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TEXTOPTIONS" EqualsSign="None">
+        <Parameter Name="DELIMITER" EqualsSign="Optional" ParameterType="QuotedString"/>
+        <Parameter Name="QUALIFIER" EqualsSign="Optional" ParameterType="QuotedString"/>
+        <Parameter Name="DECIMAL" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="DOT"/>
+            <EnumValue Name="COMMA"/>
+        </Parameter>
+        <Parameter Name="FORMAT" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="PLAIN"/>
+            <EnumValue Name="VARIABLE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="EDITION" EqualsSign="Optional">
+        <Parameter Name="INTERCOOLED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLATFORM" EqualsSign="Optional">
+        <Parameter Name="ALPHA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WINDOWS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UNIX" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="VALFILE" EqualsSign="Optional"/>
+    <Subcommand Name="TABLE" EqualsSign="Optional"/>
+    <Subcommand Name="SQL" EqualsSign="Optional"/>
+    <Subcommand Name="APPEND" EqualsSign="None"/>
+    <Subcommand Name="REPLACE" EqualsSign="None"/>
+    <Subcommand Name="RENAME" EqualsSign="Optional"/>
+    <Subcommand Name="KEEP" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DROP" EqualsSign="Optional"/>
+    <Subcommand Name="UNSELECTED" EqualsSign="Optional">
+        <Parameter Name="RETAIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DELETE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="IGNORE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RECODE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="COMPRESSED" EqualsSign="None"/>
+    <Subcommand Name="UNCOMPRESSED" EqualsSign="None"/>
+    <Subcommand Name="MAP" EqualsSign="None"/>
+<Subcommand Name="BULKLOADING" EqualsSign="None" Occurrence="Optional">
+<Parameter Name="METHOD" EqualsSign="Optional" ParameterType="Keyword">
+<EnumValue Name="OFF"/>
+<EnumValue Name="BATCH"/>
+<EnumValue Name="ODBC"/></Parameter>
+<Parameter Name="BATCHSIZE" ParameterType="Keyword" EqualsSign="Optional"></Parameter>
+<Parameter Name="BINDING">
+<EnumValue Name="ROW"/>
+<EnumValue Name="COLUMN"/></Parameter>
+</Subcommand>
+</Command>

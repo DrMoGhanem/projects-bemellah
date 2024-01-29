@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    xmlns:p1="http://xml.spss.com/spss/extension" Name="TMS IMPORT" EndRequired="None"
+    IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="INFILE">
+        <Parameter Name="TRANSFORMATIONS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MODE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="FORWARD"/>
+            <EnumValue Name="ROLES"/>
+            <EnumValue Name="UPDATE"/>
+            <EnumValue Name="LEAVE"/>
+            <EnumValue Name="BACK"/>
+            <EnumValue Name="PREDICTED"/>
+            <EnumValue Name="SUFFIX"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SAVE">
+        <Parameter Name="TRANSFORMED" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="OUTFILE">
+        <Parameter Name="SYNTAX" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

@@ -1,0 +1,241 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2013                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+  <!-- updated 4/28/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:SyntaxSchema.xsd" 
+    Name="OUTPUT MODIFY" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="NAME" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="*"/>
+            <EnumValue Name="ALL"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SELECT" EqualsSign="None" Occurrence="Required">
+        <Parameter Name="CHARTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TEXTS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOGS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WARNINGS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TABLES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="HEADINGS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TREES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODELS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OUTLINEHEADERS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OTHER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UNKNOWN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PAGETITLES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOTES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="EXCEPT" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="IF" EqualsSign="None" Occurrence="Optional">
+        <Parameter Name="COMMANDS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="LAST"/>
+        </Parameter>
+        <Parameter Name="SUBTYPES" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="LABELS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EXACT"/>
+            <EnumValue Name="BEGINS"/>
+            <EnumValue Name="ENDS"/>
+            <EnumValue Name="CONTAINS"/>
+        </Parameter>
+        <Parameter Name="INSTANCES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="LAST"/>
+        </Parameter>
+        <Parameter Name="VISIBLEONLY" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="DELETEOBJECT" EqualsSign="None" Occurrence="Optional">
+        <Parameter Name="DELETE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="INDEXING" EqualsSign="None" Occurrence="Optional">
+        <Parameter Name="INDEXTYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NUMBER"/>
+            <EnumValue Name="LETTERLOW"/>
+            <EnumValue Name="LETTERCAP"/>
+            <EnumValue Name="ROMANLOW"/>
+            <EnumValue Name="ROMANCAP"/>
+        </Parameter>
+        <Parameter Name="INDEXSTART" ParameterType="Keyword" EqualsSign="Required">
+            </Parameter>
+    </Subcommand>
+    <Subcommand Name="OBJECTPROPERTIES" Occurrence="Optional" EqualsSign="None">
+        <Parameter Name="VISIBLE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ASIS"/>
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="OUTLINELABEL" ParameterType="Keyword" EqualsSign="Required">
+        </Parameter>
+        <Parameter Name="SIZE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="PERCENT"/>
+            <EnumValue Name="PROPORTIONAL"/>
+            <EnumValue Name="INCHES"/>
+            <EnumValue Name="POINTS"/>
+            <EnumValue Name="CENTIMETERS"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="TABLE" EqualsSign="None" Occurrence="Optional">
+        <Parameter Name="TABLETITLE" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="TRANSPOSE" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+        <Parameter Name="TLOOK" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="SELECTEDLAYER" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="SORT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="COLLABEL"/>
+            <EnumValue Name="COLPOSITION"/>
+        </Parameter>
+        <Parameter Name="SORTDIRECTION" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="ASCENDING"/>
+            <EnumValue Name="DESCENDING"/>
+        </Parameter>
+        <Parameter Name="TABLESUMMARY" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+    </Subcommand>
+    <Subcommand Name="TABLECELLS" EqualsSign="None" Occurrence="Optional">
+        <Parameter Name="SELECT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="COUNT"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="RESIDUAL"/>
+            <EnumValue Name="SIGNIFICANCE"/>
+            <EnumValue Name="PERCENT"/>
+            <EnumValue Name="CORRELATION"/>
+            <EnumValue Name="POSITION"/>
+            <EnumValue Name="BODY"/>
+            <EnumValue Name="HEADERS"/>
+            <EnumValue Name="FOOTNOTES"/>
+            <EnumValue Name="TITLE"/>
+            <EnumValue Name="CAPTION"/>
+        </Parameter>
+        <Parameter Name="SELECTDIMENSION" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="COLUMNS"/>
+            <EnumValue Name="ROWS"/>
+            <EnumValue Name="BOTH"/>
+        </Parameter>
+        <Parameter Name="SELECTCONDITION" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+            <EnumValue Name="TOP"/>
+            <EnumValue Name="BOTTOM"/>
+        </Parameter>
+        <Parameter Name="COLUMNWIDTH" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="INCHES"/>
+            <EnumValue Name="POINTS"/>
+            <EnumValue Name="CENTIMETERS"/>
+        </Parameter>
+        <Parameter Name="APPLYTO" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="CELL"/>
+            <EnumValue Name="COLUMN"/>
+            <EnumValue Name="ROW"/>
+            <EnumValue Name="COLUMNDATA"/>
+            <EnumValue Name="ROWDATA"/>
+            <EnumValue Name="COLUMNHEADER"/>
+            <EnumValue Name="ROWHEADER"/>
+        </Parameter>
+        <Parameter Name="REVERTTODEFAULT" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+        <Parameter Name="FORMAT" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="FONT" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="FONTSIZE" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="STYLE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="REGULAR"/>
+            <EnumValue Name="BOLD"/>
+            <EnumValue Name="ITALIC"/>
+            <EnumValue Name="UNDERLINE"/>
+        </Parameter>
+        <Parameter Name="TEXTCOLOR" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="BLACK"/>
+            <EnumValue Name="BLUE"/>
+            <EnumValue Name="CYAN"/>
+            <EnumValue Name="DARKGRAY"/>
+            <EnumValue Name="GRAY"/>
+            <EnumValue Name="GREEN"/>
+            <EnumValue Name="LIGHTGRAY"/>
+            <EnumValue Name="MAGENTA"/>
+            <EnumValue Name="ORANGE"/>
+            <EnumValue Name="PINK"/>
+            <EnumValue Name="RED"/>
+            <EnumValue Name="WHITE"/>
+            <EnumValue Name="YELLOW"/>
+            <EnumValue Name="RGB"/>
+        </Parameter>
+        <Parameter Name="BACKGROUNDCOLOR" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="BLACK"/>
+            <EnumValue Name="BLUE"/>
+            <EnumValue Name="CYAN"/>
+            <EnumValue Name="DARKGRAY"/>
+            <EnumValue Name="GRAY"/>
+            <EnumValue Name="GREEN"/>
+            <EnumValue Name="LIGHTGRAY"/>
+            <EnumValue Name="MAGENTA"/>
+            <EnumValue Name="ORANGE"/>
+            <EnumValue Name="PINK"/>
+            <EnumValue Name="RED"/>
+            <EnumValue Name="WHITE"/>
+            <EnumValue Name="YELLOW"/>
+            <EnumValue Name="RGB"/>
+        </Parameter>
+        <Parameter Name="REPLACE" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+    </Subcommand>
+    <Subcommand Name="GRAPHS" EqualsSign="None" Occurrence="Optional">
+        <Parameter Name="CTEMPLATE" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name=" VIZSTYLESHEET" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+    </Subcommand>
+    <Subcommand Name="TEXTS" EqualsSign="None" Occurrence="Optional">
+        <Parameter Name="TEXT" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="FONT" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="FONTSIZE" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="STYLE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="REGULAR"/>
+            <EnumValue Name="BOLD"/>
+            <EnumValue Name="ITALIC"/>
+            <EnumValue Name="UNDERLINE"/>
+        </Parameter>
+        <Parameter Name="TEXTCOLOR" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="BLACK"/>
+            <EnumValue Name="BLUE"/>
+            <EnumValue Name="CYAN"/>
+            <EnumValue Name="DARKGRAY"/>
+            <EnumValue Name="GRAY"/>
+            <EnumValue Name="GREEN"/>
+            <EnumValue Name="LIGHTGRAY"/>
+            <EnumValue Name="MAGENTA"/>
+            <EnumValue Name="ORANGE"/>
+            <EnumValue Name="PINK"/>
+            <EnumValue Name="RED"/>
+            <EnumValue Name="WHITE"/>
+            <EnumValue Name="YELLOW"/>
+            <EnumValue Name="RGB"/>
+        </Parameter>  
+    </Subcommand>
+    <Subcommand Name="REPORT" EqualsSign="None" Occurrence="Optional">
+        <Parameter Name="PRINTREPORT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+            <EnumValue Name="HIDDEN"/>
+        </Parameter>
+    </Subcommand>
+</Command>

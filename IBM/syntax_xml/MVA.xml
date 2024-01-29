@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/14/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="MVA" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ALL"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CATEGORICAL" EqualsSign="Optional"/>
+    <Subcommand Name="MAXCAT" EqualsSign="Optional"/>
+    <Subcommand Name="ID" EqualsSign="Optional"/>
+    <Subcommand Name="NOUNIVARIATE" EqualsSign="None"/>
+    <Subcommand Name="TTEST" EqualsSign="None">
+        <Parameter Name="PERCENT" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="T" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="NOT" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="DF" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="NODF" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="PROB" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="NOPROB" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="COUNTS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="NOCOUNTS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="MEANS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="NOMEANS" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CROSSTAB" EqualsSign="None">
+        <Parameter Name="PERCENT" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISMATCH" EqualsSign="None">
+        <Parameter Name="PERCENT" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="NOSORT" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DPATTERN" EqualsSign="None">
+        <Parameter Name="SORT" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ASCENDING"/>
+            <EnumValue Name="DESCENDING"/>
+        </Parameter>
+        <Parameter Name="DESCRIBE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MPATTERN" EqualsSign="None">
+        <Parameter Name="NOSORT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DESCRIBE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TPATTERN" EqualsSign="None">
+        <Parameter Name="NOSORT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DESCRIBE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="PERCENT" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="LISTWISE" EqualsSign="None"/>
+    <Subcommand Name="PAIRWISE" EqualsSign="None"/>
+    <Subcommand Name="EM" EqualsSign="None">
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TOLERANCE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CONVERGENCE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="ITERATIONS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="TDF" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="LAMBDA" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="PROPORTION" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="OUTFILE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="REGRESSION" EqualsSign="None">
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TOLERANCE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="FLIMIT" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="N"/>
+        </Parameter>
+        <Parameter Name="NPREDICTORS" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="ADDTYPE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="RESIDUAL"/>
+            <EnumValue Name="NORMAL"/>
+            <EnumValue Name="T"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="OUTFILE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

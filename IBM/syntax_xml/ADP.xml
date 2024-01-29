@@ -1,0 +1,214 @@
+<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 4/28/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+ xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+ xmlns:p1="http://xml.spss.com/spss/extension"
+ Name="ADP"
+ EndRequired="None"
+ IsArbitrary="No"
+ Language="Syntax">
+    <Subcommand Name="FIELDS">
+        <Parameter Name="TARGET" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="INPUT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="ANALYSISWEIGHT" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PREPDATETIME">
+        <Parameter Name="DATEDURATION" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+		</Parameter>
+        <Parameter Name="REFERENCE" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="CURRENT"/>
+	        <EnumValue Name="YMD"/>
+	        <EnumValue Name="HMS"/>
+		</Parameter>
+        <Parameter Name="UNIT" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="AUTO"/>
+	        <EnumValue Name="YEARS"/>
+	        <EnumValue Name="MONTHS"/>
+	        <EnumValue Name="DAYS"/>
+	        <EnumValue Name="SUFFIX"/>
+		</Parameter>
+        <Parameter Name="TIMEDURATION" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+	        <EnumValue Name="HOURS"/>
+	        <EnumValue Name="MINUTES"/>
+	        <EnumValue Name="SECONDS"/>
+	        <EnumValue Name="SUFFIX"/>
+		</Parameter>
+        <Parameter Name="EXTRACTYEAR" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+	        <EnumValue Name="SUFFIX"/>
+		</Parameter>
+        <Parameter Name="EXTRACTMONTH" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+	        <EnumValue Name="SUFFIX"/>
+		</Parameter>
+        <Parameter Name="EXTRACTDAY" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+	        <EnumValue Name="SUFFIX"/>
+		</Parameter>
+        <Parameter Name="EXTRACTHOUR" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+	        <EnumValue Name="SUFFIX"/>
+		</Parameter>
+        <Parameter Name="EXTRACTMINUTE" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+	        <EnumValue Name="SUFFIX"/>
+		</Parameter>
+        <Parameter Name="EXTRACTSECOND" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+	        <EnumValue Name="SUFFIX"/>
+		</Parameter>
+    </Subcommand>
+    <Subcommand Name="SCREENING">
+        <Parameter Name="PCTMISSING" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+	        <EnumValue Name="MAXPCT"/>
+		</Parameter>
+        <Parameter Name="UNIQUECAT" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+	        <EnumValue Name="MAXCAT"/>
+		</Parameter>
+        <Parameter Name="SINGLECAT" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+	        <EnumValue Name="MAXPCT"/>
+		</Parameter>
+	</Subcommand>
+    <Subcommand Name="ADJUSTLEVEL">
+        <Parameter Name="INPUT" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+		</Parameter>
+        <Parameter Name="TARGET" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+		</Parameter>
+        <Parameter Name="MAXVALORDINAL" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="MINVALCONTINUOUS" EqualsSign="Required" ParameterType="Keyword"/>
+	</Subcommand>
+    <Subcommand Name="OUTLIERHANDLING">
+        <Parameter Name="INPUT" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+		</Parameter>
+        <Parameter Name="TARGET" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+		</Parameter>
+        <Parameter Name="CUTOFF" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="SD"/>
+		</Parameter>
+        <Parameter Name="REPLACEWITH" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="CUTOFFVALUE"/>
+	        <EnumValue Name="MISSING"/>
+		</Parameter>
+	</Subcommand>
+    <Subcommand Name="REPLACEMISSING">
+        <Parameter Name="INPUT" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+	        <EnumValue Name="EXCLUDE"/>
+	        <EnumValue Name="CONTINUOUS"/>
+	        <EnumValue Name="NOMINAL"/>
+	        <EnumValue Name="ORDINAL"/>
+		</Parameter>
+        <Parameter Name="TARGET" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+	        <EnumValue Name="EXCLUDE"/>
+	        <EnumValue Name="CONTINUOUS"/>
+	        <EnumValue Name="NOMINAL"/>
+	        <EnumValue Name="ORDINAL"/>
+		</Parameter>
+	</Subcommand>
+    <Subcommand Name="REORDERNOMINAL">
+        <Parameter Name="INPUT" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+		</Parameter>
+        <Parameter Name="TARGET" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+		</Parameter>
+	</Subcommand>
+    <Subcommand Name="RESCALE">
+        <Parameter Name="INPUT" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="ZSCORE"/>
+	        <EnumValue Name="MEAN"/>
+	        <EnumValue Name="SD"/>
+	        <EnumValue Name="MINMAX"/>
+	        <EnumValue Name="MIN"/>
+	        <EnumValue Name="MAX"/>
+	        <EnumValue Name="NONE"/>
+		</Parameter>
+        <Parameter Name="TARGET" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="BOXCOX"/>
+	        <EnumValue Name="MEAN"/>
+	        <EnumValue Name="SD"/>
+	        <EnumValue Name="NONE"/>
+		</Parameter>
+	</Subcommand>
+    <Subcommand Name="TRANSFORM">
+        <Parameter Name="MERGESUPERVISED" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+	        <EnumValue Name="PVALUE"/>
+		</Parameter>
+        <Parameter Name="MERGEUNSUPERVISED" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="NO"/>
+	        <EnumValue Name="ORDINAL"/>
+	        <EnumValue Name="NOMINAL"/>
+	        <EnumValue Name="MINPCT"/>
+		</Parameter>
+        <Parameter Name="BINNING" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="SUPERVISED"/>
+	        <EnumValue Name="PVALUE"/>
+	        <EnumValue Name="NONE"/>
+		</Parameter>
+        <Parameter Name="SELECTION" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="PVALUE"/>
+	        <EnumValue Name="NO"/>
+		</Parameter>
+        <Parameter Name="CONSTRUCTION" EqualsSign="Required" ParameterType="Keyword">
+	        <EnumValue Name="YES"/>
+	        <EnumValue Name="ROOT"/>
+	        <EnumValue Name="NO"/>
+		</Parameter>
+	</Subcommand>
+    <Subcommand Name="CRITERIA">
+        <Parameter Name="SUFFIX" EqualsSign="NONE" ParameterType="Keyword"/>
+        <Parameter Name="TARGET" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="INPUT" EqualsSign="Required" ParameterType="Keyword"/>
+	</Subcommand>
+    <Subcommand Name="OUTFILE">
+        <Parameter Name="PREPXML" EqualsSign="NONE" ParameterType="Keyword"/>
+ 	</Subcommand>
+</Command>

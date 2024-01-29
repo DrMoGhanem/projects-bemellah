@@ -1,0 +1,108 @@
+﻿<?xml version="1.0"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2014                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+  
+<Command xmlns="www.ibm.com/software/analytics/spss/xml/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="www.ibm.com/software/analytics/spss/xml/extension
+    www.ibm.com/software/analytics/spss/xml/extension/SyntaxSchema.xsd"
+    Name="TCM ANALYSIS" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="MODELSYSTEM" Occurrence="Required">
+        <Parameter Name="FILE" EqualsSign="Required" ParameterType="InputFile"></Parameter>
+    </Subcommand>
+    <Subcommand Name="EXPRESSIONS" Occurrence="Required">
+        <Parameter Name="FILE" EqualsSign="Required" ParameterType="InputFile"></Parameter>
+    </Subcommand>
+    <Subcommand Name="SCENARIOPERIOD" Occurrence="Required">
+        <Parameter Name="TIMES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ABSOLUTE"/>
+            <EnumValue Name="RELATIVE"/>
+        </Parameter>
+        <Parameter Name="FORMAT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="VARIABLE"/>
+            <EnumValue Name="ISO8601"/>
+        </Parameter>
+        <Parameter Name="START" EqualsSign="Required" ParameterType="TokenList"></Parameter>
+        <Parameter Name="END" EqualsSign="Required" ParameterType="TokenList"></Parameter>
+        <Parameter Name="PREDICTTHRU" EqualsSign="Required" ParameterType="TokenList"></Parameter>
+    </Subcommand>
+    <Subcommand Name="SCENARIO" Occurrence="Required">
+        <Parameter Name="ID" EqualsSign="Required" ParameterType="QuotedString"></Parameter>
+        <Parameter Name="VALUES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="ACTUAL"/>
+            <EnumValue Name="EXPRESSION"/>
+        </Parameter>
+        <Parameter Name="ROOTFIELD" EqualsSign="Required" ParameterType="VariableName"></Parameter>
+        <Parameter Name="DIMVALUES" EqualsSign="Required" ParameterType="VariableNameList"></Parameter>
+        <Parameter Name="VALUE" EqualsSign="Required" ParameterType="TokenList"></Parameter>
+        <Parameter Name="EFFECTS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="AUTOMATIC"/>
+            <EnumValue Name="TARGETLIST"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SCENARIOGROUP" Occurrence="Required">
+        <Parameter Name="IDPREFIX" EqualsSign="Required" ParameterType="QuotedString"></Parameter>
+        <Parameter Name="EXPRESSION" EqualsSign="Required" ParameterType="VariableName"></Parameter>
+        <Parameter Name="ROOTFIELD" EqualsSign="Required" ParameterType="VariableName"></Parameter>
+        <Parameter Name="DIMVALUES" EqualsSign="Required" ParameterType="VariableNameList"></Parameter>
+        <Parameter Name="VALUES" EqualsSign="Required" ParameterType="TokenList"></Parameter>
+        <Parameter Name="EFFECTS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="AUTOMATIC"/>
+            <EnumValue Name="TARGETLIST"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="TARGETLIST" Occurrence="Optional">
+        <Parameter Name="LISTID" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="FIELDS" EqualsSign="Required" ParameterType="VariableNameList"></Parameter>
+        <Parameter Name="DIMVALUES" EqualsSign="Required" ParameterType="VariableNameList"></Parameter>
+        <Parameter Name="VALUES" EqualsSign="Required" ParameterType="TokenList"></Parameter>
+    </Subcommand>
+    <Subcommand Name="OPTIONS" Occurrence="Optional">
+        <Parameter Name="CILEVEL" EqualsSign="Required" ParameterType="Number"></Parameter>
+        <Parameter Name="PREDICTEDCI" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="PRINT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="FORECASTS"/>
+        </Parameter>
+        <Parameter Name="PLOT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="IMPACTDIAGRAM"/>
+            <EnumValue Name="SERIESPLOT"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="MAXTARGETS" EqualsSign="Required" ParameterType="Integer"></Parameter>
+        <Parameter Name="MAXLEVELS" EqualsSign="Required" ParameterType="Integer"></Parameter>
+    </Subcommand>
+<!--     <Subcommand Name="SAVE" Occurrence="Optional">
+        <Parameter Name="PREDICTED" EqualsSign="None" ParameterType="VariableName"></Parameter>
+        <Parameter Name="CL" EqualsSign="None" ParameterType="Keyword"></Parameter>
+        <Parameter Name="LCLROOT" EqualsSign="Required" ParameterType="VariableName"></Parameter>
+        <Parameter Name="UCLROOT" EqualsSign="Required" ParameterType="VariableName"></Parameter>
+        <Parameter Name="FORECASTFLAG" EqualsSign="None" ParameterType="VariableName"></Parameter>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" Occurrence="Optional">
+        <Parameter Name="DATA" EqualsSign="Required" ParameterType="OutputFile"></Parameter>
+    </Subcommand>
+    <Subcommand Name="PASSPROTECT" Occurrence="Optional">
+        <Parameter Name="PASSWORD" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="ENCRYPTEDPW" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand> -->
+</Command>

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/21/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="REPORT" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="FORMAT" EqualsSign="Optional">
+        <Parameter Name="MANUAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AUTOMATIC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOLIST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LIST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALIGN" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="LEFT"/>
+            <EnumValue Name="CENTER"/>
+            <EnumValue Name="RIGHT"/>
+        </Parameter>
+        <Parameter Name="TSPACE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CHDSPACE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FTSPACE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMSPACE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLSPACE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BRKSPACE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LENGTH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MARGINS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CHALIGN" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="TOP"/>
+            <EnumValue Name="BOTTOM"/>
+        </Parameter>
+        <Parameter Name="UNDERSCORE" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="OFF"/>
+            <EnumValue Name="ON"/>
+        </Parameter>
+        <Parameter Name="PAGE1" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MISSING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ONEBREAKCOL" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="OFF"/>
+            <EnumValue Name="ON"/>
+        </Parameter>
+        <Parameter Name="INDENT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CHWRAP" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="OFF"/>
+            <EnumValue Name="ON"/>
+        </Parameter>
+        <Parameter Name="PREVIEW" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="OFF"/>
+            <EnumValue Name="ON"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional"/>
+    <Subcommand Name="STRING" EqualsSign="Optional">
+        <Parameter Name="BLANK" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="VARIABLES" EqualsSign="Optional">
+        <Parameter Name="VALUE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LABELS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DUMMY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OFFSET" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="CENTER"/>
+        </Parameter>
+        <Parameter Name="LEFT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CENTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RIGHT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="VAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LIST" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TITLE" EqualsSign="Optional">
+        <Parameter Name="LEFT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CENTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RIGHT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name=")PAGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name=")DATE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FOOTNOTE" EqualsSign="Optional">
+        <Parameter Name="LEFT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CENTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RIGHT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="BREAK" EqualsSign="Optional">
+        <Parameter Name="VALUES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOTOTAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SKIP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LABELS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TOTAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PAGE" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="RESET"/>
+        </Parameter>
+        <Parameter Name="OFFSET" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="CENTER"/>
+        </Parameter>
+        <Parameter Name="UNDERSCORE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LEFT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CENTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RIGHT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONAME" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NAME" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SUMMARY" EqualsSign="Optional">
+        <Parameter Name="SKIP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PREVIOUS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PLAIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VALIDN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PLT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="KURTOSIS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SKEWNESS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FREQUENCY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PERCENT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MULTIPLY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PCT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUBTRACT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ADD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GREAT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LEAST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AVERAGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PGT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DIVIDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

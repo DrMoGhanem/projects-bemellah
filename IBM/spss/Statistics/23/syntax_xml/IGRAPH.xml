@@ -1,0 +1,464 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/12/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:/C:/temp/schema/SyntaxSchema.xsd"
+    Name="IGRAPH" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="Y" EqualsSign="Optional">
+        <Parameter Name="VAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TYPE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="SCALE"/>
+            <EnumValue Name="MIN"/>
+            <EnumValue Name="MAX"/>
+            <EnumValue Name="CATEGORICAL"/>
+        </Parameter>
+        <Parameter Name="TITLE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="X1" EqualsSign="Optional">
+        <Parameter Name="VAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TYPE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="SCALE"/>
+            <EnumValue Name="MIN"/>
+            <EnumValue Name="MAX"/>
+            <EnumValue Name="CATEGORICAL"/>
+        </Parameter>
+        <Parameter Name="TITLE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="X2" EqualsSign="Optional">
+        <Parameter Name="VAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TYPE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="SCALE"/>
+            <EnumValue Name="MIN"/>
+            <EnumValue Name="MAX"/>
+            <EnumValue Name="CATEGORICAL"/>
+        </Parameter>
+        <Parameter Name="TITLE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="YLENGTH" EqualsSign="Optional"/>
+    <Subcommand Name="X1LENGTH" EqualsSign="Optional"/>
+    <Subcommand Name="CATORDER" EqualsSign="None">
+        <Parameter Name="VAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COUNT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ASCENDING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SHOWEMPTY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OCCURRENCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DESCENDING" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OMITEMPTY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LABEL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VALUE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="COLOR" EqualsSign="Optional">
+        <Parameter Name="TYPE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="SCALE"/>
+            <EnumValue Name="CATEGORICAL"/>
+            <EnumValue Name="MIN"/>
+            <EnumValue Name="MAX"/>
+        </Parameter>
+        <Parameter Name="LEGEND" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="TITLE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CLUSTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STACK" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="REFLINE" EqualsSign="None">
+        <Parameter Name="LABEL" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="SPIKE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="COLOR" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="STYLE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="STYLE" EqualsSign="Optional">
+        <Parameter Name="TYPE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="SCALE"/>
+            <EnumValue Name="CATEGORICAL"/>
+            <EnumValue Name="MIN"/>
+            <EnumValue Name="MAX"/>
+        </Parameter>
+        <Parameter Name="LEGEND" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="TITLE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CLUSTER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STACK" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="NORMALIZE" EqualsSign="None"/>
+    <Subcommand Name="SIZE" EqualsSign="Optional">
+        <Parameter Name="TYPE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="SCALE"/>
+            <EnumValue Name="CATEGORICAL"/>
+            <EnumValue Name="MIN"/>
+            <EnumValue Name="MAX"/>
+        </Parameter>
+        <Parameter Name="LEGEND" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="TITLE" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CLUSTER" EqualsSign="Optional"/>
+    <Subcommand Name="SUMMARYVAR" EqualsSign="Optional"/>
+    <Subcommand Name="PANEL" EqualsSign="Optional"/>
+    <Subcommand Name="POINTLABEL" EqualsSign="Optional"/>
+    <Subcommand Name="CASELABEL" EqualsSign="Optional"/>
+    <Subcommand Name="COORDINATE" EqualsSign="Optional">
+        <Parameter Name="HORIZONTAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VERTICAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="THREE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EFFECT" EqualsSign="Optional">
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="THREE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TITLE" EqualsSign="Optional"/>
+    <Subcommand Name="SUBTITLE" EqualsSign="Optional"/>
+    <Subcommand Name="CAPTION" EqualsSign="Optional"/>
+    <Subcommand Name="VIEWNAME" EqualsSign="Optional"/>
+    <Subcommand Name="CHARTLOOK" EqualsSign="Optional"/>
+    <Subcommand Name="SCATTER" EqualsSign="None">
+        <Parameter Name="COINCIDENT" EqualsSign="Optional">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="JITTER"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="BAR" EqualsSign="None">
+        <Parameter Name="LABEL" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="INSIDE"/>
+            <EnumValue Name="OUTSIDE"/>
+            <EnumValue Name="VAL"/>
+            <EnumValue Name="N"/>
+        </Parameter>
+        <Parameter Name="BASELINE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="FIRST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="KURTOSIS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MINIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NGT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NEQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NLT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PGT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PEQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PLT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PTILE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SKEW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEKURT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SESKEW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMAV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMSQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PIE" EqualsSign="None">
+        <Parameter Name="START" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CCW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SLICE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="INSIDE"/>
+            <EnumValue Name="OUTSIDE"/>
+            <EnumValue Name="LABEL"/>
+            <EnumValue Name="PCT"/>
+            <EnumValue Name="VAL"/>
+            <EnumValue Name="N"/>
+        </Parameter>
+        <Parameter Name="STACK" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="LABEL"/>
+        </Parameter>
+        <Parameter Name="FIRST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="KURTOSIS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MINIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NGT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NEQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NLT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PGT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PEQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PLT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PTILE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SKEW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEKURT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SESKEW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMAV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMSQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="BOX" EqualsSign="None">
+        <Parameter Name="OUTLIERS" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="EXTREME" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="MEDIAN" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="LABEL" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="N"/>
+        </Parameter>
+        <Parameter Name="WHISKER" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="T"/>
+            <EnumValue Name="LINE"/>
+        </Parameter>
+        <Parameter Name="CAPWIDTH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="LINE" EqualsSign="None">
+        <Parameter Name="STYLE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="DOTLINE"/>
+            <EnumValue Name="LINE"/>
+            <EnumValue Name="DOT"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="DROPLINE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="LABEL" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="VAL"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="PCT"/>
+        </Parameter>
+        <Parameter Name="LINELABEL" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="CAT"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="PCT"/>
+        </Parameter>
+        <Parameter Name="INTERPOLATE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="STRAIGHT"/>
+            <EnumValue Name="LSTEP"/>
+            <EnumValue Name="CSTEP"/>
+            <EnumValue Name="RSTEP"/>
+            <EnumValue Name="LJUMP"/>
+            <EnumValue Name="RJUMP"/>
+            <EnumValue Name="CJUMP"/>
+            <EnumValue Name="SPLINE"/>
+        </Parameter>
+        <Parameter Name="BREAK" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="MISSING"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="FIRST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="KURTOSIS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MINIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NGT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NEQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NLT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PGT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PEQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PLT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PTILE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SKEW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEKURT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SESKEW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMAV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMSQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="AREA" EqualsSign="None">
+        <Parameter Name="POINTLABEL" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="VAL"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="PCT"/>
+        </Parameter>
+        <Parameter Name="AREALABEL" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="CAT"/>
+            <EnumValue Name="N"/>
+            <EnumValue Name="PCT"/>
+        </Parameter>
+        <Parameter Name="BASELINE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INTERPOLATE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="STRAIGHT"/>
+            <EnumValue Name="LSTEP"/>
+            <EnumValue Name="CSTEP"/>
+            <EnumValue Name="RSTEP"/>
+        </Parameter>
+        <Parameter Name="BREAK" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="MISSING"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="FIRST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="KURTOSIS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LAST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MAXIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MINIMUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEDIAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MODE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NGT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NEQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NLT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PGT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PEQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PLT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PLE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PTILE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SKEW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STDDEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEKURT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SEMEAN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SESKEW" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMAV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMSQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ERRORBAR" EqualsSign="None">
+        <Parameter Name="CI" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SD" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LABEL" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="VAL"/>
+            <EnumValue Name="N"/>
+        </Parameter>
+        <Parameter Name="CAPWIDTH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CAPSTYLE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="T"/>
+        </Parameter>
+        <Parameter Name="SYMBOL" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="BASELINE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="HISTOGRAM" EqualsSign="None">
+        <Parameter Name="CUM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SHAPE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="HISTOGRAM"/>
+        </Parameter>
+        <Parameter Name="X1INTERVAL" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="AUTO"/>
+            <EnumValue Name="NUM"/>
+            <EnumValue Name="WIDTH"/>
+        </Parameter>
+        <Parameter Name="X2INTERVAL" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="AUTO"/>
+            <EnumValue Name="NUM"/>
+            <EnumValue Name="WIDTH"/>
+        </Parameter>
+        <Parameter Name="X1START" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="X2START" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="CURVE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="OFF"/>
+            <EnumValue Name="ON"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="FITLINE" EqualsSign="None">
+        <Parameter Name="METHOD" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="REGRESSION LINEAR"/>
+            <EnumValue Name="ORIGIN LINEAR"/>
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="LLR"/>
+            <EnumValue Name="NORMAL"/>
+            <EnumValue Name="EPANECHNIKOV"/>
+            <EnumValue Name="UNIFORM"/>
+            <EnumValue Name="BANDWIDTH"/>
+            <EnumValue Name="FAST"/>
+            <EnumValue Name="CONSTRAINED"/>
+            <EnumValue Name="X1MULTIPLIER"/>
+            <EnumValue Name="X2MULTIPLIER"/>
+        </Parameter>
+        <Parameter Name="INTERVAL" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="MEAN"/>
+            <EnumValue Name="INDIVIDUAL"/>
+        </Parameter>
+        <Parameter Name="LINE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="TOTAL"/>
+            <EnumValue Name="MEFFECT"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SPIKE" EqualsSign="None">
+        <Parameter Name="X1" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="X2" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="Y" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORNER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ORIGIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FLOOR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CENTROID" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FORMAT" EqualsSign="None">
+        <Parameter Name="SPIKE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COLOR" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+        <Parameter Name="STYLE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="ON"/>
+            <EnumValue Name="OFF"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="STACK" EqualsSign="Optional"/>
+</Command>

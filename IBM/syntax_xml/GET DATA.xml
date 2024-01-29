@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2012                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 5/23/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:SyntaxSchema.xsd" 
+    Name="GET DATA" EndRequired="None" Language="Syntax"> 
+    <Subcommand Name="TYPE" EqualsSign="Optional">
+        <Parameter Name="ODBC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OLEDB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="XLS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="XLSX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="XLSM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="TXT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FILE" EqualsSign="Optional"/>
+    <Subcommand Name="CONNECT" EqualsSign="Optional"/>
+    <Subcommand Name="UNENCRYPTED" EqualsSign="None"/>
+    <Subcommand Name="ENCRYPTED" EqualsSign="None"/>
+    <Subcommand Name="SQL" EqualsSign="Optional"/>
+    <Subcommand Name="ASSUMEDSTRWIDTH" EqualsSign="Optional"/>
+    <Subcommand Name="SHEET" EqualsSign="Optional">
+        <Parameter Name="INDEX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NAME" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CELLRANGE" EqualsSign="Optional">
+        <Parameter Name="RANGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FULL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="READNAMES" EqualsSign="Optional">
+        <Parameter Name="ON" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OFF" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ARRANGEMENT" EqualsSign="Optional">
+        <Parameter Name="FIXED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DELIMITED" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FIRSTCASE" EqualsSign="Optional"/>
+    <Subcommand Name="DELCASE" EqualsSign="Optional">
+        <Parameter Name="LINE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLES" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FIXCASE" EqualsSign="Optional"/>
+    <Subcommand Name="IMPORTCASE" EqualsSign="Optional">
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FIRST" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PERCENT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DELIMITERS" EqualsSign="Optional"/>
+    <Subcommand Name="QUALIFIER" EqualsSign="Optional"/>
+    <Subcommand Name="VARIABLES" EqualsSign="Optional"/>
+    <Subcommand Name="ENCODING" EqualsSign="Optional">
+        <Parameter Name="UTF8" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOCALE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UTF16" EqualsSign="None" ParameterType="Keyword"> </Parameter>
+        <Parameter Name="UTF16LE" EqualsSign="None" ParameterType="Keyword"> </Parameter>
+        <Parameter Name="UTF16BE" EqualsSign="None" ParameterType="Keyword"> </Parameter>
+    </Subcommand>
+</Command>

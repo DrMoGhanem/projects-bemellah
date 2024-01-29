@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2014                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 5/12/08 -->
+<Command xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:SyntaxSchema.xsd"
+    xmlns="http://xml.spss.com/spss/extension" Name="SPATIAL TEMPORAL PREDICTION" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="MAPSPEC">
+        <Parameter Name="FILE" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+    </Subcommand>
+    <Subcommand Name="AGGREGATION">
+         <Parameter Name="CONTINUOUS" EqualsSign="Required" ParameterType="Keyword">
+              <EnumValue Name="MEAN"/>
+             <EnumValue Name="MEDIAN"/>
+             <EnumValue Name="SUM"/>
+         </Parameter>
+        <Parameter Name="ORDINAL" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="MEDIAN"/>
+            <EnumValue Name="MODE"/>
+            <EnumValue Name="HIGHEST"/>
+            <EnumValue Name="LOWEST"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="DATASET">
+        <Parameter Name="DATAID" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+<!-- 
+       <Parameter Name="EVENT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+
+        <Parameter Name="KDE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NONE"/>
+            <EnumValue Name="TARGET"/>   
+        </Parameter>
+-->
+
+        <Parameter Name="KDENAME" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="TARGET" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="INPUTS" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="TIMEINDEX" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="AGGEXCEPTIONS" EqualsSign="Required" ParameterType="Keyword">
+             <EnumValue Name="MEAN"/>
+             <EnumValue Name="MEDIAN"/>
+             <EnumValue Name="MODE"/>
+             <EnumValue Name="SUM"/>
+             <EnumValue Name="HIGH"/>
+             <EnumValue Name="LOW"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="TIMEFIELDS">
+         <Parameter Name="INPUTINTERVAL" ParameterType="Keyword" EqualsSign="Required">
+             <EnumValue Name="YEAR"/>
+             <EnumValue Name="QUARTER"/>
+             <EnumValue Name="MONTH"/>
+             <EnumValue Name="WEEK"/>
+             <EnumValue Name="DAY"/>
+             <EnumValue Name="HOUR"/>
+             <EnumValue Name="MINUTE"/>
+             <EnumValue Name="SECOND"/>
+             <EnumValue Name="PERIOD"/>
+             <EnumValue Name="INCREMENT"/>
+             <EnumValue Name="DAYSWK"/>
+             <EnumValue Name="WKSTART"/>
+             <EnumValue Name="HRSDAY"/>
+             <EnumValue Name="DAYSTART"/>
+             <EnumValue Name="START"/>
+             <EnumValue Name="LENGTH"/>
+             <EnumValue Name="DURATION"/>
+         </Parameter>
+    </Subcommand>
+    <Subcommand Name="MODELBUILDING">
+        <Parameter Name="SIGNIFICANCE" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="INTERCEPT" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="COVARIANCE" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="VARIOGRAM"/>
+            <EnumValue Name="EMPIRICAL"/>
+        </Parameter>
+        <Parameter Name="AUTOREGRESSIONLAG" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="MISSINGRECORDS" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="UNCERTAINTY" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+    </Subcommand>
+    <Subcommand Name="MODELTABLES">
+        <Parameter Name="TEMPORALINFO" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+ <!--       <Parameter Name="DESCRIPTIVES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+-->
+        <Parameter Name="EFFECTS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="MEANSTRUCTURE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="COEFFICIENTS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="COVARIANCE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="PARAMETRIC" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="SPECIFICATIONS" EqualsSign="Required" ParameterType="Keyword">
+             <EnumValue Name="YES"/>
+             <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="LOCATIONS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="QUALITY" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MAPOUTPUT">
+        <Parameter Name="TARGETVALUES" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="CORRELATIONS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="CLUSTERS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="SIMILARITY" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="MAXCLUSTERS" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+    </Subcommand>
+    <!--<Subcommand Name="OUTFILE">
+        <Parameter Name="MODEL" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+    </Subcommand>-->
+    <Subcommand Name="SAVE">
+       <Parameter Name="SCORE" EqualsSign="Required" ParameterType="Keyword">
+          <EnumValue Name="NO"/>
+          <EnumValue Name="YES"/>
+       </Parameter>
+       <Parameter Name="SOURCESTOSCORE" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+</Subcommand>
+   
+</Command>

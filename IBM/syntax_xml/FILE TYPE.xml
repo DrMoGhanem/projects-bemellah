@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:/C:/Documents%20and%20Settings/ksealy/ksealy_view5/common_code/syntaxeditor/syntax_xml/SyntaxSchema.xsd"
+    Name="FILE TYPE" EndRequired="Command" EndStatement="END FILE TYPE" IsArbitrary="True"
+    Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="MIXED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FILE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="ENCODING" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="RECORD" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="WILD" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="NOWARN"/>
+            <EnumValue Name="WARN"/>
+        </Parameter>
+        <Parameter Name="GROUPED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CASE" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="DUPLICATE" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="WARN"/>
+            <EnumValue Name="NOWARN"/>
+        </Parameter>
+        <Parameter Name="MISSING" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="WARN"/>
+            <EnumValue Name="NOWARN"/>
+        </Parameter>
+        <Parameter Name="ORDERED" EqualsSign="Optional" ParameterType="Keyword">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="NESTED" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

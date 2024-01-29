@@ -1,0 +1,424 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema targetNamespace="http://xml.spss.com/spss/treeview" xmlns:treeview="http://xml.spss.com/spss/treeview" xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+	<xs:annotation>
+		<xs:documentation xml:lang="en">Copyright 2004 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties with respect to your use of this specification, expressed, implied, or otherwise, including without limitation, all warranties of merchantability and fitness for a particular purpose.  SPSS shall not be liable for any special, incidental, or consequential damages, including without limitation lost revenues or lost profits resulting from the use of the information herein.</xs:documentation>
+	</xs:annotation>
+	<xs:element name="displaySettings">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Display settings for tree rendering</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="treeview:treeZoom"/>
+					<xs:element ref="treeview:treeOrientation"/>
+					<xs:element ref="treeview:nodeContents"/>
+					<xs:element ref="treeview:nodeState"/>
+					<xs:element ref="treeview:predictorRanges"/>
+					<xs:element ref="treeview:branchStatistics"/>
+					<xs:element ref="treeview:statFormats"/>
+					<xs:element ref="treeview:legend"/>
+					<xs:element ref="treeview:numbers"/>
+					<xs:element ref="treeview:fontData"/>
+					<xs:element ref="treeview:colorData"/>
+					<xs:element ref="treeview:sortData"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="olang" type="xs:language">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The desired output language used for resources. See: http://www.w3.org/TR/2004/REC-xml-20040204/#RFC1766</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="locale" type="xs:language">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The desired locale for numeric formatting.  See: http://www.w3.org/TR/2004/REC-xml-20040204/#RFC1766</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="treeZoom">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Current zoom factor. 100 equals 100 percent.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="factor" type="xs:integer" default="100">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Zoom factor for tree imaging</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="treeOrientation">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Orientation of the displayed tree</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="orientation" default="top-down">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Can be: top-down, left-to-right, or right-to-left</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="top-down"/>
+						<xs:enumeration value="left-to-right"/>
+						<xs:enumeration value="right-to-left"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="nodeContents">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Displayed contents of each node</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="contents" default="both">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Interior node contents. Can be: table, graph, or both</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="table"/>
+						<xs:enumeration value="graph"/>
+						<xs:enumeration value="both"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="hilitePredicted" default="true">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Turns on predictor highlighting in classification trees. Can be: true or false</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="true"/>
+						<xs:enumeration value="false"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="nodeState">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Describes current collapse state, focus and node selections</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="activeNode" type="xs:integer" default="100">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">The active (e.g. focused) node</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="selectedNodes" type="xs:string">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A semi-colon delimited node id list of selected nodes</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="collapsedNodes" type="xs:string">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">A semi-colon delimited node id list of collapsed nodes</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="predictorRanges">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Controls the display of node definitions (predictor ranges)</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="show" default="true">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Show or hide node definitions. Can be: true or false</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="true"/>
+						<xs:enumeration value="false"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="showTextRanges" default="false">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Toggle between numeric and text ranges. Can be: true or false</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="true"/>
+						<xs:enumeration value="false"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="branchStatistics">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Controls the display of predictor variable branch statistics and variable labels</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="show" default="true">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Can be: true or false</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="true"/>
+						<xs:enumeration value="false"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="showVariables" default="true">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Can be: true or false</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="true"/>
+						<xs:enumeration value="false"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="statFormats">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Formatting information for statistics</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0">
+					<xs:element ref="treeview:dateFormat"/>
+				</xs:choice>
+				<xs:choice minOccurs="0">
+					<xs:element name="predictorFormats">
+						<xs:annotation>
+							<xs:documentation xml:lang="en">Precision data for each primary predictor variable</xs:documentation>
+						</xs:annotation>
+						<xs:complexType>
+							<xs:choice minOccurs="0" maxOccurs="unbounded">
+								<xs:element ref="treeview:predictorItem"/>
+							</xs:choice>
+						</xs:complexType>
+					</xs:element>
+				</xs:choice>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="legend">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Controls the display of the node legend</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="showLegend" default="true">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Can be: true or false</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="true"/>
+						<xs:enumeration value="false"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="numbers">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Numeric formatting control</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="defaultPrecision" type="xs:integer" default="2">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Numeric display precision. Can be: 0 to 15</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="fontData">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Font information that applies to all text in the tree</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="family" type="xs:string">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Font family name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="style" default="normal">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Font style can be: normal, bold, italic, or bold-italic</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="normal"/>
+						<xs:enumeration value="bold"/>
+						<xs:enumeration value="italic"/>
+						<xs:enumeration value="bold-italic"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="size" type="xs:integer" default="10">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Font point size</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="sortData">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Target category sort information</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="sortType" default="none">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sort type can be: none, by-label, or by-value</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="none"/>
+						<xs:enumeration value="by-label"/>
+						<xs:enumeration value="by-value"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="sortOrder" default="none">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Sort order can be: none, ascending, descending</xs:documentation>
+				</xs:annotation>
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="none"/>
+						<xs:enumeration value="ascending"/>
+						<xs:enumeration value="descending"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="colorData">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Color data for the tree</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0" maxOccurs="unbounded">
+					<xs:element ref="treeview:chartColors"/>
+					<xs:element ref="treeview:swatchColors"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="stroke" default="#FF000000">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Color of the tree borders, lines, and text</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="bkndFill" default="#FFFFFFFF">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Tree background color</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="nodeFill" default="#FFFFFFFF">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Background color for tree nodes</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="nodeText" default="#FF000000">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Text color for node text</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="linkText" default="#FF000000">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Text color for link text</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="linkColor" default="#FF000000">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Node link color</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="nodeBorderColor" default="#FF000000">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Border color for tree nodes</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="predictorHightlight" default="#FFE9E9E9">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Highlight color for the predicted category</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="chartColors">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Chart colors</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="treeview:colorItem"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="swatchColors">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Swatch colors offered by the editor</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:choice minOccurs="0" maxOccurs="unbounded">
+				<xs:element ref="treeview:colorItem"/>
+			</xs:choice>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="colorItem">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Descriptor for a single color</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="value">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Color data as hex RGB in the form "#FFFFFFFF" (solid white)</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="predictorItem">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">Precision descriptor for a single predictor variable</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:choice minOccurs="0">
+					<xs:element ref="treeview:dateFormat"/>
+				</xs:choice>
+			</xs:sequence>
+			<xs:attribute name="varName">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Predictor variable name</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="precision" type="xs:integer" default="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Predictor variable numeric precision</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+	<xs:element name="dateFormat">
+		<xs:annotation>
+			<xs:documentation xml:lang="en">The SPSS date format</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:attribute name="name">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Name of date format. See the enumeration in format.h</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="width" type="xs:integer" default="8">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Variable date format width</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="precision" type="xs:integer" default="0">
+				<xs:annotation>
+					<xs:documentation xml:lang="en">Variable date format precision</xs:documentation>
+				</xs:annotation>
+			</xs:attribute>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Create 5/1/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="GENLOG" EndRequired="None" IsArbitrary="No" Language="Syntax"> 
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CSTRUCTURE" EqualsSign="Optional"/>
+    <Subcommand Name="GRESID" EqualsSign="Optional"/>
+    <Subcommand Name="GLOR" EqualsSign="Optional"/>
+    <Subcommand Name="MODEL" EqualsSign="Optional">
+        <Parameter Name="POISSON" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MULTINOMIAL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="Optional">
+        <Parameter Name="CONVERGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ITERATE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DELTA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EPS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="FREQ" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ADJRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ZRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ITERATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DESIGN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ESTIM" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ADJRESID"/>
+            <EnumValue Name="DEV"/>
+        </Parameter>
+        <Parameter Name="NORMPROB" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="ADJRESID"/>
+            <EnumValue Name="DEV"/>
+        </Parameter>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ZRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ADJRESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PRED" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="EXCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DESIGN" EqualsSign="Optional">
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

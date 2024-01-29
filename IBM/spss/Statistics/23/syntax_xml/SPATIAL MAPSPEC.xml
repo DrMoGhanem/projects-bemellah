@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2014                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Updated 5/12/08 -->
+<Command xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:SyntaxSchema.xsd"
+    xmlns="http://xml.spss.com/spss/extension" Name="SPATIAL MAPSPEC" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="MAPPROJECTION">
+        <Parameter Name="WKID" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="PROJECTION" EqualsSign="Required" ParameterType="Keyword">
+             <EnumValue Name="CARTESIAN"/>
+        </Parameter>
+        <Parameter Name="DISPLAY" EqualsSign="Required" ParameterType="Keyword">
+             <EnumValue Name="SIMPLE"/>
+             <EnumValue Name="MERCATOR"/>
+             <EnumValue Name="STEREOGRAPHIC"/>
+             <EnumValue Name="WINKELTRIPEL"/>
+        </Parameter> 
+    </Subcommand>
+    <Subcommand Name="MAP" EqualsSign="None" Occurrence="Required">
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="FILE"/>
+            <EnumValue Name="SERVICE"/>
+        </Parameter>
+        <Parameter Name="SOURCE" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="LAYER" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="LAYERNAME" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="IDENTIFIER" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="COORDSYSTEM" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="GEOGRAPHIC"/>
+            <EnumValue Name="WKID"/>
+            <EnumValue Name="PROJECTION"/>
+        </Parameter>
+        <Parameter Name="SPATIALRELATION" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="CLOSE"/>
+            <EnumValue Name="WITHIN"/>
+            <EnumValue Name="CONTAINS"/>
+            <EnumValue Name="INTERSECTS"/>
+            <EnumValue Name="CROSS"/>
+            <EnumValue Name="OVERLAP"/>
+            <EnumValue Name="TOUCH"/>
+            <EnumValue Name="NORTH"/>
+            <EnumValue Name="SOUTH"/>
+            <EnumValue Name="EAST"/>
+            <EnumValue Name="WEST"/>
+        </Parameter>
+        <Parameter Name="CLOSERADIUS" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="CLOSEMEASURE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="MILE"/>
+            <EnumValue Name="KILOMETER"/>
+            <EnumValue Name="METER"/>
+            <EnumValue Name="CENTIMETER"/>
+            <EnumValue Name="FOOT"/>
+        </Parameter>
+        <Parameter Name="MAXRELATIONS" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        
+    </Subcommand>
+    <Subcommand Name="DATA" EqualsSign="None">
+        <Parameter Name="TYPE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="FILE"/>
+            <EnumValue Name="MAP"/>
+            <EnumValue Name="DATASET"/>
+        </Parameter>
+        <Parameter Name="SOURCE" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="IDENTIFIER" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="KEY" ParameterType="Keyword" EqualsSign="Required">
+           <EnumValue Name="SHAPEID"/>
+           <EnumValue Name="DEFINED"/>
+        </Parameter>
+        <Parameter Name="MAPID" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="DATAKEY" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="MAPKEY" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="XCOORDINATE" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="YCOORDINATE" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="ZCOORDINATE" ParameterType="Keyword" EqualsSign="Required"></Parameter>
+        <Parameter Name="COORDSYSTEM" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="GEOGRAPHIC"/>
+            <EnumValue Name="CARTESIAN"/>
+            <EnumValue Name="WKID"/>
+            <EnumValue Name="PROJECTION"/>
+        </Parameter>
+        <Parameter Name="DATATOMAP" ParameterType="Keyword" EqualsSign="Required">
+           <EnumValue Name="TO"/>
+        </Parameter>
+        <Parameter Name="ROLE" EqualsSign="Required" ParameterType="Keyword">
+           <EnumValue Name="CONTEXT"/>
+           <EnumValue Name="EVENTDENSITY"/>
+           <EnumValue Name="SCORE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="SPECFILE" EqualsSign="None">
+        <Parameter Name="FILE" EqualsSign="Required" ParameterType="Keyword"></Parameter>
+        <Parameter Name="DISPLAY" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+        <Parameter Name="SAVEDATA" ParameterType="Keyword" EqualsSign="Required">
+            <EnumValue Name="YES"/>
+            <EnumValue Name="NO"/>
+        </Parameter>
+    </Subcommand>
+
+
+</Command>

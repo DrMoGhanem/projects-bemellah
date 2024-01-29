@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:SyntaxSchema.xsd"
+    Name="INSERT" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS">
+        <Parameter Name="FILE" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PASSWORD" EqualsSign="Optional" ParameterType="Keyword"></Parameter>
+        <Parameter Name="SYNTAX" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="INTERACTIVE"/>
+            <EnumValue Name="BATCH"/>
+        </Parameter>
+        <Parameter Name="ERROR" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="CONTINUE"/>
+            <EnumValue Name="STOP"/>
+        </Parameter>
+        <Parameter Name="CD" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+        <Parameter Name="ENCODING" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

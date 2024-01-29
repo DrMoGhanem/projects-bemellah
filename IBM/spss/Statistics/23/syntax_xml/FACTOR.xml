@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/1/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="FACTOR" Language="Syntax" IsArbitrary="No" EndRequired="None">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="Optional">
+        <Parameter Name="LISTWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PAIRWISE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MEANSUB" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INCLUDE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MATRIX" EqualsSign="Optional">
+        <Parameter Name="IN" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="COR"/>
+            <EnumValue Name="COV"/>
+            <EnumValue Name="FAC"/>
+        </Parameter>
+        <Parameter Name="OUT" EqualsSign="None" ParameterType="Keyword">
+            <EnumValue Name="COR"/>
+            <EnumValue Name="COV"/>
+            <EnumValue Name="FAC"/>
+        </Parameter>
+        <Parameter Name="FSC" EqualsSign="Optional" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="METHOD" EqualsSign="Optional">
+        <Parameter Name="CORRELATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COVARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SELECT" EqualsSign="Optional"/>
+    <Subcommand Name="ANALYSIS" EqualsSign="Optional"/>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INITIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXTRACTION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROTATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="UNIVARIATE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CORRELATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COVARIANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DET" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INV" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="REPR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AIC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="KMO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FSCORE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SIG" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="EIGEN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROTATION" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="DIAGONAL" EqualsSign="Optional">
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="FORMAT" EqualsSign="Optional">
+        <Parameter Name="SORT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BLANK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="Optional">
+        <Parameter Name="FACTORS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MINEIGEN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ITERATE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RCONVERGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="KAISER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOKAISER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ECONVERGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DELTA" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EXTRACTION" EqualsSign="Optional">
+        <Parameter Name="PC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PA1" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PAF" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALPHA" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="IMAGE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ULS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GLS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ML" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ROTATION" EqualsSign="Optional">
+        <Parameter Name="VARIMAX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EQUAMAX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="QUARTIMAX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OBLIMIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PROMAX" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NOROTATE" EqualsSign="None" ParameterType="Keyword"/>
+         <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="REG" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="BART" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="AR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DEFAULT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

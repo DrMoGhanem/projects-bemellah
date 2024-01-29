@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Crteated 5/14/08 -->
+<Command xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    xmlns="http://xml.spss.com/spss/extension" Name="CNLR" EndRequired="None" IsArbitrary="No"
+    Language="Syntax">
+    <Subcommand Name="FILE" EqualsSign="Optional"/>
+    <Subcommand Name="OUTFILE" EqualsSign="Optional"/>
+    <Subcommand Name="PRED" EqualsSign="Optional"/>
+    <Subcommand Name="SAVE" EqualsSign="None">
+        <Parameter Name="PRED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="DERIVATIVES" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOSS" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="Optional">
+        <Parameter Name="ITER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="MITER" EqualsSign="None" ParameterType="Keyword"/>
+         <Parameter Name="CKDER" EqualsSign="None" ParameterType="Keyword"/>
+       <Parameter Name="ISTEP" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FPR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LFTOL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LSTOL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LFTOL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="STEPLIMIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NFTOL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FTOL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OPTOL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CRSHTOL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FPRECISION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="OPTOLERANCE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="BOUNDS" EqualsSign="Optional"/>
+    <Subcommand Name="LOSS" EqualsSign="Optional"/>
+    <Subcommand Name="BOOTSTRAP" EqualsSign="Optional"/>
+</Command>

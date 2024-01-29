@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 5/20/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension file:/C:/temp/schema/SyntaxSchema.xsd"
+    Name="RBF" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="MLEVEL" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="S"/>
+            <EnumValue Name="O"/>
+            <EnumValue Name="N"/>
+        </Parameter>
+        <Parameter Name="BY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="EXCEPT" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="RESCALE" EqualsSign="None">
+        <Parameter Name="COVARIATE" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="STANDARDIZED"/>
+            <EnumValue Name="NORMALIZED"/>
+            <EnumValue Name="ADJNORMALIZED"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+        <Parameter Name="DEPENDENT" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="STANDARDIZED"/>
+            <EnumValue Name="NORMALIZED"/>
+            <EnumValue Name="ADJNORMALIZED"/>
+            <EnumValue Name="NONE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PARTITION" EqualsSign="None">
+        <Parameter Name="TRAINING" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="TESTING" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="HOLDOUT" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="VARIABLE" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ARCHITECTURE" EqualsSign="None">
+        <Parameter Name="MINUNITS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="AUTO"/>
+        </Parameter>
+        <Parameter Name="MAXUNITS" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="AUTO"/>
+        </Parameter>
+        <Parameter Name="NUMUNITS" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="HIDDENFUNCTION" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NRBF"/>
+            <EnumValue Name="ORBF"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="CRITERIA" EqualsSign="None">
+        <Parameter Name="OVERLAP" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="AUTO"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="MISSING" EqualsSign="None">
+        <Parameter Name="USERMISSING" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="EXCLUDE"/>
+            <EnumValue Name="INCLUDE"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="PRINT" EqualsSign="None">
+        <Parameter Name="CPS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NETWORKINFO" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SUMMARY" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CLASSIFICATION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="SOLUTION" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="IMPORTANCE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="PLOT" EqualsSign="None">
+        <Parameter Name="NETWORK" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PREDICTED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESIDUAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ROC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GAIN" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LIFT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="None">
+        <Parameter Name="PREDVAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="PSEUDOPROB" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="OUTFILE" EqualsSign="None">
+        <Parameter Name="MODEL" EqualsSign="Required" ParameterType="Keyword"/>
+    </Subcommand>
+</Command>

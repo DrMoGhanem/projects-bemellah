@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+
+<xs:schema targetNamespace="http://xml.spss.com/spss/viewer/viewer-pagesetup" 
+    xmlns:xs="http://www.w3.org/2001/XMLSchema" 
+    xmlns:vps="http://xml.spss.com/spss/viewer/viewer-pagesetup" 
+    xmlns:vtx="http://xml.spss.com/spss/viewer/viewer-text" 
+    xmlns:vst="http://xml.spss.com/spss/viewer/viewer-style" 
+    elementFormDefault="qualified" attributeFormDefault="unqualified" version="1.0">
+  <xs:annotation>
+    <xs:documentation xml:lang="en">Copyright 2006 SPSS Inc - All Rights Reserved.  SPSS specifically disclaims all warranties with respect to your use of this specification, expressed, implied, or otherwise, including without limitation, all warranties of merchantability and fitness for a particular purpose.  SPSS shall not be liable for any special, incidental, or consequential damages, including without limitation lost revenues or lost profits resulting from the use of the information herein.</xs:documentation>
+  </xs:annotation>
+
+  <!-- imports -->
+  <xs:import namespace="http://xml.spss.com/spss/viewer/viewer-style" schemaLocation="viewer-style-1.0.xsd"/>
+  <xs:import namespace="http://xml.spss.com/spss/viewer/viewer-text" schemaLocation="viewer-text-1.0.xsd"/>
+
+	<!-- page setup -->
+	<xs:element name="pageSetup">
+		<xs:annotation>
+			<xs:documentation>Sets the page setup for the viewer document.</xs:documentation>
+		</xs:annotation>
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element ref="vps:pageHeader" minOccurs="0" maxOccurs="1"/>
+				<xs:element ref="vps:pageFooter" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+			<xs:attribute name="initial-page-number">
+				<xs:simpleType>
+					<xs:restriction base="xs:positiveInteger"/>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="chart-size">
+				<xs:simpleType>
+					<xs:restriction base="xs:NMTOKEN">
+						<xs:enumeration value="as-is"/>
+						<xs:enumeration value="full-height"/>
+						<xs:enumeration value="half-height"/>
+						<xs:enumeration value="quarter-height"/>
+					</xs:restriction>
+				</xs:simpleType>
+			</xs:attribute>
+			<xs:attribute name="paper-width">
+			    <xs:annotation>
+			        <xs:documentation>
+							    Expected format similar to '8.5in'.
+			        </xs:documentation>
+			    </xs:annotation>
+			</xs:attribute>
+			<xs:attribute name="paper-height">
+			    <xs:annotation>
+			        <xs:documentation>
+							    Expected format similar to '11.0in'.
+			        </xs:documentation>
+			    </xs:annotation>
+			</xs:attribute>
+			<xs:attributeGroup ref="vst:block-properties">
+			    <xs:annotation>
+			        <xs:documentation>
+                  In addition to the above attributes, the following attributes 
+                  from vst:block-properties are honored:
+                     Page margins:            margin-top, margin-left, margin-bottom, margin-right
+			               Space between items:     space-after
+					           Orientation:             reference-orientation			        
+			        </xs:documentation>
+			    </xs:annotation>
+			</xs:attributeGroup>
+		</xs:complexType>
+	</xs:element>
+
+	<!-- page header -->
+	<xs:element name="pageHeader">
+	  <xs:complexType>
+		  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+			  <xs:element ref="vps:pageParagraph"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="vst:block-properties"/>
+	  </xs:complexType>
+	</xs:element>
+
+	<!-- page footer -->
+	<xs:element name="pageFooter">
+	  <xs:complexType>
+		  <xs:sequence minOccurs="0" maxOccurs="unbounded">
+			  <xs:element ref="vps:pageParagraph"/>
+			</xs:sequence>
+			<xs:attributeGroup ref="vst:block-properties"/>
+	  </xs:complexType>
+	</xs:element>
+
+  <!-- page paragraph -->
+  <xs:element name="pageParagraph">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="vtx:text">
+            <xs:annotation>
+                <xs:documentation>
+                    The text for a page paragraph will be an html document.  However, specific types of information
+                    will be identified by the title attribute in the span child. An example might look like this:
+
+                        <html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+                            <body>
+                                <p style="color:red;font-family:Arial">
+                                    <span title="text">Page </span>
+                                    <span title="page-number"/>
+                                    <span title="text">, created at time </span>
+                                    <span title="time"/>
+                                </p>
+                            </body>
+                        </html>
+                        
+                    The printing process would then replace the spans that have titles other than "text" with
+                    the appropriate value.  The above example, after printing substitution, would look
+                    something like this: "Page 1, created at time 5:55:57 PM"
+
+                    The valid values for the title attribute are:
+                    
+                        text
+                        date
+                        time
+                        page-number
+                        filename
+                        page-title
+                        heading-one
+                        heading-two
+                        heading-three
+                    
+                </xs:documentation>
+            </xs:annotation>
+        </xs:element>
+      </xs:choice>
+      <xs:attributeGroup ref="vst:block-properties"/>
+    </xs:complexType>
+  </xs:element>
+
+
+</xs:schema>

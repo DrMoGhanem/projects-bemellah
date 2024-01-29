@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Create 5/16/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="REPOSITORY CONNECT" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="SERVER" EqualsSign="None">
+        <Parameter Name="HOST" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="SSL" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+    <Subcommand Name="LOGIN" EqualsSign="None">
+        <Parameter Name="USER" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PASSWORD" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="PROVIDER" EqualsSign="Required" ParameterType="Keyword"/>
+        <Parameter Name="ENCRYPTEDPWD" EqualsSign="Required" ParameterType="Keyword">
+            <EnumValue Name="NO"/>
+            <EnumValue Name="YES"/>
+        </Parameter>
+    </Subcommand>
+</Command>

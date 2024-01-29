@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ***************************************************************** -->
+<!--                                                                   -->
+<!-- Licensed Materials - Property of IBM                              -->
+<!--                                                                   -->
+<!-- IBM SPSS Products: Statistics Common                              -->
+<!--                                                                   -->
+<!-- (C) Copyright IBM Corp. 1989, 2011                                -->
+<!--                                                                   -->
+<!-- US Government Users Restricted Rights - Use, duplication or       -->
+<!-- disclosure restricted by GSA ADP Schedule Contract with IBM       -->
+<!-- Corp.                                                             -->
+<!--                                                                   -->
+<!-- ***************************************************************** -->
+
+ <!-- Created 4/30/08 -->
+<Command xmlns="http://xml.spss.com/spss/extension"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://xml.spss.com/spss/extension http://xml.spss.com/spss/extension/SyntaxSchema.xsd"
+    Name="CURVEFIT" EndRequired="None" IsArbitrary="No" Language="Syntax">
+    <Subcommand Name="GLOBAL_PARAMS" EqualsSign="None">
+        <Parameter Name="VARIABLES" EqualsSign="Optional" ParameterType="Keyword"/>
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="VARIABLES" EqualsSign="Optional">
+        <Parameter Name="WITH" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="MODEL" EqualsSign="Optional">
+        <Parameter Name="LINEAR" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LOGARITHMIC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="INVERSE" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="QUADRATIC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CUBIC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="COMPOUND" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="POWER" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="S" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="GROWTH" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="EXPONENTIAL" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="LGSTIC" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="ALL" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CIN" EqualsSign="Optional"/>
+    <Subcommand Name="UPPERBOUND" EqualsSign="Optional">
+        <Parameter Name="NO" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="CONSTANT" EqualsSign="None"/>
+    <Subcommand Name="NOCONSTANT" EqualsSign="None"/>
+    <Subcommand Name="PLOT" EqualsSign="Optional">
+        <Parameter Name="FIT" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="NONE" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="ID" EqualsSign="Optional"/>
+    <Subcommand Name="PRINT" EqualsSign="Optional">
+        <Parameter Name="ANOVA" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="SAVE" EqualsSign="Optional">
+        <Parameter Name="PRED" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="RESID" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="CIN" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="APPLY" EqualsSign="Optional">
+        <Parameter Name="SPECIFICATIONS" EqualsSign="None" ParameterType="Keyword"/>
+        <Parameter Name="FIT" EqualsSign="None" ParameterType="Keyword"/>
+    </Subcommand>
+    <Subcommand Name="TEMPLATE" EqualsSign="Optional"/>
+</Command>
